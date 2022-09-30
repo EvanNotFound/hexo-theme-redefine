@@ -1,6 +1,9 @@
+
+![Slogan](https://user-images.githubusercontent.com/68590232/193186322-b3b7e52a-8b10-45b9-a84d-79e988bc0f7e.svg)
+
 # hexo-theme-redefine
 
-"Redefine" hexo theme is a simple & fast & pure theme. Simple but no compromise. This theme contains lots of widely use functions and great web design.
+"Redefine" hexo theme is a simple & fast & pure theme, but no compromise. This theme contains lots of widely use functions and great web design.
 
 
 
