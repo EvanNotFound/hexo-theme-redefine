@@ -1,5 +1,5 @@
 
-![Slogan](https://user-images.githubusercontent.com/68590232/193186322-b3b7e52a-8b10-45b9-a84d-79e988bc0f7e.svg)
+<a href="https://www.evanluo.top"><img align="center" src="https://user-images.githubusercontent.com/68590232/193186322-b3b7e52a-8b10-45b9-a84d-79e988bc0f7e.svg"  alt="Redefine"></a>
 
 # hexo-theme-redefine
 
