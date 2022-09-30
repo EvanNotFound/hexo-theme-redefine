@@ -1,0 +1,50 @@
+search: Search...
+toc: Contents
+prev: Prev
+next: Next
+prev_posts: Prev posts
+next_posts: Next posts
+page: Page %d
+recent_posts: Recent Posts
+share: Share
+powered_by: "Powered by %s"
+theme: Theme
+rss_feed: RSS Feed
+category: Category
+categories: Categories
+tag: Tag
+tags: Tags
+tagcloud: Tag Cloud
+comment: Comment
+comments: Comments
+home: Home
+archive: Archive
+archives: Archives
+about: About
+site_uv: Visitor Count
+site_pv: Totalview
+links: Links
+link: Link
+top: TOP
+read_more: Read more
+wordcount: Words
+min2read: Mins
+changelog: Changelog
+status: Status
+site_time: Blog Up for
+optimized_by: and Optimized by Evan
+copyright:
+  author: Post author
+  title: Post title
+  link: Post link
+  create_time: Create time
+  license_title: Copyright Notice
+  license_content: "All articles in this blog are licensed under %s unless stating additionally."
+ago:
+  second: "%s seconds ago"
+  minute: "%s minutes ago"
+  hour: "%s hours ago"
+  day: "%s days ago"
+  week: "%s weeks ago"
+  month: "%s months ago"
+  year: "%s years ago"

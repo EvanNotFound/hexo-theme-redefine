@@ -1,0 +1,13 @@
+<div class="paginator">
+    <% if (pageObject.prev)  { %>
+        <a class="prev btn"
+           href="<%- url_for(pageObject.prev_link) %>"
+        ><%- __('prev') %></a>
+    <% } %>
+
+    <% if (pageObject.next)  { %>
+        <a class="next btn"
+           href="<%- url_for(pageObject.next_link) %>"
+        ><%- __('next') %></a>
+    <% } %>
+</div>

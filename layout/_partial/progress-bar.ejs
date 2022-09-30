@@ -1,0 +1,13 @@
+<div class="progress-bar-container">
+    <% if (theme.style.scroll.progress_bar.enable === true) { %>
+        <span class="scroll-progress-bar"></span>
+    <% } %>
+
+    <% if (theme.pjax.enable === true) { %>
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    <% } %>
+</div>
+

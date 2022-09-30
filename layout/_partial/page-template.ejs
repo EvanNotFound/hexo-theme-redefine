@@ -1,0 +1,27 @@
+<div class="fade-in-down-animation">
+    <div class="page-template-container">
+        <%
+        const isLoadFriendsLink = (
+                theme.menu.hasOwnProperty('Links')
+                && theme.menu.Links
+                && theme.links
+                && (page.type === 'links' || page.type === 'link' || page.title === 'links' || page.title === 'link')
+        );
+        %>
+        <% if (isLoadFriendsLink) { %>
+            <%- partial('_partial/friends-link') %>
+        <% } %>
+        <div class="page-template-content markdown-body">
+            <% if (isLoadFriendsLink || page.content) { %>
+                <%- page.content %>
+            <% } else { %>
+                <h1><%- page.title %></h1>
+            <% } %>
+        </div>
+        <div class="page-template-comments">
+            <% if (page.hasOwnProperty('comment') && page.comment === true) { %>
+                <%- partial('_partial/comment/comment') %>
+            <% } %>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<% if (site.tags.length){ %>
+    <div class="fade-in-down-animation">
+        <div class="tagcloud-container">
+            <div class="tagcloud-content">
+                <%- tagcloud({
+                    min_font: 1,
+                    max_font: 1.6,
+                    unit: 'rem',
+                    amount: 100
+                }) %>
+            </div>
+        </div>
+    </div>
+<% } %>

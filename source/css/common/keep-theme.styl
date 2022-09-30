@@ -1,0 +1,53 @@
+$keep-container-border-radius = 18px;
+
+hover-style(isTransform, scaleX, scaleY) {
+  box-shadow: 5px 5px 15px var(--shadow-color);
+
+  if (isTransform) {
+    transition-t("transform", "0", "0.2", "linear");
+  }
+
+  &:hover {
+    if (hexo-config('style.hover.scale') && isTransform) {
+      transform: scaleX(scaleX) scaleY(scaleX);
+    }
+
+    if (hexo-config('style.hover.shadow')) {
+      box-shadow: 5px 5px 20px var(--shadow-hover-color);
+    }
+  }
+}
+
+
+keep-container(isTransform, scaleX, scaleY, padding, marginBottomValue) {
+  padding: padding;
+  border-radius: $keep-container-border-radius;
+  box-sizing: border-box;
+  background: var(--background-color);
+
+  if (marginBottomValue != 0) {
+    margin-bottom: marginBottomValue;
+
+    +keep-tablet() {
+      margin-bottom: marginBottomValue * 0.8;
+    }
+
+    +keep-mobile() {
+      margin-bottom: marginBottomValue * 0.6;
+    }
+  }
+
+
+  hover-style(isTransform, scaleX, scaleY);
+
+  +keep-tablet() {
+    padding: padding * 0.8;
+    border-radius: $keep-container-border-radius * 0.8;
+  }
+
+
+  +keep-mobile() {
+    padding: padding * 0.6;
+    border-radius: $keep-container-border-radius * 0.6;
+  }
+}

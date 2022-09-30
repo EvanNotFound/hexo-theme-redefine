@@ -1,0 +1,222 @@
+# ---------------------------------------------------------------------------------------
+#  Your basic info
+# ---------------------------------------------------------------------------------------
+base_info:
+  title: Theme Redefine # Site title
+  author: The Redefine Team # Author name
+  url: https://www.evanluo.top # Site url
+  # Logo image (You can use local image, image external link or don’t fill)
+  logo_img: # logo image on the left of the navigation bar
+
+# ---------------------------------------------------------------------------------------
+# Theme style settings
+# ---------------------------------------------------------------------------------------
+style:
+  # Theme primary color
+  primary_color: "#005080"
+
+  # Avatar (You can use local image or image external link)
+  avatar: # avatar of the author
+
+  # Favicon (You can use local image or image external link)
+  favicon: # favicon of the site
+
+  # Article image align position
+  article_img_align: center # value: left | center
+
+  # Left side width
+  left_side_width: 240px #sidebar width, for toc
+
+  # Content area max width
+  content_max_width: 980px #content max width, for article
+
+  # Mouse hover
+  hover:
+    shadow: true # shadow effect when the mouse hover
+    scale: false # scale effect when the mouse hover
+
+  # First screen
+  first_screen:
+    enable: true
+    background_img: # background image of the first screen, use relative path or external link
+    description: Theme Redefine # the title in the middle of the first screen
+
+  # Scroll style settings
+  scroll:
+    progress_bar: # reading progress bar
+      enable: true 
+    percent: # reading progress percent
+      enable: false
+
+# ---------------------------------------------------------------------------------------
+# Social contact link
+# ---------------------------------------------------------------------------------------
+social_contact: # social contact icons in the first screen, you can add more by using fontawesome icon names
+  enable: true
+  links:
+    github:  # your GitHub URL
+    instagram: # your Instagram URL
+    zhihu:  # your ZhiHu URL
+    twitter:  # your twitter URL
+    email:  # your email
+
+# ---------------------------------------------------------------------------------------
+# Navigation menu
+# ---------------------------------------------------------------------------------------
+menu: #you can customize
+  Home: /
+  Archives: /archives
+  # Categories: /categories
+  # Tags: /tags
+  Status: https://status.evanluo.top/
+  Links: /friends
+  About: /about
+  # Changelog: /changelog
+  # ......
+
+# ---------------------------------------------------------------------------------------
+# Home page article block display settings
+# ---------------------------------------------------------------------------------------
+home_article:
+  category:
+    enable: true # show category in home page article block
+    limit: 3 # max number of categories shown in home page article block
+  tag:
+    enable: true # show tags in home page article block
+    limit: 3 # max number of tags shown in home page article block
+
+# ---------------------------------------------------------------------------------------
+# Post page Settings
+# ---------------------------------------------------------------------------------------
+post:
+  # Post word count
+  # Dependencies: hexo-wordcount (npm install hexo-wordcount)
+  # See: https://github.com/willin/hexo-wordcount
+  word_count:
+    enable: true
+    wordcount: true # word count, one article
+    min2read: true # time to read, one article
+
+  # Author label
+  author_label:
+    enable: true
+    auto: false # if true, show Lv1, Lv2, Lv3... , If false, show custom label
+    # label array item can be one or more
+    custom_label_list: ["The one"]
+
+# ---------------------------------------------------------------------------------------
+# Code copy
+# ---------------------------------------------------------------------------------------
+code_copy:
+  enable: true
+  style: mac # values: default | mac
+
+# ---------------------------------------------------------------------------------------
+# Table of Contents in the Sidebar
+# ---------------------------------------------------------------------------------------
+toc:
+  enable: true
+
+  # Automatically add list number to toc.
+  number: false
+
+  # If true, all level of TOC in a post will be displayed, rather than the activated part of it.
+  expand_all: true
+
+  # If true, open TOC every time when you enter the article page
+  init_open: true
+
+# ---------------------------------------------------------------------------------------
+# Post copyright info
+# ---------------------------------------------------------------------------------------
+copyright_info:
+  enable: true
+
+# ---------------------------------------------------------------------------------------
+# Website count
+# ---------------------------------------------------------------------------------------
+website_count:
+  # busuanzi
+  # See: http://ibruce.info/2015/04/04/busuanzi/
+  busuanzi_count:
+    enable: true
+    site_uv: true
+    site_pv: true
+    page_pv: true
+
+# ---------------------------------------------------------------------------------------
+# Local Search
+# Dependencies: hexo-generator-searchdb
+# See: https://github.com/theme-next/hexo-generator-searchdb
+# ---------------------------------------------------------------------------------------
+local_search:
+  enable: true
+  preload: true # Preload the search data when the page loads
+
+# ---------------------------------------------------------------------------------------
+# Comment plugin
+# ---------------------------------------------------------------------------------------
+comment:
+  enable: true
+  use: twikoo # values: valine | gitalk | twikoo
+
+  # Valine
+  # See: https://github.com/xCss/Valine
+  valine:
+    appid:  # your leancloud application appid
+    appkey:  # your leancloud application appkey
+    placeholder: # your placeholder
+
+  # Gitalk
+  # See: https://github.com/gitalk/gitalk
+  gitalk:
+    github_id: # GitHub repo owner
+    repository: # Repository name to store issues
+    client_id: # GitHub Application Client ID
+    client_secret: # GitHub Application Client Secret
+
+  # Twikoo
+  # See: https://github.com/imaegoo/twikoo
+  twikoo:
+    visitor: true
+    env_id: # Vercel or Tencent Cloud Function environment ID
+    #region: # environment region. If select Guangzhou, fill in "ap-guangzhou".
+
+# ---------------------------------------------------------------------------------------
+# RSS
+# Dependencies: hexo-generator-feed
+# See: https://github.com/hexojs/hexo-generator-feed
+# ---------------------------------------------------------------------------------------
+rss:
+  enable: true
+
+# ---------------------------------------------------------------------------------------
+# Lazyload image
+# ---------------------------------------------------------------------------------------
+lazyload:
+  enable: true
+
+# ---------------------------------------------------------------------------------------
+# CDN
+# ---------------------------------------------------------------------------------------
+cdn:
+  enable: false
+
+# ---------------------------------------------------------------------------------------
+# PJAX
+# ---------------------------------------------------------------------------------------
+pjax:
+  enable: true
+
+# ---------------------------------------------------------------------------------------
+# Footer settings
+# ---------------------------------------------------------------------------------------
+footer:
+  since: 2020 # the starting year of your website, Can be null
+  icp: # ICP record number of your website, Can be null
+  upyun: # url
+
+# ---------------------------------------------------------------------------------------
+# Redefine Theme version (Please don't modify)
+# ---------------------------------------------------------------------------------------
+version: 0.1

@@ -1,0 +1,13 @@
+<div class="article-copyright-info-container">
+    <ul>
+        <li><%- __('copyright.title') %>：<%= page.title %></li>
+        <li><%- __('copyright.author') %>：<%= theme.base_info.author || config.author %></li>
+        <li><%- __('copyright.create_time') %>：<%= date(page.date, 'YYYY-MM-DD HH:mm:ss') %></li>
+        <li>
+            <%- __('copyright.link') %>：<%= getPostUrl((theme.base_info.url || config.url), page.path) %>
+        </li>
+        <li>
+            <%- __('copyright.license_title') %>：<%- __('copyright.license_content', '<a class="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a>') %>
+        </li>
+    </ul>
+</div>

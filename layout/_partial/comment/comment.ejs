@@ -1,0 +1,19 @@
+<div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;<%- __('comments') %></i>
+    </div>
+    <% if (theme.comment.enable === true && theme.comment.hasOwnProperty(theme.comment.use)) { %>
+
+        <% if  (theme.comment.use === 'valine') { %>
+            <%- partial('valine') %>
+
+        <% } else if (theme.comment.use === 'gitalk') { %>
+            <%- partial('gitalk') %>
+
+        <% } else if (theme.comment.use === 'twikoo') { %>
+            <%- partial('twikoo') %>
+        
+        <% } %>
+    <% } %>
+</div>

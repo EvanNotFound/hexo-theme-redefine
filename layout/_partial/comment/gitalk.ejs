@@ -1,0 +1,46 @@
+<% if(
+        theme.comment.use === 'gitalk'
+        && theme.comment.gitalk.client_id
+        && theme.comment.gitalk.client_secret
+        && theme.comment.gitalk.github_id
+        && theme.comment.gitalk.repository
+) { %>
+    <div id="gitalk-container"></div>
+    <script <%= theme.pjax.enable === true ? 'data-pjax' : '' %>
+            src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+    <script <%= theme.pjax.enable === true ? 'data-pjax' : '' %>>
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: '<%= theme.comment.gitalk.client_id %>',
+                    clientSecret: '<%= theme.comment.gitalk.client_secret %>',
+                    repo: '<%= theme.comment.gitalk.repository %>',
+                    owner: '<%= theme.comment.gitalk.github_id %>',
+                    admin: ['<%= theme.comment.gitalk.github_id %>'],
+                    id: __gitalk__pathname,
+                    language: '<%= config.language %>'
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('<%= theme.pjax.enable %>') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+<% } %>

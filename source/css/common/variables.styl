@@ -1,0 +1,193 @@
+// ========================================================================================
+//                                   KEEP THEME VARIABLE                                 //
+// ========================================================================================
+
+
+// ========================================================================================
+// layout
+// ========================================================================================
+$header-height = 70px;                                           // header height
+$header-shrink-height = $header-height * 0.72;                   // header shrink height
+$scroll-progress-bar-height = 2px;                               // scroll progress bar height
+$main-content-width = 80%;                                       // main content width (PC)
+$main-content-width-tablet = 86%;                                // main content width (tablet)
+$main-content-width-mobile = 90%;                                // main content width (mobile)
+$post-tool-button-width = 38px;                                  // post tool button width
+$component-spacing-value = 38px;                                 // component-spacing-value (PC)
+
+// main content max width
+$temp-content-max-width = hexo-config('style.content_max_width');
+$content-max-width = $temp-content-max-width ? convert($temp-content-max-width) : 1000px;
+
+
+// ========================================================================================
+// media query
+// ========================================================================================
+$media-max-width = 780px;                                 // media query max width (tablet)
+$media-max-width-mobile = 500px;                          // media query max width (mobile)
+
+keep-tablet()
+  @media (max-width: $media-max-width)
+    { block }
+
+keep-mobile()
+  @media (max-width: $media-max-width-mobile)
+    { block }
+
+
+// ========================================================================================
+// z-index
+// ========================================================================================
+$z-index-1 = 1001;
+$z-index-2 = 1002;
+$z-index-3 = 1003;
+$z-index-4 = 1004;
+$z-index-5 = 1005;
+$z-index-6 = 1006;
+$z-index-7 = 1007;
+$z-index-8 = 1008;
+$z-index-9 = 1009;
+
+
+// ========================================================================================
+// color
+// ========================================================================================
+// primary color
+$temp-color = hexo-config('style.primary_color');
+$primary-color = $temp-color ? convert($temp-color) : #0066CC;
+
+
+// ========================================================================================
+// light mode color
+// ========================================================================================
+$background-color = #fff;
+$second-background-color = darken($background-color, 3%);
+$default-text-color = #373D3F;
+$first-text-color = darken($default-text-color, 10%);
+$second-text-color = darken($default-text-color, 5%);
+$third-text-color = lighten($default-text-color, 30%);
+$fourth-text-color = lighten($default-text-color, 90%);
+$border-color = darken($background-color, 30%);
+$selection-color = lighten($primary-color, 10%);
+$shadow-color = rgba(0, 0, 0, 0.2);
+$shadow-hover-color = rgba(0, 0, 0, 0.28);
+$scrollbar-color = lighten($default-text-color, 6%);
+$scroll-bar-bg-color = darken($background-color, 10%);
+$link-color = darken($default-text-color, 10%);
+$copyright-info-color = #CC0033;
+$avatar-background-color = #0066CC;
+$pjax-progress-bar-color = linear-gradient(45deg, #f10006, #ef5b00, #e59c01, #19ca05, #00cab5, #0264c8, #c303c3);
+
+$note-blue-title-bg = #D6F7FB;
+$note-red-title-bg = #FDE9E9;
+$note-green-title-bg = #E9FDE9;
+$note-yellow-title-bg = #FDF9E9;
+$note-purple-title-bg = #F9E9FD;
+$note-gray-title-bg = #F9F9F9;
+$note-black-title-bg = #E9E9E9;
+$note-cyan-title-bg = #E9FDF9;
+$note-orange-title-bg = #fdf3e9;
+
+
+// ========================================================================================
+// dark mode color
+// ========================================================================================
+$dark-primary-color = $primary-color;
+$dark-background-color = #202124;
+$dark-second-background-color = darken($dark-background-color, 10%);
+$dark-default-text-color = #bebec6;
+$dark-first-text-color = lighten($dark-default-text-color, 30%);
+$dark-second-text-color = lighten($dark-default-text-color, 20%);
+$dark-third-text-color = darken($dark-default-text-color, 20%);
+$dark-fourth-text-color = darken($dark-default-text-color, 80%);
+$dark-border-color = lighten($dark-background-color, 20%);
+$dark-selection-color = $selection-color;
+$dark-shadow-color = rgba(61, 61, 61, 0.2);
+$dark-shadow-hover-color = rgba(69, 69, 69, 0.28);
+$dark-scrollbar-color = darken($dark-background-color, 10%);
+$dark-scroll-bar-bg-color = lighten($dark-background-color, 20%);
+$dark-link-color = lighten($dark-default-text-color, 10%);
+$dark-copyright-info-color = darken($copyright-info-color, 20%);
+$dark-avatar-background-color = darken($avatar-background-color, 10%);
+$dark-pjax-progress-bar-color = linear-gradient(45deg, #ea404a, #ea722f, #e9a71f, #67e559, #18ecec, #1b85f1, #ee1dee);
+
+$dark-note-blue-title-bg = #1e3e46;
+$dark-note-red-title-bg = #4e1e1e;
+$dark-note-green-title-bg = #1e4e1e;
+$dark-note-yellow-title-bg = #4e4e1e;
+$dark-note-cyan-title-bg = #1e4e4e;
+$dark-note-purple-title-bg = #4e1e4e;
+$dark-note-gray-title-bg = #4e4e4e;
+$dark-note-black-title-bg = #1e1e1e;
+$dark-note-orange-title-bg = #4e3a1e;
+
+
+// ========================================================================
+// font
+// ========================================================================
+$default-font-family = Optima-Regular, Optima, -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial;
+$default-font-size = 15.2px;
+$default-font-line-height = 22px;
+$default-font-weight = 400;
+
+
+// ========================================================================
+//  light/dark mode color
+// ========================================================================
+root-color(mode) {
+  --background-color: mode == 'light' ? $background-color : $dark-background-color;
+  --second-background-color: mode == 'light' ? $second-background-color : $dark-second-background-color;
+  --primary-color: mode == 'light' ? $primary-color : $dark-primary-color;
+  --first-text-color: mode == 'light' ? $first-text-color : $dark-first-text-color;
+  --second-text-color: mode == 'light' ? $second-text-color : $dark-second-text-color;
+  --third-text-color: mode == 'light' ? $third-text-color : $dark-third-text-color;
+  --fourth-text-color: mode == 'light' ? $fourth-text-color : $dark-fourth-text-color;
+  --default-text-color: mode == 'light' ? $default-text-color : $dark-default-text-color;
+  --border-color: mode == 'light' ? $border-color : $dark-border-color;
+  --selection-color: mode == 'light' ? $selection-color : $dark-selection-color;
+  --shadow-color: mode == 'light' ? $shadow-color : $dark-shadow-color;
+  --shadow-hover-color: mode == 'light' ? $shadow-hover-color : $dark-shadow-hover-color;
+  --scrollbar-color: mode == 'light' ? $scrollbar-color : $dark-scrollbar-color;
+  --scroll-bar-bg-color: mode == 'light' ? $scroll-bar-bg-color : $dark-scroll-bar-bg-color;
+  --link-color: mode == 'light' ? $link-color : $dark-link-color;
+  --copyright-info-color: mode == 'light' ? $copyright-info-color : $dark-copyright-info-color;
+  --avatar-background-color: mode == 'light' ? $avatar-background-color : $dark-avatar-background-color;
+  --pjax-progress-bar-color : mode == 'light' ? $pjax-progress-bar-color : $dark-pjax-progress-bar-color;
+  
+  --note-blue-title-bg : mode == 'light' ? $note-blue-title-bg : $dark-note-blue-title-bg;
+  --note-red-title-bg : mode == 'light' ? $note-red-title-bg : $dark-note-red-title-bg;
+  --note-cyan-title-bg : mode == 'light' ? $note-cyan-title-bg : $dark-note-cyan-title-bg;
+  --note-green-title-bg : mode == 'light' ? $note-green-title-bg : $dark-note-green-title-bg;
+  --note-yellow-title-bg : mode == 'light' ? $note-yellow-title-bg : $dark-note-yellow-title-bg;
+  --note-gray-title-bg : mode == 'light' ? $note-gray-title-bg : $dark-note-gray-title-bg;
+  --note-orange-title-bg : mode == 'light' ? $note-orange-title-bg : $dark-note-orange-title-bg;
+  --note-black-title-bg : mode == 'light' ? $note-black-title-bg : $dark-note-black-title-bg;
+  --note-purple-title-bg : mode == 'light' ? $note-purple-title-bg : $dark-note-purple-title-bg;
+}
+
+
+:root {
+  root-color('light');
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    root-color('light');
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    root-color('dark');
+  }
+}
+
+
+.light-mode {
+  root-color('light');
+}
+
+
+.dark-mode {
+  root-color('dark');
+}

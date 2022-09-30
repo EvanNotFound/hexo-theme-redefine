@@ -1,0 +1,35 @@
+<div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="<%= post.date %>"><%= date(post.date, 'YYYY-MM-DD') %></span></span>
+        <% if (post.categories.length && theme.home_article.category.enable === true) { %>
+            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
+                <ul>
+                    <% post.categories.forEach((category, i) => {
+                    if (theme.home_article.category.limit === 0 || i + 1 <= theme.home_article.category.limit) { %>
+                        <li>
+                            <%= i === 0 ? '' : '> ' %>
+                            <a href="<%- url_for(category.path) %>"><%= category.name %></a>&nbsp;
+                        </li>
+                    <% } %>
+                    <% }); %>
+                </ul>
+            </span>
+        <% } %>
+        <% if (post.tags.length && theme.home_article.tag.enable === true) { %>
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    <% post.tags.forEach((tag, i) => {
+                    if (theme.home_article.tag.limit === 0 || i + 1 <= theme.home_article.tag.limit) { %>
+                        <li>
+                            <%= i === 0 ? '' : '| ' %>
+                            <a href="<%- url_for(tag.path) %>"><%= tag.name %></a>&nbsp;
+                        </li>
+                    <% }}); %>
+                </ul>
+            </span>
+        <% } %>
+    </div>
+
+    <a href="<%- url_for(post.path) %>"><%- __('read_more') %>&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>

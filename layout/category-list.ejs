@@ -1,0 +1,14 @@
+<div class="fade-in-down-animation">
+    <div class="category-list-container">
+        <div class="category-list-content">
+            <%- list_categories(site.categories, {
+                class: 'all-category'
+            }) %>
+        </div>
+        <div class="category-comments">
+            <% if (page.comment) { %>
+                <%- partial('_partial/comment/comment') %>
+            <% } %>
+        </div>
+    </div>
+</div>

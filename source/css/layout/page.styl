@@ -1,0 +1,198 @@
+$temp-width = hexo-config('style.left_side_width');
+$page-aside-width = $temp-width ? convert($temp-width) : 260px;
+
+.page-container {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  background: var(--background-color);
+  //padding-left: 230px;
+  transition-t("padding-left", "0", "0.3", "ease-out");
+
+
+  +keep-tablet() {
+    padding-left: 0 !important;
+  }
+
+
+  .page-main-content {
+    padding-top: $header-height;
+    position: relative;
+
+    .header-shrink & {
+      padding-top: $header-shrink-height;
+
+
+      +keep-tablet() {
+        padding-top: $header-shrink-height * 0.9;
+      }
+
+      +keep-mobile() {
+        padding-top: $header-shrink-height * 0.8;
+      }
+    }
+
+
+    +keep-tablet() {
+      padding-top: $header-height * 0.9;
+    }
+
+
+    +keep-mobile() {
+      padding-top: $header-height * 0.8;
+    }
+
+
+    .page-main-content-top {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: $header-height;
+      z-index: $z-index-5;
+      box-sizing: border-box;
+      transition-t("transform, padding-left, height", "0, 0, 0", "0.3, 0.2, 0.2", "ease-out, linear, ease");
+
+      &.hide {
+        transform: translateY(-105%);
+      }
+
+      .header-shrink & {
+        height: $header-shrink-height;
+
+        +keep-tablet() {
+          height: $header-shrink-height * 0.9;
+        }
+
+        +keep-mobile() {
+          height: $header-shrink-height * 0.8;
+        }
+      }
+
+
+      +keep-tablet() {
+        height: $header-height * 0.9;
+        padding-left: 0 !important;
+      }
+
+
+      +keep-mobile() {
+        height: $header-height  * 0.8;
+      }
+
+    }
+
+
+    .page-main-content-middle {
+      box-sizing: border-box;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: $component-spacing-value 0;
+
+      +keep-tablet() {
+        padding: $component-spacing-value * 0.8 0;
+      }
+
+      +keep-mobile() {
+        padding: $component-spacing-value * 0.6 0;
+        box-shadow: none !important;
+
+        :hover {
+          box-shadow: none !important;
+        }
+      }
+
+      .main-content {
+        position: relative;
+        box-sizing: border-box;
+        width: $main-content-width;
+        max-width: $content-max-width;
+        height: 100%;
+
+        +keep-tablet() {
+          width: $main-content-width-tablet;
+        }
+
+        +keep-mobile() {
+          width: $main-content-width-mobile;
+        }
+      }
+    }
+
+
+    .page-main-content-bottom {
+      width: 100%;
+    }
+  }
+
+
+  .page-aside {
+    position: fixed;
+    top: 105px;
+    border-radius: 18px;
+    left: - $page-aside-width;
+    width: $page-aside-width;
+    height: auto;
+    margin-right: 100px;
+    //z-index: $z-index-6;
+    overflow-y: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: all 0.1s ease;
+    //box-shadow: none !important;
+
+    hover-style(false, 0, 0);
+
+    transition-t("left, transform", "0, 0", "0.3, 0.2", "ease-out, linear");
+
+    +keep-tablet() {
+      left: 0 !important;
+      display: none !important;
+    }
+
+  }
+
+
+  .post-tools {
+    position: fixed;
+    top: $header-height + $component-spacing-value;
+    right: $component-spacing-value;
+    transition-t("top", "0", "0.2", "ease");
+
+    .header-shrink & {
+      top: $header-shrink-height + $component-spacing-value;
+
+      +keep-tablet() {
+        top: $header-shrink-height * 0.9 + $component-spacing-value;
+      }
+
+      +keep-mobile() {
+        top: $header-shrink-height * 0.8 + $component-spacing-value;
+      }
+    }
+
+
+    +keep-tablet() {
+      top: $header-height * 0.9 + $component-spacing-value;
+      right: 10px;
+      transform: scale(0.82);
+      transform-origin: right top;
+    }
+
+
+    +keep-mobile() {
+      top: $header-height * 0.8 + $component-spacing-value;
+      right: 5px;
+      transform: scale(0.72);
+    }
+  }
+
+
+  .right-bottom-side-tools {
+    position: fixed;
+    bottom: 5%;
+    right: 0;
+  }
+}

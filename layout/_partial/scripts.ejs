@@ -1,0 +1,33 @@
+<%- __js([
+    'js/utils.js',
+    'js/main.js',
+    'js/header-shrink.js',
+    'js/back2top.js',
+    'js/dark-light-toggle.js'
+]) %>
+
+<% if (theme.local_search.enable) { %>
+    <%- __js('js/local-search.js') %>
+<% } %>
+
+<% if (theme.code_copy.enable) { %>
+    <%- __js('js/code-copy.js') %>
+<% } %>
+
+<% if (theme.lazyload.enable) { %>
+    <%- __js('js/lazyload.js') %>
+<% } %>
+
+<div class="post-scripts<%= theme.pjax.enable === true ? ' pjax' : '' %>">
+    <% if (theme.toc.enable && is_post()) { %>
+        <%- __js([
+            'js/left-side-toggle.js',
+            'js/libs/anime.min.js',
+            'js/toc.js'
+        ]) %>
+    <% } %>
+</div>
+
+<% if (theme.pjax.enable === true) { %>
+    <%- partial('pjax/pjax') %>
+<% } %>

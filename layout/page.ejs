@@ -1,0 +1,76 @@
+<%- partial('_partial/progress-bar') %>
+<main class="page-container">
+
+    <% if (theme.style.first_screen.enable === true && is_home() && !page.prev) { %>
+        <%- partial('_partial/first-screen') %>
+    <% } %>
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <%- partial('_partial/header') %>
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                <% if (is_home()) { %>
+                    <%- partial('home-content') %>
+
+                <% } else if (is_archive()) { %>
+                    <%- partial('archive-content') %>
+
+                <% } else if (is_post()) { %>
+                    <%- partial('article-content') %>
+
+                <% } else if (is_category()) { %>
+                    <%- partial('category-content') %>
+
+                <% } else if (is_tag()) { %>
+                    <%- partial('tag-content') %>
+
+                <% } else if (page.title === 'category' || page.title === 'categories') { %>
+                    <%- partial('category-list') %>
+
+                <% } else if (page.title === 'tag' || page.title === 'tags') { %>
+                    <%- partial('_partial/tagcloud') %>
+
+                <% } else { %>
+                    <%- partial('_partial/page-template') %>
+
+                <% } %>
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <%- partial('_partial/footer') %>
+        </div>
+    </div>
+
+    <% if (is_post()) { %>
+        <div class="post-tools">
+            <%- partial('_partial/post-tools') %>
+        </div>
+    <% } %>
+
+    <div class="right-bottom-side-tools">
+        <%- partial('_partial/side-tools') %>
+    </div>
+
+    <% if (is_post() && theme.toc.enable === true) { %>
+        <aside class="page-aside">
+            <%- partial('_partial/toc') %>
+        </aside>
+    <% } %>
+
+    <%- partial('_partial/image-viewer') %>
+
+    <% if (theme.local_search.enable) { %>
+        <%- partial('_partial/local-search') %>
+    <% } %>
+
+</main>
+
+

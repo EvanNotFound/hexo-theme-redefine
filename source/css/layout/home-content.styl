@@ -1,0 +1,114 @@
+.home-content-container {
+  background: var(--background-color);
+
+
+  .home-article-list {
+
+    .home-article-item {
+      position: relative;
+
+      keep-container(true, 1.015, 1.015, 28px, 38px);
+
+      .top-icon {
+        position: absolute;
+        top: 10px;
+        right: 12px;
+        font-size: 1.2rem;
+        transform: rotate(45deg);
+        color: var(--third-text-color);
+
+
+        +keep-tablet() {
+          font-size: 1.16rem;
+        }
+      }
+
+
+      .home-article-title {
+        position: relative;
+        font-weight: 600;
+        font-size: 1.4rem;
+        line-height: 1.5;
+        color: var(--second-text-color);
+
+
+        +keep-tablet() {
+          font-size: 1.3rem;
+        }
+
+
+        +keep-mobile() {
+          font-size: 1.2rem;
+        }
+
+        margin: 0;
+
+      }
+
+
+      .home-article-content {
+        word-wrap: break-word;
+        text-align: justify;
+        margin: 20px 0;
+        color: var(--default-text-color);
+      }
+
+
+      .home-article-meta-info-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.92rem;
+        color: var(--third-text-color);
+
+
+        .home-article-meta-info {
+          letter-spacing: 0.5px;
+
+          span {
+            margin-right: 10px;
+
+            &:last-child {
+              margin-right: 0;
+            }
+
+            ul, li {
+              display: inline;
+            }
+          }
+
+          .home-article-category {
+            +keep-mobile() {
+              display: none;
+            }
+          }
+
+          .home-article-tag {
+            +keep-tablet() {
+              display: none;
+            }
+          }
+        }
+
+
+        hr {
+          border: none;
+          flex: 1;
+          height: 1px;
+          background: var(--border-color);
+          margin: 0 10px;
+        }
+
+        a {
+          color: var(--third-text-color);
+
+          &:hover {
+            color: var(--primary-color)
+          }
+        }
+      }
+
+
+    }
+  }
+}

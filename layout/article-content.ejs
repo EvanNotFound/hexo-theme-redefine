@@ -1,0 +1,96 @@
+<div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation"><h1 style="font-size:1.8rem;"><%= page.title %></h1></span>
+        </div>
+
+        <% if (theme.base_info.author || config.author) { %>
+            <div class="article-header">
+                <div class="avatar">
+                    <%- image_tag(theme.style.avatar) %>
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name"><%= theme.base_info.author || config.author %></span>
+                        <% if (theme.hasOwnProperty('post') && theme.post.author_label.enable === true) { %>
+                            <span class="author-label"><%- getAuthorLabel(site.posts.length, theme.post.author_label.auto, theme.post.author_label.custom_label_list) %></span>
+                        <% } %>
+                    </div>
+                    <div class="meta-info">
+                        <%- partial('_partial/article-meta-info', {articleObject: page, index: true}) %>
+                    </div>
+                </div>
+            </div>
+        <% } else { %>
+            <div class="article-header-meta-info">
+                <div class="meta-info">
+                    <%- partial('_partial/article-meta-info', {articleObject: page, index: true}) %>
+                </div>
+            </div>
+        <% } %>
+
+        <div class="article-content markdown-body">
+            <%- page.content %>
+        </div>
+
+        <% if (theme.copyright_info.enable) { %>
+            <div class="post-copyright-info">
+                <%- partial('_partial/article-copyright-info') %>
+            </div>
+        <% } %>
+
+        <% if (page.tags.length) { %>
+            <ul class="post-tags-box">
+                <% page.tags.forEach((tag) => { %>
+                    <li class="tag-item">
+                        <a href="<%- url_for(tag.path) %>">#<%= tag.name %></a>&nbsp;
+                    </li>
+                <% }); %>
+            </ul>
+        <% } %>
+
+        <% if (page.prev || page.next) { %>
+            <div class="article-nav">
+                <% if (page.prev) { %>
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="<%= url_for(page.prev.path) %>"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item"><%= page.prev.title %></span>
+                                <span class="post-nav-item"><%= __('prev_posts') %></span>
+                            </span>
+                        </a>
+                    </div>
+                <% } %>
+                <% if (page.next) { %>
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="<%= url_for(page.next.path) %>"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item"><%= page.next.title %></span>
+                                <span class="post-nav-item"><%= __('next_posts') %></span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                <% } %>
+            </div>
+        <% } %>
+
+        <% if (theme.comment.enable === true && theme.comment.hasOwnProperty(theme.comment.use)) { %>
+            <div class="comment-container">
+                <%- partial('_partial/comment/comment') %>
+            </div>
+        <% } %>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-duotone fa-pen-line"></i>&nbsp;
+        <span class="pc"><%= date(articleObject.date, is_post() ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD') %></span>
+        <span class="mobile"><%= date(articleObject.date, is_post() ? 'YYYY-MM-DD HH:mm' : 'YYYY-MM-DD') %></span>
+    </span>
+    <% if (articleObject.categories.length) { %>
+        <span class="article-categories article-meta-item">
+            <i class="fa-duotone fa-folder-open"></i></i>&nbsp;
+            <ul>
+                <% articleObject.categories.forEach((category, i) => { %>
+                    <li>
+                        <%= i === 0 ? '' : '> ' %><a href="<%- url_for(category.path) %>"><%= category.name %></a>&nbsp;
+                    </li>
+                <% }); %>
+            </ul>
+        </span>
+    <% } %>
+    <% if (articleObject.tags.length) { %>
+        <span class="article-tags article-meta-item">
+            <i class="fa-duotone fa-tags"></i></i>&nbsp;
+            <ul>
+                <% articleObject.tags.forEach((tag, i) => { %>
+                    <li>
+                        <%= i === 0 ? '' : '| ' %><a href="<%- url_for(tag.path) %>"><%= tag.name %></a>&nbsp;
+                    </li>
+                <% }); %>
+            </ul>
+        </span>
+    <% } %>
+
+    <%
+    let temp_wordcount_count, temp_min2read_count = null;
+    try {
+        temp_wordcount_count = wordcount(page.content);
+        temp_min2read_count = min2read(page.content);
+    } catch (e) {
+        temp_wordcount_count = 0;
+        temp_min2read_count = 0;
+    }
+    %>
+    <% if(is_post() && theme.hasOwnProperty('post') && theme.post.word_count.enable && theme.post.word_count.wordcount && temp_wordcount_count){ %>
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span><%= temp_wordcount_count %> <%- __('wordcount') %></span>
+        </span>
+    <% } %>
+    <% if(is_post() && theme.hasOwnProperty('post') && theme.post.word_count.enable && theme.post.word_count.min2read && temp_min2read_count){ %>
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span><%= temp_min2read_count %> <%- __('min2read') %></span>
+        </span>
+    <% } %>
+    <% if (is_post() && theme.website_count.busuanzi_count.enable && theme.website_count.busuanzi_count.page_pv) { %>
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    <% } %>
+</div>

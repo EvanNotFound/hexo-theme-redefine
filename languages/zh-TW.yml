@@ -1,0 +1,50 @@
+search: 搜尋...
+toc: 目錄
+prev: 上一頁
+next: 下一頁
+prev_posts: 上一篇
+next_posts: 下一篇
+page: 第 %d 頁
+recent_posts: 之前的文章
+share: 分享
+powered_by: "%s 框架"
+theme: 主題
+rss_feed: RSS 訂閱
+category: 分類
+categories: 分類
+tag: 標籤
+tags: 標籤
+tagcloud: 標籤雲
+comment: 留言
+comments: 留言
+home: 首頁
+archive: 歸檔
+archives: 歸檔
+about: 關於
+site_uv: 讀者
+site_pv: 閱覽
+links: 友鏈
+link: 友鏈
+top: 頂端
+read_more: 繼續閱讀...
+wordcount: 字數
+min2read: 分鐘
+changelog: 日誌
+status: 狀態
+site_time: 博客已運行
+optimized_by: 並由 Evan 進行優化
+copyright:
+  author: 文章作者
+  title: 文章標題
+  link: 永久連結
+  create_time: 撰寫時間
+  license_title: 版權宣告
+  license_content: "這個網站所有文章均使用 %s 授權。"
+ago:
+  second: "%s 秒前"
+  minute: "%s 分鐘前"
+  hour: "%s 小時前"
+  day: "%s 天前"
+  week: "%s 周前"
+  month: "%s 個月前"
+  year: "%s 年前"

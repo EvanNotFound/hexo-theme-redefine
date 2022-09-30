@@ -1,0 +1,28 @@
+<h1><%- __('links') %> <a href="/friends/zh-hans" style="border-bottom: none;"><i class="fa-duotone fa-language"></i></a></h1>
+<div class="friends-link-container">
+    <ul class="friends-link-list">
+        <% for (const f of theme.links) { %>
+            <li class="friends-link-item">
+                <a href="<%= f.link %>">
+                    <div class="content">
+                        <div class="avatar radius">
+                            <% if (f.avatar) { %>
+                                <img class="radius"
+                                     src="<%= f.avatar %>"
+                                     onerror="this.style.display='none'"
+                                >
+                            <% } else { %>
+                                <i class="fas fa-user-friends"></i>
+                            <% } %>
+                        </div>
+                        <div class="info">
+                            <div class="name ellipsis"><%= f.name %></div>
+                            <div class="description ellipsis"><%= f.description %></div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        <% } %>
+    </ul>
+    <div class="clear"></div>
+</div>

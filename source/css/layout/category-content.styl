@@ -1,0 +1,28 @@
+$category-name-font-size = 1.6rem;
+
+.category-container {
+
+  keep-container(false, 0, 0, 30px, 30px);
+
+  .category-name {
+    color: var(--second-text-color);
+    font-size: $category-name-font-size;
+
+    i {
+      color: var(--second-text-color);
+    }
+
+    +keep-tablet() {
+      font-size: $category-name-font-size * 0.9;
+    }
+
+    +keep-mobile() {
+      font-size: $category-name-font-size * 0.8;
+    }
+
+    font-weight: 600;
+    padding-bottom: 20px;
+    margin-bottom: $component-spacing-value;
+    border-bottom: 1px solid var(--border-color);
+  }
+}

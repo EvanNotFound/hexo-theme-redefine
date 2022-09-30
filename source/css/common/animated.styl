@@ -1,0 +1,102 @@
+transition-g() {
+  transition-property: color, background, box-shadow, border-color;
+  transition-delay: 0s, 0s, 0s, 0s;
+  transition-duration: 0.2s, 0.2s, 0.2s, 0.2s;
+  transition-timing-function: ease, ease, ease, ease;
+}
+
+transition-t(property, delay, duration, function) {
+  $temp-property = "color, background, box-shadow, border-color";
+  $temp-delay = "0s, 0s, 0s, 0s";
+  $temp-duration = "0.2s, 0.2s, 0.2s, 0.2s";
+  $temp-function = "ease, ease, ease, ease";
+
+  for p in convert(property) {
+    $temp-property += ("," + p);
+  }
+
+  for d in convert(delay) {
+    $temp-delay += ("," + d + "s");
+  }
+
+  for d in convert(duration) {
+    $temp-duration += ("," + d + "s");
+  }
+
+  for f in convert(function) {
+    $temp-function += ("," + f);
+  }
+
+  transition-property: convert($temp-property);
+  transition-delay: convert($temp-delay);
+  transition-duration: convert($temp-duration);
+  transition-timing-function: convert($temp-function);
+}
+
+
+.fade-in-down-animation {
+  animation-fill-mode: both;
+  animation-duration: 1s;
+  animation-name: fade-in-down;
+}
+
+
+@keyframes fade-in-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes icon-animate {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  10%, 30% {
+    transform: scale(.88);
+  }
+
+  20%, 40%, 60%, 80% {
+    transform: scale(1.08);
+  }
+
+  50%, 70% {
+    transform: scale(1.08);
+  }
+}
+
+.title-hover-animation {
+  display: inline-block;
+  position: relative;
+  border-bottom: none;
+  line-height: 1.3;
+  vertical-align: top;
+  color: var(--second-text-color);
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--second-text-color);
+    visibility: hidden;
+    transform: scaleX(0);
+    transition-t("visibility transform", "0, 0", "0.2, 0.2", "ease-in-out, ease-in-out");
+  }
+
+  &:hover::before {
+    visibility: visible;
+    transform: scaleX(1);
+  }
+
+}
+
+

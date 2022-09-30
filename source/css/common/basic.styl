@@ -1,0 +1,171 @@
+@require 'variables.styl'
+@require 'animated.styl'
+@require 'keep-theme.styl'
+
+// ======================================================================
+// all
+// ======================================================================
+* {
+  // ====================================
+  //  transition
+  // ====================================
+  transition-g();
+
+
+  // ====================================
+  // scrollbar
+  // ====================================
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    transition: all 0.2s ease;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-color);
+    border-radius: 1px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--scroll-bar-bg-color);
+  }
+}
+
+
+// ======================================================================
+// html, body
+// ======================================================================
+html, body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: var(--default-text-color);
+  background: var(--background-color);
+  font-family: $default-font-family;
+  font-weight: $default-font-weight;
+  font-size: $default-font-size;
+  line-height: $default-font-line-height;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  +keep-tablet() {
+    font-size: $default-font-size * 0.96;
+    line-height: $default-font-line-height * 0.96;
+  }
+
+
+  +keep-mobile() {
+    font-size: $default-font-size * 0.9;
+    line-height: $default-font-line-height * 0.9;
+  }
+
+}
+
+
+// ======================================================================
+// selection
+// ======================================================================
+::selection {
+  background: var(--selection-color);
+  color: #fff;
+}
+
+
+// ======================================================================
+// ul, ol, li
+// ======================================================================
+ul, ol, li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+
+// ======================================================================
+// a
+// ======================================================================
+a {
+  text-decoration: none;
+  color: var(--default-text-color);
+
+  i, span {
+    color: var(--default-text-color);
+  }
+
+  &:hover, &:active {
+    text-decoration: none !important;
+    color: var(--primary-color);
+
+    i, span {
+      color: var(--primary-color);
+    }
+  }
+
+}
+
+
+// ======================================================================
+// img
+// ======================================================================
+img {
+  &[lazyload] {
+    padding: 10px;
+    margin: 20px auto !important;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+
+// ======================================================================
+// button
+// ======================================================================
+button {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  background: transparent;
+}
+
+.btn {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  border-radius: 5px;
+  padding: 8px 16px;
+  background: var(--background-color);
+
+  hover-style(true, 1.06, 1.06);
+
+  &:hover {
+    color: var(--background-color);
+    background: var(--primary-color);
+  }
+}
+
+
+// ======================================================================
+// flex center
+// ======================================================================
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+// ======================================================================
+// clear float
+// ======================================================================
+.clear {
+  clear: both;
+}
