@@ -2,6 +2,7 @@
     <div class="content flex-center">
         <div class="description">
           <%= theme.style.first_screen.description || config.description %>
+        </div>
         <% if (theme.social_contact.enable) { %>
             <div class="s-icon-list">
                 <% for (const key in theme.social_contact.links) { %>

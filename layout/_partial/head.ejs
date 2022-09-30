@@ -1,10 +1,9 @@
 <head>
-    <%- autoCanonical(config, page) %>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="<%= page.keywords || config.keywords || 'Hexo Theme Keep' %>">
-    <meta name="description" content="<%= page.description || config.description || 'Hexo Theme Keep' %>">
-    <meta name="author" content="<%= theme.base_info.author || config.author || 'Keep Team' %>">
+    <meta name="keywords" content="<%= page.keywords || config.keywords || 'Hexo Theme Redefine' %>">
+    <meta name="description" content="<%= page.description || config.description || 'Hexo Theme Redefine' %>">
+    <meta name="author" content="<%= theme.base_info.author || config.author || 'Redefine Team' %>">
     <%
     let title = page.title;
     if (is_archive()) {
@@ -26,7 +25,7 @@
         <% if (title) { %>
             <%= title %> |
         <% } %>
-        <%= theme.base_info.title || config.title || 'Keep Theme' %>
+        <%= theme.base_info.title || config.title || 'Redefine Theme' %>
     </title>
     <%- css('css/style') %>
     <%- favicon_tag(theme.style.favicon) %>
@@ -39,6 +38,7 @@
     <link href="/css/solid.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//evan.beee.top/css/waline.css"/>
     <script src="//evan.beee.top/js/waline.js"></script>
+    <link href='/css/css2.css' rel='stylesheet' type='text/css'>
     <%- export_config() %>
 </head>
 
