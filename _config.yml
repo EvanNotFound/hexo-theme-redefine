@@ -28,7 +28,7 @@ style:
   left_side_width: 240px #sidebar width, for toc
 
   # Content area max width
-  content_max_width: 980px #content max width, for article
+  content_max_width: 960px #content max width, for article
 
   # Mouse hover
   hover:
