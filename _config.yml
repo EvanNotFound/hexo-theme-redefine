@@ -16,7 +16,7 @@ style:
   primary_color: "#005080"
 
   # Avatar (You can use local image or image external link)
-  avatar: # avatar of the author
+  avatar: /images/avatar.svg # avatar of the author
 
   # Favicon (You can use local image or image external link)
   favicon: # favicon of the site
@@ -38,7 +38,7 @@ style:
   # First screen
   first_screen:
     enable: true
-    background_img: # background image of the first screen, use relative path or external link
+    background_img: /images/wallheaven-bg.webp # background image of the first screen, use relative path or external link
     description: Theme Redefine # the title in the middle of the first screen
 
   # Scroll style settings
