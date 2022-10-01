@@ -12,11 +12,12 @@
 
 ## 📷 Screenshots
 
-![Screen Shot 2022-09-30 at 9.50.40 PM](https://evan.beee.top/img/Screen%20Shot%202022-09-30%20at%209.50.40%20PM.png)
+<img width="1424" alt="Screen Shot 2022-09-30 at 9 50 40 PM" src="https://user-images.githubusercontent.com/68590232/193410669-18e30244-d4b1-4ca7-bf9e-7daecbf5a8aa.png">
 
-![Screen Shot 2022-09-30 at 9.54.23 PM](https://evan.beee.top/img/Screen%20Shot%202022-09-30%20at%209.54.23%20PM.png)
+<img width="1421" alt="Screen Shot 2022-09-30 at 9 54 23 PM" src="https://user-images.githubusercontent.com/68590232/193410672-43805d99-4366-4e7d-b0a9-7695ca66c2a2.png">
 
-![Screen Shot 2022-09-30 at 10.00.49 PM](https://evan.beee.top/img/Screen%20Shot%202022-09-30%20at%2010.00.49%20PM.png)
+<img width="1418" alt="Screen Shot 2022-09-30 at 10 00 49 PM" src="https://user-images.githubusercontent.com/68590232/193410675-9423d4fb-8d3f-4588-8376-2910445ea8fa.png">
+
 
 ## 🌐 Online Demo
 
