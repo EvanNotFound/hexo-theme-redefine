@@ -50,6 +50,6 @@ theme: redefine
 
 
 
-## 📄 Documents
+## 📄 Documentations
 
-To be continued...
+- [Redefine Docs](https://redefine-docs.evanluo.top/)
