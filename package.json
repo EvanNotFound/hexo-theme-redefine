@@ -1,29 +1,32 @@
 {
-  "name": "hexo-theme-keep",
-  "version": "3.4.5",
+  "name": "hexo-theme-redefine",
+  "version": "0.1.0",
   "private": false,
-  "description": "A simple and elegant theme for Hexo.",
+  "description": "\"Redefine\" hexo theme is a simple & fast & pure theme, but with no compromise.",
   "scripts": {
-    "release": "git push --tag && git push -u origin dev",
-    "publish": "npm publish"
+    "npm:publish": "npm publish",
+    "format": "prettier --write ./source/js/*.js ./scripts",
+    "lint:style": "stylelint --fix ./source/css",
+    "git:push": "git push --tag && git push -u origin dev",
+    "git:add": "npm run lint:style && git add ."
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/XPoet/hexo-theme-keep.git"
+    "url": "git+https://github.com/EvanNotFound/hexo-theme-redefine.git"
   },
   "keywords": [
     "hexo",
     "theme",
-    "hexo-theme",
+    "redefine",
     "simple",
-    "elegant",
-    "beautiful",
-    "powerful"
+    "pure",
+    "powerful",
+    "hexo-theme"
   ],
-  "author": "XPoet",
+  "author": "EvanNotFound",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/XPoet/hexo-theme-keep/issues"
+    "url": "https://github.com/EvanNotFound/hexo-theme-redefine/issues"
   },
-  "homepage": "https://github.com/XPoet/hexo-theme-keep#readme"
+  "homepage": "https://github.com/EvanNotFound/hexo-theme-redefine#readme"
 }
