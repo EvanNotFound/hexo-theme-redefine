@@ -3,7 +3,7 @@
 
 # hexo-theme-redefine
 
-"Redefine" hexo theme is a simple & fast & pure theme, but no compromise. This theme contains lots of widely use functions and great web design.
+"Redefine" hexo theme is a simple & fast & pure theme, but with no compromise. This theme contains lots of widely use functions and great web design.
 
 
 
