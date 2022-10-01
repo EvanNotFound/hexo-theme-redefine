@@ -30,14 +30,14 @@
 
 The easiest way to install Theme Redefine is by using **npm**
 
-```bash
+```sh
 $ cd your-hexo-site
 $ npm install hexo-theme-redefine
 ```
 
 Another method is by **git clone**
 
-```bash
+```sh
 $ cd your-hexo-site
 $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redefine
 ```
