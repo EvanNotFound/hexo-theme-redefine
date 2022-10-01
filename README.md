@@ -12,7 +12,7 @@
 
 ## 📷 Screenshots
 
-<img width="1424" alt="Screen Shot 2022-09-30 at 9 50 40 PM" src="https://user-images.githubusercontent.com/68590232/193410669-18e30244-d4b1-4ca7-bf9e-7daecbf5a8aa.png">
+<img width="1423" alt="Screen Shot 2022-10-01 at 1 11 54 PM" src="https://user-images.githubusercontent.com/68590232/193420572-498be91f-8bd0-4dc6-b49d-41344f4dc95e.png">
 
 <img width="1421" alt="Screen Shot 2022-09-30 at 9 54 23 PM" src="https://user-images.githubusercontent.com/68590232/193410672-43805d99-4366-4e7d-b0a9-7695ca66c2a2.png">
 
