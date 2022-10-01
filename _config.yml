@@ -19,7 +19,7 @@ style:
   avatar: /images/avatar.svg # avatar of the author
 
   # Favicon (You can use local image or image external link)
-  favicon: # favicon of the site
+  favicon: /images/logo.svg # favicon of the site
 
   # Article image align position
   article_img_align: center # value: left | center
