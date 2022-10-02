@@ -150,7 +150,7 @@ website_count:
 # See: https://github.com/theme-next/hexo-generator-searchdb
 # ---------------------------------------------------------------------------------------
 local_search:
-  enable: true
+  enable: false
   preload: true # Preload the search data when the page loads
 
 # ---------------------------------------------------------------------------------------
@@ -188,19 +188,13 @@ comment:
 # See: https://github.com/hexojs/hexo-generator-feed
 # ---------------------------------------------------------------------------------------
 rss:
-  enable: true
+  enable: false
 
 # ---------------------------------------------------------------------------------------
 # Lazyload image
 # ---------------------------------------------------------------------------------------
 lazyload:
   enable: true
-
-# ---------------------------------------------------------------------------------------
-# CDN
-# ---------------------------------------------------------------------------------------
-cdn:
-  enable: false
 
 # ---------------------------------------------------------------------------------------
 # PJAX
@@ -214,7 +208,6 @@ pjax:
 footer:
   since: 2020 # the starting year of your website, Can be null
   icp: # ICP record number of your website, Can be null
-  upyun: # url
 
 # ---------------------------------------------------------------------------------------
 # Redefine Theme version (Please don't modify)
