@@ -166,7 +166,7 @@ comment:
     serverUrl:  # Waline server url(vercel) example: https://example.example.com
     lang: zh-CN # Waline language, default: zh-CN. See: https://waline.js.org/guide/client/i18n.html
     dark: auto # Waline dark mode, default: auto. See: https://waline.js.org/reference/component.html#dark
-    requiredMeta: ['nick'] # Waline required meta, default: [nick], see: https://waline.js.org/reference/component.html#requiredmeta
+    requiredMeta: ['nick'] # Waline required meta, default: ['nick'], see: https://waline.js.org/reference/component.html#requiredmeta
 
   # Gitalk
   # See: https://github.com/gitalk/gitalk
