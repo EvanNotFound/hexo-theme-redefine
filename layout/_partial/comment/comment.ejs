@@ -5,8 +5,8 @@
     </div>
     <% if (theme.comment.enable === true && theme.comment.hasOwnProperty(theme.comment.use)) { %>
 
-        <% if  (theme.comment.use === 'valine') { %>
-            <%- partial('valine') %>
+        <% if  (theme.comment.use === 'waline') { %>
+            <%- partial('waline') %>
 
         <% } else if (theme.comment.use === 'gitalk') { %>
             <%- partial('gitalk') %>
