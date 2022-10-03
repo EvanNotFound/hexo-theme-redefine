@@ -4,7 +4,7 @@
 base_info:
   title: Theme Redefine # Site title
   author: The Redefine Team # Author name
-  url: https://www.evanluo.top # Site url
+  url: https://redefine.evanluo.top # Site url
   # Logo image (You can use local image, image external link or don’t fill)
   logo_img: # logo image on the left of the navigation bar
 
@@ -219,4 +219,4 @@ footer:
 # ---------------------------------------------------------------------------------------
 # Redefine Theme version (Please don't modify)
 # ---------------------------------------------------------------------------------------
-version: 0.1.2
+version: 0.2.0
