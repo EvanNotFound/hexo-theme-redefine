@@ -1,19 +1,20 @@
-<head>
-    <!-- ... -->
-    <script src="/js/waline.js"></script>
-    <link
-      rel="stylesheet"
-      href="/css/waline.css"
-    />
-    <!-- ... -->
-</head>
-<body>
-    <!-- ... -->
+<% if(
+        theme.comment.use === 'waline'
+        && theme.comment.waline.serverUrl
+        && theme.comment.waline.lang
+        && theme.comment.waline.dark
+        && theme.comment.waline.requiredMeta
+) { %>
+ 
     <div id="waline"></div>
-    <script>
+    <script <%= theme.pjax.enable === true ? 'data-pjax' : '' %>>
         Waline.init({
-        el: '#waline',
-        serverURL: 'https://waline-ochre.vercel.app/',
+            el: '#waline',
+            serverURL: '<%= theme.comment.waline.serverUrl %>',
+            lang: '<%= theme.comment.waline.lang %>',
+            dark: '<%= theme.comment.waline.dark %>',
+            requiredMeta: <%= theme.comment.waline.requiredMeta %>,
         });
     </script>
- </body>
+
+<% } %>

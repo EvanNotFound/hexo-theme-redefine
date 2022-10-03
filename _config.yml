@@ -157,15 +157,16 @@ local_search:
 # Comment plugin
 # ---------------------------------------------------------------------------------------
 comment:
-  enable: true
-  use: twikoo # values: valine | gitalk | twikoo
+  enable: false
+  use: waline # values: waline | gitalk | twikoo
 
-  # Valine
-  # See: https://github.com/xCss/Valine
-  valine:
-    appid:  # your leancloud application appid
-    appkey:  # your leancloud application appkey
-    placeholder: # your placeholder
+  # Waline
+  # See: https://waline.js.org/guide/get-started.html
+  waline:
+    serverUrl:  # Waline server url(vercel) example: https://example.example.com
+    lang: zh-CN # Waline language, default: zh-CN. See: https://waline.js.org/guide/client/i18n.html
+    dark: auto # Waline dark mode, default: auto. See: https://waline.js.org/reference/component.html#dark
+    requiredMeta: ['nick'] # Waline required meta, default: [nick], see: https://waline.js.org/reference/component.html#requiredmeta
 
   # Gitalk
   # See: https://github.com/gitalk/gitalk
@@ -180,7 +181,7 @@ comment:
   twikoo:
     visitor: true
     env_id: # Vercel or Tencent Cloud Function environment ID
-    #region: # environment region. If select Guangzhou, fill in "ap-guangzhou".
+    region: # environment region. If select Guangzhou, fill in "ap-guangzhou". (optional)
 
 # ---------------------------------------------------------------------------------------
 # RSS
@@ -218,4 +219,4 @@ footer:
 # ---------------------------------------------------------------------------------------
 # Redefine Theme version (Please don't modify)
 # ---------------------------------------------------------------------------------------
-version: 0.1
+version: 0.1.2
