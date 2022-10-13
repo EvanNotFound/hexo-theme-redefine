@@ -3,7 +3,6 @@
         && theme.comment.waline.serverUrl
         && theme.comment.waline.lang
         && theme.comment.waline.dark
-        && theme.comment.waline.requiredMeta
 ) { %>
  
     <div id="waline"></div>
@@ -13,7 +12,7 @@
             serverURL: '<%= theme.comment.waline.serverUrl %>',
             lang: '<%= theme.comment.waline.lang %>',
             dark: '<%= theme.comment.waline.dark %>',
-            requiredMeta: <%= theme.comment.waline.requiredMeta %>,
+            requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
         });
     </script>
 
