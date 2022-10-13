@@ -32,7 +32,7 @@ The easiest way to install Theme Redefine is by using **npm**
 
 ```sh
 $ cd your-hexo-site
-$ npm install hexo-theme-redefine
+$ npm install hexo-theme-redefine@latest
 ```
 
 Another method is by **git clone**
@@ -50,6 +50,43 @@ theme: redefine
 
 
 
+## ⏫ Update
+
+To update hexo-theme-redefine, you can run the same **npm** command
+
+```sh
+$ npm install hexo-theme-redefine@latest
+```
+
+Another method is by **git clone**
+
+```sh
+$ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redefine
+```
+
+
+
 ## 📄 Documentations
 
-- [Redefine Docs](https://redefine-docs.evanluo.top/)
+Please read [Redefine Docs](https://redefine-docs.evanluo.top/) when installing
+
+It's very easy to understand.
+
+
+
+## ☕ Support
+
+Feel free to **pull request** and **send issues**.
+
+If you have any questions, please send a email to [contact@evanluo.top](mailto:contact@evanluo.top). I will reply in time.
+
+
+
+If you don't want to donate, you can still leave a comment on [my blog](https://www.evanluo.top) or **give me a star**.
+
+If, yes if, you think that this theme is pretty good, why not buy me a cup of coffee? Thanks.
+
+<img src="https://evan.beee.top/img/IMG_7991.JPG" alt="IMG_7991" style="zoom: 33%;" />
+
+
+
