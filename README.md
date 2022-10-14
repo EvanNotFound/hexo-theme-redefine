@@ -86,7 +86,8 @@ If you don't want to donate, you can still leave a comment on [my blog](https://
 
 If, yes if, you think that this theme is pretty good, why not buy me a cup of coffee? Thanks.
 
-<img src="https://evan.beee.top/img/IMG_7991.JPG" alt="IMG_7991" style="zoom: 33%;" />
+![IMG_7991](https://user-images.githubusercontent.com/68590232/195916630-2785ca44-1199-45c6-8b57-1472ec3c6906.JPG)
+
 
 
 
