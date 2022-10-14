@@ -9,11 +9,11 @@ hexo.on('generateBefore', function () {
       if (data._config) {
         hexo.theme.config = data._config;
 
-      } else if (data.keep) {
-        hexo.theme.config = data.keep;
+      } else if (data.redefine) {
+        hexo.theme.config = data.redefine;
 
-      } else if (data._keep) {
-        hexo.theme.config = data._keep;
+      } else if (data._redefine) {
+        hexo.theme.config = data._redefine;
       }
 
       // friends link file handle

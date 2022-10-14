@@ -18,7 +18,7 @@ $article-date-font-size = 1rem;
       .archive-year {
         font-size: $archive-year-font-size;
 
-        +keep-tablet() {
+        +redefine-tablet() {
           font-size: $archive-year-font-size - 0.2rem;
         }
 
@@ -33,7 +33,7 @@ $article-date-font-size = 1rem;
         font-weight: 500;
         color: var(--second-text-color);
 
-        +keep-tablet() {
+        +redefine-tablet() {
           font-size: $archive-year-count-font-size * 0.9;
         }
       }
@@ -45,7 +45,7 @@ $article-date-font-size = 1rem;
 
       padding-left: 10px;
 
-      +keep-tablet() {
+      +redefine-tablet() {
         padding-left: 0;
       }
 
@@ -53,11 +53,11 @@ $article-date-font-size = 1rem;
         font-size: 1rem;
         margin-top: 18px;
 
-        +keep-tablet() {
+        +redefine-tablet() {
           margin-top: 16px;
         }
 
-        +keep-mobile() {
+        +redefine-mobile() {
           margin-top: 14px;
         }
 

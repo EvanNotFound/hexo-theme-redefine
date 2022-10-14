@@ -1,8 +1,8 @@
-/* global KEEP */
+/* global REDEFINE */
 
-KEEP.initModeToggle = () => {
+REDEFINE.initModeToggle = () => {
 
-  KEEP.utils.modeToggle = {
+  REDEFINE.utils.modeToggle = {
 
     modeToggleButton_dom: document.querySelector('.tool-dark-light-toggle'),
     iconDom: document.querySelector('.tool-dark-light-toggle i'),
@@ -11,16 +11,16 @@ KEEP.initModeToggle = () => {
       document.body.classList.remove('dark-mode');
       document.body.classList.add('light-mode');
       this.iconDom.className = 'fas fa-moon';
-      KEEP.styleStatus.isDark = false;
-      KEEP.setStyleStatus();
+      REDEFINE.styleStatus.isDark = false;
+      REDEFINE.setStyleStatus();
     },
 
     enableDarkMode() {
       document.body.classList.add('dark-mode');
       document.body.classList.remove('light-mode');
       this.iconDom.className = 'fas fa-sun';
-      KEEP.styleStatus.isDark = true;
-      KEEP.setStyleStatus();
+      REDEFINE.styleStatus.isDark = true;
+      REDEFINE.setStyleStatus();
     },
 
     isDarkPrefersColorScheme() {
@@ -28,7 +28,7 @@ KEEP.initModeToggle = () => {
     },
 
     initModeStatus() {
-      const styleStatus = KEEP.getStyleStatus();
+      const styleStatus = REDEFINE.getStyleStatus();
 
       if (styleStatus) {
         styleStatus.isDark ? this.enableDarkMode() : this.enableLightMode();
@@ -52,7 +52,7 @@ KEEP.initModeToggle = () => {
     }
   }
 
-  KEEP.utils.modeToggle.initModeStatus();
-  KEEP.utils.modeToggle.initModeToggleButton();
-  KEEP.utils.modeToggle.initModeAutoTrigger();
+  REDEFINE.utils.modeToggle.initModeStatus();
+  REDEFINE.utils.modeToggle.initModeToggleButton();
+  REDEFINE.utils.modeToggle.initModeAutoTrigger();
 };

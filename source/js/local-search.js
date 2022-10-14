@@ -1,7 +1,7 @@
-KEEP.initLocalSearch = () => {
+REDEFINE.initLocalSearch = () => {
 
   // Search DB path
-  let searchPath = KEEP.hexo_config.path;
+  let searchPath = REDEFINE.hexo_config.path;
   if (!searchPath) {
     // Search DB path
     console.warn('`hexo-generator-searchdb` plugin is not installed!');
@@ -161,7 +161,7 @@ KEEP.initLocalSearch = () => {
           });
 
           // Select top N slices in content
-          let upperBound = parseInt(KEEP.theme_config.local_search.top_n_per_article ? KEEP.theme_config.local_search.top_n_per_article : 1, 10);
+          let upperBound = parseInt(REDEFINE.theme_config.local_search.top_n_per_article ? REDEFINE.theme_config.local_search.top_n_per_article : 1, 10);
           if (upperBound >= 0) {
             slicesOfContent = slicesOfContent.slice(0, upperBound);
           }
@@ -212,7 +212,7 @@ KEEP.initLocalSearch = () => {
   };
 
   const fetchData = () => {
-    fetch(KEEP.hexo_config.root + searchPath)
+    fetch(REDEFINE.hexo_config.root + searchPath)
       .then(response => response.text())
       .then(res => {
         // Get the contents from search data
@@ -237,7 +237,7 @@ KEEP.initLocalSearch = () => {
       });
   };
 
-  if (KEEP.theme_config.local_search.preload) {
+  if (REDEFINE.theme_config.local_search.preload) {
     fetchData();
   }
 

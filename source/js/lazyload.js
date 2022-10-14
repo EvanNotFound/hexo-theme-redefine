@@ -1,4 +1,4 @@
-KEEP.initLazyLoad = () => {
+REDEFINE.initLazyLoad = () => {
   const imgs = document.querySelectorAll('img');
   let now = Date.now();
   let needLoad = true;

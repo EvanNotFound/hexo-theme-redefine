@@ -18,13 +18,13 @@
         });
 
         document.addEventListener('pjax:send', () => {
-            KEEP.utils.pjaxProgressBarStart();
+            REDEFINE.utils.pjaxProgressBarStart();
         });
 
         document.addEventListener('pjax:complete', () => {
-            KEEP.utils.pjaxProgressBarEnd();
+            REDEFINE.utils.pjaxProgressBarEnd();
             window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
-            KEEP.refresh();
+            REDEFINE.refresh();
         });
     });
 </script>

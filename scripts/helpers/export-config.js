@@ -49,9 +49,9 @@ hexo.extend.helper.register('export_config', function () {
   }
 
   return `<script id="hexo-configurations">
-    let KEEP = window.KEEP || {};
-    KEEP.hexo_config = ${JSON.stringify(hexo_config)};
-    KEEP.theme_config = ${JSON.stringify(theme_config)};
-    KEEP.language_ago = ${JSON.stringify(languageContent['ago'])};
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = ${JSON.stringify(hexo_config)};
+    REDEFINE.theme_config = ${JSON.stringify(theme_config)};
+    REDEFINE.language_ago = ${JSON.stringify(languageContent['ago'])};
   </script>`;
 });

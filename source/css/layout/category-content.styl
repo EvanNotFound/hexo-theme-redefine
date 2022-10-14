@@ -2,7 +2,7 @@ $category-name-font-size = 1.6rem;
 
 .category-container {
 
-  keep-container(false, 0, 0, 30px, 30px);
+  redefine-container(false, 0, 0, 30px, 30px);
 
   .category-name {
     color: var(--second-text-color);
@@ -12,11 +12,11 @@ $category-name-font-size = 1.6rem;
       color: var(--second-text-color);
     }
 
-    +keep-tablet() {
+    +redefine-tablet() {
       font-size: $category-name-font-size * 0.9;
     }
 
-    +keep-mobile() {
+    +redefine-mobile() {
       font-size: $category-name-font-size * 0.8;
     }
 

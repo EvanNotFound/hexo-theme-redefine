@@ -13,11 +13,11 @@ $first-screen-img = $temp-img ? $temp-img:'/images/bg.svg';
   background-position-y: $header-height;
 
 
-  +keep-tablet() {
+  +redefine-tablet() {
     background-position-y: $header-height * 0.9;
   }
 
-  +keep-mobile() {
+  +redefine-mobile() {
     background-position-y: $header-height * 0.8;
   }
 
@@ -35,7 +35,7 @@ $first-screen-img = $temp-img ? $temp-img:'/images/bg.svg';
       color: #FFF;
 
 
-      +keep-tablet() {
+      +redefine-tablet() {
         font-size: $first-screen-font-size * 0.9;
       }
     }
@@ -47,7 +47,7 @@ $first-screen-img = $temp-img ? $temp-img:'/images/bg.svg';
       font-size: $first-screen-icon-size;
       text-align: center;
 
-      +keep-tablet() {
+      +redefine-tablet() {
         font-size: $first-screen-icon-size * 0.9;
       }
 

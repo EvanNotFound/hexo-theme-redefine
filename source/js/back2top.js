@@ -1,8 +1,8 @@
-KEEP.initBack2Top = () => {
+REDEFINE.initBack2Top = () => {
 
-  KEEP.utils = {
+  REDEFINE.utils = {
 
-    ...KEEP.utils,
+    ...REDEFINE.utils,
 
     back2BottomButton_dom: document.querySelector('.tool-scroll-to-bottom'),
 
@@ -47,7 +47,7 @@ KEEP.initBack2Top = () => {
     },
   }
 
-  KEEP.utils.initBack2Top();
-  KEEP.utils.initBack2Bottom();
+  REDEFINE.utils.initBack2Top();
+  REDEFINE.utils.initBack2Bottom();
 
 }

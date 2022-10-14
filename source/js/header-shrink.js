@@ -1,5 +1,5 @@
-KEEP.initHeaderShrink = () => {
-  KEEP.utils.headerShrink = {
+REDEFINE.initHeaderShrink = () => {
+  REDEFINE.utils.headerShrink = {
     headerDom: document.querySelector('.header-wrapper'),
     leftAsideDom: document.querySelector('.page-aside'),
     isHeaderShrink: false,
@@ -27,7 +27,7 @@ KEEP.initHeaderShrink = () => {
     toggleHeaderDrawerShow() {
       const domList = [document.querySelector('.window-mask'), document.querySelector('.menu-bar')];
 
-      if (KEEP.theme_config.pjax.enable === true) {
+      if (REDEFINE.theme_config.pjax.enable === true) {
         domList.push(...document.querySelectorAll('.header-drawer .drawer-menu-list .drawer-menu-item'));
       }
 
@@ -38,7 +38,7 @@ KEEP.initHeaderShrink = () => {
       });
     }
   }
-  KEEP.utils.headerShrink.init();
-  KEEP.utils.headerShrink.headerShrink();
-  KEEP.utils.headerShrink.toggleHeaderDrawerShow();
+  REDEFINE.utils.headerShrink.init();
+  REDEFINE.utils.headerShrink.headerShrink();
+  REDEFINE.utils.headerShrink.toggleHeaderDrawerShow();
 }

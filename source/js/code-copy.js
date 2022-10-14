@@ -1,4 +1,4 @@
-KEEP.initCodeCopy = () => {
+REDEFINE.initCodeCopy = () => {
 
   HTMLElement.prototype.wrap = function (wrapper) {
     this.parentNode.insertBefore(wrapper, this);

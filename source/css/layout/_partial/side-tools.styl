@@ -33,7 +33,7 @@ $tools-item-border-radius = 12px;
       }
     }
 
-    +keep-tablet() {
+    +redefine-tablet() {
       width: $tools-item-width * 0.9;
       height: $tools-item-width * 0.9;
       font-size: $tools-item-font-size * 0.9;
@@ -63,7 +63,7 @@ $tools-item-border-radius = 12px;
     transition-t("transform, opacity", "0, 0", "0.2, 0.2", "ease, ease");
 
     .tool-expand-width {
-      +keep-tablet() {
+      +redefine-tablet() {
         display: none;
       }
     }
