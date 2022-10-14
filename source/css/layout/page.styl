@@ -11,7 +11,7 @@ $page-aside-width = $temp-width ? convert($temp-width) : 260px;
   transition-t("padding-left", "0", "0.3", "ease-out");
 
 
-  +keep-tablet() {
+  +redefine-tablet() {
     padding-left: 0 !important;
   }
 
@@ -24,22 +24,22 @@ $page-aside-width = $temp-width ? convert($temp-width) : 260px;
       padding-top: $header-shrink-height;
 
 
-      +keep-tablet() {
+      +redefine-tablet() {
         padding-top: $header-shrink-height * 0.9;
       }
 
-      +keep-mobile() {
+      +redefine-mobile() {
         padding-top: $header-shrink-height * 0.8;
       }
     }
 
 
-    +keep-tablet() {
+    +redefine-tablet() {
       padding-top: $header-height * 0.9;
     }
 
 
-    +keep-mobile() {
+    +redefine-mobile() {
       padding-top: $header-height * 0.8;
     }
 
@@ -61,23 +61,23 @@ $page-aside-width = $temp-width ? convert($temp-width) : 260px;
       .header-shrink & {
         height: $header-shrink-height;
 
-        +keep-tablet() {
+        +redefine-tablet() {
           height: $header-shrink-height * 0.9;
         }
 
-        +keep-mobile() {
+        +redefine-mobile() {
           height: $header-shrink-height * 0.8;
         }
       }
 
 
-      +keep-tablet() {
+      +redefine-tablet() {
         height: $header-height * 0.9;
         padding-left: 0 !important;
       }
 
 
-      +keep-mobile() {
+      +redefine-mobile() {
         height: $header-height  * 0.8;
       }
 
@@ -91,11 +91,11 @@ $page-aside-width = $temp-width ? convert($temp-width) : 260px;
       justify-content: center;
       padding: $component-spacing-value 0;
 
-      +keep-tablet() {
+      +redefine-tablet() {
         padding: $component-spacing-value * 0.8 0;
       }
 
-      +keep-mobile() {
+      +redefine-mobile() {
         padding: $component-spacing-value * 0.6 0;
         box-shadow: none !important;
 
@@ -111,11 +111,11 @@ $page-aside-width = $temp-width ? convert($temp-width) : 260px;
         max-width: $content-max-width;
         height: 100%;
 
-        +keep-tablet() {
+        +redefine-tablet() {
           width: $main-content-width-tablet;
         }
 
-        +keep-mobile() {
+        +redefine-mobile() {
           width: $main-content-width-mobile;
         }
       }
@@ -147,7 +147,7 @@ $page-aside-width = $temp-width ? convert($temp-width) : 260px;
 
     transition-t("left, transform", "0, 0", "0.3, 0.2", "ease-out, linear");
 
-    +keep-tablet() {
+    +redefine-tablet() {
       left: 0 !important;
       display: none !important;
     }
@@ -164,17 +164,17 @@ $page-aside-width = $temp-width ? convert($temp-width) : 260px;
     .header-shrink & {
       top: $header-shrink-height + $component-spacing-value;
 
-      +keep-tablet() {
+      +redefine-tablet() {
         top: $header-shrink-height * 0.9 + $component-spacing-value;
       }
 
-      +keep-mobile() {
+      +redefine-mobile() {
         top: $header-shrink-height * 0.8 + $component-spacing-value;
       }
     }
 
 
-    +keep-tablet() {
+    +redefine-tablet() {
       top: $header-height * 0.9 + $component-spacing-value;
       right: 10px;
       transform: scale(0.82);
@@ -182,7 +182,7 @@ $page-aside-width = $temp-width ? convert($temp-width) : 260px;
     }
 
 
-    +keep-mobile() {
+    +redefine-mobile() {
       top: $header-height * 0.8 + $component-spacing-value;
       right: 5px;
       transform: scale(0.72);

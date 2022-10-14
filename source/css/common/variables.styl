@@ -1,5 +1,5 @@
 // ========================================================================================
-//                                   KEEP THEME VARIABLE                                 //
+//                                   REDEFINE THEME VARIABLE                                 //
 // ========================================================================================
 
 
@@ -26,11 +26,11 @@ $content-max-width = $temp-content-max-width ? convert($temp-content-max-width) 
 $media-max-width = 780px;                                 // media query max width (tablet)
 $media-max-width-mobile = 500px;                          // media query max width (mobile)
 
-keep-tablet()
+redefine-tablet()
   @media (max-width: $media-max-width)
     { block }
 
-keep-mobile()
+redefine-mobile()
   @media (max-width: $media-max-width-mobile)
     { block }
 

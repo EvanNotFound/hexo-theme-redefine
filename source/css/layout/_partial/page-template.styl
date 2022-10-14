@@ -5,7 +5,7 @@ $friend-link-item-border-radius = 6px;
 
 .page-template-container {
 
-  keep-container(false, 0, 0, 30px, 30px);
+  redefine-container(false, 0, 0, 30px, 30px);
 
   .page-template-content {
     color: var(--default-text-color);
@@ -35,7 +35,7 @@ $friend-link-item-border-radius = 6px;
           height: $friend-link-item-height;
           padding-bottom: $friend-link-item-interval;
 
-          +keep-tablet() {
+          +redefine-tablet() {
             height: $friend-link-item-height-tablet;
           }
 
@@ -57,7 +57,7 @@ $friend-link-item-border-radius = 6px;
             box-sizing: border-box;
 
 
-            +keep-tablet() {
+            +redefine-tablet() {
               padding-left: $friend-link-item-height-tablet - $friend-link-item-interval;
             }
 
@@ -88,7 +88,7 @@ $friend-link-item-border-radius = 6px;
               color: var(--second-text-color);
 
 
-              +keep-tablet() {
+              +redefine-tablet() {
                 width: $friend-link-item-height-tablet  - $friend-link-item-interval;
               }
 
@@ -112,7 +112,7 @@ $friend-link-item-border-radius = 6px;
               align-items: center;
               justify-items: flex-start;
 
-              +keep-tablet() {
+              +redefine-tablet() {
                 padding: 6px;
               }
 
@@ -122,7 +122,7 @@ $friend-link-item-border-radius = 6px;
                 font-size: 1.28rem;
                 color: var(--second-text-color);
 
-                +keep-tablet() {
+                +redefine-tablet() {
                   font-size: 1.08rem;
                 }
               }
@@ -134,7 +134,7 @@ $friend-link-item-border-radius = 6px;
                 color: var(--third-text-color);
 
 
-                +keep-tablet() {
+                +redefine-tablet() {
                   font-size: 0.98rem;
                 }
               }

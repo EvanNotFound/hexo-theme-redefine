@@ -7,7 +7,7 @@
     .home-article-item {
       position: relative;
 
-      keep-container(true, 1.015, 1.015, 28px, 38px);
+      redefine-container(true, 1.015, 1.015, 28px, 38px);
 
       .top-icon {
         position: absolute;
@@ -18,7 +18,7 @@
         color: var(--third-text-color);
 
 
-        +keep-tablet() {
+        +redefine-tablet() {
           font-size: 1.16rem;
         }
       }
@@ -32,12 +32,12 @@
         color: var(--second-text-color);
 
 
-        +keep-tablet() {
+        +redefine-tablet() {
           font-size: 1.3rem;
         }
 
 
-        +keep-mobile() {
+        +redefine-mobile() {
           font-size: 1.2rem;
         }
 
@@ -78,13 +78,13 @@
           }
 
           .home-article-category {
-            +keep-mobile() {
+            +redefine-mobile() {
               display: none;
             }
           }
 
           .home-article-tag {
-            +keep-tablet() {
+            +redefine-tablet() {
               display: none;
             }
           }

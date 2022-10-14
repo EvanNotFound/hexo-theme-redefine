@@ -1,8 +1,8 @@
-/* global KEEP */
+/* global REDEFINE */
 
-KEEP.initUtils = () => {
+REDEFINE.initUtils = () => {
 
-  KEEP.utils = {
+  REDEFINE.utils = {
 
     html_root_dom: document.querySelector('html'),
     pageContainer_dom: document.querySelector('.page-container'),
@@ -18,8 +18,8 @@ KEEP.initUtils = () => {
     prevScrollValue: 0,
     fontSizeLevel: 0,
 
-    isHasScrollProgressBar: KEEP.theme_config.style.scroll.progress_bar.enable === true,
-    isHasScrollPercent: KEEP.theme_config.style.scroll.percent.enable === true,
+    isHasScrollProgressBar: REDEFINE.theme_config.style.scroll.progress_bar.enable === true,
+    isHasScrollPercent: REDEFINE.theme_config.style.scroll.percent.enable === true,
 
     // Scroll Style Handle
     styleHandleWhenScroll() {
@@ -64,12 +64,12 @@ KEEP.initUtils = () => {
         }
 
         // TOC scroll handle
-        if (KEEP.theme_config.toc.enable && KEEP.utils.hasOwnProperty('findActiveIndexByTOC')) {
-          KEEP.utils.findActiveIndexByTOC();
+        if (REDEFINE.theme_config.toc.enable && REDEFINE.utils.hasOwnProperty('findActiveIndexByTOC')) {
+          REDEFINE.utils.findActiveIndexByTOC();
         }
 
         // header shrink
-        KEEP.utils.headerShrink.headerShrink();
+        REDEFINE.utils.headerShrink.headerShrink();
       });
     },
 
@@ -86,7 +86,7 @@ KEEP.initUtils = () => {
       const fs = parseFloat(fontSize);
 
       const initFontSize = () => {
-        const styleStatus = KEEP.getStyleStatus();
+        const styleStatus = REDEFINE.getStyleStatus();
         if (styleStatus) {
           this.fontSizeLevel = styleStatus.fontSizeLevel;
           setFontSize(this.fontSizeLevel);
@@ -95,8 +95,8 @@ KEEP.initUtils = () => {
 
       const setFontSize = (fontSizeLevel) => {
         this.html_root_dom.style.fontSize = `${fs * (1 + fontSizeLevel * 0.05)}px`;
-        KEEP.styleStatus.fontSizeLevel = fontSizeLevel;
-        KEEP.setStyleStatus();
+        REDEFINE.styleStatus.fontSizeLevel = fontSizeLevel;
+        REDEFINE.setStyleStatus();
       }
 
       initFontSize();
@@ -121,19 +121,19 @@ KEEP.initUtils = () => {
       const mainContentDom = document.querySelector('.main-content');
       const iconDom = toolExpandDom.querySelector('i');
 
-      const defaultMaxWidth = KEEP.theme_config.style.content_max_width || '1000px';
+      const defaultMaxWidth = REDEFINE.theme_config.style.content_max_width || '1000px';
       const expandMaxWidth = '90%';
       let headerMaxWidth = defaultMaxWidth;
 
       let isExpand = false;
 
-      if (KEEP.theme_config.style.first_screen.enable === true && window.location.pathname === '/') {
+      if (REDEFINE.theme_config.style.first_screen.enable === true && window.location.pathname === '/') {
         headerMaxWidth = parseInt(defaultMaxWidth) * 1.2 + 'px';
       }
 
       const setPageWidth = (isExpand) => {
-        KEEP.styleStatus.isExpandPageWidth = isExpand;
-        KEEP.setStyleStatus();
+        REDEFINE.styleStatus.isExpandPageWidth = isExpand;
+        REDEFINE.setStyleStatus();
         if (isExpand) {
           iconDom.classList.remove('fa-arrows-alt-h');
           iconDom.classList.add('fa-compress-arrows-alt');
@@ -148,7 +148,7 @@ KEEP.initUtils = () => {
       }
 
       const initPageWidth = () => {
-        const styleStatus = KEEP.getStyleStatus();
+        const styleStatus = REDEFINE.getStyleStatus();
         if (styleStatus) {
           isExpand = styleStatus.isExpandPageWidth;
           setPageWidth(isExpand);
@@ -245,7 +245,7 @@ KEEP.initUtils = () => {
     },
 
     getHowLongAgo(timestamp) {
-      const l = KEEP.language_ago;
+      const l = REDEFINE.language_ago;
 
       const __Y = Math.floor(timestamp / (60 * 60 * 24 * 30) / 12);
       const __M = Math.floor(timestamp / (60 * 60 * 24 * 30));
@@ -333,30 +333,30 @@ KEEP.initUtils = () => {
   }
 
   // init scroll
-  KEEP.utils.registerWindowScroll();
+  REDEFINE.utils.registerWindowScroll();
 
   // toggle show tools list
-  KEEP.utils.toggleShowToolsList();
+  REDEFINE.utils.toggleShowToolsList();
 
   // global font adjust
-  KEEP.utils.globalFontAdjust();
+  REDEFINE.utils.globalFontAdjust();
 
   // adjust content area width
-  KEEP.utils.contentAreaWidthAdjust();
+  REDEFINE.utils.contentAreaWidthAdjust();
 
   // go comment
-  KEEP.utils.goComment();
+  REDEFINE.utils.goComment();
 
   // init page height handle
-  KEEP.utils.initPageHeightHandle();
+  REDEFINE.utils.initPageHeightHandle();
 
   // init first screen height
-  KEEP.utils.initFirstScreenHeight();
+  REDEFINE.utils.initFirstScreenHeight();
 
   // big image viewer handle
-  KEEP.utils.imageViewer();
+  REDEFINE.utils.imageViewer();
 
   // set how long age in home article block
-  KEEP.utils.setHowLongAgoInHome();
+  REDEFINE.utils.setHowLongAgoInHome();
 
 }

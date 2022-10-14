@@ -1,4 +1,4 @@
-$keep-container-border-radius = 18px;
+$redefine-container-border-radius = 18px;
 
 hover-style(isTransform, scaleX, scaleY) {
   box-shadow: 5px 5px 15px var(--shadow-color);
@@ -19,20 +19,20 @@ hover-style(isTransform, scaleX, scaleY) {
 }
 
 
-keep-container(isTransform, scaleX, scaleY, padding, marginBottomValue) {
+redefine-container(isTransform, scaleX, scaleY, padding, marginBottomValue) {
   padding: padding;
-  border-radius: $keep-container-border-radius;
+  border-radius: $redefine-container-border-radius;
   box-sizing: border-box;
   background: var(--background-color);
 
   if (marginBottomValue != 0) {
     margin-bottom: marginBottomValue;
 
-    +keep-tablet() {
+    +redefine-tablet() {
       margin-bottom: marginBottomValue * 0.8;
     }
 
-    +keep-mobile() {
+    +redefine-mobile() {
       margin-bottom: marginBottomValue * 0.6;
     }
   }
@@ -40,14 +40,14 @@ keep-container(isTransform, scaleX, scaleY, padding, marginBottomValue) {
 
   hover-style(isTransform, scaleX, scaleY);
 
-  +keep-tablet() {
+  +redefine-tablet() {
     padding: padding * 0.8;
-    border-radius: $keep-container-border-radius * 0.8;
+    border-radius: $redefine-container-border-radius * 0.8;
   }
 
 
-  +keep-mobile() {
+  +redefine-mobile() {
     padding: padding * 0.6;
-    border-radius: $keep-container-border-radius * 0.6;
+    border-radius: $redefine-container-border-radius * 0.6;
   }
 }
