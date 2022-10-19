@@ -56,6 +56,10 @@ $z-index-9 = 1009;
 $temp-color = hexo-config('style.primary_color');
 $primary-color = $temp-color ? convert($temp-color) : #0066CC;
 
+//navbar color
+$nav-color-1 = convert(hexo-config('style.nav_color.left') + hexo-config('style.nav_color.transparency'));
+$nav-color-2 = convert(hexo-config('style.nav_color.right') + hexo-config('style.nav_color.transparency'));
+$nav-color-bg = linear-gradient(120deg, $nav-color-1 0%, $nav-color-2 100%);
 
 // ========================================================================================
 // light mode color
