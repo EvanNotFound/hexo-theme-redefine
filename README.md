@@ -1,4 +1,6 @@
-<a href="https://www.evanluo.top"><img align="center" src="https://user-images.githubusercontent.com/68590232/193186322-b3b7e52a-8b10-45b9-a84d-79e988bc0f7e.svg"  alt="Redefine"></a>
+<a href="https://redefine.evanluo.top"><img align="center" src="https://user-images.githubusercontent.com/68590232/197346736-dbb5fe65-f6f5-4526-a991-72c8a442cadb.svg"  alt="Redefine"></a>
+
+
 
 # hexo-theme-redefine
 
@@ -14,9 +16,10 @@
 
 <img width="1423" alt="Screen Shot 2022-10-01 at 1 11 54 PM" src="https://user-images.githubusercontent.com/68590232/193420572-498be91f-8bd0-4dc6-b49d-41344f4dc95e.png">
 
-<img width="1421" alt="Screen Shot 2022-09-30 at 9 54 23 PM" src="https://user-images.githubusercontent.com/68590232/193410672-43805d99-4366-4e7d-b0a9-7695ca66c2a2.png">
+<img width="1421" alt="Screen Shot 2022-10-22 at 11 24 55 AM" src="https://user-images.githubusercontent.com/68590232/197347536-f3cd3265-7c05-4515-8c2d-b7ab04b8205d.png">
 
-<img width="1418" alt="Screen Shot 2022-09-30 at 10 00 49 PM" src="https://user-images.githubusercontent.com/68590232/193410675-9423d4fb-8d3f-4588-8376-2910445ea8fa.png">
+
+<img width="1413" alt="Screen Shot 2022-10-22 at 11 28 08 AM" src="https://user-images.githubusercontent.com/68590232/197347575-13167ff7-3ffc-4106-aea4-6a6ba096c139.png">
 
 
 ## 🌐 Online Demo
