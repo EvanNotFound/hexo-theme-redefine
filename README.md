@@ -1,4 +1,4 @@
-<a href="https://redefine.evanluo.top"><img align="center" src="https://user-images.githubusercontent.com/68590232/197346736-dbb5fe65-f6f5-4526-a991-72c8a442cadb.svg"  alt="Redefine"></a>
+<a href="https://redefine.evanluo.top"><img align="center" src="https://user-images.githubusercontent.com/68590232/197350938-3d27f054-04e6-4e7a-8bce-94666b56e822.png"  alt="Redefine"></a>
 
 
 
