@@ -12,6 +12,22 @@ hexo.extend.helper.register('isInHomePaging', function (pagePath, route) {
   }
 });
 
+hexo.extend.filter.register('after_post_render', function (data) {
+  while (/<figure class="highlight ([a-zA-Z\+\-\/\#]+)">.*?<\/figure>/.test(data.content)) {
+      data.content = data.content.replace(/<figure class="highlight ([a-zA-Z\+\-\/\#]+)">.*?<\/figure>/, function () {
+          var language = RegExp.$1 || 'code'
+          var lastMatch = RegExp.lastMatch
+          if (language=='plain'){
+              language='code';
+          }
+          lastMatch = lastMatch.replace(/<figure class="highlight /, '<figure class="iseeu highlight ')
+          return '<div class="highlight-container" data-rel="'
+              + language.replace(language[0],language[0].toUpperCase()) + '">' + lastMatch + '</div>'
+      })
+  }
+  return data;
+})
+
 hexo.extend.helper.register('createNewArchivePosts', function (posts) {
   const postList = [], postYearList = [];
   posts.forEach(post => postYearList.push(post.date.year()));
