@@ -1,3 +1,10 @@
+<div align="right">
+  Language:
+  English
+  <a title="Chinese" href="docs/README_zh-CN.md">简中</a>
+  <a title="Chinese" href="docs/README_zh-TW.md">繁中</a>
+</div>
+
 <a href="https://redefine.evanluo.top"><img align="center" src="https://user-images.githubusercontent.com/68590232/197350938-3d27f054-04e6-4e7a-8bce-94666b56e822.png"  alt="Redefine"></a>
 
 
