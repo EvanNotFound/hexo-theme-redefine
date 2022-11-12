@@ -81,7 +81,12 @@ $ npm install hexo-theme-redefine@latest
 $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redefine
 ```
 
-
+<div align="right">
+  Language:
+  English
+  <a title="Chinese" href="README_zh-CN.md">简中</a>
+  <a title="Chinese" href="README_zh-TW.md">繁中</a>
+</div>
 
 ## 📄 文檔
 
