@@ -93,6 +93,11 @@ $page-aside-width = $temp-width ? convert($temp-width) : 260px;
 
       +redefine-tablet() {
         padding: $component-spacing-value * 0.8 0;
+        box-shadow: none !important;
+
+        :hover {
+          box-shadow: none !important;
+        }
       }
 
       +redefine-mobile() {
