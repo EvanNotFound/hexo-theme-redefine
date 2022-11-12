@@ -14,12 +14,11 @@
 
 ## 📷 Screenshots
 
-<img width="1423" alt="Screen Shot 2022-10-01 at 1 11 54 PM" src="https://user-images.githubusercontent.com/68590232/193420572-498be91f-8bd0-4dc6-b49d-41344f4dc95e.png">
+![Screen Shot 2022-11-11 at 8.55.39 PM](https://evan.beee.top/img/Screen%20Shot%202022-11-11%20at%208.55.39%20PM.png)
 
-<img width="1421" alt="Screen Shot 2022-10-22 at 11 24 55 AM" src="https://user-images.githubusercontent.com/68590232/197347536-f3cd3265-7c05-4515-8c2d-b7ab04b8205d.png">
+![Screen Shot 2022-11-11 at 8.56.03 PM](https://evan.beee.top/img/Screen%20Shot%202022-11-11%20at%208.56.03%20PM.png)
 
-
-<img width="1413" alt="Screen Shot 2022-10-22 at 11 28 08 AM" src="https://user-images.githubusercontent.com/68590232/197347575-13167ff7-3ffc-4106-aea4-6a6ba096c139.png">
+![Screen Shot 2022-11-11 at 8.56.25 PM](https://evan.beee.top/img/Screen%20Shot%202022-11-11%20at%208.56.25%20PM.png)
 
 
 ## 🌐 Online Demo
