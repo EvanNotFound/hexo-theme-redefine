@@ -1,7 +1,7 @@
 <div align="right">
   Language:
-  English
-  <a title="Chinese" href="README_zh-CN.md">简中</a>
+  简中
+  <a title="Chinese" href="README.md">English</a>
   <a title="Chinese" href="README_zh-TW.md">繁中</a>
 </div>
 
@@ -11,15 +11,13 @@
 
 # hexo-theme-redefine
 
-"Redefine" hexo theme is **a simple & fast & pure theme**, but with **no compromise**. This theme contains lots of widely use functions and great web design.
-
-"Theme Redefine" is based on [hexo-theme-keep](https://github.com/XPoet/hexo-theme-keep), but with **prettier interface** and **more functions**.
+"Redefine" 是一个简洁，快速的 hexo 主题。简洁，但不简单。本主题包含很多广泛使用的功能。
 
 [![NPM version](https://img.shields.io/npm/v/hexo-theme-redefine?color=red&logo=npm&style=flat-square)](https://www.npmjs.com/package/hexo-theme-redefine) [![npm](https://img.shields.io/npm/dw/hexo-theme-redefine?logo=npm&style=flat-square)](https://www.npmjs.com/package/hexo-theme-redefine) [![Github License](https://img.shields.io/github/license/XPoet/hexo-theme-keep.svg?style=flat-square)](https://github.com/EvanNotFound/hexo-theme-redefine/blob/main/LICENSE) [![Required Hexo version](https://img.shields.io/badge/hexo-%3E=5.0.0-blue?style=flat-square&logo=hexo)](https://hexo.io) [![Node.js Version](https://img.shields.io/badge/node-%3E=12.0-success.svg?style=flat-square&logo=Node.js&longCache=true)](https://hexo.io)
 
 
 
-## 📷 Screenshots
+## 📷 屏幕截图
 
 <img width="1420" alt="Screen Shot 2022-11-11 at 8 55 39 PM" src="https://user-images.githubusercontent.com/68590232/201453764-75276390-8888-4c0f-9ccc-497cede23e00.png">
 
@@ -28,30 +26,42 @@
 <img width="1428" alt="Screen Shot 2022-11-11 at 8 56 25 PM" src="https://user-images.githubusercontent.com/68590232/201453768-6b3a3a2e-5d2a-4683-b207-bc08ce55812c.png">
 
 
-## 🌐 Online Demo
+## 🌐 在线演示站
 
 - [Anonymous Land](https://www.evanluo.top)
 - [Theme Redefine Demo](https://redefine.evanluo.top)
 
+## ⛰️ 部分功能
 
+- [笔记模块](https://redefine-docs.evanluo.top/advanced/bi-ji-mo-kuai)
 
-## ☁️ Installation
+- [友链样式](https://redefine-docs.evanluo.top/advanced/you-lian-yang-shi)
 
-The easiest way to install Theme Redefine is by using **npm**
+- [文章顶置](https://redefine-docs.evanluo.top/advanced/wen-zhang-ding-zhi)
+
+- [数学公式](https://redefine-docs.evanluo.top/advanced/shu-xue-gong-shi)
+
+- 代码块语言显示
+- Light/Dark 模式切换
+- Font Awesome 6.1.0 Pro（包含 Duotone/Regular/Thin 等不同样式）
+
+## ☁️ 安装
+
+如果你的 Hexo 版本在 `5.0` 及以上，推荐通过 `npm` 安装
 
 ```sh
 $ cd your-hexo-site
 $ npm install hexo-theme-redefine@latest
 ```
 
-Another method is by **git clone**
+或者使用 git 克隆
 
 ```sh
 $ cd your-hexo-site
 $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redefine
 ```
 
-After the installation, go to the `_config.yml` of your hexo site and set
+安装完成后，在 Hexo 配置文件中将 `theme` 设置为 `Redefine`。
 
 ```yaml
 theme: redefine
@@ -59,15 +69,17 @@ theme: redefine
 
 
 
-## ⏫ Update
+## ⏫ 更新
 
-To update hexo-theme-redefine, you can run the same **npm** command
+Theme Redefine 经常发布新版本，你可以通过如下命令更新 Theme Redefine。
+
+通过 `npm` 安装最新版本：
 
 ```sh
 $ npm install hexo-theme-redefine@latest
 ```
 
-Another method is by **git clone**
+通过 `git` 更新到最新的 `main` 分支：
 
 ```sh
 $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redefine
@@ -75,25 +87,23 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 
 
 
-## 📄 Documentations
+## 📄 文档
 
-Please read [Redefine Docs](https://redefine-docs.evanluo.top/) when installing
+请阅读 [Redefine 主题官方文档](https://redefine-docs.evanluo.top/) 
 
-It's very easy to understand.
-
-
-
-## ☕ Support
-
-Feel free to **pull request** and **send issues**.
-
-If you have any questions, please send an email to [contact@evanluo.top](mailto:contact@evanluo.top). I will reply in time.
+进行主题配置与安装
 
 
 
-If you don't want to donate, you can still leave a comment on [my blog](https://www.evanluo.top) or **give me a star**.
+## ☕ 支持
 
-If, yes if, you think that this theme is pretty good, why not buy me a cup of coffee? Thanks.
+欢迎 **pull request** 或者 提交 **issues**.
+
+如有问题，请发邮件到 [contact@evanluo.top](mailto:contact@evanluo.top). 我会及时回复
+
+如果我做的主题还不错的话，欢迎给我 Github 点个 Star，谢谢
+
+或者，给我买一杯咖啡？
 
 <img src="https://user-images.githubusercontent.com/68590232/195916630-2785ca44-1199-45c6-8b57-1472ec3c6906.JPG" referrerpolicy="no-referrer" alt="IMG_7991" style="zoom:30%">
 
