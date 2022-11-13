@@ -30,59 +30,53 @@ disable-user-select() {
   transition-t("opacity", "0", "0.2", "ease-in-out");
 
 
-  if (hexo-config('code_copy.style') == 'mac') {
-    color: white;
-    right: 2px;
-    top: 2px;
-  } else {
-    background: var(--background-color);
-    border: 0;
-    right: 0;
-    top: 0;
-  }
+  background: var(--background-color);
+  border: 0;
+  right: 0;
+  top: 0;
 }
 
 
-if (hexo-config('code_copy.style') == 'mac') {
-  .highlight-container[data-rel]{
-    background: #21252b;
-    border-radius: 14px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    padding-top: 20px;
-    margin-top: 10px;
 
-    &::before {
-      position absolute
-      content:attr(data-rel);
-      line-height 38px
-      border-radius: 50%;
-      box-shadow: none
-      height: 12px;
-      left: 12px;
-      position: absolute;
-      width: auto;
-      margin-left: 80px;
-      top 0
-      color: #CACAD0;
-      font-weight bold
-      font-size: 16px;
-    }
+.highlight-container[data-rel]{
+  background: #21252b;
+  border-radius: 14px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  padding-top: 20px;
+  margin-top: 10px;
 
-    &::after{
-      content ' '
-      position absolute
-      -webkit-border-radius 50%
-      border-radius 50%
-      background #fc625d
-      width 12px
-      height 12px
-      top 0
-      left 20px
-      margin-top 13px
-      -webkit-box-shadow 20px 0px #fdbc40, 40px 0px #35cd4b
-      box-shadow 20px 0px #fdbc40, 40px 0px #35cd4b
-      z-index 3
-    }
+  &::before {
+    position absolute
+    content:attr(data-rel);
+    line-height 38px
+    border-radius: 50%;
+    box-shadow: none
+    height: 12px;
+    left: 12px;
+    position: absolute;
+    width: auto;
+    margin-left: 80px;
+    top 0
+    color: #CACAD0;
+    font-weight bold
+    font-size: 16px;
+  }
+
+  &::after{
+    content ' '
+    position absolute
+    -webkit-border-radius 50%
+    border-radius 50%
+    background #fc625d
+    width 12px
+    height 12px
+    top 0
+    left 20px
+    margin-top 13px
+    -webkit-box-shadow 20px 0px #fdbc40, 40px 0px #35cd4b
+    box-shadow 20px 0px #fdbc40, 40px 0px #35cd4b
+    z-index 3
   }
 }
+
 
