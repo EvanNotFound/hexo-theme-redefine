@@ -33,10 +33,12 @@
 
 ## ⛰️ 部分功能
 
-- [筆記模塊](https://redefine-docs.evanluo.top/advanced/bi-ji-mo-kuai)
-- [友鏈樣式](https://redefine-docs.evanluo.top/advanced/you-lian-yang-shi)
-- [文章頂置](https://redefine-docs.evanluo.top/advanced/wen-zhang-ding-zhi)
-- [數學公式](https://redefine-docs.evanluo.top/advanced/shu-xue-gong-shi)
+- [筆記模塊](https://redefine-docs.evanluo.top/docs/advanced/note-module)
+- [友鏈樣式](https://redefine-docs.evanluo.top/docs/advanced/friend-link)
+
+- [文章頂置](https://redefine-docs.evanluo.top/docs/advanced/sticky)
+
+- [數學公式](https://redefine-docs.evanluo.top/docs/advanced/mathjax)
 - 代碼塊語言顯示
 - Light/Dark 模式切換
 - Font Awesome 6.1.0 Pro（包含 Duotone/Regular/Thin 等不同樣式）
