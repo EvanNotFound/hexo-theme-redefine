@@ -12,6 +12,23 @@ hexo.extend.helper.register('isInHomePaging', function (pagePath, route) {
   }
 });
 
+/* code block language display */
+hexo.extend.filter.register('after_post_render', function (data) {
+  while (/<figure class="highlight ([a-zA-Z\+\-\/\#]+)">.*?<\/figure>/.test(data.content)) {
+      data.content = data.content.replace(/<figure class="highlight ([a-zA-Z\+\-\/\#]+)">.*?<\/figure>/, function () {
+          var language = RegExp.$1 || 'code'
+          var lastMatch = RegExp.lastMatch
+          if (language=='plain'){
+              language='code';
+          }
+          lastMatch = lastMatch.replace(/<figure class="highlight /, '<figure class="iseeu highlight ')
+          return '<div class="highlight-container" data-rel="'
+              + language.replace(language[0],language[0].toUpperCase()) + '">' + lastMatch + '</div>'
+      })
+  }
+  return data;
+})
+
 hexo.extend.helper.register('createNewArchivePosts', function (posts) {
   const postList = [], postYearList = [];
   posts.forEach(post => postYearList.push(post.date.year()));
@@ -58,7 +75,8 @@ hexo.extend.helper.register('__js', function (path) {
   const _js = hexo.extend.helper.get('js').bind(hexo);
   const cdnPathHandle = (path_2) => {
     return this.theme.cdn.enable
-      ? `<script src="//cdn.jsdelivr.net/npm/hexo-theme-redefine@${this.theme.version}/source/${path_2}"></script>`
+      ? `<script src="//evan.beee.top/projects/hexo-theme-redefine/v${this.theme.version}/source/${path_2}"></script>`
+      // ${this.theme.version}
       : _js(path_2);
   }
 
@@ -78,7 +96,7 @@ hexo.extend.helper.register('__js', function (path) {
 hexo.extend.helper.register('__css', function (path) {
   const _css = hexo.extend.helper.get('css').bind(hexo);
   if (this.theme.cdn.enable) {
-    return `<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-redefine@${this.theme.version}/source/${path}">`;
+    return `<link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v${this.theme.version}/source/${path}">`;
   } else {
     return _css(path);
   }

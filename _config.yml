@@ -114,7 +114,6 @@ post:
 # ---------------------------------------------------------------------------------------
 code_copy:
   enable: true
-  style: mac # values: default | mac
 
 # ---------------------------------------------------------------------------------------
 # Table of Contents in the Sidebar
@@ -171,8 +170,7 @@ comment:
     serverUrl:  # Waline server url(vercel) example: https://example.example.com
     lang: zh-CN # Waline language, default: zh-CN. See: https://waline.js.org/guide/client/i18n.html
     dark: auto # Waline dark mode, default: auto. See: https://waline.js.org/reference/component.html#dark
-    requiredMeta: ['nick'] # Waline required meta, default: ['nick'], see: https://waline.js.org/reference/component.html#requiredmeta
-
+  
   # Gitalk
   # See: https://github.com/gitalk/gitalk
   gitalk:
@@ -224,4 +222,4 @@ footer:
 # ---------------------------------------------------------------------------------------
 # Redefine Theme version (Please don't modify)
 # ---------------------------------------------------------------------------------------
-version: 0.3.0
+version: 0.3.2

@@ -1,4 +1,13 @@
-<a href="https://www.evanluo.top"><img align="center" src="https://user-images.githubusercontent.com/68590232/193186322-b3b7e52a-8b10-45b9-a84d-79e988bc0f7e.svg"  alt="Redefine"></a>
+<div align="right">
+  Language:
+  English
+  <a title="Chinese" href="README_zh-CN.md">简中</a>
+  <a title="Chinese" href="README_zh-TW.md">繁中</a>
+</div>
+
+<a href="https://redefine.evanluo.top"><img align="center" src="https://user-images.githubusercontent.com/68590232/197350938-3d27f054-04e6-4e7a-8bce-94666b56e822.png"  alt="Redefine"></a>
+
+
 
 # hexo-theme-redefine
 
@@ -12,11 +21,11 @@
 
 ## 📷 Screenshots
 
-<img width="1423" alt="Screen Shot 2022-10-01 at 1 11 54 PM" src="https://user-images.githubusercontent.com/68590232/193420572-498be91f-8bd0-4dc6-b49d-41344f4dc95e.png">
+<img width="1420" alt="Screen Shot 2022-11-11 at 8 55 39 PM" src="https://user-images.githubusercontent.com/68590232/201453764-75276390-8888-4c0f-9ccc-497cede23e00.png">
 
-<img width="1421" alt="Screen Shot 2022-09-30 at 9 54 23 PM" src="https://user-images.githubusercontent.com/68590232/193410672-43805d99-4366-4e7d-b0a9-7695ca66c2a2.png">
+<img width="1428" alt="Screen Shot 2022-11-11 at 8 56 03 PM" src="https://user-images.githubusercontent.com/68590232/201453766-361b2dda-3ef9-4464-acde-42895af192a0.png">
 
-<img width="1418" alt="Screen Shot 2022-09-30 at 10 00 49 PM" src="https://user-images.githubusercontent.com/68590232/193410675-9423d4fb-8d3f-4588-8376-2910445ea8fa.png">
+<img width="1428" alt="Screen Shot 2022-11-11 at 8 56 25 PM" src="https://user-images.githubusercontent.com/68590232/201453768-6b3a3a2e-5d2a-4683-b207-bc08ce55812c.png">
 
 
 ## 🌐 Online Demo
@@ -78,7 +87,7 @@ It's very easy to understand.
 
 Feel free to **pull request** and **send issues**.
 
-If you have any questions, please send a email to [contact@evanluo.top](mailto:contact@evanluo.top). I will reply in time.
+If you have any questions, please send an email to [contact@evanluo.top](mailto:contact@evanluo.top). I will reply in time.
 
 
 
