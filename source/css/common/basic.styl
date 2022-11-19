@@ -19,15 +19,26 @@
     width: 6px;
     height: 6px;
     transition: all 0.2s ease;
+    display: block;
   }
 
   &::-webkit-scrollbar-thumb {
     background: var(--scrollbar-color);
-    border-radius: 1px;
+    border-radius: 18px;
+    background-clip: content-box;
+    border: 3px solid transparent;
   }
 
   &::-webkit-scrollbar-track {
-    background: var(--scroll-bar-bg-color);
+    background-color: var(--scroll-bar-bg-color);
+    border: 1px solid var(--shadow-color-1);
+  }
+  
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-color-hover);
+    border-radius: 18px;
+    background-clip: content-box;
+    border: 3px solid transparent;
   }
 }
 
@@ -47,9 +58,10 @@ html, body {
   font-weight: $default-font-weight;
   font-size: $default-font-size;
   line-height: $default-font-line-height;
+  
 
   &::-webkit-scrollbar {
-    width: 8px;
+    width: 14px;
     height: 8px;
   }
 
