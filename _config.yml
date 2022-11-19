@@ -44,8 +44,9 @@ style:
   # First screen
   first_screen:
     enable: true
-    background_img: /images/wallheaven-bg.webp # background image of the first screen, use relative path or external link
+    background_img: /images/wallheaven-bg.webp # background image of the first screen, use relative path or external link (if your website is in subdirectory, use external link)
     description: Theme Redefine # the title in the middle of the first screen
+    title_color: "#ffffff" # first screen title color
 
   # Scroll style settings
   scroll:
