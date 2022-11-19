@@ -44,9 +44,13 @@ style:
   # First screen
   first_screen:
     enable: true
-    background_img: /images/wallheaven-bg.webp # background image of the first screen, use relative path or external link (if your website is in subdirectory, use external link)
+    background_image:
+      light: /images/wallhaven-bg-light.webp # background image of the first screen, use relative path or external link (if your website is in subdirectory, use external link)
+      dark: /images/wallhaven-bg-dark.webp # background image of the first screen, use relative path or external link (if your website is in subdirectory, use external link)
+    title_color:
+      light: "#fff" # first screen title color (light mode)
+      dark: "#323739" # first screen title color (dark mode)
     description: Theme Redefine # the title in the middle of the first screen
-    title_color: "#ffffff" # first screen title color
 
   # Scroll style settings
   scroll:

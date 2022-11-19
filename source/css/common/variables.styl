@@ -1,10 +1,10 @@
 // ========================================================================================
-//                                   REDEFINE THEME VARIABLE                                 //
+//                                   REDEFINE THEME VARIABLE                                 
 // ========================================================================================
 
 
 // ========================================================================================
-// layout
+//                                           LAYOUT
 // ========================================================================================
 $header-height = 70px;                                           // header height
 $header-shrink-height = $header-height * 0.72;                   // header shrink height
@@ -93,6 +93,8 @@ $note-black-title-bg = #E9E9E9;
 $note-cyan-title-bg = #E9FDF9;
 $note-orange-title-bg = #fdf3e9;
 
+$first-screen-text-color = convert(hexo-config('style.first_screen.title_color.light'));
+
 
 // ========================================================================================
 // dark mode color
@@ -127,19 +129,27 @@ $dark-note-gray-title-bg = #4e4e4e;
 $dark-note-black-title-bg = #1e1e1e;
 $dark-note-orange-title-bg = #4e3a1e;
 
+$first-screen-text-color-dark = convert(hexo-config('style.first_screen.title_color.dark'));
 
-// ========================================================================
+// ========================================================================================
+// background image
+// ========================================================================================
+$first-screen-img-light = hexo-config('style.first_screen.background_image.light')
+$first-screen-img-dark = hexo-config('style.first_screen.background_image.dark')
+
+
+// ========================================================================================
 // font
-// ========================================================================
+// ========================================================================================
 $default-font-family = Noto Sans, Noto Sans SC, Open Sans, -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial;
 $default-font-size = 15.2px;
 $default-font-line-height = 22px;
 $default-font-weight = 400;
 
 
-// ========================================================================
+// ========================================================================================
 //  light/dark mode color
-// ========================================================================
+// ========================================================================================
 root-color(mode) {
   --background-color: mode == 'light' ? $background-color : $dark-background-color;
   --second-background-color: mode == 'light' ? $second-background-color : $dark-second-background-color;
@@ -170,6 +180,8 @@ root-color(mode) {
   --note-orange-title-bg : mode == 'light' ? $note-orange-title-bg : $dark-note-orange-title-bg;
   --note-black-title-bg : mode == 'light' ? $note-black-title-bg : $dark-note-black-title-bg;
   --note-purple-title-bg : mode == 'light' ? $note-purple-title-bg : $dark-note-purple-title-bg;
+  
+  --first-screen-text-color: mode == 'light' ? $first-screen-text-color : $first-screen-text-color-dark;
 }
 
 
