@@ -7,8 +7,8 @@ $highlight-background = #21252b
 $highlight-gutter-color = lighten($default-text-color, 5%)
 $highlight-gutter-bg-color = #21252b
 $highlight-comment = #57A64A
-$highlight-red = #BD63C5;
-$highlight-orange = #B8D7A3;
+$highlight-red = #BD63C5
+$highlight-orange = #B8D7A3
 $highlight-yellow = #eab700
 $highlight-green = #718c00
 $highlight-aqua = #3e999f
@@ -25,8 +25,8 @@ $night-highlight-background = #21252b
 $night-highlight-gutter-color = lighten($dark-default-text-color, 5%)
 $night-highlight-gutter-bg-color = #21252b
 $night-highlight-comment = #57A64A
-$night-highlight-red = #BD63C5;
-$night-highlight-orange = #B8D7A3;
+$night-highlight-red = #BD63C5
+$night-highlight-orange = #B8D7A3
 $night-highlight-yellow = #f0c674
 $night-highlight-green = #b5bd68
 $night-highlight-aqua = #8abeb7
@@ -36,44 +36,44 @@ $night-highlight-deletion = #600
 $night-highlight-addition = #144212
 
 code-theme(mode) {
-  --code-foreground: mode == 'light' ? $code-foreground : $night-code-foreground;
-  --code-background: mode == 'light' ? $code-background : $night-code-background;
-  --highlight-background: mode == 'light' ? $highlight-background : $night-highlight-background;
-  --highlight-foreground: mode == 'light' ? $highlight-foreground : $night-highlight-foreground;
-  --highlight-comment: mode == 'light' ? $highlight-comment : $night-highlight-comment;
-  --highlight-red: mode == 'light' ? $highlight-red : $night-highlight-red;
-  --highlight-orange: mode == 'light' ? $highlight-orange : $night-highlight-orange;
-  --highlight-yellow: mode == 'light' ? $highlight-yellow : $night-highlight-yellow;
-  --highlight-green: mode == 'light' ? $highlight-green : $night-highlight-green;
-  --highlight-aqua: mode == 'light' ? $highlight-aqua : $night-highlight-aqua;
-  --highlight-blue: mode == 'light' ? $highlight-blue : $night-highlight-blue;
-  --highlight-purple: mode == 'light' ? $highlight-purple : $night-highlight-purple;
-  --highlight-gutter-color: mode == 'light' ? $highlight-gutter-color : $night-highlight-gutter-color;
-  --highlight-gutter-bg-color: mode == 'light' ? $highlight-gutter-bg-color : $night-highlight-gutter-bg-color;
+  --code-foreground mode == 'light' ? $code-foreground : $night-code-foreground
+  --code-background mode == 'light' ? $code-background : $night-code-background
+  --highlight-background mode == 'light' ? $highlight-background : $night-highlight-background
+  --highlight-foreground mode == 'light' ? $highlight-foreground : $night-highlight-foreground
+  --highlight-comment mode == 'light' ? $highlight-comment : $night-highlight-comment
+  --highlight-red mode == 'light' ? $highlight-red : $night-highlight-red
+  --highlight-orange mode == 'light' ? $highlight-orange : $night-highlight-orange
+  --highlight-yellow mode == 'light' ? $highlight-yellow : $night-highlight-yellow
+  --highlight-green mode == 'light' ? $highlight-green : $night-highlight-green
+  --highlight-aqua mode == 'light' ? $highlight-aqua : $night-highlight-aqua
+  --highlight-blue mode == 'light' ? $highlight-blue : $night-highlight-blue
+  --highlight-purple mode == 'light' ? $highlight-purple : $night-highlight-purple
+  --highlight-gutter-color mode == 'light' ? $highlight-gutter-color : $night-highlight-gutter-color
+  --highlight-gutter-bg-color mode == 'light' ? $highlight-gutter-bg-color : $night-highlight-gutter-bg-color
 }
 
 
 :root {
-  code-theme('light');
+  code-theme('light')
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme light) {
   :root {
-    code-theme('light');
+    code-theme('light')
   }
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme dark) {
   :root {
-    code-theme('dark');
+    code-theme('dark')
   }
 }
 
 .light-mode {
-  code-theme('light');
+  code-theme('light')
 }
 
 .dark-mode {
-  code-theme('dark');
+  code-theme('dark')
 }
 

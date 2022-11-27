@@ -1,90 +1,90 @@
-$avatarWidth = 46px;
-$arrow-icon-width = 16px;
-$post-nav-max-width = 220px;
-$article-title-font-size = 1.6rem;
+$avatarWidth = 46px
+$arrow-icon-width = 16px
+$post-nav-max-width = 220px
+$article-title-font-size = 1.6rem
 
 .article-content-container {
 
-  redefine-container(false, 0, 0, 30px, 30px);
+  redefine-container(false, 0, 0, 30px, 30px)
 
   +redefine-mobile() {
-    padding: 1.2rem 0.2rem;
-    box-shadow: none;
+    padding 1.2rem 0.2rem
+    box-shadow none
   }
 
   .article-title {
-    font-family: "Noto Sans SC", sans-serif;
-    color: var(--second-text-color);
-    font-weight: 600;
-    font-size: $article-title-font-size;
+    font-family "Noto Sans SC", sans-serif
+    color var(--second-text-color)
+    font-weight 600
+    font-size $article-title-font-size
 
     +redefine-tablet() {
-      font-size: $article-title-font-size * 0.9;
+      font-size $article-title-font-size * 0.9
     }
 
     +redefine-mobile() {
-      font-size: $article-title-font-size * 0.8;
+      font-size $article-title-font-size * 0.8
     }
   }
 
 
   .article-header {
-    font-family: "Noto Sans", "Noto Sans SC", sans-serif;
-    position: relative;
-    padding-left: $avatarWidth;
-    width: 100%;
-    height: $avatarWidth;
-    box-sizing: border-box;
+    font-family "Noto Sans", "Noto Sans SC", sans-serif
+    position relative
+    padding-left $avatarWidth
+    width 100%
+    height $avatarWidth
+    box-sizing border-box
 
     .avatar {
-      position: absolute;
-      top: 0
-      left: 0;
-      width: $avatarWidth;
-      height: $avatarWidth;
-      padding: 1px;
-      box-sizing: border-box;
-      border: 1px solid var(--border-color);
-      border-radius: 50%;
+      position absolute
+      top 0
+      left 0
+      width $avatarWidth
+      height $avatarWidth
+      padding 1px
+      box-sizing border-box
+      border 1px solid var(--border-color)
+      border-radius 50%
 
       img {
-        border-radius: 50%;
-        width: 100%;
-        height: 100%;
-        background: var(--avatar-background-color);
+        border-radius 50%
+        width 100%
+        height 100%
+        background var(--avatar-background-color)
       }
 
     }
 
 
     .info {
-      padding: 2px 0;
-      margin-left: 10px;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 100%;
-      height: 100%;
+      padding 2px 0
+      margin-left 10px
+      box-sizing border-box
+      display flex
+      flex-direction column
+      justify-content space-between
+      width 100%
+      height 100%
 
       .author {
-        font-weight: regular;
-        font-size: 1.18rem;
-        display: flex;
-        align-items: center;
+        font-weight regular
+        font-size 1.18rem
+        display flex
+        align-items center
 
         .name {
-          color: var(--default-text-color);
+          color var(--default-text-color)
         }
 
         .author-label {
-          margin-left: 10px;
-          font-size: 0.8rem;
-          font-weight: 500;
-          padding: 0 5px;
-          border-radius: 6px;
-          color: #fff;
-          background: var(--selection-color);
+          margin-left 10px
+          font-size 0.8rem
+          font-weight 500
+          padding 0 5px
+          border-radius 6px
+          color #fff
+          background var(--selection-color)
         }
 
       }
@@ -94,128 +94,128 @@ $article-title-font-size = 1.6rem;
 
 
   .article-header, .article-header-meta-info {
-    margin-top: 16px;
+    margin-top 16px
     +redefine-tablet() {
-      transform: scale(0.9);
-      transform-origin: left top;
+      transform scale(0.9)
+      transform-origin left top
     }
   }
 
 
   .article-content {
-    margin-top: $component-spacing-value;
-    padding-bottom: 10px;
-    word-wrap: break-word;
-    border-bottom: 1px solid var(--border-color);
-    color: var(--default-text-color);
+    margin-top $component-spacing-value
+    padding-bottom 10px
+    word-wrap break-word
+    border-bottom 1px solid var(--border-color)
+    color var(--default-text-color)
   }
 
 
   .post-tags-box {
-    display: none;
-    margin-top: 1.6rem;
-    justify-content: center;
-    font-size: 1.1rem;
+    display none
+    margin-top 1.6rem
+    justify-content center
+    font-size 1.1rem
 
     +redefine-tablet() {
-      display: flex;
+      display flex
     }
 
     +redefine-mobile() {
-      margin-top: 1.2rem;
-      font-size: 1rem;
+      margin-top 1.2rem
+      font-size 1rem
     }
 
 
     .tag-item {
-      margin: 0 0.25rem;
+      margin 0 0.25rem
     }
   }
 
   .post-copyright-info {
-    margin-top: $component-spacing-value;
-    width: 100%;
+    margin-top $component-spacing-value
+    width 100%
 
     +redefine-tablet() {
-      margin-top: $component-spacing-value * 0.8;
+      margin-top $component-spacing-value * 0.8
     }
   }
 
 
   .article-nav {
-    height: 40px;
-    margin-top: $component-spacing-value;
+    height 40px
+    margin-top $component-spacing-value
 
     .article-prev, .article-next {
-      max-width: $post-nav-max-width;
-      height: 100%;
-      box-sizing: border-box;
+      max-width $post-nav-max-width
+      height 100%
+      box-sizing border-box
 
-      redefine-container(true, 1.03, 1.03, 10px, 0);
+      redefine-container(true, 1.03, 1.03, 10px, 0)
 
       a {
-        position: relative;
-        display: block;
-        width: 100%;
-        height: 100%;
-        box-sizing: border-box;
+        position relative
+        display block
+        width 100%
+        height 100%
+        box-sizing border-box
 
         &.prev {
-          padding-left: $arrow-icon-width;
+          padding-left $arrow-icon-width
         }
 
         &.next {
-          padding-right: $arrow-icon-width;
+          padding-right $arrow-icon-width
         }
 
         .arrow-icon {
-          position: absolute;
-          top: 0;
-          height: 100%;
-          width: $arrow-icon-width;
+          position absolute
+          top 0
+          height 100%
+          width $arrow-icon-width
 
           &.left {
-            left: 0;
+            left 0
           }
 
           &.right {
-            right: 0;
+            right 0
           }
         }
 
         .title {
-          width: 100%;
-          height: 100%;
+          width 100%
+          height 100%
         }
       }
 
     }
 
     .article-prev {
-      float: left;
+      float left
     }
 
     .article-next {
-      float: right;
+      float right
     }
 
     .post-nav-item {
-      display: none;
+      display none
 
       +redefine-tablet() {
-        display: inline-block;
+        display inline-block
       }
 
     }
 
 
     .post-nav-title-item {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      overflow hidden
+      text-overflow ellipsis
+      white-space nowrap
 
       +redefine-tablet() {
-        display: none;
+        display none
       }
     }
 

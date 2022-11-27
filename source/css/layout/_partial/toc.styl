@@ -1,76 +1,76 @@
 .post-toc-wrap {
-  width: 100%;
-  font-size: 0.92rem;
-  box-sizing: border-box;
-  font-family: "Noto Sans", sans-serif;
+  width 100%
+  font-size 0.92rem
+  box-sizing border-box
+  font-family "Noto Sans", sans-serif
 
   .post-toc {
 
     ol {
-      list-style: none;
-      margin: 0;
-      padding: 0 2px 12px 10px;
-      text-align: left;
+      list-style none
+      margin 0
+      padding 0 2px 12px 10px
+      text-align left
 
       &:last-child {
-        padding-bottom: 0;
+        padding-bottom 0
       }
 
       > ol {
-        padding-left: 0;
+        padding-left 0
       }
 
       a {
-        transition-property: all;
-        transition();
+        transition-property all
+        transition()
       }
     }
 
 
     .nav-item {
-      line-height: 2;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      //word-wrap:break-word;
-      font-size: 0.9rem;
+      line-height 2
+      overflow hidden
+      text-overflow ellipsis
+      white-space nowrap
+      //word-wrap:break-word
+      font-size 0.9rem
     }
 
 
     .nav {
       .nav-child {
-        display: hexo-config('toc.expand_all') ? block : none;
+        display hexo-config('toc.expand_all') ? block : none
       }
 
       .active > .nav-child {
-        display: block;
+        display block
       }
 
       .active-current > .nav-child {
-        display: block;
+        display block
 
         > .nav-item {
-          display: block;
+          display block
         }
       }
 
 
       .nav-number, .nav-text {
-        color: var(--default-text-color);
+        color var(--default-text-color)
       }
 
       .active > a {
         .nav-number, .nav-text {
-          color: var(--primary-color);
-          font-weight: bold;
+          color var(--primary-color)
+          font-weight bold
         }
       }
 
       .active-current > a {
         .nav-number, .nav-text {
-          //color: var(--primary-color);
-          font-weight: bold;
-          transition-duration: 0.1s;
+          //color var(--primary-color)
+          font-weight bold
+          transition-duration 0.1s
         }
       }
     }

@@ -1,65 +1,65 @@
 disable-user-select() {
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
+  -moz-user-select none
+  -ms-user-select none
+  -webkit-user-select none
+  user-select none
 }
 
 .highlight-container[data-rel]{
-  position: relative;
+  position relative
 }
 
 .highlight-container:hover .copy-btn, .highlight-container .copy-btn:focus {
-  opacity: 1;
+  opacity 1
 }
 
 .copy-btn {
-  cursor: pointer;
-  display: inline-block;
-  font-weight: bold;
-  line-height: 1.8;
-  opacity: 0;
-  outline: 0;
-  padding: 2px 6px;
-  position: absolute;
-  vertical-align: middle;
-  white-space: nowrap;
-  font-size: 1rem;
-  color: var(--default-text-color);
-  disable-user-select();
-  transition-t("opacity", "0", "0.2", "ease-in-out");
+  cursor pointer
+  display inline-block
+  font-weight bold
+  line-height 1.8
+  opacity 0
+  outline 0
+  padding 2px 6px
+  position absolute
+  vertical-align middle
+  white-space nowrap
+  font-size 1rem
+  color var(--default-text-color)
+  disable-user-select()
+  transition-t("opacity", "0", "0.2", "ease-in-out")
 
 
-  background: var(--background-color);
-  border: 0;
-  right: 0;
-  top: 0;
+  background var(--background-color)
+  border 0
+  right 0
+  top 0
 }
 
 
 
 .highlight-container[data-rel]{
-  background: #21252b;
-  border-radius: 14px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-  padding-top: 20px;
-  margin-top: 10px;
+  background #21252b
+  border-radius 14px
+  box-shadow rgba(0, 0, 0, 0.1) 0px 4px 12px
+  padding-top 20px
+  margin-top 10px
 
   &::before {
     position absolute
-    content:attr(data-rel);
+    content:attr(data-rel)
     line-height 38px
-    border-radius: 50%;
-    box-shadow: none
-    height: 12px;
-    left: 12px;
-    position: absolute;
-    width: auto;
-    margin-left: 80px;
+    border-radius 50%
+    box-shadow none
+    height 12px
+    left 12px
+    position absolute
+    width auto
+    margin-left 80px
     top 0
-    color: #CACAD0;
+    color #CACAD0
     font-weight bold
-    font-size: 16px;
+    font-size 16px
   }
 
   &::after{

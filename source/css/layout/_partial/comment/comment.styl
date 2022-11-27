@@ -1,40 +1,40 @@
-//@import "waline-config.styl";
+//@import "waline-config.styl"
 
 if (hexo-config('comment.enable') == true && hexo-config('comment.use') != "") {
   if (hexo-config('comment.use') == "valine") {
-    @require "./valine.styl";
+    @require "./valine.styl"
 
   } else if (hexo-config('comment.use') == "gitalk") {
-    @require "./gitalk.styl";
+    @require "./gitalk.styl"
 
   } else if (hexo-config('comment.use') == "twikoo") {
-    @require "./twikoo.styl";
+    @require "./twikoo.styl"
   }
 }
 
 .comments-container {
-  display: inline-block;
-  margin-top: $component-spacing-value;
-  width: 100%;
+  display inline-block
+  margin-top $component-spacing-value
+  width 100%
 
   #comment-anchor {
-    width: 100%;
-    height: 10px;
+    width 100%
+    height 10px
   }
 
   .comment-area-title {
-    width: 100%;
-    margin: 10px 0;
-    font-size: 1.38rem;
-    color: var(--default-text-color);
+    width 100%
+    margin 10px 0
+    font-size 1.38rem
+    color var(--default-text-color)
 
     i {
-      color: var(--default-text-color);
+      color var(--default-text-color)
     }
 
     +redefine-tablet() {
-      margin: 5px 0;
-      font-size: 1.2rem;
+      margin 5px 0
+      font-size 1.2rem
     }
   }
 

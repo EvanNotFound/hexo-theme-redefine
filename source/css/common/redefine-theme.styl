@@ -1,53 +1,53 @@
-$redefine-container-border-radius = 18px;
+$redefine-container-border-radius = 18px
 
 hover-style(isTransform, scaleX, scaleY) {
-  box-shadow: var(--shadow-color-2) 0px 6px 24px 0px, var(--shadow-color-1) 0px 0px 0px 1px;
+  box-shadow var(--shadow-color-2) 0px 6px 24px 0px, var(--shadow-color-1) 0px 0px 0px 1px
 
   if (isTransform) {
-    transition-t("transform", "0", "0.2", "linear");
+    transition-t("transform", "0", "0.2", "linear")
   }
 
   &:hover {
     if (hexo-config('style.hover.scale') && isTransform) {
-      transform: scaleX(scaleX) scaleY(scaleX);
+      transform scaleX(scaleX) scaleY(scaleX)
     }
 
     if (hexo-config('style.hover.shadow')) {
-      box-shadow: var(--shadow-color-2) 0px 6px 24px 0px, var(--shadow-color-1) 0px 0px 0px 1px, var(--shadow-color-1) 0px 0px 0px 1px inset;
+      box-shadow var(--shadow-color-2) 0px 6px 24px 0px, var(--shadow-color-1) 0px 0px 0px 1px, var(--shadow-color-1) 0px 0px 0px 1px inset
     }
   }
 }
 
 
 redefine-container(isTransform, scaleX, scaleY, padding, marginBottomValue) {
-  padding: padding;
-  border-radius: $redefine-container-border-radius;
-  box-sizing: border-box;
-  background: var(--background-color);
+  padding padding
+  border-radius $redefine-container-border-radius
+  box-sizing border-box
+  background var(--background-color)
 
   if (marginBottomValue != 0) {
-    margin-bottom: marginBottomValue;
+    margin-bottom marginBottomValue
 
     +redefine-tablet() {
-      margin-bottom: marginBottomValue * 0.8;
+      margin-bottom marginBottomValue * 0.8
     }
 
     +redefine-mobile() {
-      margin-bottom: marginBottomValue * 0.6;
+      margin-bottom marginBottomValue * 0.6
     }
   }
 
 
-  hover-style(isTransform, scaleX, scaleY);
+  hover-style(isTransform, scaleX, scaleY)
 
   +redefine-tablet() {
-    padding: padding * 0.8;
-    border-radius: $redefine-container-border-radius * 0.8;
+    padding padding * 0.8
+    border-radius $redefine-container-border-radius * 0.8
   }
 
 
   +redefine-mobile() {
-    padding: padding * 0.6;
-    border-radius: $redefine-container-border-radius * 0.6;
+    padding padding * 0.6
+    border-radius $redefine-container-border-radius * 0.6
   }
 }
