@@ -1,109 +1,109 @@
 .home-content-container {
-  background: var(--background-color);
+  background var(--background-color)
 
 
   .home-article-list {
 
     .home-article-item {
-      position: relative;
+      position relative
 
-      redefine-container(true, 1.015, 1.015, 28px, 38px);
+      redefine-container(true, 1.015, 1.015, 28px, 38px)
 
       .top-icon {
-        position: absolute;
-        top: 10px;
-        right: 12px;
-        font-size: 1.2rem;
-        transform: rotate(45deg);
-        color: var(--third-text-color);
+        position absolute
+        top 10px
+        right 12px
+        font-size 1.2rem
+        transform rotate(45deg)
+        color var(--third-text-color)
 
 
         +redefine-tablet() {
-          font-size: 1.16rem;
+          font-size 1.16rem
         }
       }
 
 
       .home-article-title {
-        position: relative;
-        font-weight: 600;
-        font-size: 1.4rem;
-        line-height: 1.5;
-        color: var(--second-text-color);
+        position relative
+        font-weight 600
+        font-size 1.4rem
+        line-height 1.5
+        color var(--second-text-color)
 
 
         +redefine-tablet() {
-          font-size: 1.3rem;
+          font-size 1.3rem
         }
 
 
         +redefine-mobile() {
-          font-size: 1.2rem;
+          font-size 1.2rem
         }
 
-        margin: 0;
+        margin 0
 
       }
 
 
       .home-article-content {
-        word-wrap: break-word;
-        text-align: justify;
-        margin: 20px 0;
-        color: var(--default-text-color);
+        word-wrap break-word
+        text-align justify
+        margin 20px 0
+        color var(--default-text-color)
       }
 
 
       .home-article-meta-info-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 0.92rem;
-        color: var(--third-text-color);
+        display flex
+        justify-content space-between
+        align-items center
+        font-size 0.92rem
+        color var(--third-text-color)
 
 
         .home-article-meta-info {
-          letter-spacing: 0.5px;
+          letter-spacing 0.5px
 
           span {
-            margin-right: 10px;
+            margin-right 10px
 
             &:last-child {
-              margin-right: 0;
+              margin-right 0
             }
 
             ul, li {
-              display: inline;
+              display inline
             }
           }
 
           .home-article-category {
             +redefine-mobile() {
-              display: none;
+              display none
             }
           }
 
           .home-article-tag {
             +redefine-tablet() {
-              display: none;
+              display none
             }
           }
         }
 
 
         hr {
-          border: none;
-          flex: 1;
-          height: 1px;
-          background: var(--border-color);
-          margin: 0 10px;
+          border none
+          flex 1
+          height 1px
+          background var(--border-color)
+          margin 0 10px
         }
 
         a {
-          color: var(--third-text-color);
+          color var(--third-text-color)
 
           &:hover {
-            color: var(--primary-color)
+            color var(--primary-color)
           }
         }
       }

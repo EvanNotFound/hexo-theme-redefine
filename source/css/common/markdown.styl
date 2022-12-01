@@ -1,88 +1,88 @@
 .markdown-body {
-  font-family: "Open Sans", "Noto Sans SC", sans-serif;
-  font-size: 1.2rem;
+  font-family "Open Sans", "Noto Sans SC", sans-serif
+  font-size 1.2rem
 
   blockquote {
 
     p,
     ul,
     ol {
-      padding: 5px 5px 5px 10px;
+      padding 5px 5px 5px 10px
     }
 
-    box-sizing: border-box;
-    border-left: 5px solid var(--default-text-color);
-    margin: 20px 0;
-    color: var(--default-text-color);
-    background: var(--second-background-color);
+    box-sizing border-box
+    border-left 5px solid var(--default-text-color)
+    margin 20px 0
+    color var(--default-text-color)
+    background var(--second-background-color)
   }
 
 
   p {
-    line-height: 2;
-    color: var(--default-text-color);
+    line-height 2
+    color var(--default-text-color)
   }
 
 
   a {
-    position: relative;
-    outline: 0;
-    text-decoration: underline;
-    overflow-wrap: break-word;
-    cursor: pointer;
-    //border-bottom: 1px solid var(--third-text-color);
-    box-sizing: border-box;
-    padding-bottom: 2px;
+    position relative
+    outline 0
+    text-decoration underline
+    overflow-wrap break-word
+    cursor pointer
+    //border-bottom 1px solid var(--third-text-color)
+    box-sizing border-box
+    padding-bottom 2px
 
     .fas, .far, fab {
-      margin: 0 2px 0 6px;
-      position: relative;
-      color: var(--third-text-color);
-      font-size: 0.88rem;
+      margin 0 2px 0 6px
+      position relative
+      color var(--third-text-color)
+      font-size 0.88rem
     }
 
 
     &:hover {
-      text-decoration: underline;
+      text-decoration underline
 
       &::after {
-        background: var(--primary-color);
-        text-decoration: underline;
+        background var(--primary-color)
+        text-decoration underline
       }
     }
   }
 
 
   strong {
-    color: var(--default-text-color);
+    color var(--default-text-color)
   }
 
 
   em {
-    color: var(--default-text-color);
+    color var(--default-text-color)
   }
 
 
   ul > li,
   ol > li {
-    margin-left: 16px;
-    line-height: 2rem;
+    margin-left 16px
+    line-height 2rem
   }
 
 
   ul {
 
     li {
-      list-style: disc;
+      list-style disc
 
       ul {
 
         li {
-          list-style: circle;
+          list-style circle
 
           ul {
             li {
-              list-style: square;
+              list-style square
             }
           }
         }
@@ -94,16 +94,16 @@
   ol {
 
     li {
-      list-style: decimal;
+      list-style decimal
 
       ol {
 
         li {
-          list-style: upper-alpha;
+          list-style upper-alpha
 
           ol {
             li {
-              list-style: upper-roman;
+              list-style upper-roman
             }
           }
         }
@@ -113,132 +113,132 @@
 
 
   li {
-    color: var(--default-text-color);
+    color var(--default-text-color)
   }
 
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: "Noto Sans", "Noto Sans SC", sans-serif;
-    color: var(--second-text-color);
-    line-height: 1.5;
+    font-family "Noto Sans", "Noto Sans SC", sans-serif
+    color var(--second-text-color)
+    line-height 1.5
 
     +redefine-tablet() {
-      line-height: 1.25;
+      line-height 1.25
     }
   }
 
 
   h1 {
-    font-size: 1.8rem;
-    font-weight: 600;
-    border-bottom: solid 2px var(--fourth-text-color);
+    font-size 1.8rem
+    font-weight 600
+    border-bottom solid 2px var(--fourth-text-color)
 
     +redefine-tablet() {
-      font-size: 1.7rem;
+      font-size 1.7rem
     }
   }
 
 
   h2 {
-    font-size: 1.7rem;
-    font-weight: 600;
-    padding: 3px 0;
-    border-bottom: solid 2px var(--fourth-text-color);
+    font-size 1.7rem
+    font-weight 600
+    padding 3px 0
+    border-bottom solid 2px var(--fourth-text-color)
 
     +redefine-tablet() {
-      font-size: 1.6rem;
+      font-size 1.6rem
     }
   }
 
 
   h3 {
-    font-size: 1.6rem;
-    font-weight: 550;
+    font-size 1.6rem
+    font-weight 550
 
     +redefine-tablet() {
-      font-size: 1.5rem;
+      font-size 1.5rem
     }
   }
 
 
   h4 {
-    font-size: 1.5rem;
-    font-weight: 550;
+    font-size 1.5rem
+    font-weight 550
 
     +redefine-tablet() {
-      font-size: 1.4rem;
+      font-size 1.4rem
     }
   }
 
 
   h5 {
-    font-size: 1.28rem;
-    font-weight: 500;
+    font-size 1.28rem
+    font-weight 500
 
     +redefine-tablet() {
-      font-size: 1.18rem;
+      font-size 1.18rem
     }
   }
 
 
   h6 {
-    font-size: 1.2rem;
-    font-weight: 500;
-    line-height: 1.2;
+    font-size 1.2rem
+    font-weight 500
+    line-height 1.2
 
     +redefine-tablet() {
-      font-size: 1.1rem;
-      line-height: 1.1;
+      font-size 1.1rem
+      line-height 1.1
     }
   }
 
 
   img {
-    box-sizing: border-box;
-    border-radius: 12px;
-    max-width: 100%;
-    cursor: zoom-in;
-    display: block;
-    box-shadow: 0 0 2px var(--shadow-color);
-    transition-t("padding, margin", "0, 0", "0.2, 0.2", "linear, linear");
+    box-sizing border-box
+    border-radius 12px
+    max-width 100%
+    cursor zoom-in
+    display block
+    box-shadow 0 0 2px var(--shadow-color)
+    transition-t("padding, margin", "0, 0", "0.2, 0.2", "linear, linear")
 
     if (hexo-config('style.article_img_align') == 'center') {
-      margin: 10px auto 2px;
+      margin 10px auto 2px
     } else {
-      margin: 10px 0 2px;
+      margin 10px 0 2px
     }
 
   }
 
 
   & > table {
-    border-spacing: 0;
-    border-collapse: collapse;
-    width: 100%;
-    overflow: auto;
+    border-spacing 0
+    border-collapse collapse
+    width 100%
+    overflow auto
 
     td,
     th {
-      padding: 0;
+      padding 0
     }
 
     th {
-      font-weight: 600;
+      font-weight 600
     }
 
     td,
     th {
-      padding: 6px 13px;
-      border: 1px solid var(--border-color);
+      padding 6px 13px
+      border 1px solid var(--border-color)
     }
 
     tr {
-      background-color: var(--background-color);
-      border: 1px solid var(--fourth-text-color);
+      background-color var(--background-color)
+      border 1px solid var(--fourth-text-color)
     }
 
     tr:nth-child(2n) {
-      background-color: var(--second-background-color);
+      background-color var(--second-background-color)
     }
   }
 }

@@ -1,63 +1,63 @@
-$first-screen-font-size = 2rem;
-$first-screen-icon-size = 1.6rem;
+$first-screen-font-size = 2rem
+$first-screen-icon-size = 1.6rem
 
 
 .first-screen-container {
-  font-family: "Optima", sans-serif;
-  position: relative;
-  box-sizing: border-box;
-  width: 100%;
-  overflow: hidden;
-  background: url($first-screen-img) center center / cover no-repeat;
+  font-family "Optima", sans-serif
+  position relative
+  box-sizing border-box
+  width 100%
+  overflow hidden
+  background url($first-screen-img) center center / cover no-repeat
 
 
 
   +redefine-tablet() {
-    background-position-y: $header-height * 0.9;
+    background-position-y $header-height * 0.9
   }
 
   +redefine-mobile() {
-    background-position-y: $header-height * 0.8;
+    background-position-y $header-height * 0.8
   }
 
   .content {
-    position: relative;
-    box-sizing: border-box;
-    width: 80%;
-    height: 90%;
+    position relative
+    box-sizing border-box
+    width 80%
+    height 90%
 
     .description {
-      font-weight: bold;
-      font-size: $first-screen-font-size;
-      line-height: 1.8;
-      text-align: center;
-      color: var(--first-screen-text-color);
+      font-weight bold
+      font-size $first-screen-font-size
+      line-height 1.8
+      text-align center
+      color var(--first-screen-text-color)
 
 
       +redefine-tablet() {
-        font-size: $first-screen-font-size * 0.9;
+        font-size $first-screen-font-size * 0.9
       }
     }
 
 
     .s-icon-list {
-      position: absolute;
-      bottom: 0;
-      font-size: $first-screen-icon-size;
-      text-align: center;
+      position absolute
+      bottom 0
+      font-size $first-screen-icon-size
+      text-align center
 
       +redefine-tablet() {
-        font-size: $first-screen-icon-size * 0.9;
+        font-size $first-screen-icon-size * 0.9
       }
 
       .s-icon-item {
-        margin-right: 20px;
-        cursor: pointer;
-        line-height: 2;
-        color: #FFF;
+        margin-right 20px
+        cursor pointer
+        line-height 2
+        color #FFF
 
         &:last-child {
-          margin-right: 0;
+          margin-right 0
         }
 
       }
@@ -66,26 +66,26 @@ $first-screen-icon-size = 1.6rem;
   }
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme light) {
   .first-screen-container {
-    background: url($first-screen-img-light) center center / cover no-repeat !important;
+    background url($first-screen-img-light) center center / cover no-repeat !important
   }
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme dark) {
   .first-screen-container {
-    background: url($first-screen-img-dark) center center / cover no-repeat !important;
+    background url($first-screen-img-dark) center center / cover no-repeat !important
   }
 }
 
 .light-mode{
   .first-screen-container {
-    background: url($first-screen-img-light) center center / cover no-repeat !important;
+    background url($first-screen-img-light) center center / cover no-repeat !important
   }
 }
 
 .dark-mode{
   .first-screen-container {
-    background: url($first-screen-img-dark) center center / cover no-repeat !important;
+    background url($first-screen-img-dark) center center / cover no-repeat !important
   }
 }

@@ -50,7 +50,7 @@ style:
     title_color:
       light: "#fff" # first screen title color (light mode)
       dark: "#323739" # first screen title color (dark mode)
-    description: Theme Redefine # the title in the middle of the first screen
+    description: Theme Redefine # the title in the middle of the first screen. HTML supported (e.g. svg html code of your logo)
 
   # Scroll style settings
   scroll:

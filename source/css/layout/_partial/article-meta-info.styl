@@ -1,28 +1,28 @@
 .article-meta-info {
-  font-size: 0.8rem;
-  color: var(--third-text-color);
+  font-size 0.8rem
+  color var(--third-text-color)
 
   .article-meta-item {
-    margin-right: 10px;
+    margin-right 10px
 
     &:last-child {
-      margin-right: 0;
+      margin-right 0
     }
   }
 
   .article-date {
 
     .mobile {
-      display: none;
+      display none
     }
 
     +redefine-tablet() {
       .pc {
-        display: none;
+        display none
       }
 
       .mobile {
-        display: inline;
+        display inline
       }
     }
 
@@ -30,30 +30,30 @@
 
 
   .article-tags, .article-categories {
-    display: inline;
+    display inline
 
     ul, li {
-      display: inline;
+      display inline
     }
 
     a {
-      color: var(--third-text-color);
+      color var(--third-text-color)
 
       &:hover {
-        color: var(--primary-color);
+        color var(--primary-color)
       }
     }
   }
 
   .article-tags {
     +redefine-tablet() {
-      display: none;
+      display none
     }
   }
 
   .article-min2read, .article-wordcount {
     +redefine-mobile() {
-      display: none;
+      display none
     }
   }
 }
