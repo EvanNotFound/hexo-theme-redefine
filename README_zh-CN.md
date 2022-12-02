@@ -19,7 +19,7 @@
 
 ## 📷 屏幕截图
 
-<img width="1420" alt="Screen Shot 2022-11-11 at 8 55 39 PM" src="https://user-images.githubusercontent.com/68590232/201453764-75276390-8888-4c0f-9ccc-497cede23e00.png">
+![redefine-rendered-1](https://user-images.githubusercontent.com/68590232/205187762-a36826ef-7933-4483-84f8-1b5b36f18903.png)
 
 <img width="1428" alt="Screen Shot 2022-11-11 at 8 56 03 PM" src="https://user-images.githubusercontent.com/68590232/201453766-361b2dda-3ef9-4464-acde-42895af192a0.png">
 
