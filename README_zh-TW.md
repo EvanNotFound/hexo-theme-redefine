@@ -107,7 +107,3 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 如有問題，請發郵件到 [contact@evanluo.top](mailto:contact@evanluo.top). 我會及時回复
 
 如果我做的主題還不錯的話，歡迎給我 Github 點個 Star，謝謝
-
-或者，給我買一杯咖啡？
-
-<img src="https://user-images.githubusercontent.com/68590232/195916630-2785ca44-1199-45c6-8b57-1472ec3c6906.JPG" referrerpolicy="no-referrer" alt="IMG_7991" style="zoom:30%">

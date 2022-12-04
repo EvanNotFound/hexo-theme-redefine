@@ -92,13 +92,7 @@ Feel free to **pull request** and **send issues**.
 
 If you have any questions, please send an email to [contact@evanluo.top](mailto:contact@evanluo.top). I will reply in time.
 
-
-
-If you don't want to donate, you can still leave a comment on [my blog](https://www.evanluo.top) or **give me a star**.
-
-If, yes if, you think that this theme is pretty good, why not buy me a cup of coffee? Thanks.
-
-<img src="https://user-images.githubusercontent.com/68590232/195916630-2785ca44-1199-45c6-8b57-1472ec3c6906.JPG" referrerpolicy="no-referrer" alt="IMG_7991" style="zoom:30%">
+Please **give me a star** to support me, thanks!
 
 
 

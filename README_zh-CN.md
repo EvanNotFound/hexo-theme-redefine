@@ -105,9 +105,5 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 
 如果我做的主题还不错的话，欢迎给我 Github 点个 Star，谢谢
 
-或者，给我买一杯咖啡？
-
-<img src="https://user-images.githubusercontent.com/68590232/195916630-2785ca44-1199-45c6-8b57-1472ec3c6906.JPG" referrerpolicy="no-referrer" alt="IMG_7991" style="zoom:30%">
-
 
 
