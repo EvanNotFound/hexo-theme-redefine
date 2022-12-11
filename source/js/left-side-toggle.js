@@ -4,10 +4,10 @@ function initLeftSideToggle() {
   REDEFINE.utils.leftSideToggle = {
 
     toggleBar: document.querySelector('.page-aside-toggle'),
-    pageTopDom: document.querySelector('.page-main-content-top'),
-    containerDom: document.querySelector('.page-container'),
-    leftAsideDom: document.querySelector('.page-aside'),
+    postPageContainerDom: document.querySelector('.post-page-container'),
     toggleBarIcon: document.querySelector('.page-aside-toggle i'),
+    articleContentContainerDom: document.querySelector('.article-content-container'),
+    mainContentDom: document.querySelector('.main-content'),
 
     isOpenPageAside: false,
 
@@ -21,11 +21,12 @@ function initLeftSideToggle() {
     },
 
     changePageLayoutWhenOpenToggle(isOpen) {
-      this.toggleBarIcon && (this.toggleBarIcon.className = isOpen ? 'fas fa-outdent' : 'fas fa-indent');
-      const pageAsideWidth = REDEFINE.theme_config.style.left_side_width || '260px';
-      this.containerDom.style.paddingLeft = isOpen ? "210px" : '0';
-      //this.pageTopDom.style.paddingLeft = isOpen ? pageAsideWidth : '0';
-      this.leftAsideDom.style.left = isOpen ? '2.9%' : `-${pageAsideWidth}`;
+      this.toggleBarIcon && (this.toggleBarIcon.className = isOpen ? 'fas fa-indent' : 'fas fa-outdent');
+      this.postPageContainerDom.className = isOpen ? 'post-page-container show-toc' : 'post-page-container';
+      this.mainContentDom.className = isOpen ? 'main-content has-toc' : 'main-content';
+      //this.articleContentContainerDom.style.width = isOpen ? '$content-max-width * 1.2 - $toc-container-width !important' : '$content-max-width - $toc-container-width !important';
+      //this.pageTopDom.style.paddingLeft = isOpen ? pageAsideWidth :'0';
+      //this.rightAsideDom.style.right = isOpen ? '5%' : `-${pageAsideWidth}`;
     },
 
     pageAsideHandleOfTOC(isOpen) {

@@ -94,7 +94,7 @@ function initTOC() {
     REDEFINE.utils.registerSidebarTOC();
 
   } else {
-    REDEFINE.utils.pageContainer_dom.removeChild(document.querySelector('.page-aside'));
+    REDEFINE.utils.pageContainer_dom.removeChild(document.querySelector('.toc-content-container'));
   }
 }
 

@@ -2,224 +2,292 @@ $avatarWidth = 46px
 $arrow-icon-width = 16px
 $post-nav-max-width = 220px
 $article-title-font-size = 1.6rem
+$temp-toc-width = hexo-config('style.right_side_width')
+$toc-container-width = $temp-toc-width ? convert($temp-toc-width) : 210px
+$without-toc-container-width = calc(100% - 210px)
+.post-page-container{
+  display flex
+  position relative
+  justify-content space-between
+  box-sizing border-box
+  width 100%
+  height 100%
 
-.article-content-container {
+  &.show-toc {
+    .toc-content-container {
+      display block
+    }
 
-  redefine-container(false, 0, 0, 30px, 30px)
-
-  +redefine-mobile() {
-    padding 1.2rem 0.2rem
-    box-shadow none
+    .article-content-container {
+      width $without-toc-container-width !important
+    }
   }
 
-  .article-title {
-    font-family "Noto Sans SC", sans-serif
-    color var(--second-text-color)
-    font-weight 600
-    font-size $article-title-font-size
-
-    +redefine-tablet() {
-      font-size $article-title-font-size * 0.9
+  +redefine-tablet() {
+    .toc-content-container {
+      display none !important
     }
+
+    .article-content-container {
+      width 100% !important
+    }
+
+    &.show-toc {
+      .toc-content-container {
+        display none
+      }
+
+      .article-content-container {
+        width 100% !important
+      }
+    }
+  }
+
+
+  .article-content-container {
+    width 100%
+    margin-right: 30px
+
+    redefine-container(false, 0, 0, 30px, 30px)
 
     +redefine-mobile() {
-      font-size $article-title-font-size * 0.8
+      padding 1.2rem 0.2rem
+      box-shadow none
     }
-  }
+
+    .article-title {
+      font-family "Noto Sans SC", sans-serif
+      color var(--second-text-color)
+      font-weight 600
+      font-size $article-title-font-size
+
+      +redefine-tablet() {
+        font-size $article-title-font-size * 0.9
+      }
+
+      +redefine-mobile() {
+        font-size $article-title-font-size * 0.8
+      }
+    }
 
 
-  .article-header {
-    font-family "Noto Sans", "Noto Sans SC", sans-serif
-    position relative
-    padding-left $avatarWidth
-    width 100%
-    height $avatarWidth
-    box-sizing border-box
-
-    .avatar {
-      position absolute
-      top 0
-      left 0
-      width $avatarWidth
+    .article-header {
+      font-family "Noto Sans", "Noto Sans SC", sans-serif
+      position relative
+      padding-left $avatarWidth
+      width 100%
       height $avatarWidth
-      padding 1px
       box-sizing border-box
-      border 1px solid var(--border-color)
-      border-radius 50%
 
-      img {
+      .avatar {
+        position absolute
+        top 0
+        left 0
+        width $avatarWidth
+        height $avatarWidth
+        padding 1px
+        box-sizing border-box
+        border 1px solid var(--border-color)
         border-radius 50%
+
+        img {
+          border-radius 50%
+          width 100%
+          height 100%
+          background var(--avatar-background-color)
+        }
+
+      }
+
+
+      .info {
+        padding 2px 0
+        margin-left 10px
+        box-sizing border-box
+        display flex
+        flex-direction column
+        justify-content space-between
         width 100%
         height 100%
-        background var(--avatar-background-color)
+
+        .author {
+          font-weight regular
+          font-size 1.18rem
+          display flex
+          align-items center
+
+          .name {
+            color var(--default-text-color)
+          }
+
+          .author-label {
+            margin-left 10px
+            font-size 0.8rem
+            font-weight 500
+            padding 0 5px
+            border-radius 6px
+            color #fff
+            background var(--selection-color)
+          }
+
+        }
       }
 
     }
 
 
-    .info {
-      padding 2px 0
-      margin-left 10px
-      box-sizing border-box
-      display flex
-      flex-direction column
-      justify-content space-between
-      width 100%
-      height 100%
+    .article-header, .article-header-meta-info {
+      margin-top 16px
+      +redefine-tablet() {
+        transform scale(0.9)
+        transform-origin left top
+      }
+    }
 
-      .author {
-        font-weight regular
-        font-size 1.18rem
+
+    .article-content {
+      margin-top $component-spacing-value
+      padding-bottom 10px
+      word-wrap break-word
+      border-bottom 1px solid var(--border-color)
+      color var(--default-text-color)
+    }
+
+
+    .post-tags-box {
+      display none
+      margin-top 1.6rem
+      justify-content center
+      font-size 1.1rem
+
+      +redefine-tablet() {
         display flex
-        align-items center
+      }
 
-        .name {
-          color var(--default-text-color)
-        }
+      +redefine-mobile() {
+        margin-top 1.2rem
+        font-size 1rem
+      }
 
-        .author-label {
-          margin-left 10px
-          font-size 0.8rem
-          font-weight 500
-          padding 0 5px
-          border-radius 6px
-          color #fff
-          background var(--selection-color)
-        }
 
+      .tag-item {
+        margin 0 0.25rem
       }
     }
 
-  }
+    .post-copyright-info {
+      margin-top $component-spacing-value
+      width 100%
 
-
-  .article-header, .article-header-meta-info {
-    margin-top 16px
-    +redefine-tablet() {
-      transform scale(0.9)
-      transform-origin left top
-    }
-  }
-
-
-  .article-content {
-    margin-top $component-spacing-value
-    padding-bottom 10px
-    word-wrap break-word
-    border-bottom 1px solid var(--border-color)
-    color var(--default-text-color)
-  }
-
-
-  .post-tags-box {
-    display none
-    margin-top 1.6rem
-    justify-content center
-    font-size 1.1rem
-
-    +redefine-tablet() {
-      display flex
-    }
-
-    +redefine-mobile() {
-      margin-top 1.2rem
-      font-size 1rem
+      +redefine-tablet() {
+        margin-top $component-spacing-value * 0.8
+      }
     }
 
 
-    .tag-item {
-      margin 0 0.25rem
-    }
-  }
+    .article-nav {
+      height 40px
+      margin-top $component-spacing-value
 
-  .post-copyright-info {
-    margin-top $component-spacing-value
-    width 100%
-
-    +redefine-tablet() {
-      margin-top $component-spacing-value * 0.8
-    }
-  }
-
-
-  .article-nav {
-    height 40px
-    margin-top $component-spacing-value
-
-    .article-prev, .article-next {
-      max-width $post-nav-max-width
-      height 100%
-      box-sizing border-box
-
-      redefine-container(true, 1.03, 1.03, 10px, 0)
-
-      a {
-        position relative
-        display block
-        width 100%
+      .article-prev, .article-next {
+        max-width $post-nav-max-width
         height 100%
         box-sizing border-box
 
-        &.prev {
-          padding-left $arrow-icon-width
-        }
+        redefine-container(true, 1.03, 1.03, 10px, 0)
 
-        &.next {
-          padding-right $arrow-icon-width
-        }
-
-        .arrow-icon {
-          position absolute
-          top 0
-          height 100%
-          width $arrow-icon-width
-
-          &.left {
-            left 0
-          }
-
-          &.right {
-            right 0
-          }
-        }
-
-        .title {
+        a {
+          position relative
+          display block
           width 100%
           height 100%
+          box-sizing border-box
+
+          &.prev {
+            padding-left $arrow-icon-width
+          }
+
+          &.next {
+            padding-right $arrow-icon-width
+          }
+
+          .arrow-icon {
+            position absolute
+            top 0
+            height 100%
+            width $arrow-icon-width
+
+            &.left {
+              left 0
+            }
+
+            &.right {
+              right 0
+            }
+          }
+
+          .title {
+            width 100%
+            height 100%
+          }
+        }
+
+      }
+
+      .article-prev {
+        float left
+      }
+
+      .article-next {
+        float right
+      }
+
+      .post-nav-item {
+        display none
+
+        +redefine-tablet() {
+          display inline-block
+        }
+
+      }
+
+
+      .post-nav-title-item {
+        overflow hidden
+        text-overflow ellipsis
+        white-space nowrap
+
+        +redefine-tablet() {
+          display none
         }
       }
-
     }
-
-    .article-prev {
-      float left
-    }
-
-    .article-next {
-      float right
-    }
-
-    .post-nav-item {
-      display none
-
-      +redefine-tablet() {
-        display inline-block
-      }
-
-    }
-
-
-    .post-nav-title-item {
-      overflow hidden
-      text-overflow ellipsis
-      white-space nowrap
-
-      +redefine-tablet() {
-        display none
-      }
-    }
-
   }
 
+  .toc-content-container {
+    position sticky
+    top $header-height + $component-spacing-value
+    //border-radius 18px
+    border-radius 0
+    display none
+    width $toc-container-width
+    height auto
+    max-height calc(100vh - 210px)
+    //z-index $z-index-6
+    overflow-y auto
+    float right
+    padding 10px
+    box-sizing border-box
+    box-shadow none !important
+    
 
+    hover-style(false, 0, 0)
+
+    transition-t("display", "0", "0.3", "ease-out")
+
+    +redefine-tablet() {
+      left 0 !important
+      display none !important
+    }
+  }
 }

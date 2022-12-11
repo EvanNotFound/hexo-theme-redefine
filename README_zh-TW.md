@@ -19,11 +19,12 @@
 
 ## 📷 屏幕截圖
 
-<img width="1420" alt="Screen Shot 2022-11-11 at 8 55 39 PM" src="https://user-images.githubusercontent.com/68590232/201453764-75276390-8888-4c0f-9ccc-497cede23e00.png">
+![redefine-rendered-1](https://user-images.githubusercontent.com/68590232/206929384-70de96a9-71ce-415b-af72-0ccebddd0d5c.png)
 
-<img width="1428" alt="Screen Shot 2022-11-11 at 8 56 03 PM" src="https://user-images.githubusercontent.com/68590232/201453766-361b2dda-3ef9-4464-acde-42895af192a0.png">
+![redefine-rendered-2](https://user-images.githubusercontent.com/68590232/206929386-93ca5470-6fc3-4f6d-a7a1-9cb6a182b0f6.png)
 
-<img width="1428" alt="Screen Shot 2022-11-11 at 8 56 25 PM" src="https://user-images.githubusercontent.com/68590232/201453768-6b3a3a2e-5d2a-4683-b207-bc08ce55812c.png">
+
+![redefine-rendered-3](https://user-images.githubusercontent.com/68590232/206929149-f2ac77cc-c309-4d9e-a87a-bf13f4a4419c.png)
 
 
 ## 🌐 在線演示站
@@ -105,7 +106,3 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 如有問題，請發郵件到 [contact@evanluo.top](mailto:contact@evanluo.top). 我會及時回复
 
 如果我做的主題還不錯的話，歡迎給我 Github 點個 Star，謝謝
-
-或者，給我買一杯咖啡？
-
-<img src="https://user-images.githubusercontent.com/68590232/195916630-2785ca44-1199-45c6-8b57-1472ec3c6906.JPG" referrerpolicy="no-referrer" alt="IMG_7991" style="zoom:30%">

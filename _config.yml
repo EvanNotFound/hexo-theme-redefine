@@ -25,10 +25,10 @@ style:
   article_img_align: center # value: left | center
 
   # Left side width
-  left_side_width: 240px #sidebar width, for toc
+  right_side_width: 210px #sidebar width, for toc
 
   # Content area max width
-  content_max_width: 960px #content max width, for article
+  content_max_width: 1000px #content max width, for article
 
   #navigation bar background color (from left to right)
   nav_color: 
@@ -45,11 +45,11 @@ style:
   first_screen:
     enable: true
     background_image:
-      light: /images/wallhaven-bg-light.webp # background image of the first screen, use relative path or external link (if your website is in subdirectory, use external link)
-      dark: /images/wallhaven-bg-dark.webp # background image of the first screen, use relative path or external link (if your website is in subdirectory, use external link)
+      light: https://evan.beee.top/img/wallhaven-wqery6-light.webp # background image of the first screen, use relative path or external link (if your website is in subdirectory, use external link)
+      dark: https://evan.beee.top/img/wallhaven-wqery6-dark.webp # background image of the first screen, use relative path or external link (if your website is in subdirectory, use external link)
     title_color:
       light: "#fff" # first screen title color (light mode)
-      dark: "#323739" # first screen title color (dark mode)
+      dark: "#d1d1b6" # first screen title color (dark mode)
     description: Theme Redefine # the title in the middle of the first screen. HTML supported (e.g. svg html code of your logo)
 
   # Scroll style settings
@@ -227,4 +227,4 @@ footer:
 # ---------------------------------------------------------------------------------------
 # Redefine Theme version (Please don't modify)
 # ---------------------------------------------------------------------------------------
-version: 0.3.4
+version: 0.3.5
