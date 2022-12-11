@@ -40,7 +40,10 @@
                     <%- partial('_partial/page-template') %>
 
                 <% } %>
+
             </div>
+
+
 
         </div>
 
@@ -58,12 +61,6 @@
     <div class="right-bottom-side-tools">
         <%- partial('_partial/side-tools') %>
     </div>
-
-    <% if (is_post() && theme.toc.enable === true) { %>
-        <aside class="page-aside">
-            <%- partial('_partial/toc') %>
-        </aside>
-    <% } %>
 
     <%- partial('_partial/image-viewer') %>
 

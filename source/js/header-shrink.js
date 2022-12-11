@@ -14,12 +14,10 @@ REDEFINE.initHeaderShrink = () => {
       if (!this.isHeaderShrink && scrollTop > this.headerHeight) {
         this.isHeaderShrink = true;
         document.body.classList.add('header-shrink');
-        this.leftAsideDom.style.top = '80px';
         
       } else if (this.isHeaderShrink && scrollTop <= this.headerHeight) {
         this.isHeaderShrink = false;
         document.body.classList.remove('header-shrink');
-        this.leftAsideDom.style.top = '105px';
       }
 
     },

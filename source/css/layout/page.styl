@@ -1,6 +1,3 @@
-$temp-width = hexo-config('style.left_side_width')
-$page-aside-width = $temp-width ? convert($temp-width) : 260px
-
 .page-container {
   position relative
   box-sizing border-box
@@ -8,17 +5,17 @@ $page-aside-width = $temp-width ? convert($temp-width) : 260px
   height auto
   background var(--background-color)
   //padding-left 230px
-  transition-t("padding-left", "0", "0.3", "ease-out")
 
 
   +redefine-tablet() {
-    padding-left 0 !important
+    padding-right 0 !important
   }
 
 
   .page-main-content {
     padding-top $header-height
     position relative
+    
 
     .header-shrink & {
       padding-top $header-shrink-height
@@ -113,8 +110,9 @@ $page-aside-width = $temp-width ? convert($temp-width) : 260px
         position relative
         box-sizing border-box
         width $main-content-width
-        max-width $content-max-width
+        max-width $content-max-width 
         height 100%
+        transition-t("max-width, width", "0, 0", "0.2, 0.2", "ease-in, ease-out")
 
         +redefine-tablet() {
           width $main-content-width-tablet
@@ -123,40 +121,16 @@ $page-aside-width = $temp-width ? convert($temp-width) : 260px
         +redefine-mobile() {
           width $main-content-width-mobile
         }
+
+        &.has-toc{
+          max-width $content-max-width *1.2 !important
+        }
+      }
+
+      .page-main-content-bottom {
+        width 100%
       }
     }
-
-
-    .page-main-content-bottom {
-      width 100%
-    }
-  }
-
-
-  .page-aside {
-    position fixed
-    top 105px
-    border-radius 18px
-    left - $page-aside-width
-    width $page-aside-width
-    height auto
-    margin-right 100px
-    //z-index $z-index-6
-    overflow-y auto
-    padding 20px
-    box-sizing border-box
-    transition all 0.1s ease
-    //box-shadow none !important
-
-    hover-style(false, 0, 0)
-
-    transition-t("left, transform", "0, 0", "0.3, 0.2", "ease-out, linear")
-
-    +redefine-tablet() {
-      left 0 !important
-      display none !important
-    }
-
   }
 
 
