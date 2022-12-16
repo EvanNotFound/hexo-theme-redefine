@@ -3,7 +3,7 @@
         <div class="copyright-info info-item">
             &copy;
             <% if (theme.footer.hasOwnProperty('since') && theme.footer.since) { %>
-              <span><%= theme.footer.since %></span>
+              <span><%= date(new Date(theme.footer.since), 'YYYY') %></span>
               -
             <% } %>
             <%= date(new Date(), 'YYYY') %>&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/"><%= theme.base_info.author || config.author %></a>
@@ -34,7 +34,29 @@
                 <img src="/images/upyun.png" alt="upyun" srcset="" height="24" style="position:relative; top:6px">
                 提供CDN加速/云存储服务</a></div>
         <% } %>
+        <script async <%= theme.pjax.enable === true ? 'data-pjax' : '' %> defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            <%= theme.footer.since %>
+        </div>
+        <% if (theme.footer.runtime === true) {%>
+            <div>
+                <%= __('runtime') %> <span class="odometer" id="runtime_days" ></span> <%= __('days') %> <span class="odometer" id="runtime_hours"></span> <%= __('hours') %> <span class="odometer" id="runtime_minutes"></span> <%= __('minutes') %> <span class="odometer" id="runtime_seconds"></span> <%= __('seconds') %>
+            </div>
+        <% } %>
     </div>
     <link rel="stylesheet" href="//evan.beee.top/css/waline.css"/>
     <script src="//evan.beee.top/js/waline.js"></script>
+    
 </footer>

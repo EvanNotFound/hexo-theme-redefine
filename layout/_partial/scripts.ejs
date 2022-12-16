@@ -18,6 +18,12 @@
     <%- __js('js/lazyload.js') %>
 <% } %>
 
+<% if (theme.footer.runtime) { %>
+    <%- __js('js/runtime.js') %>
+    <%- __js('js/odometer.min.js') %>
+    <%- __css('css/odometer-theme-minimal.css') %>
+<% } %>
+
 <div class="post-scripts<%= theme.pjax.enable === true ? ' pjax' : '' %>">
     <% if (theme.toc.enable && is_post()) { %>
         <%- __js([

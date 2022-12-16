@@ -1,3 +1,6 @@
+# ----------------------------------------
+# Site Translation
+# ----------------------------------------
 search: Search...
 toc: Contents
 prev: Prev
@@ -20,20 +23,42 @@ comments: Comments
 home: Home
 archive: Archive
 archives: Archives
-about: About
-site_uv: Visitor Count
-site_pv: Totalview
-links: Links
-link: Link
 top: TOP
-read_more: Read more
-wordcount: Words
-min2read: Mins
+
+
+# ----------------------------------------
+# Menu Translation
+# ----------------------------------------
+about: About
 changelog: Changelog
 status: Status
-site_time: Blog Up for
+links: Links
+link: Link
+
+# ----------------------------------------
+# Website count
+# ----------------------------------------
+site_uv: Visitor Count
+site_pv: Totalviews
+
+wordcount: Words
+min2read: Mins
+
+
+# ----------------------------------------
+# Footer
+# ----------------------------------------
+runtime: Blog up for
+days: days
+hours: hrs
+minutes: Min
+seconds: Sec
 optimized_by: and Optimized by Evan
 rights: All Rights Reserved
+
+# ----------------------------------------
+# Post
+# ----------------------------------------
 copyright:
   author: Post author
   title: Post title
@@ -41,6 +66,7 @@ copyright:
   create_time: Create time
   license_title: Copyright Notice
   license_content: "All articles in this blog are licensed under %s unless stating additionally."
+
 ago:
   second: "%s seconds ago"
   minute: "%s minutes ago"

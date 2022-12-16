@@ -240,7 +240,8 @@ fontawesome: # select fontawesome versions you want to use, in order to reduce t
 # Footer settings
 # ---------------------------------------------------------------------------------------
 footer:
-  since: 2020 # the starting year of your website, Can be null
+  since: 2022/8/17 11:45:14 # the starting time of your website
+  runtime: true # show website running time or not
   icp: # ICP record number of your website, Can be null
 
 # ---------------------------------------------------------------------------------------
