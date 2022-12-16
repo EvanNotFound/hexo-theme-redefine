@@ -21,7 +21,7 @@
 <div class="post-scripts<%= theme.pjax.enable === true ? ' pjax' : '' %>">
     <% if (theme.toc.enable && is_post()) { %>
         <%- __js([
-            'js/left-side-toggle.js',
+            'js/toc-toggle.js',
             'js/libs/anime.min.js',
             'js/toc.js'
         ]) %>
