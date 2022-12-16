@@ -75,14 +75,25 @@ social_contact: # social contact icons in the first screen, you can add more by 
 # ---------------------------------------------------------------------------------------
 # Navigation menu
 # ---------------------------------------------------------------------------------------
-menu: #you can customize
+menu: #you can customize, i18n files are in the theme's languages folder
   Home: /
   Archives: /archives
   # Status: https://status.evanluo.top/
-  # Links: /links
-  # About: /about
-  # Changelog: /changelog
-  # ......
+  # About: 
+  #   submenus:
+  #     Me: /about
+  #     Github: https://github.com/EvanNotFound/hexo-theme-redefine
+  #     Blog: https://www.evanluo.top
+  #     Friends: /friends
+  # Links: 
+  #   submenus:
+  #     Link1: /link1
+  #     Link2: /link2
+  #     Link3: /link3
+
+  # ...... # you can add more
+
+
 
 # ---------------------------------------------------------------------------------------
 # Home page article block display settings
