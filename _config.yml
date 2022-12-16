@@ -229,6 +229,14 @@ pjax:
   enable: true
 
 # ---------------------------------------------------------------------------------------
+# Fontawesome
+# ---------------------------------------------------------------------------------------
+fontawesome: # select fontawesome versions you want to use, in order to reduce the loading time, select as few as possible
+  thin: false # use fontawesome thin version or not
+  light: false # use fontawesome light version or not
+  duotone: false # use fontawesome duotone version or not
+
+# ---------------------------------------------------------------------------------------
 # Footer settings
 # ---------------------------------------------------------------------------------------
 footer:
