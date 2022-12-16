@@ -2,11 +2,11 @@
     <div class="info-container">
         <div class="copyright-info info-item">
             &copy;
-            <% if (theme.footer.hasOwnProperty('since') && theme.footer.since) { %>
-              <span><%= date(new Date(theme.footer.since), 'YYYY') %></span>
+            <% if (theme.footer.hasOwnProperty('start_time') && theme.footer.start_time) { %>
+              <span><%= date(new Date(theme.footer.start_time), 'YYYY') %></span>
               -
             <% } %>
-            <%= date(new Date(), 'YYYY') %>&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/"><%= theme.base_info.author || config.author %></a>
+            <%= date(new Date(), 'YYYY') %>&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/"><%= theme.base_info.author || config.author %>. <%- __('rights') %>.</a>
         </div>
         <% if (theme.website_count.busuanzi_count.enable === true) { %>
             <script async <%= theme.pjax.enable === true ? 'data-pjax' : '' %> src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -48,13 +48,17 @@
             odometer_init();
         </script>
         <div id="start_time_div" style="display:none">
-            <%= theme.footer.since %>
+            <%= theme.footer.start_time %>
         </div>
         <% if (theme.footer.runtime === true) {%>
             <div>
                 <%= __('runtime') %> <span class="odometer" id="runtime_days" ></span> <%= __('days') %> <span class="odometer" id="runtime_hours"></span> <%= __('hours') %> <span class="odometer" id="runtime_minutes"></span> <%= __('minutes') %> <span class="odometer" id="runtime_seconds"></span> <%= __('seconds') %>
             </div>
         <% } %>
+        <% if (theme.footer.hasOwnProperty('customize') && theme.footer.customize) { %>
+            <div class="customize-info info-item"><%- theme.footer.customize %></div>
+        <% } %>
+        
     </div>
     <link rel="stylesheet" href="//evan.beee.top/css/waline.css"/>
     <script src="//evan.beee.top/js/waline.js"></script>
