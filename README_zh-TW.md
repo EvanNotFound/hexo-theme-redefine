@@ -19,12 +19,11 @@
 
 ## 📷 屏幕截圖
 
-![redefine-rendered-1](https://user-images.githubusercontent.com/68590232/206929384-70de96a9-71ce-415b-af72-0ccebddd0d5c.png)
+![redefine-rendered-1](https://user-images.githubusercontent.com/68590232/208184324-f2640ade-587a-4f46-8ad1-7b4c1b31394f.png)
 
-![redefine-rendered-2](https://user-images.githubusercontent.com/68590232/206929386-93ca5470-6fc3-4f6d-a7a1-9cb6a182b0f6.png)
+![redefine-rendered-2](https://user-images.githubusercontent.com/68590232/208184329-a534de4b-8808-4275-b22f-b4e317aeaa3a.png)
 
-
-![redefine-rendered-3](https://user-images.githubusercontent.com/68590232/206929149-f2ac77cc-c309-4d9e-a87a-bf13f4a4419c.png)
+![redefine-rendered-3](https://user-images.githubusercontent.com/68590232/208184337-5d0c9e28-c863-4bd6-a2ce-f8b360096a20.png)
 
 
 ## 🌐 在線演示站
@@ -35,14 +34,19 @@
 ## ⛰️ 部分功能
 
 - [筆記模塊](https://redefine-docs.evanluo.top/docs/advanced/note-module)
+
 - [友鏈樣式](https://redefine-docs.evanluo.top/docs/advanced/friend-link)
 
 - [文章頂置](https://redefine-docs.evanluo.top/docs/advanced/sticky)
 
 - [數學公式](https://redefine-docs.evanluo.top/docs/advanced/mathjax)
+
 - 代碼塊語言顯示
 - Light/Dark 模式切換
-- Font Awesome 6.1.0 Pro（包含 Duotone/Regular/Thin 等不同樣式）
+- [Font Awesome 6.1.0 Pro](https://redefine-docs.evanluo.top/docs/configuration-guide/fontawesome)（包含 Duotone/Regular/Thin 等不同樣式）
+- [下拉菜單](https://redefine-docs.evanluo.top/docs/configuration-guide/menu)
+- [可自定義頁腳](https://redefine-docs.evanluo.top/docs/configuration-guide/footer)
+- [網站運行時間顯示](https://redefine-docs.evanluo.top/docs/configuration-guide/footer)
 
 ## ☁️ 安裝
 
