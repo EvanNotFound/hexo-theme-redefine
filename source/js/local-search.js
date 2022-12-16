@@ -189,9 +189,9 @@ REDEFINE.initLocalSearch = () => {
       });
     }
     if (keywords.length === 1 && keywords[0] === '') {
-      resultContent.innerHTML = '<div id="no-result"><i class="fas fa-search fa-5x"></i></div>';
+      resultContent.innerHTML = '<div id="no-result"><i class="fa-solid fa-magnifying-glass fa-5x"></i></div>';
     } else if (resultItems.length === 0) {
-      resultContent.innerHTML = '<div id="no-result"><i class="fas fa-box-open fa-5x"></i></div>';
+      resultContent.innerHTML = '<div id="no-result"><i class="fa-solid fa-box-open fa-5x"></i></div>';
     } else {
       resultItems.sort((resultLeft, resultRight) => {
         if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
@@ -233,7 +233,7 @@ REDEFINE.initLocalSearch = () => {
         });
         // Remove loading animation
         const noResultDom = document.querySelector('#no-result');
-        noResultDom && (noResultDom.innerHTML = '<i class="fas fa-search fa-5x"></i>');
+        noResultDom && (noResultDom.innerHTML = '<i class="fa-solid fa-magnifying-glass fa-5x"></i>');
       });
   };
 
