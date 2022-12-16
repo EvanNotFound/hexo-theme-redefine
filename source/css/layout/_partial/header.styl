@@ -4,7 +4,7 @@ $menu-bar-line-height = 2.5px
 $logo-image-box-width = 46px
 
 .header-wrapper {
-  font-family "Optima", sans-serif
+  font-family "Optima Medium", sans-serif
   width 100%
   height 100%
   box-sizing border-box
@@ -80,8 +80,8 @@ $logo-image-box-width = 46px
 
       .logo-title {
         font-size $logo-title-font-size
-        font-weight bold
-        letter-spacing 1px
+        font-family "Optima Bold", sans-serif
+        //letter-spacing 1px
         line-height 1
         color var(--first-text-color)
 
@@ -104,6 +104,7 @@ $logo-image-box-width = 46px
         .menu-list {
           display flex
           align-items center
+          
 
           +redefine-tablet() {
             display none
@@ -112,6 +113,7 @@ $logo-image-box-width = 46px
 
           .menu-item {
             float left
+            padding 5px
             position relative
             margin-left 30px
             font-size 1rem
@@ -122,13 +124,26 @@ $logo-image-box-width = 46px
               margin-left 0
             }
 
+            a .fa-chevron-down{
+              transform rotate(0deg)
+              transition transform 0.3s ease
+            }
 
-            a:hover, .active {
+            &:hover a .fa-chevron-down{
+              transform rotate(180deg)
+            }
 
+            &:hover .has-dropdown{
+              &::after {
+                display none !important
+              }
+            }
+
+            &:hover a, .active {
               &::after {
                 content ''
                 position absolute
-                bottom -10px
+                bottom -5px
                 left 50%
                 width 100%
                 height 2px
@@ -137,10 +152,12 @@ $logo-image-box-width = 46px
                 transition-t("transform, bottom", "0, 0", "0.2, 0.2", "linear, linear")
 
                 .header-shrink & {
-                  bottom -($header-shrink-height / 2 - 12)
+                  bottom -($header-shrink-height / 2 - 17)
                 }
               }
             }
+            
+            
 
             &.search {
               font-size $pc-search-icon-font-size
@@ -151,11 +168,54 @@ $logo-image-box-width = 46px
               }
 
             }
-          }
 
+            .sub-menu{
+              position absolute;
+              right auto
+              left 50%
+              -webkit-transform translate(-50%, 0)
+              -o-transform translate(-50%, 0)
+              transform translate(-50%, 0)
+              margin-top 8px
+              width auto
+              text-align: center;
+              list-style:none;
+              padding 0 10px 
+              border-radius 18px
+              //visibility hidden
+              
+
+              max-height 0px
+              overflow hidden
+              transition-t("all", "0", "0.2", "linear") 
+
+              li a {
+                color var(--default-text-color)
+                font-size 1rem
+                padding 3px 15px
+                display block
+                text-align center
+                border-radius 8px
+                transition-t("all", "0", "0.2", "linear")
+
+                &:hover {
+                  color var(--primary-color)
+                  background-color var(--second-background-color)
+                }
+              }
+            }
+
+          }
 
         }
 
+        .menu-list .menu-item:hover .sub-menu{
+          //visibility visible
+          max-height 500px
+          transition-t("all", "0", "0.2", "ease")
+          redefine-container(false, 0, 0, 10px, 5px)
+        }
+        
       }
 
 
@@ -259,9 +319,10 @@ $logo-image-box-width = 46px
       align-items center
 
       .drawer-menu-item {
+        font-family: "Optima Bold", sans-serif
         font-size 1rem
         margin 6px 0
-        height 38px
+        height 32px
 
         a {
           padding 6px 20px
@@ -280,7 +341,58 @@ $logo-image-box-width = 46px
           }
         }
 
+        .has-dropdown {
+          font-family: "Optima Bold", sans-serif
+        }
 
+        a .fa-chevron-down{
+          transform rotate(0deg)
+          transition transform 0.3s ease
+        }
+
+        &:hover a .fa-chevron-down{
+          transform rotate(180deg)
+        }
+
+        &:hover .has-dropdown{
+          &::after {
+            display none !important
+          }
+        }
+      }
+
+      .dropdown-item {
+        font-size 1rem
+        margin 6px 0
+        height 16px
+
+        a {
+          padding 6px 20px
+          border-radius 20px
+          color var(--default-text-color)
+
+          &:hover {
+            color var(--second-text-color)
+            border 1px solid var(--default-text-color)
+          }
+
+
+          &.active {
+            border 1px solid var(--default-text-color)
+            color var(--second-text-color)
+          }
+        }
+      }
+
+      .sub-menu{
+        position relative
+        margin-top 8px
+        width 100%
+        text-align: center;
+        list-style: none;
+        padding 0 10px 
+        border-radius 18px
+        //float left
       }
     }
   }

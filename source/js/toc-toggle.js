@@ -1,7 +1,7 @@
 /* global REDEFINE */
 
-function initLeftSideToggle() {
-  REDEFINE.utils.leftSideToggle = {
+function initTocToggle() {
+  REDEFINE.utils.TocToggle = {
 
     toggleBar: document.querySelector('.page-aside-toggle'),
     postPageContainerDom: document.querySelector('.post-page-container'),
@@ -24,9 +24,6 @@ function initLeftSideToggle() {
       this.toggleBarIcon && (this.toggleBarIcon.className = isOpen ? 'fas fa-indent' : 'fas fa-outdent');
       this.postPageContainerDom.className = isOpen ? 'post-page-container show-toc' : 'post-page-container';
       this.mainContentDom.className = isOpen ? 'main-content has-toc' : 'main-content';
-      //this.articleContentContainerDom.style.width = isOpen ? '$content-max-width * 1.2 - $toc-container-width !important' : '$content-max-width - $toc-container-width !important';
-      //this.pageTopDom.style.paddingLeft = isOpen ? pageAsideWidth :'0';
-      //this.rightAsideDom.style.right = isOpen ? '5%' : `-${pageAsideWidth}`;
     },
 
     pageAsideHandleOfTOC(isOpen) {
@@ -35,11 +32,11 @@ function initLeftSideToggle() {
       this.changePageLayoutWhenOpenToggle(isOpen);
     }
   }
-  REDEFINE.utils.leftSideToggle.initToggleBarButton();
+  REDEFINE.utils.TocToggle.initToggleBarButton();
 }
 
 if (REDEFINE.theme_config.pjax.enable === true && REDEFINE.utils) {
-  initLeftSideToggle();
+  initTocToggle();
 } else {
-  window.addEventListener('DOMContentLoaded', initLeftSideToggle);
+  window.addEventListener('DOMContentLoaded', initTocToggle);
 }

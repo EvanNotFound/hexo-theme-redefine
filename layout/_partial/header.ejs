@@ -13,27 +13,44 @@
         </div>
 
         <div class="right">
+            <!-- PC -->
             <div class="pc">
                 <ul class="menu-list">
                     <% for (let i in theme.menu) { %>
                         <li class="menu-item">
-                            <a class="<%- isInHomePaging(page.path, theme.menu[i]) ? 'active' : is_current(theme.menu[i]) ? 'active' : '' %>"
-                               href="<%- url_for(theme.menu[i]) %>"
-                            >
-                                <%= __(i.toLowerCase()).toUpperCase() %>
+                            <!-- Menu -->
+                            <a class="<% if (theme.menu[i].submenus) { %>has-dropdown" <% } else {%><%- isInHomePaging(page.path, theme.menu[i]) ? 'active' : is_current(theme.menu[i]) ? 'active' : '' %>" <% } %>
+                                href="<% if (theme.menu[i].submenus) { %>javascript:void(0);"<% } else {%><%- url_for(theme.menu[i]) %>" <% } %>>
+                                <% if (theme.menu[i].submenus) { %>
+                                    <%= __(i.toLowerCase()).toUpperCase() %>&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                                <% } else {%> 
+                                    <%= __(i.toLowerCase()).toUpperCase() %>
+                                <% } %>
                             </a>
+                            <!-- Submenu -->
+                            <% if (theme.menu[i].submenus) { %>
+                                <ul class="sub-menu">
+                                  <% for (var submenu in theme.menu[i].submenus){ %>
+                                    <li>
+                                      <a href="<%- url_for(theme.menu[i].submenus[submenu]) %>"><%= __(submenu.toLowerCase()).toUpperCase() %>
+                                      </a>
+                                    </li>
+                                  <% } %>
+                                </ul>
+                            <% } %>
                         </li>
                     <% } %>
                     <% if (theme.local_search.enable === true) { %>
                         <li class="menu-item search search-popup-trigger">
-                            <i class="fas fa-search"></i>
+                            <i class="fa-solid fa-magnifying-glass"></i>
                         </li>
                     <% } %>
                 </ul>
             </div>
+            <!-- Mobile -->
             <div class="mobile">
                 <% if (theme.local_search.enable === true) { %>
-                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i></div>
                 <% } %>
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -42,13 +59,29 @@
         </div>
     </div>
 
+    <!-- Mobile drawer -->
     <div class="header-drawer">
         <ul class="drawer-menu-list">
             <% for (let i in theme.menu) { %>
                 <li class="drawer-menu-item flex-center">
-                    <a class="<%- isInHomePaging(page.path, theme.menu[i]) ? 'active' : is_current(theme.menu[i]) ? 'active' : '' %>"
-                       href="<%- url_for(theme.menu[i]) %>"><%= __(i.toLowerCase()).toUpperCase() %></a>
+                    <a class="<% if (theme.menu[i].submenus) { %>has-dropdown" <% } else {%><%- isInHomePaging(page.path, theme.menu[i]) ? 'active' : is_current(theme.menu[i]) ? 'active' : '' %>" <% } %>
+                       href="<% if (theme.menu[i].submenus) { %>javascript:void(0);"<% } else {%><%- url_for(theme.menu[i]) %>" <% } %>>
+                        <% if (theme.menu[i].submenus) { %>
+                            <%= __(i.toLowerCase()).toUpperCase() %>&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                        <% } else {%> 
+                            <%= __(i.toLowerCase()).toUpperCase() %>
+                        <% } %>
+                    </a>
+                    
                 </li>
+                <!-- Submenu -->
+                <% if (theme.menu[i].submenus) { %>          
+                    <% for (var submenu in theme.menu[i].submenus){ %>
+                        <li class="dropdown-item flex-center">
+                            <a class="dropdown-item" href="<%- url_for(theme.menu[i].submenus[submenu]) %>"><%= __(submenu.toLowerCase()).toUpperCase() %></a>
+                        </li>
+                    <% } %>
+                <% } %>
             <% } %>
         </ul>
     </div>

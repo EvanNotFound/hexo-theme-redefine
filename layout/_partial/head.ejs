@@ -27,16 +27,24 @@
         <% } %>
         <%= theme.base_info.title || config.title || 'Redefine Theme' %>
     </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <%- css('css/style') %>
     <%- favicon_tag(theme.style.favicon) %>
     <%- __css('css/fontawesome.min.css') %>
-    <%- __css('css/v5-font-face.min.css') %>
-    <%- __css('css/duotone.min.css') %>
     <%- __css('css/brands.min.css') %>
     <%- __css('css/solid.min.css') %>
+    <%- __css('css/regular.min.css') %>
+    <% if (theme.fontawesome.thin == true) { %>
+        <%- __css('css/thin.min.css') %>
+    <% } %>
+    <% if (theme.fontawesome.light == true) { %>
+        <%- __css('css/light.min.css') %>
+    <% } %>
+    <% if (theme.fontawesome.duotone == true) { %>
+        <%- __css('css/duotone.min.css') %>
+    <% } %>
     <%- __css('css/css2.css') %>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <%- export_config() %>
 </head>
 

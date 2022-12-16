@@ -1904,3 +1904,35 @@
   src: url(https://fonts.gstatic.com/s/opensans/v34/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-mu0SC55I.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+
+/* Optima */
+@font-face {
+font-family: 'Optima';
+font-style: normal;
+font-weight: normal;
+src: local('Optima'), url('/fonts/OPTIMA.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Optima Italic';
+font-style: italic;
+font-weight: normal;
+src: local('Optima Italic'), url('/fonts/Optima_Italic.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Optima Medium';
+font-style: normal;
+font-weight: normal;
+src: local('Optima Medium'), url('/fonts/Optima Medium.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Optima Bold';
+font-style: normal;
+font-weight: bold;
+src: local('Optima Bold'), url('/fonts/OPTIMA_B.woff') format('woff');
+}

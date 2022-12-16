@@ -10,7 +10,7 @@ REDEFINE.initCodeCopy = () => {
     const box = document.createElement('div');
     element.wrap(box);
     box.classList.add('highlight-container');
-    box.insertAdjacentHTML('beforeend', '<div class="copy-btn"><i class="fas fa-copy"></i></div>');
+    box.insertAdjacentHTML('beforeend', '<div class="copy-btn"><i class="fa-solid fa-copy"></i></div>');
     const button = element.parentNode.querySelector('.copy-btn');
     button.addEventListener('click', event => {
       const target = event.currentTarget;

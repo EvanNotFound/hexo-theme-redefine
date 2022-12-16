@@ -72,16 +72,16 @@ function initTOC() {
           const styleStatus = REDEFINE.getStyleStatus();
           const key = 'isOpenPageAside';
           if (styleStatus && styleStatus.hasOwnProperty(key)) {
-            REDEFINE.utils.leftSideToggle.pageAsideHandleOfTOC(styleStatus[key]);
+            REDEFINE.utils.TocToggle.pageAsideHandleOfTOC(styleStatus[key]);
           } else {
-            REDEFINE.utils.leftSideToggle.pageAsideHandleOfTOC(true);
+            REDEFINE.utils.TocToggle.pageAsideHandleOfTOC(true);
           }
         }
 
         const initOpenKey = 'init_open';
 
         if (REDEFINE.theme_config.toc.hasOwnProperty(initOpenKey)) {
-          REDEFINE.theme_config.toc[initOpenKey] ? openHandle() : REDEFINE.utils.leftSideToggle.pageAsideHandleOfTOC(false);
+          REDEFINE.theme_config.toc[initOpenKey] ? openHandle() : REDEFINE.utils.TocToggle.pageAsideHandleOfTOC(false);
 
         } else {
           openHandle();
