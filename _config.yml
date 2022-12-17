@@ -75,17 +75,25 @@ social_contact: # social contact icons in the first screen, you can add more by 
 # ---------------------------------------------------------------------------------------
 # Navigation menu
 # ---------------------------------------------------------------------------------------
-menu: #you can customize, i18n files are in the theme's languages folder
-  Home: /
-  Archives: /archives
-  # Status: https://status.evanluo.top/
+menu: #you can customize, i18n files are in the theme's languages folder. fa-regular recommended
+  Home: 
+    path: / 
+    icon: fa-regular fa-house # can be empty
+  Archives: 
+    path: /archives 
+    icon: fa-regular fa-archive # can be empty
+  # Status: 
+  #   path: https://status.evanluo.top/
+  #   icon: fa-regular fa-chart-bar
   # About: 
+  #   icon: fa-regular fa-user
   #   submenus:
   #     Me: /about
   #     Github: https://github.com/EvanNotFound/hexo-theme-redefine
   #     Blog: https://www.evanluo.top
   #     Friends: /friends
   # Links: 
+  #   icon: fa-regular fa-link
   #   submenus:
   #     Link1: /link1
   #     Link2: /link2
