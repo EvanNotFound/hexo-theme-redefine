@@ -24,7 +24,7 @@ style:
   # Article image align position
   article_img_align: center # value: left | center
 
-  # Left side width
+  # Right side width
   right_side_width: 210px #sidebar width, for toc
 
   # Content area max width
