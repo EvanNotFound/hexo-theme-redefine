@@ -1910,7 +1910,7 @@
 font-family: 'Optima';
 font-style: normal;
 font-weight: normal;
-src: local('Optima'), url('/fonts/OPTIMA.woff') format('woff');
+src: local('Optima'), css('https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/OPTIMA.woff') format('woff');
 }
 
 
@@ -1918,7 +1918,7 @@ src: local('Optima'), url('/fonts/OPTIMA.woff') format('woff');
 font-family: 'Optima Italic';
 font-style: italic;
 font-weight: normal;
-src: local('Optima Italic'), url('/fonts/Optima_Italic.woff') format('woff');
+src: local('Optima Italic'), url('https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/Optima_Italic.woff') format('woff');
 }
 
 
@@ -1926,7 +1926,7 @@ src: local('Optima Italic'), url('/fonts/Optima_Italic.woff') format('woff');
 font-family: 'Optima Medium';
 font-style: normal;
 font-weight: normal;
-src: local('Optima Medium'), url('/fonts/Optima Medium.woff') format('woff');
+src: local('Optima Medium'), url('https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/Optima Medium.woff') format('woff');
 }
 
 
@@ -1934,5 +1934,5 @@ src: local('Optima Medium'), url('/fonts/Optima Medium.woff') format('woff');
 font-family: 'Optima Bold';
 font-style: normal;
 font-weight: bold;
-src: local('Optima Bold'), url('/fonts/OPTIMA_B.woff') format('woff');
+src: local('Optima Bold'), url('https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/OPTIMA_B.woff') format('woff');
 }
