@@ -21,12 +21,9 @@
 
 ## 📷 Screenshots
 
-
-![redefine-rendered-1](https://user-images.githubusercontent.com/68590232/208184324-f2640ade-587a-4f46-8ad1-7b4c1b31394f.png)
-
-![redefine-rendered-2](https://user-images.githubusercontent.com/68590232/208184329-a534de4b-8808-4275-b22f-b4e317aeaa3a.png)
-
-![redefine-rendered-3](https://user-images.githubusercontent.com/68590232/208184337-5d0c9e28-c863-4bd6-a2ce-f8b360096a20.png)
+![redefine-rendered-1](https://user-images.githubusercontent.com/68590232/208305420-b3096ebf-b819-4b70-aad2-efca12818295.png)
+![redefine-rendered-2](https://user-images.githubusercontent.com/68590232/208305422-f4b2fed2-c144-474c-8d3c-acd52e4f3ff5.png)
+![redefine-rendered-3](https://user-images.githubusercontent.com/68590232/208305423-28960206-96d3-4af8-b76e-d687fb8a0f38.png)
 
 
 
