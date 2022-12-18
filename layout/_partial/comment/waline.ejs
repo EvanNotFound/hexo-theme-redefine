@@ -6,14 +6,29 @@
 ) { %>
  
     <div id="waline"></div>
+    <link rel="stylesheet" href="//evan.beee.top/css/waline.css"/>
+    <script <%= theme.pjax.enable === true ? 'data-pjax' : '' %> 
+        src="//evan.beee.top/js/waline.js"></script>
     <script <%= theme.pjax.enable === true ? 'data-pjax' : '' %>>
-        Waline.init({
-            el: '#waline',
-            serverURL: '<%= theme.comment.waline.serverUrl %>',
-            lang: '<%= theme.comment.waline.lang %>',
-            dark: '<%= theme.comment.waline.dark %>',
-            requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
-        });
+        function loadWaline() {
+            Waline.init({
+                el: '#waline',
+                serverURL: '<%= theme.comment.waline.serverUrl %>',
+                lang: '<%= theme.comment.waline.lang %>',
+                dark: '<%= theme.comment.waline.dark %>',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+            });
+        }
+
+        if ('<%= theme.pjax.enable %>') {
+            const loadWalineTimeout = setTimeout(() => {
+                loadWaline();
+                clearTimeout(loadWalineTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadWaline);
+        }
+        
     </script>
 
 <% } %>
