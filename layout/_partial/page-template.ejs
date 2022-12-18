@@ -2,10 +2,8 @@
     <div class="page-template-container">
         <%
         const isLoadFriendsLink = (
-                theme.menu.hasOwnProperty('Links')
-                && theme.menu.Links
-                && theme.links
-                && (page.type === 'links' || page.type === 'link' || page.title === 'links' || page.title === 'link')
+                theme.links
+                && (page.type === 'links' || page.type === 'link' || page.title === 'links' || page.title === 'link' || page.title === '友情链接' || page.title === '友情鏈接' || page.title === 'friends' || page.title === 'friend')
         );
         %>
         <% if (isLoadFriendsLink) { %>

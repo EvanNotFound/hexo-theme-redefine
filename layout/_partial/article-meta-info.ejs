@@ -1,12 +1,12 @@
 <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fa-regular fa-pen-line"></i>&nbsp;
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
         <span class="pc"><%= date(articleObject.date, is_post() ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD') %></span>
         <span class="mobile"><%= date(articleObject.date, is_post() ? 'YYYY-MM-DD HH:mm' : 'YYYY-MM-DD') %></span>
     </span>
     <% if (articleObject.categories.length) { %>
         <span class="article-categories article-meta-item">
-            <i class="fa-regular fa-folder-open"></i>&nbsp;
+            <i class="fa-regular fa-folders"></i>&nbsp;
             <ul>
                 <% articleObject.categories.forEach((category, i) => { %>
                     <li>
@@ -41,12 +41,12 @@
     %>
     <% if(is_post() && theme.hasOwnProperty('post') && theme.post.word_count.enable && theme.post.word_count.wordcount && temp_wordcount_count){ %>
         <span class="article-wordcount article-meta-item">
-            <i class="fa-solid fa-file-word"></i>&nbsp;<span><%= temp_wordcount_count %> <%- __('wordcount') %></span>
+            <i class="fa-regular fa-file-word"></i>&nbsp;<span><%= temp_wordcount_count %> <%- __('wordcount') %></span>
         </span>
     <% } %>
     <% if(is_post() && theme.hasOwnProperty('post') && theme.post.word_count.enable && theme.post.word_count.min2read && temp_min2read_count){ %>
         <span class="article-min2read article-meta-item">
-            <i class="fa-solid fa-clock"></i>&nbsp;<span><%= temp_min2read_count %> <%- __('min2read') %></span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span><%= temp_min2read_count %> <%- __('min2read') %></span>
         </span>
     <% } %>
     <% if (is_post() && theme.website_count.busuanzi_count.enable && theme.website_count.busuanzi_count.page_pv) { %>
