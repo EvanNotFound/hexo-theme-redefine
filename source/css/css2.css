@@ -1910,7 +1910,7 @@
 font-family: 'Optima';
 font-style: normal;
 font-weight: normal;
-src: local('Optima'), css('https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/OPTIMA.woff') format('woff');
+src: local('Optima'), url('https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/OPTIMA.woff') format('woff');
 }
 
 
