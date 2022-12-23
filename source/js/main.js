@@ -51,7 +51,7 @@ window.addEventListener('DOMContentLoaded', () => {
       REDEFINE.initLocalSearch();
     }
 
-    if (REDEFINE.theme_config.code_copy.enable === true) {
+    if (REDEFINE.theme_config.code_block.copy === true) {
       REDEFINE.initCodeCopy();
     }
 

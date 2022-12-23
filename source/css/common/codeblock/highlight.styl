@@ -40,7 +40,7 @@ pre {
 .highlight {
   @extend $code-block
   border-radius 0 0 18px 18px
-  padding-bottom 25px
+  padding-bottom 5px
 
   pre {
     border none
@@ -92,20 +92,6 @@ pre {
     padding-right 10px
     background-color var(--highlight-background)
   }
-
-  .line {
-    height 20px
-    color #bebec6
-
-    .attr {
-      color #9CDCFE
-    }
-
-    .string {
-      color #D69D85;
-    }
-
-  }
 }
 
 
@@ -124,110 +110,107 @@ pre {
   }
 }
 
-// For diff highlight
-pre .deletion {
-  background #600
-  width 100%
-}
 
-pre .addition {
-  background #144212
-  width 100%
-}
-
-pre .meta {
-  color #569CD6
-}
-
-pre {
-
+pre{
   .keyword,
   .literal,
   .symbol,
   .name {
-    color #569CD6
-  }
-  .link {
-    color #569CD6
-    text-decoration underline
+    color: var(--highlight-keyword);
   }
   
+  .link {
+    color: var(--highlight-link);
+    text-decoration: underline;
+  }
+
   .built_in,
   .type {
-    color #4EC9B0
+    color: var(--highlight-built-in);
   }
-  
+
   .number,
   .class {
-    color #B8D7A3
+    color: var(--highlight-number);
   }
-  
+
   .string,
   .meta .string {
-    color #D69D85
+    color: var(--highlight-string);
   }
-  
+
   .regexp,
   .template-tag {
-    color #9A5334
+    color: var(--highlight-regexp);
   }
-  
+
   .subst,
   .function,
   .title,
   .params,
   .formula {
-    color #DCDCDC
+    color: var(--highlight-subst);
   }
-  
+
   .comment,
   .quote {
-    color #57A64A
-    font-style italic
+    color: var(--highlight-comment);
+    font-style: italic;
   }
-  
+
   .doctag {
-    color #608B4E
+    color: var(--highlight-doctag);
   }
-  
+
   .meta,
   .meta .keyword,
   .tag {
-    color #9B9B9B
+    color: var(--highlight-meta);
   }
-  
+
   .variable,
   .template-variable {
-    color #BD63C5
+    color: var(--highlight-variable);
   }
-  
+
   .attr,
   .attribute {
-    color #9CDCFE
+    color: var(--highlight-attr);
   }
-  
+
   .section {
-    color gold
+    color: var(--highlight-section);
   }
-  
+
   .emphasis {
-    font-style italic
+    font-style: italic;
   }
-  
+
   .strong {
-    font-weight bold
+    font-weight: bold;
   }
-  
-  /*.code {
-    font-family:'Monospace'
-  }*/
-  
+
   .bullet,
   .selector-tag,
   .selector-id,
   .selector-class,
   .selector-attr,
   .selector-pseudo {
-    color #D7BA7D
+  color: var(--highlight-bullet);
+  }
+
+  .addition {
+  background-color: var(--highlight-addition);
+  display: inline-block;
+  width: 100%;
+  }
+
+  .deletion {
+  background-color: var(--highlight-deletion);
+  display: inline-block;
+  width: 100%;
   }
 }
+
+
+
