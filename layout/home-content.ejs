@@ -14,7 +14,8 @@
                 </h3>
 
                 <div class="home-article-content markdown-body">
-                    <% if (post.excerpt) { %>
+                    <% if (post.excerpt && post.excerpt == "false") { %>
+                    <% } else if (post.excerpt && post.excerpt !== "false") { %>
                         <%- post.excerpt %>
                     <% } else { %>
                         <%- truncate(strip_html(post.content), {length: 128}) %>

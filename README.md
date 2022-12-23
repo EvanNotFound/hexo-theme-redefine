@@ -13,20 +13,15 @@
 
 "Redefine" hexo theme is **a simple & fast & pure theme**, but with **no compromise**. This theme contains lots of widely use functions and great web design.
 
-"Theme Redefine" is based on [hexo-theme-keep](https://github.com/XPoet/hexo-theme-keep), but with **prettier interface** and **more functions**.
-
 [![NPM version](https://img.shields.io/npm/v/hexo-theme-redefine?color=red&logo=npm&style=flat-square)](https://www.npmjs.com/package/hexo-theme-redefine) [![npm](https://img.shields.io/npm/dw/hexo-theme-redefine?logo=npm&style=flat-square)](https://www.npmjs.com/package/hexo-theme-redefine) [![Github License](https://img.shields.io/github/license/EvanNotFound/hexo-theme-redefine.svg?style=flat-square)](https://github.com/EvanNotFound/hexo-theme-redefine/blob/main/LICENSE) [![Required Hexo version](https://img.shields.io/badge/hexo-%3E=5.0.0-blue?style=flat-square&logo=hexo)](https://hexo.io) [![Node.js Version](https://img.shields.io/badge/node-%3E=12.0-success.svg?style=flat-square&logo=Node.js&longCache=true)](https://hexo.io)
 
 
 
 ## 📷 Screenshots
 
-
-![redefine-rendered-1](https://user-images.githubusercontent.com/68590232/208184324-f2640ade-587a-4f46-8ad1-7b4c1b31394f.png)
-
-![redefine-rendered-2](https://user-images.githubusercontent.com/68590232/208184329-a534de4b-8808-4275-b22f-b4e317aeaa3a.png)
-
-![redefine-rendered-3](https://user-images.githubusercontent.com/68590232/208184337-5d0c9e28-c863-4bd6-a2ce-f8b360096a20.png)
+![redefine-rendered-1](https://user-images.githubusercontent.com/68590232/208305420-b3096ebf-b819-4b70-aad2-efca12818295.png)
+![redefine-rendered-2](https://user-images.githubusercontent.com/68590232/208305422-f4b2fed2-c144-474c-8d3c-acd52e4f3ff5.png)
+![redefine-rendered-3](https://user-images.githubusercontent.com/68590232/208305423-28960206-96d3-4af8-b76e-d687fb8a0f38.png)
 
 
 
