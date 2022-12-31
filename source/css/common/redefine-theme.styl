@@ -1,7 +1,7 @@
 $redefine-container-border-radius = 18px
 
 hover-style(isTransform, scaleX, scaleY) {
-  box-shadow var(--shadow-color-2) 0px 6px 24px 0px, var(--shadow-color-1) 0px 0px 0px 1px
+  box-shadow var(--redefine-box-shadow)
 
   if (isTransform) {
     transition-t("transform", "0", "0.2", "linear")
@@ -13,7 +13,7 @@ hover-style(isTransform, scaleX, scaleY) {
     }
 
     if (hexo-config('style.hover.shadow')) {
-      box-shadow var(--shadow-color-2) 0px 6px 24px 0px, var(--shadow-color-1) 0px 0px 0px 1px, var(--shadow-color-1) 0px 0px 0px 1px inset
+      box-shadow var(--redefine-box-shadow-hover)
     }
   }
 }

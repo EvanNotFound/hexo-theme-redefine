@@ -1,8 +1,6 @@
-//@import "waline-config.styl"
-
 if (hexo-config('comment.enable') == true && hexo-config('comment.use') != "") {
-  if (hexo-config('comment.use') == "valine") {
-    @require "./valine.styl"
+  if (hexo-config('comment.use') == "waline") {
+    @require "./waline.styl"
 
   } else if (hexo-config('comment.use') == "gitalk") {
     @require "./gitalk.styl"
