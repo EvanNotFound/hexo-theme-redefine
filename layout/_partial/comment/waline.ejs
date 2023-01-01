@@ -6,7 +6,6 @@
 ) { %>
  
     <div id="waline"></div>
-    <link rel="stylesheet" href="//evan.beee.top/css/waline.css"/>
     <script <%= theme.pjax.enable === true ? 'data-pjax' : '' %> 
         src="//evan.beee.top/js/waline.js"></script>
     <script <%= theme.pjax.enable === true ? 'data-pjax' : '' %>>
@@ -15,7 +14,7 @@
                 el: '#waline',
                 serverURL: '<%= theme.comment.waline.serverUrl %>',
                 lang: '<%= theme.comment.waline.lang %>',
-                dark: '<%= theme.comment.waline.dark %>',
+                dark: 'body[class~="dark-mode"]',
                 requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
             });
         }
