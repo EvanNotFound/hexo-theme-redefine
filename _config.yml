@@ -211,6 +211,12 @@ comment:
     region: # environment region. If select Guangzhou, fill in "ap-guangzhou". (optional)
 
 # ---------------------------------------------------------------------------------------
+# Friend Links page
+# ---------------------------------------------------------------------------------------
+friend_links:
+  column: 2 # number of columns. 2 or 3
+
+# ---------------------------------------------------------------------------------------
 # RSS
 # Dependencies: hexo-generator-feed
 # See: https://github.com/hexojs/hexo-generator-feed

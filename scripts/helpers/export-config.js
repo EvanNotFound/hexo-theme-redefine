@@ -46,6 +46,7 @@ hexo.extend.helper.register('export_config', function () {
     pjax: theme.pjax,
     lazyload: theme.lazyload,
     version: theme.version,
+    friend_links: theme.friend_links,
   }
 
   return `<script id="hexo-configurations">

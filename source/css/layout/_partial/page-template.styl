@@ -1,7 +1,7 @@
 $friend-link-item-height = 82px
 $friend-link-item-height-tablet = 68px
 $friend-link-item-interval = 16px
-$friend-link-item-border-radius = 6px
+$friend-link-item-border-radius = 9px
 
 .page-template-container {
 
@@ -25,8 +25,26 @@ $friend-link-item-border-radius = 6px
 
     .friends-link-list {
       position relative
+      display: flex;
+      flex-wrap: wrap;
+
 
       .friends-link-item {
+
+        if (hexo-config('friend_links.column') == '3') {
+          width 32% !important
+          margin-left 1% !important
+
+
+          &:nth-child(odd) {
+            padding-right 0 !important
+          }
+
+          &:nth-child(even) {
+            padding-left 0 !important
+          }
+        }
+
         box-sizing border-box
         position relative
         float left
@@ -35,17 +53,21 @@ $friend-link-item-border-radius = 6px
         height $friend-link-item-height
         padding-bottom $friend-link-item-interval
 
+        
+
         +redefine-tablet() {
           height $friend-link-item-height-tablet
         }
 
         &:nth-child(odd) {
-          padding-right $friend-link-item-interval * 0.5
-        }
+            padding-right $friend-link-item-interval * 0.5
+          }
 
         &:nth-child(even) {
           padding-left $friend-link-item-interval * 0.5
         }
+
+
 
         .content {
           position relative
