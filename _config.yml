@@ -107,6 +107,7 @@ menu: #you can customize, i18n files are in the theme's languages folder. fa-reg
 # Home page article block display settings
 # ---------------------------------------------------------------------------------------
 home_article:
+  date_format: auto # date format in home page article block, value: auto | relative | YYYY-MM-DD | YYYY.MM.DD HH:mm:ss | DD/MM/YYYY | and etc. Support moment js format, see: https://momentjscom.readthedocs.io/en/latest/moment/04-displaying/01-format/
   category:
     enable: true # show category in home page article block
     limit: 3 # max number of categories shown in home page article block
