@@ -260,6 +260,7 @@ footer:
   icp: # ICP record number of your website, Can be null
 
 # ---------------------------------------------------------------------------------------
-# Redefine Theme version (Please don't modify)
+# Redefine Theme version (Please dont modify it)
+# Please go to github to update the latest version frequently
 # ---------------------------------------------------------------------------------------
-version: 0.4.5
+version: 0.4.6
