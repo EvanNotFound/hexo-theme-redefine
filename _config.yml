@@ -16,10 +16,10 @@ style:
   primary_color: "#005080"
 
   # Avatar (You can use local image or image external link)
-  avatar: /images/avatar.svg # avatar of the author
+  avatar: /images/redefine-avatar.svg # avatar of the author
 
   # Favicon (You can use local image or image external link)
-  favicon: /images/logo.svg # favicon of the site
+  favicon: /images/redefine-logo.svg # favicon of the site
 
   # Article image align position
   article_img_align: center # value: left | center
