@@ -5,7 +5,7 @@
             <% if (theme.home_article.date_format == 'relative') { %>
                 data-date="<%= post.date %>"
             <% } else if (theme.home_article.date_format == 'auto') { %>
-                <% if (post.date > moment().subtract(3, 'days')) { %>
+                <% if (post.date > moment().subtract(7, 'days')) { %>
                     data-date="<%= post.date.format('YYYY/MM/DD') %>"
             <% } } %>>
                 <% if (theme.home_article.date_format == 'auto') { %>
