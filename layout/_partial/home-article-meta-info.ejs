@@ -1,13 +1,7 @@
 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
         <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" 
-            <% if (theme.home_article.date_format == 'relative') { %>
-                data-date="<%= post.date %>"
-            <% } else if (theme.home_article.date_format == 'auto') { %>
-                <% if (post.date > moment().subtract(7, 'days')) { %>
-                    data-date="<%= post.date.format('YYYY/MM/DD') %>"
-            <% } } %>>
+            <span class="home-article-date" data-date="<%= post.date %>">
                 <% if (theme.home_article.date_format == 'auto') { %>
                     <%= date(post.date, 'YYYY/MM/DD') %>
                 <% } else { %>

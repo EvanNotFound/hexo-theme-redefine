@@ -283,7 +283,10 @@ REDEFINE.initUtils = () => {
       post && post.forEach(v => {
         const nowDate = Date.now();
         const postDate = new Date(v.dataset.date.split(' GMT')[0]).getTime();
-        v.innerHTML = this.getHowLongAgo(Math.floor((nowDate - postDate) / 1000));
+        const finalDays = Math.floor((nowDate - postDate) / (60 * 60 * 24 * 1000))
+        if (finalDays < 7) {
+          v.innerHTML = this.getHowLongAgo(Math.floor((nowDate - postDate) / 1000))
+        }
       });
     },
 
