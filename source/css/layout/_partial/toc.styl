@@ -68,15 +68,31 @@
           color var(--primary-color)
           font-weight bold
         }
+
       }
 
-      .active-current > a {
+      .active-current {
         .nav-number, .nav-text {
-          //color var(--primary-color)
+          &::before {
+            content " "
+            width 10px
+            height 1.7rem
+            margin auto 0
+            transform translate(-12px,0)
+            border-left 2px dotted var(--primary-color)
+            position absolute
+            margin-right 4px
+            color var(--primary-color)
+
+          }
+
+          color var(--primary-color) !important
           font-weight bold
-          transition-duration 0.1s
+          display block
         }
       }
+
+
     }
   }
 }
