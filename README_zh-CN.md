@@ -25,8 +25,8 @@
 
 ## 🌐 在线演示站
 
-- [Anonymous Land](https://www.evanluo.top)
-- [Theme Redefine Demo](https://redefine.evanluo.top)
+- [Anonymous Land](https://ohevan.com)
+- [Theme Redefine Demo](https://redefine.ohevan.com)
 
 ## ⛰️ 部分功能
 
@@ -99,7 +99,7 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 
 欢迎 **pull request** 或者 提交 **issues**.
 
-如有问题，请发邮件到 [contact@evanluo.top](mailto:contact@evanluo.top). 我会及时回复
+如有问题，请发邮件到 [contact@evanluo.top](mailto:contact@ohevan.com). 我会及时回复
 
 如果我做的主题还不错的话，欢迎给我 Github 点个 Star，谢谢
 

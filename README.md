@@ -27,8 +27,8 @@
 
 ## 🌐 Online Demo
 
-- [Anonymous Land](https://www.evanluo.top)
-- [Theme Redefine Demo](https://redefine.evanluo.top)
+- [Anonymous Land](https://ohevan.com)
+- [Theme Redefine Demo](https://redefine.ohevan.com)
 
 ## ⛰️ Some functions
 
@@ -101,7 +101,7 @@ It's very easy to understand.
 
 Feel free to **pull request** and **send issues**.
 
-If you have any questions, please send an email to [contact@evanluo.top](mailto:contact@evanluo.top). I will reply in time.
+If you have any questions, please send an email to [contact@evanluo.top](mailto:contact@ohevan.com). I will reply in time.
 
 Please **give me a star** to support me, thanks!
 
