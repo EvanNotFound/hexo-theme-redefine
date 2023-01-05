@@ -1,6 +1,14 @@
 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;<span class="home-article-date" data-date="<%= post.date %>"><%= date(post.date, 'YYYY-MM-DD') %></span></span>
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="<%= post.date %>">
+                <% if (theme.home_article.date_format == 'auto') { %>
+                    <%= date(post.date, 'YYYY/MM/DD') %>
+                <% } else { %>
+                    <%= date(post.date, theme.home_article.date_format) %>
+                <% } %>
+            </span>
+        </span>
         <% if (post.categories.length && theme.home_article.category.enable === true) { %>
             <span class="home-article-category"><i class="fa-solid fa-folders"></i></i>&nbsp;
                 <ul>

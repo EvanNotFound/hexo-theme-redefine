@@ -45,7 +45,9 @@ function initTOC() {
 
       activateNavByIndex(index) {
         const target = document.querySelectorAll('.post-toc li a.nav-link')[index];
-        if (!target || target.classList.contains('active-current')) return;
+        if ( (!target || target.classList.contains('active-current')) ) {
+          return;
+        }
 
         document.querySelectorAll('.post-toc .active').forEach(element => {
           element.classList.remove('active', 'active-current');
@@ -53,8 +55,9 @@ function initTOC() {
         target.classList.add('active', 'active-current');
         let parent = target.parentNode;
         while (!parent.matches('.post-toc')) {
-          if (parent.matches('li')) parent.classList.add('active');
-          parent = parent.parentNode;
+          //if (parent.matches('li')) parent.classList.add('active');
+          //parent = parent.parentNode;
+          return;
         }
         // Scrolling to center active TOC element if TOC content is taller then viewport.
         const tocElement = document.querySelector('.post-toc-wrap');
