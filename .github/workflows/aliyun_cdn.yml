@@ -1,5 +1,5 @@
 # workflow 名称，执行时的标题
-name: Add to aliyun cdn
+name: Publish to Aliyun
 
 # 触发条件
 on:
