@@ -69,8 +69,8 @@
     <!-- Mobile drawer -->
     <div class="header-drawer">
         <ul class="drawer-menu-list">
-            <% if (theme.menu[i].path === 'none') {} else {%>
-                <% for (let i in theme.menu) { %>
+            <% for (let i in theme.menu) { %>
+                <% if (theme.menu[i].path === 'none') {} else {%>
                     <li class="drawer-menu-item flex-center">
                         <a class="<% if (theme.menu[i].submenus) { %>has-dropdown" <% } else {%><%- isInHomePaging(page.path, theme.menu[i].path) ? 'active' : is_current(theme.menu[i].path) ? 'active' : '' %>" <% } %>
                         href="<% if (theme.menu[i].submenus) { %>javascript:void(0);"<% } else {%><%- url_for(theme.menu[i].path) %>" <% } %>>
