@@ -7,6 +7,14 @@
                     <i class="fa-solid fa-thumbtack fa-thumbtack top-icon"></i>
                 <% } %>
 
+                <% if (post.thumbnail && post.thumbnail !== null) { %>
+                    <div class="home-article-thumbnail">
+                        <a href="<%- url_for(post.path) %>">
+                            <img src="<%- url_for(post.thumbnail) %>" alt="<%= post.title %>" />
+                        </a>
+                    </div>
+                <% } %>
+
                 <h3 class="home-article-title">
                     <a href="<%- url_for(post.path) %>">
                         <%= post.title %>
