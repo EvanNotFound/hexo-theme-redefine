@@ -21,7 +21,8 @@
 
 ![redefine-rendered-1](https://user-images.githubusercontent.com/68590232/208305420-b3096ebf-b819-4b70-aad2-efca12818295.png)
 ![redefine-rendered-2](https://user-images.githubusercontent.com/68590232/211048145-aaf77387-8ad7-429b-853b-0eab144c4d36.png)
-![redefine-rendered-3](https://user-images.githubusercontent.com/68590232/208305423-28960206-96d3-4af8-b76e-d687fb8a0f38.png)
+![redefine-rendered-3](https://user-images.githubusercontent.com/68590232/211049349-a68a8fa2-33ab-4bf6-a392-8e7545b32605.png)
+
 
 
 
@@ -91,7 +92,7 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 
 ## 📄 Documentations
 
-Please read [Redefine Docs](https://redefine-docs.evanluo.top/) when installing
+Please read [Redefine Docs](https://redefine-docs.ohevan.com/) when installing
 
 It's very easy to understand.
 
@@ -101,7 +102,7 @@ It's very easy to understand.
 
 Feel free to **pull request** and **send issues**.
 
-If you have any questions, please send an email to [contact@evanluo.top](mailto:contact@ohevan.com). I will reply in time.
+If you have any questions, please send an email to [contact@ohevan.com](mailto:contact@ohevan.com). I will reply in time.
 
 Please **give me a star** to support me, thanks!
 

@@ -21,7 +21,8 @@
 
 ![redefine-rendered-1](https://user-images.githubusercontent.com/68590232/208305420-b3096ebf-b819-4b70-aad2-efca12818295.png)
 ![redefine-rendered-2](https://user-images.githubusercontent.com/68590232/211048145-aaf77387-8ad7-429b-853b-0eab144c4d36.png)
-![redefine-rendered-3](https://user-images.githubusercontent.com/68590232/208305423-28960206-96d3-4af8-b76e-d687fb8a0f38.png)
+![redefine-rendered-3](https://user-images.githubusercontent.com/68590232/211049349-a68a8fa2-33ab-4bf6-a392-8e7545b32605.png)
+
 
 ## 🌐 在线演示站
 
@@ -89,7 +90,7 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 
 ## 📄 文档
 
-请阅读 [Redefine 主题官方文档](https://redefine-docs.evanluo.top/) 
+请阅读 [Redefine 主题官方文档](https://redefine-docs.ohevan.com/) 
 
 进行主题配置与安装
 
