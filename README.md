@@ -5,7 +5,7 @@
   <a title="Chinese" href="README_zh-TW.md">繁中</a>
 </div>
 
-<a href="https://redefine.evanluo.top"><img align="center" src="https://user-images.githubusercontent.com/68590232/197350938-3d27f054-04e6-4e7a-8bce-94666b56e822.png"  alt="Redefine"></a>
+<a href="https://redefine.ohevan.com"><img align="center" src="https://user-images.githubusercontent.com/68590232/197350938-3d27f054-04e6-4e7a-8bce-94666b56e822.png"  alt="Redefine"></a>
 
 
 
@@ -33,20 +33,21 @@
 
 ## ⛰️ Some functions
 
-- [Note Module](https://redefine-docs.evanluo.top/docs/advanced/note-module)
+- [Note Module](https://redefine-docs.ohevan.com/docs/advanced/note-module)
 
-- [Friend Links](https://redefine-docs.evanluo.top/docs/advanced/friend-link)
+- [Friend Links](https://redefine-docs.ohevan.com/docs/advanced/friend-link)
 
-- [Sticky Article](https://redefine-docs.evanluo.top/docs/advanced/sticky)
+- [Sticky Article](https://redefine-docs.ohevan.com/docs/advanced/sticky)
 
-- [Math formula](https://redefine-docs.evanluo.top/docs/advanced/mathjax)
+- [Math formula](https://redefine-docs.ohevan.com/docs/advanced/mathjax)
 
 - Code block language display
 - Light/Dark mode switching
-- [Font Awesome 6.1.0 Pro](https://redefine-docs.evanluo.top/docs/configuration-guide/fontawesome) (contains different styles like Duotone/Regular/Thin)
-- [Dropdown menu](https://redefine-docs.evanluo.top/docs/configuration-guide/menu)
-- [Customizable footer](https://redefine-docs.evanluo.top/docs/configuration-guide/footer)
-- [Site runtime footer display](https://redefine-docs.evanluo.top/docs/configuration-guide/footer)
+- [Font Awesome 6.1.0 Pro](https://redefine-docs.ohevan.com/docs/configuration-guide/fontawesome) (contains different styles like Duotone/Regular/Thin)
+- [Dropdown menu](https://redefine-docs.ohevan.com/docs/configuration-guide/menu)
+- [Customizable footer](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
+- [Site runtime footer display](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
+- [Article Thumbnail](https://redefine-docs.ohevan.com/docs/advanced/thumbnail)
 
 
 

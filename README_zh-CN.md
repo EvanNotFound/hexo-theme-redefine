@@ -45,6 +45,7 @@
 - [下拉菜单](https://redefine-docs.evanluo.top/docs/configuration-guide/menu)
 - [可自定义页脚](https://redefine-docs.evanluo.top/docs/configuration-guide/footer)
 - [网站运行时间显示](https://redefine-docs.evanluo.top/docs/configuration-guide/footer)
+- [文章头图](https://redefine-docs.ohevan.com/docs/advanced/thumbnail)
 
 ## ☁️ 安装
 

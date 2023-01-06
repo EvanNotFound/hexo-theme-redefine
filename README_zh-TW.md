@@ -46,6 +46,7 @@
 - [下拉菜單](https://redefine-docs.evanluo.top/docs/configuration-guide/menu)
 - [可自定義頁腳](https://redefine-docs.evanluo.top/docs/configuration-guide/footer)
 - [網站運行時間顯示](https://redefine-docs.evanluo.top/docs/configuration-guide/footer)
+- [文章頭圖](https://redefine-docs.ohevan.com/docs/advanced/thumbnail)
 
 ## ☁️ 安裝
 
