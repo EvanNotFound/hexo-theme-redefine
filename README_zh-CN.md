@@ -20,7 +20,7 @@
 ## 📷 屏幕截图
 
 ![redefine-rendered-1](https://user-images.githubusercontent.com/68590232/208305420-b3096ebf-b819-4b70-aad2-efca12818295.png)
-![redefine-rendered-2](https://user-images.githubusercontent.com/68590232/208305422-f4b2fed2-c144-474c-8d3c-acd52e4f3ff5.png)
+![redefine-rendered-2](https://user-images.githubusercontent.com/68590232/211048145-aaf77387-8ad7-429b-853b-0eab144c4d36.png)
 ![redefine-rendered-3](https://user-images.githubusercontent.com/68590232/208305423-28960206-96d3-4af8-b76e-d687fb8a0f38.png)
 
 ## 🌐 在线演示站
