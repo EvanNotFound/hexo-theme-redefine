@@ -261,7 +261,19 @@ footer:
   icp: # ICP record number of your website, Can be null
 
 # ---------------------------------------------------------------------------------------
+# Custom html code
+# ---------------------------------------------------------------------------------------
+inject:
+  enable: false
+  head: # inject code into <head> tag
+    - 
+    - 
+  footer: # inject code into <footer> tag
+    - 
+    - 
+
+# ---------------------------------------------------------------------------------------
 # Redefine Theme version (Please dont modify it)
 # Please go to github to update the latest version frequently
 # ---------------------------------------------------------------------------------------
-version: 0.5.0
+version: 0.5.1
