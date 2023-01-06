@@ -5,7 +5,7 @@
   <a title="Chinese" href="README_zh-TW.md">繁中</a>
 </div>
 
-<a href="https://redefine.evanluo.top"><img align="center" src="https://user-images.githubusercontent.com/68590232/197350938-3d27f054-04e6-4e7a-8bce-94666b56e822.png"  alt="Redefine"></a>
+<a href="https://redefine.ohevan.com"><img align="center" src="https://user-images.githubusercontent.com/68590232/197350938-3d27f054-04e6-4e7a-8bce-94666b56e822.png"  alt="Redefine"></a>
 
 
 
@@ -20,8 +20,9 @@
 ## 📷 Screenshots
 
 ![redefine-rendered-1](https://user-images.githubusercontent.com/68590232/208305420-b3096ebf-b819-4b70-aad2-efca12818295.png)
-![redefine-rendered-2](https://user-images.githubusercontent.com/68590232/208305422-f4b2fed2-c144-474c-8d3c-acd52e4f3ff5.png)
-![redefine-rendered-3](https://user-images.githubusercontent.com/68590232/208305423-28960206-96d3-4af8-b76e-d687fb8a0f38.png)
+![redefine-rendered-2](https://user-images.githubusercontent.com/68590232/211048145-aaf77387-8ad7-429b-853b-0eab144c4d36.png)
+![redefine-rendered-3](https://user-images.githubusercontent.com/68590232/211049349-a68a8fa2-33ab-4bf6-a392-8e7545b32605.png)
+
 
 
 
@@ -32,20 +33,21 @@
 
 ## ⛰️ Some functions
 
-- [Note Module](https://redefine-docs.evanluo.top/docs/advanced/note-module)
+- [Note Module](https://redefine-docs.ohevan.com/docs/advanced/note-module)
 
-- [Friend Links](https://redefine-docs.evanluo.top/docs/advanced/friend-link)
+- [Friend Links](https://redefine-docs.ohevan.com/docs/advanced/friend-link)
 
-- [Sticky Article](https://redefine-docs.evanluo.top/docs/advanced/sticky)
+- [Sticky Article](https://redefine-docs.ohevan.com/docs/advanced/sticky)
 
-- [Math formula](https://redefine-docs.evanluo.top/docs/advanced/mathjax)
+- [Math formula](https://redefine-docs.ohevan.com/docs/advanced/mathjax)
 
 - Code block language display
 - Light/Dark mode switching
-- [Font Awesome 6.1.0 Pro](https://redefine-docs.evanluo.top/docs/configuration-guide/fontawesome) (contains different styles like Duotone/Regular/Thin)
-- [Dropdown menu](https://redefine-docs.evanluo.top/docs/configuration-guide/menu)
-- [Customizable footer](https://redefine-docs.evanluo.top/docs/configuration-guide/footer)
-- [Site runtime footer display](https://redefine-docs.evanluo.top/docs/configuration-guide/footer)
+- [Font Awesome 6.1.0 Pro](https://redefine-docs.ohevan.com/docs/configuration-guide/fontawesome) (contains different styles like Duotone/Regular/Thin)
+- [Dropdown menu](https://redefine-docs.ohevan.com/docs/configuration-guide/menu)
+- [Customizable footer](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
+- [Site runtime footer display](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
+- [Article Thumbnail](https://redefine-docs.ohevan.com/docs/advanced/thumbnail)
 
 
 
@@ -91,7 +93,7 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 
 ## 📄 Documentations
 
-Please read [Redefine Docs](https://redefine-docs.evanluo.top/) when installing
+Please read [Redefine Docs](https://redefine-docs.ohevan.com/) when installing
 
 It's very easy to understand.
 
@@ -101,7 +103,7 @@ It's very easy to understand.
 
 Feel free to **pull request** and **send issues**.
 
-If you have any questions, please send an email to [contact@evanluo.top](mailto:contact@ohevan.com). I will reply in time.
+If you have any questions, please send an email to [contact@ohevan.com](mailto:contact@ohevan.com). I will reply in time.
 
 Please **give me a star** to support me, thanks!
 

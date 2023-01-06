@@ -5,7 +5,7 @@
   <a title="Chinese" href="README_zh-CN.md">简中</a>
 </div>
 
-<a href="https://redefine.evanluo.top"><img align="center" src="https://user-images.githubusercontent.com/68590232/197350938-3d27f054-04e6-4e7a-8bce-94666b56e822.png"  alt="Redefine"></a>
+<a href="https://redefine.ohevan.com"><img align="center" src="https://user-images.githubusercontent.com/68590232/197350938-3d27f054-04e6-4e7a-8bce-94666b56e822.png"  alt="Redefine"></a>
 
 
 
@@ -20,8 +20,9 @@
 ## 📷 屏幕截圖
 
 ![redefine-rendered-1](https://user-images.githubusercontent.com/68590232/208305420-b3096ebf-b819-4b70-aad2-efca12818295.png)
-![redefine-rendered-2](https://user-images.githubusercontent.com/68590232/208305422-f4b2fed2-c144-474c-8d3c-acd52e4f3ff5.png)
-![redefine-rendered-3](https://user-images.githubusercontent.com/68590232/208305423-28960206-96d3-4af8-b76e-d687fb8a0f38.png)
+![redefine-rendered-2](https://user-images.githubusercontent.com/68590232/211048145-aaf77387-8ad7-429b-853b-0eab144c4d36.png)
+![redefine-rendered-3](https://user-images.githubusercontent.com/68590232/211049349-a68a8fa2-33ab-4bf6-a392-8e7545b32605.png)
+
 
 
 ## 🌐 在線演示站
@@ -31,20 +32,21 @@
 
 ## ⛰️ 部分功能
 
-- [筆記模塊](https://redefine-docs.evanluo.top/docs/advanced/note-module)
+- [筆記模塊](https://redefine-docs.ohevan.com/docs/advanced/note-module)
 
-- [友鏈樣式](https://redefine-docs.evanluo.top/docs/advanced/friend-link)
+- [友鏈樣式](https://redefine-docs.ohevan.com/docs/advanced/friend-link)
 
-- [文章頂置](https://redefine-docs.evanluo.top/docs/advanced/sticky)
+- [文章頂置](https://redefine-docs.ohevan.com/docs/advanced/sticky)
 
-- [數學公式](https://redefine-docs.evanluo.top/docs/advanced/mathjax)
+- [數學公式](https://redefine-docs.ohevan.com/docs/advanced/mathjax)
 
 - 代碼塊語言顯示
 - Light/Dark 模式切換
-- [Font Awesome 6.1.0 Pro](https://redefine-docs.evanluo.top/docs/configuration-guide/fontawesome)（包含 Duotone/Regular/Thin 等不同樣式）
-- [下拉菜單](https://redefine-docs.evanluo.top/docs/configuration-guide/menu)
-- [可自定義頁腳](https://redefine-docs.evanluo.top/docs/configuration-guide/footer)
-- [網站運行時間顯示](https://redefine-docs.evanluo.top/docs/configuration-guide/footer)
+- [Font Awesome 6.1.0 Pro](https://redefine-docs.ohevan.com/docs/configuration-guide/fontawesome)（包含 Duotone/Regular/Thin 等不同樣式）
+- [下拉菜單](https://redefine-docs.ohevan.com/docs/configuration-guide/menu)
+- [可自定義頁腳](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
+- [網站運行時間顯示](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
+- [文章頭圖](https://redefine-docs.ohevan.com/docs/advanced/thumbnail)
 
 ## ☁️ 安裝
 
@@ -95,7 +97,7 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 
 ## 📄 文檔
 
-請閱讀 [Redefine 主題官方文檔](https://redefine-docs.evanluo.top/) 
+請閱讀 [Redefine 主題官方文檔](https://redefine-docs.ohevan.com/) 
 
 進行主題配置與安裝
 
@@ -105,6 +107,6 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 
 歡迎 **pull request** 或者 提交 **issues**.
 
-如有問題，請發郵件到 [contact@evanluo.top](mailto:contact@ohevan.com). 我會及時回复
+如有問題，請發郵件到 [contact@ohevan.com](mailto:contact@ohevan.com). 我會及時回复
 
 如果我做的主題還不錯的話，歡迎給我 Github 點個 Star，謝謝
