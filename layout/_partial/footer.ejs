@@ -58,6 +58,11 @@
         <% if (theme.footer.hasOwnProperty('customize') && theme.footer.customize) { %>
             <div class="customize-info info-item"><%- theme.footer.customize %></div>
         <% } %>
+
+        <% if (theme.inject.enable == true) { %>
+            <% for (let i in theme.inject.footer) { %>
+                <%- theme.inject.footer[i] %>
+        <% } }%>
         
     </div>  
 </footer>

@@ -46,6 +46,12 @@
         <%- __css('css/duotone.min.css') %>
     <% } %>
     <%- __css('css/css2.css') %>
+
+    <% if (theme.inject.enable == true) { %>
+        <% for (let i in theme.inject.head) { %>
+            <%- theme.inject.head[i] %>
+    <% } }%>
+
     <%- export_config() %>
 </head>
 
