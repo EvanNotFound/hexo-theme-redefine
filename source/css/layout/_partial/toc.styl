@@ -73,26 +73,25 @@
 
       .active-current {
         .nav-number, .nav-text {
-          &::before {
-            content " "
-            width 10px
-            height 1.7rem
-            margin auto 0
-            transform translate(-12px,0)
-            border-left 2px solid var(--primary-color)
-            position absolute
-            margin-right 4px
-            color var(--primary-color)
-          }
-
           color var(--primary-color) !important
           font-weight bold
-          display block
           transition none
         }
       }
 
-
+      .active-current > span {
+        &:first-child::before {
+          content " "
+          width 10px
+          height 1.7rem
+          margin auto 0
+          transform translate(-12px,0)
+          border-left 2px solid var(--primary-color)
+          position absolute
+          margin-right 4px
+          color var(--primary-color)
+        }
+      }
     }
   }
 }
