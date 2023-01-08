@@ -5,6 +5,9 @@
     <meta name="description" content="<%= page.description || config.description || 'Hexo Theme Redefine' %>">
     <meta name="author" content="<%= theme.base_info.author || config.author || 'Redefine Team' %>">
     <link rel="canonical" href="<%= full_url_for(page.path).replace("/index.html", "") %>" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
+    <link rel="icon" type="image/png" href="<%= theme.style.favicon %>" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= theme.style.favicon %>">
     <%
     let title = page.title;
     if (is_archive()) {
