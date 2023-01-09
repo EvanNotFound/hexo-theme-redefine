@@ -39,5 +39,5 @@
         <% } %>
     </div>
 
-    <a href="<%- url_for(post.path) %>"><%- __('read_more') %>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="<%- url_for(post.path) %>"><%- __('read_more') %><span class="seo-reader-text"><%= post.title %></span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
