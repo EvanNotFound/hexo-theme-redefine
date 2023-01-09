@@ -21,7 +21,7 @@
                             <li class="menu-item">
                                 <!-- Menu -->
                                 <a class="<% if (theme.menu[i].submenus) { %>has-dropdown" <% } else {%><%- isInHomePaging(page.path, theme.menu[i].path) ? 'active' : is_current(theme.menu[i].path) ? 'active' : '' %>" <% } %>
-                                    href="<% if (theme.menu[i].submenus) { %>javascript:void(0);"<% } else {%><%- url_for(theme.menu[i].path) %>" <% } %>>
+                                    href="<% if (theme.menu[i].submenus) { %>#"<% } else {%><%- url_for(theme.menu[i].path) %>" <% } %> <% if (theme.menu[i].submenus) { %>onClick="return false;"<% } else {%><% } %>>
                                     <% if (theme.menu[i].submenus) { %>
                                         <% if (theme.menu[i].icon) { %>
                                             <i class="<%- theme.menu[i].icon %>"></i>
@@ -73,7 +73,7 @@
                 <% if (theme.menu[i].path === 'none') {} else {%>
                     <li class="drawer-menu-item flex-center">
                         <a class="<% if (theme.menu[i].submenus) { %>has-dropdown" <% } else {%><%- isInHomePaging(page.path, theme.menu[i].path) ? 'active' : is_current(theme.menu[i].path) ? 'active' : '' %>" <% } %>
-                        href="<% if (theme.menu[i].submenus) { %>javascript:void(0);"<% } else {%><%- url_for(theme.menu[i].path) %>" <% } %>>
+                        href="<% if (theme.menu[i].submenus) { %>#"<% } else {%><%- url_for(theme.menu[i].path) %>" <% } %> <% if (theme.menu[i].submenus) { %>onClick="return false;"<% } else {%><% } %>>
                             <% if (theme.menu[i].submenus) { %>
                                 <% if (theme.menu[i].icon) { %>
                                     <i class="<%- theme.menu[i].icon %>"></i>
