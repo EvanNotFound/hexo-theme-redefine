@@ -8,7 +8,9 @@
                 </a>
             <% } %>
             <a class="logo-title" href="/">
+                <%- is_home() ? '<h1>' : '' %>
                 <%= theme.base_info.title || config.title || 'Redefine Theme' %>
+                <%- is_home() ? '</h1>' : '' %>
             </a>
         </div>
 
