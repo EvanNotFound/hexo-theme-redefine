@@ -1,0 +1,75 @@
+/* open-sans-regular - latin */
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Open Sans"),
+    url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/open-sans-v34-latin-regular.woff2")
+      format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/open-sans-v34-latin-regular.woff")
+      format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* open-sans-700 - latin */
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Open Sans"),
+    url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/open-sans-v34-latin-700.woff2")
+      format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/open-sans-v34-latin-700.woff")
+      format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* noto-sans-sc-regular - chinese-simplified */
+@font-face {
+  font-family: "Noto Sans SC";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Noto Sans SC"),
+    url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/noto-sans-sc-v26-chinese-simplified-regular.woff2")
+      format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/noto-sans-sc-v26-chinese-simplified-regular.woff")
+      format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* noto-sans-sc-700 - chinese-simplified */
+@font-face {
+  font-family: "Noto Sans SC";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Noto Sans SC"),
+    url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/noto-sans-sc-v26-chinese-simplified-700.woff2")
+      format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/noto-sans-sc-v26-chinese-simplified-700.woff")
+      format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+@font-face {
+  font-family: "Optima";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Optima"),
+    url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/OPTIMA.woff")
+      format("woff");
+}
+
+@font-face {
+  font-family: "Optima Medium";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Optima Medium"),
+    url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/Optima Medium.woff")
+      format("woff");
+}
+
+@font-face {
+  font-family: "Optima Bold";
+  font-style: normal;
+  font-weight: bold;
+  src: local("Optima Bold"),
+    url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/OPTIMA_B.woff")
+      format("woff");
+}
