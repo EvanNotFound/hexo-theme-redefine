@@ -9,18 +9,19 @@ disable-user-select() {
   position relative
 }
 
-.highlight-container:hover .copy-btn, .highlight-container .copy-btn:focus {
+.highlight-container:hover .copy-button, .highlight-container .copy-button:focus {
   opacity 1
 }
 
-.copy-btn {
+.copy-button {
   cursor pointer
+  border-radius 0px 18px 0 0 
   display inline-block
   font-weight bold
   line-height 1.8
   opacity 0
   outline 0
-  padding 2px 6px
+  padding 6px 15px
   position absolute
   vertical-align middle
   white-space nowrap
@@ -28,9 +29,7 @@ disable-user-select() {
   color var(--default-text-color)
   disable-user-select()
   transition-t("opacity", "0", "0.2", "ease-in-out")
-
-
-  background var(--background-color)
+  background var(--highlight-background)
   border 0
   right 0
   top 0
