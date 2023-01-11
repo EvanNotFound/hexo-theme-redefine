@@ -3,7 +3,7 @@ $pc-search-icon-font-size = 1.5rem
 $menu-bar-line-height = 2.5px
 $logo-image-box-width = 46px
 
-.header-wrapper {
+.menu-wrapper {
   font-family "Optima Medium", sans-serif
   width 100%
   height 100%
@@ -18,7 +18,7 @@ $logo-image-box-width = 46px
 
   hover-style(false, 0, 0)
 
-  .header-content {
+  .menu-content {
     position relative
     height 100%
     width $main-content-width
@@ -47,7 +47,7 @@ $logo-image-box-width = 46px
       align-items center
       transition-t("transform", "0", "0.2", "linear")
 
-      .header-shrink & {
+      .menu-shrink & {
         transform scale(0.72)
         transform-origin left
       }
@@ -169,8 +169,8 @@ $logo-image-box-width = 46px
                 background var(--primary-color)
                 transition-t("transform, bottom", "0, 0", "0.2, 0.2", "linear, linear")
 
-                .header-shrink & {
-                  bottom -($header-shrink-height / 2 - 17)
+                .menu-shrink & {
+                  bottom -($menu-shrink-height / 2 - 17)
                 }
               }
             }
@@ -276,7 +276,7 @@ $logo-image-box-width = 46px
             position relative
             background var(--default-text-color)
 
-            .header-drawer-show & {
+            .menu-drawer-show & {
               background transparent
             }
 
@@ -295,7 +295,7 @@ $logo-image-box-width = 46px
             &::before {
               top -6px
 
-              .header-drawer-show & {
+              .menu-drawer-show & {
                 transform translateY(6px) rotate(45deg)
               }
             }
@@ -304,7 +304,7 @@ $logo-image-box-width = 46px
             &::after {
               bottom -6px
 
-              .header-drawer-show & {
+              .menu-drawer-show & {
                 transform translateY(-6px) rotate(-45deg)
               }
             }
@@ -315,9 +315,9 @@ $logo-image-box-width = 46px
   }
 
 
-  .header-drawer {
+  .menu-drawer {
     width 100%
-    padding $header-height 0 20px 0
+    padding $menu-height 0 20px 0
     position absolute
     top 0
     left 0
@@ -327,7 +327,7 @@ $logo-image-box-width = 46px
     background var(--background-color)
     transition-t("transform", "0", "0.38", "ease")
 
-    .header-drawer-show & {
+    .menu-drawer-show & {
       transform scaleY(1)
     }
 
@@ -428,7 +428,7 @@ $logo-image-box-width = 46px
     opacity 0
     transition-t("transform, opacity", "0, 0", "0.38, 0.38", "ease, ease")
 
-    .header-drawer-show & {
+    .menu-drawer-show & {
       visibility visible
       opacity 1
     }
@@ -436,6 +436,6 @@ $logo-image-box-width = 46px
 
 }
 
-.header-drawer-show {
+.menu-drawer-show {
   overflow hidden
 }

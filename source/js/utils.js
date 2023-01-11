@@ -69,7 +69,7 @@ REDEFINE.initUtils = () => {
         }
 
         // header shrink
-        REDEFINE.utils.headerShrink.headerShrink();
+        REDEFINE.utils.menuShrink.menuShrink();
       });
     },
 
@@ -117,7 +117,7 @@ REDEFINE.initUtils = () => {
     // toggle content area width
     contentAreaWidthAdjust() {
       const toolExpandDom = document.querySelector('.tool-expand-width');
-      const headerContentDom = document.querySelector('.header-content');
+      const headerContentDom = document.querySelector('.menu-content');
       const mainContentDom = document.querySelector('.main-content');
       const iconDom = toolExpandDom.querySelector('i');
 

@@ -1,6 +1,6 @@
-<header class="header-wrapper">
+<header class="menu-wrapper">
     
-    <div class="header-content<%- (theme.style.first_screen.enable === true && is_home() && !page.prev) ? ' has-first-screen' : '' %>">
+    <div class="menu-content<%- (theme.style.first_screen.enable === true && is_home() && !page.prev) ? ' has-first-screen' : '' %>">
         <div class="left">
             <% if (theme.base_info.hasOwnProperty('logo_img') && theme.base_info.logo_img) { %>
                 <a class="logo-image" href="/">
@@ -69,7 +69,7 @@
     </div>
 
     <!-- Mobile drawer -->
-    <div class="header-drawer">
+    <div class="menu-drawer">
         <ul class="drawer-menu-list">
             <% for (let i in theme.menu) { %>
                 <% if (theme.menu[i].path === 'none') {} else {%>

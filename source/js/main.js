@@ -43,7 +43,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   REDEFINE.refresh = () => {
     REDEFINE.initUtils();
-    REDEFINE.initHeaderShrink();
+    REDEFINE.initMenuShrink();
     REDEFINE.initModeToggle();
     REDEFINE.initBackToTop();
 
