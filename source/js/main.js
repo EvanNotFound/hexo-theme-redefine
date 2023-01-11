@@ -45,14 +45,14 @@ window.addEventListener('DOMContentLoaded', () => {
     REDEFINE.initUtils();
     REDEFINE.initHeaderShrink();
     REDEFINE.initModeToggle();
-    REDEFINE.initBack2Top();
+    REDEFINE.initBackToTop();
 
     if (REDEFINE.theme_config.local_search.enable === true) {
       REDEFINE.initLocalSearch();
     }
 
     if (REDEFINE.theme_config.code_block.copy === true) {
-      REDEFINE.initCodeCopy();
+      REDEFINE.initCopyCode();
     }
 
     if (REDEFINE.theme_config.lazyload.enable === true) {

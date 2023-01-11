@@ -11,7 +11,7 @@ REDEFINE.initUtils = () => {
     scrollProgressBar_dom: document.querySelector('.scroll-progress-bar'),
     pjaxProgressBar_dom: document.querySelector('.pjax-progress-bar'),
     pjaxProgressIcon_dom: document.querySelector('.pjax-progress-icon'),
-    back2TopButton_dom: document.querySelector('.tool-scroll-to-top'),
+    backToTopButton_dom: document.querySelector('.tool-scroll-to-top'),
 
     innerHeight: window.innerHeight,
     pjaxProgressBarTimer: null,
@@ -36,12 +36,12 @@ REDEFINE.initUtils = () => {
       }
 
       if (this.isHasScrollPercent) {
-        const percent_dom = this.back2TopButton_dom.querySelector('.percent');
+        const percent_dom = this.backToTopButton_dom.querySelector('.percent');
         if (percent === 0 || percent === undefined) {
-          this.back2TopButton_dom.classList.remove('show');
+          this.backToTopButton_dom.classList.remove('show');
 
         } else {
-          this.back2TopButton_dom.classList.add('show');
+          this.backToTopButton_dom.classList.add('show');
           percent_dom.innerHTML = percent.toFixed(0);
         }
       }
@@ -278,7 +278,7 @@ REDEFINE.initUtils = () => {
       }
     },
 
-    setHowLongAgoInHome() {
+    relativeTimeInHome() {
       const post = document.querySelectorAll('.home-article-meta-info .home-article-date');
       post && post.forEach(v => {
         const nowDate = Date.now();
@@ -359,7 +359,7 @@ REDEFINE.initUtils = () => {
   // big image viewer handle
   REDEFINE.utils.imageViewer();
 
-  // set how long age in home article block
-  REDEFINE.utils.setHowLongAgoInHome();
+  // set how long ago in home article block
+  REDEFINE.utils.relativeTimeInHome();
 
 }

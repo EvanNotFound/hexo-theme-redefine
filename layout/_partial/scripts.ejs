@@ -1,35 +1,35 @@
 <%- __js([
     'js/utils.js',
     'js/main.js',
-    'js/header-shrink.js',
-    'js/back2top.js',
-    'js/dark-light-toggle.js',
+    'js/layouts/header-shrink.js',
+    'js/tools/go-top-bottom.js',
+    'js/tools/dark-light-toggle.js',
 ]) %>
 
 <% if (theme.local_search.enable) { %>
-    <%- __js('js/local-search.js') %>
+    <%- __js('js/tools/local-search.js') %>
 <% } %>
 
 <% if (theme.code_block.copy) { %>
-    <%- __js('js/code-copy.js') %>
+    <%- __js('js/tools/copy-code.js') %>
 <% } %>
 
 <% if (theme.lazyload.enable) { %>
-    <%- __js('js/lazyload.js') %>
+    <%- __js('js/layouts/lazyload.js') %>
 <% } %>
 
 <% if (theme.footer.runtime) { %>
-    <%- __js('js/runtime.js') %>
-    <%- __js('js/odometer.min.js') %>
+    <%- __js('js/tools/runtime.js') %>
+    <%- __js('js/layouts/odometer.min.js') %>
     <%- __css('css/odometer-theme-minimal.css') %>
 <% } %>
 
 <div class="post-scripts<%= theme.pjax.enable === true ? ' pjax' : '' %>">
     <% if (theme.toc.enable && is_post()) { %>
         <%- __js([
-            'js/toc-toggle.js',
+            'js/tools/toc-toggle.js',
             'js/libs/anime.min.js',
-            'js/toc.js'
+            'js/layouts/toc.js'
         ]) %>
     <% } %>
 </div>
