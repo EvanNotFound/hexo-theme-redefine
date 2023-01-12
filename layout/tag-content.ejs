@@ -3,11 +3,11 @@
         <div class="tag-name"><i class="fa-solid fa-tag"></i>&nbsp;<%= page.tag %>
         </div>
         <div class="tag-post-list">
-            <%- partial('_partial/archive-list', {posts_new: page.posts}) %>
+            <%- partial('_partials/components/archive-list', {posts_new: page.posts}) %>
         </div>
     </div>
 
     <div class="tag-paginator">
-        <%- partial('_partial/paginator', {pageObject: page}) %>
+        <%- partial('_partials/tools/paginator', {pageObject: page}) %>
     </div>
 </div>

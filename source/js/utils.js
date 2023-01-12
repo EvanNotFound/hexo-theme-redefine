@@ -117,7 +117,7 @@ REDEFINE.initUtils = () => {
     // toggle content area width
     contentAreaWidthAdjust() {
       const toolExpandDom = document.querySelector('.tool-expand-width');
-      const headerContentDom = document.querySelector('.menu-content');
+      const menuContentDom = document.querySelector('.menu-content');
       const mainContentDom = document.querySelector('.main-content');
       const iconDom = toolExpandDom.querySelector('i');
 
@@ -137,12 +137,12 @@ REDEFINE.initUtils = () => {
         if (isExpand) {
           iconDom.classList.remove('fa-arrows-alt-h');
           iconDom.classList.add('fa-compress-arrows-alt');
-          headerContentDom.style.maxWidth = expandMaxWidth;
+          menuContentDom.style.maxWidth = expandMaxWidth;
           mainContentDom.style.maxWidth = expandMaxWidth;
         } else {
           iconDom.classList.remove('fa-compress-arrows-alt');
           iconDom.classList.add('fa-arrows-alt-h');
-          headerContentDom.style.maxWidth = headerMaxWidth;
+          menuContentDom.style.maxWidth = headerMaxWidth;
           mainContentDom.style.maxWidth = defaultMaxWidth;
         }
       }

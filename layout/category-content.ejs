@@ -4,10 +4,10 @@
             <i class="fa-solid fa-folder"></i>&nbsp;<%= page.category %>
         </div>
         <div class="category-post-list">
-            <%- partial('_partial/archive-list', {posts_new: page.posts}) %>
+            <%- partial('_partials/components/archive-list', {posts_new: page.posts}) %>
         </div>
     </div>
     <div class="category-paginator">
-        <%- partial('_partial/paginator', {pageObject: page}) %>
+        <%- partial('_partials/tools/paginator', {pageObject: page}) %>
     </div>
 </div>
