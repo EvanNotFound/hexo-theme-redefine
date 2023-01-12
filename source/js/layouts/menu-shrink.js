@@ -1,21 +1,21 @@
 REDEFINE.initMenuShrink = () => {
   REDEFINE.utils.menuShrink = {
-    headerDom: document.querySelector('.menu-wrapper'),
+    menuDom: document.querySelector('.menu-wrapper'),
     leftAsideDom: document.querySelector('.page-aside'),
     isMenuShrink: false,
 
     init() {
-      this.headerHeight = this.headerDom.getBoundingClientRect().height;
+      this.menuHeight = this.menuDom.getBoundingClientRect().height;
     },
 
     menuShrink() {
       const scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
 
-      if (!this.isMenuShrink && scrollTop > this.headerHeight) {
+      if (!this.isMenuShrink && scrollTop > this.menuHeight) {
         this.isMenuShrink = true;
         document.body.classList.add('menu-shrink');
         
-      } else if (this.isMenuShrink && scrollTop <= this.headerHeight) {
+      } else if (this.isMenuShrink && scrollTop <= this.menuHeight) {
         this.isMenuShrink = false;
         document.body.classList.remove('menu-shrink');
       }

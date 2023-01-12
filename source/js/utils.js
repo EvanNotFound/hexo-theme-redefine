@@ -46,7 +46,7 @@ REDEFINE.initUtils = () => {
         }
       }
 
-      // hide header handle
+      // hide menu handle
       if (scrollTop > this.prevScrollValue && scrollTop > this.innerHeight) {
         this.pageTop_dom.classList.remove('hide');
       } else {
@@ -68,7 +68,7 @@ REDEFINE.initUtils = () => {
           REDEFINE.utils.findActiveIndexByTOC();
         }
 
-        // header shrink
+        // menu shrink
         REDEFINE.utils.menuShrink.menuShrink();
       });
     },
@@ -123,12 +123,12 @@ REDEFINE.initUtils = () => {
 
       const defaultMaxWidth = REDEFINE.theme_config.style.content_max_width || '1000px';
       const expandMaxWidth = '90%';
-      let headerMaxWidth = defaultMaxWidth;
+      let menuMaxWidth = defaultMaxWidth;
 
       let isExpand = false;
 
       if (REDEFINE.theme_config.style.first_screen.enable === true && window.location.pathname === '/') {
-        headerMaxWidth = parseInt(defaultMaxWidth) * 1.2 + 'px';
+        menuMaxWidth = parseInt(defaultMaxWidth) * 1.2 + 'px';
       }
 
       const setPageWidth = (isExpand) => {
@@ -142,7 +142,7 @@ REDEFINE.initUtils = () => {
         } else {
           iconDom.classList.remove('fa-compress-arrows-alt');
           iconDom.classList.add('fa-arrows-alt-h');
-          menuContentDom.style.maxWidth = headerMaxWidth;
+          menuContentDom.style.maxWidth = menuMaxWidth;
           mainContentDom.style.maxWidth = defaultMaxWidth;
         }
       }
