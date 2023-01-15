@@ -8,20 +8,20 @@ function initTOC() {
 
       ...REDEFINE.utils,
 
-      findActiveIndexByTOC() {
+      updateActiveTOCLink() {
         if (!Array.isArray(REDEFINE.utils.sections)) return;
         let index = REDEFINE.utils.sections.findIndex(element => {
-          return element && element.getBoundingClientRect().top - 20 > 0;
+          return element && element.getBoundingClientRect().top - 200 > 0;
         });
         if (index === -1) {
           index = REDEFINE.utils.sections.length - 1;
         } else if (index > 0) {
           index--;
         }
-        this.activateNavByIndex(index);
+        this.activateTOCLink(index);
       },
 
-      registerSidebarTOC() {
+      registerTOCScroll() {
         REDEFINE.utils.sections = [...document.querySelectorAll('.post-toc li a.nav-link')].map(element => {
           const target = document.getElementById(decodeURI(element.getAttribute('href')).replace('#', ''));
           element.addEventListener('click', event => {
@@ -43,8 +43,11 @@ function initTOC() {
         });
       },
 
-      activateNavByIndex(index) {
+
+
+      activateTOCLink(index) {
         const target = document.querySelectorAll('.post-toc li a.nav-link')[index];
+
         if ( (!target || target.classList.contains('active-current')) ) {
           return;
         }
@@ -53,12 +56,6 @@ function initTOC() {
           element.classList.remove('active', 'active-current');
         });
         target.classList.add('active', 'active-current');
-        let parent = target.parentNode;
-        while (!parent.matches('.post-toc')) {
-          //if (parent.matches('li')) parent.classList.add('active');
-          //parent = parent.parentNode;
-          return;
-        }
         // Scrolling to center active TOC element if TOC content is taller then viewport.
         const tocElement = document.querySelector('.post-toc-wrap');
         window.anime({
@@ -69,7 +66,7 @@ function initTOC() {
         });
       },
 
-      showPageAsideWhenHasTOC() {
+      showTOCAside() {
 
         const openHandle = () => {
           const styleStatus = REDEFINE.getStyleStatus();
@@ -93,11 +90,12 @@ function initTOC() {
       }
     }
 
-    REDEFINE.utils.showPageAsideWhenHasTOC();
-    REDEFINE.utils.registerSidebarTOC();
+    REDEFINE.utils.showTOCAside();
+    REDEFINE.utils.registerTOCScroll();
 
   } else {
     REDEFINE.utils.pageContainer_dom.removeChild(document.querySelector('.toc-content-container'));
+    REDEFINE.utils.pageContainer_dom.removeChild(document.querySelector('.toc-marker'));
   }
 }
 

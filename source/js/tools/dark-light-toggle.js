@@ -10,7 +10,7 @@ REDEFINE.initModeToggle = () => {
     enableLightMode() {
       document.body.classList.remove('dark-mode');
       document.body.classList.add('light-mode');
-      this.iconDom.className = 'fas fa-moon';
+      this.iconDom.className = 'fa-regular fa-moon';
       REDEFINE.styleStatus.isDark = false;
       REDEFINE.setStyleStatus();
     },
@@ -18,7 +18,7 @@ REDEFINE.initModeToggle = () => {
     enableDarkMode() {
       document.body.classList.add('dark-mode');
       document.body.classList.remove('light-mode');
-      this.iconDom.className = 'fas fa-sun';
+      this.iconDom.className = 'fa-regular fa-sun';
       REDEFINE.styleStatus.isDark = true;
       REDEFINE.setStyleStatus();
     },

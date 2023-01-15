@@ -1,6 +1,7 @@
 <div class="post-toc-wrap">
     <div class="post-toc">
-        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong><%- __('toc') %></strong></div>
+        <div class="toc-title"><%- __('toc') %></div>
+        <div class="page-title"><%= page.title %></div>
         <%- toc(
                 page.content,
                 {
@@ -8,5 +9,6 @@
                     list_number: theme.toc.number
                 }
         ) %>
+
     </div>
 </div>

@@ -15,7 +15,7 @@ disable-user-select() {
 
 .copy-button {
   cursor pointer
-  border-radius 0px 18px 0 0 
+  border-radius 0 $redefine-border-radius-large 0 0 
   display inline-block
   font-weight bold
   line-height 1.8
@@ -39,7 +39,7 @@ disable-user-select() {
 if (hexo-config('code_block.style') == 'mac') {
   .highlight-container[data-rel]{
     background var(--second-background-color)
-    border-radius 18px
+    border-radius $redefine-border-radius-large
     box-shadow var(--redefine-box-shadow)
     padding-top 20px
     margin-top 10px
@@ -48,7 +48,7 @@ if (hexo-config('code_block.style') == 'mac') {
       position absolute
       content:attr(data-rel)
       line-height 38px
-      border-radius 50%
+      border-radius $redefine-border-radius-full
       box-shadow none
       height 12px
       left 12px
@@ -64,8 +64,8 @@ if (hexo-config('code_block.style') == 'mac') {
     &::after{
       content ' '
       position absolute
-      -webkit-border-radius 50%
-      border-radius 50%
+      -webkit-border-radius $redefine-border-radius-full
+      border-radius $redefine-border-radius-full
       background #fc625d
       width 12px
       height 12px
@@ -80,7 +80,7 @@ if (hexo-config('code_block.style') == 'mac') {
 } else {
   .highlight-container[data-rel]{
     background var(--highlight-background)
-    border-radius 18px
+    border-radius $redefine-border-radius-large
     padding-top 20px
     margin-top 10px
 
@@ -88,7 +88,7 @@ if (hexo-config('code_block.style') == 'mac') {
       position absolute
       content:attr(data-rel)
       line-height 42px
-      border-radius 18px
+      border-radius $redefine-border-radius-large
       box-shadow none
       height 12px
       left 4px

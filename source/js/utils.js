@@ -64,8 +64,8 @@ REDEFINE.initUtils = () => {
         }
 
         // TOC scroll handle
-        if (REDEFINE.theme_config.toc.enable && REDEFINE.utils.hasOwnProperty('findActiveIndexByTOC')) {
-          REDEFINE.utils.findActiveIndexByTOC();
+        if (REDEFINE.theme_config.toc.enable && REDEFINE.utils.hasOwnProperty('updateActiveTOCLink')) {
+          REDEFINE.utils.updateActiveTOCLink();
         }
 
         // menu shrink
@@ -76,7 +76,7 @@ REDEFINE.initUtils = () => {
     // toggle show tools list
     toggleShowToolsList() {
       document.querySelector('.tool-toggle-show').addEventListener('click', () => {
-        document.querySelector('.side-tools-list').classList.toggle('show');
+        document.querySelector('.unfolded-tools-list').classList.toggle('show');
       });
     },
 
@@ -135,13 +135,13 @@ REDEFINE.initUtils = () => {
         REDEFINE.styleStatus.isExpandPageWidth = isExpand;
         REDEFINE.setStyleStatus();
         if (isExpand) {
-          iconDom.classList.remove('fa-arrows-alt-h');
-          iconDom.classList.add('fa-compress-arrows-alt');
+          iconDom.classList.remove('fa-expand');
+          iconDom.classList.add('fa-compress');
           menuContentDom.style.maxWidth = expandMaxWidth;
           mainContentDom.style.maxWidth = expandMaxWidth;
         } else {
-          iconDom.classList.remove('fa-compress-arrows-alt');
-          iconDom.classList.add('fa-arrows-alt-h');
+          iconDom.classList.remove('fa-compress');
+          iconDom.classList.add('fa-expand');
           menuContentDom.style.maxWidth = menuMaxWidth;
           mainContentDom.style.maxWidth = defaultMaxWidth;
         }
@@ -170,7 +170,9 @@ REDEFINE.initUtils = () => {
       this.goComment_dom = document.querySelector('.go-comment');
       if (this.goComment_dom) {
         this.goComment_dom.addEventListener('click', () => {
-          document.querySelector('#comment-anchor').scrollIntoView();
+          document.querySelector('#comment-anchor').scrollIntoView({
+            behavior: "smooth"
+          });
         });
       }
 
