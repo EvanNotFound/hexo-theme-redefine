@@ -4,17 +4,17 @@
           <%- theme.style.first_screen.description || config.description %>
         </div>
         <% if (theme.social_contact.enable) { %>
-            <div class="s-icon-list fade-in-down-animation">
+            <div class="social-contacts fade-in-down-animation">
                 <% for (const key in theme.social_contact.links) { %>
                     <% if(theme.social_contact.links[key]) { %>
                         <% if(key === 'email') { %>
-                            <span class="s-icon-item <%= key %>">
+                            <span class="social-contact-item <%= key %>">
                                 <a href="mailto:<%- theme.social_contact.links[key] %>">
                                     <i class="fa-solid fa-envelope"></i>
                                 </a>
                             </span>
                         <% } else { %>
-                            <span class="s-icon-item <%= key %>">
+                            <span class="social-contact-item <%= key %>">
                                 <a target="_blank" href="<%- theme.social_contact.links[key] %>">
                                     <i class="fa-brands fa-<%= key %>"></i>
                                 </a>
