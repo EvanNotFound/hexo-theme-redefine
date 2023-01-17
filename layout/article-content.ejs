@@ -18,14 +18,14 @@
                             <% } %>
                         </div>
                         <div class="meta-info">
-                            <%- partial('_partials/articles/article-meta-info', {articleObject: page, index: true}) %>
+                            <%- partial('_partials/posts/article-meta-info', {articleObject: page, index: true}) %>
                         </div>
                     </div>
                 </div>
             <% } else { %>
                 <div class="article-header-meta-info">
                     <div class="meta-info">
-                        <%- partial('_partials/articles/article-meta-info', {articleObject: page, index: true}) %>
+                        <%- partial('_partials/posts/article-meta-info', {articleObject: page, index: true}) %>
                     </div>
                 </div>
             <% } %>
@@ -36,7 +36,7 @@
 
             <% if (theme.copyright_info.enable) { %>
                 <div class="post-copyright-info">
-                    <%- partial('_partials/articles/article-copyright-info') %>
+                    <%- partial('_partials/posts/article-copyright-info') %>
                 </div>
             <% } %>
 
@@ -96,7 +96,7 @@
 
         <% if (is_post() && theme.toc.enable === true) { %>
             <div class="toc-content-container">
-                <%- partial('_partials/articles/toc') %>
+                <%- partial('_partials/posts/toc') %>
             </div>
         <% } %>
     </div>

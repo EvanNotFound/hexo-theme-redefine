@@ -63,6 +63,12 @@ $redefine-border-radius-large-bottom = 0px 0px 18px 18px
 $redefine-border-radius-xlarge = 24px
 $redefine-border-radius-full = 50%
 
+// ========================================================================================
+// mermaid js theme
+// ========================================================================================
+$mermaid-theme = hexo-config('mermaid.theme.light')
+$dark-mermaid-theme = hexo-config('mermaid.theme.dark')
+
 
 // ========================================================================================
 // color
@@ -210,6 +216,8 @@ root-color(mode) {
 
   --redefine-box-shadow : var(--shadow-color-2) 0px 6px 24px 0px, var(--shadow-color-1) 0px 0px 0px 1px
   --redefine-box-shadow-hover : var(--shadow-color-2) 0px 6px 24px 0px, var(--shadow-color-1) 0px 0px 0px 1px, var(--shadow-color-1) 0px 0px 0px 1px inset
+
+  --mermaid-theme : mode == 'light' ? $mermaid-theme : $dark-mermaid-theme
 }
 
 

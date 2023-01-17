@@ -32,6 +32,9 @@
             'js/layouts/toc.js'
         ]) %>
     <% } %>
+    <% if (typeof theme.mermaid !== 'undefined' && theme.mermaid.enable && is_post()) { %>
+        <script src='https://unpkg.com/mermaid@<%= typeof theme.mermaid.version !== 'undefined' ? theme.mermaid.version : '9.3.0' %>/dist/mermaid.min.js'></script>
+    <% } %>
 </div>
 
 <% if (theme.pjax.enable === true) { %>

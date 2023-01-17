@@ -146,7 +146,7 @@ $without-toc-container-width = calc(100% - 210px)
 
 
     .article-content {
-      margin-top $component-spacing-value
+      margin-top $spacing-unit
       padding-bottom 10px
       word-wrap break-word
       border-bottom 1px solid var(--border-color)
@@ -180,18 +180,18 @@ $without-toc-container-width = calc(100% - 210px)
     }
 
     .post-copyright-info {
-      margin-top $component-spacing-value
+      margin-top $spacing-unit
       width 100%
 
       +redefine-tablet() {
-        margin-top $component-spacing-value * 0.8 !important
+        margin-top $spacing-unit * 0.8 !important
       }
     }
 
 
     .article-nav {
       height 40px
-      margin-top $component-spacing-value
+      margin-top $spacing-unit
 
       .article-prev, .article-next {
         max-width $post-nav-max-width
@@ -271,7 +271,7 @@ $without-toc-container-width = calc(100% - 210px)
 
   .toc-content-container {
     position sticky
-    top $menu-height + $component-spacing-value
+    top $menu-height + $spacing-unit
     //border-radius $redefine-border-radius-large
     border-radius $redefine-border-radius-none
     display none

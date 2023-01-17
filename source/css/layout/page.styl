@@ -86,10 +86,10 @@
       width 100%
       display flex
       justify-content center
-      padding $component-spacing-value 0
+      padding $spacing-unit 0
 
       +redefine-tablet() {
-        padding $component-spacing-value * 0.8 0
+        padding $spacing-unit * 0.8 0
         box-shadow none !important
 
         :hover {
@@ -98,7 +98,7 @@
       }
 
       +redefine-mobile() {
-        padding $component-spacing-value * 0.6 0
+        padding $spacing-unit * 0.6 0
         box-shadow none !important
 
         :hover {
@@ -136,25 +136,25 @@
 
   .post-tools {
     position fixed
-    top $menu-height + $component-spacing-value
-    right $component-spacing-value
+    top $menu-height + $spacing-unit
+    right $spacing-unit
     transition-t("top", "0", "0.2", "ease")
 
     .menu-shrink & {
-      top $menu-shrink-height + $component-spacing-value
+      top $menu-shrink-height + $spacing-unit
 
       +redefine-tablet() {
-        top $menu-shrink-height * 0.9 + $component-spacing-value
+        top $menu-shrink-height * 0.9 + $spacing-unit
       }
 
       +redefine-mobile() {
-        top $menu-shrink-height * 0.8 + $component-spacing-value
+        top $menu-shrink-height * 0.8 + $spacing-unit
       }
     }
 
 
     +redefine-tablet() {
-      top $menu-height * 0.9 + $component-spacing-value
+      top $menu-height * 0.9 + $spacing-unit
       right 10px
       transform scale(0.82)
       transform-origin right top
@@ -162,7 +162,7 @@
 
 
     +redefine-mobile() {
-      top $menu-height * 0.8 + $component-spacing-value
+      top $menu-height * 0.8 + $spacing-unit
       right 5px
       transform scale(0.72)
     }
@@ -172,6 +172,6 @@
   .right-bottom-side-tools {
     position fixed
     bottom 5%
-    right $component-spacing-value
+    right $spacing-unit
   }
 }

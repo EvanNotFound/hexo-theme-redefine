@@ -1,11 +1,15 @@
 /* global REDEFINE */
 
+
 REDEFINE.initModeToggle = () => {
 
   REDEFINE.utils.modeToggle = {
 
     modeToggleButton_dom: document.querySelector('.tool-dark-light-toggle'),
     iconDom: document.querySelector('.tool-dark-light-toggle i'),
+    mermaidLightTheme: typeof REDEFINE.theme_config.mermaid !== 'undefined' && typeof REDEFINE.theme_config.mermaid.style !== 'undefined' && typeof REDEFINE.theme_config.mermaid.style.light !== 'undefined' ? REDEFINE.theme_config.mermaid.style.light : 'default',
+    mermaidDarkTheme: typeof REDEFINE.theme_config.mermaid !== 'undefined' && typeof REDEFINE.theme_config.mermaid.style !== 'undefined' && typeof REDEFINE.theme_config.mermaid.style.dark !== 'undefined' ? REDEFINE.theme_config.mermaid.style.dark : 'dark',
+    
 
     enableLightMode() {
       document.body.classList.remove('dark-mode');
@@ -13,6 +17,7 @@ REDEFINE.initModeToggle = () => {
       this.iconDom.className = 'fa-regular fa-moon';
       REDEFINE.styleStatus.isDark = false;
       REDEFINE.setStyleStatus();
+      this.mermaidLightInit();
     },
 
     enableDarkMode() {
@@ -21,6 +26,23 @@ REDEFINE.initModeToggle = () => {
       this.iconDom.className = 'fa-regular fa-sun';
       REDEFINE.styleStatus.isDark = true;
       REDEFINE.setStyleStatus();
+      this.mermaidDarkInit();
+    },
+
+    mermaidLightInit() {
+      if (window.mermaid) {
+        mermaid.initialize({
+            theme: this.mermaidLightTheme,
+        });
+      }
+    },
+
+    mermaidDarkInit() {
+      if (window.mermaid) {
+        mermaid.initialize({
+            theme: this.mermaidDarkTheme,
+        });
+      }
     },
 
     isDarkPrefersColorScheme() {
