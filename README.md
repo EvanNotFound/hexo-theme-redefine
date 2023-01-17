@@ -32,21 +32,18 @@
 
 ## ⛰️ Some functions
 
-- [Note Module](https://redefine-docs.ohevan.com/docs/advanced/note-module)
-
-- [Friend Links](https://redefine-docs.ohevan.com/docs/advanced/friend-link)
-
-- [Sticky Article](https://redefine-docs.ohevan.com/docs/advanced/sticky)
-
-- [Math formula](https://redefine-docs.ohevan.com/docs/advanced/mathjax)
-
+- [Note Module](https://redefine-docs.ohevan.com/docs/advanced/plugins/note-module)
+- [Friend Link Page](https://redefine-docs.ohevan.com/docs/advanced/friend-link)
+- [Mathjax Support](https://redefine-docs.ohevan.com/docs/advanced/plugins/mathjax)
 - Code block language display
 - Light/Dark mode switching
 - [Font Awesome 6.1.0 Pro](https://redefine-docs.ohevan.com/docs/configuration-guide/fontawesome) (contains different styles like Duotone/Regular/Thin)
-- [Dropdown menu](https://redefine-docs.ohevan.com/docs/configuration-guide/menu)
+- [Drop-down menu](https://redefine-docs.ohevan.com/docs/configuration-guide/menu)
 - [Customizable footer](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
-- [Site runtime footer display](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
-- [Article Thumbnail](https://redefine-docs.ohevan.com/docs/advanced/thumbnail)
+- [Site Uptime Display](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
+- [Article Header Image](https://redefine-docs.ohevan.com/docs/advanced/home-contents/thumbnail)
+- [Mermaid JS support](https://redefine-docs.ohevan.com/docs/advanced/plugins/mermaid)
+- SEO friendly
 
 
 

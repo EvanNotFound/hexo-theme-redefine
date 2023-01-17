@@ -32,21 +32,18 @@
 
 ## ⛰️ 部分功能
 
-- [筆記模塊](https://redefine-docs.ohevan.com/docs/advanced/note-module)
-
+- [筆記模塊](https://redefine-docs.ohevan.com/docs/advanced/plugins/note-module)
 - [友鏈樣式](https://redefine-docs.ohevan.com/docs/advanced/friend-link)
-
-- [文章頂置](https://redefine-docs.ohevan.com/docs/advanced/sticky)
-
-- [數學公式](https://redefine-docs.ohevan.com/docs/advanced/mathjax)
-
+- [數學公式](https://redefine-docs.ohevan.com/docs/advanced/plugins/mathjax)
 - 代碼塊語言顯示
 - Light/Dark 模式切換
 - [Font Awesome 6.1.0 Pro](https://redefine-docs.ohevan.com/docs/configuration-guide/fontawesome)（包含 Duotone/Regular/Thin 等不同樣式）
 - [下拉菜單](https://redefine-docs.ohevan.com/docs/configuration-guide/menu)
 - [可自定義頁腳](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
 - [網站運行時間顯示](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
-- [文章頭圖](https://redefine-docs.ohevan.com/docs/advanced/thumbnail)
+- [文章頭圖](https://redefine-docs.ohevan.com/docs/advanced/home-contents/thumbnail)
+- [Mermaid JS 支持](https://redefine-docs.ohevan.com/docs/advanced/plugins/mermaid)
+- SEO 友好
 
 ## ☁️ 安裝
 
