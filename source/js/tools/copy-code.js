@@ -9,7 +9,7 @@ REDEFINE.initCopyCode = () => {
     const container = document.createElement('div');
     element.wrap(container);
     container.classList.add('highlight-container');
-    container.insertAdjacentHTML('beforeend', '<div class="copy-button"><i class="fa-solid fa-copy"></i></div>');
+    container.insertAdjacentHTML('beforeend', '<div class="copy-button"><i class="fa-regular fa-copy"></i></div>');
     const button = container.querySelector('.copy-button');
     button.addEventListener('click', () => {
       const codeLines = [...container.querySelectorAll('.code .line')];
@@ -19,11 +19,11 @@ REDEFINE.initCopyCode = () => {
       navigator.clipboard.writeText(code);
 
       // Display 'copied' icon
-      button.querySelector('i').className = 'fas fa-check';
+      button.querySelector('i').className = 'fa-regular fa-check';
 
       // Reset icon after a while
       setTimeout(() => {
-        button.querySelector('i').className = 'fa-solid fa-copy';
+        button.querySelector('i').className = 'fa-regular fa-copy';
       }, 300);
     });
   });
