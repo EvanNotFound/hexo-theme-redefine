@@ -63,7 +63,7 @@ style:
 # Social contact link
 # ---------------------------------------------------------------------------------------
 social_contact: # social contact icons in the first screen, you can add more by using fontawesome icon names
-  enable: true
+  enable: false 
   links:
     github:  # your GitHub URL
     instagram: # your Instagram URL
@@ -275,5 +275,6 @@ inject:
 # ---------------------------------------------------------------------------------------
 # Redefine Theme version (Please dont modify it)
 # Please go to github to update the latest version frequently
+# Github: https://github.com/EvanNotFound/hexo-theme-redefine
 # ---------------------------------------------------------------------------------------
-version: 0.5.2
+version: 1.0.0

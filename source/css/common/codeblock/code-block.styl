@@ -9,18 +9,22 @@ disable-user-select() {
   position relative
 }
 
-.highlight-container:hover .copy-btn, .highlight-container .copy-btn:focus {
+.highlight-container:hover .copy-button, 
+.highlight-container .copy-button:focus,
+.highlight-container:hover .fold-button,
+.highlight-container .fold-button:focus {
   opacity 1
 }
 
-.copy-btn {
+.fold-button {
   cursor pointer
+  border-radius 0 0 0 0 
   display inline-block
   font-weight bold
   line-height 1.8
   opacity 0
   outline 0
-  padding 2px 6px
+  padding 6px 15px
   position absolute
   vertical-align middle
   white-space nowrap
@@ -28,19 +32,41 @@ disable-user-select() {
   color var(--default-text-color)
   disable-user-select()
   transition-t("opacity", "0", "0.2", "ease-in-out")
+  background var(--scond-background-color)
+  border 0
+  right 40px
+  top 0
+}
 
-
-  background var(--background-color)
+.copy-button {
+  cursor pointer
+  border-radius 0 $redefine-border-radius-large 0 0 
+  display inline-block
+  font-weight bold
+  line-height 1.8
+  opacity 0
+  outline 0
+  padding 6px 15px
+  position absolute
+  vertical-align middle
+  white-space nowrap
+  font-size 1rem
+  color var(--default-text-color)
+  disable-user-select()
+  transition-t("opacity", "0", "0.2", "ease-in-out")
+  background var(--scond-background-color)
   border 0
   right 0
   top 0
 }
 
 
+
+
 if (hexo-config('code_block.style') == 'mac') {
   .highlight-container[data-rel]{
     background var(--second-background-color)
-    border-radius 18px
+    border-radius $redefine-border-radius-large
     box-shadow var(--redefine-box-shadow)
     padding-top 20px
     margin-top 10px
@@ -49,7 +75,7 @@ if (hexo-config('code_block.style') == 'mac') {
       position absolute
       content:attr(data-rel)
       line-height 38px
-      border-radius 50%
+      border-radius $redefine-border-radius-full
       box-shadow none
       height 12px
       left 12px
@@ -62,11 +88,20 @@ if (hexo-config('code_block.style') == 'mac') {
       font-size 16px
     }
 
+
+    .folded {
+      figure {
+        height 0 !important
+        width 0 !important
+        overflow hidden !important
+      }
+    }
+
     &::after{
       content ' '
       position absolute
-      -webkit-border-radius 50%
-      border-radius 50%
+      -webkit-border-radius $redefine-border-radius-full
+      border-radius $redefine-border-radius-full
       background #fc625d
       width 12px
       height 12px
@@ -81,15 +116,23 @@ if (hexo-config('code_block.style') == 'mac') {
 } else {
   .highlight-container[data-rel]{
     background var(--highlight-background)
-    border-radius 18px
+    border-radius $redefine-border-radius-large
     padding-top 20px
     margin-top 10px
+
+    .folded {
+      figure {
+        height 0 !important
+        width 0 !important
+        overflow hidden !important
+      }
+    }
 
     &::before {
       position absolute
       content:attr(data-rel)
       line-height 42px
-      border-radius 18px
+      border-radius $redefine-border-radius-large
       box-shadow none
       height 12px
       left 4px

@@ -1,0 +1,103 @@
+$first-screen-font-size = 2rem
+$first-screen-icon-size = 1.6rem
+
+
+.first-screen-container {
+  font-family "Optima Bold", sans-serif
+  position relative
+  box-sizing border-box
+  width 100%
+  min-height 100vh
+  overflow hidden
+  background url($first-screen-img) center center / cover no-repeat
+  background-size cover
+  will-change transform
+  
+
+
+
+  +redefine-tablet() {
+    background-position-y $menu-height * 0.9
+  }
+
+  +redefine-mobile() {
+    background-position-y $menu-height * 0.8
+  }
+
+  .content {
+    position relative
+    box-sizing border-box
+    min-width 80vh
+    min-height 90vh
+
+    .description {
+      font-weight bold
+      font-size $first-screen-font-size
+      line-height 1.8
+      text-align center
+      color var(--first-screen-text-color)
+
+
+      +redefine-tablet() {
+        font-size $first-screen-font-size * 0.9
+      }
+    }
+
+
+    .social-contacts {
+      position absolute
+      bottom 60px
+      font-size $first-screen-icon-size
+      text-align center
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow 0 0 10px 0 rgba(0, 0, 0, 0.5)
+      padding 4px 24px
+      border-radius $redefine-border-radius-medium
+      box-shadow: inset 0 0 2000px var(--first-screen-icons-container-background-color);
+      border 1.5px solid var(--first-screen-icons-container-border-color);
+
+
+      +redefine-tablet() {
+        font-size $first-screen-icon-size * 0.9
+      }
+
+      .social-contact-item {
+        margin-right 20px
+        cursor pointer
+        line-height 2
+        color #FFF
+
+        &:last-child {
+          margin-right 0
+        }
+
+      }
+
+    }
+  }
+}
+
+@media (prefers-color-scheme light) {
+  .first-screen-container {
+    background url($first-screen-img-light) center center / cover no-repeat !important
+  }
+}
+
+@media (prefers-color-scheme dark) {
+  .first-screen-container {
+    background url($first-screen-img-dark) center center / cover no-repeat !important
+  }
+}
+
+.light-mode{
+  .first-screen-container {
+    background url($first-screen-img-light) center center / cover no-repeat !important
+  }
+}
+
+.dark-mode{
+  .first-screen-container {
+    background url($first-screen-img-dark) center center / cover no-repeat !important
+  }
+}

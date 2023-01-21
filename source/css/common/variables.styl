@@ -6,14 +6,14 @@
 // ========================================================================================
 //                                           LAYOUT
 // ========================================================================================
-$header-height = 70px;                                           // header height
-$header-shrink-height = $header-height * 0.72;                   // header shrink height
+$menu-height = 70px;                                           // menu height
+$menu-shrink-height = $menu-height * 0.72;                   // menu shrink height
 $scroll-progress-bar-height = 2px;                               // scroll progress bar height
 $main-content-width = 80%;                                       // main content width (PC)
 $main-content-width-tablet = 86%;                                // main content width (tablet)
 $main-content-width-mobile = 90%;                                // main content width (mobile)
 $post-tool-button-width = 38px;                                  // post tool button width
-$component-spacing-value = 38px;                                 // component-spacing-value (PC)
+$spacing-unit = 38px;                                 // component-spacing-value (PC)
 
 // main content max width
 $temp-content-max-width = hexo-config('style.content_max_width')
@@ -48,6 +48,26 @@ $z-index-6 = 1006
 $z-index-7 = 1007
 $z-index-8 = 1008
 $z-index-9 = 1009
+
+// ========================================================================================
+// border-radius
+// ========================================================================================
+
+$redefine-border-radius-none = 0px
+$redefine-border-radius-xsmall = 4px
+$redefine-border-radius-small = 9px
+$redefine-border-radius-medium = 14px
+$redefine-border-radius-large = 18px
+$redefine-border-radius-large-top = 18px 18px 0px 0px
+$redefine-border-radius-large-bottom = 0px 0px 18px 18px
+$redefine-border-radius-xlarge = 24px
+$redefine-border-radius-full = 50%
+
+// ========================================================================================
+// mermaid js theme
+// ========================================================================================
+$mermaid-theme = hexo-config('mermaid.theme.light')
+$dark-mermaid-theme = hexo-config('mermaid.theme.dark')
 
 
 // ========================================================================================
@@ -96,6 +116,8 @@ $note-cyan-title-bg = #E9FDF9
 $note-type-title-bg = #fdf3e9
 
 $first-screen-text-color = convert(hexo-config('style.first_screen.title_color.light'))
+$first-screen-icons-container-border-color = rgba(255, 255, 255, 0.35)
+$first-screen-icons-container-background-color = rgba(255, 255, 255, 0.3)
 
 
 // ========================================================================================
@@ -133,6 +155,9 @@ $dark-note-black-title-bg = #1e1e1e
 $dark-note-type-title-bg = #4e3a1e
 
 $first-screen-text-color-dark = convert(hexo-config('style.first_screen.title_color.dark'))
+$first-screen-icons-container-border-color-dark = rgba(197, 197, 197, 0.35)
+$first-screen-icons-container-background-color-dark = rgba(197, 197, 197, 0.3)
+
 
 // ========================================================================================
 // background image
@@ -186,9 +211,13 @@ root-color(mode) {
   --note-purple-title-bg : mode == 'light' ? $note-purple-title-bg : $dark-note-purple-title-bg
   
   --first-screen-text-color mode == 'light' ? $first-screen-text-color : $first-screen-text-color-dark
+  --first-screen-icons-container-border-color mode == 'light' ? $first-screen-icons-container-border-color : $first-screen-icons-container-border-color-dark
+  --first-screen-icons-container-background-color mode == 'light' ? $first-screen-icons-container-background-color : $first-screen-icons-container-background-color-dark
 
   --redefine-box-shadow : var(--shadow-color-2) 0px 6px 24px 0px, var(--shadow-color-1) 0px 0px 0px 1px
   --redefine-box-shadow-hover : var(--shadow-color-2) 0px 6px 24px 0px, var(--shadow-color-1) 0px 0px 0px 1px, var(--shadow-color-1) 0px 0px 0px 1px inset
+
+  --mermaid-theme : mode == 'light' ? $mermaid-theme : $dark-mermaid-theme
 }
 
 

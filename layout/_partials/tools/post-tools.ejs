@@ -1,0 +1,17 @@
+<div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        <% if (theme.toc.enable) { %>
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        <% } %>
+
+        <!-- go comment -->
+        <% if (theme.comment.enable === true && theme.comment.hasOwnProperty(theme.comment.use)) { %>
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        <% } %>
+    </ul>
+</div>

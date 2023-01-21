@@ -3,6 +3,7 @@
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: local("Open Sans"),
     url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/open-sans-v34-latin-regular.woff2")
       format("woff2"),
@@ -15,6 +16,7 @@
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
   src: local("Open Sans"),
     url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/open-sans-v34-latin-700.woff2")
       format("woff2"),
@@ -27,6 +29,7 @@
   font-family: "Noto Sans SC";
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: local("Noto Sans SC"),
     url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/noto-sans-sc-v26-chinese-simplified-regular.woff2")
       format("woff2"),
@@ -39,6 +42,7 @@
   font-family: "Noto Sans SC";
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
   src: local("Noto Sans SC"),
     url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/noto-sans-sc-v26-chinese-simplified-700.woff2")
       format("woff2"),
@@ -51,6 +55,7 @@
   font-family: "Optima";
   font-style: normal;
   font-weight: normal;
+  font-display: swap;
   src: local("Optima"),
     url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/OPTIMA.woff")
       format("woff");
@@ -60,6 +65,7 @@
   font-family: "Optima Medium";
   font-style: normal;
   font-weight: normal;
+  font-display: swap;
   src: local("Optima Medium"),
     url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/Optima Medium.woff")
       format("woff");
@@ -69,6 +75,7 @@
   font-family: "Optima Bold";
   font-style: normal;
   font-weight: bold;
+  font-display: swap;
   src: local("Optima Bold"),
     url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/OPTIMA_B.woff")
       format("woff");

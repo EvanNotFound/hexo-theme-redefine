@@ -1,0 +1,43 @@
+<%- __js([
+    'js/utils.js',
+    'js/main.js',
+    'js/layouts/menu-shrink.js',
+    'js/tools/go-top-bottom.js',
+    'js/tools/dark-light-toggle.js',
+]) %>
+
+<% if (theme.local_search.enable) { %>
+    <%- __js('js/tools/local-search.js') %>
+<% } %>
+
+<% if (theme.code_block.copy) { %>
+    <%- __js('js/tools/code-block.js') %>
+<% } %>
+
+<% if (theme.lazyload.enable) { %>
+    <%- __js('js/layouts/lazyload.js') %>
+<% } %>
+
+<% if (theme.footer.runtime) { %>
+    <%- __js('js/tools/runtime.js') %>
+    <%- __js('js/layouts/odometer.min.js') %>
+    <%- __css('css/odometer-theme-minimal.css') %>
+<% } %>
+
+<div class="post-scripts<%= theme.pjax.enable === true ? ' pjax' : '' %>">
+    <% if (theme.toc.enable && is_post()) { %>
+        <%- __js([
+            'js/tools/toc-toggle.js',
+            'js/libs/anime.min.js',
+            'js/layouts/toc.js'
+        ]) %>
+    <% } %>
+    <% if (typeof theme.mermaid !== 'undefined' && theme.mermaid.enable && is_post()) { %>
+        <%- __js('js/libs/mermaid.min.js') %>
+        <%- __js('js/plugins/mermaid.js') %>
+    <% } %>
+</div>
+
+<% if (theme.pjax.enable === true) { %>
+    <%- partial('pjax') %>
+<% } %>

@@ -1,6 +1,6 @@
 .markdown-body {
   font-family "Open Sans", "Noto Sans SC", sans-serif
-  font-size 1.2rem
+  font-size 1rem
 
   blockquote {
 
@@ -19,8 +19,10 @@
 
 
   p {
-    line-height 2
+    line-height 1.5
     color var(--default-text-color)
+    margin-bottom 1rem
+    margin-top: 0;
   }
 
 
@@ -121,6 +123,7 @@
     font-family "Noto Sans", "Noto Sans SC", sans-serif
     color var(--second-text-color)
     line-height 1.5
+    margin-bottom 1rem  !important
 
     +redefine-tablet() {
       line-height 1.25
@@ -129,9 +132,10 @@
 
 
   h1 {
-    font-size 1.8rem
+    font-size 3.2rem
     font-weight 600
     border-bottom solid 2px var(--fourth-text-color)
+    margin-top 5rem
 
     +redefine-tablet() {
       font-size 1.7rem
@@ -140,10 +144,13 @@
 
 
   h2 {
-    font-size 1.7rem
+    font-size 2.5rem
     font-weight 600
     padding 3px 0
     border-bottom solid 2px var(--fourth-text-color)
+    margin-top 4rem
+
+
 
     +redefine-tablet() {
       font-size 1.6rem
@@ -152,8 +159,9 @@
 
 
   h3 {
-    font-size 1.6rem
+    font-size 1.8rem
     font-weight 550
+    margin-top 2.8rem
 
     +redefine-tablet() {
       font-size 1.5rem
@@ -164,6 +172,7 @@
   h4 {
     font-size 1.5rem
     font-weight 550
+    margin-top 2.5rem
 
     +redefine-tablet() {
       font-size 1.4rem
@@ -173,7 +182,8 @@
 
   h5 {
     font-size 1.28rem
-    font-weight 500
+    font-weight 550
+    margin-top 2.2rem
 
     +redefine-tablet() {
       font-size 1.18rem
@@ -183,8 +193,9 @@
 
   h6 {
     font-size 1.2rem
-    font-weight 500
+    font-weight 550
     line-height 1.2
+    margin-top 2rem
 
     +redefine-tablet() {
       font-size 1.1rem
@@ -195,17 +206,18 @@
 
   img {
     box-sizing border-box
-    border-radius 12px
+    border-radius $redefine-border-radius-medium
     max-width 100%
     cursor zoom-in
     display block
     box-shadow 0 0 2px var(--shadow-color)
     transition-t("padding, margin", "0, 0", "0.2, 0.2", "linear, linear")
+    
 
     if (hexo-config('style.article_img_align') == 'center') {
-      margin 10px auto 2px
+      margin 1rem auto 1rem
     } else {
-      margin 10px 0 2px
+      margin 1rem 0 1rem
     }
 
   }

@@ -1,0 +1,139 @@
+.post-toc-wrap {
+  width 100%
+  font-size 0.92rem
+  box-sizing border-box
+  font-family "Noto Sans", sans-serif
+
+
+  
+  .post-toc {
+
+    .toc-title {
+      font-size 0.8rem
+      color var(--default-text-color)
+      margin-bottom 0.2rem
+    }
+
+    .page-title {
+      font-size 1.1rem
+      color var(--second-text-color)
+      font-weight bold
+      margin-bottom 0.6rem
+    }
+    
+    ol {
+
+
+      
+      ol {
+        border-left 2px dotted var(--shadow-color-1)
+      }
+
+      list-style none
+      margin 0
+      padding 0 2px 12px 10px
+      text-align left
+
+      &:last-child {
+        padding-bottom 0
+      }
+
+      > ol {
+        padding-left 0
+      }
+
+      a {
+        transition-property all
+        transition()
+        
+      }
+    }
+
+
+
+    .nav-item {
+      line-height 2
+      overflow hidden
+      text-overflow ellipsis
+      white-space nowrap
+      //word-wrap:break-word
+      font-size 0.9rem
+
+      a > span {
+        &:first-child::before {
+          content " "
+          width 10px
+          height 1.7rem
+          margin auto 0
+          transform translate(-12px,0)
+          border-left 2px solid var(--primary-color)
+          position absolute
+          margin-right 4px
+          color var(--primary-color)
+          opacity 0
+          transition all 0.1s linear
+        }
+      }
+    }
+
+
+    .nav {
+      .nav-child {
+        display hexo-config('toc.expand_all') ? block : none
+      }
+
+      .active > .nav-child {
+        display block
+      }
+
+      .active-current > .nav-child {
+        display block
+
+        > .nav-item {
+          display block
+        }
+      }
+
+
+      .nav-number, .nav-text {
+        color var(--third-text-color)
+        padding-left 0 
+        transition all 0.3s ease
+      }
+
+      .active > a {
+        .nav-number, .nav-text {
+          color var(--primary-color)
+          font-weight bold
+        }
+
+      }
+
+      .active-current {
+        .nav-number, .nav-text {
+          color var(--primary-color) !important
+          font-weight bold
+          transition all 0.3s ease
+          padding-left 12px
+        }
+      }
+
+      .active-current > span {
+        &:first-child::before {
+          content " "
+          width 10px
+          height 1.7rem
+          margin auto 0
+          transform translate(-12px,0)
+          border-left 2px solid var(--primary-color)
+          position absolute
+          margin-right 4px
+          color var(--primary-color)
+          opacity 1
+          transition all 0.1s linear
+        }
+      }
+    }
+  }
+}
+

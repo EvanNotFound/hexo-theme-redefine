@@ -88,10 +88,10 @@ $without-toc-container-width = calc(100% - 210px)
         padding 1px
         box-sizing border-box
         border 1px solid var(--border-color)
-        border-radius 50%
+        border-radius $redefine-border-radius-full
 
         img {
-          border-radius 50%
+          border-radius $redefine-border-radius-full
           width 100%
           height 100%
           background var(--avatar-background-color)
@@ -125,7 +125,7 @@ $without-toc-container-width = calc(100% - 210px)
             font-size 0.8rem
             font-weight 500
             padding 0 5px
-            border-radius 6px
+            border-radius $redefine-border-radius-small
             color #fff
             background var(--selection-color)
           }
@@ -146,11 +146,15 @@ $without-toc-container-width = calc(100% - 210px)
 
 
     .article-content {
-      margin-top $component-spacing-value
+      margin-top $spacing-unit
       padding-bottom 10px
       word-wrap break-word
       border-bottom 1px solid var(--border-color)
       color var(--default-text-color)
+
+      &>:first-child {
+        margin-top 0 !important
+      }
     }
 
 
@@ -176,23 +180,24 @@ $without-toc-container-width = calc(100% - 210px)
     }
 
     .post-copyright-info {
-      margin-top $component-spacing-value
+      margin-top $spacing-unit
       width 100%
 
       +redefine-tablet() {
-        margin-top $component-spacing-value * 0.8
+        margin-top $spacing-unit * 0.8 !important
       }
     }
 
 
     .article-nav {
       height 40px
-      margin-top $component-spacing-value
+      margin-top $spacing-unit
 
       .article-prev, .article-next {
         max-width $post-nav-max-width
         height 100%
         box-sizing border-box
+        border-radius $redefine-border-radius-medium !important
 
         redefine-container(true, 1.03, 1.03, 10px, 0)
 
@@ -266,9 +271,9 @@ $without-toc-container-width = calc(100% - 210px)
 
   .toc-content-container {
     position sticky
-    top $header-height + $component-spacing-value
-    //border-radius 18px
-    border-radius 0
+    top $menu-height + $spacing-unit
+    //border-radius $redefine-border-radius-large
+    border-radius $redefine-border-radius-none
     display none
     width $toc-container-width
     height auto

@@ -19,7 +19,7 @@ pre, code {
 code {
   padding 4px
   word-wrap break-word
-  border-radius 4px
+  border-radius $redefine-border-radius-xsmall
   font-size 0.96em
   color var(--code-foreground)
   background var(--code-background)
@@ -39,7 +39,7 @@ pre {
 
 .highlight {
   @extend $code-block
-  border-radius 0 0 18px 18px
+  border-radius $redefine-border-radius-large-bottom
   padding-bottom 5px
 
   pre {

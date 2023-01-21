@@ -1,0 +1,50 @@
+<% if(theme.comment.use === 'twikoo' && theme.comment.twikoo.env_id) { %>
+    <div class="twikoo-container">
+        <script <%= theme.pjax.enable === true ? 'data-pjax' : '' %>
+                src="https://cdn.staticfile.org/twikoo/1.6.8/twikoo.all.min.js"
+        ></script>
+        <div id="twikoo-comment"></div>
+        <script <%= theme.pjax.enable === true ? 'data-pjax' : '' %>>
+            function loadTwikoo() {
+                twikoo.init({
+                    el: '#twikoo-comment',
+                    envId: '<%= theme.comment.twikoo.env_id %>',
+                });
+            }
+
+            if ('<%= theme.pjax.enable %>') {
+                const loadTwikooTimeout = setTimeout(() => {
+                    loadTwikoo();
+                    clearTimeout(loadTwikooTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadTwikoo);
+            }
+        </script>
+    </div>
+<% } else if (theme.comment.use === 'twikoo' && theme.comment.twikoo.env_id && theme.comment.twikoo.region) { %>
+    <div class="twikoo-container">
+        <script <%= theme.pjax.enable === true ? 'data-pjax' : '' %>
+                src="https://cdn.staticfile.org/twikoo/1.6.8/twikoo.all.min.js"
+        ></script>
+        <div id="twikoo-comment"></div>
+        <script <%= theme.pjax.enable === true ? 'data-pjax' : '' %>>
+            function loadTwikoo() {
+                twikoo.init({
+                    el: '#twikoo-comment',
+                    envId: '<%= theme.comment.twikoo.env_id %>',
+                    region: '<%= theme.comment.twikoo.region %>',
+                });
+            }
+
+            if ('<%= theme.pjax.enable %>') {
+                const loadTwikooTimeout = setTimeout(() => {
+                    loadTwikoo();
+                    clearTimeout(loadTwikooTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadTwikoo);
+            }
+        </script>
+    </div>
+<% } %>

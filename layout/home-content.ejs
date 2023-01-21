@@ -30,12 +30,12 @@
                     <% } %>
                 </div>
 
-                <%- partial('_partial/home-article-meta-info', {post: post}) %>
+                <%- partial('_partials/components/home-article-meta-info', {post: post}) %>
             </li>
         <% }) %>
     </ul>
 
     <div class="home-paginator">
-        <%- partial('_partial/paginator', {pageObject: page}) %>
+        <%- partial('_partials/tools/paginator', {pageObject: page}) %>
     </div>
 </div>

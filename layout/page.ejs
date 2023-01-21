@@ -1,14 +1,14 @@
-<%- partial('_partial/progress-bar') %>
+<%- partial('_partials/tools/progress-bar') %>
 <main class="page-container">
 
     <% if (theme.style.first_screen.enable === true && is_home() && !page.prev) { %>
-        <%- partial('_partial/first-screen') %>
+        <%- partial('_partials/components/first-screen') %>
     <% } %>
 
     <div class="page-main-content">
 
         <div class="page-main-content-top">
-            <%- partial('_partial/header') %>
+            <%- partial('_partials/menu') %>
         </div>
 
         <div class="page-main-content-middle">
@@ -34,10 +34,10 @@
                     <%- partial('category-list') %>
 
                 <% } else if (page.title === 'tag' || page.title === 'tags') { %>
-                    <%- partial('_partial/tagcloud') %>
+                    <%- partial('_partials/tools/tagcloud') %>
 
                 <% } else { %>
-                    <%- partial('_partial/page-template') %>
+                    <%- partial('_partials/page-template') %>
 
                 <% } %>
 
@@ -48,25 +48,26 @@
         </div>
 
         <div class="page-main-content-bottom">
-            <%- partial('_partial/footer') %>
+            <%- partial('_partials/footer') %>
         </div>
     </div>
 
     <% if (is_post()) { %>
         <div class="post-tools">
-            <%- partial('_partial/post-tools') %>
+            <%- partial('_partials/tools/post-tools') %>
         </div>
     <% } %>
 
     <div class="right-bottom-side-tools">
-        <%- partial('_partial/side-tools') %>
+        <%- partial('_partials/tools/side-tools') %>
     </div>
 
-    <%- partial('_partial/image-viewer') %>
+    <%- partial('_partials/tools/image-viewer') %>
 
     <% if (theme.local_search.enable) { %>
-        <%- partial('_partial/local-search') %>
+        <%- partial('_partials/tools/local-search') %>
     <% } %>
+
 
 </main>
 

@@ -1,0 +1,108 @@
+<header class="menu-wrapper">
+    
+    <div class="menu-content<%- (theme.style.first_screen.enable === true && is_home() && !page.prev) ? ' has-first-screen' : '' %>">
+        <div class="left">
+            <% if (theme.base_info.hasOwnProperty('logo_img') && theme.base_info.logo_img) { %>
+                <a class="logo-image" href="/">
+                    <%- image_tag(theme.base_info.logo_img) %>
+                </a>
+            <% } %>
+            <a class="logo-title" href="/">
+                <%- is_home() ? '<h1>' : '' %>
+                <%= theme.base_info.title || config.title || 'Redefine Theme' %>
+                <%- is_home() ? '</h1>' : '' %>
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    <% for (let i in theme.menu) { %>
+                        <% if (theme.menu[i].path === 'none') {} else {%>
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="<% if (theme.menu[i].submenus) { %>has-dropdown" <% } else {%><%- isInHomePaging(page.path, theme.menu[i].path) ? 'active' : is_current(theme.menu[i].path) ? 'active' : '' %>" <% } %>
+                                    href="<% if (theme.menu[i].submenus) { %>#"<% } else {%><%- url_for(theme.menu[i].path) %>" <% } %> <% if (theme.menu[i].submenus) { %>onClick="return false;"<% } else {%><% } %>>
+                                    <% if (theme.menu[i].submenus) { %>
+                                        <% if (theme.menu[i].icon) { %>
+                                            <i class="<%- theme.menu[i].icon %>"></i>
+                                        <% } %>
+                                        <%= __(i.toLowerCase()).toUpperCase() %>&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                                    <% } else {%>
+                                        <% if (theme.menu[i].icon) { %>
+                                            <i class="<%- theme.menu[i].icon %>"></i>
+                                        <% } %>
+                                        <%= __(i.toLowerCase()).toUpperCase() %>
+                                    <% } %>
+                                </a>
+                                <!-- Submenu -->
+                                <% if (theme.menu[i].submenus) { %>
+                                    <ul class="sub-menu">
+                                    <% for (var submenu in theme.menu[i].submenus){ %>
+                                        <li>
+                                        <a href="<%- url_for(theme.menu[i].submenus[submenu]) %>"><%= __(submenu.toLowerCase()).toUpperCase() %>
+                                        </a>
+                                        </li>
+                                    <% } %>
+                                    </ul>
+                                <% } %>
+                            </li>
+                    <% } }%>
+                    <% if (theme.local_search.enable === true) { %>
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    <% } %>
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                <% if (theme.local_search.enable === true) { %>
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i></div>
+                <% } %>
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="menu-drawer">
+        <ul class="drawer-menu-list">
+            <% for (let i in theme.menu) { %>
+                <% if (theme.menu[i].path === 'none') {} else {%>
+                    <li class="drawer-menu-item flex-center">
+                        <a class="<% if (theme.menu[i].submenus) { %>has-dropdown" <% } else {%><%- isInHomePaging(page.path, theme.menu[i].path) ? 'active' : is_current(theme.menu[i].path) ? 'active' : '' %>" <% } %>
+                        href="<% if (theme.menu[i].submenus) { %>#"<% } else {%><%- url_for(theme.menu[i].path) %>" <% } %> <% if (theme.menu[i].submenus) { %>onClick="return false;"<% } else {%><% } %>>
+                            <% if (theme.menu[i].submenus) { %>
+                                <% if (theme.menu[i].icon) { %>
+                                    <i class="<%- theme.menu[i].icon %>"></i>
+                                <% } %>
+                                <%= __(i.toLowerCase()).toUpperCase() %>&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                            <% } else {%> 
+                                <% if (theme.menu[i].icon) { %>
+                                    <i class="<%- theme.menu[i].icon %>"></i>
+                                <% } %>
+                                <%= __(i.toLowerCase()).toUpperCase() %>
+                            <% } %>
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    <% if (theme.menu[i].submenus) { %>          
+                        <% for (var submenu in theme.menu[i].submenus){ %>
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="<%- url_for(theme.menu[i].submenus[submenu]) %>"><%= __(submenu.toLowerCase()).toUpperCase() %></a>
+                            </li>
+                        <% } %>
+                    <% } %>
+            <% } }%>
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+

@@ -1,0 +1,112 @@
+$right-bottom-tools-width = 42px
+$right-bottom-tools-font-size = 1.3rem
+$right-bottom-tools-border-radius = 12px
+
+
+.side-tools-container {
+
+  .right-bottom-tools {
+    width $right-bottom-tools-width
+    height $right-bottom-tools-width
+    font-size $right-bottom-tools-font-size
+    margin-bottom 3px
+    cursor pointer
+    border-right none
+    border-radius $right-bottom-tools-border-radius
+    box-shadow var(--redefine-box-shadow)
+    color var(--default-text-color)
+    background var(--background-color)
+
+    i {
+      color var(--default-text-color)
+    }
+
+    &:hover {
+      color var(--background-color)
+      background var(--primary-color)
+      box-shadow var(--redefine-box-shadow)
+
+      i {
+        color var(--background-color)
+      }
+    }
+
+    +redefine-tablet() {
+      width $right-bottom-tools-width * 0.9
+      height $right-bottom-tools-width * 0.9
+      font-size $right-bottom-tools-font-size * 0.9
+      margin-bottom 2px
+    }
+
+    &.rss {
+
+      a {
+        border-radius $right-bottom-tools-border-radius
+        width 100%
+        height 100%
+
+        &:hover {
+          color var(--background-color)
+          background var(--primary-color)
+          box-shadow var(--redefine-box-shadow)
+        }
+      }
+    }
+  }
+
+
+  .unfolded-tools-list {
+    opacity 0
+    transform translateX(100%)
+    transition-t("transform, opacity", "0, 0", "0.2, 0.2", "ease, ease")
+
+    .tool-expand-width {
+      +redefine-tablet() {
+        display none
+      }
+    }
+
+
+    &.show {
+      opacity 1
+      transform translateX(0)
+    }
+  }
+
+
+  .folded-tools-list {
+
+    if (hexo-config('style.scroll.percent.enable') == true) {
+      .tool-scroll-to-top {
+        display none
+
+        &.show {
+          display flex
+        }
+
+        &:hover {
+
+          .percent {
+            display none
+          }
+
+          .arrow-up {
+            display flex
+          }
+
+        }
+
+        .arrow-up {
+          display none
+        }
+
+        .percent {
+          display flex
+          font-size 1rem
+        }
+
+      }
+
+    }
+  }
+}
