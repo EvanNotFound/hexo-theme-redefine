@@ -36,7 +36,11 @@
     <%- __css('css/fonts.css') %>
     <% if (theme.inject.enable == true) { %>
         <% for (let i in theme.inject.head) { %>
-            <%- theme.inject.head[i] %>
+            <% if (theme.pjax.enable == true) { %>
+                <%- theme.inject.head[i].replace("<script", "<script async data-pjax") %>
+            <% } else { %>
+                <%- theme.inject.head[i] %>
+            <% } %>
     <% } }%>
     <link rel="preconnect" href="https://evan.beee.top" crossorigin>
     <%- export_config() %>
