@@ -1,5 +1,5 @@
 function mermaidLightInit() {
-    console.log('mermaidLightInit')
+    //console.log('mermaidLightInit')
     //if (window.mermaid) {
         mermaid.initialize({
         theme: typeof REDEFINE.theme_config.mermaid !== 'undefined' && typeof REDEFINE.theme_config.mermaid.style !== 'undefined' && typeof REDEFINE.theme_config.mermaid.style.light !== 'undefined' ? REDEFINE.theme_config.mermaid.style.light : 'default',
@@ -8,7 +8,7 @@ function mermaidLightInit() {
 }
 
 function mermaidDarkInit() {
-    console.log('mermaidDarkInit')
+    //console.log('mermaidDarkInit')
     //if (window.mermaid) {
         mermaid.initialize({
         theme: typeof REDEFINE.theme_config.mermaid !== 'undefined' && typeof REDEFINE.theme_config.mermaid.style !== 'undefined' && typeof REDEFINE.theme_config.mermaid.style.dark !== 'undefined' ? REDEFINE.theme_config.mermaid.style.dark : 'dark',
