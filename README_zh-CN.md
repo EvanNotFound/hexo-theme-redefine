@@ -60,7 +60,7 @@ $ cd your-hexo-site
 $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redefine
 ```
 
-安装完成后，在 Hexo 配置文件中将 `theme` 设置为 `Redefine`。
+安装完成后，在 Hexo 配置文件 `_config.yml` 中将 `theme` 设置为 `Redefine`。
 
 ```yaml
 theme: redefine
@@ -88,11 +88,7 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 
 ## 📄 文档
 
-请阅读 [Redefine 主题官方文档](https://redefine-docs.ohevan.com/) 
-
-进行主题配置与安装
-
-
+请阅读 [Redefine 主题官方文档](https://redefine-docs.ohevan.com/) 进行主题配置与安装，非常简单易懂。
 
 ## ☕ 支持
 
