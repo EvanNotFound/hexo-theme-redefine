@@ -48,7 +48,7 @@
 
 ## ☁️ Installation
 
-The easiest way to install Theme Redefine is by using **npm**
+The easiest way to install Theme Redefine is by using **npm** (after your hexo version has been up to `5.0`+)
 
 ```sh
 $ cd your-hexo-site
