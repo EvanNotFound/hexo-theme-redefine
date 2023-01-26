@@ -61,7 +61,7 @@ $ cd your-hexo-site
 $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redefine
 ```
 
-安裝完成後，在 Hexo 配置文件中將 `theme` 設置為 `Redefine`。
+安裝完成後，在 Hexo 配置文件 `_config.yml` 中將 `theme` 設置為 `Redefine`。
 
 ```yaml
 theme: redefine
@@ -71,7 +71,7 @@ theme: redefine
 
 ## ⏫ 更新
 
-Theme Redefine 經常發布新版本，你可以通過如下命令更新 Theme Redefine。
+Theme Redefine 經常發布新版本，你可以透過如下命令更新 Theme Redefine。
 
 通過 `npm` 安裝最新版本：
 
@@ -85,20 +85,11 @@ $ npm install hexo-theme-redefine@latest
 $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redefine
 ```
 
-<div align="right">
-  Language:
-  English
-  <a title="Chinese" href="README_zh-CN.md">简中</a>
-  <a title="Chinese" href="README_zh-TW.md">繁中</a>
-</div>
+
 
 ## 📄 文檔
 
-請閱讀 [Redefine 主題官方文檔](https://redefine-docs.ohevan.com/) 
-
-進行主題配置與安裝
-
-
+請閱讀 [Redefine 主題官方文檔](https://redefine-docs.ohevan.com/) 進行主題配置與安裝，非常簡單易懂。
 
 ## ☕ 支持
 
