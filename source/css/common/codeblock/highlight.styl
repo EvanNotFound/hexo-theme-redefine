@@ -41,6 +41,9 @@ pre {
   @extend $code-block
   border-radius $redefine-border-radius-large-bottom
   padding-bottom 5px
+  if (hexo-config('code_block.style') == 'mac') {
+    border-top 1px solid var(--shadow-color-1)
+  }
 
   pre {
     border none
