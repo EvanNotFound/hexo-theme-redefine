@@ -23,7 +23,7 @@
   --waline-info-font-size: 0.625em;
   --waline-border none
   --waline-avatar-radius: 28%;
-  --redefine-box-shadow var(--redefine-box-shadow)
+  --redefine-box-shadow var(--redefine-box-shadow-flat)
 }
 [data-waline] {
   font-size: var(--waline-font-size);
@@ -119,7 +119,7 @@
   margin-bottom: 0;
   padding: 0.5em 1em;
   border: 1px solid var(--waline-border-color);
-  border-radius: 0.5em;
+  border-radius: $redefine-border-radius-small;
   background: rgba(0,0,0,0);
   color: var(--waline-color);
   font-weight: 400;
@@ -229,10 +229,10 @@
   border: var(--waline-border);
   border-radius: 14px;
   background: var(--waline-bgcolor);
-  box-shadow: var(--redefine-box-shadow);
+  box-shadow: var(--redefine-box-shadow-flat);
 
   &:hover {
-    box-shadow: var(--redefine-box-shadow-hover);
+    box-shadow: var(--redefine-box-shadow-flat-hover);
   }
 }
 .wl-header {
@@ -404,7 +404,7 @@
   border: var(--waline-border);
   border-radius 14px
   background: var(--waline-bgcolor);
-  box-shadow: var(--redefine-box-shadow);
+  box-shadow: var(--redefine-box-shadow-flat);
   opacity: 0;
   visibility: hidden;
   transition: transform 0.2s ease-out, opacity 0.2s ease-out;
@@ -513,7 +513,7 @@
   border: var(--waline-border);
   border-radius 14px
   background: var(--waline-bgcolor);
-  box-shadow: var(--redefine-box-shadow);
+  box-shadow: var(--redefine-box-shadow-flat);
   opacity: 0;
   visibility: hidden;
   transition: transform 0.2s ease-out, opacity 0.2s ease-out;
@@ -739,11 +739,11 @@
 }
 .wl-card .wl-comment-status .wl-btn:first-child {
   border-right: 0;
-  border-radius: 0.5em 0 0 0.5em;
+  border-radius: $redefine-border-radius-small 0 0 $redefine-border-radius-small;
 }
 .wl-card .wl-comment-status .wl-btn:last-child {
   border-left: 0;
-  border-radius: 0 0.5em 0.5em 0;
+  border-radius: 0 $redefine-border-radius-small $redefine-border-radius-small 0;
 }
 .wl-card .wl-quote {
   border-left: 1px dashed rgba(237,237,237,0.5);

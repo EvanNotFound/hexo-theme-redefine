@@ -1,6 +1,6 @@
 .note-large {
-  box-shadow var(--redefine-box-shadow)
-  border-radius 5px
+  box-shadow var(--redefine-box-shadow-flat) 
+  border-radius $redefine-border-radius-small
   margin-bottom 2rem
 
   .notel-title {
@@ -93,7 +93,7 @@
 
 //蓝色警告
 .wb {
-  box-shadow var(--redefine-box-shadow)
+  box-shadow var(--redefine-box-shadow-flat) 
   border-radius 5px
 
   .t{
@@ -117,7 +117,7 @@
 
 //红色警告
 .wr {
-  box-shadow var(--redefine-box-shadow)
+  box-shadow var(--redefine-box-shadow-flat) 
   border-radius 5px
 
   .t{
@@ -141,7 +141,7 @@
 
 //绿色警告
 .wg {
-  box-shadow var(--redefine-box-shadow)
+  box-shadow var(--redefine-box-shadow-flat) 
   border-radius 5px
 
   .t{
@@ -165,7 +165,7 @@
 
 //黄色警告
 .wy {
-  box-shadow var(--redefine-box-shadow)
+  box-shadow var(--redefine-box-shadow-flat) 
   border-radius 5px
 
   .t{
@@ -190,7 +190,7 @@
 //紫色警告
 
 .wp {
-  box-shadow var(--redefine-box-shadow)
+  box-shadow var(--redefine-box-shadow-flat) 
   border-radius 5px
 
   .t{
@@ -214,7 +214,7 @@
 
 //灰色警告
 .wgra{
-  box-shadow var(--redefine-box-shadow)
+  box-shadow var(--redefine-box-shadow-flat) 
   border-radius 5px
 
   .t{
@@ -238,7 +238,7 @@
 
 //橙色警告
 .wo {
-  box-shadow var(--redefine-box-shadow)
+  box-shadow var(--redefine-box-shadow-flat) 
   border-radius 5px
 
   .t{
@@ -263,8 +263,8 @@
 //---------------------notes 笔记模块---------------------
 
 .note {
-  box-shadow var(--redefine-box-shadow)
-  border-radius 5px
+  box-shadow var(--redefine-box-shadow-flat) 
+  border-radius $redefine-border-radius-small
   padding 15px
   font-size 1.2rem
   background-color var(--background-color)
@@ -422,7 +422,7 @@
 
 //--------------------legacy--------------------
 .nb {
-  box-shadow var(--redefine-box-shadow)
+  box-shadow var(--redefine-box-shadow-flat) 
   border-radius 5px
   padding 15px
   font-size 1.2rem
@@ -433,7 +433,7 @@
 
 //红色笔记
 .nr {
-  box-shadow var(--redefine-box-shadow)
+  box-shadow var(--redefine-box-shadow-flat) 
   border-radius 5px
   padding 15px
   font-size 1.2rem
@@ -444,7 +444,7 @@
 
 //绿色笔记
 .ng {
-  box-shadow var(--redefine-box-shadow)
+  box-shadow var(--redefine-box-shadow-flat) 
   border-radius 5px
   padding 15px
   font-size 1.2rem
@@ -455,7 +455,7 @@
 
 //黄色笔记
 .ny {
-  box-shadow var(--redefine-box-shadow)
+  box-shadow var(--redefine-box-shadow-flat) 
   border-radius 5px
   padding 15px
   font-size 1.2rem
@@ -466,7 +466,7 @@
 
 //紫色笔记
 .np {
-  box-shadow var(--redefine-box-shadow)
+  box-shadow var(--redefine-box-shadow-flat) 
   border-radius 5px
   padding 15px
   font-size 1.2rem
@@ -477,7 +477,7 @@
 
 //灰色笔记
 .ngra {
-  box-shadow var(--redefine-box-shadow)
+  box-shadow var(--redefine-box-shadow-flat) 
   border-radius 5px
   padding 15px
   font-size 1.2rem
@@ -488,7 +488,7 @@
 
 //橙色笔记
 .no {
-  box-shadow var(--redefine-box-shadow)
+  box-shadow var(--redefine-box-shadow-flat) 
   border-radius 5px
   padding 15px
   font-size 1.2rem
@@ -499,46 +499,3 @@
 
 
 
-//----------------------------按钮----------------------------
-.button-28 {
-  appearance none
-  background-color transparent
-  border 2px solid var(--default-text-color)
-  border-radius 15px
-  box-sizing border-box
-  color #3B3B3B
-  cursor pointer
-  display inline-block
-  font-size 16px
-  font-weight 600
-  line-height normal
-  margin 0
-  min-height 60px
-  min-width 0
-  outline none
-  padding 16px 24px
-  text-align center
-  text-decoration none
-  transition all 300ms cubic-bezier(.23, 1, 0.32, 1)
-  user-select none
-  -webkit-user-select none
-  touch-action manipulation
-  width 100%
-  will-change transform
-}
-
-.button-28:disabled {
-  pointer-events none
-}
-
-.button-28:hover {
-  color #fff
-  background-color var(--background-color)
-  box-shadow var(--shadow-hover-color) 0 8px 15px
-  transform translateY(-2px)
-}
-
-.button-28:active {
-  box-shadow none
-  transform translateY(0)
-}

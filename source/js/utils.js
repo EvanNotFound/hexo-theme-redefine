@@ -271,6 +271,7 @@ REDEFINE.initUtils = () => {
     setHowLongAgoLanguage(p1, p2) {
       return p2.replace(/%s/g, p1);
     },
+    
 
     getHowLongAgo(timestamp) {
       const l = REDEFINE.language_ago;

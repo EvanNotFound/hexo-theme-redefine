@@ -1,0 +1,105 @@
+$border-color = alpha($primary-color, .2)
+16px = 16px
+12px = 12px
+$color-card = var(--third-background-color)
+
+div.tabs {
+  display: block
+  position: relative
+  margin-top: 16px
+  margin-bottom: 16px
+  border-radius: $redefine-border-radius-medium
+  background: var(--color-card)
+  box-shadow var(--redefine-box-shadow-flat)
+
+  .highlight,p,ul,ol,div.note,details {    
+    margin-top: 16px
+    margin-bottom: 16px
+  }
+}
+
+div.tabs {
+  ul.nav-tabs {
+    display: flex
+    overflow-x: auto
+    white-space: nowrap
+    justify-content: flex-start
+    margin: 0 !important
+    padding: 8px
+    background: var(--third-background-color)
+    border-radius: $redefine-border-radius-medium $redefine-border-radius-medium 0 0
+    line-height: 1.5
+    
+
+    li.tab {
+      list-style-type: none
+
+      margin-top: 0
+      margin-bottom: 0
+
+      &:first-child {
+        margin-left 0px
+      }
+
+      &:last-child {
+        padding-right: 12px
+      }
+      a {
+        display: block
+        cursor: pointer
+        border-radius: $redefine-border-radius-small
+        padding: 8px
+        text-align: center
+        font-size: $fontsize-meta
+        line-height: inherit
+        font-weight: bold
+        color: var(--default-text-color)
+        border none
+        text-decoration: none
+
+        &:hover {
+          color: var(--primary-color)
+        }
+
+        i {
+          pointer-events: none
+        }
+
+      } 
+      &.active a {
+        cursor: default
+        color: var(--primary-color)
+        background-color var(--second-background-color)
+        box-shadow var(--redefine-box-shadow-flat)
+      }
+    }
+  }
+  .tab-content {
+    border-top 1px solid var(--shadow-color-1)
+    background-color var(--second-background-color)
+    border-radius: 0 0 $redefine-border-radius-medium $redefine-border-radius-medium
+    margin-top: -1px
+    .tab-pane {
+      padding: 20px
+      &:not(.active) {
+        display: none
+      }
+      &.active {
+        display: block
+      }
+      > p,
+      .tabs,
+      ul,
+      ol,
+      .highlight,
+      .note {
+        &:first-child {
+          margin-top: 0
+        }
+        &:last-child {
+          margin-bottom: 0
+        }
+      }
+    }
+  }
+}
