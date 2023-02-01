@@ -61,11 +61,13 @@
 
         <% if (theme.inject.enable == true) { %>
             <% for (let i in theme.inject.footer) { %>
-                <% if (theme.pjax.enable == true) { %>
-                    <%- theme.inject.footer[i].replace("<script", "<script async data-pjax") %>
-                <% } else { %>
-                    <%- theme.inject.footer[i] %>
-                <% } %>
+                <% if (theme.inject.footer[i] !== null ){ %>
+
+                    <% if (theme.pjax.enable == true) { %>
+                        <%- theme.inject.footer[i].replace("<script", "<script async data-pjax") %>
+                    <% } else { %>
+                        <%- theme.inject.footer[i] %>
+                <% } } %>
         <% } }%>
         
     </div>  
