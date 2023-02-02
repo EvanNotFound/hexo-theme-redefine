@@ -1,9 +1,34 @@
 <div class="fade-in-down-animation">
     <div class="post-page-container">
         <div class="article-content-container">
-            <div class="article-title">
-                <span class="title-hover-animation"><h1 style="font-size:3rem; font-weight: bold; margin: 10px 0;"><%= page.title %></h1></span>
-            </div>
+
+            
+            <% if (page.cover == false || page.banner == false) { %>
+                <div class="article-title">
+                    <h1 class="article-title-regular"><%= page.title %></h1>
+                </div>
+            <% } else if (page.cover && page.cover !== null) { %> 
+                <div class="article-title">         
+                    <img src="<%= page.cover %>" alt="<%= page.title %>" />
+                    <h1 class="article-title-cover"><%= page.title %></h1>
+                </div>
+            <% } else if (page.banner && page.banner !== null) {%> 
+                <div class="article-title">       
+                    <img src="<%= page.banner %>" alt="<%= page.title %>" />
+                    <h1 class="article-title-cover"><%= page.title %></h1>
+                </div>
+            <% } else if (page.thumbnail && page.thumbnail !== null && page.thumbnail !== false) {%>          
+                <div class="article-title">
+                    <img src="<%= page.thumbnail %>" alt="<%= page.title %>" />
+                    <h1 class="article-title-cover"><%= page.title %></h1>
+                </div>
+            <% } else { %>
+                <div class="article-title">
+                    <h1 class="article-title-regular"><%= page.title %></h1>
+                </div>
+            <% } %>
+                
+            
 
             <% if (theme.base_info.author || config.author) { %>
                 <div class="article-header">
