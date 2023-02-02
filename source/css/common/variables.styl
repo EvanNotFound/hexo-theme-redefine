@@ -86,6 +86,7 @@ $nav-color-bg = linear-gradient(120deg, $nav-color-1 0%, $nav-color-2 100%)
 // light mode color
 // ========================================================================================
 $background-color = #fff
+$background-color-transparent = rgba(255, 255, 255, 0.6)
 $second-background-color = darken($background-color, 2%)
 $third-background-color = darken($background-color, 4.5%)
 $default-text-color = #373D3F
@@ -126,6 +127,7 @@ $first-screen-icons-container-background-color = rgba(255, 255, 255, 0.3)
 // ========================================================================================
 $dark-primary-color = $primary-color
 $dark-background-color = #202124
+$dark-background-color-transparent = rgba(32, 33, 36, 0.4)
 $dark-second-background-color = lighten($dark-background-color, 2%)
 $dark-third-background-color = lighten($dark-background-color, 4.5%)
 $dark-default-text-color = #bebec6
@@ -182,6 +184,7 @@ $default-font-weight = 400
 // ========================================================================================
 root-color(mode) {
   --background-color mode == 'light' ? $background-color : $dark-background-color
+  --background-color-transparent mode == 'light' ? $background-color-transparent : $dark-background-color-transparent
   --second-background-color mode == 'light' ? $second-background-color : $dark-second-background-color
   --third-background-color mode == 'light' ? $third-background-color : $dark-third-background-color
   --primary-color mode == 'light' ? $primary-color : $dark-primary-color
