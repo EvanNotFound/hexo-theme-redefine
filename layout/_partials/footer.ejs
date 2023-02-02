@@ -64,7 +64,7 @@
                 <% if (theme.inject.footer[i] !== null ){ %>
 
                     <% if (theme.pjax.enable == true) { %>
-                        <%- theme.inject.footer[i].replace("<script", "<script async data-pjax") %>
+                        <%- theme.inject.footer[i].replace("<script", "<script data-pjax") %>
                     <% } else { %>
                         <%- theme.inject.footer[i] %>
                 <% } } %>
