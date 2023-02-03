@@ -7,10 +7,24 @@
                     <i class="fa-solid fa-thumbtack fa-thumbtack top-icon"></i>
                 <% } %>
 
-                <% if (post.thumbnail && post.thumbnail !== null) { %>
+                <% if (post.thumbnail && post.thumbnail == false) { %>
+
+                <% } else if (post.thumbnail && post.thumbnail !== null) { %>
                     <div class="home-article-thumbnail">
                         <a href="<%- url_for(post.path) %>">
                             <img src="<%- url_for(post.thumbnail) %>" alt="<%= post.title %>" />
+                        </a>
+                    </div>
+                <% } else if (post.cover && post.cover !== null && post.cover !== false) { %>
+                    <div class="home-article-thumbnail">
+                        <a href="<%- url_for(post.path) %>">
+                            <img src="<%- url_for(post.cover) %>" alt="<%= post.title %>" />
+                        </a>
+                    </div>
+                <% } else if (post.banner && post.banner !== null && post.banner !== false) { %>
+                    <div class="home-article-thumbnail">
+                        <a href="<%- url_for(post.path) %>">
+                            <img src="<%- url_for(post.banner) %>" alt="<%= post.title %>" />
                         </a>
                     </div>
                 <% } %>

@@ -10,8 +10,8 @@ next_posts: Next posts
 page: Page %d
 recent_posts: Recent Posts
 share: Share
-powered_by: "Powered by %s"
-theme: Theme
+powered_by: "POWERED BY %s"
+theme: THEME
 rss_feed: RSS Feed
 category: Category
 categories: Categories
@@ -38,8 +38,8 @@ link: Link
 # ----------------------------------------
 # Website count
 # ----------------------------------------
-site_uv: Visitor Count
-site_pv: Totalviews
+site_uv: VISITOR COUNT
+site_pv: TOTAL PAGE VIEWS
 read_more: Read more
 wordcount: Words
 min2read: Mins

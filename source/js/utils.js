@@ -81,6 +81,27 @@ REDEFINE.initUtils = () => {
 
         // menu shrink
         REDEFINE.utils.menuShrink.menuShrink();
+
+        // auto hide tools
+        var y = window.pageYOffset;
+        var height = document.body.scrollHeight;
+        var windowHeight = window.innerHeight;
+        var toolList = document.getElementsByClassName('right-bottom-side-tools');
+        
+        for (var i = 0; i < toolList.length; i++) {
+          var tools = toolList[i];
+          if (y <= 0) {
+            if (location.pathname !== '/') {
+              //console.log(location.pathname)
+            } else {
+              tools.classList.add('hide');
+            }
+          } else if (y + windowHeight >= height - 20) {
+            tools.classList.add('hide');
+          } else {
+            tools.classList.remove('hide');
+          }
+        }
       });
     },
 
@@ -271,6 +292,7 @@ REDEFINE.initUtils = () => {
     setHowLongAgoLanguage(p1, p2) {
       return p2.replace(/%s/g, p1);
     },
+    
 
     getHowLongAgo(timestamp) {
       const l = REDEFINE.language_ago;

@@ -11,7 +11,7 @@
 
 # hexo-theme-redefine
 
-"Redefine" 是一個簡潔，快速的 hexo 主題。簡潔，但不簡單。本主題包含很多廣泛使用的功能。
+"Redefine" 是一個簡潔、快速、純净的 hexo 主題。簡潔，但不簡單。本主題包含很多廣泛使用的功能，並擁有著優秀的設計。
 
 [![NPM version](https://img.shields.io/npm/v/hexo-theme-redefine?color=red&logo=npm&style=flat-square)](https://www.npmjs.com/package/hexo-theme-redefine) [![npm](https://img.shields.io/npm/dw/hexo-theme-redefine?logo=npm&style=flat-square)](https://www.npmjs.com/package/hexo-theme-redefine) [![Github License](https://img.shields.io/github/license/XPoet/hexo-theme-keep.svg?style=flat-square)](https://github.com/EvanNotFound/hexo-theme-redefine/blob/main/LICENSE) [![Required Hexo version](https://img.shields.io/badge/hexo-%3E=5.0.0-blue?style=flat-square&logo=hexo)](https://hexo.io) [![Node.js Version](https://img.shields.io/badge/node-%3E=12.0-success.svg?style=flat-square&logo=Node.js&longCache=true)](https://hexo.io)
 
@@ -19,9 +19,9 @@
 
 ## 📷 屏幕截圖
 
-![redefine-1-final](https://user-images.githubusercontent.com/68590232/213844839-f02368be-66a8-4b3f-a5e6-1c3b08c73596.png)
-![redefine-2-final](https://user-images.githubusercontent.com/68590232/213844840-3d525947-d144-4bfb-b4bd-98a0212635fe.png)
-![redefine-3-final](https://user-images.githubusercontent.com/68590232/213844841-3b864ef6-1be5-4d24-a590-7c3fb2dce397.png)
+![redefine-1-final](https://user-images.githubusercontent.com/68590232/216494120-c2021614-118d-4554-aa07-06bc96631e8f.png)
+![redefine-2-final](https://user-images.githubusercontent.com/68590232/216494132-76586fad-e959-401c-b0b7-25e5f187dc39.png)
+![redefine-3-final](https://user-images.githubusercontent.com/68590232/216494137-d25d02e5-c7d2-4fc8-932f-bd9aee6e874f.png)
 
 
 
@@ -61,7 +61,7 @@ $ cd your-hexo-site
 $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redefine
 ```
 
-安裝完成後，在 Hexo 配置文件中將 `theme` 設置為 `Redefine`。
+安裝完成後，在 Hexo 配置文件 `_config.yml` 中將 `theme` 設置為 `Redefine`。
 
 ```yaml
 theme: redefine
@@ -71,7 +71,7 @@ theme: redefine
 
 ## ⏫ 更新
 
-Theme Redefine 經常發布新版本，你可以通過如下命令更新 Theme Redefine。
+Theme Redefine 經常發布新版本，你可以透過如下命令更新 Theme Redefine。
 
 通過 `npm` 安裝最新版本：
 
@@ -85,20 +85,11 @@ $ npm install hexo-theme-redefine@latest
 $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redefine
 ```
 
-<div align="right">
-  Language:
-  English
-  <a title="Chinese" href="README_zh-CN.md">简中</a>
-  <a title="Chinese" href="README_zh-TW.md">繁中</a>
-</div>
+
 
 ## 📄 文檔
 
-請閱讀 [Redefine 主題官方文檔](https://redefine-docs.ohevan.com/) 
-
-進行主題配置與安裝
-
-
+請閱讀 [Redefine 主題官方文檔](https://redefine-docs.ohevan.com/) 進行主題配置與安裝，非常簡單易懂。
 
 ## ☕ 支持
 

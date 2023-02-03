@@ -4,10 +4,14 @@
     <meta name="keywords" content="<%= page.keywords || config.keywords || 'Hexo Theme Redefine' %>">
     <meta name="description" content="<%= page.description || config.description || 'Hexo Theme Redefine' %>">
     <meta name="author" content="<%= theme.base_info.author || config.author || 'Redefine Team' %>">
-    <link rel="canonical" href="<%= full_url_for(page.path).replace("/index.html", "") %>" />
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
+    <!--- Seo Part-->
+    <%- generate_seo(theme, page) %>
+    <%- autoCanonical(config, page) %>
+    <!--- Icon Part-->
     <link rel="icon" type="image/png" href="<%= theme.style.favicon %>" sizes="192x192">
     <link rel="apple-touch-icon" sizes="180x180" href="<%= theme.style.favicon %>">
+    <meta name="theme-color" content="<%= theme.style.primary_color %>">
     <%- favicon_tag(theme.style.favicon) %>
     <%
     let title = page.title;
@@ -36,7 +40,12 @@
     <%- __css('css/fonts.css') %>
     <% if (theme.inject.enable == true) { %>
         <% for (let i in theme.inject.head) { %>
-            <%- theme.inject.head[i] %>
+            <% if (theme.inject.head[i] !== null){ %>
+                <% if (theme.pjax.enable == true) { %>
+                    <%- theme.inject.head[i].replace("<script", "<script data-pjax") %>
+                <% } else { %>
+                    <%- theme.inject.head[i] %>
+            <% } }%>
     <% } }%>
     <link rel="preconnect" href="https://evan.beee.top" crossorigin>
     <%- export_config() %>

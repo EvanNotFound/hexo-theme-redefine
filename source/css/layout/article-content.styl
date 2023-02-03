@@ -1,7 +1,7 @@
 $avatarWidth = 46px
 $arrow-icon-width = 16px
 $post-nav-max-width = 220px
-$article-title-font-size = 1.6rem
+$article-title-font-size = 3.2rem 
 $temp-toc-width = hexo-config('style.right_side_width')
 $toc-container-width = $temp-toc-width ? convert($temp-toc-width) : 210px
 $without-toc-container-width = calc(100% - 210px)
@@ -55,19 +55,74 @@ $without-toc-container-width = calc(100% - 210px)
       box-shadow none
     }
 
+
+
     .article-title {
-      font-family "Noto Sans SC", sans-serif
-      color var(--second-text-color)
-      font-weight 600
-      font-size $article-title-font-size
+      position relative
+      width 100%
 
-      +redefine-tablet() {
-        font-size $article-title-font-size * 0.9
+      img {
+        margin -30px -30px 0 -30px
+        width calc(100% + 60px)
+        height 350px
+        object-fit cover
+        border-radius $redefine-border-radius-large-top
+
+        +redefine-tablet() {
+          height 300px
+          margin -24px -24px 0 -24px
+          width calc(100% + 60px * 0.8)
+        }
+
+        +redefine-mobile() {
+          height 200px
+          border-radius $redefine-border-radius-medium
+          margin -18px -18px 0 -18px
+          width calc(100% + 60px * 0.6)
+        }
       }
 
-      +redefine-mobile() {
-        font-size $article-title-font-size * 0.8
+      .article-title-regular {
+        font-size $article-title-font-size
+        font-weight bold
+        margin 10px 0 30px 0
+        line-height 1
+        color var(--second-text-color)
+        font-family "Noto Sans SC", sans-serif
       }
+
+      .article-title-cover { 
+        display flex
+        padding 0.4rem 1.5rem 0.5rem 1.5rem
+        line-height 1.5
+        margin 0 auto
+        position absolute
+        bottom 36px
+        left 0
+        text-align center
+        font-family "Noto Sans SC", sans-serif
+        color var(--second-text-color)
+        font-size $article-title-font-size
+        font-weight 600
+        background-color var(--background-color-transparent)
+        backdrop-filter blur(10px)
+        -webkit-backdrop-filter blur(10px)
+        border 1.5px solid var(--first-screen-icons-container-border-color)
+        border-radius $redefine-border-radius-large
+        
+        +redefine-tablet() {
+          font-size $article-title-font-size * 0.8
+          bottom 36px * 0.8
+        }
+
+        +redefine-mobile() {
+          font-size $article-title-font-size * 0.6
+          bottom 36px * 0.6
+          border-radius $redefine-border-radius-medium
+        }
+
+      }
+
     }
 
 

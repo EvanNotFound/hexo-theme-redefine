@@ -79,9 +79,9 @@ menu: #you can customize, i18n files are in the theme's languages folder. fa-reg
   Home: 
     path: / 
     icon: fa-regular fa-house # can be empty
-  Archives: 
-    path: /archives 
-    icon: fa-regular fa-archive # can be empty
+  # Archives: 
+  #   path: /archives 
+  #   icon: fa-regular fa-archive # can be empty
   # Status: 
   #   path: https://status.evanluo.top/
   #   icon: fa-regular fa-chart-bar
@@ -277,4 +277,4 @@ inject:
 # Please go to github to update the latest version frequently
 # Github: https://github.com/EvanNotFound/hexo-theme-redefine
 # ---------------------------------------------------------------------------------------
-version: 1.0.0
+version: 1.1.0

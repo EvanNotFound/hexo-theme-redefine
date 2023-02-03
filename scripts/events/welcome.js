@@ -1,3 +1,8 @@
+/**
+ * Theme Redefine
+ * welcome.js
+*/
+
 hexo.on("ready", () => {
   const { version } = require("../../package.json");
 

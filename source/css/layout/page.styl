@@ -98,8 +98,9 @@
       }
 
       +redefine-mobile() {
-        padding $spacing-unit * 0.6 0
+        
         box-shadow none !important
+        border none !important
 
         :hover {
           box-shadow none !important
@@ -173,5 +174,12 @@
     position fixed
     bottom 5%
     right $spacing-unit
+    opacity 1
+    transition opacity 0.2s ease
+
+    &.hide {
+      opacity 0
+      transition opacity 0.2s ease
+    }
   }
 }

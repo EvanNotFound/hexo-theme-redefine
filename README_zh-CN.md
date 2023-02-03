@@ -11,7 +11,7 @@
 
 # hexo-theme-redefine
 
-"Redefine" 是一个简洁，快速的 hexo 主题。简洁，但不简单。本主题包含很多广泛使用的功能。
+"Redefine" 是一个简洁、快速、纯净的 hexo 主题。简洁，但不简单。本主题包含很多广泛使用的功能，并拥有着优秀的设计。
 
 [![NPM version](https://img.shields.io/npm/v/hexo-theme-redefine?color=red&logo=npm&style=flat-square)](https://www.npmjs.com/package/hexo-theme-redefine) [![npm](https://img.shields.io/npm/dw/hexo-theme-redefine?logo=npm&style=flat-square)](https://www.npmjs.com/package/hexo-theme-redefine) [![Github License](https://img.shields.io/github/license/XPoet/hexo-theme-keep.svg?style=flat-square)](https://github.com/EvanNotFound/hexo-theme-redefine/blob/main/LICENSE) [![Required Hexo version](https://img.shields.io/badge/hexo-%3E=5.0.0-blue?style=flat-square&logo=hexo)](https://hexo.io) [![Node.js Version](https://img.shields.io/badge/node-%3E=12.0-success.svg?style=flat-square&logo=Node.js&longCache=true)](https://hexo.io)
 
@@ -19,9 +19,9 @@
 
 ## 📷 屏幕截图
 
-![redefine-1-final](https://user-images.githubusercontent.com/68590232/213844839-f02368be-66a8-4b3f-a5e6-1c3b08c73596.png)
-![redefine-2-final](https://user-images.githubusercontent.com/68590232/213844840-3d525947-d144-4bfb-b4bd-98a0212635fe.png)
-![redefine-3-final](https://user-images.githubusercontent.com/68590232/213844841-3b864ef6-1be5-4d24-a590-7c3fb2dce397.png)
+![redefine-1-final](https://user-images.githubusercontent.com/68590232/216494120-c2021614-118d-4554-aa07-06bc96631e8f.png)
+![redefine-2-final](https://user-images.githubusercontent.com/68590232/216494132-76586fad-e959-401c-b0b7-25e5f187dc39.png)
+![redefine-3-final](https://user-images.githubusercontent.com/68590232/216494137-d25d02e5-c7d2-4fc8-932f-bd9aee6e874f.png)
 
 
 ## 🌐 在线演示站
@@ -60,7 +60,7 @@ $ cd your-hexo-site
 $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redefine
 ```
 
-安装完成后，在 Hexo 配置文件中将 `theme` 设置为 `Redefine`。
+安装完成后，在 Hexo 配置文件 `_config.yml` 中将 `theme` 设置为 `Redefine`。
 
 ```yaml
 theme: redefine
@@ -88,11 +88,7 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 
 ## 📄 文档
 
-请阅读 [Redefine 主题官方文档](https://redefine-docs.ohevan.com/) 
-
-进行主题配置与安装
-
-
+请阅读 [Redefine 主题官方文档](https://redefine-docs.ohevan.com/) 进行主题配置与安装，非常简单易懂。
 
 ## ☕ 支持
 
