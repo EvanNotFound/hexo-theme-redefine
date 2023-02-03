@@ -272,10 +272,9 @@ inject:
     - 
     - 
 
-error_page: 404.ejs
 # ---------------------------------------------------------------------------------------
 # Redefine Theme version (Please dont modify it)
 # Please go to github to update the latest version frequently
 # Github: https://github.com/EvanNotFound/hexo-theme-redefine
 # ---------------------------------------------------------------------------------------
-version: 1.0.0
+version: 1.1.0
