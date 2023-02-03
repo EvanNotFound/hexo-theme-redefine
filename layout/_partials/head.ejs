@@ -8,6 +8,19 @@
     <!--- Seo Part-->
     <%- generate_seo(theme, page) %>
     <%- autoCanonical(config, page) %>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="<%= page.title || config.title || 'Redefine Theme' %>">
+    <meta property="og:description" content="<%= page.description || config.description || 'Hexo Theme Redefine' %>">
+    <meta property="og:url" content="<%= config.url + page.path %>">
+    <meta property="og:image" content="<%= theme.style.favicon %>">
+    <meta property="og:site_name" content="<%= theme.base_info.title || config.title || 'Redefine Theme' %>">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= page.title || config.title || 'Redefine Theme' %>">
+    <meta name="twitter:description" content="<%= page.description || config.description || 'Hexo Theme Redefine' %>">
+    <meta name="twitter:image" content="<%= theme.style.favicon %>m">
     <!--- Icon Part-->
     <link rel="icon" type="image/png" href="<%= theme.style.favicon %>" sizes="192x192">
     <link rel="apple-touch-icon" sizes="180x180" href="<%= theme.style.favicon %>">
@@ -32,7 +45,7 @@
     %>
     <title>
         <% if (title) { %>
-            <%= title %> |
+            <%= title %> -
         <% } %>
         <%= theme.base_info.title || config.title || 'Redefine Theme' %>
     </title>
@@ -47,7 +60,9 @@
                     <%- theme.inject.head[i] %>
             <% } }%>
     <% } }%>
-    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    <% if (theme.cdn.enable == true) { %>
+        <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    <% } %>
     <%- export_config() %>
     
     <%- __css('css/fontawesome.min.css') %>
