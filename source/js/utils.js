@@ -96,7 +96,7 @@ REDEFINE.initUtils = () => {
             } else {
               tools.classList.add('hide');
             }
-          } else if (y + windowHeight >= height - 50) {
+          } else if (y + windowHeight >= height - 20) {
             tools.classList.add('hide');
           } else {
             tools.classList.remove('hide');
