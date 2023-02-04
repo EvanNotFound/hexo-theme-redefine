@@ -90,7 +90,7 @@ menu: #you can customize, i18n files are in the theme's languages folder. fa-reg
   #   submenus:
   #     Me: /about
   #     Github: https://github.com/EvanNotFound/hexo-theme-redefine
-  #     Blog: https://www.evanluo.top
+  #     Blog: https://ohevan.com
   #     Friends: /friends
   # Links: 
   #   icon: fa-regular fa-link
