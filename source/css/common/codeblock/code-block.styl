@@ -70,6 +70,20 @@ if (hexo-config('code_block.style') == 'mac') {
     box-shadow var(--redefine-box-shadow-flat) 
     padding-top 20px
     margin-top 10px
+    position relative
+
+    figcaption {
+      font-weight bold
+      font-size 16px
+      position absolute
+      top 12px
+      left 50%
+      transform translateX(-50%)
+
+      a {
+        margin-left 10px
+      }
+    }
 
     &::before {
       position absolute
@@ -119,6 +133,20 @@ if (hexo-config('code_block.style') == 'mac') {
     border-radius $redefine-border-radius-large
     padding-top 20px
     margin-top 10px
+    position relative
+
+    figcaption {
+      font-weight bold
+      font-size 16px
+      position absolute
+      top 16px
+      left 50%
+      transform translateX(-50%)
+
+      a {
+        margin-left 10px
+      }
+    }
 
     .folded {
       figure {
