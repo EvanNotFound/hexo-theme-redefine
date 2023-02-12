@@ -244,6 +244,21 @@ pjax:
   enable: true
 
 # ---------------------------------------------------------------------------------------
+# Article recommendation (transplant from Volantis)
+# ---------------------------------------------------------------------------------------
+recommended_article: # 文章推荐，需要 npm install nodejieba
+  enable: false
+  title: 推荐阅读
+  icon: fa-solid fa-bookmark
+  max_count: 3
+  placeholder_img: https://evan.beee.top/img/wallhaven-wqery6-light.webp
+  # 不展示文章推荐：
+  # front-matter 使用 skip_recommended_article: true 关闭
+  # 不在以下文件夹文章中展示文章推荐 根目录是source/
+  skip_dirs:
+    - wiki/
+
+# ---------------------------------------------------------------------------------------
 # Fontawesome
 # ---------------------------------------------------------------------------------------
 fontawesome: # select fontawesome versions you want to use, in order to reduce the loading time, select as few as possible

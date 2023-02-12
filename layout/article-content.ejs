@@ -75,6 +75,8 @@
                 </ul>
             <% } %>
 
+            <%- 文章推荐生成器(page) %>
+
             <% if (page.prev || page.next) { %>
                 <div class="article-nav">
                     <% if (page.prev) { %>
@@ -111,6 +113,7 @@
                     <% } %>
                 </div>
             <% } %>
+
 
             <% if (theme.comment.enable === true && theme.comment.hasOwnProperty(theme.comment.use)) { %>
                 <div class="comment-container">
