@@ -51,6 +51,9 @@
     </title>
     <%- css('css/style') %>
     <%- __css('assets/fonts.css') %>
+    <% if (theme.style.first_screen.custom_font.enable) { %>
+        <link href="<%- theme.style.first_screen.custom_font.font_url %>" rel="stylesheet">
+    <% } %>
     <% if (theme.inject.enable == true) { %>
         <% for (let i in theme.inject.head) { %>
             <% if (theme.inject.head[i] !== null){ %>

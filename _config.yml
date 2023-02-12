@@ -51,6 +51,10 @@ style:
       light: "#fff" # first screen title color (light mode)
       dark: "#d1d1b6" # first screen title color (dark mode)
     description: Theme Redefine # the title in the middle of the first screen. HTML supported (e.g. svg html code of your logo)
+    custom_font: # custom font for the first screen
+      enable: false
+      font_family: # the font family name of the url below
+      font_url:  # The url to the font file
 
   # Scroll style settings
   scroll:
