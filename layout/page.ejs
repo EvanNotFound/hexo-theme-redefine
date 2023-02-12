@@ -36,6 +36,9 @@
                 <% } else if (page.title === 'tag' || page.title === 'tags') { %>
                     <%- partial('_partials/tools/tagcloud') %>
 
+                <% } else if (page.title === 'Page Not Found' || page.title === 'tags') { %>
+                    <%- partial('_partials/components/404-template') %>
+
                 <% } else { %>
                     <%- partial('_partials/page-template') %>
 
