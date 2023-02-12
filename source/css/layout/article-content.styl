@@ -17,6 +17,28 @@ $gap = 30px
   &.show-toc {
     .toc-content-container {
       display block
+
+      &:hover::-webkit-scrollbar-thumb {
+        border: 3px solid rgba(183, 183, 183, 0.3);
+      }
+
+      &::-webkit-scrollbar {
+        width 6px
+        height 6px
+        transition all 0.2s ease
+        display block
+      }
+      
+      &::-webkit-scrollbar-track {
+        background transparent
+        border none
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 20px;
+        border: 3px solid rgba(183, 183, 183, 0);
+        transition all 0.2s ease
+      }
     }
 
     .article-content-container {
