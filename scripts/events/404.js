@@ -6,10 +6,10 @@
 hexo.extend.generator.register('404', function(locals){
   return {
     path: '404.html',
-    layout: ['page'],
+    layout: '404',
     data: {
-      type: '404',
-      top_img: false
+      title: 'Page Not Found',
+      page: locals.pages.findOne({path: '404.html'})
     }
   }
 });

@@ -51,6 +51,10 @@ style:
       light: "#fff" # first screen title color (light mode)
       dark: "#d1d1b6" # first screen title color (dark mode)
     description: Theme Redefine # the title in the middle of the first screen. HTML supported (e.g. svg html code of your logo)
+    custom_font: # custom font for the first screen
+      enable: false
+      font_family: # the font family name of the url below
+      font_url:  # The url to the font file
 
   # Scroll style settings
   scroll:
@@ -90,7 +94,7 @@ menu: #you can customize, i18n files are in the theme's languages folder. fa-reg
   #   submenus:
   #     Me: /about
   #     Github: https://github.com/EvanNotFound/hexo-theme-redefine
-  #     Blog: https://www.evanluo.top
+  #     Blog: https://ohevan.com
   #     Friends: /friends
   # Links: 
   #   icon: fa-regular fa-link
@@ -244,6 +248,21 @@ pjax:
   enable: true
 
 # ---------------------------------------------------------------------------------------
+# Article recommendation (transplant from Volantis)
+# ---------------------------------------------------------------------------------------
+recommended_article: # 文章推荐，需要 npm install nodejieba
+  enable: false
+  title: 推荐阅读
+  icon: fa-solid fa-bookmark
+  max_count: 3
+  placeholder_img: https://evan.beee.top/img/wallhaven-wqery6-light.webp
+  # 不展示文章推荐：
+  # front-matter 使用 skip_recommended_article: true 关闭
+  # 不在以下文件夹文章中展示文章推荐 根目录是source/
+  skip_dirs:
+    - wiki/
+
+# ---------------------------------------------------------------------------------------
 # Fontawesome
 # ---------------------------------------------------------------------------------------
 fontawesome: # select fontawesome versions you want to use, in order to reduce the loading time, select as few as possible
@@ -277,4 +296,4 @@ inject:
 # Please go to github to update the latest version frequently
 # Github: https://github.com/EvanNotFound/hexo-theme-redefine
 # ---------------------------------------------------------------------------------------
-version: 1.1.0
+version: 1.1.1

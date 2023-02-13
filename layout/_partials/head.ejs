@@ -8,6 +8,19 @@
     <!--- Seo Part-->
     <%- generate_seo(theme, page) %>
     <%- autoCanonical(config, page) %>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="<%= page.title || config.title || 'Redefine Theme' %>">
+    <meta property="og:description" content="<%= page.description || config.description || 'Hexo Theme Redefine' %>">
+    <meta property="og:url" content="<%= config.url + page.path %>">
+    <meta property="og:image" content="<%= theme.style.favicon %>">
+    <meta property="og:site_name" content="<%= theme.base_info.title || config.title || 'Redefine Theme' %>">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= page.title || config.title || 'Redefine Theme' %>">
+    <meta name="twitter:description" content="<%= page.description || config.description || 'Hexo Theme Redefine' %>">
+    <meta name="twitter:image" content="<%= theme.style.favicon %>">
     <!--- Icon Part-->
     <link rel="icon" type="image/png" href="<%= theme.style.favicon %>" sizes="192x192">
     <link rel="apple-touch-icon" sizes="180x180" href="<%= theme.style.favicon %>">
@@ -32,12 +45,15 @@
     %>
     <title>
         <% if (title) { %>
-            <%= title %> |
+            <%= title %> -
         <% } %>
         <%= theme.base_info.title || config.title || 'Redefine Theme' %>
     </title>
     <%- css('css/style') %>
-    <%- __css('css/fonts.css') %>
+    <%- __css('assets/fonts.css') %>
+    <% if (theme.style.first_screen.custom_font.enable) { %>
+        <link href="<%- theme.style.first_screen.custom_font.font_url %>" rel="stylesheet">
+    <% } %>
     <% if (theme.inject.enable == true) { %>
         <% for (let i in theme.inject.head) { %>
             <% if (theme.inject.head[i] !== null){ %>
@@ -47,21 +63,23 @@
                     <%- theme.inject.head[i] %>
             <% } }%>
     <% } }%>
-    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    <% if (theme.cdn.enable == true) { %>
+        <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    <% } %>
     <%- export_config() %>
     
-    <%- __css('css/fontawesome.min.css') %>
-    <%- __css('css/brands.min.css') %>
-    <%- __css('css/solid.min.css') %>
-    <%- __css('css/regular.min.css') %>
+    <%- __css('fontawesome/fontawesome.min.css') %>
+    <%- __css('fontawesome/brands.min.css') %>
+    <%- __css('fontawesome/solid.min.css') %>
+    <%- __css('fontawesome/regular.min.css') %>
     <% if (theme.fontawesome.thin == true) { %>
-        <%- __css('css/thin.min.css') %>
+        <%- __css('fontawesome/thin.min.css') %>
     <% } %>
     <% if (theme.fontawesome.light == true) { %>
-        <%- __css('css/light.min.css') %>
+        <%- __css('fontawesome/light.min.css') %>
     <% } %>
     <% if (theme.fontawesome.duotone == true) { %>
-        <%- __css('css/duotone.min.css') %>
+        <%- __css('fontawesome/duotone.min.css') %>
     <% } %>
 </head>
 

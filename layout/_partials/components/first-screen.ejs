@@ -1,6 +1,8 @@
 <div class="first-screen-container flex-center">
     <div class="content flex-center">
-        <div class="description fade-in-down-animation">
+        <div class="description fade-in-down-animation" <% if (theme.style.first_screen.custom_font.enable) { %>
+         style="font-family: '<%- theme.style.first_screen.custom_font.font_family %>', sans-serif; !important;"
+        <% } %>>
           <%- theme.style.first_screen.description || config.description %>
         </div>
         <% if (theme.social_contact.enable) { %>
