@@ -2,7 +2,7 @@
   "name": "hexo-theme-redefine",
   "version": "1.1.1",
   "private": false,
-  "description": "\"Redefine\" hexo theme is a simple & fast & pure theme, but with no compromise.",
+  "description": "Redefine your writing with modern style and various functionality in 'Redefine' Hexo Theme.",
   "scripts": {
     "npm:publish": "npm publish",
     "format": "prettier --write ./source/js/*.js ./scripts",
