@@ -47,6 +47,23 @@
         <% if (theme.footer.hasOwnProperty('customize') && theme.footer.customize) { %>
             <div class="customize-info info-item"><%- theme.footer.customize %></div>
         <% } %>
+        <% if (theme.footer.runtime === true) {%>
+            <script async <%= theme.pjax.enable === true ? 'data-pjax' : '' %>>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        <% } %>
         <% if (theme.inject.enable == true) { %>
             <% for (let i in theme.inject.footer) { %>
                 <% if (theme.inject.footer[i] !== null ){ %>
