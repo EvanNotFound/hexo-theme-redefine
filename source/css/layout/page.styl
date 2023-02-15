@@ -175,11 +175,12 @@
     bottom 5%
     right $spacing-unit
     opacity 1
-    transition opacity 0.2s ease
+    transition all 0.2s ease
 
     &.hide {
       opacity 0
-      transition opacity 0.2s ease
+      pointer-events none
+      transition all 0.2s ease
     }
   }
 }
