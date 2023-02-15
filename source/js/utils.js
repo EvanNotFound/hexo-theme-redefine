@@ -326,7 +326,18 @@ REDEFINE.initUtils = () => {
       const post = document.querySelectorAll(
         ".home-article-meta-info .home-article-date"
       );
-      post &&
+      const df = REDEFINE.theme_config.home_article.date_format;
+      if (df === "relative") {
+        post &&
+          post.forEach((v) => {
+            const nowDate = Date.now();
+            const postDate = new Date(v.dataset.date.split(" GMT")[0]).getTime();
+            v.innerHTML = this.getHowLongAgo(
+              Math.floor((nowDate - postDate) / 1000)
+            );
+          });
+      } else if (df === "auto") {
+        post &&
         post.forEach((v) => {
           const nowDate = Date.now();
           const postDate = new Date(v.dataset.date.split(" GMT")[0]).getTime();
@@ -339,6 +350,7 @@ REDEFINE.initUtils = () => {
             );
           }
         });
+      }
     },
 
     // loading progress bar start

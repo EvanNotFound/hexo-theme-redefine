@@ -2,8 +2,8 @@
     <div class="home-article-meta-info">
         <span><i class="fa-solid fa-calendars"></i>&nbsp;
             <span class="home-article-date" data-date="<%= post.date %>">
-                <% if (theme.home_article.date_format == 'auto') { %>
-                    <%= date(post.date, 'YYYY/MM/DD') %>
+                <% if (theme.home_article.date_format == 'auto' || theme.home_article.date_format == 'relative') { %>
+                    <%= date(post.date, config.date_format) %>
                 <% } else { %>
                     <%= date(post.date, theme.home_article.date_format) %>
                 <% } %>
