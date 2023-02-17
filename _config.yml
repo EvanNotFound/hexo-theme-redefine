@@ -144,7 +144,7 @@ post:
 code_block:
   copy: true # enable code copy button
   style: mac # mac | simple
-  custom_font: # custom font family, default: courier new
+  custom_font: # custom font family, default: Ubuntu Mono
     enable: false
     font_family: # font family name
     font_url: # font url

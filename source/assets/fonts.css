@@ -80,3 +80,13 @@
     url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/OPTIMA_B.woff")
       format("woff");
 }
+
+/* ubuntu-mono-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Ubuntu Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/ubuntu-mono-v15-latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+ */
+       url('https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/ubuntu-mono-v15-latin-regular.woff') format('woff'); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
