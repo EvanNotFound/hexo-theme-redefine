@@ -75,3 +75,6 @@ ago:
   week: "%s weeks ago"
   month: "%s months ago"
   year: "%s years ago"
+
+create_time: Created
+update_time: Updated
