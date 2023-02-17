@@ -13,7 +13,12 @@ $code-block {
 
 
 pre, code {
-  font-family 'Courier', Courier, monospace
+  if (hexo-config('code_block.custom_font.enable') && hexo-config('code_block.custom_font.font_family')) {
+    font-family hexo-config('code_block.custom_font.font_family'), Courier, monospace
+  } else {
+    font-family 'Courier', Courier, monospace
+  }
+
 }
 
 code {
