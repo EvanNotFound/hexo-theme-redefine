@@ -28,6 +28,9 @@
 
 - [EvanNotFound's Blog](https://ohevan.com)
 - [Theme Redefine Demo](https://redefine.ohevan.com)
+- [Redefine Theme Showcase](https://redefine.ohevan.com/showcase)
+
+If you are also using Redefine, please go to [Redefine Theme Showcase](https://redefine.ohevan.com/showcase) to add your blog link.
 
 ## ⛰️ Some functions
 

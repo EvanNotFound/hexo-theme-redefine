@@ -23,10 +23,13 @@
 ![redefine-3-final](https://user-images.githubusercontent.com/68590232/216494137-d25d02e5-c7d2-4fc8-932f-bd9aee6e874f.png)
 
 
-## 🌐 在线演示站
+## 🌐 官方演示站
 
 - [EvanNotFound's Blog](https://ohevan.com)
 - [Theme Redefine Demo](https://redefine.ohevan.com)
+- [Redefine 用户墙](https://redefine.ohevan.com/showcase)
+
+如果你也在使用 Redefine，欢迎在前往 [Redefine 用户墙](https://redefine.ohevan.com/showcase) 添加你的博客链接。
 
 ## ⛰️ 部分功能
 
@@ -96,6 +99,9 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 如有问题，请发邮件到 [contact@ohevan.com](mailto:contact@ohevan.com). 我会及时回复
 
 如果我做的主题还不错的话，欢迎给我 Github 点个 Star，谢谢
+
+
+
 
 
 

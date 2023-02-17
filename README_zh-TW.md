@@ -29,6 +29,9 @@
 
 - [EvanNotFound's Blog](https://ohevan.com)
 - [Theme Redefine Demo](https://redefine.ohevan.com)
+- [Redefine 用戶牆](https://redefine.ohevan.com/showcase)
+
+如果你也在使用 Redefine，歡迎在前往 [Redefine 用戶牆](https://redefine.ohevan.com/showcase) 添加你的博客鏈接。
 
 ## ⛰️ 部分功能
 
