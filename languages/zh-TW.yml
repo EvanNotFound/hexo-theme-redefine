@@ -74,3 +74,6 @@ ago:
   week: "%s 周前"
   month: "%s 個月前"
   year: "%s 年前"
+
+create_time: 撰寫時間
+update_time: 更新時間

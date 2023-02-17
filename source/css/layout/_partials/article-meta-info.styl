@@ -5,12 +5,36 @@
   .article-meta-item {
     margin-right 10px
 
+
+
     &:last-child {
       margin-right 0
     }
   }
 
   .article-date {
+    position relative
+
+    .hover-info {
+      opacity 0
+      position absolute
+      transition opacity 0.3s
+      top 1.5rem
+      left 50%
+      width auto
+      transform translateX(-50%)
+      border 1px solid var(--border-color)
+      padding 0 5px
+      border-radius $redefine-border-radius-small
+      background-color var(--second-background-color)
+    }
+
+    &:hover {
+      .hover-info {
+        opacity 1
+        transition opacity 0.2s
+      }
+    }
 
     .mobile {
       display none
