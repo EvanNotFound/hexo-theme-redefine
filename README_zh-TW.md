@@ -13,7 +13,7 @@
 
 "Redefine" 是一個簡潔、快速、純净的 hexo 主題。簡潔，但不簡單。本主題包含很多廣泛使用的功能，並擁有著優秀的設計。
 
-[![NPM version](https://img.shields.io/npm/v/hexo-theme-redefine?color=red&logo=npm&style=flat-square)](https://www.npmjs.com/package/hexo-theme-redefine) [![npm](https://img.shields.io/npm/dw/hexo-theme-redefine?logo=npm&style=flat-square)](https://www.npmjs.com/package/hexo-theme-redefine) [![Github License](https://img.shields.io/github/license/XPoet/hexo-theme-keep.svg?style=flat-square)](https://github.com/EvanNotFound/hexo-theme-redefine/blob/main/LICENSE) [![Required Hexo version](https://img.shields.io/badge/hexo-%3E=5.0.0-blue?style=flat-square&logo=hexo)](https://hexo.io) [![Node.js Version](https://img.shields.io/badge/node-%3E=12.0-success.svg?style=flat-square&logo=Node.js&longCache=true)](https://hexo.io)
+[![NPM version](https://img.shields.io/npm/v/hexo-theme-redefine?color=red&logo=npm&style=flat-square)](https://www.npmjs.com/package/hexo-theme-redefine) [![npm](https://img.shields.io/npm/dw/hexo-theme-redefine?logo=npm&style=flat-square)](https://www.npmjs.com/package/hexo-theme-redefine) [![npm-total](https://img.shields.io/npm/dt/hexo-theme-redefine?logo=npm&style=flat-square)](https://www.npmjs.com/package/hexo-theme-redefine) [![Github License](https://img.shields.io/github/license/EvanNotFound/hexo-theme-redefine.svg?style=flat-square)](https://github.com/EvanNotFound/hexo-theme-redefine/blob/main/LICENSE) [![Required Hexo version](https://img.shields.io/badge/hexo-%3E=5.0.0-blue?style=flat-square&logo=hexo)](https://hexo.io) [![Node.js Version](https://img.shields.io/badge/node-%3E=12.0-success.svg?style=flat-square&logo=Node.js&longCache=true)](https://hexo.io)
 
 
 
@@ -29,6 +29,9 @@
 
 - [EvanNotFound's Blog](https://ohevan.com)
 - [Theme Redefine Demo](https://redefine.ohevan.com)
+- [Redefine 用戶牆](https://redefine.ohevan.com/showcase)
+
+如果你也在使用 Redefine，歡迎在前往 [Redefine 用戶牆](https://redefine.ohevan.com/showcase) 添加你的博客鏈接。
 
 ## ⛰️ 部分功能
 

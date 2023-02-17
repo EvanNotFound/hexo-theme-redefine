@@ -48,18 +48,20 @@
             <div class="customize-info info-item"><%- theme.footer.customize %></div>
         <% } %>
         <% if (theme.footer.runtime === true) {%>
-            <script async <%= theme.pjax.enable === true ? 'data-pjax' : '' %> defer>
-                function odometer_init(){
-                        let el = document.getElementsByClassName('odometer');
-                        for (i = 0; i < el.length; i++) {
-                            od = new Odometer({
-                                el: el[i],
-                                format: '( ddd).dd',
-                                duration: 200
-                            });
-                        }
-                }
-                odometer_init();
+            <script async <%= theme.pjax.enable === true ? 'data-pjax' : '' %>>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
             </script>
         <% } %>
         <% if (theme.inject.enable == true) { %>

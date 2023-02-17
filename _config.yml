@@ -144,6 +144,10 @@ post:
 code_block:
   copy: true # enable code copy button
   style: mac # mac | simple
+  custom_font: # custom font family, default: Ubuntu Mono
+    enable: false
+    font_family: # font family name
+    font_url: # font url
 
 # ---------------------------------------------------------------------------------------
 # Table of Contents in the Sidebar
@@ -296,4 +300,4 @@ inject:
 # Please go to github to update the latest version frequently
 # Github: https://github.com/EvanNotFound/hexo-theme-redefine
 # ---------------------------------------------------------------------------------------
-version: 1.1.1
+version: 1.1.2

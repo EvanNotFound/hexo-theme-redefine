@@ -5,7 +5,7 @@ $code-block {
   overflow auto
   margin 20px 0
   padding 0
-  font-size 0.96rem
+  font-size 1rem
   line-height 1.5rem
   color var(--highlight-foreground)
   background var(--highlight-background)
@@ -13,7 +13,11 @@ $code-block {
 
 
 pre, code {
-  font-family 'Courier', Courier, monospace
+  if (hexo-config('code_block.custom_font.enable') && hexo-config('code_block.custom_font.font_family')) {
+    font-family hexo-config('code_block.custom_font.font_family'), "Ubuntu Mono", Courier, monospace
+  } else {
+    font-family "Ubuntu Mono", Courier, monospace
+  }
 }
 
 code {
