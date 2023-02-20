@@ -1,5 +1,17 @@
 $icon-size = 1.2rem
 
+redefine-tablet() {
+  @media (max-width $media-max-width){
+    {block}
+  }
+}
+
+redefine-mobile() {
+  @media (max-width $media-max-width-mobile){
+    {block}
+  }
+}
+
 .search-pop-overlay {
   position fixed
   display flex

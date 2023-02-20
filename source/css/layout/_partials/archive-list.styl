@@ -3,6 +3,18 @@ $archive-year-count-font-size = 1.2rem
 $article-title-font-size = 1.2rem
 $article-date-font-size = 1rem
 
+redefine-tablet() {
+  @media (max-width $media-max-width){
+    {block}
+  }
+}
+
+redefine-mobile() {
+  @media (max-width $media-max-width-mobile){
+    {block}
+  }
+}
+
 .archive-list-container {
 
   .archive-item {

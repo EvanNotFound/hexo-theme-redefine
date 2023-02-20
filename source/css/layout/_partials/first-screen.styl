@@ -1,6 +1,17 @@
 $first-screen-font-size = 2rem
 $first-screen-icon-size = 1.6rem
 
+redefine-tablet() {
+  @media (max-width $media-max-width){
+    {block}
+  }
+}
+
+redefine-mobile() {
+  @media (max-width $media-max-width-mobile){
+    {block}
+  }
+}
 
 .first-screen-container {
   font-family "Optima Bold", sans-serif

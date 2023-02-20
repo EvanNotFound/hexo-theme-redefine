@@ -1,3 +1,15 @@
+redefine-tablet() {
+  @media (max-width $media-max-width){
+    {block}
+  }
+}
+
+redefine-mobile() {
+  @media (max-width $media-max-width-mobile){
+    {block}
+  }
+}
+
 hover-style(isTransform, scaleX, scaleY) {
   box-shadow var(--redefine-box-shadow)
 

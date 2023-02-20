@@ -6,6 +6,19 @@ $temp-toc-width = hexo-config('style.right_side_width')
 $toc-container-width = $temp-toc-width ? convert($temp-toc-width) : 210px
 $without-toc-container-width = calc(100% - 210px)
 $gap = 30px
+
+redefine-tablet() {
+  @media (max-width $media-max-width){
+    {block}
+  }
+}
+
+redefine-mobile() {
+  @media (max-width $media-max-width-mobile){
+    {block}
+  }
+}
+
 .post-page-container{
   display flex
   position relative

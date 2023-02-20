@@ -3,6 +3,18 @@ $friend-link-item-height-tablet = 68px
 $friend-link-item-interval = 16px
 $friend-link-item-border-radius = 9px
 
+redefine-tablet() {
+  @media (max-width $media-max-width){
+    {block}
+  }
+}
+
+redefine-mobile() {
+  @media (max-width $media-max-width-mobile){
+    {block}
+  }
+}
+
 .page-template-container {
 
   redefine-container(false, 0, 0, 30px, 30px)
