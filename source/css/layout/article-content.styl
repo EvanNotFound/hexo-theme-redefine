@@ -1,3 +1,4 @@
+@import "../common/variables"
 $avatarWidth = 46px
 $arrow-icon-width = 16px
 $post-nav-max-width = 220px
@@ -6,18 +7,6 @@ $temp-toc-width = hexo-config('style.right_side_width')
 $toc-container-width = $temp-toc-width ? convert($temp-toc-width) : 210px
 $without-toc-container-width = calc(100% - 210px)
 $gap = 30px
-
-redefine-tablet() {
-  @media (max-width $media-max-width){
-    {block}
-  }
-}
-
-redefine-mobile() {
-  @media (max-width $media-max-width-mobile){
-    {block}
-  }
-}
 
 .post-page-container{
   display flex
@@ -275,7 +264,7 @@ redefine-mobile() {
       width 100%
 
       +redefine-tablet() {
-        margin-top $spacing-unit * 0.8 !important
+        margin-top ($spacing-unit * 0.8) !important
       }
     }
 

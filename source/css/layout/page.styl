@@ -1,14 +1,4 @@
-redefine-tablet() {
-  @media (max-width $media-max-width){
-    {block}
-  }
-}
-
-redefine-mobile() {
-  @media (max-width $media-max-width-mobile){
-    {block}
-  }
-}
+@import "../common/variables"
 
 .page-container {
   position relative
@@ -34,7 +24,7 @@ redefine-mobile() {
 
 
       +redefine-tablet() {
-        padding-top $menu-shrink-height * 0.9
+        padding-top ($menu-shrink-height * 0.9)
       }
 
       +redefine-mobile() {
@@ -71,7 +61,7 @@ redefine-mobile() {
         height $menu-shrink-height
 
         +redefine-tablet() {
-          height $menu-shrink-height * 0.9
+          height ($menu-shrink-height * 0.9)
         }
 
         +redefine-mobile() {
@@ -101,7 +91,7 @@ redefine-mobile() {
       padding $spacing-unit 0
 
       +redefine-tablet() {
-        padding $spacing-unit * 0.8 0
+        padding ($spacing-unit * 0.8) 0
         box-shadow none !important
 
         :hover {
@@ -157,17 +147,17 @@ redefine-mobile() {
       top $menu-shrink-height + $spacing-unit
 
       +redefine-tablet() {
-        top $menu-shrink-height * 0.9 + $spacing-unit
+        top (($menu-shrink-height * 0.9) + $spacing-unit)
       }
 
       +redefine-mobile() {
-        top $menu-shrink-height * 0.8 + $spacing-unit
+        top ($menu-shrink-height * 0.8 + $spacing-unit)
       }
     }
 
 
     +redefine-tablet() {
-      top $menu-height * 0.9 + $spacing-unit
+      top ($menu-height * 0.9 + $spacing-unit)
       right 10px
       transform scale(0.82)
       transform-origin right top
@@ -175,7 +165,7 @@ redefine-mobile() {
 
 
     +redefine-mobile() {
-      top $menu-height * 0.8 + $spacing-unit
+      top ($menu-height * 0.8 + $spacing-unit)
       right 5px
       transform scale(0.72)
     }
