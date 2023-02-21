@@ -28,8 +28,14 @@
                 <br> 
             <%# 保留主题信息是对作者的尊重，感谢！ %><span class="theme-version-container"><%- __('theme') %>&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v<%= theme.version %></a><%# 保留主题信息是对作者的尊重，感谢！ %>
         </div>
-        <% if (theme.footer.hasOwnProperty('icp') && theme.footer.icp) { %>
-            <div class="icp-info info-item"><a target="_blank" rel="nofollow" href="https://beian.miit.gov.cn"><%= theme.footer.icp %></a></div>
+        <% if (theme.footer.icp.enable && theme.footer.icp.hasOwnProperty('number')) { %>
+            <div class="icp-info info-item"><a target="_blank" rel="nofollow" href="
+                <% if (theme.footer.icp.hasOwnProperty('url') && theme.footer.icp.url) { %>
+                    <%= theme.footer.icp.url %>
+                <% } else { %>
+                https://beian.miit.gov.cn
+                <% } %>
+                "><%= theme.footer.icp.number %></a></div>
         <% } %>
         <% if (theme.footer.hasOwnProperty('upyun') && theme.footer.upyun) { %>
             <div class="icp-info info-item"><a target="_blank" rel="nofollow" href="<%= theme.footer.upyun %>">本网站由
