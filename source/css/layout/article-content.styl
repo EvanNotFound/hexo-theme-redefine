@@ -5,7 +5,7 @@ $post-nav-max-width = 220px
 $article-title-font-size = 3.2rem 
 $temp-toc-width = hexo-config('style.right_side_width')
 $toc-container-width = $temp-toc-width ? convert($temp-toc-width) : 210px
-$without-toc-container-width = calc(100% - 210px)
+$without-toc-container-width = calc(100% - $temp-toc-width)
 $gap = 30px
 
 .post-page-container{
@@ -19,6 +19,9 @@ $gap = 30px
   &.show-toc {
     .toc-content-container {
       display block
+      opacity 1
+      transition opacity 0.2s ease-in 0.2s
+      width $toc-container-width
 
       &:hover::-webkit-scrollbar-thumb {
         border: 3px solid rgba(183, 183, 183, 0.3);
@@ -44,7 +47,7 @@ $gap = 30px
     }
 
     .article-content-container {
-      width $without-toc-container-width !important
+      width calc(100% - 210px) !important
     }
   }
 
@@ -71,7 +74,7 @@ $gap = 30px
 
   .article-content-container {
     width 100%
-    margin-right: 30px
+    transition width 0.2s ease
 
     redefine-container(false, 0, 0, 30px, 30px)
 
@@ -416,20 +419,27 @@ $gap = 30px
   }
 
   .toc-content-container {
+    white-space: nowrap;
+    opacity 0
     position sticky
     top $menu-height + $spacing-unit
     //border-radius $redefine-border-radius-large
     border-radius $redefine-border-radius-none
-    display none
-    width $toc-container-width
+    //display none
+    //visibility hidden
+    //width $toc-container-width
+    width 0
     height auto
     max-height calc(100vh - 210px)
+    margin-left 30px
     //z-index $z-index-6
     overflow-y auto
+    overflow-x hidden
     float right
     padding 10px
     box-sizing border-box
     box-shadow none !important
+    transition opacity 0.3s ease-out 0.3s
     
 
     hover-style(false, 0, 0)
