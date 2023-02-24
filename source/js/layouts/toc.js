@@ -94,8 +94,9 @@ function initTOC() {
     REDEFINE.utils.registerTOCScroll();
 
   } else {
-    REDEFINE.utils.pageContainer_dom.removeChild(document.querySelector('.toc-content-container'));
-    REDEFINE.utils.pageContainer_dom.removeChild(document.querySelector('.toc-marker'));
+    document.querySelectorAll('.toc-content-container, .toc-marker').forEach((elem) => {
+      elem.remove();
+    });
   }
 }
 

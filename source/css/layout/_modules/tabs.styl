@@ -71,10 +71,22 @@ div.tabs {
         color: var(--primary-color)
         background-color var(--second-background-color)
         box-shadow var(--redefine-box-shadow-flat)
+        transform translateY(-1px)
+        transition transform 0.1s ease
       }
     }
   }
   .tab-content {
+    .highlight-container[data-rel] {
+      border-radius $redefine-border-radius-small
+    }
+    .highlight {
+      border-radius $redefine-border-radius-small-bottom
+    }
+    blockquote{
+      border-radius 0 $redefine-border-radius-small $redefine-border-radius-small 0
+    }
+
     border-top 1px solid var(--shadow-color-1)
     background-color var(--second-background-color)
     border-radius: 0 0 $redefine-border-radius-medium $redefine-border-radius-medium

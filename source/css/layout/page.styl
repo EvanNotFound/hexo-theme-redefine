@@ -1,3 +1,5 @@
+@import "../common/variables"
+
 .page-container {
   position relative
   box-sizing border-box
@@ -22,7 +24,7 @@
 
 
       +redefine-tablet() {
-        padding-top $menu-shrink-height * 0.9
+        padding-top ($menu-shrink-height * 0.9)
       }
 
       +redefine-mobile() {
@@ -59,7 +61,7 @@
         height $menu-shrink-height
 
         +redefine-tablet() {
-          height $menu-shrink-height * 0.9
+          height ($menu-shrink-height * 0.9)
         }
 
         +redefine-mobile() {
@@ -89,7 +91,7 @@
       padding $spacing-unit 0
 
       +redefine-tablet() {
-        padding $spacing-unit * 0.8 0
+        padding ($spacing-unit * 0.8) 0
         box-shadow none !important
 
         :hover {
@@ -113,7 +115,7 @@
         width $main-content-width
         max-width $content-max-width 
         height 100%
-        transition-t("max-width, width", "0, 0", "0.2, 0.2", "ease-in, ease-out")
+        transition-t("max-width, width", "0, 0", "0.2, 0.2", "ease, ease")
 
         +redefine-tablet() {
           width $main-content-width-tablet
@@ -145,17 +147,17 @@
       top $menu-shrink-height + $spacing-unit
 
       +redefine-tablet() {
-        top $menu-shrink-height * 0.9 + $spacing-unit
+        top (($menu-shrink-height * 0.9) + $spacing-unit)
       }
 
       +redefine-mobile() {
-        top $menu-shrink-height * 0.8 + $spacing-unit
+        top ($menu-shrink-height * 0.8 + $spacing-unit)
       }
     }
 
 
     +redefine-tablet() {
-      top $menu-height * 0.9 + $spacing-unit
+      top ($menu-height * 0.9 + $spacing-unit)
       right 10px
       transform scale(0.82)
       transform-origin right top
@@ -163,7 +165,7 @@
 
 
     +redefine-mobile() {
-      top $menu-height * 0.8 + $spacing-unit
+      top ($menu-height * 0.8 + $spacing-unit)
       right 5px
       transform scale(0.72)
     }

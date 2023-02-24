@@ -5,11 +5,11 @@
 ) { %>
  
     <div id="waline"></div>
-    <script <%= theme.pjax.enable === true ? 'data-pjax' : '' %> 
-        src="//evan.beee.top/js/waline.js"></script>
-    <script <%= theme.pjax.enable === true ? 'data-pjax' : '' %>>
+    <script type="module"  <%= theme.pjax.enable === true ? 'data-pjax' : '' %>>
+        import { init } from 'https://evan.beee.top/js/waline.mjs';
+
         function loadWaline() {
-            Waline.init({
+            init({
                 el: '#waline',
                 serverURL: '<%= theme.comment.waline.serverUrl %>',
                 lang: '<%= theme.comment.waline.lang %>',

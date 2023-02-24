@@ -27,14 +27,17 @@ $has-toc-content-max-width = $content-max-width * 1.2
 $media-max-width = 780px;                                 // media query max width (tablet)
 $media-max-width-mobile = 500px;                          // media query max width (mobile)
 
-redefine-tablet()
-  @media (max-width $media-max-width)
-    { block }
+redefine-tablet() {
+  @media (max-width $media-max-width){
+    {block}
+  }
+}
 
-redefine-mobile()
-  @media (max-width $media-max-width-mobile)
-    { block }
-
+redefine-mobile() {
+  @media (max-width $media-max-width-mobile){
+    {block}
+  }
+}
 
 // ========================================================================================
 // z-index
