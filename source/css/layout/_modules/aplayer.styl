@@ -589,7 +589,7 @@ $aplayer-height-lrc= $aplayer-height + $lrc-height - 6
     overflow hidden
     list-style-type none
     margin 0
-    padding 0
+    padding 5px
     overflow-y auto
     border-radius $redefine-border-radius-medium $redefine-border-radius-medium 0 0
 
@@ -600,11 +600,11 @@ $aplayer-height-lrc= $aplayer-height + $lrc-height - 6
 
     &-webkit-scrollbar-thumb {
         border-radius 3px
-        background-color #eee
+        background-color var(--scroll-bar-bg-color)
     }
 
     &-webkit-scrollbar-thumbhover {
-        background-color #ccc
+        background-color var(--scroll-bar-bg-color-hover)
     }
 
     li {
@@ -618,6 +618,7 @@ $aplayer-height-lrc= $aplayer-height + $lrc-height - 6
         transition all 0.2s ease
         overflow hidden
         margin 0
+        border-radius $redefine-border-radius-small
 
         &first-child {
             border-top none
@@ -638,10 +639,10 @@ $aplayer-height-lrc= $aplayer-height + $lrc-height - 6
         .aplayer-list-cur {
             display none
             width 3px
-            height 22px
+            height 18px
             position absolute
             left 5px
-            top 5px
+            top 7px
             cursor pointer
             border-radius 2px
         }
