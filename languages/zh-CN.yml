@@ -75,5 +75,5 @@ ago:
   year: "%s 年前"
 
 
-create_time: 创建时间
-update_time: 更新时间
+create_time: 创建
+update_time: 更新
