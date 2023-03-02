@@ -299,6 +299,23 @@ inject:
     - 
 
 # ---------------------------------------------------------------------------------------
+# Theme plugins
+# ---------------------------------------------------------------------------------------
+plugins:
+  aplayer: # APlayer (fixed version)
+    enable: false
+    audio:
+      - name: # audio name
+        artist: # audio artist
+        url: # audio url
+        cover: # audio cover url
+      - name: 
+        artist: 
+        url: 
+        cover: 
+
+
+# ---------------------------------------------------------------------------------------
 # Redefine Theme version (Please dont modify it)
 # Please go to github to update the latest version frequently
 # Github: https://github.com/EvanNotFound/hexo-theme-redefine
