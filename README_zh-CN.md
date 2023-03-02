@@ -33,9 +33,9 @@
 
 ## ⛰️ 部分功能
 
-- [笔记模块](https://redefine-docs.ohevan.com/docs/advanced/plugins/note-module)
+- [笔记模块](https://redefine-docs.ohevan.com/docs/advanced/writing-modules/note-module)
 - [友链样式](https://redefine-docs.ohevan.com/docs/advanced/friend-link)
-- [数学公式](https://redefine-docs.ohevan.com/docs/advanced/plugins/mathjax)
+- [数学公式](https://redefine-docs.ohevan.com/docs/advanced/writing-modules/mathjax)
 - 代码块语言显示
 - Light/Dark 模式切换
 - [Font Awesome 6.1.0 Pro](https://redefine-docs.ohevan.com/docs/configuration-guide/fontawesome)（包含 Duotone/Regular/Thin 等不同样式）
@@ -43,8 +43,9 @@
 - [可自定义页脚](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
 - [网站运行时间显示](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
 - [文章头图](https://redefine-docs.ohevan.com/docs/advanced/home-contents/thumbnail)
-- [Mermaid JS 支持](https://redefine-docs.ohevan.com/docs/advanced/plugins/mermaid)
+- [Mermaid JS 支持](https://redefine-docs.ohevan.com/docs/advanced/writing-modules/mermaid)
 - SEO 友好
+- [Aplayer 音乐播放器支持](https://redefine-docs.ohevan.com/docs/advanced/theme-plugins/aplayer)
 
 ## ☁️ 安装
 

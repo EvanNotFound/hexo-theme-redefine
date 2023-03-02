@@ -34,9 +34,9 @@ If you are also using Redefine, please go to [Redefine Theme Showcase](https://r
 
 ## ⛰️ Some functions
 
-- [Note Module](https://redefine-docs.ohevan.com/docs/advanced/plugins/note-module)
+- [Note Module](https://redefine-docs.ohevan.com/docs/advanced/writing-modules/note-module)
 - [Friend Link Page](https://redefine-docs.ohevan.com/docs/advanced/friend-link)
-- [Mathjax Support](https://redefine-docs.ohevan.com/docs/advanced/plugins/mathjax)
+- [Mathjax Support](https://redefine-docs.ohevan.com/docs/advanced/writing-modules/mathjax)
 - Code block language display
 - Light/Dark mode switching
 - [Font Awesome 6.1.0 Pro](https://redefine-docs.ohevan.com/docs/configuration-guide/fontawesome) (contains different styles like Duotone/Regular/Thin)
@@ -44,8 +44,9 @@ If you are also using Redefine, please go to [Redefine Theme Showcase](https://r
 - [Customizable footer](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
 - [Site Uptime Display](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
 - [Article Header Image](https://redefine-docs.ohevan.com/docs/advanced/home-contents/thumbnail)
-- [Mermaid JS support](https://redefine-docs.ohevan.com/docs/advanced/plugins/mermaid)
+- [Mermaid JS support](https://redefine-docs.ohevan.com/docs/advanced/writing-modules/mermaid)
 - SEO friendly
+- [Aplayer support](https://redefine-docs.ohevan.com/docs/advanced/theme-plugins/aplayer)
 
 
 

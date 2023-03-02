@@ -4,5 +4,8 @@
 <body>
 <%- body %>
 <%- partial('_partials/scripts') %>
+<% if (theme.plugins.aplayer.enable) { %>
+    <%- partial('_partials/components/aplayer') %>
+<% } %>
 </body>
 </html>
