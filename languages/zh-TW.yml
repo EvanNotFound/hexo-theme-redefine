@@ -75,5 +75,5 @@ ago:
   month: "%s 個月前"
   year: "%s 年前"
 
-create_time: 撰寫時間
-update_time: 更新時間
+create_time: 撰寫
+update_time: 更新

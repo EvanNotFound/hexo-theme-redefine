@@ -11,7 +11,6 @@ for (const audio of REDEFINE.theme_config.plugins.aplayer.audio) {
     };
     audioList.push(a);
 }
-console.log(audioList);
 
 const ap = new APlayer({
     container: document.getElementById('aplayer'),

@@ -252,7 +252,7 @@ pjax:
   enable: true
 
 # ---------------------------------------------------------------------------------------
-# Article recommendation (transplant from Volantis)
+# Article recommendation (transplanted from Volantis)
 # ---------------------------------------------------------------------------------------
 recommended_article: # 文章推荐，需要 npm install nodejieba
   enable: false
@@ -267,12 +267,13 @@ recommended_article: # 文章推荐，需要 npm install nodejieba
     - wiki/
 
 # ---------------------------------------------------------------------------------------
-# Fontawesome
+# Fontawesome Pro v6.2.1
 # ---------------------------------------------------------------------------------------
 fontawesome: # select fontawesome versions you want to use, in order to reduce the loading time, select as few as possible
   thin: false # use fontawesome thin version or not
   light: false # use fontawesome light version or not
   duotone: false # use fontawesome duotone version or not
+  sharp_solid: false # use fontawesome sharp-solid version or not
 
 # ---------------------------------------------------------------------------------------
 # Footer settings
@@ -320,4 +321,4 @@ plugins:
 # Please go to github to update the latest version frequently
 # Github: https://github.com/EvanNotFound/hexo-theme-redefine
 # ---------------------------------------------------------------------------------------
-version: 1.1.5
+version: 1.1.6
