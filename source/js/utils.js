@@ -103,17 +103,21 @@ REDEFINE.initUtils = () => {
           }
         }
 
+        /*aplayer auto hide*/
+        
         var aplayer = document.getElementById('aplayer');
-        if (y <= 0) {
-          if (location.pathname !== '/') {
-            //console.log(location.pathname)
-          } else {
+        if (aplayer == null) {} else {
+          if (y <= 0) {
+              if (location.pathname !== '/') {
+                //console.log(location.pathname)
+              } else {
+                aplayer.classList.add('hide');
+              }
+          } else if (y + windowHeight >= height - 20) {
             aplayer.classList.add('hide');
+          } else {
+            aplayer.classList.remove('hide');
           }
-        } else if (y + windowHeight >= height - 20) {
-          aplayer.classList.add('hide');
-        } else {
-          aplayer.classList.remove('hide');
         }
       });
     },
