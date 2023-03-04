@@ -182,8 +182,8 @@ $first-screen-icons-container-background-color-dark = rgba(197, 197, 197, 0.3)
 // ========================================================================================
 // background image
 // ========================================================================================
-$first-screen-img-light = hexo-config('style.first_screen.background_image.light')
-$first-screen-img-dark = hexo-config('style.first_screen.background_image.dark')
+$first-screen-img-light = url(hexo-config('base_info.url') + hexo-config('style.first_screen.background_image.light'))
+$first-screen-img-dark = url(hexo-config('style.first_screen.background_image.dark'))
 
 
 // ========================================================================================
@@ -232,6 +232,7 @@ root-color(mode) {
   --note-black-title-bg : mode == 'light' ? $note-black-title-bg : $dark-note-black-title-bg
   --note-purple-title-bg : mode == 'light' ? $note-purple-title-bg : $dark-note-purple-title-bg
   
+  --first-screen-img mode == 'light' ? $first-screen-img-light : $first-screen-img-dark
   --first-screen-text-color mode == 'light' ? $first-screen-text-color : $first-screen-text-color-dark
   --first-screen-icons-container-border-color mode == 'light' ? $first-screen-icons-container-border-color : $first-screen-icons-container-border-color-dark
   --first-screen-icons-container-background-color mode == 'light' ? $first-screen-icons-container-background-color : $first-screen-icons-container-background-color-dark
@@ -242,6 +243,7 @@ root-color(mode) {
   --redefine-box-shadow-flat-hover : var(--shadow-color-2) 0px 1px 4px 0px, var(--shadow-color-1) 0px 0px 0px 1px, var(--shadow-color-1) 0px 0px 0px 1px inset
 
   --mermaid-theme : mode == 'light' ? $mermaid-theme : $dark-mermaid-theme
+
 }
 
 

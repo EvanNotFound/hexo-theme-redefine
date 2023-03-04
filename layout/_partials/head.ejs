@@ -67,7 +67,13 @@
             <% } }%>
     <% } }%>
     <% if (theme.cdn.enable == true) { %>
-        <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+        <% if (theme.cdn.use == 'jsdelivr') { %>
+            <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+        <% } else if (theme.cdn.use == 'unpkg') { %>
+            <link rel="preconnect" href="https://unpkg.com" crossorigin>
+        <% } else if (theme.cdn.use == 'aliyun') { %>
+            <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+        <% } %>
     <% } %>
     <%- export_config() %>
     

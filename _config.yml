@@ -45,8 +45,8 @@ style:
   first_screen:
     enable: true
     background_image:
-      light: https://evan.beee.top/img/wallhaven-wqery6-light.webp # background image of the first screen, use relative path or external link (if your website is in subdirectory, use external link)
-      dark: https://evan.beee.top/img/wallhaven-wqery6-dark.webp # background image of the first screen, use relative path or external link (if your website is in subdirectory, use external link)
+      light: /images/wallhaven-wqery6-light.webp # background image of the first screen, use relative path or external link (if your website is in subdirectory, use external link)
+      dark: /images/wallhaven-wqery6-dark.webp # background image of the first screen, use relative path or external link (if your website is in subdirectory, use external link)
     title_color:
       light: "#fff" # first screen title color (light mode)
       dark: "#d1d1b6" # first screen title color (dark mode)
@@ -244,6 +244,9 @@ lazyload:
 # ---------------------------------------------------------------------------------------
 cdn:
   enable: false
+  use: unpkg # values: jsdelivr | unpkg | aliyun 
+  # aliyun needs donation to access, otherwise it will be blocked by the white list
+  # For donation, please join the wechat group: https://github.com/EvanNotFound/hexo-theme-redefine/issues/18
 
 # ---------------------------------------------------------------------------------------
 # PJAX
@@ -259,7 +262,7 @@ recommended_article: # 文章推荐，需要 npm install nodejieba
   title: 推荐阅读
   icon: fa-solid fa-bookmark
   max_count: 3
-  placeholder_img: https://evan.beee.top/img/wallhaven-wqery6-light.webp
+  placeholder_img: /images/wallhaven-wqery6-light.webp
   # 不展示文章推荐：
   # front-matter 使用 skip_recommended_article: true 关闭
   # 不在以下文件夹文章中展示文章推荐 根目录是source/
