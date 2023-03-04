@@ -33,7 +33,7 @@
             <% if (theme.base_info.author || config.author) { %>
                 <div class="article-header">
                     <div class="avatar">
-                        <%- image_tag(theme.style.avatar) %>
+                        <%- image_tag(url_for(theme.style.avatar)) %>
                     </div>
                     <div class="info">
                         <div class="author">

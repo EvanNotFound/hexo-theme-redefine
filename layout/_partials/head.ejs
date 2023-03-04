@@ -22,10 +22,10 @@
     <meta name="twitter:description" content="<%= page.description || config.description || 'Hexo Theme Redefine' %>">
     <meta name="twitter:image" content="<%= theme.style.favicon %>">
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="<%= theme.style.favicon %>" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="<%= theme.style.favicon %>">
+    <link rel="icon" type="image/png" href="<%= url_for(theme.style.favicon) %>" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= url_for(theme.style.favicon) %>">
     <meta name="theme-color" content="<%= theme.style.primary_color %>">
-    <%- favicon_tag(theme.style.favicon) %>
+    <%- favicon_tag(url_for(theme.style.favicon)) %>
     <%
     let title = page.title;
     if (is_archive()) {
