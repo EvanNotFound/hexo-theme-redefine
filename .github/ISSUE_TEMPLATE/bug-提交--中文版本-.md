@@ -1,14 +1,16 @@
 ---
 name: Bug 提交 [中文版本]
 about: 帮助修复 Redefine 主题的 Bug
-title: "[BUG]"
+title: "[BUG] Bug描述"
 labels: bug
-assignees: ''
+assignees: EvanNotFound
 
 ---
 
 **提交前检查单**
-- [x] 已经尝试执行 `hexo clean`，问题仍然存在
+- [ ] 已经尝试执行 `hexo clean`，问题仍然存在
+- [ ] 已经更新到主题最新版本，详见 [官方文档 #更新](https://redefine-docs.ohevan.com/docs/quick-start/update)
+- [ ] 如果刚更新完主题出现此问题，已经确认同步了主题配置文件，[官方文档 #同步配置文件](https://redefine-docs.ohevan.com/docs/quick-start/update#%E8%BF%81%E7%A7%BB%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6)
 
 **Bug 描述**
 清晰地描述，请提供
