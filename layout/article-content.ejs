@@ -9,17 +9,17 @@
                 </div>
             <% } else if (page.cover && page.cover !== null) { %> 
                 <div class="article-title">         
-                    <img src="<%= page.cover %>" alt="<%= page.title %>" />
+                    <img src="<%= url_for(page.cover) %>" alt="<%= page.title %>" />
                     <h1 class="article-title-cover"><%= page.title %></h1>
                 </div>
             <% } else if (page.banner && page.banner !== null) {%> 
                 <div class="article-title">       
-                    <img src="<%= page.banner %>" alt="<%= page.title %>" />
+                    <img src="<%= url_for(page.banner) %>" alt="<%= page.title %>" />
                     <h1 class="article-title-cover"><%= page.title %></h1>
                 </div>
             <% } else if (page.thumbnail && page.thumbnail !== null && page.thumbnail !== false) {%>          
                 <div class="article-title">
-                    <img src="<%= page.thumbnail %>" alt="<%= page.title %>" />
+                    <img src="<%= url_for(page.thumbnail) %>" alt="<%= page.title %>" />
                     <h1 class="article-title-cover"><%= page.title %></h1>
                 </div>
             <% } else { %>
