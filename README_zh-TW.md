@@ -109,6 +109,6 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 
 如果你覺得這個項目還不錯，歡迎給我買杯咖啡，給 CDN 續命續久一點，感謝
 
-所有贊助者名單：[贊助者名單](https://github.com/EvanNotFound/hexo-theme-redefine/blob/main/DONATION.md)
+所有贊助者名單：[贊助者名單](https://github.com/EvanNotFound/hexo-theme-redefine/blob/dev/DONATION.md)
 
 再次感謝你們！

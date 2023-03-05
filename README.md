@@ -113,6 +113,6 @@ Thanks to all the people who have donated to me. Your support is my greatest mot
 
 If you like this theme, you can also support me by donating.
 
-This is the list of all the people who have donated to me: [Donation List](https://github.com/EvanNotFound/hexo-theme-redefine/blob/main/DONATION.md)
+This is the list of all the people who have donated to me: [Donation List](https://github.com/EvanNotFound/hexo-theme-redefine/blob/dev/DONATION.md)
 
 Thanks to all of you!
