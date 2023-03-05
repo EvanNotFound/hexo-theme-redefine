@@ -245,8 +245,9 @@ lazyload:
 cdn:
   enable: false
   use: unpkg # values: jsdelivr | unpkg | aliyun 
-  # aliyun needs donation to access, otherwise it will be blocked by the white list
-  # For donation, please join the wechat group: https://github.com/EvanNotFound/hexo-theme-redefine/issues/18
+  # aliyun cdn is funded by myself, so if you want to make it work longer, please donate to me.
+  # For donation, please see https://github.com/EvanNotFound/hexo-theme-redefine/blob/main/DONATION.md
+  # Thank you for your support.
 
 # ---------------------------------------------------------------------------------------
 # PJAX

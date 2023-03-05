@@ -107,4 +107,12 @@ If you have any questions, please send an email to [contact@ohevan.com](mailto:c
 Please **give me a star** to support me, thanks!
 
 
+## 💗 Donations
 
+Thanks to all the people who have donated to me. Your support is my greatest motivation.
+
+If you like this theme, you can also support me by donating.
+
+This is the list of all the people who have donated to me: [Donation List](https://github.com/EvanNotFound/hexo-theme-redefine/blob/main/DONATION.md)
+
+Thanks to all of you!

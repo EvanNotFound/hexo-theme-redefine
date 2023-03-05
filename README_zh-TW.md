@@ -102,3 +102,13 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 如有問題，請發郵件到 [contact@ohevan.com](mailto:contact@ohevan.com). 我會及時回复
 
 如果我做的主題還不錯的話，歡迎給我 Github 點個 Star，謝謝
+
+## 💗 贊助
+
+非常感謝所有贊助者的支持，你們的支持是我維護這個項目的動力。
+
+如果你覺得這個項目還不錯，歡迎給我買杯咖啡，給 CDN 續命續久一點，感謝
+
+所有贊助者名單：[贊助者名單](https://github.com/EvanNotFound/hexo-theme-redefine/blob/main/DONATION.md)
+
+再次感謝你們！

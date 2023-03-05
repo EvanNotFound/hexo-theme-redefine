@@ -101,8 +101,12 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 
 如果我做的主题还不错的话，欢迎给我 Github 点个 Star，谢谢
 
+## 💗 赞助
 
+非常感谢所有赞助者的支持，你们的支持是我维护这个项目的动力。
 
+如果你觉得这个项目还不错，欢迎给我买杯咖啡，给 CDN 续命续久一点，感谢
 
+所有赞助者名单：[赞助者名单](https://github.com/EvanNotFound/hexo-theme-redefine/blob/main/DONATION.md)
 
-
+再次感谢你们！
