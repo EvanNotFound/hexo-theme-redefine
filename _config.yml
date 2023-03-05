@@ -244,7 +244,7 @@ lazyload:
 # ---------------------------------------------------------------------------------------
 cdn:
   enable: false
-  use: unpkg # values: jsdelivr | unpkg | aliyun 
+  use: aliyun # values: jsdelivr | unpkg | aliyun 
   # aliyun cdn is funded by myself, so if you want to make it work longer, please donate to me.
   # For donation, please see https://github.com/EvanNotFound/hexo-theme-redefine/blob/dev/DONATION.md
   # Thank you for your support.
