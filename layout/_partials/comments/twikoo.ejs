@@ -1,7 +1,7 @@
 <% if(theme.comment.use === 'twikoo' && theme.comment.twikoo.env_id) { %>
     <div class="twikoo-container">
         <script <%= theme.pjax.enable === true ? 'data-pjax' : '' %>
-                src='<%- theme.comment_version.twikoo %>'
+                src='https://cdn.staticfile.org/twikoo/<%- theme.comment.twikoo.version %>/twikoo.all.min.js'
         ></script>
         <div id="twikoo-comment"></div>
         <script <%= theme.pjax.enable === true ? 'data-pjax' : '' %>>
