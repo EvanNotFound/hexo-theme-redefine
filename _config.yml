@@ -315,6 +315,18 @@ plugins:
         url: 
         cover: 
 
+# ---------------------------------------------------------------------------------------
+# Comment Version Control
+# 以下是配置评论系统版本控制，可以自定义成 CDN 地址，
+# 如果需要修改，最好使用与默认配置相同的版本，以避免潜在的问题，
+# ** 如果你不知道如何设置，请不要做任何改动 **
+#
+# Here is the url prefix to configure the comment verion. Set CDN addresses you want to customize.
+# Be aware that you would better use the same version as default ones to avoid potential problems.
+# DO NOT EDIT THE FOLLOWING SETTINGS UNLESS YOU KNOW WHAT YOU ARE DOING
+# ---------------------------------------------------------------------------------------
+comment_version:
+  twikoo: https://cdn.staticfile.org/twikoo/1.6.8/twikoo.all.min.js
 
 # ---------------------------------------------------------------------------------------
 # Redefine Theme version (Please dont modify it)
