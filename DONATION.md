@@ -18,7 +18,7 @@
 
 微信             |  支付宝| Paypal 
 :-------------------------:|:-------------------------:|:-------------------------:
-![IMG_0382](https://user-images.githubusercontent.com/68590232/223455834-d2e5ab6e-9d75-4bbf-adfb-2c519d6b4582.JPG)  |  ![IMG_9570](https://user-images.githubusercontent.com/68590232/223455849-64630c09-476e-4875-8ee9-cdcf24e197a4.JPG)| ![IMG_0385](https://user-images.githubusercontent.com/68590232/223459896-593e105e-89f3-4631-8cab-cb7798a53bf1.jpg) 
+![IMG_0382](https://user-images.githubusercontent.com/68590232/223455834-d2e5ab6e-9d75-4bbf-adfb-2c519d6b4582.JPG)  | ![IMG_9570](https://user-images.githubusercontent.com/68590232/223463950-f7276ef8-0198-4070-8541-697ec25e5b9a.png) | ![IMG_0385](https://user-images.githubusercontent.com/68590232/223459896-593e105e-89f3-4631-8cab-cb7798a53bf1.jpg) 
 
 
 
