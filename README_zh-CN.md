@@ -38,7 +38,7 @@
 - [数学公式](https://redefine-docs.ohevan.com/docs/advanced/writing-modules/mathjax)
 - 代码块语言显示
 - Light/Dark 模式切换
-- [Font Awesome 6.1.0 Pro](https://redefine-docs.ohevan.com/docs/configuration-guide/fontawesome)（包含 Duotone/Regular/Thin 等不同样式）
+- [Font Awesome 6.2.1 Pro](https://redefine-docs.ohevan.com/docs/configuration-guide/fontawesome)（包含 Duotone/Regular/Thin 等不同样式）
 - [下拉菜单](https://redefine-docs.ohevan.com/docs/configuration-guide/menu)
 - [可自定义页脚](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
 - [网站运行时间显示](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
