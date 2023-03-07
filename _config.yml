@@ -216,6 +216,7 @@ comment:
   # See: https://github.com/imaegoo/twikoo
   twikoo:
     visitor: true
+    version: 1.6.10 # Twikoo version, do not modify if you dont know what it is
     env_id: # Vercel or Tencent Cloud Function environment ID
     region: # environment region. If select Guangzhou, fill in "ap-guangzhou". (optional)
 
@@ -318,7 +319,6 @@ plugins:
         artist: 
         url: 
         cover: 
-
 
 # ---------------------------------------------------------------------------------------
 # Redefine Theme version (Please dont modify it)

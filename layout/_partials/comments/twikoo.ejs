@@ -1,7 +1,7 @@
 <% if(theme.comment.use === 'twikoo' && theme.comment.twikoo.env_id) { %>
     <div class="twikoo-container">
         <script <%= theme.pjax.enable === true ? 'data-pjax' : '' %>
-                src="https://cdn.staticfile.org/twikoo/1.6.8/twikoo.all.min.js"
+                src='https://cdn.staticfile.org/twikoo/<%- theme.comment.twikoo.version %>/twikoo.all.min.js'
         ></script>
         <div id="twikoo-comment"></div>
         <script <%= theme.pjax.enable === true ? 'data-pjax' : '' %>>
@@ -25,7 +25,7 @@
 <% } else if (theme.comment.use === 'twikoo' && theme.comment.twikoo.env_id && theme.comment.twikoo.region) { %>
     <div class="twikoo-container">
         <script <%= theme.pjax.enable === true ? 'data-pjax' : '' %>
-                src="https://cdn.staticfile.org/twikoo/1.6.8/twikoo.all.min.js"
+                src='<%- theme.comment_version.twikoo %>'
         ></script>
         <div id="twikoo-comment"></div>
         <script <%= theme.pjax.enable === true ? 'data-pjax' : '' %>>
