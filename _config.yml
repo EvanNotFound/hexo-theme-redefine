@@ -20,6 +20,9 @@ style:
 
   # Favicon (You can use local image or image external link)
   favicon: /images/redefine-logo.svg # favicon of the site
+  og_image: # og:image of the site
+    enable: false
+    image_url: # image url
 
   # Article image align position
   article_img_align: center # value: left | center

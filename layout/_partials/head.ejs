@@ -15,7 +15,9 @@
     <meta property="og:title" content="<%= page.title || config.title || 'Redefine Theme' %>">
     <meta property="og:description" content="<%= page.description || config.description || 'Hexo Theme Redefine' %>">
     <meta property="og:url" content="<%= config.url + page.path %>">
-    <meta property="og:image" content="<%= theme.style.favicon %>">
+    <% if (theme.style.og_image.enable) { %>
+        <meta property="og:image" content="<%= theme.style.og_image.image_url %>">
+    <% }%>
     <meta property="og:site_name" content="<%= theme.base_info.title || config.title || 'Redefine Theme' %>">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="<%= page.title || config.title || 'Redefine Theme' %>">
