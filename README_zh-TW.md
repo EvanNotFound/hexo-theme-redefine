@@ -1,8 +1,8 @@
 <div align="right">
   Language:
   繁中
-  <a title="Chinese" href="README.md">English</a>
-  <a title="Chinese" href="README_zh-CN.md">简中</a>
+  | <a title="Chinese" href="README.md">English</a>
+  | <a title="Chinese" href="README_zh-CN.md">简中</a>
 </div>
 
 <a href="https://redefine.ohevan.com"><img align="center" src="https://user-images.githubusercontent.com/68590232/218364072-45dd3a00-ae5e-4e25-8823-cea59fc73e36.png"  alt="Redefine"></a>
