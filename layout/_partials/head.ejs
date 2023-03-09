@@ -5,6 +5,15 @@
     <meta name="description" content="<%= page.description || config.description || 'Hexo Theme Redefine' %>">
     <meta name="author" content="<%= theme.base_info.author || config.author || 'Redefine Team' %>">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
+    <% if (theme.cdn.enable == true) { %>
+        <% if (theme.cdn.use == 'jsdelivr') { %>
+            <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+        <% } else if (theme.cdn.use == 'unpkg') { %>
+            <link rel="preconnect" href="https://unpkg.com" crossorigin>
+        <% } else if (theme.cdn.use == 'aliyun') { %>
+            <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+        <% } %>
+    <% } %>
     <!--- Seo Part-->
     <%- generate_seo(theme, page) %>
     <%- autoCanonical(config, page) %>
@@ -68,15 +77,6 @@
                     <%- theme.inject.head[i] %>
             <% } }%>
     <% } }%>
-    <% if (theme.cdn.enable == true) { %>
-        <% if (theme.cdn.use == 'jsdelivr') { %>
-            <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-        <% } else if (theme.cdn.use == 'unpkg') { %>
-            <link rel="preconnect" href="https://unpkg.com" crossorigin>
-        <% } else if (theme.cdn.use == 'aliyun') { %>
-            <link rel="preconnect" href="https://evan.beee.top" crossorigin>
-        <% } %>
-    <% } %>
     <%- export_config() %>
     
     <%- __css('fontawesome/fontawesome.min.css') %>
