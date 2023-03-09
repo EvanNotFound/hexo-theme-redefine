@@ -10,17 +10,9 @@ $first-screen-icon-size = 1.6rem
   width 100%
   min-height 100vh
   overflow hidden
-  background url($first-screen-img) center center / cover no-repeat
+  background var(--first-screen-img) center center / cover no-repeat
   background-size cover
   will-change transform
-  
-  +redefine-tablet() {
-    background-position-y $menu-height * 0.9
-  }
-
-  +redefine-mobile() {
-    background-position-y $menu-height * 0.8
-  }
 
   .content {
     position relative
@@ -75,26 +67,3 @@ $first-screen-icon-size = 1.6rem
   }
 }
 
-@media (prefers-color-scheme light) {
-  .first-screen-container {
-    background url($first-screen-img-light) center center / cover no-repeat !important
-  }
-}
-
-@media (prefers-color-scheme dark) {
-  .first-screen-container {
-    background url($first-screen-img-dark) center center / cover no-repeat !important
-  }
-}
-
-.light-mode{
-  .first-screen-container {
-    background url($first-screen-img-light) center center / cover no-repeat !important
-  }
-}
-
-.dark-mode{
-  .first-screen-container {
-    background url($first-screen-img-dark) center center / cover no-repeat !important
-  }
-}

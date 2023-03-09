@@ -1,8 +1,8 @@
 <div align="right">
   Language:
   English
-  <a title="Chinese" href="README_zh-CN.md">简中</a>
-  <a title="Chinese" href="README_zh-TW.md">繁中</a>
+  | <a title="Chinese" href="README_zh-CN.md">简中</a>
+  | <a title="Chinese" href="README_zh-TW.md">繁中</a>
 </div>
 
 <a href="https://redefine.ohevan.com"><img align="center" src="https://user-images.githubusercontent.com/68590232/218364072-45dd3a00-ae5e-4e25-8823-cea59fc73e36.png"  alt="Redefine"></a>
@@ -39,7 +39,7 @@ If you are also using Redefine, please go to [Redefine Theme Showcase](https://r
 - [Mathjax Support](https://redefine-docs.ohevan.com/docs/advanced/writing-modules/mathjax)
 - Code block language display
 - Light/Dark mode switching
-- [Font Awesome 6.1.0 Pro](https://redefine-docs.ohevan.com/docs/configuration-guide/fontawesome) (contains different styles like Duotone/Regular/Thin)
+- [Font Awesome 6.2.1 Pro](https://redefine-docs.ohevan.com/docs/configuration-guide/fontawesome) (contains different styles like Duotone/Regular/Thin)
 - [Drop-down menu](https://redefine-docs.ohevan.com/docs/configuration-guide/menu)
 - [Customizable footer](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
 - [Site Uptime Display](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
@@ -47,6 +47,7 @@ If you are also using Redefine, please go to [Redefine Theme Showcase](https://r
 - [Mermaid JS support](https://redefine-docs.ohevan.com/docs/advanced/writing-modules/mermaid)
 - SEO friendly
 - [Aplayer support](https://redefine-docs.ohevan.com/docs/advanced/theme-plugins/aplayer)
+- [Shuoshuo support](https://redefine-docs.ohevan.com/docs/advanced/shuoshuo/essays)
 
 
 
@@ -107,4 +108,12 @@ If you have any questions, please send an email to [contact@ohevan.com](mailto:c
 Please **give me a star** to support me, thanks!
 
 
+## 💗 Donations
 
+Thanks to all the people who have donated to me. Your support is my greatest motivation.
+
+If you like this theme, you can also support me by donating.
+
+This is the list of all the people who have donated to me: [Donation List](https://github.com/EvanNotFound/hexo-theme-redefine/blob/dev/DONATION.md)
+
+Thanks to all of you!

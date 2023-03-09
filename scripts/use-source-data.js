@@ -21,6 +21,10 @@ hexo.on('generateBefore', function () {
         hexo.theme.config.links = (data.links || data.link);
       }
 
+      if (data.essays || data.essay || data.shuoshuo) {
+        hexo.theme.config.essays = (data.essays || data.essay || data.shuoshuo);
+      }
+
     }
   }
 });

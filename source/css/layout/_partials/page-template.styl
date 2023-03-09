@@ -12,6 +12,10 @@ $friend-link-item-border-radius = 9px
   +redefine-mobile() {
     padding 1.2rem 0.2rem
     box-shadow none
+
+    &:hover {
+      box-shadow none
+    }
   }
 
   .page-template-content {
@@ -196,6 +200,73 @@ $friend-link-item-border-radius = 9px
 
   }
 
+  .essays-container {
+    margin-top 1rem
+    margin-bottom 1rem
+    .essays-title {
+      color var(--second-text-color)
+      margin-top -10px
 
+      .article-title-regular {
+        font-size 3rem
+        line-height 1
+        font-weight bold
+        color var(--second-text-color)
+        margin-top 15px
+      }
+    }
+
+    .essays-list {
+      position relative
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom 1rem
+
+      .essay-item {
+        box-sizing border-box
+        position relative
+        width 100%
+
+        margin-bottom 1rem
+        
+        display flex
+
+        p {
+          margin 0
+        }
+
+        .essay-avatar {
+          width 40px
+          height 40px
+          margin-right 1rem
+          img {
+            width 40px
+            height 40px
+            border-radius $redefine-border-radius-small
+          }
+        }
+        .essay-content {
+          color var(--second-text-color)
+          margin-bottom 0.5rem
+          box-shadow var(--redefine-box-shadow-flat)
+          padding 0.8rem 1rem 0.5rem 1rem
+          border-radius $redefine-border-radius-medium
+
+          .content{
+            margin-bottom 0.5rem
+          }
+
+          .date {
+            border-top 1px solid var(--third-background-color)
+            color var(--third-text-color)
+            font-size 0.8rem
+          }
+        }
+
+      }
+
+
+    }
+  }
 
 }

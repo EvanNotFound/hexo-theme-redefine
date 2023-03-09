@@ -5,6 +5,15 @@
     <meta name="description" content="<%= page.description || config.description || 'Hexo Theme Redefine' %>">
     <meta name="author" content="<%= theme.base_info.author || config.author || 'Redefine Team' %>">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
+    <% if (theme.cdn.enable == true) { %>
+        <% if (theme.cdn.use == 'jsdelivr') { %>
+            <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+        <% } else if (theme.cdn.use == 'unpkg') { %>
+            <link rel="preconnect" href="https://unpkg.com" crossorigin>
+        <% } else if (theme.cdn.use == 'aliyun') { %>
+            <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+        <% } %>
+    <% } %>
     <!--- Seo Part-->
     <%- generate_seo(theme, page) %>
     <%- autoCanonical(config, page) %>
@@ -15,17 +24,19 @@
     <meta property="og:title" content="<%= page.title || config.title || 'Redefine Theme' %>">
     <meta property="og:description" content="<%= page.description || config.description || 'Hexo Theme Redefine' %>">
     <meta property="og:url" content="<%= config.url + page.path %>">
-    <meta property="og:image" content="<%= theme.style.favicon %>">
+    <% if (theme.style.og_image.enable) { %>
+        <meta property="og:image" content="<%= theme.style.og_image.image_url %>">
+    <% }%>
     <meta property="og:site_name" content="<%= theme.base_info.title || config.title || 'Redefine Theme' %>">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="<%= page.title || config.title || 'Redefine Theme' %>">
     <meta name="twitter:description" content="<%= page.description || config.description || 'Hexo Theme Redefine' %>">
     <meta name="twitter:image" content="<%= theme.style.favicon %>">
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="<%= theme.style.favicon %>" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="<%= theme.style.favicon %>">
+    <link rel="icon" type="image/png" href="<%= url_for(theme.style.favicon) %>" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= url_for(theme.style.favicon) %>">
     <meta name="theme-color" content="<%= theme.style.primary_color %>">
-    <%- favicon_tag(theme.style.favicon) %>
+    <%- favicon_tag(url_for(theme.style.favicon)) %>
     <%
     let title = page.title;
     if (is_archive()) {
@@ -66,9 +77,6 @@
                     <%- theme.inject.head[i] %>
             <% } }%>
     <% } }%>
-    <% if (theme.cdn.enable == true) { %>
-        <link rel="preconnect" href="https://evan.beee.top" crossorigin>
-    <% } %>
     <%- export_config() %>
     
     <%- __css('fontawesome/fontawesome.min.css') %>

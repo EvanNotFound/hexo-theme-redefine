@@ -20,6 +20,9 @@ style:
 
   # Favicon (You can use local image or image external link)
   favicon: /images/redefine-logo.svg # favicon of the site
+  og_image: # og:image of the site
+    enable: false
+    image_url: # image url
 
   # Article image align position
   article_img_align: center # value: left | center
@@ -45,8 +48,8 @@ style:
   first_screen:
     enable: true
     background_image:
-      light: https://evan.beee.top/img/wallhaven-wqery6-light.webp # background image of the first screen, use relative path or external link (if your website is in subdirectory, use external link)
-      dark: https://evan.beee.top/img/wallhaven-wqery6-dark.webp # background image of the first screen, use relative path or external link (if your website is in subdirectory, use external link)
+      light: /images/wallhaven-wqery6-light.webp # background image of the first screen, use relative path or external link (if your website is in subdirectory, use external link)
+      dark: /images/wallhaven-wqery6-dark.webp # background image of the first screen, use relative path or external link (if your website is in subdirectory, use external link)
     title_color:
       light: "#fff" # first screen title color (light mode)
       dark: "#d1d1b6" # first screen title color (dark mode)
@@ -216,6 +219,7 @@ comment:
   # See: https://github.com/imaegoo/twikoo
   twikoo:
     visitor: true
+    version: 1.6.10 # Twikoo version, do not modify if you dont know what it is
     env_id: # Vercel or Tencent Cloud Function environment ID
     region: # environment region. If select Guangzhou, fill in "ap-guangzhou". (optional)
 
@@ -244,6 +248,10 @@ lazyload:
 # ---------------------------------------------------------------------------------------
 cdn:
   enable: false
+  use: aliyun # values: jsdelivr | unpkg | aliyun 
+  # aliyun cdn is funded by myself, so if you want to make it work longer, please donate to me.
+  # For donation, please see https://github.com/EvanNotFound/hexo-theme-redefine/blob/dev/DONATION.md
+  # Thank you for your support.
 
 # ---------------------------------------------------------------------------------------
 # PJAX
@@ -259,7 +267,7 @@ recommended_article: # 文章推荐，需要 npm install nodejieba
   title: 推荐阅读
   icon: fa-solid fa-bookmark
   max_count: 3
-  placeholder_img: https://evan.beee.top/img/wallhaven-wqery6-light.webp
+  placeholder_img: /images/wallhaven-wqery6-light.webp
   # 不展示文章推荐：
   # front-matter 使用 skip_recommended_article: true 关闭
   # 不在以下文件夹文章中展示文章推荐 根目录是source/
@@ -315,10 +323,9 @@ plugins:
         url: 
         cover: 
 
-
 # ---------------------------------------------------------------------------------------
 # Redefine Theme version (Please dont modify it)
 # Please go to github to update the latest version frequently
 # Github: https://github.com/EvanNotFound/hexo-theme-redefine
 # ---------------------------------------------------------------------------------------
-version: 1.1.6
+version: 1.2.0
