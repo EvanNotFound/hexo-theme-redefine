@@ -48,6 +48,7 @@
 - [Mermaid JS 支持](https://redefine-docs.ohevan.com/docs/advanced/writing-modules/mermaid)
 - SEO 友好
 - [Aplayer 音乐播放器支持](https://redefine-docs.ohevan.com/docs/advanced/theme-plugins/aplayer)
+- [说说模块](https://redefine-docs.ohevan.com/docs/advanced/shuoshuo/essays)
 
 ## ☁️ 安裝
 

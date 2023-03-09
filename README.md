@@ -47,6 +47,7 @@ If you are also using Redefine, please go to [Redefine Theme Showcase](https://r
 - [Mermaid JS support](https://redefine-docs.ohevan.com/docs/advanced/writing-modules/mermaid)
 - SEO friendly
 - [Aplayer support](https://redefine-docs.ohevan.com/docs/advanced/theme-plugins/aplayer)
+- [Shuoshuo support](https://redefine-docs.ohevan.com/docs/advanced/shuoshuo/essays)
 
 
 
