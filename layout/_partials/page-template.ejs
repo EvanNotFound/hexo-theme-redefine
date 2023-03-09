@@ -5,12 +5,18 @@
                 theme.links
                 && (page.type === 'links' || page.type === 'link' || page.title === 'links' || page.title === 'link' || page.title === 'Links' || page.title === 'Link' || page.title === '友情链接' || page.title === '友情鏈接' || page.title === 'friends' || page.title === 'friend' || page.title === '朋友' || page.title === '朋友們' || page.title === '朋友们')
         );
+        const isLoadShuoshuo = (
+                (theme.essays || theme.shuoshuo)
+                && (page.type === 'essays' || page.type === 'essay' || page.type === 'shuoshuo' || page.title === 'essays' || page.title === 'essay' || page.title === 'Essays' || page.title === 'Essay' || page.title === 'Shuoshuo' || page.title === 'shuoshuo' || page.title === '说说' || page.title === '即刻短文')
+        );
         %>
         <% if (isLoadFriendsLink) { %>
             <%- partial('_partials/components/friends-link') %>
+        <% }  else if (isLoadShuoshuo) { %>
+            <%- partial('_partials/components/essays') %>
         <% } %>
         <div class="page-template-content markdown-body">
-            <% if (isLoadFriendsLink || page.content) { %>
+            <% if (isLoadFriendsLink || page.content || isLoadShuoshuo) { %>
                 <%- page.content %>
             <% } else { %>
                 <h1><%- page.title %></h1>
