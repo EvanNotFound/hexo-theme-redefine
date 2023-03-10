@@ -76,6 +76,7 @@
 
 
   ul {
+    margin-bottom 1.2rem
 
     li {
       list-style disc
@@ -97,6 +98,7 @@
 
 
   ol {
+    margin-bottom 1.2rem
 
     li {
       list-style decimal
@@ -231,29 +233,63 @@
     border-collapse collapse
     width 100%
     overflow auto
+    margin-bottom 1.2rem
+    box-shadow var(--redefine-box-shadow-flat)
+    border-radius $redefine-border-radius-medium
 
     td,
     th {
       padding 0
     }
 
-    th {
-      font-weight 600
+    thead {
+      th {
+        border-bottom 1px solid var(--shadow-color-1)
+        background-color var(--third-background-color) !important
+
+        &:first-child {
+          border-top-left-radius $redefine-border-radius-medium
+        }
+
+        &:last-child {
+          border-top-right-radius $redefine-border-radius-medium
+        }
+      }
+    }
+    
+    tbody {
+      tr {
+        &:last-child {
+          td {
+            &:first-child {
+              border-bottom-left-radius $redefine-border-radius-medium
+            }
+            &:last-child {
+              border-bottom-right-radius $redefine-border-radius-medium
+            }
+          }
+        }
+      }
     }
 
     td,
     th {
-      padding 6px 13px
-      border 1px solid var(--border-color)
+      padding 8px 16px
+      //border 1px solid var(--border-color)
+      border-left 1px solid var(--shadow-color-1)
+
+      &:first-child {
+        border-left none
+      }
     }
 
     tr {
       background-color var(--background-color)
-      border 1px solid var(--fourth-text-color)
+      //border 1px solid var(--fourth-text-color)
     }
 
     tr:nth-child(2n) {
-      background-color var(--third-background-color)
+      background-color var(--second-background-color)
     }
   }
 }
