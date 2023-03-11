@@ -6,7 +6,6 @@ $article-date-font-size = 1rem
 @import "../../common/variables"
 
 .archive-list-container {
-
   .archive-item {
     margin-bottom $spacing-unit
 
@@ -45,7 +44,10 @@ $article-date-font-size = 1rem
 
     .article-list {
 
-      padding-left 10px
+      padding-left 30px
+      font-size 14px
+      line-height 1.5
+      font-family 'Oswald', sans-serif
 
       +redefine-tablet() {
         padding-left 0
@@ -53,34 +55,64 @@ $article-date-font-size = 1rem
 
       .article-item {
         font-size 1rem
-        margin-top 18px
-
-        +redefine-tablet() {
-          margin-top 16px
-        }
-
-        +redefine-mobile() {
-          margin-top 14px
-        }
-
-        &:hover {
-          a.article-title, .article-date {
-            color var(--primary-color)
+        padding 3em 2em 2em
+        position relative
+        color rgba(0, 0, 0, 0.7)
+        border-left 2px solid rgba(0, 0, 0, 0.3)
+        a {
+          overflow hidden
+          display block
+          .article-title {
+            font-size 2rem
+            margin-bottom .5em
+            color var(--default-text-color)
+          }
+          &:hover {
+            .article-title, .article-date {
+              color var(--primary-color)
+            }
           }
         }
-
-
-        a.article-title {
-          color var(--default-text-color)
+        
+        &::before {
+          content attr(date-is)
+          position absolute
+          left 2em
+          font-weight bold
+          top 1em
+          display block
+          font-weight 700
+          font-size: .785rem
+          color #999
+        }
+        &::after {
+          width 10px
+          height 10px
+          display block
+          top 1em
+          position absolute
+          left -7px
+          border-radius 10px
+          content: ''
+          border 2px solid rgba(0, 0, 0, 0.3)
+          background white
+        }
+        &:last-child {
+          border-image linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0)) 1 100%
         }
 
-        .article-date {
-          font-size $article-date-font-size
-          float right
-        }
+        // +redefine-tablet() {
+        //   margin-top 16px
+        // }
+
+        // +redefine-mobile() {
+        //   margin-top 14px
+        // }
+        // .article-date {
+        //   font-size $article-date-font-size
+        //   float right
+        // }
       }
     }
   }
 }
-
-

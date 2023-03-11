@@ -7,14 +7,14 @@
                 <span class="archive-year-post-count">[<%= postYear.postList.length %>]</span>
             </div>
             <ul class="article-list">
-                <% postYear.postList.forEach(post => { %>
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="<%- url_for(post.path) %>"
-                        ><%= post.title %></a>
-                        <span class="article-date"><%= date(post.date, 'MM-DD') %></span>
-                    </li>
-                <% }) %>
+              <% postYear.postList.forEach(post => { %>
+              <li class="article-item" date-is='<%= date(post.date, 'MM-DD') %>'>
+                <a href="<%- url_for(post.path) %>">
+                  <span class="article-title"><%= post.title %></span>
+                  <p><%- post.excerpt %></p>
+                </a>
+              </li>
+              <% }) %>
             </ul>
         </section>
     <% }) %>
