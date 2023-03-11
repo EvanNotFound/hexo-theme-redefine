@@ -47,6 +47,7 @@ window.addEventListener('DOMContentLoaded', () => {
     REDEFINE.initModeToggle();
     REDEFINE.initBackToTop();
     REDEFINE.initTyped('subtitle');
+    REDEFINE.initMermaid();
 
     if (REDEFINE.theme_config.local_search.enable === true) {
       REDEFINE.initLocalSearch();

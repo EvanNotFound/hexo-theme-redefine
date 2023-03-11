@@ -1,3 +1,4 @@
+/*
 function mermaidLightInit() {
     //console.log('mermaidLightInit')
     //if (window.mermaid) {
@@ -24,8 +25,14 @@ function checkModeStatus() {
     }
 }
 
+
 if (REDEFINE.theme_config.pjax.enable === true && REDEFINE.utils) {
     checkModeStatus();
 } else {
     window.addEventListener('DOMContentLoaded', checkModeStatus);
+}
+*/
+
+REDEFINE.initMermaid = () => {
+    mermaid.init();
 }
