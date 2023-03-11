@@ -325,6 +325,9 @@ plugins:
         artist: 
         url: 
         cover: 
+  mermaid: # Mermaid JS
+    enable: true  # default true 
+    version: "9.3.0" # default v9.3.0
 
 # ---------------------------------------------------------------------------------------
 # Redefine Theme version (Please dont modify it)

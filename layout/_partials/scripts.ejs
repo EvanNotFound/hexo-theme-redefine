@@ -29,7 +29,7 @@
   <%- __js('js/plugins/typed.js') %>
 <% } %>
 
-<% if (typeof theme.mermaid !== 'undefined' && theme.mermaid.enable && is_post()) { %>
+<% if (theme.plugins.mermaid.enable) { %>
     <%- __js('js/libs/mermaid.min.js') %>
     <%- __js('js/plugins/mermaid.js') %>
 <% } %>
