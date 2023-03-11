@@ -47,7 +47,7 @@ $article-date-font-size = 1rem
       padding-left 30px
       font-size 14px
       line-height 1.5
-      font-family 'Oswald', sans-serif
+      //font-family 'Oswald', sans-serif
 
       +redefine-tablet() {
         padding-left 0
@@ -55,15 +55,15 @@ $article-date-font-size = 1rem
 
       .article-item {
         font-size 1rem
-        padding 3em 2em 2em
+        padding 3em 2em 1em
         position relative
         color rgba(0, 0, 0, 0.7)
-        border-left 2px solid rgba(0, 0, 0, 0.3)
+        border-left 2px solid var(--border-color)
         a {
           overflow hidden
           display block
           .article-title {
-            font-size 2rem
+            font-size 1.6rem
             margin-bottom .5em
             color var(--default-text-color)
           }
@@ -83,7 +83,7 @@ $article-date-font-size = 1rem
           display block
           font-weight 700
           font-size: .785rem
-          color #999
+          color var(--third-text-color)
         }
         &::after {
           width 10px
@@ -91,14 +91,15 @@ $article-date-font-size = 1rem
           display block
           top 1em
           position absolute
-          left -7px
+          left -8px
           border-radius 10px
           content: ''
-          border 2px solid rgba(0, 0, 0, 0.3)
-          background white
+          border 2px solid var(--third-text-color)
+          background var(--background-color)
+          transition background .2s ease-in-out
         }
         &:last-child {
-          border-image linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0)) 1 100%
+          border-image var(--archive-timeline-last-child-color)
         }
 
         // +redefine-tablet() {
