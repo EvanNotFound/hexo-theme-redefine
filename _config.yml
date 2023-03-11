@@ -295,6 +295,7 @@ fontawesome: # select fontawesome versions you want to use, in order to reduce t
 # ---------------------------------------------------------------------------------------
 footer:
   runtime: true # show website running time or not
+  icon: '<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>' # footer icon, write fontawesome html code here
   start_time: 2022/8/17 11:45:14 # the starting time of your website, format: yyyy/mm/dd hh:mm:ss
   customize:  # customize footer message, can be html code
   icp: # ICP record number of your website, Can be null
