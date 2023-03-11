@@ -5,11 +5,76 @@
   .tagcloud-content {
 
     text-align justify
+    
+    // 定义数量是否显示
+    .tag-list[data-show-value] a::after {
+      content: " (" attr(data-weight) ")";
+      font-size: 12px;
+    }
+    .tag-list {
+      list-style none;
+      padding-left 0
+      display flex
+      flex-wrap wrap
+      align-items center
+      justify-content center
+      line-height 2.5rem
+      li {
+        // 定义伪随机变量颜色和透明度
+        &:nth-child(1n+1) a { --color: #0cabeb; --opacity: 1  }
+        &:nth-child(2n+1) a { --color: #181; --opacity: .9 }
+        &:nth-child(3n+1) a { --color: #33a; --opacity: .7 }
+        &:nth-child(4n+1) a { --color: #c38; --opacity: .4 }
+        a {
+          // 根据自定义data设置样式
+          &[data-weight] { --size: 5; }
+          &[data-weight="1"] { --size: 1; }
+          &[data-weight="2"] { --size: 2; }
+          &[data-weight="3"] { --size: 3; }
+          &[data-weight="4"] { --size: 4; }
+          &[data-weight="5"] { --size: 5; }
 
-    a {
-      padding 10px 8px
-      display inline-block
-      box-sizing border-box
+          color: var(--color)
+          font-size calc(var(--size) * 0.25rem + 0.5rem)
+          opacity var(--opacity)
+          padding: calc(var(--size) * 0.3rem) calc(var(--size) * 0.6rem)
+          display block
+          position relative
+          flex: 1
+
+          &:focus {
+            outline 1px dashed
+            &::before {
+              width 100%
+            }
+          }
+
+          &:hover {
+            &::before {
+              width 100%
+            }
+          }
+
+          &::before {
+            content ""
+            position absolute
+            top 0
+            left 50%
+            width 0
+            height 100%
+            background var(--color)
+            transform translate(-50%, 0)
+            opacity 0.15
+            transition width 0.25s
+          }
+        }
+      }
+      
+    }
+    @media (prefers-reduced-motion) {
+      .tag-list * {
+        transition none !important
+      }
     }
   }
 }
