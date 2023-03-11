@@ -53,10 +53,14 @@ style:
     title_color:
       light: "#fff" # first screen title color (light mode)
       dark: "#d1d1b6" # first screen title color (dark mode)
-    description: Theme Redefine # the title in the middle of the first screen. HTML supported (e.g. svg html code of your logo)
+    font_sizes:
+      title: 2.8rem # first screen title font size
+      subtitle: 1.5rem # first screen subtitle font size
+    line_height: 1.2 # first screen title line height
+    title: Theme Redefine # the title in the middle of the first screen. HTML supported (e.g. svg html code of your logo)
     subtitle: 
-      enable: true
-      list: ['Writings are for conveying truth', 'Take action to think, to change, to create.']
+      enable: false
+      list: []
     custom_font: # custom font for the first screen
       enable: false
       font_family: # the font family name of the url below
@@ -330,8 +334,8 @@ plugins:
     version: "9.3.0" # default v9.3.0
 
 # ---------------------------------------------------------------------------------------
-# Redefine Theme version (Please dont modify it)
+# Redefine Theme version (DELETE THIS PART IN YOUR _config.redefine.yml)
 # Please go to github to update the latest version frequently
 # Github: https://github.com/EvanNotFound/hexo-theme-redefine
 # ---------------------------------------------------------------------------------------
-version: 1.2.0
+version: 1.2.0 #DELETE THIS LINE IN YOUR _config.redefine.yml

@@ -46,8 +46,10 @@ window.addEventListener('DOMContentLoaded', () => {
     REDEFINE.initMenuShrink();
     REDEFINE.initModeToggle();
     REDEFINE.initBackToTop();
-    REDEFINE.initTyped('subtitle');
-    REDEFINE.initMermaid();
+    if (REDEFINE.theme_config.style.first_screen.subtitle.enable === true) {
+      REDEFINE.initTyped('subtitle');
+    }
+
     if (REDEFINE.theme_config.plugins.mermaid.enable === true) {
       REDEFINE.initMermaid();
     }
