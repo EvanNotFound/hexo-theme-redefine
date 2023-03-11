@@ -2,14 +2,37 @@
 
   redefine-container(false, 0, 0, 20px, 0)
 
+  .tagcloud-header {
+    font-size 1.2rem
+    line-height 1
+    font-weight bold
+    color var(--second-text-color)
+  }
+
   .tagcloud-content {
 
     text-align justify
+
+    &:hover {
+      .tag-list {
+        a {
+          filter blur(0px) !important
+          transition filter 0.3s ease
+        }
+      }
+    }
+    
     
     // 定义数量是否显示
     .tag-list[data-show-value] a::after {
-      content: " (" attr(data-weight) ")";
-      font-size: 12px;
+      content: attr(data-weight);
+      font-size: 1.5rem;
+      background-color var(--third-background-color)
+      padding 4px 8px
+      min-width 35px
+      margin-left 10px
+      border-radius $redefine-border-radius-small
+      color var(--third-text-color)
     }
     .tag-list {
       list-style none;
@@ -20,30 +43,39 @@
       justify-content center
       line-height 2.5rem
       li {
-        // 定义伪随机变量颜色和透明度
+        /*
         &:nth-child(1n+1) a { --color: #0cabeb; --opacity: 1  }
         &:nth-child(2n+1) a { --color: #181; --opacity: .9 }
         &:nth-child(3n+1) a { --color: #33a; --opacity: .7 }
         &:nth-child(4n+1) a { --color: #c38; --opacity: .4 }
+        &:nth-child(5n+1) a { --color: rgb(184, 174, 62); --opacity: .8 }
+          */
         a {
           // 根据自定义data设置样式
-          &[data-weight] { --size: 5; }
-          &[data-weight="1"] { --size: 1; }
-          &[data-weight="2"] { --size: 2; }
-          &[data-weight="3"] { --size: 3; }
-          &[data-weight="4"] { --size: 4; }
-          &[data-weight="5"] { --size: 5; }
-
-          color: var(--color)
-          font-size calc(var(--size) * 0.25rem + 0.5rem)
+          &[data-weight] { --blur: 0; }
+          &[data-weight="1"] { --blur: 3px; }
+          &[data-weight="2"] { --blur: 2.4px; }
+          &[data-weight="3"] { --blur: 1.5px; }
+          &[data-weight="4"] { --blur: 0.8px; }
+          &[data-weight="5"] { --blur: 0; }
+          //font-size calc(var(--size) * 0.4rem + 0.5rem)
+          font-size 1.4rem
           opacity var(--opacity)
-          padding: calc(var(--size) * 0.3rem) calc(var(--size) * 0.6rem)
+          //padding: calc(var(--size) * 0.3rem) calc(var(--size) * 0.6rem)
+          padding 0.9rem 1.4rem
           display block
           position relative
           flex: 1
+          border-radius $redefine-border-radius-large
+          box-shadow var(--redefine-box-shadow)
+          margin 10px
+          color var(--default-text-color)
+          transition transform 0.2s ease
+          filter blur(var(--blur))
+          transition filter 0.3s ease
 
           &:focus {
-            outline 1px dashed
+            //outline 1px dashed
             &::before {
               width 100%
             }
@@ -53,20 +85,19 @@
             &::before {
               width 100%
             }
+            transform scaleX(1.05) scaleY(1.05)
+            transition transform 0.3s ease, background-color 0.3s ease, color 0.3s ease
+            box-shadow var(--redefine-box-shadow-hover)
+            background-color var(--primary-color)
+            color var(--invert-text-color)
           }
 
-          &::before {
-            content ""
-            position absolute
-            top 0
-            left 50%
-            width 0
-            height 100%
-            background var(--color)
-            transform translate(-50%, 0)
-            opacity 0.15
-            transition width 0.25s
+          &:active {
+            transform translateY(2px)
+            transition transform 0.1s
           }
+
+
         }
       }
       

@@ -106,6 +106,7 @@ $background-color-transparent = rgba(255, 255, 255, 0.6)
 $second-background-color = darken($background-color, 2%)
 $third-background-color = darken($background-color, 4.5%)
 $default-text-color = #373D3F
+$invert-text-color = #bebec6
 $first-text-color = darken($default-text-color, 10%)
 $second-text-color = darken($default-text-color, 5%)
 $third-text-color = lighten($default-text-color, 20%)
@@ -148,6 +149,7 @@ $dark-background-color-transparent = rgba(32, 33, 36, 0.4)
 $dark-second-background-color = lighten($dark-background-color, 2%)
 $dark-third-background-color = lighten($dark-background-color, 4.5%)
 $dark-default-text-color = #bebec6
+$dark-invert-text-color = #373D3F
 $dark-first-text-color = lighten($dark-default-text-color, 30%)
 $dark-second-text-color = lighten($dark-default-text-color, 20%)
 $dark-third-text-color = darken($dark-default-text-color, 20%)
@@ -211,6 +213,7 @@ root-color(mode) {
   --third-text-color mode == 'light' ? $third-text-color : $dark-third-text-color
   --fourth-text-color mode == 'light' ? $fourth-text-color : $dark-fourth-text-color
   --default-text-color mode == 'light' ? $default-text-color : $dark-default-text-color
+  --invert-text-color mode == 'light' ? $invert-text-color : $dark-invert-text-color
   --border-color mode == 'light' ? $border-color : $dark-border-color
   --selection-color mode == 'light' ? $selection-color : $dark-selection-color
   --shadow-color-1 mode == 'light' ? $shadow-color-1 : $dark-shadow-color-1
