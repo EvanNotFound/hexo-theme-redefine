@@ -73,31 +73,30 @@
           box-shadow var(--redefine-box-shadow)
           margin 10px
           color var(--default-text-color)
-          transition transform 0.2s ease
           filter blur(var(--blur))
-          transition filter 0.3s ease
+          transform scaleX(1) scaleY(1)
+          background-color var(--default-background-color)
+          transition transform 0.2s ease,filter 0.3s ease, color 0.2s ease, background-color 0.2s ease
           
           .fa-hashtag {
             margin-right 5px
             opacity .3
           }
 
-          &:focus {
-            //outline 1px dashed
-            &::before {
-              width 100%
-            }
-          }
+
 
           &:hover {
-            &::before {
-              width 100%
-            }
             transform scaleX(1.05) scaleY(1.05)
-            transition transform 0.3s ease, background-color 0.3s ease, color 0.3s ease
             box-shadow var(--redefine-box-shadow-hover)
             background-color var(--primary-color)
             color var(--invert-text-color)
+            transition transform 0.3s ease, background-color 0.3s ease, color 0.3s ease
+            
+            .fa-hashtag {
+              margin-right 5px
+              color var(--invert-text-color)
+              opacity .4
+            }
           }
 
           &:active {
