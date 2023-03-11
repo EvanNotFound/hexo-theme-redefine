@@ -7,7 +7,7 @@
             <div class="tagcloud-content">
               <ul class="tag-list" data-show-value="true">
                 <% for (const tag of site.tags.data) { %>
-                  <li><a data-weight="<%- tag.posts.length %>" href="/<%- tag.path %>"> <%- tag.name %></a></li>
+                  <li><a data-weight="<%- tag.posts.length %>" href="/<%- tag.path %>"><i class="fa-solid fa-hashtag"></i><%- tag.name %></a></li>
                 <% } %>
               </ul>
             </div>
