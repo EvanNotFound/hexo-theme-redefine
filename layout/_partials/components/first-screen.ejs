@@ -4,6 +4,9 @@
          style="font-family: '<%- theme.style.first_screen.custom_font.font_family %>', sans-serif; !important;"
         <% } %>>
           <%- theme.style.first_screen.description || config.description %>
+          <% if (theme.style.first_screen.subtitle.enable) { %>
+            <p><i id="subtitle"></i></p>
+          <% } %>
         </div>
         <% if (theme.social_contact.enable) { %>
             <div class="social-contacts fade-in-down-animation">

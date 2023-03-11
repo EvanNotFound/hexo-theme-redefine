@@ -54,6 +54,9 @@ style:
       light: "#fff" # first screen title color (light mode)
       dark: "#d1d1b6" # first screen title color (dark mode)
     description: Theme Redefine # the title in the middle of the first screen. HTML supported (e.g. svg html code of your logo)
+    subtitle: 
+      enable: true
+      list: ['Writings are for conveying truth', 'Take action to think, to change, to create.']
     custom_font: # custom font for the first screen
       enable: false
       font_family: # the font family name of the url below

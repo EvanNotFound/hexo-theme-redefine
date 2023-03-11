@@ -24,6 +24,11 @@
     <%- __css('assets/odometer-theme-minimal.css') %>
 <% } %>
 
+<% if (theme.style.first_screen.subtitle.enable) { %>
+  <%- __js('js/libs/Typed.min.js') %>
+  <%- __js('js/plugins/typed.js') %>
+<% } %>
+
 
 
 <div class="post-scripts<%= theme.pjax.enable === true ? ' pjax' : '' %>">
