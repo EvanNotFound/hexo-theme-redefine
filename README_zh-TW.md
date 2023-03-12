@@ -46,7 +46,7 @@
 - [可自定義頁腳](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
 - [網站運行時間顯示](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
 - [文章頭圖](https://redefine-docs.ohevan.com/docs/advanced/home-contents/thumbnail)
-- [Mermaid JS 支持](https://redefine-docs.ohevan.com/docs/advanced/writing-modules/mermaid)
+- [Mermaid JS 支持](https://redefine-docs.ohevan.com/docs/advanced/theme-plugins/mermaid)
 - SEO 友好
 - [Aplayer 音乐播放器支持](https://redefine-docs.ohevan.com/docs/advanced/theme-plugins/aplayer)
 - [说说模块](https://redefine-docs.ohevan.com/docs/advanced/shuoshuo/essays)

@@ -45,7 +45,7 @@ If you are also using Redefine, please go to [Redefine Theme Showcase](https://r
 - [Customizable footer](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
 - [Site Uptime Display](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
 - [Article Header Image](https://redefine-docs.ohevan.com/docs/advanced/home-contents/thumbnail)
-- [Mermaid JS support](https://redefine-docs.ohevan.com/docs/advanced/writing-modules/mermaid)
+- [Mermaid JS support](https://redefine-docs.ohevan.com/docs/advanced/theme-plugins/mermaid)
 - SEO friendly
 - [Aplayer support](https://redefine-docs.ohevan.com/docs/advanced/theme-plugins/aplayer)
 - [Shuoshuo support](https://redefine-docs.ohevan.com/docs/advanced/shuoshuo/essays)
