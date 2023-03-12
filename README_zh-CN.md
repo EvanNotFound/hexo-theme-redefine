@@ -25,7 +25,8 @@
 ## 🌐 官方演示站
 
 - [EvanNotFound's Blog](https://ohevan.com)
-- [Theme Redefine Demo](https://redefine.ohevan.com)
+- [Theme Redefine 演示站点](https://redefine.ohevan.com)
+- [Theme Redefine 开发站点](https://redefine-dev.ohevan.com)
 - [Redefine 用户墙](https://redefine.ohevan.com/showcase)
 
 如果你也在使用 Redefine，欢迎在前往 [Redefine 用户墙](https://redefine.ohevan.com/showcase) 添加你的博客链接。
