@@ -331,7 +331,7 @@ plugins:
         url: 
         cover: 
   mermaid: # Mermaid JS
-    enable: true  # default true 
+    enable: false # enable mermaid or not
     version: "9.3.0" # default v9.3.0
 
 # ---------------------------------------------------------------------------------------
