@@ -105,6 +105,8 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 
 如果我做的主題還不錯的話，歡迎給我 Github 點個 Star，謝謝
 
+如果你在使用 [Typora](https://typora.io/) 編輯器寫文章，歡迎查看我寫的 [Typora Redefine 主題](https://github.com/EvanNotFound/typora-theme-redefine)，按照本 Hexo 主題樣式編寫，讓你可以直接預覽文章效果，更好排版。
+
 ## 💗 贊助
 
 非常感謝所有贊助者的支持，你們的支持是我維護這個項目的動力。
