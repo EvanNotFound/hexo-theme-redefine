@@ -20,7 +20,9 @@
 ## 📷 Screenshots
 
 ![redefine-1-final](https://user-images.githubusercontent.com/68590232/224550641-72b2a0d4-e30d-41c5-b3cb-7cc86be14e31.png)
+
 ![redefine-2-final](https://user-images.githubusercontent.com/68590232/224550645-07d6b624-fa7c-40aa-90f8-873c958afa30.png)
+
 ![redefine-3-final](https://user-images.githubusercontent.com/68590232/224550647-e194348c-2a3b-4738-b978-60f11c952365.png)
 
 
@@ -107,6 +109,10 @@ Feel free to **pull request** and **send issues**.
 If you have any questions, please send an email to [contact@ohevan.com](mailto:contact@ohevan.com). I will reply in time.
 
 Please **give me a star** to support me, thanks!
+
+Also, if you are using [Typora](https://typora.io/), check out [Typora Theme Redefine](https://github.com/EvanNotFound/typora-theme-redefine) so that you can preview the styles of your blog in Typora.
+
+
 
 
 ## 💗 Donations
