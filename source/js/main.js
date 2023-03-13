@@ -46,6 +46,13 @@ window.addEventListener('DOMContentLoaded', () => {
     REDEFINE.initMenuShrink();
     REDEFINE.initModeToggle();
     REDEFINE.initBackToTop();
+    if (REDEFINE.theme_config.style.first_screen.subtitle.enable === true) {
+      REDEFINE.initTyped('subtitle');
+    }
+
+    if (REDEFINE.theme_config.plugins.mermaid.enable === true) {
+      REDEFINE.initMermaid();
+    }
 
     if (REDEFINE.theme_config.local_search.enable === true) {
       REDEFINE.initLocalSearch();

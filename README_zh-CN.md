@@ -18,15 +18,15 @@
 
 ## 📷 屏幕截图
 
-![redefine-1-final](https://user-images.githubusercontent.com/68590232/216494120-c2021614-118d-4554-aa07-06bc96631e8f.png)
-![redefine-2-final](https://user-images.githubusercontent.com/68590232/216494132-76586fad-e959-401c-b0b7-25e5f187dc39.png)
-![redefine-3-final](https://user-images.githubusercontent.com/68590232/216494137-d25d02e5-c7d2-4fc8-932f-bd9aee6e874f.png)
-
+![redefine-1-final](https://user-images.githubusercontent.com/68590232/224550641-72b2a0d4-e30d-41c5-b3cb-7cc86be14e31.png)
+![redefine-2-final](https://user-images.githubusercontent.com/68590232/224550645-07d6b624-fa7c-40aa-90f8-873c958afa30.png)
+![redefine-3-final](https://user-images.githubusercontent.com/68590232/224550647-e194348c-2a3b-4738-b978-60f11c952365.png)
 
 ## 🌐 官方演示站
 
 - [EvanNotFound's Blog](https://ohevan.com)
-- [Theme Redefine Demo](https://redefine.ohevan.com)
+- [Theme Redefine 演示站点](https://redefine.ohevan.com)
+- [Theme Redefine 开发站点](https://redefine-dev.ohevan.com)
 - [Redefine 用户墙](https://redefine.ohevan.com/showcase)
 
 如果你也在使用 Redefine，欢迎在前往 [Redefine 用户墙](https://redefine.ohevan.com/showcase) 添加你的博客链接。
@@ -43,7 +43,7 @@
 - [可自定义页脚](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
 - [网站运行时间显示](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
 - [文章头图](https://redefine-docs.ohevan.com/docs/advanced/home-contents/thumbnail)
-- [Mermaid JS 支持](https://redefine-docs.ohevan.com/docs/advanced/writing-modules/mermaid)
+- [Mermaid JS 支持](https://redefine-docs.ohevan.com/docs/advanced/theme-plugins/mermaid)
 - SEO 友好
 - [Aplayer 音乐播放器支持](https://redefine-docs.ohevan.com/docs/advanced/theme-plugins/aplayer)
 - [说说模块](https://redefine-docs.ohevan.com/docs/advanced/shuoshuo/essays)

@@ -15,6 +15,10 @@ $aplayer-height-lrc= $aplayer-height + $lrc-height - 6
   position relative
   transition opacity 0.3s ease
 
+  +redefine-mobile() {
+    display none
+  }
+
   &.hide {
     opacity 0
     transition opacity 0.3s ease
@@ -245,6 +249,13 @@ $aplayer-height-lrc= $aplayer-height + $lrc-height - 6
   .aplayer-icon-forward,
   .aplayer-icon-lrc {
     display none
+  }
+
+  .aplayer-icon-lrc {
+    pointer-events none
+    svg {
+      opacity 0.4
+    }
   }
 
   .aplayer-icon-lrc-inactivity {

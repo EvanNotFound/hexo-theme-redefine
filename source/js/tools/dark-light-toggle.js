@@ -23,7 +23,7 @@ REDEFINE.initModeToggle = () => {
     enableDarkMode() {
       document.body.classList.add('dark-mode');
       document.body.classList.remove('light-mode');
-      this.iconDom.className = 'fa-regular fa-sun';
+      this.iconDom.className = 'fa-regular fa-brightness';
       REDEFINE.styleStatus.isDark = true;
       REDEFINE.setStyleStatus();
       this.mermaidDarkInit();

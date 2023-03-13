@@ -3,7 +3,10 @@
         <div class="description fade-in-down-animation" <% if (theme.style.first_screen.custom_font.enable) { %>
          style="font-family: '<%- theme.style.first_screen.custom_font.font_family %>', sans-serif; !important;"
         <% } %>>
-          <%- theme.style.first_screen.description || config.description %>
+          <%- theme.style.first_screen.title || theme.style.first_screen.description || config.description %> <%# theme.style.first_screen.description is deprecated %>
+          <% if (theme.style.first_screen.subtitle.enable) { %>
+            <p><i id="subtitle"></i></p>
+          <% } %>
         </div>
         <% if (theme.social_contact.enable) { %>
             <div class="social-contacts fade-in-down-animation">

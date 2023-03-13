@@ -1,4 +1,9 @@
-$first-screen-font-size = 2rem
+$temp-title-fs = hexo-config('style.first_screen.font_sizes.title')
+$title-font-size = $temp-title-fs ? convert($temp-title-fs) : 2.8rem
+$temp-subtitle-fs = hexo-config('style.first_screen.font_sizes.subtitle')
+$subtitle-font-size = $temp-subtitle-fs ? convert($temp-subtitle-fs) : 1.4rem
+$temp-line-height = hexo-config('style.first_screen.line_height')
+$line-height = $temp-line-height ? $temp-line-height : 1.2
 $first-screen-icon-size = 1.6rem
 
 @import "../../common/variables"
@@ -20,15 +25,32 @@ $first-screen-icon-size = 1.6rem
     min-height 90vh
 
     .description {
+      width: 100vw
       font-weight bold
-      font-size $first-screen-font-size
-      line-height 1.8
+      font-size $title-font-size
+      line-height $line-height
       text-align center
       color var(--first-screen-text-color)
 
+      p {
+        margin 0
+        opacity 0.9
+        font-family "Optima", sans-serif
+
+        i {
+          font-size: $subtitle-font-size
+          font-style normal
+        }
+
+        span {
+          font-size: $subtitle-font-size * 1.05
+          
+        }
+      }
+
 
       +redefine-tablet() {
-        font-size $first-screen-font-size * 0.9
+        font-size $title-font-size * 0.9
       }
     }
 

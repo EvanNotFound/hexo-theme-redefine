@@ -19,15 +19,18 @@
 
 ## 📷 Screenshots
 
-![redefine-1-final](https://user-images.githubusercontent.com/68590232/216494120-c2021614-118d-4554-aa07-06bc96631e8f.png)
-![redefine-2-final](https://user-images.githubusercontent.com/68590232/216494132-76586fad-e959-401c-b0b7-25e5f187dc39.png)
-![redefine-3-final](https://user-images.githubusercontent.com/68590232/216494137-d25d02e5-c7d2-4fc8-932f-bd9aee6e874f.png)
+![redefine-1-final](https://user-images.githubusercontent.com/68590232/224550641-72b2a0d4-e30d-41c5-b3cb-7cc86be14e31.png)
+
+![redefine-2-final](https://user-images.githubusercontent.com/68590232/224550645-07d6b624-fa7c-40aa-90f8-873c958afa30.png)
+
+![redefine-3-final](https://user-images.githubusercontent.com/68590232/224550647-e194348c-2a3b-4738-b978-60f11c952365.png)
 
 
 ## 🌐 Online Demo
 
 - [EvanNotFound's Blog](https://ohevan.com)
 - [Theme Redefine Demo](https://redefine.ohevan.com)
+- [Theme Redefine Preview](https://redefine-dev.ohevan.com)
 - [Redefine Theme Showcase](https://redefine.ohevan.com/showcase)
 
 If you are also using Redefine, please go to [Redefine Theme Showcase](https://redefine.ohevan.com/showcase) to add your blog link.
@@ -44,7 +47,7 @@ If you are also using Redefine, please go to [Redefine Theme Showcase](https://r
 - [Customizable footer](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
 - [Site Uptime Display](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
 - [Article Header Image](https://redefine-docs.ohevan.com/docs/advanced/home-contents/thumbnail)
-- [Mermaid JS support](https://redefine-docs.ohevan.com/docs/advanced/writing-modules/mermaid)
+- [Mermaid JS support](https://redefine-docs.ohevan.com/docs/advanced/theme-plugins/mermaid)
 - SEO friendly
 - [Aplayer support](https://redefine-docs.ohevan.com/docs/advanced/theme-plugins/aplayer)
 - [Shuoshuo support](https://redefine-docs.ohevan.com/docs/advanced/shuoshuo/essays)
@@ -106,6 +109,10 @@ Feel free to **pull request** and **send issues**.
 If you have any questions, please send an email to [contact@ohevan.com](mailto:contact@ohevan.com). I will reply in time.
 
 Please **give me a star** to support me, thanks!
+
+Also, if you are using [Typora](https://typora.io/), check out [Typora Theme Redefine](https://github.com/EvanNotFound/typora-theme-redefine) so that you can preview the styles of your blog in Typora.
+
+
 
 
 ## 💗 Donations
