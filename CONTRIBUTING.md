@@ -12,7 +12,7 @@ To start contributing to hexo-theme-redefine, please follow these steps:
 2. Clone your forked repository to your local machine.
 3. Make your changes and test them locally.
 4. Commit your changes and push them to your forked repository.
-5. Create a pull request (PR) on GitHub to **`dev ` branch**.
+5. Create a pull request (PR) on GitHub to **`dev` branch**.
 
 ## Guidelines
 
