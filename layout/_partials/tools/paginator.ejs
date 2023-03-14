@@ -4,6 +4,16 @@
            href="<%- url_for(pageObject.prev_link) %>"
         ><%- __('prev') %></a>
     <% } %>
+    
+    <% if (pageObject.total>1)  {%>
+      <% for ( var page=1; page<= pageObject.total; page++) { %>
+        <a class="btn <%- page===pageObject.current? 'active':''%>"
+          href="<%- page===1? '/':'/page/'+page %>"
+        >
+          <%- page %>
+        </a>
+      <% } %>
+    <% } %>
 
     <% if (pageObject.next)  { %>
         <a class="next btn"
