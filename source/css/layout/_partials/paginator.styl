@@ -2,13 +2,38 @@
   font-size 1rem
   margin-top 30px
   border-radius 12px
+  display: flex;
+  justify-content: center;
 
+  a{
+    margin: 0 .3rem
+  }
+  a.active {
+    color: var(--background-color);
+    background: var(--primary-color);
+  }
   a.prev {
     float left
+
+    +redefine-mobile() {
+      display none
+    }
   }
 
   a.next {
     float right
+
+    +redefine-mobile() {
+      display none
+    }
+  }
+
+  .ellipsis {
+    padding 8px 10px
+
+    +redefine-mobile() {
+      padding 8px 2px
+    }
   }
 
 }
