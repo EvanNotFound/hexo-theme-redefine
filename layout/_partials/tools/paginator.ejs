@@ -1,35 +1,7 @@
 <div class="paginator">
-    <% if (pageObject.prev)  { %>
-        <a class="prev btn"
-           href="<%- url_for(pageObject.prev_link) %>"
-        ><i class="fa-solid fa-angle-double-left"></i></a>
-    <% } %>
-    
-    <% if (pageObject.total > 1) { %>
-      <% var currentPage = pageObject.current; %>
-      <% var totalPages = pageObject.total; %>
-      <% var maxLinks = 5; // Change this value to control the maximum number of visible links %>
-      <% var startPage = Math.max(currentPage - Math.floor(maxLinks / 2), 1); %>
-      <% var endPage = Math.min(startPage + maxLinks - 1, totalPages); %>
-      <% if (startPage > 1) { %>
-        <a class="btn" href="/">1</a>
-        <% if (startPage > 2) { %>
-          <span class="ellipsis">...</span>
-        <% } %>
-      <% } %>
-      <% for (var i = startPage; i <= endPage; i++) { %>
-        <a class="btn <%- i === currentPage ? 'active' : '' %>" href="<%- i === 1 ? '/' : '/page/' + i %>"><%- i %></a>
-      <% } %>
-      <% if (endPage < totalPages) { %>
-        <% if (endPage < totalPages - 1) { %>
-          <span class="ellipsis">...</span>
-        <% } %>
-        <a class="btn" href="/page/<%- totalPages %>"><%- totalPages %></a>
-      <% } %>
-    <% } %>
-    <% if (pageObject.next)  { %>
-        <a class="next btn"
-           href="<%- url_for(pageObject.next_link) %>"
-        ><i class="fa-solid fa-angle-double-right"></i></a>
-    <% } %>
+    <%- paginator({
+      prev_text: '<i class="fa fa-angle-left"></i>',
+      next_text: '<i class="fa fa-angle-right"></i>',
+      escape: false
+    }) %>
 </div>
