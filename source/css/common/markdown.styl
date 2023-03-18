@@ -1,5 +1,5 @@
 .markdown-body {
-  font-family "Open Sans", "Noto Sans SC", sans-serif
+  font-family $english-font-family, $chinese-font-family, sans-serif
   font-size 1rem
 
   blockquote {
@@ -48,11 +48,11 @@
 
 
     &:hover {
-      text-decoration underline !important
+      text-decoration underline 
 
       &::after {
         background var(--primary-color)
-        text-decoration underline !important
+        text-decoration underline 
       }
     }
   }
@@ -131,7 +131,7 @@
 
 
   h1, h2, h3, h4, h5, h6 {
-    font-family "Open Sans", "Noto Sans SC", sans-serif
+    font-family $english-font-family, $chinese-font-family, sans-serif
     color var(--second-text-color)
     line-height 1.5
     margin-bottom 1rem  !important

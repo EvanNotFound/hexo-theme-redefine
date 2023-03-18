@@ -193,11 +193,25 @@ $first-screen-img-dark = url(hexo-config('style.first_screen.background_image.da
 // ========================================================================================
 // font
 // ========================================================================================
+
+if hexo-config('custom.font.chinese.enable') {
+  $temp-chinese-font-family = hexo-config('custom.font.chinese.font_family')
+  $chinese-font-family = $temp-chinese-font-family ? $temp-chinese-font-family : 'Noto Sans SC', sans-serif
+} else {
+  $chinese-font-family = 'Noto Sans SC', sans-serif
+}
+
+if hexo-config('custom.font.english.enable') {
+  $temp-english-font-family = hexo-config('custom.font.english.font_family')
+  $english-font-family = $temp-english-font-family ? $temp-english-font-family : 'Open Sans', sans-serif
+} else {
+  $english-font-family = 'Open Sans', 'Noto Sans', sans-serif
+}
+
 $default-font-family = Open Sans, Noto Sans, Noto Sans SC,  -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial
 $default-font-size = 15.2px
 $default-font-line-height = 22px
 $default-font-weight = 400
-
 
 // ========================================================================================
 //  light/dark mode color

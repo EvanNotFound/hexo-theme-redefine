@@ -64,7 +64,7 @@ style:
     custom_font: # custom font for the first screen
       enable: false
       font_family: # the font family name of the url below
-      font_url:  # The url to the font file
+      font_url:  # The url to the font stylesheet file (css file)
 
   # Scroll style settings
   scroll:
@@ -72,6 +72,22 @@ style:
       enable: true 
     percent: # reading progress percent
       enable: false
+
+# ---------------------------------------------------------------------------------------
+# Custom Settings
+# ---------------------------------------------------------------------------------------
+custom: # custom font for the whole site
+  font: 
+    chinese: # custom font for Chinese
+      enable: false
+      font_family:  # the font family name of the url below
+      font_url:  # The url to the font stylesheet file (css)
+    english: # custom font for English
+      enable: false
+      font_family:  # the font family name of the url below
+      font_url:  # The url to the font stylesheet file (css)
+
+
 
 # ---------------------------------------------------------------------------------------
 # Social contact link
@@ -157,7 +173,7 @@ code_block:
   custom_font: # custom font family, default: Ubuntu Mono
     enable: false
     font_family: # font family name
-    font_url: # font url
+    font_url: # The url to the font stylesheet file (css file)
 
 # ---------------------------------------------------------------------------------------
 # Table of Contents in the Sidebar
