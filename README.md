@@ -42,7 +42,7 @@ If you are also using Redefine, please go to [Redefine Theme Showcase](https://r
 - [Mathjax Support](https://redefine-docs.ohevan.com/docs/advanced/writing-modules/mathjax)
 - Code block language display
 - Light/Dark mode switching
-- [Font Awesome 6.2.1 Pro](https://redefine-docs.ohevan.com/docs/configuration-guide/fontawesome) (contains different styles like Duotone/Regular/Thin)
+- [Font Awesome 6.2.1 Pro](https://redefine-docs.ohevan.com/docs/configuration-guide/fontawesome) (contains different styles like Duotone/Regular/Thin/Sharp)
 - [Drop-down menu](https://redefine-docs.ohevan.com/docs/configuration-guide/menu)
 - [Customizable footer](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
 - [Site Uptime Display](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
