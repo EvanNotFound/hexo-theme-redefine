@@ -51,6 +51,7 @@ If you are also using Redefine, please go to [Redefine Theme Showcase](https://r
 - SEO friendly
 - [Aplayer support](https://redefine-docs.ohevan.com/docs/advanced/theme-plugins/aplayer)
 - [Shuoshuo support](https://redefine-docs.ohevan.com/docs/advanced/shuoshuo/essays)
+- [Customizable Font](https://redefine-docs.ohevan.com/docs/configuration-guide/custom)
 
 
 
