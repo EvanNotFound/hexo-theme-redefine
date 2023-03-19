@@ -5,7 +5,7 @@
   | <a title="Chinese" href="README_zh-TW.md">繁中</a>
 </div>
 
-<a href="https://redefine.ohevan.com"><img align="center" src="https://user-images.githubusercontent.com/68590232/218364072-45dd3a00-ae5e-4e25-8823-cea59fc73e36.png"  alt="Redefine"></a>
+<a href="https://redefine.ohevan.com"><img align="center" src="https://user-images.githubusercontent.com/68590232/226141917-68124e8f-fde0-4edd-b86d-c62932ec369a.png"  alt="Redefine"></a>
 
 
 
@@ -42,7 +42,7 @@ If you are also using Redefine, please go to [Redefine Theme Showcase](https://r
 - [Mathjax Support](https://redefine-docs.ohevan.com/docs/advanced/writing-modules/mathjax)
 - Code block language display
 - Light/Dark mode switching
-- [Font Awesome 6.2.1 Pro](https://redefine-docs.ohevan.com/docs/configuration-guide/fontawesome) (contains different styles like Duotone/Regular/Thin)
+- [Font Awesome 6.2.1 Pro](https://redefine-docs.ohevan.com/docs/configuration-guide/fontawesome) (contains different styles like Duotone/Regular/Thin/Sharp)
 - [Drop-down menu](https://redefine-docs.ohevan.com/docs/configuration-guide/menu)
 - [Customizable footer](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
 - [Site Uptime Display](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)

@@ -2,13 +2,69 @@
   font-size 1rem
   margin-top 30px
   border-radius 12px
+  display: flex;
+  justify-content: center;
 
+  a{
+    margin: 0 .3rem
+  }
+  a.active {
+    color: var(--background-color);
+    background: var(--primary-color);
+  }
   a.prev {
     float left
+
+    +redefine-mobile() {
+      display none
+    }
   }
 
   a.next {
     float right
+
+    +redefine-mobile() {
+      display none
+    }
+  }
+
+  .space {
+    padding 8px 10px
+
+    +redefine-mobile() {
+      padding 8px 2px
+    }
+  }
+  
+  a.page-number,
+  span.page-number,
+  a.prev,
+  a.next, {
+    display inline-block
+    position relative
+    text-align center
+    cursor pointer
+    white-space nowrap
+    border-radius $redefine-border-radius-small
+    padding 8px 16px
+    background var(--background-color)
+
+    hover-style(true, 1.06, 1.06)
+
+    &:hover {
+      color var(--background-color)
+      background var(--primary-color)
+    }
+
+    &:active {
+      transform translateY(3px)
+      transition transform 0.1s ease
+    }
+  }
+
+  span.current {
+    color var(--background-color)
+    background var(--primary-color)
   }
 
 }

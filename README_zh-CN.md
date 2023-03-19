@@ -5,7 +5,7 @@
   | <a title="Chinese" href="README_zh-TW.md">繁中</a>
 </div>
 
-<a href="https://redefine.ohevan.com"><img align="center" src="https://user-images.githubusercontent.com/68590232/218364072-45dd3a00-ae5e-4e25-8823-cea59fc73e36.png"  alt="Redefine"></a>
+<a href="https://redefine.ohevan.com"><img align="center" src="https://user-images.githubusercontent.com/68590232/226141917-68124e8f-fde0-4edd-b86d-c62932ec369a.png"  alt="Redefine"></a>
 
 
 # hexo-theme-redefine
@@ -38,7 +38,7 @@
 - [数学公式](https://redefine-docs.ohevan.com/docs/advanced/writing-modules/mathjax)
 - 代码块语言显示
 - Light/Dark 模式切换
-- [Font Awesome 6.2.1 Pro](https://redefine-docs.ohevan.com/docs/configuration-guide/fontawesome)（包含 Duotone/Regular/Thin 等不同样式）
+- [Font Awesome 6.2.1 Pro](https://redefine-docs.ohevan.com/docs/configuration-guide/fontawesome)（包含 Duotone/Regular/Thin/Sharp 等不同样式）
 - [下拉菜单](https://redefine-docs.ohevan.com/docs/configuration-guide/menu)
 - [可自定义页脚](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
 - [网站运行时间显示](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)

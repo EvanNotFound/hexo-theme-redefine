@@ -19,7 +19,7 @@ style:
   avatar: /images/redefine-avatar.svg # avatar of the author
 
   # Favicon (You can use local image or image external link)
-  favicon: /images/redefine-logo.svg # favicon of the site
+  favicon: /images/redefine-favicon.svg # favicon of the site
   og_image: # og:image of the site
     enable: false
     image_url: # image url
@@ -64,7 +64,7 @@ style:
     custom_font: # custom font for the first screen
       enable: false
       font_family: # the font family name of the url below
-      font_url:  # The url to the font file
+      font_url:  # The url to the font stylesheet file (css file)
 
   # Scroll style settings
   scroll:
@@ -72,6 +72,22 @@ style:
       enable: true 
     percent: # reading progress percent
       enable: false
+
+# ---------------------------------------------------------------------------------------
+# Custom Settings
+# ---------------------------------------------------------------------------------------
+custom: # custom font for the whole site
+  font: 
+    chinese: # custom font for Chinese
+      enable: false
+      font_family:  # the font family name of the url below
+      font_url:  # The url to the font stylesheet file (css)
+    english: # custom font for English
+      enable: false
+      font_family:  # the font family name of the url below
+      font_url:  # The url to the font stylesheet file (css)
+
+
 
 # ---------------------------------------------------------------------------------------
 # Social contact link
@@ -157,7 +173,7 @@ code_block:
   custom_font: # custom font family, default: Ubuntu Mono
     enable: false
     font_family: # font family name
-    font_url: # font url
+    font_url: # The url to the font stylesheet file (css file)
 
 # ---------------------------------------------------------------------------------------
 # Table of Contents in the Sidebar
@@ -235,6 +251,12 @@ comment:
 # ---------------------------------------------------------------------------------------
 friend_links:
   columns: 2 # number of columns. 2 or 3
+
+# ---------------------------------------------------------------------------------------
+# Tags Page
+# ---------------------------------------------------------------------------------------
+tags:
+  style: blur # blur | cloud
 
 # ---------------------------------------------------------------------------------------
 # RSS
@@ -339,4 +361,4 @@ plugins:
 # Please go to github to update the latest version frequently
 # Github: https://github.com/EvanNotFound/hexo-theme-redefine
 # ---------------------------------------------------------------------------------------
-version: 1.2.1 #DELETE THIS LINE IN YOUR _config.redefine.yml
+version: 1.2.2 #DELETE THIS LINE IN YOUR _config.redefine.yml
