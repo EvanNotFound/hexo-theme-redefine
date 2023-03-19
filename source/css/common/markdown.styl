@@ -1,6 +1,6 @@
 .markdown-body {
   font-family $english-font-family, $chinese-font-family, sans-serif
-  font-size 1rem
+  font-size $default-article-font-size
 
   blockquote {
 
@@ -22,7 +22,7 @@
 
 
   p {
-    line-height 1.5
+    line-height $default-line-height
     color var(--default-text-color)
     margin-bottom 1rem
     margin-top: 0;
@@ -133,11 +133,11 @@
   h1, h2, h3, h4, h5, h6 {
     font-family $english-font-family, $chinese-font-family, sans-serif
     color var(--second-text-color)
-    line-height 1.5
+    line-height $default-line-height
     margin-bottom 1rem  !important
 
     +redefine-tablet() {
-      line-height 1.25
+      line-height $default-line-height * 0.96
     }
   }
 
@@ -205,7 +205,7 @@
   h6 {
     font-size 1.2rem
     font-weight 550
-    line-height 1.2
+    line-height $default-line-height
     margin-top 2rem
 
     +redefine-tablet() {
