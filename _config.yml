@@ -361,4 +361,4 @@ plugins:
 # Please go to github to update the latest version frequently
 # Github: https://github.com/EvanNotFound/hexo-theme-redefine
 # ---------------------------------------------------------------------------------------
-version: 1.2.1 #DELETE THIS LINE IN YOUR _config.redefine.yml
+version: 1.2.2 #DELETE THIS LINE IN YOUR _config.redefine.yml
