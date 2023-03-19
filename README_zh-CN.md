@@ -47,6 +47,7 @@
 - SEO 友好
 - [Aplayer 音乐播放器支持](https://redefine-docs.ohevan.com/docs/advanced/theme-plugins/aplayer)
 - [说说模块](https://redefine-docs.ohevan.com/docs/advanced/shuoshuo/essays)
+- [自定义字体](https://redefine-docs.ohevan.com/docs/configuration-guide/custom)
 
 ## ☁️ 安装
 
