@@ -1,6 +1,20 @@
 <% if (site.tags.length){ %>
     <div class="fade-in-down-animation">
         <div class="tagcloud-container">
+          <% if (theme.tags.style == 'cloud') { %>
+            <div class="tagcloud-header">
+              <h1 style="margin: 15px 5px; margin-bottom: 30px;"><%- __('tags') %></h1>
+            </div>
+            <div class="tagcloud-content">
+              <%- tagcloud({
+                min_font: 1,
+                max_font: 5,
+                unit: 'rem',
+                amount: 100
+              }) %>
+            </div>
+            
+          <% } else {%>
             <div class="tagcloud-header">
                 <h1 style="margin: 15px 5px; margin-bottom: 30px;"><%- __('tags') %></h1>
             </div>
@@ -11,6 +25,7 @@
                 <% } %>
               </ul>
             </div>
+            <% } %>
         </div>
     </div>
 <% } %>
