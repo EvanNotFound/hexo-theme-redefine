@@ -196,14 +196,14 @@ $first-screen-img-dark = url(hexo-config('style.first_screen.background_image.da
 
 if hexo-config('custom.font.chinese.enable') {
   $temp-chinese-font-family = hexo-config('custom.font.chinese.font_family')
-  $chinese-font-family = $temp-chinese-font-family ? $temp-chinese-font-family : 'Noto Sans SC', sans-serif
+  $chinese-font-family = $temp-chinese-font-family ? $temp-chinese-font-family : 'Noto Sans SC'
 } else {
   $chinese-font-family = 'Noto Sans SC', sans-serif
 }
 
 if hexo-config('custom.font.english.enable') {
   $temp-english-font-family = hexo-config('custom.font.english.font_family')
-  $english-font-family = $temp-english-font-family ? $temp-english-font-family : 'Open Sans', sans-serif
+  $english-font-family = $temp-english-font-family ? $temp-english-font-family : 'Open Sans'
 } else {
   $english-font-family = 'Open Sans', 'Noto Sans', sans-serif
 }
