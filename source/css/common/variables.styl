@@ -209,8 +209,11 @@ if hexo-config('custom.font.english.enable') {
 }
 
 $default-font-family = Open Sans, Noto Sans, Noto Sans SC,  -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial
-$default-font-size = 15.2px
-$default-font-line-height = 22px
+$default-font-size = 16px
+$temp-default-article-font-size = hexo-config('custom.formats.font_size')
+$temp-default-line-height = hexo-config('custom.formats.line_height')
+$default-article-font-size = $temp-default-article-font-size ? convert($temp-default-article-font-size) : 16px
+$default-line-height = $temp-default-line-height ? $temp-default-line-height : 1.5
 $default-font-weight = 400
 
 // ========================================================================================

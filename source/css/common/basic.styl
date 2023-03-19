@@ -69,7 +69,7 @@ html, body {
   font-family $default-font-family
   font-weight $default-font-weight
   font-size $default-font-size
-  line-height $default-font-line-height
+  line-height $default-line-height
   
 
   &::-webkit-scrollbar {
@@ -79,13 +79,13 @@ html, body {
 
   +redefine-tablet() {
     font-size $default-font-size * 0.96
-    line-height $default-font-line-height * 0.96
+    line-height $default-line-height * 0.96
   }
 
 
   +redefine-mobile() {
     font-size $default-font-size * 0.9
-    line-height $default-font-line-height * 0.9
+    line-height $default-line-height * 0.9
   }
 
 }
