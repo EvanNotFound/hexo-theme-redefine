@@ -111,7 +111,7 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 
 如果你觉得这个项目还不错，欢迎给我买杯咖啡，给 CDN 续命续久一点，感谢
 
-所有赞助者名单：[赞助者名单](https://github.com/EvanNotFound/hexo-
+所有赞助者名单：[赞助者名单](https://github.com/EvanNotFound/hexo-theme-redefine/blob/dev/DONATION.md)
 
 再次感谢你们！
 
