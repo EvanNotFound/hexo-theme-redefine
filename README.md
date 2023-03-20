@@ -77,8 +77,6 @@ After the installation, go to the `_config.yml` of your hexo site and set
 theme: redefine
 ```
 
-
-
 ## ⏫ Update
 
 To update hexo-theme-redefine, you can run the same **npm** command
@@ -113,9 +111,6 @@ Please **give me a star** to support me, thanks!
 
 Also, if you are using [Typora](https://typora.io/), check out [Typora Theme Redefine](https://github.com/EvanNotFound/typora-theme-redefine) so that you can preview the styles of your blog in Typora.
 
-
-
-
 ## 💗 Donations
 
 Thanks to all the people who have donated to me. Your support is my greatest motivation.
@@ -125,3 +120,9 @@ If you like this theme, you can also support me by donating.
 This is the list of all the people who have donated to me: [Donation List](https://github.com/EvanNotFound/hexo-theme-redefine/blob/dev/DONATION.md)
 
 Thanks to all of you!
+
+## 🎁 Thanks
+
+Hexo Theme Redefine source code is based on [hexo-theme-keep](https://github.com/XPoet/hexo-theme-keep).
+
+Redefine Theme optimized its style and added a few modules.

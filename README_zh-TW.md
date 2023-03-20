@@ -117,3 +117,8 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 所有贊助者名單：[贊助者名單](https://github.com/EvanNotFound/hexo-theme-redefine/blob/dev/DONATION.md)
 
 再次感謝你們！
+
+
+## 🎁 感谢
+
+Hexo Theme Redefine 源码基于 [hexo-theme-keep](https://github.com/XPoet/hexo-theme-keep)，主要增加了各种写作模块/插件/优化样式/优化代码。
