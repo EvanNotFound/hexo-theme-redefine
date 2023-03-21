@@ -4,8 +4,8 @@ REDEFINE.initUtils = () => {
   REDEFINE.utils = {
     html_root_dom: document.querySelector("html"),
     pageContainer_dom: document.querySelector(".page-container"),
-    pageTop_dom: document.querySelector(".page-main-content-top"),
-    firstScreen_dom: document.querySelector(".first-screen-container"),
+    pageTop_dom: document.querySelector(".main-content-header"),
+    firstScreen_dom: document.querySelector(".home-banner-container"),
     scrollProgressBar_dom: document.querySelector(".scroll-progress-bar"),
     pjaxProgressBar_dom: document.querySelector(".pjax-progress-bar"),
     pjaxProgressIcon_dom: document.querySelector(".pjax-progress-icon"),
@@ -17,9 +17,9 @@ REDEFINE.initUtils = () => {
     fontSizeLevel: 0,
 
     isHasScrollProgressBar:
-      REDEFINE.theme_config.style.scroll.progress_bar.enable === true,
+      REDEFINE.theme_config.global.scroll_progress.bar === true,
     isHasScrollPercent:
-      REDEFINE.theme_config.style.scroll.percent.enable === true,
+      REDEFINE.theme_config.global.scroll_progress.percentage === true,
 
     // Scroll Style Handle
     styleHandleWhenScroll() {
@@ -73,7 +73,7 @@ REDEFINE.initUtils = () => {
 
         // TOC scroll handle
         if (
-          REDEFINE.theme_config.toc.enable &&
+          REDEFINE.theme_config.articles.toc.enable &&
           REDEFINE.utils.hasOwnProperty("updateActiveTOCLink")
         ) {
           REDEFINE.utils.updateActiveTOCLink();
@@ -86,7 +86,7 @@ REDEFINE.initUtils = () => {
         var y = window.pageYOffset;
         var height = document.body.scrollHeight;
         var windowHeight = window.innerHeight;
-        var toolList = document.getElementsByClassName('right-bottom-side-tools');
+        var toolList = document.getElementsByClassName('right-side-tools-container');
         
         for (var i = 0; i < toolList.length; i++) {
           var tools = toolList[i];
@@ -183,14 +183,14 @@ REDEFINE.initUtils = () => {
       const iconDom = toolExpandDom.querySelector("i");
 
       const defaultMaxWidth =
-        REDEFINE.theme_config.style.content_max_width || "1000px";
+        REDEFINE.theme_config.global.content_max_width || "1000px";
       const expandMaxWidth = "90%";
       let menuMaxWidth = defaultMaxWidth;
 
       let isExpand = false;
 
       if (
-        REDEFINE.theme_config.style.first_screen.enable === true &&
+        REDEFINE.theme_config.home_banner.enable === true &&
         window.location.pathname === "/"
       ) {
         menuMaxWidth = parseInt(defaultMaxWidth) * 1.2 + "px";
@@ -255,12 +255,12 @@ REDEFINE.initUtils = () => {
     // init page height handle
     initPageHeightHandle() {
       if (this.firstScreen_dom) return;
-      const temp_h1 = this.getElementHeight(".page-main-content-top");
-      const temp_h2 = this.getElementHeight(".page-main-content-middle");
-      const temp_h3 = this.getElementHeight(".page-main-content-bottom");
+      const temp_h1 = this.getElementHeight(".main-content-header");
+      const temp_h2 = this.getElementHeight(".main-content-body");
+      const temp_h3 = this.getElementHeight(".main-content-footer");
       const allDomHeight = temp_h1 + temp_h2 + temp_h3;
       const innerHeight = window.innerHeight;
-      const pb_dom = document.querySelector(".page-main-content-bottom");
+      const pb_dom = document.querySelector(".main-content-footer");
       if (allDomHeight < innerHeight) {
         const marginTopValue = Math.floor(innerHeight - allDomHeight);
         if (marginTopValue > 0) {
@@ -343,7 +343,7 @@ REDEFINE.initUtils = () => {
       const post = document.querySelectorAll(
         ".home-article-meta-info .home-article-date"
       );
-      const df = REDEFINE.theme_config.home_article.date_format;
+      const df = REDEFINE.theme_config.home.article_date_format;
       if (df === "relative") {
         post &&
           post.forEach((v) => {
@@ -504,5 +504,5 @@ REDEFINE.initUtils = () => {
   REDEFINE.utils.relativeTimeInHome();
 
   // calculate material colors
-  //REDEFINE.utils.calculateMaterialColors(REDEFINE.theme_config.style.primary_color);
+  //REDEFINE.utils.calculateMaterialColors(REDEFINE.theme_config.colors.primary);
 };

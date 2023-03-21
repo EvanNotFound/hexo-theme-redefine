@@ -80,8 +80,8 @@ function initTOC() {
 
         const initOpenKey = 'init_open';
 
-        if (REDEFINE.theme_config.toc.hasOwnProperty(initOpenKey)) {
-          REDEFINE.theme_config.toc[initOpenKey] ? openHandle() : REDEFINE.utils.TocToggle.pageAsideHandleOfTOC(false);
+        if (REDEFINE.theme_config.articles.toc.hasOwnProperty(initOpenKey)) {
+          REDEFINE.theme_config.articles.toc[initOpenKey] ? openHandle() : REDEFINE.utils.TocToggle.pageAsideHandleOfTOC(false);
 
         } else {
           openHandle();
@@ -100,7 +100,7 @@ function initTOC() {
   }
 }
 
-if (REDEFINE.theme_config.pjax.enable === true && REDEFINE.utils) {
+if (REDEFINE.theme_config.global.pjax === true && REDEFINE.utils) {
   initTOC();
 } else {
   window.addEventListener('DOMContentLoaded', initTOC);

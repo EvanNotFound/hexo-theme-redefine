@@ -5,7 +5,7 @@ date: 2023-03-10
 
 REDEFINE.initTyped = (id) => {
     const sentenceList = [];
-    for (const t of REDEFINE.theme_config.style.first_screen.subtitle.list) {
+    for (const t of REDEFINE.theme_config.home_banner.subtitle) {
       sentenceList.push(t);
     }
     if(document.getElementById(id)){

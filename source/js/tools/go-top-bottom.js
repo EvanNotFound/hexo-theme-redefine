@@ -13,7 +13,7 @@ REDEFINE.initBackToTop = () => {
     },
 
     backToBottom() {
-      document.querySelector(".page-main-content-bottom").scrollIntoView({
+      document.querySelector(".main-content-footer").scrollIntoView({
         behavior: "smooth"
       });
     },

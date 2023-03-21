@@ -2,21 +2,21 @@
     <div class="info-container">
         <div class="copyright-info">
             &copy;
-            <% if (theme.footer.hasOwnProperty('start_time') && theme.footer.start_time) { %>
-              <span><%= date(new Date(theme.footer.start_time), 'YYYY') %></span>
+            <% if (theme.footer.hasOwnProperty('start') && theme.footer.start) { %>
+              <span><%= date(new Date(theme.footer.start), 'YYYY') %></span>
               -
             <% } %>
-            <%= date(new Date(), 'YYYY') %>&nbsp;&nbsp;<%- theme.footer.icon || '<i class="fa-regular fa-computer-classic"></i>' %>&nbsp;&nbsp;<a href="/"><%= theme.base_info.author || config.author %></a>
+            <%= date(new Date(), 'YYYY') %>&nbsp;&nbsp;<%- theme.footer.icon || '<i class="fa-regular fa-computer-classic"></i>' %>&nbsp;&nbsp;<a href="/"><%= theme.info.author || config.author %></a>
         </div>
-        <% if (theme.website_count.busuanzi_count.enable === true) { %>
-            <script async <%= theme.pjax.enable === true ? 'data-pjax' : '' %> src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <% if (theme.global.busuanzi_counter.enable === true) { %>
+            <script async <%= theme.global.pjax === true ? 'data-pjax' : '' %> src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <div class="website-count info-item">
-                <% if (theme.website_count.busuanzi_count.site_uv) { %>
+                <% if (theme.global.busuanzi_counter.site_uv) { %>
                     <span id="busuanzi_container_site_uv" class="busuanzi_container_site_uv">
                         <%- __('site_uv') %>&nbsp;<span id="busuanzi_value_site_uv" class="busuanzi_value_site_uv"></span>
                     </span>
                 <% } %>
-                <% if (theme.website_count.busuanzi_count.site_pv) { %>
+                <% if (theme.global.busuanzi_counter.site_pv) { %>
                     <span id="busuanzi_container_site_pv" class="busuanzi_container_site_pv">
                         <%- __('site_pv') %>&nbsp;<span id="busuanzi_value_site_pv" class="busuanzi_value_site_pv"></span>
                     </span>
@@ -25,8 +25,8 @@
         <% } %>
         <div class="theme-info info-item">
             <span class="powered-by-container"><%- __('powered_by', '<?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" href="https://hexo.io">Hexo</a>') %></span>
-                <br> 
-            <%# 保留主题信息是对作者的尊重，感谢！ %><span class="theme-version-container"><%- __('theme') %>&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v<%= theme.version %></a><%# 保留主题信息是对作者的尊重，感谢！ %>
+                <br>
+            <%# 保留主题信息是对作者的尊重，感谢！ %><span class="theme-version-container"><%- __('theme') %>&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v<%- getThemeVersion() %></a><%# 保留主题信息是对作者的尊重，感谢！ %>
         </div>
         <% if (theme.footer.icp.enable && theme.footer.icp.hasOwnProperty('number')) { %>
             <div class="icp-info info-item"><a target="_blank" rel="nofollow" href="
@@ -43,8 +43,8 @@
                 提供CDN加速/云存储服务</a></div>
         <% } %>
         <% if (theme.footer.runtime === true) {%>
-            <div id="start_time_div" style="display:none">
-                <%= theme.footer.start_time %>
+            <div id="start_div" style="display:none">
+                <%= theme.footer.start %>
             </div>
             <div>
                 <%= __('runtime') %> <span class="odometer" id="runtime_days" ></span> <%= __('days') %> <span class="odometer" id="runtime_hours"></span> <%= __('hours') %> <span class="odometer" id="runtime_minutes"></span> <%= __('minutes') %> <span class="odometer" id="runtime_seconds"></span> <%= __('seconds') %>
@@ -54,7 +54,7 @@
             <div class="customize-info info-item"><%- theme.footer.customize %></div>
         <% } %>
         <% if (theme.footer.runtime === true) {%>
-            <script async <%= theme.pjax.enable === true ? 'data-pjax' : '' %>>
+            <script async <%= theme.global.pjax === true ? 'data-pjax' : '' %>>
                 try {
                     function odometer_init() {
                     const elements = document.querySelectorAll('.odometer');
@@ -74,7 +74,7 @@
             <% for (let i in theme.inject.footer) { %>
                 <% if (theme.inject.footer[i] !== null ){ %>
 
-                    <% if (theme.pjax.enable == true) { %>
+                    <% if (theme.global.pjax == true) { %>
                         <%- theme.inject.footer[i].replace("<script", "<script data-pjax") %>
                     <% } else { %>
                         <%- theme.inject.footer[i] %>

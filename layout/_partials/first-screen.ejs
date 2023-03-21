@@ -1,0 +1,33 @@
+<div class="home-banner-container flex-center">
+    <div class="content flex-center">
+        <div class="description fade-in-down-animation" <% if (theme.home_banner.custom_font.enable) { %>
+         style="font-family: '<%- theme.home_banner.custom_font.family %>', sans-serif; !important;"
+        <% } %>>
+          <%- theme.home_banner.title || theme.style.first_screen.description || config.description %> <%# theme.style.first_screen.description is deprecated %>
+          <% if (theme.home_banner.subtitle.length !== 0) { %>
+            <p><i id="subtitle"></i></p>
+          <% } %>
+        </div>
+        <% if (theme.home_banner.social_links.enable) { %>
+            <div class="social-contacts fade-in-down-animation">
+                <% for (const key in home_banner.social_links.links) { %>
+                    <% if(theme.home_banner.social_links.links[key]) { %>
+                        <% if(key === 'email') { %>
+                            <span class="social-contact-item <%= key %>">
+                                <a href="mailto:<%- home_banner.social_links.links[key] %>">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </a>
+                            </span>
+                        <% } else { %>
+                            <span class="social-contact-item <%= key %>">
+                                <a target="_blank" href="<%- home_banner.social_links.links[key] %>">
+                                    <i class="fa-brands fa-<%= key %>"></i>
+                                </a>
+                            </span>
+                        <% } %>
+                    <% } %>
+                <% } %>
+            </div>
+        <% } %>
+    </div>
+</div>

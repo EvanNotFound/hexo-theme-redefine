@@ -25,7 +25,7 @@ REDEFINE.initMenuShrink = () => {
     toggleMenuDrawerShow() {
       const domList = [document.querySelector('.window-mask'), document.querySelector('.menu-bar')];
 
-      if (REDEFINE.theme_config.pjax.enable === true) {
+      if (REDEFINE.theme_config.global.pjax === true) {
         domList.push(...document.querySelectorAll('.menu-drawer .drawer-menu-list .drawer-menu-item'));
       }
 

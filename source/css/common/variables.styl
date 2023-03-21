@@ -16,7 +16,7 @@ $post-tool-button-width = 38px;                                  // post tool bu
 $spacing-unit = 38px;                                 // component-spacing-value (PC)
 
 // main content max width
-$temp-content-max-width = hexo-config('style.content_max_width')
+$temp-content-max-width = hexo-config('global.content_max_width')
 $content-max-width = $temp-content-max-width ? convert($temp-content-max-width) : 1000px
 $has-toc-content-max-width = $content-max-width * 1.2
 
@@ -90,12 +90,12 @@ $dark-mermaid-theme = hexo-config('mermaid.theme.dark')
 // color
 // ========================================================================================
 // primary color
-$temp-color = hexo-config('style.primary_color')
+$temp-color = hexo-config('colors.primary')
 $primary-color = $temp-color ? convert($temp-color) : #0066CC
 
 //navbar color
-$nav-color-1 = convert(hexo-config('style.nav_color.left') + hexo-config('style.nav_color.transparency'))
-$nav-color-2 = convert(hexo-config('style.nav_color.right') + hexo-config('style.nav_color.transparency'))
+$nav-color-1 = convert(hexo-config('navbar.color.left') + hexo-config('navbar.color.transparency'))
+$nav-color-2 = convert(hexo-config('navbar.color.right') + hexo-config('navbar.color.transparency'))
 $nav-color-bg = linear-gradient(120deg, $nav-color-1 0%, $nav-color-2 100%)
 
 // ========================================================================================
@@ -135,7 +135,7 @@ $note-black-title-bg = #E9E9E9
 $note-cyan-title-bg = #E9FDF9
 $note-type-title-bg = #fdf3e9
 
-$first-screen-text-color = convert(hexo-config('style.first_screen.title_color.light'))
+$first-screen-text-color = convert(hexo-config('home_banner.text_color.light'))
 $first-screen-icons-container-border-color = rgba(255, 255, 255, 0.35)
 $first-screen-icons-container-background-color = rgba(255, 255, 255, 0.3)
 
@@ -178,7 +178,7 @@ $dark-note-gray-title-bg = #4e4e4e
 $dark-note-black-title-bg = #1e1e1e
 $dark-note-type-title-bg = #4e3a1e
 
-$first-screen-text-color-dark = convert(hexo-config('style.first_screen.title_color.dark'))
+$first-screen-text-color-dark = convert(hexo-config('home_banner.text_color.dark'))
 $first-screen-icons-container-border-color-dark = rgba(197, 197, 197, 0.35)
 $first-screen-icons-container-background-color-dark = rgba(197, 197, 197, 0.3)
 
@@ -186,23 +186,23 @@ $first-screen-icons-container-background-color-dark = rgba(197, 197, 197, 0.3)
 // ========================================================================================
 // background image
 // ========================================================================================
-$first-screen-img-light = url(hexo-config('style.first_screen.background_image.light'))
-$first-screen-img-dark = url(hexo-config('style.first_screen.background_image.dark'))
+$first-screen-img-light = url(hexo-config('home_banner.image.light'))
+$first-screen-img-dark = url(hexo-config('home_banner.image.dark'))
 
 
 // ========================================================================================
 // font
 // ========================================================================================
 
-if hexo-config('custom.font.chinese.enable') {
-  $temp-chinese-font-family = hexo-config('custom.font.chinese.font_family')
+if hexo-config('global.fonts.chinese.enable') {
+  $temp-chinese-font-family = hexo-config('global.fonts.chinese.family')
   $chinese-font-family = $temp-chinese-font-family ? $temp-chinese-font-family : 'Noto Sans SC'
 } else {
   $chinese-font-family = 'Noto Sans SC', sans-serif
 }
 
-if hexo-config('custom.font.english.enable') {
-  $temp-english-font-family = hexo-config('custom.font.english.font_family')
+if hexo-config('global.fonts.english.enable') {
+  $temp-english-font-family = hexo-config('global.fonts.english.family')
   $english-font-family = $temp-english-font-family ? $temp-english-font-family : 'Open Sans'
 } else {
   $english-font-family = 'Open Sans', 'Noto Sans', sans-serif
@@ -210,8 +210,8 @@ if hexo-config('custom.font.english.enable') {
 
 $default-font-family = Open Sans, Noto Sans, Noto Sans SC,  -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial
 $default-font-size = 16px
-$temp-default-article-font-size = hexo-config('custom.formats.font_size')
-$temp-default-line-height = hexo-config('custom.formats.line_height')
+$temp-default-article-font-size = hexo-config('articles.style.font_size')
+$temp-default-line-height = hexo-config('articles.style.line_height')
 $default-article-font-size = $temp-default-article-font-size ? convert($temp-default-article-font-size) : 16px
 $default-line-height = $temp-default-line-height ? $temp-default-line-height : 1.5
 $default-font-weight = 400

@@ -1,17 +1,17 @@
-<%- partial('_partials/tools/progress-bar') %>
+<%- partial('_widgets/progress-bar') %>
 <main class="page-container">
 
-    <% if (theme.style.first_screen.enable === true && is_home() && !page.prev) { %>
-        <%- partial('_partials/components/first-screen') %>
+    <% if (theme.home_banner.enable === true && is_home() && !page.prev) { %>
+        <%- partial('_partials/first-screen') %>
     <% } %>
 
-    <div class="page-main-content">
+    <div class="main-content-container">
 
-        <div class="page-main-content-top">
+        <div class="main-content-header">
             <%- partial('_partials/menu') %>
         </div>
 
-        <div class="page-main-content-middle">
+        <div class="main-content-body">
 
             <div class="main-content">
 
@@ -34,10 +34,10 @@
                     <%- partial('category-list') %>
 
                 <% } else if (page.title === 'tag' || page.title === 'tags') { %>
-                    <%- partial('_partials/tools/tagcloud') %>
+                    <%- partial('_widgets/tagcloud') %>
 
                 <% } else if (page.title === 'Page Not Found' || page.title === '404') { %>
-                    <%- partial('_partials/components/404-template') %>
+                    <%- partial('_partials/404-template') %>
 
                 <% } else { %>
                     <%- partial('_partials/page-template') %>
@@ -50,25 +50,25 @@
 
         </div>
 
-        <div class="page-main-content-bottom">
+        <div class="main-content-footer">
             <%- partial('_partials/footer') %>
         </div>
     </div>
 
     <% if (is_post()) { %>
         <div class="post-tools">
-            <%- partial('_partials/tools/post-tools') %>
+            <%- partial('_widgets/post-tools') %>
         </div>
     <% } %>
 
-    <div class="right-bottom-side-tools">
-        <%- partial('_partials/tools/side-tools') %>
+    <div class="right-side-tools-container">
+        <%- partial('_widgets/side-tools') %>
     </div>
 
-    <%- partial('_partials/tools/image-viewer') %>
+    <%- partial('_widgets/image-viewer') %>
 
-    <% if (theme.local_search.enable) { %>
-        <%- partial('_partials/tools/local-search') %>
+    <% if (theme.navbar.search.enable) { %>
+        <%- partial('_widgets/local-search') %>
     <% } %>
 
 

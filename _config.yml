@@ -1,352 +1,290 @@
-# ---------------------------------------------------------------------------------------
-#  Your basic info
-# ---------------------------------------------------------------------------------------
-base_info:
-  title: Theme Redefine # Site title
-  author: The Redefine Team # Author name
-  url: https://redefine.ohevan.com # Site url
-  # Logo image (You can use local image, image external link or don’t fill)
-  logo_img: # logo image on the left of the navigation bar
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# THEME REDEFINE CONFIGURATION FILE
+# BY EVANNOTFOUND
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
-# ---------------------------------------------------------------------------------------
-# Theme style settings
-# ---------------------------------------------------------------------------------------
-style:
-  # Theme primary color
-  primary_color: "#005080"
 
-  # Avatar (You can use local image or image external link)
-  avatar: /images/redefine-avatar.svg # avatar of the author
+# BASIC INFORMATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+info:
+  # Site title
+  title: Theme Redefine
+  # Author name
+  author: The Redefine Team
+  # Site URL
+  url: https://redefine.ohevan.com
+# BASIC INFORMATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
-  # Favicon (You can use local image or image external link)
-  favicon: /images/redefine-favicon.svg # favicon of the site
-  og_image: # og:image of the site
+
+# IMAGE CONFIGURATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+defaults:
+  # Favicon
+  favicon: /favicon.ico
+  # Site logo
+  logo: 
+  # Site avatar
+  avatar: /images/redefine-avatar.svg
+# IMAGE CONFIGURATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+
+
+# COLORS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+colors:
+  #Primary color
+  primary: "#005080"
+  # Secondary color (beta)
+  secondary: 
+# COLORS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+
+
+# OPEN GRAPH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+open_graph:
+  # WHETHER TO ENABLE OPEN GRAPH
+  enable: false
+  # Open Graph image
+  image: /images/og.png
+  # Open Graph description
+  description: Theme Redefine is a simple and elegant theme for Hexo.
+# OPEN GRAPH <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+
+
+# SITE CUSTOMIZATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+global:
+  # Custom fonts
+  fonts:
+    # Chinese fonts
+    chinese: 
+      enable: false # Whether to enable custom chinese font
+      family:  # Font family
+      url:  # Font URL to CSS file
+    # English fonts
+    english: 
+      enable: false # Whether to enable custom chinese font
+      family:  # Font family
+      url:  # Font URL to CSS file
+  # Content max width
+  content_max_width: 1000px
+  # Sidebar width
+  sidebar_width: 210px
+  # Effects on mouse hover
+  hover:
+    shadow: true # shadow effect
+    scale: false # scale effect
+  # Scroll progress
+  scroll_progress:
+    bar: false # progress bar
+    percentage: true # percentage
+  # Website counter (powered by https://busuanzi.ibruce.info/)
+  busuanzi_counter:
+    enable: true # enable website counter or not
+    site_pv: true # site page view
+    site_uv: true # site unique visitor
+    post_pv: true # post page view
+  # Whether to enable PJAX
+  pjax: true
+# SITE CUSTOMIZATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+    
+
+# HOME BANNER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+home_banner:
+  # Whether to enable home banner
+  enable: true
+  # Home banner image
+  image: 
+    light: /images/wallhaven-wqery6-light.webp # light mode
+    dark: /images/wallhaven-wqery6-dark.webp # dark mode
+  # Home banner title
+  title: Theme Redefine
+  # Home banner subtitle
+  subtitle: []
+  # Color of home banner text
+  text_color: 
+    light: "#fff" # light mode
+    dark: "#d1d1b6" # dark mode
+  # Specific style of the text
+  text_style: 
+    # Title font size
+    title_size: 2.8rem
+    # Subtitle font size
+    subtitle_size: 1.5rem
+    # Line height between title and subtitle
+    line_height: 1.2
+  # Home banner custom font
+  custom_font: 
+    # Whether to enable custom font
     enable: false
-    image_url: # image url
+    # Font family
+    family: 
+    # URL to font CSS file
+    url:
+  # Home banner social links
+  social_links:
+    # Whether to enable
+    enable: false
+    # Social links
+    links:
+      github:  # your GitHub URL
+      instagram: # your Instagram URL
+      zhihu:  # your ZhiHu URL
+      twitter:  # your twitter URL
+      email:  # your email
+      # ...... # you can add more
+# HOME BANNER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
-  # Article image align position
-  article_img_align: center # value: left | center
 
-  # Right side width
-  right_side_width: 210px #sidebar width, for toc
-
-  # Content area max width
-  content_max_width: 1000px #content max width, for article
-
-  #navigation bar background color (from left to right)
-  nav_color: 
+# NAVIGATION BAR >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+navbar:
+  # Navbar background color
+  color:
     left: "#f78736" #left side 
     right: "#367df7"  #right side
     transparency: 35 #percent (10-99)
-
-  # Mouse hover
-  hover:
-    shadow: true # shadow effect when the mouse hover
-    scale: false # scale effect when the mouse hover
-
-  # First screen
-  first_screen:
-    enable: true
-    background_image:
-      light: /images/wallhaven-wqery6-light.webp # background image of the first screen, use relative path or external link (if your website is in subdirectory, use external link)
-      dark: /images/wallhaven-wqery6-dark.webp # background image of the first screen, use relative path or external link (if your website is in subdirectory, use external link)
-    title_color:
-      light: "#fff" # first screen title color (light mode)
-      dark: "#d1d1b6" # first screen title color (dark mode)
-    font_sizes:
-      title: 2.8rem # first screen title font size
-      subtitle: 1.5rem # first screen subtitle font size
-    line_height: 1.2 # first screen title line height
-    title: Theme Redefine # the title in the middle of the first screen. HTML supported (e.g. svg html code of your logo)
-    subtitle: 
-      enable: false
-      list: []
-    custom_font: # custom font for the first screen
-      enable: false
-      font_family: # the font family name of the url below
-      font_url:  # The url to the font stylesheet file (css file)
-
-  # Scroll style settings
-  scroll:
-    progress_bar: # reading progress bar
-      enable: true 
-    percent: # reading progress percent
-      enable: false
-
-# ---------------------------------------------------------------------------------------
-# Custom Settings
-# ---------------------------------------------------------------------------------------
-custom:
-  font: # custom font for the whole site
-    chinese: # custom font for Chinese
-      enable: false
-      font_family:  # the font family name of the url below
-      font_url:  # The url to the font stylesheet file (css)
-    english: # custom font for English
-      enable: false
-      font_family:  # the font family name of the url below
-      font_url:  # The url to the font stylesheet file (css)
-  formats: # custom font styles for the whole site
-    font_size: 16px # font size
-    line_height: 1.5 # line height
-
-
-
-# ---------------------------------------------------------------------------------------
-# Social contact link
-# ---------------------------------------------------------------------------------------
-social_contact: # social contact icons in the first screen, you can add more by using fontawesome icon names
-  enable: false 
+  # Navbar links
   links:
-    github:  # your GitHub URL
-    instagram: # your Instagram URL
-    zhihu:  # your ZhiHu URL
-    twitter:  # your twitter URL
-    email:  # your email
+    Home: 
+      path: / 
+      icon: fa-regular fa-house # can be empty
+    # Archives: 
+    #   path: /archives 
+    #   icon: fa-regular fa-archive # can be empty
+    # Status: 
+    #   path: https://status.evanluo.top/
+    #   icon: fa-regular fa-chart-bar
+    # About: 
+    #   icon: fa-regular fa-user
+    #   submenus:
+    #     Me: /about
+    #     Github: https://github.com/EvanNotFound/hexo-theme-redefine
+    #     Blog: https://ohevan.com
+    #     Friends: /friends
+    # Links: 
+    #   icon: fa-regular fa-link
+    #   submenus:
+    #     Link1: /link1
+    #     Link2: /link2
+    #     Link3: /link3
     # ...... # you can add more
-
-# ---------------------------------------------------------------------------------------
-# Navigation menu
-# ---------------------------------------------------------------------------------------
-menu: #you can customize, i18n files are in the theme's languages folder. fa-regular recommended
-  Home: 
-    path: / 
-    icon: fa-regular fa-house # can be empty
-  # Archives: 
-  #   path: /archives 
-  #   icon: fa-regular fa-archive # can be empty
-  # Status: 
-  #   path: https://status.evanluo.top/
-  #   icon: fa-regular fa-chart-bar
-  # About: 
-  #   icon: fa-regular fa-user
-  #   submenus:
-  #     Me: /about
-  #     Github: https://github.com/EvanNotFound/hexo-theme-redefine
-  #     Blog: https://ohevan.com
-  #     Friends: /friends
-  # Links: 
-  #   icon: fa-regular fa-link
-  #   submenus:
-  #     Link1: /link1
-  #     Link2: /link2
-  #     Link3: /link3
-
-  # ...... # you can add more
+  # Navbar search (local search). Requires hexo-generator-searchdb (npm i hexo-generator-searchdb). See https://github.com/theme-next/hexo-generator-searchdb
+  search:
+    # Whether to enable
+    enable: false
+    # Preload search data when the page loads
+    preload: true
+# NAVIGATION BAR <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
+# HOME PAGE ARTICLE SETTINGS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+home:
+  # Article date format
+  article_date_format: auto # auto, relative, YYYY-MM-DD, YYYY-MM-DD HH:mm:ss etc.
+  # Article categories visibility
+  categories:
+    enable: true  # Whether to enable
+    limit: 3 # Max number of categories to display
+  # Article tags visibility
+  tags:
+    enable: true  # Whether to enable
+    limit: 3  # Max number of tags to display
+# HOME PAGE ARTICLE SETTINGS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
-# ---------------------------------------------------------------------------------------
-# Home page article block display settings
-# ---------------------------------------------------------------------------------------
-home_article:
-  date_format: auto # date format in home page article block, value: auto | relative | YYYY-MM-DD | YYYY.MM.DD HH:mm:ss | DD/MM/YYYY | and etc. Support moment js format, see: https://momentjscom.readthedocs.io/en/latest/moment/04-displaying/01-format/
-  category:
-    enable: true # show category in home page article block
-    limit: 3 # max number of categories shown in home page article block
-  tag:
-    enable: true # show tags in home page article block
-    limit: 3 # max number of tags shown in home page article block
 
-# ---------------------------------------------------------------------------------------
-# Post page Settings
-# ---------------------------------------------------------------------------------------
-post:
-  # Post word count
-  # Dependencies: hexo-wordcount (npm install hexo-wordcount)
-  # See: https://github.com/willin/hexo-wordcount
+# ARTICLE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+articles:
+  # Image alignment
+  image_align: center # left, center
+  # Word count. Requires hexo-wordcount (npm install hexo-wordcount). See https://github.com/willin/hexo-wordcount
   word_count:
-    enable: true
-    wordcount: true # word count, one article
-    min2read: true # time to read, one article
-
+    enable: true # Whether to enable
+    count: true # Whether to display word count
+    min2read: true # Whether to display reading time
   # Author label
-  author_label:
+  author_label: 
+    enable: true # Whether to enable
+    auto: false # Whether to automatically add author label, e.g. Lv1, Lv2, Lv3...
+    list: [""]
+  # Code block settings
+  code_block:
+    copy: true # Whether to enable code block copy button
+    style: mac # mac | simple
+    font: # Custom font
+      enable: false # Whether to enable
+      family: # Font family
+      url: # Font URL to CSS file
+  # Table of contents settings
+  toc:
+    enable: true # Whether to enable TOC
+    depth: 3 # TOC depth
+    number: false # Whether to add number to TOC automatically
+    expand: true # Whether to expand TOC
+    init_open: true # Open toc by default
+  # Whether to enable copyright notice
+  copyright: true
+  # Whether to enable lazyload for images
+  lazyload: true
+  # Set the styles of the article
+  style:
+    font_size: 16px # Font size
+    line_height: 1.5 # Line height
+  # Article recommendation. Requires nodejieba (npm install nodejieba). Transplanted from hexo-theme-volantis.
+  recommendation:
+    # Whether to enable article recommendation
     enable: true
-    auto: false # if true, show Lv1, Lv2, Lv3... , If false, show custom label
-    # label array item can be one or more
-    custom_label_list: ["lol"]
+    # Article recommendation title
+    title: 推荐阅读
+    # Article recommendation title icon
+    icon: fa-solid fa-bookmark
+    # Max number of articles to display
+    limit: 3
+    # Placeholder image
+    placeholder: /images/wallhaven-wqery6-light.webp
+    # Skip directory
+    skip_dirs: 
+      - wiki/
+# ARTICLE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
-# ---------------------------------------------------------------------------------------
-# Code copy
-# ---------------------------------------------------------------------------------------
-code_block:
-  copy: true # enable code copy button
-  style: mac # mac | simple
-  custom_font: # custom font family, default: Ubuntu Mono
-    enable: false
-    font_family: # font family name
-    font_url: # The url to the font stylesheet file (css file)
 
-# ---------------------------------------------------------------------------------------
-# Table of Contents in the Sidebar
-# ---------------------------------------------------------------------------------------
-toc:
-  enable: true
-
-  # Automatically add list number to toc.
-  number: false
-
-  # If true, all level of TOC in a post will be displayed, rather than the activated part of it.
-  expand_all: true
-
-  # If true, open TOC every time when you enter the article page
-  init_open: true
-
-# ---------------------------------------------------------------------------------------
-# Post copyright info
-# ---------------------------------------------------------------------------------------
-copyright_info:
-  enable: true
-
-# ---------------------------------------------------------------------------------------
-# Website count
-# ---------------------------------------------------------------------------------------
-website_count:
-  # busuanzi
-  # See: http://ibruce.info/2015/04/04/busuanzi/
-  busuanzi_count:
-    enable: true
-    site_uv: true
-    site_pv: true
-    page_pv: true
-
-# ---------------------------------------------------------------------------------------
-# Local Search
-# Dependencies: hexo-generator-searchdb
-# See: https://github.com/theme-next/hexo-generator-searchdb
-# ---------------------------------------------------------------------------------------
-local_search:
-  enable: false
-  preload: true # Preload the search data when the page loads
-
-# ---------------------------------------------------------------------------------------
-# Comment plugin
-# ---------------------------------------------------------------------------------------
+# COMMENT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 comment:
-  enable: false
-  use: waline # values: waline | gitalk | twikoo
-
-  # Waline
-  # See: https://waline.js.org/guide/get-started.html
-  waline:
-    serverUrl:  # Waline server url(vercel) example: https://example.example.com
-    lang: zh-CN # Waline language, default: zh-CN. See: https://waline.js.org/guide/client/i18n.html
-  
-  # Gitalk
-  # See: https://github.com/gitalk/gitalk
-  gitalk:
-    github_id: # GitHub repo owner
-    repository: # Repository name to store issues
-    client_id: # GitHub Application Client ID
-    client_secret: # GitHub Application Client Secret
-
-  # Twikoo
-  # See: https://github.com/imaegoo/twikoo
-  twikoo:
-    visitor: true
-    version: 1.6.10 # Twikoo version, do not modify if you dont know what it is
-    env_id: # Vercel or Tencent Cloud Function environment ID
-    region: # environment region. If select Guangzhou, fill in "ap-guangzhou". (optional)
-
-# ---------------------------------------------------------------------------------------
-# Friend Links page
-# ---------------------------------------------------------------------------------------
-friend_links:
-  columns: 2 # number of columns. 2 or 3
-
-# ---------------------------------------------------------------------------------------
-# Tags Page
-# ---------------------------------------------------------------------------------------
-tags:
-  style: blur # blur | cloud
-
-# ---------------------------------------------------------------------------------------
-# RSS
-# Dependencies: hexo-generator-feed
-# See: https://github.com/hexojs/hexo-generator-feed
-# ---------------------------------------------------------------------------------------
-rss:
-  enable: false
-
-# ---------------------------------------------------------------------------------------
-# Lazyload image
-# ---------------------------------------------------------------------------------------
-lazyload:
+  # Whether to enable comment
   enable: true
+  # Comment system
+  system: waline # waline, gitalk, twikoo
+  # System configuration
+  config:
+    # Waline comment system. See https://waline.js.org/
+    waline:
+      serverUrl: https://example.example.com # Waline server URL. e.g. https://example.example.com
+      lang: zh-CN # Waline language. e.g. zh-CN, en-US. See https://waline.js.org/guide/client/i18n.html
+    # Gitalk comment system. See https://github.com/gitalk/gitalk
+    gitalk:
+      clientID: # GitHub Application Client ID
+      clientSecret: # GitHub Application Client Secret
+      repo: # GitHub repository
+      owner: # GitHub repository owner
+    # Twikoo comment system. See https://twikoo.js.org/
+    twikoo:
+      version: 1.6.10 # Twikoo version, do not modify if you dont know what it is
+      server_url: # Twikoo server URL. e.g. https://example.example.com
+      region: # Twikoo region. can be empty
+# COMMENT <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
-# ---------------------------------------------------------------------------------------
-# CDN
-# ---------------------------------------------------------------------------------------
-cdn:
-  enable: false
-  use: aliyun # values: jsdelivr | unpkg | aliyun 
-  # aliyun cdn is funded by myself, so if you want to make it work longer, please donate to me.
-  # For donation, please see https://github.com/EvanNotFound/hexo-theme-redefine/blob/dev/DONATION.md
-  # Thank you for your support.
 
-# ---------------------------------------------------------------------------------------
-# PJAX
-# ---------------------------------------------------------------------------------------
-pjax:
-  enable: true
+# PAGE TEMPLATES >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+page_templates:
+  # Friend Links page column number
+  friends_column: 3
+  # Tags page style
+  tags_style: blur # blur, cloud
+# PAGE TEMPLATES <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
-# ---------------------------------------------------------------------------------------
-# Article recommendation (transplanted from Volantis)
-# ---------------------------------------------------------------------------------------
-recommended_article: # 文章推荐，需要 npm install nodejieba
-  enable: false
-  title: 推荐阅读
-  icon: fa-solid fa-bookmark
-  max_count: 3
-  placeholder_img: /images/wallhaven-wqery6-light.webp
-  # 不展示文章推荐：
-  # front-matter 使用 skip_recommended_article: true 关闭
-  # 不在以下文件夹文章中展示文章推荐 根目录是source/
-  skip_dirs:
-    - wiki/
 
-# ---------------------------------------------------------------------------------------
-# Fontawesome Pro v6.2.1
-# ---------------------------------------------------------------------------------------
-fontawesome: # select fontawesome versions you want to use, in order to reduce the loading time, select as few as possible
-  thin: false # use fontawesome thin version or not
-  light: false # use fontawesome light version or not
-  duotone: false # use fontawesome duotone version or not
-  sharp_solid: false # use fontawesome sharp-solid version or not
-
-# ---------------------------------------------------------------------------------------
-# Footer settings
-# ---------------------------------------------------------------------------------------
-footer:
-  runtime: true # show website running time or not
-  icon: '<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>' # footer icon, write fontawesome html code here
-  start_time: 2022/8/17 11:45:14 # the starting time of your website, format: yyyy/mm/dd hh:mm:ss
-  customize:  # customize footer message, can be html code
-  icp: # ICP record number of your website, Can be null
-    enable: false
-    number: # ICP record number
-    url: # ICP record url
-
-# ---------------------------------------------------------------------------------------
-# Custom html code
-# ---------------------------------------------------------------------------------------
-inject:
-  enable: false
-  head: # inject code into <head> tag
-    - 
-    - 
-  footer: # inject code into <footer> tag
-    - 
-    - 
-
-# ---------------------------------------------------------------------------------------
-# Theme plugins
-# ---------------------------------------------------------------------------------------
+# PLUGINS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 plugins:
-  aplayer: # APlayer (fixed version)
-    enable: false
-    audio:
+  # RSS feed. Requires hexo-generator-feed (npm i hexo-generator-feed). See https://github.com/hexojs/hexo-generator-feed
+  feed:
+    enable: false # Whether to enable
+  # Aplayer (fixed). See https://github.com/DIYgod/APlayer
+  aplayer:
+    enable: false # Whether to enable
+    audios:
       - name: # audio name
         artist: # audio artist
         url: # audio url
@@ -355,13 +293,64 @@ plugins:
         artist: 
         url: 
         cover: 
-  mermaid: # Mermaid JS
+  # Mermaid JS. Requires hexo-filter-mermaid-diagrams (npm i hexo-filter-mermaid-diagrams). See https://mermaid.js.org/
+  mermaid:
     enable: false # enable mermaid or not
     version: "9.3.0" # default v9.3.0
+# PLUGINS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
-# ---------------------------------------------------------------------------------------
-# Redefine Theme version (DELETE THIS PART IN YOUR _config.redefine.yml)
-# Please go to github to update the latest version frequently
-# Github: https://github.com/EvanNotFound/hexo-theme-redefine
-# ---------------------------------------------------------------------------------------
-version: 1.2.3 #DELETE THIS LINE IN YOUR _config.redefine.yml
+
+# CDN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+cdn:
+  # Whether to enable CDN
+  enable: false
+  # CDN Provider
+  provider: unpkg # jsdelivr, unpkg, aliyun
+# CDN <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+
+
+# FOOTER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+footer:
+  # Show website running time
+  runtime: true # show website running time or not
+  # Icon in footer, write fontawesome icon code here
+  icon: '<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>'
+  # The start time of the website, format: YYYY/MM/DD HH:mm:ss
+  start: 2022/8/17 11:45:14
+  # Footer message
+  customize:
+  # ICP record number. See https://beian.miit.gov.cn/
+  icp:
+    enable: false # Whether to enable
+    number: # ICP record number
+    url: # ICP record url
+# FOOTER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+
+
+# FONTAWESOME >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+fontawesome: # Pro v6.2.1
+  # Thin version
+  thin: false
+  # Light version
+  light: false
+  # Duotone version
+  duotone: false
+  # Sharp Solid version
+  sharp_solid: false
+# FONTAWESOME <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+
+
+# INJECT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+inject:
+  # Whether to enable inject
+  enable: false
+  # Inject custom head html code
+  head: 
+    -
+    -
+  # Inject custom footer html code
+  footer:
+    -
+    -
+# INJECT <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+

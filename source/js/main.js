@@ -46,7 +46,7 @@ window.addEventListener('DOMContentLoaded', () => {
     REDEFINE.initMenuShrink();
     REDEFINE.initModeToggle();
     REDEFINE.initBackToTop();
-    if (REDEFINE.theme_config.style.first_screen.subtitle.enable === true) {
+    if (REDEFINE.theme_config.home_banner.subtitle.length !== 0) {
       REDEFINE.initTyped('subtitle');
     }
 
@@ -54,15 +54,15 @@ window.addEventListener('DOMContentLoaded', () => {
       REDEFINE.initMermaid();
     }
 
-    if (REDEFINE.theme_config.local_search.enable === true) {
+    if (REDEFINE.theme_config.navbar.search.enable === true) {
       REDEFINE.initLocalSearch();
     }
 
-    if (REDEFINE.theme_config.code_block.copy === true) {
+    if (REDEFINE.theme_config.articles.code_block.copy === true) {
       REDEFINE.initCopyCode();
     }
 
-    if (REDEFINE.theme_config.lazyload.enable === true) {
+    if (REDEFINE.theme_config.articles.lazyload === true) {
       REDEFINE.initLazyLoad();
     }
   }

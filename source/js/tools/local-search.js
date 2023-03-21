@@ -161,7 +161,7 @@ REDEFINE.initLocalSearch = () => {
           });
 
           // Select top N slices in content
-          let upperBound = parseInt(REDEFINE.theme_config.local_search.top_n_per_article ? REDEFINE.theme_config.local_search.top_n_per_article : 1, 10);
+          let upperBound = parseInt(REDEFINE.theme_config.navbar.search.top_n_per_article ? REDEFINE.theme_config.navbar.search.top_n_per_article : 1, 10);
           if (upperBound >= 0) {
             slicesOfContent = slicesOfContent.slice(0, upperBound);
           }
@@ -237,7 +237,7 @@ REDEFINE.initLocalSearch = () => {
       });
   };
 
-  if (REDEFINE.theme_config.local_search.preload) {
+  if (REDEFINE.theme_config.navbar.search.preload) {
     fetchData();
   }
 

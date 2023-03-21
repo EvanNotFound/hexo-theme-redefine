@@ -3,15 +3,15 @@
     <div class="comment-area-title">
         <i class="fa-solid fa-comments"></i>&nbsp;<%- __('comments') %>
     </div>
-    <% if (theme.comment.enable === true && theme.comment.hasOwnProperty(theme.comment.use)) { %>
+    <% if (theme.comment.enable === true && theme.comment.hasOwnProperty('system')) { %>
 
-        <% if  (theme.comment.use === 'waline') { %>
+        <% if  (theme.comment.system === 'waline') { %>
             <%- partial('waline') %>
 
-        <% } else if (theme.comment.use === 'gitalk') { %>
+        <% } else if (theme.comment.system === 'gitalk') { %>
             <%- partial('gitalk') %>
 
-        <% } else if (theme.comment.use === 'twikoo') { %>
+        <% } else if (theme.comment.system === 'twikoo') { %>
             <%- partial('twikoo') %>
         
         <% } %>

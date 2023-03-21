@@ -1,14 +1,14 @@
 <% if(
-        theme.comment.use === 'gitalk'
-        && theme.comment.gitalk.client_id
-        && theme.comment.gitalk.client_secret
-        && theme.comment.gitalk.github_id
-        && theme.comment.gitalk.repository
+        theme.comment.system === 'gitalk'
+        && theme.comment.config.gitalk.client_id
+        && theme.comment.config.gitalk.client_secret
+        && theme.comment.config.gitalk.github_id
+        && theme.comment.config.gitalk.repository
 ) { %>
     <div id="gitalk-container"></div>
-    <script <%= theme.pjax.enable === true ? 'data-pjax' : '' %>
+    <script <%= theme.global.pjax === true ? 'data-pjax' : '' %>
             src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
-    <script <%= theme.pjax.enable === true ? 'data-pjax' : '' %>>
+    <script <%= theme.global.pjax === true ? 'data-pjax' : '' %>>
 
         function loadGitalk() {
             let __gitalk__pathname = decodeURI(location.pathname);
@@ -20,11 +20,11 @@
 
             try {
                 Gitalk && new Gitalk({
-                    clientID: '<%= theme.comment.gitalk.client_id %>',
-                    clientSecret: '<%= theme.comment.gitalk.client_secret %>',
-                    repo: '<%= theme.comment.gitalk.repository %>',
-                    owner: '<%= theme.comment.gitalk.github_id %>',
-                    admin: ['<%= theme.comment.gitalk.github_id %>'],
+                    clientID: '<%= theme.comment.config.gitalk.client_id %>',
+                    clientSecret: '<%= theme.comment.config.gitalk.client_secret %>',
+                    repo: '<%= theme.comment.config.gitalk.repository %>',
+                    owner: '<%= theme.comment.config.gitalk.github_id %>',
+                    admin: ['<%= theme.comment.config.gitalk.github_id %>'],
                     id: __gitalk__pathname,
                     language: '<%= config.language %>'
                 }).render('gitalk-container');
@@ -34,7 +34,7 @@
             }
         }
 
-        if ('<%= theme.pjax.enable %>') {
+        if ('<%= theme.global.pjax %>') {
             const loadGitalkTimeout = setTimeout(() => {
                 loadGitalk();
                 clearTimeout(loadGitalkTimeout);

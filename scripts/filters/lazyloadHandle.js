@@ -3,7 +3,7 @@ hexo.extend.filter.register(
   'after_post_render',
   function (data) {
     const theme = hexo.theme.config;
-    if (!theme.lazyload || !theme.lazyload.enable) return;
+    if (!theme.articles.lazyload || !theme.articles.lazyload) return;
     data.content = data.content.replace(
       // Match 'img' tags width the src attribute.
       /<img([^>]*)src="([^"]*)"([^>\/]*)\/?\s*>/gim,

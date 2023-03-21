@@ -17,7 +17,7 @@
         </li>
 
         <!-- rss -->
-        <% if (theme.rss.enable && config.feed) { %>
+        <% if (theme.plugins.feed.enable && config.feed) { %>
             <li class="right-bottom-tools rss flex-center">
                 <a class="flex-center"
                    href="<%= '/' + config.feed.path %>"
@@ -28,7 +28,7 @@
             </li>
         <% } %>
 
-        <% if (theme.style.scroll.percent.enable !== true) { %>
+        <% if (theme.global.scroll_progress.percentage !== true) { %>
             <li class="right-bottom-tools tool-scroll-to-top flex-center">
                 <i class="fa-regular fa-arrow-up"></i>
             </li>
@@ -43,7 +43,7 @@
         <li class="right-bottom-tools tool-toggle-show flex-center">
             <i class="fa-regular fa-cog fa-spin"></i>
         </li>
-        <% if (theme.style.scroll.percent.enable === true) { %>
+        <% if (theme.global.scroll_progress.percentage === true) { %>
             <li class="right-bottom-tools tool-scroll-to-top flex-center">
                 <i class="arrow-up fas fa-arrow-up"></i>
                 <span class="percent"></span>
