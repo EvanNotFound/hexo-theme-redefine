@@ -25,7 +25,7 @@
     <meta property="og:type" content="article">
     <meta property="og:title" content="<%= page.title || config.title || 'Redefine Theme' %>">
     <meta property="og:description" content="<%= page.description || config.description || 'Hexo Theme Redefine' %>">
-    <meta property="og:url" content="<%= config.url + page.path %>">
+    <meta property="og:url" content="<%= full_url_for(page.path) %>">
     <% if (theme.style.og_image.enable) { %>
         <meta property="og:image" content="<%= theme.style.og_image.image_url %>">
     <% }%>
