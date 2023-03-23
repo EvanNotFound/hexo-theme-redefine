@@ -103,7 +103,7 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 
 如有问题，请发邮件到 [contact@ohevan.com](mailto:contact@ohevan.com). 我会及时回复
 
-如果我做的主题还不错的话，欢迎给我 Github 点个 Star，谢谢
+如果你觉得主题还不错的话，欢迎给我 Github 点个 Star，谢谢
 
 如果你在使用 [Typora](https://typora.io/) 编辑器写文章，欢迎查看我写的 [Typora Redefine 主题](https://github.com/EvanNotFound/typora-theme-redefine)，按照本 Hexo 主题样式编写，让你可以直接预览文章效果，更好排版。
 
