@@ -18,7 +18,7 @@ info:
 # IMAGE CONFIGURATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 defaults:
   # Favicon
-  favicon: /favicon.ico
+  favicon: /images/redefine-favicon.svg
   # Site logo
   logo: 
   # Site avatar
@@ -226,7 +226,7 @@ articles:
   # Article recommendation. Requires nodejieba (npm install nodejieba). Transplanted from hexo-theme-volantis.
   recommendation:
     # Whether to enable article recommendation
-    enable: true
+    enable: false
     # Article recommendation title
     title: 推荐阅读
     # Article recommendation title icon
@@ -236,8 +236,7 @@ articles:
     # Placeholder image
     placeholder: /images/wallhaven-wqery6-light.webp
     # Skip directory
-    skip_dirs: 
-      - wiki/
+    skip_dirs: []
 # ARTICLE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
@@ -267,13 +266,50 @@ comment:
 # COMMENT <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
-# PAGE TEMPLATES >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
-page_templates:
-  # Friend Links page column number
-  friends_column: 3
-  # Tags page style
-  tags_style: blur # blur, cloud
-# PAGE TEMPLATES <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+# FOOTER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+footer:
+  # Show website running time
+  runtime: true # show website running time or not
+  # Icon in footer, write fontawesome icon code here
+  icon: '<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>'
+  # The start time of the website, format: YYYY/MM/DD HH:mm:ss
+  start: 2022/8/17 11:45:14
+  # Footer message
+  customize:
+  # ICP record number. See https://beian.miit.gov.cn/
+  icp:
+    enable: false # Whether to enable
+    number: # ICP record number
+    url: # ICP record url
+# FOOTER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+
+
+# INJECT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+inject:
+  # Whether to enable inject
+  enable: false
+  # Inject custom head html code
+  head: 
+    -
+    -
+  # Inject custom footer html code
+  footer:
+    -
+    -
+# INJECT <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+
+
+# FONTAWESOME >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+fontawesome: # Pro v6.2.1
+  # Thin version
+  thin: false
+  # Light version
+  light: false
+  # Duotone version
+  duotone: false
+  # Sharp Solid version
+  sharp_solid: false
+# FONTAWESOME <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
 # PLUGINS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
@@ -299,6 +335,13 @@ plugins:
     version: "9.3.0" # default v9.3.0
 # PLUGINS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
+# PAGE TEMPLATES >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+page_templates:
+  # Friend Links page column number
+  friends_column: 2
+  # Tags page style
+  tags_style: blur # blur, cloud
+# PAGE TEMPLATES <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 # CDN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 cdn:
@@ -307,50 +350,3 @@ cdn:
   # CDN Provider
   provider: unpkg # jsdelivr, unpkg, aliyun
 # CDN <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
-
-
-# FOOTER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
-footer:
-  # Show website running time
-  runtime: true # show website running time or not
-  # Icon in footer, write fontawesome icon code here
-  icon: '<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>'
-  # The start time of the website, format: YYYY/MM/DD HH:mm:ss
-  start: 2022/8/17 11:45:14
-  # Footer message
-  customize:
-  # ICP record number. See https://beian.miit.gov.cn/
-  icp:
-    enable: false # Whether to enable
-    number: # ICP record number
-    url: # ICP record url
-# FOOTER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
-
-
-# FONTAWESOME >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
-fontawesome: # Pro v6.2.1
-  # Thin version
-  thin: false
-  # Light version
-  light: false
-  # Duotone version
-  duotone: false
-  # Sharp Solid version
-  sharp_solid: false
-# FONTAWESOME <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
-
-
-# INJECT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
-inject:
-  # Whether to enable inject
-  enable: false
-  # Inject custom head html code
-  head: 
-    -
-    -
-  # Inject custom footer html code
-  footer:
-    -
-    -
-# INJECT <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
-
