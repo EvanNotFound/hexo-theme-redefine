@@ -1,4 +1,4 @@
-/* global Global */
+/* global function */
 function initTOC() {
   Global.utils.navItems = document.querySelectorAll('.post-toc-wrap .post-toc li');
 

@@ -1,4 +1,4 @@
-/* global Global */
+/* global function */
 
 Global.initUtils = () => {
   Global.utils = {
@@ -10,6 +10,8 @@ Global.initUtils = () => {
     pjaxProgressBar_dom: document.querySelector(".pjax-progress-bar"),
     pjaxProgressIcon_dom: document.querySelector(".pjax-progress-icon"),
     backToTopButton_dom: document.querySelector(".tool-scroll-to-top"),
+    toolsList: document.querySelector(".hidden-tools-list"),
+    toggleButton: document.querySelector(".toggle-tools-list"),
 
     innerHeight: window.innerHeight,
     pjaxProgressBarTimer: null,
@@ -106,16 +108,8 @@ Global.initUtils = () => {
     },
 
     toggleToolsList() {
-      const toggleButton = document.querySelector(".toggle-tools-list");
-      const toolsList = document.querySelector(".tools-list");
-    
-      if (!toggleButton || !toolsList) {
-        console.error("Could not find toggle button or tools list elements");
-        return;
-      }
-    
-      toggleButton.addEventListener("click", () => {
-        toolsList.classList.toggle("show");
+      this.toggleButton.addEventListener("click", () => {
+        this.toolsList.classList.toggle("show");
       });
     },
     

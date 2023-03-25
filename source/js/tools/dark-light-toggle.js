@@ -1,4 +1,4 @@
-/* global Global */
+/* global function */
 
 
 Global.initModeToggle = () => {

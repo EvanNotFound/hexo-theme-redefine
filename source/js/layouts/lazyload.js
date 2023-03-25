@@ -1,40 +1,42 @@
-const initLazyLoad = () => {
-  const imgs = document.querySelectorAll('img[data-src][lazyload]:not([loading])');
-  let lastLoadTime = 0;
+Global.initLazyLoad = () => {
 
-  const lazyLoadImages = () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0;
-    const threshold = windowHeight * 2;
+  const imgs = document.querySelectorAll('img');
+  let now = Date.now();
+  let needLoad = true;
+
+  function lazyload(imgs) {
+    now = Date.now();
+    needLoad = Array.from(imgs).some(i => i.hasAttribute('lazyload'));
+
+    const h = window.innerHeight;
+    const s = document.documentElement.scrollTop || document.body.scrollTop;
 
     imgs.forEach(img => {
-      if (img.offsetTop - scrollTop < threshold) {
-        img.setAttribute('loading', 'true');
+      if (img.hasAttribute('lazyload') && !img.hasAttribute('loading')) {
 
-        const temp = new Image();
-        temp.src = img.getAttribute('data-src');
-
-        temp.onload = () => {
-          img.removeAttribute('lazyload');
-          img.removeAttribute('data-src');
-          img.setAttribute('src', temp.src);
-          img.removeAttribute('loading');
-        };
-
-        temp.onerror = () => {
-          img.removeAttribute('loading');
-        };
+        if ((h + s) > img.offsetTop) {
+          img.setAttribute('loading', true);
+          const loadImageTimeout = setTimeout(() => {
+            const temp = new Image();
+            const src = img.getAttribute('data-src');
+            temp.src = src;
+            temp.onload = () => {
+              img.src = src;
+              img.removeAttribute('lazyload');
+              img.removeAttribute('loading');
+              clearTimeout(loadImageTimeout);
+            }
+          }, 500);
+        }
       }
     });
+  }
 
-    lastLoadTime = Date.now();
-  };
+  lazyload(imgs);
 
-  lazyLoadImages();
-
-  window.addEventListener('scroll', () => {
-    if (Date.now() - lastLoadTime > 50) {
-      lazyLoadImages();
+  window.onscroll = () => {
+    if (Date.now() - now > 50 && needLoad) {
+      lazyload(imgs);
     }
-  });
-};
+  }
+}

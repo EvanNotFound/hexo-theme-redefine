@@ -1,4 +1,4 @@
-/* global Global */
+/* global function */
 
 function initTocToggle() {
   Global.utils.TocToggle = {

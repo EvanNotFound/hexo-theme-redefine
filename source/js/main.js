@@ -1,4 +1,4 @@
-/* global Global */
+/* global function */
 
 window.addEventListener('DOMContentLoaded', () => {
 
@@ -63,7 +63,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     if (Global.theme_config.articles.lazyload === true) {
-      initLazyLoad();
+      Global.initLazyLoad();
     }
   }
 
