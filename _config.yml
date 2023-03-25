@@ -226,7 +226,7 @@ articles:
   # Table of contents settings
   toc:
     enable: true # Whether to enable TOC
-    depth: 3 # TOC depth
+    max_depth: 3 # TOC depth
     number: false # Whether to add number to TOC automatically
     expand: true # Whether to expand TOC
     init_open: true # Open toc by default
