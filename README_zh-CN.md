@@ -35,21 +35,21 @@
 
 ## ⛰️ 部分功能
 
-- [笔记模块](https://redefine-docs.ohevan.com/docs/advanced/writing-modules/note-module)
-- [友链样式](https://redefine-docs.ohevan.com/docs/advanced/friend-link)
-- [数学公式](https://redefine-docs.ohevan.com/docs/advanced/writing-modules/mathjax)
+- [笔记模块](https://redefine-docs.ohevan.com/modules/notes)
+- [友链样式](https://redefine-docs.ohevan.com/page_templates/friends)
+- [数学公式](https://redefine-docs.ohevan.com/plugins/mathjax)
 - 代码块语言显示
 - Light/Dark 模式切换
-- [Font Awesome 6.2.1 Pro](https://redefine-docs.ohevan.com/docs/configuration-guide/fontawesome)（包含 Duotone/Regular/Thin/Sharp 等不同样式）
-- [下拉菜单](https://redefine-docs.ohevan.com/docs/configuration-guide/menu)
-- [可自定义页脚](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
-- [网站运行时间显示](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
-- [文章头图](https://redefine-docs.ohevan.com/docs/advanced/home-contents/thumbnail)
-- [Mermaid JS 支持](https://redefine-docs.ohevan.com/docs/advanced/theme-plugins/mermaid)
+- [Font Awesome 6.2.1 Pro](https://redefine-docs.ohevan.com/basic/fontawesome)（包含 Duotone/Regular/Thin 等不同样式）
+- [下拉菜单](https://redefine-docs.ohevan.com/dhome/navbar#%E9%93%BE%E6%8E%A5%E5%88%97%E8%A1%A8)
+- [可自定义页脚](https://redefine-docs.ohevan.com/footer)
+- [网站运行时间显示](https://redefine-docs.ohevan.com/footer#%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4)
+- [文章头图](https://redefine-docs.ohevan.com/article_customize/banner)
+- [Mermaid JS 支持](https://redefine-docs.ohevan.com/plugins/mermaid)
 - SEO 友好
-- [Aplayer 音乐播放器支持](https://redefine-docs.ohevan.com/docs/advanced/theme-plugins/aplayer)
-- [说说模块](https://redefine-docs.ohevan.com/docs/advanced/shuoshuo/essays)
-- [自定义字体](https://redefine-docs.ohevan.com/docs/configuration-guide/custom)
+- [Aplayer 音乐播放器支持](https://redefine-docs.ohevan.com/plugins/aplayer)
+- [说说模块](https://redefine-docs.ohevan.com/shuoshuo)
+- [自定义字体](https://redefine-docs.ohevan.com/basic/global#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93)
 
 ## ☁️ 安装
 

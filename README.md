@@ -39,21 +39,21 @@ If you are also using Redefine, please go to [Redefine Theme Showcase](https://r
 
 ## ⛰️ Some functions
 
-- [Note Module](https://redefine-docs.ohevan.com/docs/advanced/writing-modules/note-module)
-- [Friend Link Page](https://redefine-docs.ohevan.com/docs/advanced/friend-link)
-- [Mathjax Support](https://redefine-docs.ohevan.com/docs/advanced/writing-modules/mathjax)
+- [Note Module](https://redefine-docs.ohevan.com/modules/notes)
+- [Friend Link Page](https://redefine-docs.ohevan.com/page_templates/friends)
+- [Mathjax Support](https://redefine-docs.ohevan.com/plugins/mathjax)
 - Code block language display
 - Light/Dark mode switching
-- [Font Awesome 6.2.1 Pro](https://redefine-docs.ohevan.com/docs/configuration-guide/fontawesome) (contains different styles like Duotone/Regular/Thin/Sharp)
-- [Drop-down menu](https://redefine-docs.ohevan.com/docs/configuration-guide/menu)
-- [Customizable footer](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
-- [Site Uptime Display](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
-- [Article Header Image](https://redefine-docs.ohevan.com/docs/advanced/home-contents/thumbnail)
-- [Mermaid JS support](https://redefine-docs.ohevan.com/docs/advanced/theme-plugins/mermaid)
+- [Font Awesome 6.2.1 Pro](https://redefine-docs.ohevan.com/basic/fontawesome) (contains different styles like Duotone/Regular/Thin/Sharp)
+- [Drop-down menu](https://redefine-docs.ohevan.com/dhome/navbar#%E9%93%BE%E6%8E%A5%E5%88%97%E8%A1%A8)
+- [Customizable footer](https://redefine-docs.ohevan.com/footer)
+- [Site Uptime Display](https://redefine-docs.ohevan.com/footer#%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4)
+- [Article Header Image](https://redefine-docs.ohevan.com/article_customize/banner)
+- [Mermaid JS support](https://redefine-docs.ohevan.com/plugins/mermaid)
 - SEO friendly
-- [Aplayer support](https://redefine-docs.ohevan.com/docs/advanced/theme-plugins/aplayer)
-- [Shuoshuo support](https://redefine-docs.ohevan.com/docs/advanced/shuoshuo/essays)
-- [Customizable Font](https://redefine-docs.ohevan.com/docs/configuration-guide/custom)
+- [Aplayer support](https://redefine-docs.ohevan.com/plugins/aplayer)
+- [Shuoshuo support](https://redefine-docs.ohevan.com/shuoshuo)
+- [Customizable Font](https://redefine-docs.ohevan.com/basic/global#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93)
 
 
 
