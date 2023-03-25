@@ -1,8 +1,8 @@
-REDEFINE.initBackToTop = () => {
+Global.initBackToTop = () => {
 
-  REDEFINE.utils = {
+  Global.utils = {
 
-    ...REDEFINE.utils,
+    ...Global.utils,
 
     backToBottomButton_dom: document.querySelector('.tool-scroll-to-bottom'),
 
@@ -31,7 +31,7 @@ REDEFINE.initBackToTop = () => {
     },
   }
 
-  REDEFINE.utils.initBackToTop();
-  REDEFINE.utils.initBackToBottom();
+  Global.utils.initBackToTop();
+  Global.utils.initBackToBottom();
 
 }

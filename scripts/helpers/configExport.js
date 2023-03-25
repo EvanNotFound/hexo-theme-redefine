@@ -68,9 +68,9 @@ hexo.extend.helper.register('export_config', function () {
   }
 
   return `<script id="hexo-configurations">
-    let REDEFINE = window.REDEFINE || {};
-    REDEFINE.hexo_config = ${JSON.stringify(hexo_config)};
-    REDEFINE.theme_config = ${JSON.stringify(theme_config)};
-    REDEFINE.language_ago = ${JSON.stringify(languageContent['ago'])};
+    let Global = window.Global || {};
+    Global.hexo_config = ${JSON.stringify(hexo_config)};
+    Global.theme_config = ${JSON.stringify(theme_config)};
+    Global.language_ago = ${JSON.stringify(languageContent['ago'])};
   </script>`;
 });

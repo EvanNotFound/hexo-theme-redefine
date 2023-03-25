@@ -1,7 +1,7 @@
-/* global REDEFINE */
+/* global Global */
 
-REDEFINE.initUtils = () => {
-  REDEFINE.utils = {
+Global.initUtils = () => {
+  Global.utils = {
     html_root_dom: document.querySelector("html"),
     pageContainer_dom: document.querySelector(".page-container"),
     pageTop_dom: document.querySelector(".main-content-header"),
@@ -17,23 +17,8 @@ REDEFINE.initUtils = () => {
     fontSizeLevel: 0,
 
     isHasScrollProgressBar:
-      REDEFINE.theme_config.global.scroll_progress.bar === true,
+      Global.theme_config.global.scroll_progress.bar === true,
     isHasScrollPercent:
-      REDEFINE.theme_config.global.scroll_progress.percentage === true,
-
-    // Scroll Style Handle
-    styleHandleWhenScroll() {
-      const scrollTop =
-        document.body.scrollTop || document.documentElement.scrollTop;
-      const scrollHeight =
-        document.body.scrollHeight || document.documentElement.scrollHeight;
-      const clientHeight =
-        window.innerHeight || document.documentElement.clientHeight;
-
-      const percent = Math.round(
-        (scrollTop / (scrollHeight - clientHeight)) * 100
-      );
-
       Global.theme_config.global.scroll_progress.percentage === true,
 
     // Scroll Style
@@ -66,19 +51,19 @@ REDEFINE.initUtils = () => {
       window.addEventListener("scroll", () => {
         // style handle when scroll
         if (this.isHasScrollPercent || this.isHasScrollProgressBar) {
-          this.styleHandleWhenScroll();
+          this.updateScrollStyle();
         }
 
         // TOC scroll handle
         if (
-          REDEFINE.theme_config.articles.toc.enable &&
-          REDEFINE.utils.hasOwnProperty("updateActiveTOCLink")
+          Global.theme_config.articles.toc.enable &&
+          Global.utils.hasOwnProperty("updateActiveTOCLink")
         ) {
-          REDEFINE.utils.updateActiveTOCLink();
+          Global.utils.updateActiveTOCLink();
         }
 
         // menu shrink
-        REDEFINE.utils.menuShrink.menuShrink();
+        menuShrink.init();
 
         // auto hide tools
         var y = window.pageYOffset;
@@ -120,57 +105,86 @@ REDEFINE.initUtils = () => {
       });
     },
 
-    // toggle show tools list
-    toggleShowToolsList() {
-      document
-        .querySelector(".tool-toggle-show")
-        .addEventListener("click", () => {
-          document
-            .querySelector(".unfolded-tools-list")
-            .classList.toggle("show");
-        });
+    toggleToolsList() {
+      const toggleButton = document.querySelector(".toggle-tools-list");
+      const toolsList = document.querySelector(".tools-list");
+    
+      if (!toggleButton || !toolsList) {
+        console.error("Could not find toggle button or tools list elements");
+        return;
+      }
+    
+      toggleButton.addEventListener("click", () => {
+        toolsList.classList.toggle("show");
+      });
     },
-
-    // global font adjust
-    globalFontAdjust() {
-      const fontSize = document.defaultView.getComputedStyle(
-        document.body
-      ).fontSize;
+    
+    globalFontSizeAdjust() {
+      const htmlRoot = this.html_root_dom;
+      const fontAdjustPlus = document.querySelector('.tool-font-adjust-plus');
+      const fontAdjustMinus = document.querySelector('.tool-font-adjust-minus');
+    
+      const fontSize = document.defaultView.getComputedStyle(document.body).fontSize;
       const fs = parseFloat(fontSize);
-
-      const initFontSize = () => {
-        const styleStatus = REDEFINE.getStyleStatus();
-        if (styleStatus) {
-          this.fontSizeLevel = styleStatus.fontSizeLevel;
-          setFontSize(this.fontSizeLevel);
+    
+      let fontSizeLevel = 0;
+      const styleStatus = Global.getStyleStatus();
+      if (styleStatus) {
+        fontSizeLevel = styleStatus.fontSizeLevel;
+        setFontSize(fontSizeLevel);
+      }
+    
+      function setFontSize(fontSizeLevel) {
+        htmlRoot.style.fontSize = `${fs * (1 + fontSizeLevel * 0.05)}px`;
+        Global.styleStatus.fontSizeLevel = fontSizeLevel;
+        Global.setStyleStatus();
+      }
+    
+      fontAdjustPlus.addEventListener('click', () => {
+        switch (fontSizeLevel) {
+          case 0:
+            fontSizeLevel = 1;
+            break;
+          case 1:
+            fontSizeLevel = 2;
+            break;
+          case 2:
+            fontSizeLevel = 3;
+            break;
+          case 3:
+            fontSizeLevel = 4;
+            break;
+          case 4:
+            fontSizeLevel = 5;
+            break;
+          default:
+            break;
         }
-      };
-
-      const setFontSize = (fontSizeLevel) => {
-        this.html_root_dom.style.fontSize = `${
-          fs * (1 + fontSizeLevel * 0.05)
-        }px`;
-        REDEFINE.styleStatus.fontSizeLevel = fontSizeLevel;
-        REDEFINE.setStyleStatus();
-      };
-
-      initFontSize();
-
-      document
-        .querySelector(".tool-font-adjust-plus")
-        .addEventListener("click", () => {
-          if (this.fontSizeLevel === 5) return;
-          this.fontSizeLevel++;
-          setFontSize(this.fontSizeLevel);
-        });
-
-      document
-        .querySelector(".tool-font-adjust-minus")
-        .addEventListener("click", () => {
-          if (this.fontSizeLevel <= 0) return;
-          this.fontSizeLevel--;
-          setFontSize(this.fontSizeLevel);
-        });
+        setFontSize(fontSizeLevel);
+      });
+    
+      fontAdjustMinus.addEventListener('click', () => {
+        switch (fontSizeLevel) {
+          case 1:
+            fontSizeLevel = 0;
+            break;
+          case 2:
+            fontSizeLevel = 1;
+            break;
+          case 3:
+            fontSizeLevel = 2;
+            break;
+          case 4:
+            fontSizeLevel = 3;
+            break;
+          case 5:
+            fontSizeLevel = 4;
+            break;
+          default:
+            break;
+        }
+        setFontSize(fontSizeLevel);
+      });
     },
 
     // toggle content area width
@@ -181,22 +195,22 @@ REDEFINE.initUtils = () => {
       const iconDom = toolExpandDom.querySelector("i");
 
       const defaultMaxWidth =
-        REDEFINE.theme_config.global.content_max_width || "1000px";
+        Global.theme_config.global.content_max_width || "1000px";
       const expandMaxWidth = "90%";
       let menuMaxWidth = defaultMaxWidth;
 
       let isExpand = false;
 
       if (
-        REDEFINE.theme_config.home_banner.enable === true &&
+        Global.theme_config.home_banner.enable === true &&
         window.location.pathname === "/"
       ) {
         menuMaxWidth = parseInt(defaultMaxWidth) * 1.2 + "px";
       }
 
       const setPageWidth = (isExpand) => {
-        REDEFINE.styleStatus.isExpandPageWidth = isExpand;
-        REDEFINE.setStyleStatus();
+        Global.styleStatus.isExpandPageWidth = isExpand;
+        Global.setStyleStatus();
         if (isExpand) {
           iconDom.classList.remove("fa-expand");
           iconDom.classList.add("fa-compress");
@@ -211,7 +225,7 @@ REDEFINE.initUtils = () => {
       };
 
       const initPageWidth = () => {
-        const styleStatus = REDEFINE.getStyleStatus();
+        const styleStatus = Global.getStyleStatus();
         if (styleStatus) {
           isExpand = styleStatus.isExpandPageWidth;
           setPageWidth(isExpand);
@@ -310,7 +324,7 @@ REDEFINE.initUtils = () => {
     
 
     getHowLongAgo(timestamp) {
-      const l = REDEFINE.language_ago;
+      const l = Global.language_ago;
 
       const __Y = Math.floor(timestamp / (60 * 60 * 24 * 30) / 12);
       const __M = Math.floor(timestamp / (60 * 60 * 24 * 30));
@@ -341,7 +355,7 @@ REDEFINE.initUtils = () => {
       const post = document.querySelectorAll(
         ".home-article-meta-info .home-article-date"
       );
-      const df = REDEFINE.theme_config.home.article_date_format;
+      const df = Global.theme_config.home.article_date_format;
       if (df === "relative") {
         post &&
           post.forEach((v) => {
@@ -475,32 +489,32 @@ REDEFINE.initUtils = () => {
   };
 
   // init scroll
-  REDEFINE.utils.registerWindowScroll();
+  Global.utils.registerWindowScroll();
 
   // toggle show tools list
-  REDEFINE.utils.toggleShowToolsList();
+  Global.utils.toggleToolsList();
 
   // global font adjust
-  REDEFINE.utils.globalFontAdjust();
+  Global.utils.globalFontSizeAdjust();
 
   // adjust content area width
-  REDEFINE.utils.contentAreaWidthAdjust();
+  Global.utils.contentAreaWidthAdjust();
 
   // go comment
-  REDEFINE.utils.goComment();
+  Global.utils.goComment();
 
   // init page height handle
-  REDEFINE.utils.initPageHeightHandle();
+  Global.utils.initPageHeightHandle();
 
   // init first screen height
-  REDEFINE.utils.initFirstScreenHeight();
+  Global.utils.initFirstScreenHeight();
 
   // big image viewer handle
-  REDEFINE.utils.imageViewer();
+  Global.utils.imageViewer();
 
   // set how long ago in home article block
-  REDEFINE.utils.relativeTimeInHome();
+  Global.utils.relativeTimeInHome();
 
   // calculate material colors
-  //REDEFINE.utils.calculateMaterialColors(REDEFINE.theme_config.colors.primary);
+  //Global.utils.calculateMaterialColors(Global.theme_config.colors.primary);
 };

@@ -23,7 +23,7 @@ function setTabs() {
 }
 
 
-if (REDEFINE.theme_config.global.pjax === true && REDEFINE.utils) {
+if (Global.theme_config.global.pjax === true && Global.utils) {
     setTabs();
 } else {
     window.addEventListener('DOMContentLoaded', setTabs);
