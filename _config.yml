@@ -145,6 +145,8 @@ home_banner:
 
 # NAVIGATION BAR >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 navbar:
+  # Auto hide navbar
+  auto_hide: false
   # Navbar background color
   color:
     left: "#f78736" #left side 

@@ -34,31 +34,29 @@ REDEFINE.initUtils = () => {
         (scrollTop / (scrollHeight - clientHeight)) * 100
       );
 
+      Global.theme_config.global.scroll_progress.percentage === true,
+
+    // Scroll Style
+    updateScrollStyle() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight;
+      const clientHeight = window.innerHeight || document.documentElement.clientHeight;
+      const percent = Math.round((scrollTop / (scrollHeight - clientHeight)) * 100);
+    
       if (this.isHasScrollProgressBar) {
-        const ProgressPercent = (
-          (scrollTop / (scrollHeight - clientHeight)) *
-          100
-        ).toFixed(3);
-        this.scrollProgressBar_dom.style.visibility =
-          percent === 0 ? "hidden" : "visible";
-        this.scrollProgressBar_dom.style.width = `${ProgressPercent}%`;
+        const progressPercent = ((scrollTop / (scrollHeight - clientHeight)) * 100).toFixed(3);
+        this.scrollProgressBar_dom.style.visibility = percent === 0 ? 'hidden' : 'visible';
+        this.scrollProgressBar_dom.style.width = `${progressPercent}%`;
       }
-
+    
       if (this.isHasScrollPercent) {
-        const percent_dom = this.backToTopButton_dom.querySelector(".percent");
-        if (percent === 0 || percent === undefined) {
-          this.backToTopButton_dom.classList.remove("show");
-        } else {
-          this.backToTopButton_dom.classList.add("show");
-          percent_dom.innerHTML = percent.toFixed(0);
-        }
+        const percentDom = this.backToTopButton_dom.querySelector('.percent');
+        this.backToTopButton_dom.classList.toggle('show', percent !== 0 && percent !== undefined);
+        percentDom.innerHTML = percent.toFixed(0);
       }
-
-      // hide menu handle
-      if (scrollTop > this.prevScrollValue && scrollTop > this.innerHeight) {
-        this.pageTop_dom.classList.remove("hide");
-      } else {
-        this.pageTop_dom.classList.remove("hide");
+    
+      if (Global.theme_config.navbar.auto_hide) {
+        this.pageTop_dom.classList.toggle('hide', (this.prevScrollValue > clientHeight && scrollTop  > this.prevScrollValue) );
       }
       this.prevScrollValue = scrollTop;
     },
