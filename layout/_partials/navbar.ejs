@@ -1,4 +1,4 @@
-<header class="navbar-wrapper">
+<header class="navbar-container">
     
     <div class="navbar-content<%- (theme.home_banner.enable === true && is_home() && !page.prev) ? ' has-first-screen' : '' %>">
         <div class="left">
@@ -16,7 +16,7 @@
 
         <div class="right">
             <!-- PC -->
-            <div class="pc">
+            <div class="desktop">
                 <ul class="navbar-list">
                     <% for (let i in theme.navbar.links) { %>
                         <% if (theme.navbar.links[i].path === 'none') {} else {%>

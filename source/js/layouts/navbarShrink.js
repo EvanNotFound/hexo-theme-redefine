@@ -1,5 +1,5 @@
 const navbarShrink = {
-  navbarDom: document.querySelector('.navbar-wrapper'),
+  navbarDom: document.querySelector('.navbar-container'),
   leftAsideDom: document.querySelector('.page-aside'),
   isnavbarShrink: false,
   navbarHeight: 0,

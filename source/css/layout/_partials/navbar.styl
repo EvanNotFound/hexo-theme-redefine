@@ -1,11 +1,11 @@
 $logo-title-font-size = 2rem
-$pc-search-icon-font-size = 1.5rem
+$desktop-search-icon-font-size = 1.5rem
 $navbar-bar-line-height = 2.5px
 $logo-image-box-width = 46px
 
 @import "../../common/variables"
 
-.navbar-wrapper {
+.navbar-container {
   font-family "Optima Medium", sans-serif
   width 100%
   height 100%
@@ -119,7 +119,7 @@ $logo-image-box-width = 46px
 
     .right {
 
-      .pc {
+      .desktop {
 
         .navbar-list {
           display flex
@@ -185,7 +185,7 @@ $logo-image-box-width = 46px
             
 
             &.search {
-              font-size $pc-search-icon-font-size
+              font-size $desktop-search-icon-font-size
               margin-left 26px
 
               i {
@@ -195,7 +195,7 @@ $logo-image-box-width = 46px
             }
 
             .sub-menu{
-              position absolute;
+              position absolute
               right auto
               left 50%
               -webkit-transform translate(-50%, 0)
