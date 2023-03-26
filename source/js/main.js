@@ -3,7 +3,7 @@
 window.addEventListener('DOMContentLoaded', () => {
 
   Global.themeInfo = {
-    theme: `Redefine v${Global.theme_config.version}`,
+    theme: `Redefine v${Global.theme.version}`,
     author: 'EvanNotFound',
     repository: 'https://github.com/EvanNotFound/hexo-theme-redefine'
   }
@@ -46,23 +46,23 @@ window.addEventListener('DOMContentLoaded', () => {
     navbarShrink.init();
     Global.initModeToggle();
     Global.initBackToTop();
-    if (Global.theme_config.home_banner.subtitle.length !== 0) {
+    if (Global.theme.home_banner.subtitle.text.length !== 0) {
       Global.initTyped('subtitle');
     }
 
-    if (Global.theme_config.plugins.mermaid.enable === true) {
+    if (Global.theme.plugins.mermaid.enable === true) {
       Global.initMermaid();
     }
 
-    if (Global.theme_config.navbar.search.enable === true) {
+    if (Global.theme.navbar.search.enable === true) {
       Global.initLocalSearch();
     }
 
-    if (Global.theme_config.articles.code_block.copy === true) {
+    if (Global.theme.articles.code_block.copy === true) {
       Global.initCopyCode();
     }
 
-    if (Global.theme_config.articles.lazyload === true) {
+    if (Global.theme.articles.lazyload === true) {
       Global.initLazyLoad();
     }
   }

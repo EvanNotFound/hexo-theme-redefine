@@ -1,6 +1,6 @@
 <header class="navbar-container">
     
-    <div class="navbar-content<%- (theme.home_banner.enable === true && is_home() && !page.prev) ? ' has-first-screen' : '' %>">
+    <div class="navbar-content<%- (theme.home_banner.enable === true && is_home() && !page.prev) ? ' has-home-banner' : '' %>">
         <div class="left">
             <% if (theme.defaults.hasOwnProperty('logo') && theme.defaults.logo) { %>
                 <a class="logo-image" href="/">

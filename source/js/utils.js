@@ -19,9 +19,9 @@ Global.initUtils = () => {
     fontSizeLevel: 0,
 
     isHasScrollProgressBar:
-      Global.theme_config.global.scroll_progress.bar === true,
+      Global.theme.global.scroll_progress.bar === true,
     isHasScrollPercent:
-      Global.theme_config.global.scroll_progress.percentage === true,
+      Global.theme.global.scroll_progress.percentage === true,
 
     // Scroll Style
     updateScrollStyle() {
@@ -42,7 +42,7 @@ Global.initUtils = () => {
         percentDom.innerHTML = percent.toFixed(0);
       }
     
-      if (Global.theme_config.navbar.auto_hide) {
+      if (Global.theme.navbar.auto_hide) {
         this.pageTop_dom.classList.toggle('hide', (this.prevScrollValue > clientHeight && scrollTop  > this.prevScrollValue) );
       }
       this.prevScrollValue = scrollTop;
@@ -58,7 +58,7 @@ Global.initUtils = () => {
 
         // TOC scroll handle
         if (
-          Global.theme_config.articles.toc.enable &&
+          Global.theme.articles.toc.enable &&
           Global.utils.hasOwnProperty("updateActiveTOCLink")
         ) {
           Global.utils.updateActiveTOCLink();
@@ -189,14 +189,14 @@ Global.initUtils = () => {
       const iconDom = toolExpandDom.querySelector("i");
 
       const defaultMaxWidth =
-        Global.theme_config.global.content_max_width || "1000px";
+        Global.theme.global.content_max_width || "1000px";
       const expandMaxWidth = "90%";
       let navbarMaxWidth = defaultMaxWidth;
 
       let isExpand = false;
 
       if (
-        Global.theme_config.home_banner.enable === true &&
+        Global.theme.home_banner.enable === true &&
         window.location.pathname === "/"
       ) {
         navbarMaxWidth = parseInt(defaultMaxWidth) * 1.2 + "px";
@@ -349,7 +349,7 @@ Global.initUtils = () => {
       const post = document.querySelectorAll(
         ".home-article-meta-info .home-article-date"
       );
-      const df = Global.theme_config.home.article_date_format;
+      const df = Global.theme.home.article_date_format;
       if (df === "relative") {
         post &&
           post.forEach((v) => {
@@ -510,5 +510,5 @@ Global.initUtils = () => {
   Global.utils.relativeTimeInHome();
 
   // calculate material colors
-  //Global.utils.calculateMaterialColors(Global.theme_config.colors.primary);
+  //Global.utils.calculateMaterialColors(Global.theme.colors.primary);
 };

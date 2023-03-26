@@ -107,7 +107,13 @@ home_banner:
   # Home banner title
   title: Theme Redefine
   # Home banner subtitle
-  subtitle: []
+  subtitle:
+    text: [] # subtitle text, array
+    typing_speed: 100 # Typing speed (ms)
+    backing_speed: 50 # Backing speed (ms)
+    backing_delay: 1000 # Backing delay (ms)
+    loop: true # Whether to loop
+    start_delay: 500 # Start delay (ms)
   # Color of home banner text
   text_color: 
     light: "#fff" # light mode

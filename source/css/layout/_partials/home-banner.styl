@@ -4,7 +4,7 @@ $temp-subtitle-fs = hexo-config('home_banner.text_style.subtitle_size')
 $subtitle-font-size = $temp-subtitle-fs ? convert($temp-subtitle-fs) : 1.4rem
 $temp-line-height = hexo-config('style.first_screen.line_height')
 $line-height = $temp-line-height ? $temp-line-height : 1.2
-$first-screen-icon-size = 1.6rem
+$home-banner-icon-size = 1.6rem
 
 @import "../../common/variables"
 
@@ -15,7 +15,7 @@ $first-screen-icon-size = 1.6rem
   width 100%
   min-height 100vh
   overflow hidden
-  background var(--first-screen-img) center center / cover no-repeat
+  background var(--home-banner-img) center center / cover no-repeat
   background-size cover
   will-change transform
 
@@ -30,7 +30,7 @@ $first-screen-icon-size = 1.6rem
       font-size $title-font-size
       line-height $line-height
       text-align center
-      color var(--first-screen-text-color)
+      color var(--home-banner-text-color)
 
       p {
         margin 0
@@ -58,19 +58,19 @@ $first-screen-icon-size = 1.6rem
     .social-contacts {
       position absolute
       bottom 60px
-      font-size $first-screen-icon-size
+      font-size $home-banner-icon-size
       text-align center
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       box-shadow 0 0 10px 0 rgba(0, 0, 0, 0.5)
       padding 4px 24px
       border-radius $redefine-border-radius-medium
-      box-shadow: inset 0 0 2000px var(--first-screen-icons-container-background-color);
-      border 1.5px solid var(--first-screen-icons-container-border-color);
+      box-shadow: inset 0 0 2000px var(--home-banner-icons-container-background-color);
+      border 1.5px solid var(--home-banner-icons-container-border-color);
 
 
       +redefine-tablet() {
-        font-size $first-screen-icon-size * 0.9
+        font-size $home-banner-icon-size * 0.9
       }
 
       .social-contact-item {

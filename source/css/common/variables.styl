@@ -136,9 +136,9 @@ $note-black-title-bg = #E9E9E9
 $note-cyan-title-bg = #E9FDF9
 $note-type-title-bg = #fdf3e9
 
-$first-screen-text-color = convert(hexo-config('home_banner.text_color.light'))
-$first-screen-icons-container-border-color = rgba(255, 255, 255, 0.35)
-$first-screen-icons-container-background-color = rgba(255, 255, 255, 0.3)
+$home-banner-text-color = convert(hexo-config('home_banner.text_color.light'))
+$home-banner-icons-container-border-color = rgba(255, 255, 255, 0.35)
+$home-banner-icons-container-background-color = rgba(255, 255, 255, 0.3)
 
 
 // ========================================================================================
@@ -180,16 +180,16 @@ $dark-note-gray-title-bg = #4e4e4e
 $dark-note-black-title-bg = #1e1e1e
 $dark-note-type-title-bg = #4e3a1e
 
-$first-screen-text-color-dark = convert(hexo-config('home_banner.text_color.dark'))
-$first-screen-icons-container-border-color-dark = rgba(197, 197, 197, 0.35)
-$first-screen-icons-container-background-color-dark = rgba(197, 197, 197, 0.3)
+$home-banner-text-color-dark = convert(hexo-config('home_banner.text_color.dark'))
+$home-banner-icons-container-border-color-dark = rgba(197, 197, 197, 0.35)
+$home-banner-icons-container-background-color-dark = rgba(197, 197, 197, 0.3)
 
 
 // ========================================================================================
 // background image
 // ========================================================================================
-$first-screen-img-light = url(hexo-config('home_banner.image.light'))
-$first-screen-img-dark = url(hexo-config('home_banner.image.dark'))
+$home-banner-img-light = url(hexo-config('home_banner.image.light'))
+$home-banner-img-dark = url(hexo-config('home_banner.image.dark'))
 
 
 // ========================================================================================
@@ -258,10 +258,10 @@ root-color(mode) {
   --note-black-title-bg : mode == 'light' ? $note-black-title-bg : $dark-note-black-title-bg
   --note-purple-title-bg : mode == 'light' ? $note-purple-title-bg : $dark-note-purple-title-bg
   
-  --first-screen-img mode == 'light' ? $first-screen-img-light : $first-screen-img-dark
-  --first-screen-text-color mode == 'light' ? $first-screen-text-color : $first-screen-text-color-dark
-  --first-screen-icons-container-border-color mode == 'light' ? $first-screen-icons-container-border-color : $first-screen-icons-container-border-color-dark
-  --first-screen-icons-container-background-color mode == 'light' ? $first-screen-icons-container-background-color : $first-screen-icons-container-background-color-dark
+  --home-banner-img mode == 'light' ? $home-banner-img-light : $home-banner-img-dark
+  --home-banner-text-color mode == 'light' ? $home-banner-text-color : $home-banner-text-color-dark
+  --home-banner-icons-container-border-color mode == 'light' ? $home-banner-icons-container-border-color : $home-banner-icons-container-border-color-dark
+  --home-banner-icons-container-background-color mode == 'light' ? $home-banner-icons-container-background-color : $home-banner-icons-container-background-color-dark
 
   --redefine-box-shadow : var(--shadow-color-2) 0px 6px 24px 0px, var(--shadow-color-1) 0px 0px 0px 1px
   --redefine-box-shadow-hover : var(--shadow-color-2) 0px 6px 24px 0px, var(--shadow-color-1) 0px 0px 0px 1px, var(--shadow-color-1) 0px 0px 0px 1px inset
