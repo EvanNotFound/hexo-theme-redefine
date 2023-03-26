@@ -1,7 +1,5 @@
 details {
     margin-bottom 1rem
-
-
     &> summary {
         list-style: none;
     }
@@ -14,6 +12,9 @@ details {
 }
 
 details[open] > summary {
+    border-radius: $redefine-border-radius-small $redefine-border-radius-small 0 0;
+    border-bottom: 1px solid transparent;
+
     i.fa-chevron-right {
         transform rotate(90deg)
         transition transform 0.2s ease
@@ -30,10 +31,12 @@ summary {
         transform rotate(0deg)
         transition transform 0.2s ease
         margin-right 1rem
+        float right
+        padding-top 6px
     }
 
 
-    box-shadow var(--redefine-box-shadow-flat) 
+    border solid 1px var(--shadow-color-1)
     border-radius $redefine-border-radius-small
     padding 15px
     font-size 1.2rem
@@ -49,18 +52,24 @@ summary {
     p {
         display inline-block
         margin 0
+        float left
     }
 
 
 }
 
 details div.content {
-    border-radius $redefine-border-radius-small
+    border-radius 0 0 $redefine-border-radius-small $redefine-border-radius-small
     border solid 1px var(--shadow-color-1)
     padding 1rem
     margin-bottom 1rem
     background-color var(--second-background-color)
     animation: fade 0.2s ease forwards;
+
+    &>:first-child {
+        margin-top 0
+    }
+
 }
 
 
