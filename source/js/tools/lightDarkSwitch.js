@@ -7,8 +7,8 @@ Global.initModeToggle = () => {
 
     modeToggleButton_dom: document.querySelector('.tool-dark-light-toggle'),
     iconDom: document.querySelector('.tool-dark-light-toggle i'),
-    mermaidLightTheme: typeof Global.theme.mermaid !== 'undefined' && typeof Global.theme.mermaid.style !== 'undefined' && typeof Global.theme.mermaid.style.light !== 'undefined' ? Global.theme.mermaid.style.light : 'default',
-    mermaidDarkTheme: typeof Global.theme.mermaid !== 'undefined' && typeof Global.theme.mermaid.style !== 'undefined' && typeof Global.theme.mermaid.style.dark !== 'undefined' ? Global.theme.mermaid.style.dark : 'dark',
+    mermaidLightTheme: typeof Global.theme_config.mermaid !== 'undefined' && typeof Global.theme_config.mermaid.style !== 'undefined' && typeof Global.theme_config.mermaid.style.light !== 'undefined' ? Global.theme_config.mermaid.style.light : 'default',
+    mermaidDarkTheme: typeof Global.theme_config.mermaid !== 'undefined' && typeof Global.theme_config.mermaid.style !== 'undefined' && typeof Global.theme_config.mermaid.style.dark !== 'undefined' ? Global.theme_config.mermaid.style.dark : 'dark',
     
 
     enableLightMode() {

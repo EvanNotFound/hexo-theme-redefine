@@ -35,7 +35,7 @@ function initTocToggle() {
   Global.utils.TocToggle.initToggleBarButton();
 }
 
-if (Global.theme.global.pjax === true && Global.utils) {
+if (Global.theme_config.global.pjax === true && Global.utils) {
   initTocToggle();
 } else {
   window.addEventListener('DOMContentLoaded', initTocToggle);

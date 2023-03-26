@@ -161,7 +161,7 @@ Global.initLocalSearch = () => {
           });
 
           // Select top N slices in content
-          let upperBound = parseInt(Global.theme.navbar.search.top_n_per_article ? Global.theme.navbar.search.top_n_per_article : 1, 10);
+          let upperBound = parseInt(Global.theme_config.navbar.search.top_n_per_article ? Global.theme_config.navbar.search.top_n_per_article : 1, 10);
           if (upperBound >= 0) {
             slicesOfContent = slicesOfContent.slice(0, upperBound);
           }
@@ -237,7 +237,7 @@ Global.initLocalSearch = () => {
       });
   };
 
-  if (Global.theme.navbar.search.preload) {
+  if (Global.theme_config.navbar.search.preload) {
     fetchData();
   }
 
