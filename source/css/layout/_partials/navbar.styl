@@ -1,11 +1,11 @@
 $logo-title-font-size = 2rem
 $pc-search-icon-font-size = 1.5rem
-$menu-bar-line-height = 2.5px
+$navbar-bar-line-height = 2.5px
 $logo-image-box-width = 46px
 
 @import "../../common/variables"
 
-.menu-wrapper {
+.navbar-wrapper {
   font-family "Optima Medium", sans-serif
   width 100%
   height 100%
@@ -20,7 +20,7 @@ $logo-image-box-width = 46px
 
   hover-style(false, 0, 0)
 
-  .menu-content {
+  .navbar-content {
     position relative
     height 100%
     width $main-content-width
@@ -49,7 +49,7 @@ $logo-image-box-width = 46px
       align-items center
       transition-t("transform", "0", "0.2", "linear")
 
-      .menu-shrink & {
+      .navbar-shrink & {
         transform scale(0.72)
         transform-origin left
       }
@@ -121,7 +121,7 @@ $logo-image-box-width = 46px
 
       .pc {
 
-        .menu-list {
+        .navbar-list {
           display flex
           align-items center
           
@@ -131,7 +131,7 @@ $logo-image-box-width = 46px
           }
 
 
-          .menu-item {
+          .navbar-item {
             float left
             //padding 5px
             position relative
@@ -176,8 +176,8 @@ $logo-image-box-width = 46px
                 background var(--primary-color)
                 transition-t("transform, bottom", "0, 0", "0.2, 0.2", "linear, linear")
 
-                .menu-shrink & {
-                  bottom -($menu-shrink-height / 2 - 17)
+                .navbar-shrink & {
+                  bottom -($navbar-shrink-height / 2 - 17)
                 }
               }
             }
@@ -235,7 +235,7 @@ $logo-image-box-width = 46px
 
         }
 
-        .menu-list .menu-item:hover .sub-menu{
+        .navbar-list .navbar-item:hover .sub-menu{
           //visibility visible
           max-height 500px
           transition-t("all", "0", "0.2", "ease")
@@ -275,15 +275,15 @@ $logo-image-box-width = 46px
           }
         }
 
-        .menu-bar {
+        .navbar-bar {
 
-          .menu-bar-middle {
+          .navbar-bar-middle {
             width 18px
-            height $menu-bar-line-height
+            height $navbar-bar-line-height
             position relative
             background var(--default-text-color)
 
-            .menu-drawer-show & {
+            .navbar-drawer-show & {
               background transparent
             }
 
@@ -293,7 +293,7 @@ $logo-image-box-width = 46px
               position absolute
               left 0
               width 100%
-              height $menu-bar-line-height
+              height $navbar-bar-line-height
               background var(--default-text-color)
               transition-t("transform", "0", "0.38", "ease")
             }
@@ -302,7 +302,7 @@ $logo-image-box-width = 46px
             &::before {
               top -6px
 
-              .menu-drawer-show & {
+              .navbar-drawer-show & {
                 transform translateY(6px) rotate(45deg)
               }
             }
@@ -311,7 +311,7 @@ $logo-image-box-width = 46px
             &::after {
               bottom -6px
 
-              .menu-drawer-show & {
+              .navbar-drawer-show & {
                 transform translateY(-6px) rotate(-45deg)
               }
             }
@@ -322,9 +322,9 @@ $logo-image-box-width = 46px
   }
 
 
-  .menu-drawer {
+  .navbar-drawer {
     width 100%
-    padding $menu-height 0 20px 0
+    padding $navbar-height 0 20px 0
     position absolute
     top 0
     left 0
@@ -334,17 +334,17 @@ $logo-image-box-width = 46px
     background var(--background-color)
     transition-t("transform", "0", "0.38", "ease")
 
-    .menu-drawer-show & {
+    .navbar-drawer-show & {
       transform scaleY(1)
     }
 
-    .drawer-menu-list {
+    .drawer-navbar-list {
       display flex
       flex-direction column
       justify-content flex-start
       align-items center
 
-      .drawer-menu-item {
+      .drawer-navbar-item {
         font-family: "Optima Bold", sans-serif
         font-size 1rem
         margin 6px 0
@@ -435,7 +435,7 @@ $logo-image-box-width = 46px
     opacity 0
     transition-t("transform, opacity", "0, 0", "0.38, 0.38", "ease, ease")
 
-    .menu-drawer-show & {
+    .navbar-drawer-show & {
       visibility visible
       opacity 1
     }
@@ -443,6 +443,6 @@ $logo-image-box-width = 46px
 
 }
 
-.menu-drawer-show {
+.navbar-drawer-show {
   overflow hidden
 }

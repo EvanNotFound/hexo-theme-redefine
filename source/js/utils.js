@@ -64,8 +64,8 @@ Global.initUtils = () => {
           Global.utils.updateActiveTOCLink();
         }
 
-        // menu shrink
-        menuShrink.init();
+        // navbar shrink
+        navbarShrink.init();
 
         // auto hide tools
         var y = window.pageYOffset;
@@ -184,14 +184,14 @@ Global.initUtils = () => {
     // toggle content area width
     contentAreaWidthAdjust() {
       const toolExpandDom = document.querySelector(".tool-expand-width");
-      const menuContentDom = document.querySelector(".menu-content");
+      const navbarContentDom = document.querySelector(".navbar-content");
       const mainContentDom = document.querySelector(".main-content");
       const iconDom = toolExpandDom.querySelector("i");
 
       const defaultMaxWidth =
         Global.theme_config.global.content_max_width || "1000px";
       const expandMaxWidth = "90%";
-      let menuMaxWidth = defaultMaxWidth;
+      let navbarMaxWidth = defaultMaxWidth;
 
       let isExpand = false;
 
@@ -199,7 +199,7 @@ Global.initUtils = () => {
         Global.theme_config.home_banner.enable === true &&
         window.location.pathname === "/"
       ) {
-        menuMaxWidth = parseInt(defaultMaxWidth) * 1.2 + "px";
+        navbarMaxWidth = parseInt(defaultMaxWidth) * 1.2 + "px";
       }
 
       const setPageWidth = (isExpand) => {
@@ -208,12 +208,12 @@ Global.initUtils = () => {
         if (isExpand) {
           iconDom.classList.remove("fa-expand");
           iconDom.classList.add("fa-compress");
-          menuContentDom.style.maxWidth = expandMaxWidth;
+          navbarContentDom.style.maxWidth = expandMaxWidth;
           mainContentDom.style.maxWidth = expandMaxWidth;
         } else {
           iconDom.classList.remove("fa-compress");
           iconDom.classList.add("fa-expand");
-          menuContentDom.style.maxWidth = menuMaxWidth;
+          navbarContentDom.style.maxWidth = navbarMaxWidth;
           mainContentDom.style.maxWidth = defaultMaxWidth;
         }
       };

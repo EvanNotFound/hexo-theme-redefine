@@ -43,7 +43,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   Global.refresh = () => {
     Global.initUtils();
-    menuShrink.init();
+    navbarShrink.init();
     Global.initModeToggle();
     Global.initBackToTop();
     if (Global.theme_config.home_banner.subtitle.length !== 0) {

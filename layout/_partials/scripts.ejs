@@ -1,17 +1,17 @@
 <%- renderJS([
     'js/utils.js',
     'js/main.js',
-    'js/layouts/menu-shrink.js',
-    'js/tools/go-top-bottom.js',
-    'js/tools/dark-light-toggle.js',
+    'js/layouts/navbarShrink.js',
+    'js/tools/scrollTopBottom.js',
+    'js/tools/lightDarkSwitch.js',
 ]) %>
 
 <% if (theme.navbar.search.enable) { %>
-    <%- renderJS('js/tools/local-search.js') %>
+    <%- renderJS('js/tools/localSearch.js') %>
 <% } %>
 
 <% if (theme.articles.code_block.copy) { %>
-    <%- renderJS('js/tools/code-block.js') %>
+    <%- renderJS('js/tools/codeBlock.js') %>
 <% } %>
 
 <% if (theme.articles.lazyload) { %>
@@ -39,7 +39,7 @@
 <div class="post-scripts<%= theme.global.pjax === true ? ' pjax' : '' %>">
     <% if (theme.articles.toc.enable && is_post()) { %>
         <%- renderJS([
-            'js/tools/toc-toggle.js',
+            'js/tools/tocToggle.js',
             'js/libs/anime.min.js',
             'js/layouts/toc.js',
             'js/plugins/tabs.js',

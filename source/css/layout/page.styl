@@ -15,31 +15,31 @@
 
 
   .main-content-container {
-    padding-top $menu-height
+    padding-top $navbar-height
     position relative
     
 
-    .menu-shrink & {
-      padding-top $menu-shrink-height
+    .navbar-shrink & {
+      padding-top $navbar-shrink-height
 
 
       +redefine-tablet() {
-        padding-top ($menu-shrink-height * 0.9)
+        padding-top ($navbar-shrink-height * 0.9)
       }
 
       +redefine-mobile() {
-        padding-top $menu-shrink-height * 0.8
+        padding-top $navbar-shrink-height * 0.8
       }
     }
 
 
     +redefine-tablet() {
-      padding-top $menu-height * 0.9
+      padding-top $navbar-height * 0.9
     }
 
 
     +redefine-mobile() {
-      padding-top $menu-height * 0.8
+      padding-top $navbar-height * 0.8
     }
 
 
@@ -48,7 +48,7 @@
       top 0
       right 0
       width 100%
-      height $menu-height
+      height $navbar-height
       z-index $z-index-5
       box-sizing border-box
       transition-t("transform, padding-left, height", "0, 0, 0", "0.3, 0.2, 0.2", "ease-out, linear, ease")
@@ -57,27 +57,27 @@
         transform translateY(-105%)
       }
 
-      .menu-shrink & {
-        height $menu-shrink-height
+      .navbar-shrink & {
+        height $navbar-shrink-height
 
         +redefine-tablet() {
-          height ($menu-shrink-height * 0.9)
+          height ($navbar-shrink-height * 0.9)
         }
 
         +redefine-mobile() {
-          height $menu-shrink-height * 0.8
+          height $navbar-shrink-height * 0.8
         }
       }
 
 
       +redefine-tablet() {
-        height $menu-height * 0.9
+        height $navbar-height * 0.9
         padding-left 0 !important
       }
 
 
       +redefine-mobile() {
-        height $menu-height  * 0.8
+        height $navbar-height  * 0.8
       }
 
     }
@@ -128,25 +128,25 @@
 
   .post-tools {
     position fixed
-    top $menu-height + $spacing-unit
+    top $navbar-height + $spacing-unit
     right $spacing-unit
     transition-t("top", "0", "0.2", "ease")
 
-    .menu-shrink & {
-      top $menu-shrink-height + $spacing-unit
+    .navbar-shrink & {
+      top $navbar-shrink-height + $spacing-unit
 
       +redefine-tablet() {
-        top (($menu-shrink-height * 0.9) + $spacing-unit)
+        top (($navbar-shrink-height * 0.9) + $spacing-unit)
       }
 
       +redefine-mobile() {
-        top ($menu-shrink-height * 0.8 + $spacing-unit)
+        top ($navbar-shrink-height * 0.8 + $spacing-unit)
       }
     }
 
 
     +redefine-tablet() {
-      top ($menu-height * 0.9 + $spacing-unit)
+      top ($navbar-height * 0.9 + $spacing-unit)
       right 10px
       transform scale(0.82)
       transform-origin right top
@@ -154,7 +154,7 @@
 
 
     +redefine-mobile() {
-      top ($menu-height * 0.8 + $spacing-unit)
+      top ($navbar-height * 0.8 + $spacing-unit)
       right 5px
       transform scale(0.72)
     }
