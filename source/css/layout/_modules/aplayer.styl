@@ -5,7 +5,6 @@ $aplayer-height-lrc= $aplayer-height + $lrc-height - 6
 @import '../../common/variables'
 
 .aplayer {
-  background var(--second-background-color)
   font-family Arial, Helvetica, sans-serif
   margin 5px
   border-radius $redefine-border-radius-medium
@@ -96,9 +95,8 @@ $aplayer-height-lrc= $aplayer-height + $lrc-height - 6
     border-radius $redefine-border-radius-medium
 
     .aplayer-list {
-      margin-bottom 65px
+      margin-bottom 75px
       border 1px solid var(--shadow-color-1)
-      border-bottom none
     }
 
     .aplayer-body {
@@ -108,7 +106,6 @@ $aplayer-height-lrc= $aplayer-height + $lrc-height - 6
       right 0
       margin 0
       z-index 99
-      background var(--second-background-color)
       padding-right 18px
       transition all 0.3s ease
       max-width 400px
@@ -139,6 +136,10 @@ $aplayer-height-lrc= $aplayer-height + $lrc-height - 6
       border 1px solid var(--shadow-color-1)
       white-space nowrap
       //box-shadow var(--redefine-box-shadow)
+      border-radius $redefine-border-radius-medium
+      background var(--background-color-transparent)
+      backdrop-filter blur(10px)
+      -webkit-backdrop-filter blur(10px)
 
       .aplayer-music {
         width calc(100% - 105px)
@@ -147,6 +148,8 @@ $aplayer-height-lrc= $aplayer-height + $lrc-height - 6
 
     .aplayer-miniswitcher {
       display block
+      opacity 0
+      transition opacity 0.3s ease
     }
 
     &.aplayer-narrow {
@@ -281,10 +284,8 @@ $aplayer-height-lrc= $aplayer-height + $lrc-height - 6
     background-position center
     transition all 0.3s ease
     cursor pointer
-    border-left 1px solid var(--shadow-color-1)
-    border-top 1px solid var(--shadow-color-1)
-    border-bottom 1px solid var(--shadow-color-1)
-    border-radius $redefine-border-radius-medium 0 0 $redefine-border-radius-medium
+    border 1px solid var(--shadow-color-1)
+    border-radius $redefine-border-radius-medium
 
     &hover .aplayer-button {
         opacity 1
@@ -341,7 +342,7 @@ $aplayer-height-lrc= $aplayer-height + $lrc-height - 6
   }
 
   .aplayer-info {
-      margin-left $aplayer-height
+      margin-left $aplayer-height + 10px
       padding 14px 7px 0 10px
       height $aplayer-height + 2px
       box-sizing border-box
@@ -602,7 +603,10 @@ $aplayer-height-lrc= $aplayer-height + $lrc-height - 6
     margin 0
     padding 5px
     overflow-y auto
-    border-radius $redefine-border-radius-medium $redefine-border-radius-medium 0 0
+    border-radius $redefine-border-radius-medium
+    background var(--background-color-transparent)
+    backdrop-filter blur(10px)
+    -webkit-backdrop-filter blur(10px)
 
 
     &-webkit-scrollbar {
@@ -640,7 +644,7 @@ $aplayer-height-lrc= $aplayer-height + $lrc-height - 6
         }
 
         &.aplayer-list-light {
-            background var(--third-background-color)
+            background var(--third-background-color-transparent)
 
             .aplayer-list-cur {
                 display inline-block
@@ -698,10 +702,12 @@ $aplayer-height-lrc= $aplayer-height + $lrc-height - 6
       right 0
       bottom 0px
       height calc(100% - 2px)
-      background var(--third-background-color)
+      background var(--third-background-color-transparent)
       border 1px solid var(--shadow-color-1)
       width 18px
-      border-radius 0 $redefine-border-radius-medium $redefine-border-radius-medium 0
+      border-radius $redefine-border-radius-medium
+      backdrop-filter blur(10px)
+      -webkit-backdrop-filter blur(10px)
 
       .aplayer-icon {
           height 100%
@@ -719,6 +725,16 @@ $aplayer-height-lrc= $aplayer-height + $lrc-height - 6
               }
           }
       }
+  }
+
+  &:hover .aplayer-miniswitcher {
+    opacity 1
+    transition opacity 0.3s ease
+  }
+
+  &:hover .aplayer-body {
+    padding-right 28px
+    transition padding-right 0.3s ease
   }
 }
 

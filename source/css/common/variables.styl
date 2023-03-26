@@ -105,6 +105,7 @@ $background-color = #fff
 $background-color-transparent = rgba(255, 255, 255, 0.6)
 $second-background-color = darken($background-color, 2%)
 $third-background-color = darken($background-color, 3%)
+$third-background-color-transparent = rgba(241, 241, 241, 0.6)
 $default-text-color = #373D3F
 $invert-text-color = #bebec6
 $first-text-color = darken($default-text-color, 10%)
@@ -148,6 +149,7 @@ $dark-background-color = #202124
 $dark-background-color-transparent = rgba(32, 33, 36, 0.4)
 $dark-second-background-color = lighten($dark-background-color, 2%)
 $dark-third-background-color = lighten($dark-background-color, 4.5%)
+$dark-third-background-color-transparent = rgba(32, 33, 36, 0.6)
 $dark-default-text-color = #bebec6
 $dark-invert-text-color = #373D3F
 $dark-first-text-color = lighten($dark-default-text-color, 30%)
@@ -224,6 +226,7 @@ root-color(mode) {
   --background-color-transparent mode == 'light' ? $background-color-transparent : $dark-background-color-transparent
   --second-background-color mode == 'light' ? $second-background-color : $dark-second-background-color
   --third-background-color mode == 'light' ? $third-background-color : $dark-third-background-color
+  --third-background-color-transparent mode == 'light' ? $third-background-color-transparent : $dark-third-background-color-transparent
   --primary-color mode == 'light' ? $primary-color : $dark-primary-color
   --first-text-color mode == 'light' ? $first-text-color : $dark-first-text-color
   --second-text-color mode == 'light' ? $second-text-color : $dark-second-text-color
