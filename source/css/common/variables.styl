@@ -79,6 +79,9 @@ $redefine-border-radius-full = 50%
 $redefine-border-radius-full-top = 50% 50% 0px 0px
 $redefine-border-radius-full-bottom = 0px 0px 50% 50%
 
+$temp-usr-img-border-radius = hexo-config('articles.style.image_border_radius')
+$usr-img-border-radius = $temp-usr-img-border-radius ? convert($temp-usr-img-border-radius) : $redefine-border-radius-medium
+
 // ========================================================================================
 // mermaid js theme
 // ========================================================================================

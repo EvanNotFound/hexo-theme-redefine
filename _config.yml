@@ -210,8 +210,12 @@ home:
 
 # ARTICLE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 articles:
-  # Image alignment
-  image_align: center # left, center
+  # Set the styles of the article
+  style:
+    font_size: 16px # Font size
+    line_height: 1.5 # Line height
+    image_border_radius: 14px # image border radius
+    image_alignment: center # image alignment. left, center
   # Word count. Requires hexo-wordcount (npm install hexo-wordcount). See https://github.com/willin/hexo-wordcount
   word_count:
     enable: true # Whether to enable
@@ -241,10 +245,6 @@ articles:
   copyright: true
   # Whether to enable lazyload for images
   lazyload: true
-  # Set the styles of the article
-  style:
-    font_size: 16px # Font size
-    line_height: 1.5 # Line height
   # Article recommendation. Requires nodejieba (npm install nodejieba). Transplanted from hexo-theme-volantis.
   recommendation:
     # Whether to enable article recommendation

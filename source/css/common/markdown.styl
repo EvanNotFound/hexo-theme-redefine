@@ -223,14 +223,14 @@
 
   img {
     box-sizing border-box
-    border-radius $redefine-border-radius-medium
+    border-radius $usr-img-border-radius
     max-width 100%
     cursor zoom-in
     display block
     transition-t("padding, margin", "0, 0", "0.2, 0.2", "linear, linear")
     
 
-    if (hexo-config('articles.image_align') == 'center') {
+    if (hexo-config('articles.style.image_alignment') == 'center') {
       margin 1rem auto 1rem
     } else {
       margin 1rem 0 1rem
