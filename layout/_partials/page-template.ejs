@@ -11,9 +11,9 @@
         );
         %>
         <% if (isLoadFriendsLink) { %>
-            <%- partial('_partials/components/friends-link') %>
+            <%- partial('_widgets/friends-link') %>
         <% }  else if (isLoadShuoshuo) { %>
-            <%- partial('_partials/components/essays') %>
+            <%- partial('_widgets/essays') %>
         <% } %>
         <div class="page-template-content markdown-body">
             <% if (isLoadFriendsLink || page.content || isLoadShuoshuo) { %>

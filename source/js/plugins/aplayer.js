@@ -1,6 +1,6 @@
 const audioList = [];
 
-for (const audio of REDEFINE.theme_config.plugins.aplayer.audio) {
+for (const audio of Global.theme_config.plugins.aplayer.audios) {
     const a = {
       name: audio.name,
       artist: audio.artist,

@@ -6,8 +6,8 @@
 // ========================================================================================
 //                                           LAYOUT
 // ========================================================================================
-$menu-height = 70px;                                           // menu height
-$menu-shrink-height = $menu-height * 0.72;                   // menu shrink height
+$navbar-height = 70px;                                           // navbar height
+$navbar-shrink-height = $navbar-height * 0.72;                   // navbar shrink height
 $scroll-progress-bar-height = 2px;                               // scroll progress bar height
 $main-content-width = 80%;                                       // main content width (PC)
 $main-content-width-tablet = 86%;                                // main content width (tablet)
@@ -16,7 +16,7 @@ $post-tool-button-width = 38px;                                  // post tool bu
 $spacing-unit = 38px;                                 // component-spacing-value (PC)
 
 // main content max width
-$temp-content-max-width = hexo-config('style.content_max_width')
+$temp-content-max-width = hexo-config('global.content_max_width')
 $content-max-width = $temp-content-max-width ? convert($temp-content-max-width) : 1000px
 $has-toc-content-max-width = $content-max-width * 1.2
 
@@ -79,6 +79,9 @@ $redefine-border-radius-full = 50%
 $redefine-border-radius-full-top = 50% 50% 0px 0px
 $redefine-border-radius-full-bottom = 0px 0px 50% 50%
 
+$temp-usr-img-border-radius = hexo-config('articles.style.image_border_radius')
+$usr-img-border-radius = $temp-usr-img-border-radius ? convert($temp-usr-img-border-radius) : $redefine-border-radius-medium
+
 // ========================================================================================
 // mermaid js theme
 // ========================================================================================
@@ -90,12 +93,12 @@ $dark-mermaid-theme = hexo-config('mermaid.theme.dark')
 // color
 // ========================================================================================
 // primary color
-$temp-color = hexo-config('style.primary_color')
+$temp-color = hexo-config('colors.primary')
 $primary-color = $temp-color ? convert($temp-color) : #0066CC
 
 //navbar color
-$nav-color-1 = convert(hexo-config('style.nav_color.left') + hexo-config('style.nav_color.transparency'))
-$nav-color-2 = convert(hexo-config('style.nav_color.right') + hexo-config('style.nav_color.transparency'))
+$nav-color-1 = convert(hexo-config('navbar.color.left') + hexo-config('navbar.color.transparency'))
+$nav-color-2 = convert(hexo-config('navbar.color.right') + hexo-config('navbar.color.transparency'))
 $nav-color-bg = linear-gradient(120deg, $nav-color-1 0%, $nav-color-2 100%)
 
 // ========================================================================================
@@ -105,6 +108,7 @@ $background-color = #fff
 $background-color-transparent = rgba(255, 255, 255, 0.6)
 $second-background-color = darken($background-color, 2%)
 $third-background-color = darken($background-color, 3%)
+$third-background-color-transparent = rgba(241, 241, 241, 0.6)
 $default-text-color = #373D3F
 $invert-text-color = #bebec6
 $first-text-color = darken($default-text-color, 10%)
@@ -135,9 +139,9 @@ $note-black-title-bg = #E9E9E9
 $note-cyan-title-bg = #E9FDF9
 $note-type-title-bg = #fdf3e9
 
-$first-screen-text-color = convert(hexo-config('style.first_screen.title_color.light'))
-$first-screen-icons-container-border-color = rgba(255, 255, 255, 0.35)
-$first-screen-icons-container-background-color = rgba(255, 255, 255, 0.3)
+$home-banner-text-color = convert(hexo-config('home_banner.text_color.light'))
+$home-banner-icons-container-border-color = rgba(255, 255, 255, 0.35)
+$home-banner-icons-container-background-color = rgba(255, 255, 255, 0.3)
 
 
 // ========================================================================================
@@ -148,6 +152,7 @@ $dark-background-color = #202124
 $dark-background-color-transparent = rgba(32, 33, 36, 0.4)
 $dark-second-background-color = lighten($dark-background-color, 2%)
 $dark-third-background-color = lighten($dark-background-color, 4.5%)
+$dark-third-background-color-transparent = rgba(32, 33, 36, 0.6)
 $dark-default-text-color = #bebec6
 $dark-invert-text-color = #373D3F
 $dark-first-text-color = lighten($dark-default-text-color, 30%)
@@ -178,31 +183,31 @@ $dark-note-gray-title-bg = #4e4e4e
 $dark-note-black-title-bg = #1e1e1e
 $dark-note-type-title-bg = #4e3a1e
 
-$first-screen-text-color-dark = convert(hexo-config('style.first_screen.title_color.dark'))
-$first-screen-icons-container-border-color-dark = rgba(197, 197, 197, 0.35)
-$first-screen-icons-container-background-color-dark = rgba(197, 197, 197, 0.3)
+$home-banner-text-color-dark = convert(hexo-config('home_banner.text_color.dark'))
+$home-banner-icons-container-border-color-dark = rgba(197, 197, 197, 0.35)
+$home-banner-icons-container-background-color-dark = rgba(197, 197, 197, 0.3)
 
 
 // ========================================================================================
 // background image
 // ========================================================================================
-$first-screen-img-light = url(hexo-config('style.first_screen.background_image.light'))
-$first-screen-img-dark = url(hexo-config('style.first_screen.background_image.dark'))
+$home-banner-img-light = url(hexo-config('home_banner.image.light'))
+$home-banner-img-dark = url(hexo-config('home_banner.image.dark'))
 
 
 // ========================================================================================
 // font
 // ========================================================================================
 
-if hexo-config('custom.font.chinese.enable') {
-  $temp-chinese-font-family = hexo-config('custom.font.chinese.font_family')
+if hexo-config('global.fonts.chinese.enable') {
+  $temp-chinese-font-family = hexo-config('global.fonts.chinese.family')
   $chinese-font-family = $temp-chinese-font-family ? $temp-chinese-font-family : 'Noto Sans SC'
 } else {
   $chinese-font-family = 'Noto Sans SC', sans-serif
 }
 
-if hexo-config('custom.font.english.enable') {
-  $temp-english-font-family = hexo-config('custom.font.english.font_family')
+if hexo-config('global.fonts.english.enable') {
+  $temp-english-font-family = hexo-config('global.fonts.english.family')
   $english-font-family = $temp-english-font-family ? $temp-english-font-family : 'Open Sans'
 } else {
   $english-font-family = 'Open Sans', 'Noto Sans', sans-serif
@@ -210,8 +215,8 @@ if hexo-config('custom.font.english.enable') {
 
 $default-font-family = Open Sans, Noto Sans, Noto Sans SC,  -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial
 $default-font-size = 16px
-$temp-default-article-font-size = hexo-config('custom.formats.font_size')
-$temp-default-line-height = hexo-config('custom.formats.line_height')
+$temp-default-article-font-size = hexo-config('articles.style.font_size')
+$temp-default-line-height = hexo-config('articles.style.line_height')
 $default-article-font-size = $temp-default-article-font-size ? convert($temp-default-article-font-size) : 16px
 $default-line-height = $temp-default-line-height ? $temp-default-line-height : 1.5
 $default-font-weight = 400
@@ -224,6 +229,7 @@ root-color(mode) {
   --background-color-transparent mode == 'light' ? $background-color-transparent : $dark-background-color-transparent
   --second-background-color mode == 'light' ? $second-background-color : $dark-second-background-color
   --third-background-color mode == 'light' ? $third-background-color : $dark-third-background-color
+  --third-background-color-transparent mode == 'light' ? $third-background-color-transparent : $dark-third-background-color-transparent
   --primary-color mode == 'light' ? $primary-color : $dark-primary-color
   --first-text-color mode == 'light' ? $first-text-color : $dark-first-text-color
   --second-text-color mode == 'light' ? $second-text-color : $dark-second-text-color
@@ -255,10 +261,10 @@ root-color(mode) {
   --note-black-title-bg : mode == 'light' ? $note-black-title-bg : $dark-note-black-title-bg
   --note-purple-title-bg : mode == 'light' ? $note-purple-title-bg : $dark-note-purple-title-bg
   
-  --first-screen-img mode == 'light' ? $first-screen-img-light : $first-screen-img-dark
-  --first-screen-text-color mode == 'light' ? $first-screen-text-color : $first-screen-text-color-dark
-  --first-screen-icons-container-border-color mode == 'light' ? $first-screen-icons-container-border-color : $first-screen-icons-container-border-color-dark
-  --first-screen-icons-container-background-color mode == 'light' ? $first-screen-icons-container-background-color : $first-screen-icons-container-background-color-dark
+  --home-banner-img mode == 'light' ? $home-banner-img-light : $home-banner-img-dark
+  --home-banner-text-color mode == 'light' ? $home-banner-text-color : $home-banner-text-color-dark
+  --home-banner-icons-container-border-color mode == 'light' ? $home-banner-icons-container-border-color : $home-banner-icons-container-border-color-dark
+  --home-banner-icons-container-background-color mode == 'light' ? $home-banner-icons-container-background-color : $home-banner-icons-container-background-color-dark
 
   --redefine-box-shadow : var(--shadow-color-2) 0px 6px 24px 0px, var(--shadow-color-1) 0px 0px 0px 1px
   --redefine-box-shadow-hover : var(--shadow-color-2) 0px 6px 24px 0px, var(--shadow-color-1) 0px 0px 0px 1px, var(--shadow-color-1) 0px 0px 0px 1px inset

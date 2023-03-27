@@ -1,16 +1,16 @@
-/* global REDEFINE */
+/* global function */
 
 window.addEventListener('DOMContentLoaded', () => {
 
-  REDEFINE.themeInfo = {
-    theme: `Redefine v${REDEFINE.theme_config.version}`,
+  Global.themeInfo = {
+    theme: `Redefine v${Global.theme_config.version}`,
     author: 'EvanNotFound',
     repository: 'https://github.com/EvanNotFound/hexo-theme-redefine'
   }
 
-  REDEFINE.localStorageKey = 'REDEFINE-THEME-STATUS';
+  Global.localStorageKey = 'Global-THEME-STATUS';
 
-  REDEFINE.styleStatus = {
+  Global.styleStatus = {
     isExpandPageWidth: false,
     isDark: false,
     fontSizeLevel: 0,
@@ -18,22 +18,22 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   // print theme base info
-  REDEFINE.printThemeInfo = () => {
+  Global.printThemeInfo = () => {
     console.log(`      ______ __  __  ______  __    __  ______                       \r\n     \/\\__  _\/\\ \\_\\ \\\/\\  ___\\\/\\ \"-.\/  \\\/\\  ___\\                      \r\n     \\\/_\/\\ \\\\ \\  __ \\ \\  __\\\\ \\ \\-.\/\\ \\ \\  __\\                      \r\n        \\ \\_\\\\ \\_\\ \\_\\ \\_____\\ \\_\\ \\ \\_\\ \\_____\\                    \r\n         \\\/_\/ \\\/_\/\\\/_\/\\\/_____\/\\\/_\/  \\\/_\/\\\/_____\/                    \r\n                                                               \r\n ______  ______  _____   ______  ______ __  __   __  ______    \r\n\/\\  == \\\/\\  ___\\\/\\  __-.\/\\  ___\\\/\\  ___\/\\ \\\/\\ \"-.\\ \\\/\\  ___\\   \r\n\\ \\  __<\\ \\  __\\\\ \\ \\\/\\ \\ \\  __\\\\ \\  __\\ \\ \\ \\ \\-.  \\ \\  __\\   \r\n \\ \\_\\ \\_\\ \\_____\\ \\____-\\ \\_____\\ \\_\\  \\ \\_\\ \\_\\\\\"\\_\\ \\_____\\ \r\n  \\\/_\/ \/_\/\\\/_____\/\\\/____\/ \\\/_____\/\\\/_\/   \\\/_\/\\\/_\/ \\\/_\/\\\/_____\/\r\n                                                               \r\n  Github: https:\/\/github.com\/EvanNotFound\/hexo-theme-redefine`);
   }
 
   // set styleStatus to localStorage
-  REDEFINE.setStyleStatus = () => {
-    localStorage.setItem(REDEFINE.localStorageKey, JSON.stringify(REDEFINE.styleStatus));
+  Global.setStyleStatus = () => {
+    localStorage.setItem(Global.localStorageKey, JSON.stringify(Global.styleStatus));
   }
 
   // get styleStatus from localStorage
-  REDEFINE.getStyleStatus = () => {
-    let temp = localStorage.getItem(REDEFINE.localStorageKey);
+  Global.getStyleStatus = () => {
+    let temp = localStorage.getItem(Global.localStorageKey);
     if (temp) {
       temp = JSON.parse(temp);
-      for (let key in REDEFINE.styleStatus) {
-        REDEFINE.styleStatus[key] = temp[key];
+      for (let key in Global.styleStatus) {
+        Global.styleStatus[key] = temp[key];
       }
       return temp;
     } else {
@@ -41,32 +41,32 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  REDEFINE.refresh = () => {
-    REDEFINE.initUtils();
-    REDEFINE.initMenuShrink();
-    REDEFINE.initModeToggle();
-    REDEFINE.initBackToTop();
-    if (REDEFINE.theme_config.style.first_screen.subtitle.enable === true) {
-      REDEFINE.initTyped('subtitle');
+  Global.refresh = () => {
+    Global.initUtils();
+    navbarShrink.init();
+    Global.initModeToggle();
+    Global.initBackToTop();
+    if (Global.theme_config.home_banner.subtitle.text.length !== 0) {
+      Global.initTyped('subtitle');
     }
 
-    if (REDEFINE.theme_config.plugins.mermaid.enable === true) {
-      REDEFINE.initMermaid();
+    if (Global.theme_config.plugins.mermaid.enable === true) {
+      Global.initMermaid();
     }
 
-    if (REDEFINE.theme_config.local_search.enable === true) {
-      REDEFINE.initLocalSearch();
+    if (Global.theme_config.navbar.search.enable === true) {
+      Global.initLocalSearch();
     }
 
-    if (REDEFINE.theme_config.code_block.copy === true) {
-      REDEFINE.initCopyCode();
+    if (Global.theme_config.articles.code_block.copy === true) {
+      Global.initCopyCode();
     }
 
-    if (REDEFINE.theme_config.lazyload.enable === true) {
-      REDEFINE.initLazyLoad();
+    if (Global.theme_config.articles.lazyload === true) {
+      Global.initLazyLoad();
     }
   }
 
-  REDEFINE.printThemeInfo();
-  REDEFINE.refresh();
+  Global.printThemeInfo();
+  Global.refresh();
 });

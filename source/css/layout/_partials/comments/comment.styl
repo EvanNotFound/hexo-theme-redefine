@@ -1,11 +1,11 @@
-if (hexo-config('comment.enable') == true && hexo-config('comment.use') != "") {
-  if (hexo-config('comment.use') == "waline") {
+if (hexo-config('comment.enable') == true && hexo-config('comment.system') != "") {
+  if (hexo-config('comment.system') == "waline") {
     @require "./waline.styl"
 
-  } else if (hexo-config('comment.use') == "gitalk") {
+  } else if (hexo-config('comment.system') == "gitalk") {
     @require "./gitalk.styl"
 
-  } else if (hexo-config('comment.use') == "twikoo") {
+  } else if (hexo-config('comment.system') == "twikoo") {
     @require "./twikoo.styl"
   }
 }

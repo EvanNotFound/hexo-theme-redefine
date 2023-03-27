@@ -1,0 +1,108 @@
+<header class="navbar-container">
+    
+    <div class="navbar-content<%- (theme.home_banner.enable === true && is_home() && !page.prev) ? ' has-home-banner' : '' %>">
+        <div class="left">
+            <% if (theme.defaults.hasOwnProperty('logo') && theme.defaults.logo) { %>
+                <a class="logo-image" href="/">
+                    <%- image_tag(theme.defaults.logo) %>
+                </a>
+            <% } %>
+            <a class="logo-title" href="/">
+                <%- is_home() ? '<h1>' : '' %>
+                <%= theme.info.title || config.title || 'Redefine Theme' %>
+                <%- is_home() ? '</h1>' : '' %>
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    <% for (let i in theme.navbar.links) { %>
+                        <% if (theme.navbar.links[i].path === 'none') {} else {%>
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="<% if (theme.navbar.links[i].submenus) { %>has-dropdown" <% } else {%><%- isInHomePaging(page.path, theme.navbar.links[i].path) ? 'active' : is_current(theme.navbar.links[i].path) ? 'active' : '' %>" <% } %>
+                                    href="<% if (theme.navbar.links[i].submenus) { %>#"<% } else {%><%- url_for(theme.navbar.links[i].path) %>" <% } %> <% if (theme.navbar.links[i].submenus) { %>onClick="return false;"<% } else {%><% } %>>
+                                    <% if (theme.navbar.links[i].submenus) { %>
+                                        <% if (theme.navbar.links[i].icon) { %>
+                                            <i class="<%- theme.navbar.links[i].icon %>"></i>
+                                        <% } %>
+                                        <%= __(i.toLowerCase()).toUpperCase() %>&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                                    <% } else {%>
+                                        <% if (theme.navbar.links[i].icon) { %>
+                                            <i class="<%- theme.navbar.links[i].icon %>"></i>
+                                        <% } %>
+                                        <%= __(i.toLowerCase()).toUpperCase() %>
+                                    <% } %>
+                                </a>
+                                <!-- Submenu -->
+                                <% if (theme.navbar.links[i].submenus) { %>
+                                    <ul class="sub-menu">
+                                    <% for (var submenu in theme.navbar.links[i].submenus){ %>
+                                        <li>
+                                        <a href="<%- url_for(theme.navbar.links[i].submenus[submenu]) %>"><%= __(submenu.toLowerCase()).toUpperCase() %>
+                                        </a>
+                                        </li>
+                                    <% } %>
+                                    </ul>
+                                <% } %>
+                            </li>
+                    <% } }%>
+                    <% if (theme.navbar.search.enable === true) { %>
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    <% } %>
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                <% if (theme.navbar.search.enable === true) { %>
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i></div>
+                <% } %>
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="navbar-drawer">
+        <ul class="drawer-navbar-list">
+            <% for (let i in theme.navbar.links) { %>
+                <% if (theme.navbar.links[i].path === 'none') {} else {%>
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="<% if (theme.navbar.links[i].submenus) { %>has-dropdown" <% } else {%><%- isInHomePaging(page.path, theme.navbar.links[i].path) ? 'active' : is_current(theme.navbar.links[i].path) ? 'active' : '' %>" <% } %>
+                        href="<% if (theme.navbar.links[i].submenus) { %>#"<% } else {%><%- url_for(theme.navbar.links[i].path) %>" <% } %> <% if (theme.navbar.links[i].submenus) { %>onClick="return false;"<% } else {%><% } %>>
+                            <% if (theme.navbar.links[i].submenus) { %>
+                                <% if (theme.navbar.links[i].icon) { %>
+                                    <i class="<%- theme.navbar.links[i].icon %>"></i>
+                                <% } %>
+                                <%= __(i.toLowerCase()).toUpperCase() %>&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                            <% } else {%> 
+                                <% if (theme.navbar.links[i].icon) { %>
+                                    <i class="<%- theme.navbar.links[i].icon %>"></i>
+                                <% } %>
+                                <%= __(i.toLowerCase()).toUpperCase() %>
+                            <% } %>
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    <% if (theme.navbar.links[i].submenus) { %>          
+                        <% for (var submenu in theme.navbar.links[i].submenus){ %>
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="<%- url_for(theme.navbar.links[i].submenus[submenu]) %>"><%= __(submenu.toLowerCase()).toUpperCase() %></a>
+                            </li>
+                        <% } %>
+                    <% } %>
+            <% } }%>
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+

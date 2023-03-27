@@ -1,22 +1,22 @@
-/* global REDEFINE */
+/* global function */
 
 
-REDEFINE.initModeToggle = () => {
+Global.initModeToggle = () => {
 
-  REDEFINE.utils.modeToggle = {
+  Global.utils.modeToggle = {
 
     modeToggleButton_dom: document.querySelector('.tool-dark-light-toggle'),
     iconDom: document.querySelector('.tool-dark-light-toggle i'),
-    mermaidLightTheme: typeof REDEFINE.theme_config.mermaid !== 'undefined' && typeof REDEFINE.theme_config.mermaid.style !== 'undefined' && typeof REDEFINE.theme_config.mermaid.style.light !== 'undefined' ? REDEFINE.theme_config.mermaid.style.light : 'default',
-    mermaidDarkTheme: typeof REDEFINE.theme_config.mermaid !== 'undefined' && typeof REDEFINE.theme_config.mermaid.style !== 'undefined' && typeof REDEFINE.theme_config.mermaid.style.dark !== 'undefined' ? REDEFINE.theme_config.mermaid.style.dark : 'dark',
+    mermaidLightTheme: typeof Global.theme_config.mermaid !== 'undefined' && typeof Global.theme_config.mermaid.style !== 'undefined' && typeof Global.theme_config.mermaid.style.light !== 'undefined' ? Global.theme_config.mermaid.style.light : 'default',
+    mermaidDarkTheme: typeof Global.theme_config.mermaid !== 'undefined' && typeof Global.theme_config.mermaid.style !== 'undefined' && typeof Global.theme_config.mermaid.style.dark !== 'undefined' ? Global.theme_config.mermaid.style.dark : 'dark',
     
 
     enableLightMode() {
       document.body.classList.remove('dark-mode');
       document.body.classList.add('light-mode');
       this.iconDom.className = 'fa-regular fa-moon';
-      REDEFINE.styleStatus.isDark = false;
-      REDEFINE.setStyleStatus();
+      Global.styleStatus.isDark = false;
+      Global.setStyleStatus();
       this.mermaidLightInit();
     },
 
@@ -24,8 +24,8 @@ REDEFINE.initModeToggle = () => {
       document.body.classList.add('dark-mode');
       document.body.classList.remove('light-mode');
       this.iconDom.className = 'fa-regular fa-brightness';
-      REDEFINE.styleStatus.isDark = true;
-      REDEFINE.setStyleStatus();
+      Global.styleStatus.isDark = true;
+      Global.setStyleStatus();
       this.mermaidDarkInit();
     },
 
@@ -50,7 +50,7 @@ REDEFINE.initModeToggle = () => {
     },
 
     initModeStatus() {
-      const styleStatus = REDEFINE.getStyleStatus();
+      const styleStatus = Global.getStyleStatus();
 
       if (styleStatus) {
         styleStatus.isDark ? this.enableDarkMode() : this.enableLightMode();
@@ -74,7 +74,7 @@ REDEFINE.initModeToggle = () => {
     }
   }
 
-  REDEFINE.utils.modeToggle.initModeStatus();
-  REDEFINE.utils.modeToggle.initModeToggleButton();
-  REDEFINE.utils.modeToggle.initModeAutoTrigger();
+  Global.utils.modeToggle.initModeStatus();
+  Global.utils.modeToggle.initModeToggleButton();
+  Global.utils.modeToggle.initModeAutoTrigger();
 };

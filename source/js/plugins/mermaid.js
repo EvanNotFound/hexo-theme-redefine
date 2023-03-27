@@ -1,3 +1,3 @@
-REDEFINE.initMermaid = () => {
+Global.initMermaid = () => {
     mermaid.init();
 }

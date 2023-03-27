@@ -1,7 +1,7 @@
-/* global REDEFINE */
+/* global function */
 
 function initTocToggle() {
-  REDEFINE.utils.TocToggle = {
+  Global.utils.TocToggle = {
 
     toggleBar: document.querySelector('.page-aside-toggle'),
     postPageContainerDom: document.querySelector('.post-page-container'),
@@ -14,8 +14,8 @@ function initTocToggle() {
     initToggleBarButton() {
       this.toggleBar && this.toggleBar.addEventListener('click', () => {
         this.isOpenPageAside = !this.isOpenPageAside;
-        REDEFINE.styleStatus.isOpenPageAside = this.isOpenPageAside;
-        REDEFINE.setStyleStatus();
+        Global.styleStatus.isOpenPageAside = this.isOpenPageAside;
+        Global.setStyleStatus();
         this.changePageLayoutWhenOpenToggle(this.isOpenPageAside);
       });
     },
@@ -32,10 +32,10 @@ function initTocToggle() {
       this.changePageLayoutWhenOpenToggle(isOpen);
     }
   }
-  REDEFINE.utils.TocToggle.initToggleBarButton();
+  Global.utils.TocToggle.initToggleBarButton();
 }
 
-if (REDEFINE.theme_config.pjax.enable === true && REDEFINE.utils) {
+if (Global.theme_config.global.pjax === true && Global.utils) {
   initTocToggle();
 } else {
   window.addEventListener('DOMContentLoaded', initTocToggle);

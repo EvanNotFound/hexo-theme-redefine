@@ -13,8 +13,8 @@ $code-block {
 
 
 pre, code {
-  if (hexo-config('code_block.custom_font.enable') && hexo-config('code_block.custom_font.font_family')) {
-    font-family hexo-config('code_block.custom_font.font_family'), "Ubuntu Mono", Courier, monospace
+  if (hexo-config('articles.code_block.font.enable') && hexo-config('articles.code_block.font.family')) {
+    font-family hexo-config('articles.code_block.font.family'), "Ubuntu Mono", Courier, monospace
   } else {
     font-family "Ubuntu Mono", Courier, monospace
   }
@@ -48,7 +48,7 @@ pre {
   padding-bottom 5px
   overflow: auto
   margin 0 !important
-  if (hexo-config('code_block.style') == 'mac') {
+  if (hexo-config('articles.code_block.style') == 'mac') {
     border-top 1px solid var(--shadow-color-1)
   }
 

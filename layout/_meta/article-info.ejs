@@ -1,14 +1,14 @@
 <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="pc"><%= date(articleObject.date, is_post() ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD').replace(" 00:00:00", "").replace(":00", "") %></span>
+        <span class="desktop"><%= date(articleObject.date, is_post() ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD').replace(" 00:00:00", "").replace(":00", "") %></span>
         <span class="mobile"><%= date(articleObject.date, is_post() ? 'YYYY-MM-DD HH:mm' : 'YYYY-MM-DD').replace(" 00:00:00", "").replace(":00", "") %></span>
         <span class="hover-info"><%= __("create_time") %></span>
     </span>
     <% if (articleObject.updated && articleObject.updated !== articleObject.date) { %>
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="pc"><%= date(articleObject.updated, is_post() ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD').replace(" 00:00:00", "").replace(":00", "") %></span>
+            <span class="desktop"><%= date(articleObject.updated, is_post() ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD').replace(" 00:00:00", "").replace(":00", "") %></span>
             <span class="mobile"><%= date(articleObject.updated, is_post() ? 'YYYY-MM-DD HH:mm' : 'YYYY-MM-DD').replace(" 00:00:00", "").replace(":00", "") %></span>
             <span class="hover-info"><%= __("update_time") %></span>
         </span>
@@ -49,17 +49,17 @@
         temp_min2read_count = 0;
     }
     %>
-    <% if(is_post() && theme.hasOwnProperty('post') && theme.post.word_count.enable && theme.post.word_count.wordcount && temp_wordcount_count){ %>
+    <% if(is_post() && theme.hasOwnProperty('post') && theme.articles.word_count.enable && theme.articles.word_count.wordcount && temp_wordcount_count){ %>
         <span class="article-wordcount article-meta-item">
             <i class="fa-regular fa-file-word"></i>&nbsp;<span><%= temp_wordcount_count %> <%- __('wordcount') %></span>
         </span>
     <% } %>
-    <% if(is_post() && theme.hasOwnProperty('post') && theme.post.word_count.enable && theme.post.word_count.min2read && temp_min2read_count){ %>
+    <% if(is_post() && theme.hasOwnProperty('post') && theme.articles.word_count.enable && theme.articles.word_count.min2read && temp_min2read_count){ %>
         <span class="article-min2read article-meta-item">
             <i class="fa-regular fa-clock"></i>&nbsp;<span><%= temp_min2read_count %> <%- __('min2read') %></span>
         </span>
     <% } %>
-    <% if (is_post() && theme.website_count.busuanzi_count.enable && theme.website_count.busuanzi_count.page_pv) { %>
+    <% if (is_post() && theme.global.busuanzi_counter.enable && theme.global.busuanzi_counter.page_pv) { %>
         <span class="article-pv article-meta-item">
             <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
         </span>

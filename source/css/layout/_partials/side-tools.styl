@@ -9,7 +9,7 @@ $right-bottom-tools-border-radius = 12px
     width $right-bottom-tools-width
     height $right-bottom-tools-width
     font-size $right-bottom-tools-font-size
-    margin-bottom 3px
+    margin-bottom 5px
     cursor pointer
     border-right none
     border-radius $right-bottom-tools-border-radius
@@ -55,7 +55,7 @@ $right-bottom-tools-border-radius = 12px
   }
 
 
-  .unfolded-tools-list {
+  .hidden-tools-list {
     opacity 0
     transform translateX(250%)
     transition-t("transform, opacity", "0, 0", "0.2, 0.2", "ease, ease")
@@ -74,9 +74,9 @@ $right-bottom-tools-border-radius = 12px
   }
 
 
-  .folded-tools-list {
+  .visible-tools-list {
 
-    if (hexo-config('style.scroll.percent.enable') == true) {
+    if (hexo-config('global.scroll_progress.percentage') == true) {
       .tool-scroll-to-top {
         display none
 

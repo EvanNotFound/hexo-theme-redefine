@@ -8,7 +8,7 @@ const 语料库 = [];
 let 标记 = null;
 
 hexo.extend.filter.register('template_locals', function (本地变量) {
-  const cfg = hexo.theme.config.recommended_article;
+  const cfg = hexo.theme.config.articles.recommendation;
   if (!cfg.enable) {
     return 本地变量;
   }
@@ -27,7 +27,7 @@ function 获取数据(s, cfg) {
       文章库.push({
         path: p.path,
         title: p.title || p.seo_title || p.short_title,
-        headimg: p.thumbnail || p.banner || p.cover || cfg.placeholder_img,
+        headimg: p.thumbnail || p.banner || p.cover || cfg.placeholder,
       })
       语料库.push(分词(p.raw))
     }
@@ -138,7 +138,7 @@ function 文章推荐(cfg) {
     if (index > -1) {
       推荐集[文章路径1].splice(index, 1);
     }
-    推荐集[文章路径1] = 推荐集[文章路径1].slice(0, cfg.max_count);
+    推荐集[文章路径1] = 推荐集[文章路径1].slice(0, cfg.limit);
     for (let j = 0; j < 推荐集[文章路径1].length; j++) {
       const e = 推荐集[文章路径1][j];
       推荐集[文章路径1][j] = 文章库.filter(w => w.path == e)[0]
@@ -152,7 +152,7 @@ function 文章推荐(cfg) {
 
 hexo.extend.helper.register('文章推荐生成器', function (post) {
   if (!post) return '';
-  const cfg = hexo.theme.config.recommended_article;
+  const cfg = hexo.theme.config.articles.recommendation;
   if (!cfg.enable) {
     return "";
   }

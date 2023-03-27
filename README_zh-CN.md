@@ -12,16 +12,19 @@
 
 "Redefine" 是一个简洁、快速、纯净的 hexo 主题。简洁，但不简单。本主题包含很多广泛使用的功能，并拥有着优秀的设计。
 
+本主题基于 [hexo-theme-keep](https://github.com/XPoet/hexo-theme-keep) 开发，感谢 XPoet 的开源。本主题主要优化了样式，增加了写作模块，以及各种插件的支持。同时加大自定义程度，让你可以更加方便的使用本主题。
+
 [![NPM version](https://img.shields.io/npm/v/hexo-theme-redefine?color=red&logo=npm&style=flat-square)](https://www.npmjs.com/package/hexo-theme-redefine) [![npm](https://img.shields.io/npm/dw/hexo-theme-redefine?logo=npm&style=flat-square)](https://www.npmjs.com/package/hexo-theme-redefine) [![npm-total](https://img.shields.io/npm/dt/hexo-theme-redefine?logo=npm&style=flat-square)](https://www.npmjs.com/package/hexo-theme-redefine) [![Github License](https://img.shields.io/github/license/EvanNotFound/hexo-theme-redefine.svg?style=flat-square)](https://github.com/EvanNotFound/hexo-theme-redefine/blob/main/LICENSE) [![Required Hexo version](https://img.shields.io/badge/hexo-%3E=5.0.0-blue?style=flat-square&logo=hexo)](https://hexo.io) [![Node.js Version](https://img.shields.io/badge/node-%3E=12.0-success.svg?style=flat-square&logo=Node.js&longCache=true)](https://hexo.io)
 
 
 
 ## 📷 屏幕截图
 
-![redefine-1-final](https://user-images.githubusercontent.com/68590232/224550641-72b2a0d4-e30d-41c5-b3cb-7cc86be14e31.png)
-![redefine-2-final](https://user-images.githubusercontent.com/68590232/224550645-07d6b624-fa7c-40aa-90f8-873c958afa30.png)
-![redefine-3-final](https://user-images.githubusercontent.com/68590232/224550647-e194348c-2a3b-4738-b978-60f11c952365.png)
+![redefine-1-final](https://user-images.githubusercontent.com/68590232/228013035-a254e19d-18b7-4a40-b769-a5d0d075fe89.png)
 
+![redefine-2-final](https://user-images.githubusercontent.com/68590232/228013043-8df44917-8af9-443c-951a-ceec6663b988.png)
+
+![redefine-3-final](https://user-images.githubusercontent.com/68590232/228013046-92c3e5b0-9ef3-4203-a0d3-ddf8d5ff3996.png)
 ## 🌐 官方演示站
 
 - [EvanNotFound's Blog](https://ohevan.com)
@@ -33,21 +36,21 @@
 
 ## ⛰️ 部分功能
 
-- [笔记模块](https://redefine-docs.ohevan.com/docs/advanced/writing-modules/note-module)
-- [友链样式](https://redefine-docs.ohevan.com/docs/advanced/friend-link)
-- [数学公式](https://redefine-docs.ohevan.com/docs/advanced/writing-modules/mathjax)
+- [笔记模块](https://redefine-docs.ohevan.com/modules/notes)
+- [友链样式](https://redefine-docs.ohevan.com/page_templates/friends)
+- [数学公式](https://redefine-docs.ohevan.com/plugins/mathjax)
 - 代码块语言显示
 - Light/Dark 模式切换
-- [Font Awesome 6.2.1 Pro](https://redefine-docs.ohevan.com/docs/configuration-guide/fontawesome)（包含 Duotone/Regular/Thin/Sharp 等不同样式）
-- [下拉菜单](https://redefine-docs.ohevan.com/docs/configuration-guide/menu)
-- [可自定义页脚](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
-- [网站运行时间显示](https://redefine-docs.ohevan.com/docs/configuration-guide/footer)
-- [文章头图](https://redefine-docs.ohevan.com/docs/advanced/home-contents/thumbnail)
-- [Mermaid JS 支持](https://redefine-docs.ohevan.com/docs/advanced/theme-plugins/mermaid)
+- [Font Awesome 6.2.1 Pro](https://redefine-docs.ohevan.com/basic/fontawesome)（包含 Duotone/Regular/Thin 等不同样式）
+- [下拉菜单](https://redefine-docs.ohevan.com/dhome/navbar#%E9%93%BE%E6%8E%A5%E5%88%97%E8%A1%A8)
+- [可自定义页脚](https://redefine-docs.ohevan.com/footer)
+- [网站运行时间显示](https://redefine-docs.ohevan.com/footer#%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4)
+- [文章头图](https://redefine-docs.ohevan.com/article_customize/banner)
+- [Mermaid JS 支持](https://redefine-docs.ohevan.com/plugins/mermaid)
 - SEO 友好
-- [Aplayer 音乐播放器支持](https://redefine-docs.ohevan.com/docs/advanced/theme-plugins/aplayer)
-- [说说模块](https://redefine-docs.ohevan.com/docs/advanced/shuoshuo/essays)
-- [自定义字体](https://redefine-docs.ohevan.com/docs/configuration-guide/custom)
+- [Aplayer 音乐播放器支持](https://redefine-docs.ohevan.com/plugins/aplayer)
+- [说说模块](https://redefine-docs.ohevan.com/shuoshuo)
+- [自定义字体](https://redefine-docs.ohevan.com/basic/global#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93)
 
 ## ☁️ 安装
 
@@ -101,7 +104,7 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 
 如有问题，请发邮件到 [contact@ohevan.com](mailto:contact@ohevan.com). 我会及时回复
 
-如果我做的主题还不错的话，欢迎给我 Github 点个 Star，谢谢
+如果你觉得主题还不错的话，欢迎给我 Github 点个 Star，谢谢
 
 如果你在使用 [Typora](https://typora.io/) 编辑器写文章，欢迎查看我写的 [Typora Redefine 主题](https://github.com/EvanNotFound/typora-theme-redefine)，按照本 Hexo 主题样式编写，让你可以直接预览文章效果，更好排版。
 
@@ -114,14 +117,3 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 所有赞助者名单：[赞助者名单](https://github.com/EvanNotFound/hexo-theme-redefine/blob/dev/DONATION.md)
 
 再次感谢你们！
-
-## 🎁 感谢
-
-Hexo Theme Redefine 源码基于 [hexo-theme-keep](https://github.com/XPoet/hexo-theme-keep)，主要增加了各种写作模块/插件/优化样式/优化代码。
-
-
-
-
-
-
-

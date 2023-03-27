@@ -18,11 +18,11 @@ hover-style(isTransform, scaleX, scaleY) {
   }
 
   &:hover {
-    if (hexo-config('style.hover.scale') && isTransform) {
+    if (hexo-config('global.hover.scale') && isTransform) {
       transform scaleX(scaleX) scaleY(scaleX)
     }
 
-    if (hexo-config('style.hover.shadow')) {
+    if (hexo-config('global.hover.shadow')) {
       box-shadow var(--redefine-box-shadow-hover)
     }
   }

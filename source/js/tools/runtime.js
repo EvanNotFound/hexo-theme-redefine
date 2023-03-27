@@ -1,5 +1,5 @@
 function footerRuntime() {
-    var startTimeDiv = document.getElementById('start_time_div');
+    var startTimeDiv = document.getElementById('start_div');
     window.setTimeout("footerRuntime()", 1000);
     X = new Date(startTimeDiv.innerHTML);
     Y = new Date();
@@ -18,7 +18,7 @@ function footerRuntime() {
     runtime_seconds.innerHTML = D;
 }
 
-if (REDEFINE.theme_config.pjax.enable === true && REDEFINE.utils) {
+if (Global.theme_config.global.pjax === true && Global.utils) {
     footerRuntime();
 } else {
     window.addEventListener('DOMContentLoaded', footerRuntime);

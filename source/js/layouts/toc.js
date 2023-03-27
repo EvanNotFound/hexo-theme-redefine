@@ -1,20 +1,20 @@
-/* global REDEFINE */
+/* global function */
 function initTOC() {
-  REDEFINE.utils.navItems = document.querySelectorAll('.post-toc-wrap .post-toc li');
+  Global.utils.navItems = document.querySelectorAll('.post-toc-wrap .post-toc li');
 
-  if (REDEFINE.utils.navItems.length > 0) {
+  if (Global.utils.navItems.length > 0) {
 
-    REDEFINE.utils = {
+    Global.utils = {
 
-      ...REDEFINE.utils,
+      ...Global.utils,
 
       updateActiveTOCLink() {
-        if (!Array.isArray(REDEFINE.utils.sections)) return;
-        let index = REDEFINE.utils.sections.findIndex(element => {
+        if (!Array.isArray(Global.utils.sections)) return;
+        let index = Global.utils.sections.findIndex(element => {
           return element && element.getBoundingClientRect().top - 200 > 0;
         });
         if (index === -1) {
-          index = REDEFINE.utils.sections.length - 1;
+          index = Global.utils.sections.length - 1;
         } else if (index > 0) {
           index--;
         }
@@ -22,7 +22,7 @@ function initTOC() {
       },
 
       registerTOCScroll() {
-        REDEFINE.utils.sections = [...document.querySelectorAll('.post-toc li a.nav-link')].map(element => {
+        Global.utils.sections = [...document.querySelectorAll('.post-toc li a.nav-link')].map(element => {
           const target = document.getElementById(decodeURI(element.getAttribute('href')).replace('#', ''));
           element.addEventListener('click', event => {
             event.preventDefault();
@@ -34,7 +34,7 @@ function initTOC() {
               scrollTop: offset - 10,
               complete: function () {
                 setTimeout(() => {
-                  REDEFINE.utils.pageTop_dom.classList.add('hide');
+                  Global.utils.pageTop_dom.classList.add('hide');
                 }, 100)
               }
             });
@@ -69,19 +69,19 @@ function initTOC() {
       showTOCAside() {
 
         const openHandle = () => {
-          const styleStatus = REDEFINE.getStyleStatus();
+          const styleStatus = Global.getStyleStatus();
           const key = 'isOpenPageAside';
           if (styleStatus && styleStatus.hasOwnProperty(key)) {
-            REDEFINE.utils.TocToggle.pageAsideHandleOfTOC(styleStatus[key]);
+            Global.utils.TocToggle.pageAsideHandleOfTOC(styleStatus[key]);
           } else {
-            REDEFINE.utils.TocToggle.pageAsideHandleOfTOC(true);
+            Global.utils.TocToggle.pageAsideHandleOfTOC(true);
           }
         }
 
         const initOpenKey = 'init_open';
 
-        if (REDEFINE.theme_config.toc.hasOwnProperty(initOpenKey)) {
-          REDEFINE.theme_config.toc[initOpenKey] ? openHandle() : REDEFINE.utils.TocToggle.pageAsideHandleOfTOC(false);
+        if (Global.theme_config.articles.toc.hasOwnProperty(initOpenKey)) {
+          Global.theme_config.articles.toc[initOpenKey] ? openHandle() : Global.utils.TocToggle.pageAsideHandleOfTOC(false);
 
         } else {
           openHandle();
@@ -90,8 +90,8 @@ function initTOC() {
       }
     }
 
-    REDEFINE.utils.showTOCAside();
-    REDEFINE.utils.registerTOCScroll();
+    Global.utils.showTOCAside();
+    Global.utils.registerTOCScroll();
 
   } else {
     document.querySelectorAll('.toc-content-container, .toc-marker').forEach((elem) => {
@@ -100,7 +100,7 @@ function initTOC() {
   }
 }
 
-if (REDEFINE.theme_config.pjax.enable === true && REDEFINE.utils) {
+if (Global.theme_config.global.pjax === true && Global.utils) {
   initTOC();
 } else {
   window.addEventListener('DOMContentLoaded', initTOC);

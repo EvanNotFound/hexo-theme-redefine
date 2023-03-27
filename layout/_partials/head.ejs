@@ -3,16 +3,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="<%= page.keywords || config.keywords || 'Hexo Theme Redefine' %>">
     <meta name="description" content="<%= page.description || config.description || 'Hexo Theme Redefine' %>">
-    <meta name="author" content="<%= theme.base_info.author || config.author || 'Redefine Team' %>">
+    <meta name="author" content="<%= theme.info.author || config.author || 'Redefine Team' %>">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
     <!-- preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://evan.beee.top" crossorigin>
     <% if (theme.cdn.enable == true) { %>
-        <% if (theme.cdn.use == 'jsdelivr') { %>
+        <% if (theme.cdn.provider == 'jsdelivr') { %>
             <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-        <% } else if (theme.cdn.use == 'unpkg') { %>
+        <% } else if (theme.cdn.provider == 'unpkg') { %>
             <link rel="preconnect" href="https://unpkg.com" crossorigin>
         <% } %>
     <% } %>
@@ -22,23 +22,23 @@
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="<%= page.title || config.title || 'Redefine Theme' %>">
-    <meta property="og:description" content="<%= page.description || config.description || 'Hexo Theme Redefine' %>">
-    <meta property="og:url" content="<%= config.url + page.path %>">
-    <% if (theme.style.og_image.enable) { %>
-        <meta property="og:image" content="<%= theme.style.og_image.image_url %>">
+    <% if (theme.open_graph.enable) { %>
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="<%= page.title || config.title || 'Redefine Theme' %>">
+        <meta property="og:description" content="<%= open_graph.description || page.description || config.description || 'Hexo Theme Redefine' %>">
+        <meta property="og:url" content="<%= full_url_for(page.path) %>">
+        <meta property="og:image" content="<%= theme.open_graph.image %>">
+        <meta property="og:site_name" content="<%= theme.info.title || config.title || 'Redefine Theme' %>">
     <% }%>
-    <meta property="og:site_name" content="<%= theme.base_info.title || config.title || 'Redefine Theme' %>">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="<%= page.title || config.title || 'Redefine Theme' %>">
     <meta name="twitter:description" content="<%= page.description || config.description || 'Hexo Theme Redefine' %>">
-    <meta name="twitter:image" content="<%= theme.style.favicon %>">
+    <meta name="twitter:image" content="<%= theme.defaults.favicon %>">
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="<%= url_for(theme.style.favicon) %>" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="<%= url_for(theme.style.favicon) %>">
-    <meta name="theme-color" content="<%= theme.style.primary_color %>">
-    <%- favicon_tag(url_for(theme.style.favicon)) %>
+    <link rel="icon" type="image/png" href="<%= url_for(theme.defaults.favicon) %>" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= url_for(theme.defaults.favicon) %>">
+    <meta name="theme-color" content="<%= theme.colors.primary %>">
+    <%- favicon_tag(url_for(theme.defaults.favicon)) %>
     <!--- Page Info-->
     <%
     let title = page.title;
@@ -61,29 +61,29 @@
         <% if (title) { %>
             <%= title %> -
         <% } %>
-        <%= theme.base_info.title || config.title || 'Redefine Theme' %>
+        <%= theme.info.title || config.title || 'Redefine Theme' %>
     </title>
     <%- css('css/style') %>
-    <%- __css('assets/fonts.css') %>
+    <%- renderCSS('assets/fonts.css') %>
     <!--- Font Part-->
-    <% if (theme.style.first_screen.custom_font.enable) { %>
-        <link href="<%- theme.style.first_screen.custom_font.font_url %>" rel="stylesheet">
+    <% if (theme.home_banner.custom_font.enable) { %>
+        <link href="<%- theme.home_banner.custom_font.url %>" rel="stylesheet">
     <% } %>
-    <% if (theme.code_block.custom_font.enable) { %>
-        <link href="<%- theme.code_block.custom_font.font_url %>" rel="stylesheet">
+    <% if (theme.articles.code_block.font.enable) { %>
+        <link href="<%- theme.articles.code_block.font.url %>" rel="stylesheet">
     <% } %>
-    <% if (theme.custom.font.chinese.enable) { %>
-        <link href="<%- theme.custom.font.chinese.font_url %>" rel="stylesheet">
+    <% if (theme.global.fonts.chinese.enable) { %>
+        <link href="<%- theme.global.fonts.chinese.url %>" rel="stylesheet">
     <% } %>
-    <% if (theme.custom.font.english.enable) { %>
-        <link href="<%- theme.custom.font.english.font_url %>" rel="stylesheet">
+    <% if (theme.global.fonts.english.enable) { %>
+        <link href="<%- theme.global.fonts.english.url %>" rel="stylesheet">
     <% } %>
 
     <!--- Inject Part-->
     <% if (theme.inject.enable == true) { %>
         <% for (let i in theme.inject.head) { %>
             <% if (theme.inject.head[i] !== null){ %>
-                <% if (theme.pjax.enable == true) { %>
+                <% if (theme.global.pjax == true) { %>
                     <%- theme.inject.head[i].replace("<script", "<script data-pjax") %>
                 <% } else { %>
                     <%- theme.inject.head[i] %>
@@ -92,21 +92,21 @@
     <%- export_config() %>
     
     <!--- Fontawesome Part-->
-    <%- __css('fontawesome/fontawesome.min.css') %>
-    <%- __css('fontawesome/brands.min.css') %>
-    <%- __css('fontawesome/solid.min.css') %>
-    <%- __css('fontawesome/regular.min.css') %>
+    <%- renderCSS('fontawesome/fontawesome.min.css') %>
+    <%- renderCSS('fontawesome/brands.min.css') %>
+    <%- renderCSS('fontawesome/solid.min.css') %>
+    <%- renderCSS('fontawesome/regular.min.css') %>
     <% if (theme.fontawesome.thin == true) { %>
-        <%- __css('fontawesome/thin.min.css') %>
+        <%- renderCSS('fontawesome/thin.min.css') %>
     <% } %>
     <% if (theme.fontawesome.light == true) { %>
-        <%- __css('fontawesome/light.min.css') %>
+        <%- renderCSS('fontawesome/light.min.css') %>
     <% } %>
     <% if (theme.fontawesome.duotone == true) { %>
-        <%- __css('fontawesome/duotone.min.css') %>
+        <%- renderCSS('fontawesome/duotone.min.css') %>
     <% } %>
     <% if (theme.fontawesome.sharp_solid == true) { %>
-        <%- __css('fontawesome/sharp-solid.min.css') %>
+        <%- renderCSS('fontawesome/sharp-solid.min.css') %>
     <% } %>
 </head>
 

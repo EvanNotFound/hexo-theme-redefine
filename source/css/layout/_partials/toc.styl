@@ -56,6 +56,7 @@
       white-space nowrap
       //word-wrap:break-word
       font-size 0.9rem
+      transition all 0.3s ease
 
       a > span {
         &:first-child::before {
@@ -77,7 +78,7 @@
 
     .nav {
       .nav-child {
-        display hexo-config('toc.expand_all') ? block : none
+        display hexo-config('articles.toc.expand') ? block : none
       }
 
       .active > .nav-child {
@@ -112,7 +113,7 @@
           color var(--primary-color) !important
           font-weight bold
           transition all 0.3s ease
-          padding-left 12px
+          //padding-left 12px
         }
       }
 
