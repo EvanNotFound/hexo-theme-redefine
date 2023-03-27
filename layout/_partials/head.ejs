@@ -22,14 +22,14 @@
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="<%= page.title || config.title || 'Redefine Theme' %>">
-    <meta property="og:description" content="<%= page.description || config.description || 'Hexo Theme Redefine' %>">
-    <meta property="og:url" content="<%= full_url_for(page.path) %>">
     <% if (theme.open_graph.enable) { %>
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="<%= page.title || config.title || 'Redefine Theme' %>">
+        <meta property="og:description" content="<%= open_graph.description || page.description || config.description || 'Hexo Theme Redefine' %>">
+        <meta property="og:url" content="<%= full_url_for(page.path) %>">
         <meta property="og:image" content="<%= theme.open_graph.image %>">
+        <meta property="og:site_name" content="<%= theme.info.title || config.title || 'Redefine Theme' %>">
     <% }%>
-    <meta property="og:site_name" content="<%= theme.info.title || config.title || 'Redefine Theme' %>">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="<%= page.title || config.title || 'Redefine Theme' %>">
     <meta name="twitter:description" content="<%= page.description || config.description || 'Hexo Theme Redefine' %>">
