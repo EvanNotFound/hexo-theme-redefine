@@ -20,10 +20,11 @@
 
 ## 📷 屏幕截图
 
-![redefine-1-final](https://user-images.githubusercontent.com/68590232/224550641-72b2a0d4-e30d-41c5-b3cb-7cc86be14e31.png)
-![redefine-2-final](https://user-images.githubusercontent.com/68590232/224550645-07d6b624-fa7c-40aa-90f8-873c958afa30.png)
-![redefine-3-final](https://user-images.githubusercontent.com/68590232/224550647-e194348c-2a3b-4738-b978-60f11c952365.png)
+![redefine-1-final](https://user-images.githubusercontent.com/68590232/228013035-a254e19d-18b7-4a40-b769-a5d0d075fe89.png)
 
+![redefine-2-final](https://user-images.githubusercontent.com/68590232/228013043-8df44917-8af9-443c-951a-ceec6663b988.png)
+
+![redefine-3-final](https://user-images.githubusercontent.com/68590232/228013046-92c3e5b0-9ef3-4203-a0d3-ddf8d5ff3996.png)
 ## 🌐 官方演示站
 
 - [EvanNotFound's Blog](https://ohevan.com)
