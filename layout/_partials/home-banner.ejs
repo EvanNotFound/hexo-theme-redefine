@@ -10,17 +10,17 @@
         </div>
         <% if (theme.home_banner.social_links.enable) { %>
             <div class="social-contacts fade-in-down-animation">
-                <% for (const key in home_banner.social_links.links) { %>
+                <% for (const key in theme.home_banner.social_links.links) { %>
                     <% if(theme.home_banner.social_links.links[key]) { %>
                         <% if(key === 'email') { %>
                             <span class="social-contact-item <%= key %>">
-                                <a href="mailto:<%- home_banner.social_links.links[key] %>">
+                                <a href="mailto:<%- theme.home_banner.social_links.links[key] %>">
                                     <i class="fa-solid fa-envelope"></i>
                                 </a>
                             </span>
                         <% } else { %>
                             <span class="social-contact-item <%= key %>">
-                                <a target="_blank" href="<%- home_banner.social_links.links[key] %>">
+                                <a target="_blank" href="<%- theme.home_banner.social_links.links[key] %>">
                                     <i class="fa-brands fa-<%= key %>"></i>
                                 </a>
                             </span>
