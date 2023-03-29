@@ -1,9 +1,9 @@
 <% if(
         theme.comment.system === 'gitalk'
-        && theme.comment.config.gitalk.client_id
-        && theme.comment.config.gitalk.client_secret
-        && theme.comment.config.gitalk.github_id
-        && theme.comment.config.gitalk.repository
+        && theme.comment.config.gitalk.clientID
+        && theme.comment.config.gitalk.clientSecret
+        && theme.comment.config.gitalk.owner
+        && theme.comment.config.gitalk.repo
 ) { %>
     <div id="gitalk-container"></div>
     <script <%= theme.global.pjax === true ? 'data-pjax' : '' %>
@@ -20,11 +20,11 @@
 
             try {
                 Gitalk && new Gitalk({
-                    clientID: '<%= theme.comment.config.gitalk.client_id %>',
-                    clientSecret: '<%= theme.comment.config.gitalk.client_secret %>',
-                    repo: '<%= theme.comment.config.gitalk.repository %>',
-                    owner: '<%= theme.comment.config.gitalk.github_id %>',
-                    admin: ['<%= theme.comment.config.gitalk.github_id %>'],
+                    clientID: '<%= theme.comment.config.gitalk.clientID %>',
+                    clientSecret: '<%= theme.comment.config.gitalk.clientSecret %>',
+                    repo: '<%= theme.comment.config.gitalk.repo %>',
+                    owner: '<%= theme.comment.config.gitalk.owner %>',
+                    admin: ['<%= theme.comment.config.gitalk.owner %>'],
                     id: __gitalk__pathname,
                     language: '<%= config.language %>'
                 }).render('gitalk-container');
