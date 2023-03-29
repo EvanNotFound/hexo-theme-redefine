@@ -38,17 +38,6 @@ colors:
 # COLORS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
-# OPEN GRAPH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
-open_graph:
-  # WHETHER TO ENABLE OPEN GRAPH
-  enable: false
-  # Open Graph image
-  image: /images/og.png
-  # Open Graph description
-  description: Theme Redefine is a simple and elegant theme for Hexo.
-# OPEN GRAPH <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
-
-
 # SITE CUSTOMIZATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 global:
   # Custom fonts
@@ -83,6 +72,8 @@ global:
     post_pv: true # post page view
   # Whether to enable PJAX
   pjax: true
+  # Whether to enable open graph
+  open_graph: true
 # SITE CUSTOMIZATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
     
 
