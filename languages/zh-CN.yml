@@ -29,8 +29,12 @@ home: 首页
 archive: 归档
 archives: 归档
 about: 关于
-links: 友链
-link: 友链
+links: 链接
+link: 链接
+friends: 友情链接
+friend: 友情链接
+timeline: 时间轴
+shuoshuo: 说说
 
 # ----------------------------------------
 # 网站统计
@@ -59,12 +63,13 @@ rights: 版权所有
 # 版权声明
 # ----------------------------------------
 copyright:
-  title: 本文标题
-  author: 本文作者
-  link: 本文链接
-  create_time: 创建时间
+  title: 标题
+  author: 作者
+  link: 链接
+  create_time: 创建于
+  update_time: 更新于
   license_title: 版权声明
-  license_content: "本博客所有文章除特别声明外，均采用 %s 许可协议。转载请注明出处！"
+  license_content: "本文章采用 %s 进行许可。"
 ago:
   second: "%s 秒前"
   minute: "%s 分钟前"

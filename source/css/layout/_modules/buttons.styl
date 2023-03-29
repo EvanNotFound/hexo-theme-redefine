@@ -14,17 +14,26 @@ a.button {
   text-decoration none !important
   redefine-container(false, 0, 0, 0, 1rem)
   box-shadow var(--redefine-box-shadow-flat) !important
-}
+  
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 
+  &:hover,
+  &:focus {
+    box-shadow var(--redefine-box-shadow) !important
+    background-color var(--background-color) !important
+  }
 
-a.button:hover {
+  &:active {
+    transform translateY(3px)
+    transition transform 0.1s ease
+    box-shadow var(--redefine-box-shadow-flat) !important
     background-color var(--third-background-color) !important
+  }
 }
 
-a.button:active {
-  transform translateY(3px)
-  transition transform 0.1s ease
-}
 
 a.center {
     display block

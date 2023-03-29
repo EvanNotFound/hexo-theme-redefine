@@ -34,6 +34,10 @@ changelog: Changelog
 status: Status
 links: Links
 link: Link
+friends: Friends
+friend: Friend
+timeline: Timeline
+shuoshuo: Shuoshuo
 
 # ----------------------------------------
 # Website count
@@ -60,12 +64,13 @@ rights: All Rights Reserved
 # Post
 # ----------------------------------------
 copyright:
-  author: Post author
-  title: Post title
-  link: Post link
-  create_time: Create time
-  license_title: Copyright Notice
-  license_content: "All articles in this blog are licensed under %s unless stating additionally."
+  author: Author
+  title: Title
+  link: Link
+  create_time: Created at
+  update_time: Updated at
+  license_title: License
+  license_content: "This work is licensed under %s."
 
 ago:
   second: "%s seconds ago"

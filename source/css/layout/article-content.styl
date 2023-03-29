@@ -204,13 +204,13 @@ $gap = 30px
           }
 
           .author-label {
-            margin-left 10px
+            margin-left 5px
             font-size 0.8rem
             font-weight 500
-            padding 0 5px
+            padding 2px 8px
             border-radius $redefine-border-radius-small
-            color #fff
-            background var(--selection-color)
+            color var(--third-text-color)
+            border 1px solid var(--shadow-color-1)
           }
 
         }
@@ -354,13 +354,15 @@ $gap = 30px
     .recommended-article{
       overflow: visible !important
       .recommended-article-header{
-        margin 2rem 0 0.8rem 0
-        font-size 1.2rem
-        font-weight bold
+        font-size 28px
+        font-weight 550
+        margin-top 2.8rem
+
       }
       .recommended-article-group{
-        padding 10px
+        padding 10px 0
         display: flex
+        justify-content space-between
         flex-wrap: wrap
         overflow: visible !important
         @media screen and (max-width: $device-tablet){
@@ -381,20 +383,10 @@ $gap = 30px
           justify-content: center;
           align-items: center;
           overflow: hidden
-          width: "calc(100%/3 - %s)" % ($gap * 0.6)
-          @media screen and (max-width: $device-tablet){
-            width: "calc(100%/2 - %s)" % ($gap * 0.6)
-          }
-          @media screen and (max-width: $device-mobile){
-            width: "calc(100% - %s)" % ($gap * 0.6)
-          }
+          width: 32%
           max-height: 200px
           margin-top: $gap * 0.5
-          margin-left: $gap * 0.5
           margin-right: 0
-          &:nth-child(3n+1) {
-            margin-left 0 !important
-          }
           img{
             display: flex;
             width: calc(100% + 24px)

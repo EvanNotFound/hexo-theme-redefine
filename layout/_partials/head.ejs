@@ -22,18 +22,9 @@
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
-    <% if (theme.open_graph.enable) { %>
-        <meta property="og:type" content="article">
-        <meta property="og:title" content="<%= page.title || config.title || 'Redefine Theme' %>">
-        <meta property="og:description" content="<%= open_graph.description || page.description || config.description || 'Hexo Theme Redefine' %>">
-        <meta property="og:url" content="<%= full_url_for(page.path) %>">
-        <meta property="og:image" content="<%= theme.open_graph.image %>">
-        <meta property="og:site_name" content="<%= theme.info.title || config.title || 'Redefine Theme' %>">
+    <% if (theme.global.open_graph) { %>
+        <%- open_graph() %>
     <% }%>
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="<%= page.title || config.title || 'Redefine Theme' %>">
-    <meta name="twitter:description" content="<%= page.description || config.description || 'Hexo Theme Redefine' %>">
-    <meta name="twitter:image" content="<%= theme.defaults.favicon %>">
     <!--- Icon Part-->
     <link rel="icon" type="image/png" href="<%= url_for(theme.defaults.favicon) %>" sizes="192x192">
     <link rel="apple-touch-icon" sizes="180x180" href="<%= url_for(theme.defaults.favicon) %>">
