@@ -175,7 +175,7 @@ function 用户界面(推荐文章, cfg) {
   }
   return `<div class="recommended-article">
   <div class="recommended-article-header">
-    <i class="${cfg.icon} fa-fw" aria-hidden="true"></i><span>${cfg.title}</span>
+    <i aria-hidden="true"></i><span>${cfg.title}</span>
   </div>
   <div class="recommended-article-group">${html}</div>
 </div>`

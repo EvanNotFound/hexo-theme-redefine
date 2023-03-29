@@ -254,8 +254,6 @@ articles:
     enable: false
     # Article recommendation title
     title: 推荐阅读
-    # Article recommendation title icon
-    icon: fa-solid fa-bookmark
     # Max number of articles to display
     limit: 3
     # Placeholder image
