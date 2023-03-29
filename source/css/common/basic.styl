@@ -2,6 +2,8 @@
 @require 'animated.styl'
 @require 'redefine-theme.styl'
 
+// MINXIN ======================================================================
+
 redefine-tablet() {
   @media (max-width $media-max-width){
     {block}
@@ -14,19 +16,14 @@ redefine-mobile() {
   }
 }  
 
-// ======================================================================
-// all
-// ======================================================================
+// ALL ======================================================================
+
 * {
-  // ====================================
-  //  transition
-  // ====================================
+  // Transition
   transition-g()
 
 
-  // ====================================
   // scrollbar
-  // ====================================
   &::-webkit-scrollbar {
     width 6px
     height 6px
@@ -55,9 +52,7 @@ redefine-mobile() {
 }
 
 
-// ======================================================================
 // html, body
-// ======================================================================
 html, body {
   position relative
   width 100%
@@ -150,39 +145,12 @@ img {
 // button
 // ======================================================================
 button {
-  display inline-block
-  position relative
-  text-align center
+  padding 0
+  margin 0
+  border 0
+  outline none
   cursor pointer
-  white-space nowrap
-  padding 8px 16px
-  background-color var(--second-background-color)  !important
-  border-radius $redefine-border-radius-medium !important
-  padding 12px 16px !important
-  text-decoration none !important
-  redefine-container(false, 0, 0, 0, 1rem)
-  box-shadow var(--redefine-box-shadow-flat) !important
-
-  
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-
-  hover-style(true, 1.06, 1.06)
-
-  &:hover,
-  &:focus {
-    color var(--primary-color)
-    background-color var(--background-color) !important
-    box-shadow var(--redefine-box-shadow) !important
-  }
-
-  &:active {
-    box-shadow var(--redefine-box-shadow-flat) !important
-    transform translateY(3px)
-    transition transform 0.1s ease
-  }
+  background transparent
 }
 
 .btn {
@@ -218,6 +186,7 @@ button {
     box-shadow var(--redefine-box-shadow-flat) !important
     transform translateY(3px)
     transition transform 0.1s ease
+    background-color var(--third-background-color) !important
   }
 }
 
