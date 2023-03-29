@@ -1,13 +1,18 @@
 <div class="article-copyright-info-container">
     <ul>
-        <li><%- __('copyright.title') %>：<%= page.title %></li>
-        <li><%- __('copyright.author') %>：<%= theme.info.author || config.author %></li>
-        <li><%- __('copyright.create_time') %>：<%= date(page.date, 'YYYY-MM-DD HH:mm:ss') %></li>
+        <li><strong><%- __('copyright.title') %>:</strong> <%= page.title %></li>
+        <li><strong><%- __('copyright.author') %>:</strong> <%= theme.info.author || config.author %></li>
+        <li><strong><%- __('copyright.create_time') %>:</strong> <%= date(page.date, 'YYYY-MM-DD HH:mm:ss') %></li>
+        <% if (page.updated && page.updated !== page.date) { %>
+            <li>
+                <strong><%- __('copyright.update_time') %>:</strong> <%= date(page.updated, 'YYYY-MM-DD HH:mm:ss') %>
+            </li>
+        <% } %>
         <li>
-            <%- __('copyright.link') %>：<%= getPostUrl((theme.info.url || config.url), page.path) %>
+            <strong><%- __('copyright.link') %>:</strong> <%= getPostUrl((theme.info.url || config.url), page.path) %>
         </li>
         <li>
-            <%- __('copyright.license_title') %>：<%- __('copyright.license_content', '<a class="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a>') %>
+            <strong><%- __('copyright.license_title') %>:</strong> <%- __('copyright.license_content', '<a class="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>') %>
         </li>
     </ul>
 </div>

@@ -64,12 +64,13 @@ rights: 版權所有
 # 版权声明
 # ----------------------------------------
 copyright:
-  author: 文章作者
-  title: 文章標題
-  link: 永久連結
-  create_time: 撰寫時間
+  author: 作者
+  title: 標題
+  link: 連結
+  create_time: 撰寫于
+  update_time: 更新于
   license_title: 版權宣告
-  license_content: "這個網站所有文章均使用 %s 授權。"
+  license_content: "本作品采用 %s 进行许可。"
 ago:
   second: "%s 秒前"
   minute: "%s 分鐘前"
