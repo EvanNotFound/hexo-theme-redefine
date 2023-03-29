@@ -38,7 +38,7 @@
                     <div class="info">
                         <div class="author">
                             <span class="name"><%= theme.info.author || config.author %></span>
-                            <% if (theme.hasOwnProperty('post') && theme.articles.author_label.enable === true) { %>
+                            <% if (theme.hasOwnProperty('articles') && theme.articles.author_label.enable === true) { %>
                                 <span class="author-label"><%- getAuthorLabel(site.posts.length, theme.articles.author_label.auto, theme.articles.author_label.list) %></span>
                             <% } %>
                         </div>
