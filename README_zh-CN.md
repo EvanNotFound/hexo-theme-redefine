@@ -14,8 +14,19 @@
 
 本主题基于 [hexo-theme-keep](https://github.com/XPoet/hexo-theme-keep) 开发，感谢 XPoet 的开源。本主题主要优化了样式，增加了写作模块，以及各种插件的支持。同时加大自定义程度，让你可以更加方便的使用本主题。
 
-[![NPM version](https://img.shields.io/npm/v/hexo-theme-redefine?color=red&logo=npm&style=flat-square)](https://www.npmjs.com/package/hexo-theme-redefine) [![npm](https://img.shields.io/npm/dw/hexo-theme-redefine?logo=npm&style=flat-square)](https://www.npmjs.com/package/hexo-theme-redefine) [![npm-total](https://img.shields.io/npm/dt/hexo-theme-redefine?logo=npm&style=flat-square)](https://www.npmjs.com/package/hexo-theme-redefine) [![Github License](https://img.shields.io/github/license/EvanNotFound/hexo-theme-redefine.svg?style=flat-square)](https://github.com/EvanNotFound/hexo-theme-redefine/blob/main/LICENSE) [![Required Hexo version](https://img.shields.io/badge/hexo-%3E=5.0.0-blue?style=flat-square&logo=hexo)](https://hexo.io) [![Node.js Version](https://img.shields.io/badge/node-%3E=12.0-success.svg?style=flat-square&logo=Node.js&longCache=true)](https://hexo.io)
-
+<p align="center">
+    <a href="https://www.npmjs.com/package/hexo-theme-redefine">
+        <img src="https://img.shields.io/npm/v/hexo-theme-redefine?color=F38181&amp;label=version&amp;logo=npm&amp;logoColor=F38181&amp;style=for-the-badge" referrerpolicy="no-referrer" alt="NPM version" />
+    </a>
+    <a href="https://www.npmjs.com/package/hexo-theme-redefine">
+        <img src="https://img.shields.io/npm/dw/hexo-theme-redefine?color=FCE38A&amp;logo=npm&amp;logoColor=FCE38A&amp;style=for-the-badge" referrerpolicy="no-referrer" alt="npm downloads" />
+    </a>
+    <a href="https://www.npmjs.com/package/hexo-theme-redefine">
+        <img src="https://img.shields.io/npm/dt/hexo-theme-redefine?color=95E1D3&amp;label=total&amp;logo=npm&amp;logoColor=95E1D3&amp;style=for-the-badge" referrerpolicy="no-referrer" alt="npm-total" />
+    </a>
+    <a href="https://hexo.io"><img src="https://img.shields.io/badge/hexo-%3E=5.0.0-8caaee?style=for-the-badge&amp;logo=hexo&amp;logoColor=8caaee" referrerpolicy="no-referrer" alt="Required Hexo version" /></a>
+    <img src="https://img.shields.io/badge/node-%3E=12.0-a6d189?style=for-the-badge&amp;logo=node.js&amp;logoColor=a6d189" referrerpolicy="no-referrer" alt="NodeJS Version" />
+</p>
 
 
 ## 📷 屏幕截图
