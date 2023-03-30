@@ -1,8 +1,7 @@
 <div align="right">
-  Language:
-  English
-  | <a title="Chinese" href="README_zh-CN.md">简中</a>
-  | <a title="Chinese" href="README_zh-TW.md">繁中</a>
+  <img src="https://img.shields.io/badge/-English-A31F34?style=for-the-badge" alt="English" />
+  <a title="zh-CN" href="README_zh-CN.md">  <img src="https://img.shields.io/badge/-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-545759?style=for-the-badge" alt="简体中文"></a>
+  <a title="zh-TW" href="README_zh-TW.md"><img src="https://img.shields.io/badge/-%E7%B9%81%E4%BD%93%E4%B8%AD%E6%96%87-545759?style=for-the-badge" alt="繁体中文"></a>
 </div>
 
 <a href="https://redefine.ohevan.com"><img align="center" src="https://user-images.githubusercontent.com/68590232/226141917-68124e8f-fde0-4edd-b86d-c62932ec369a.png"  alt="Redefine"></a>
