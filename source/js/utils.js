@@ -44,6 +44,8 @@ Global.initUtils = () => {
     
       if (Global.theme_config.navbar.auto_hide) {
         this.pageTop_dom.classList.toggle('hide', (this.prevScrollValue > clientHeight && scrollTop  > this.prevScrollValue) );
+      } else {
+        this.pageTop_dom.classList.remove('hide');
       }
       this.prevScrollValue = scrollTop;
     },
