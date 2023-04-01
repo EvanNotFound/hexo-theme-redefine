@@ -14,6 +14,9 @@
         <% } else if (theme.comment.system === 'twikoo') { %>
             <%- partial('twikoo') %>
         
+        <% } else if (theme.comment.system === 'giscus') { %>
+            <%- partial('giscus') %>
+        
         <% } %>
     <% } %>
 </div>
