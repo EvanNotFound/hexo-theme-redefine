@@ -58,6 +58,7 @@
         -webkit-backdrop-filter blur(10px)
 
         .fa-thumbtack {
+          color var(--default-text-color)
           margin-right 3px
           font-size 0.65rem
         }
@@ -65,6 +66,10 @@
         &:hover {
           color var(--background-color)
           background-color var(--primary-color)
+
+          .fa-thumbtack {
+            color var(--background-color)
+          }
         }
 
       }
