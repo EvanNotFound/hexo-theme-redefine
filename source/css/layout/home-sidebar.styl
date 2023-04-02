@@ -1,0 +1,165 @@
+@import "../common/variables"
+
+.home-sidebar-container {
+
+  width 240px
+  height auto
+  //background-color #bbb
+  margin 0 $spacing-unit
+
+  +redefine-tablet() {
+    margin 0 ($spacing-unit * 0.5)
+  }
+
+  +redefine-mobile() {
+    display none
+  }
+
+  .sticky-container {
+    position sticky
+    top $navbar-height
+  }
+
+  .sidebar-content {
+    redefine-container(true, 1.02, 1.02, 20px, 0)
+
+    &[marginTop] {
+      margin-top $spacing-unit * 0.6
+    }
+
+    .avatar {
+      display flex
+      justify-content center
+
+      img {
+        width 80px
+        height 80px
+        border-radius $redefine-border-radius-large
+        box-shadow var(--redefine-box-shadow-flat)
+        border 1px solid var(--border-color)
+        padding 1px
+
+        &:hover {
+          box-shadow var(--redefine-box-shadow)
+        }
+      }
+
+    }
+
+    .author {
+      display flex
+      flex-direction column
+      justify-content center
+      margin 10px 0
+
+      .name {
+        text-align center
+        font-size 1.2rem
+        font-weight 600
+        color var(--second-text-color)
+      }
+
+      .label {
+        text-align center
+        font-size 0.8rem
+        color var(--third-text-color)
+      }
+    }
+
+    .statistics {
+      display flex
+      justify-content space-around
+      margin 10px 0
+
+      .item {
+        display flex
+        flex-direction column
+        justify-content center
+        align-items center
+        width 80px
+
+        .number {
+          font-size 1.2rem
+          font-weight 600
+          color var(--second-text-color)
+        }
+
+        .label {
+          font-size 0.8rem
+          color var(--third-text-color)
+        }
+      }
+    }
+  }
+
+  .sidebar-links {
+    overflow hidden
+
+    redefine-container(true, 0.5, 1.02, 15px, 0)
+
+    .site-info {
+      background-color var(--second-background-color)
+      margin -15px -15px 10px -15px
+      border-radius $redefine-border-radius-large-top
+      padding 15px
+      border-bottom 1px solid var(--border-color)
+
+      .site-name {
+        font-size 1.2rem
+        font-weight 600
+        color var(--second-text-color)
+        font-family 'Optima Bold', sans-serif
+        text-align center
+      }
+
+      .announcement {
+        font-size 0.9rem
+        color var(--third-text-color)
+        text-align center
+        margin-top 10px
+        margin-bottom 5px
+      }
+    }
+
+    .links {
+      padding 5px 0
+      display flex
+      justify-content center
+      align-items center
+      color var(--second-text-color)
+      text-align left
+      border-radius $redefine-border-radius-small
+      cursor pointer
+      font-family $default-font-family
+
+      .icon-space {
+        margin-right 5px
+      }
+
+
+      &:hover {
+        color var(--primary-color)
+        background-color var(--second-background-color)
+      }
+
+      .icon {
+        font-size 1.2rem
+      }
+
+      .label {
+        font-size 0.8rem
+      }
+    }
+
+    .announcement-outside {
+      display flex
+      justify-content center
+      align-items center
+      margin-top 10px
+      margin-bottom 5px
+      padding 5px 0
+      color var(--second-text-color)
+      text-align center
+    }
+  }
+}

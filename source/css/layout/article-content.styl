@@ -444,3 +444,22 @@ $gap = 30px
     }
   }
 }
+
+
+@media (prefers-color-scheme dark) {
+.article-title img {
+    filter: brightness(0.7);
+    -webkit-filter: brightness(0.7);
+    transition filter 0.3s ease;
+  }
+}
+
+
+
+.dark-mode {
+  .article-title img {
+    filter: brightness(0.7);
+    -webkit-filter: brightness(0.7);
+    transition filter 0.3s ease;
+  }
+}

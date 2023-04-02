@@ -30,11 +30,12 @@
 
 ## 📷 屏幕截图
 
-![redefine-1-final](https://user-images.githubusercontent.com/68590232/228013035-a254e19d-18b7-4a40-b769-a5d0d075fe89.png)
+![redefine-1-final](https://user-images.githubusercontent.com/68590232/229380553-d36b0776-b59b-4e46-bcdb-b817546ab84c.png)
 
-![redefine-2-final](https://user-images.githubusercontent.com/68590232/228013043-8df44917-8af9-443c-951a-ceec6663b988.png)
+![redefine-2-final](https://user-images.githubusercontent.com/68590232/229380555-b428de32-a13d-4012-9601-d4634ed1a7de.png)
 
-![redefine-3-final](https://user-images.githubusercontent.com/68590232/228013046-92c3e5b0-9ef3-4203-a0d3-ddf8d5ff3996.png)
+![redefine-3-final](https://user-images.githubusercontent.com/68590232/229380556-45626258-545e-403d-b388-a215ae8e696c.png)
+
 ## 🌐 官方演示站
 
 - [EvanNotFound's Blog](https://ohevan.com)
@@ -114,7 +115,7 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 
 如有问题，请发邮件到 [contact@ohevan.com](mailto:contact@ohevan.com). 我会及时回复
 
-如果你觉得主题还不错的话，欢迎给我 Github 点个 Star，谢谢
+如果你觉得主题还不错的话，欢迎给我 Github 点个 Star，谢谢。建议点个 Watch，以便及时获取主题更新。
 
 如果你在使用 [Typora](https://typora.io/) 编辑器写文章，欢迎查看我写的 [Typora Redefine 主题](https://github.com/EvanNotFound/typora-theme-redefine)，按照本 Hexo 主题样式编写，让你可以直接预览文章效果，更好排版。
 

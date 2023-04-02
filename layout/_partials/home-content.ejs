@@ -4,7 +4,9 @@
             <li class="home-article-item">
 
                 <% if (post.sticky) { %>
-                    <i class="fa-solid fa-thumbtack fa-thumbtack top-icon"></i>
+                    <div class="home-article-sticky-label">
+                        <i class="fa-regular fa-thumbtack"></i><%- __('sticky') %>
+                    </div>
                 <% } %>
 
                 <% if (post.thumbnail && post.thumbnail == false) { %>

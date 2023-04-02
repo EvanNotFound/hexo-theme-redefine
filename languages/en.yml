@@ -17,6 +17,8 @@ category: Category
 categories: Categories
 tag: Tag
 tags: Tags
+post: Post
+posts: Posts
 tagcloud: Tag Cloud
 comment: Comment
 comments: Comments
@@ -24,6 +26,7 @@ home: Home
 archive: Archive
 archives: Archives
 top: TOP
+sticky: Sticky
 
 
 # ----------------------------------------

@@ -7,6 +7,7 @@ function initTOC() {
     Global.utils = {
 
       ...Global.utils,
+      
 
       updateActiveTOCLink() {
         if (!Array.isArray(Global.utils.sections)) return;
@@ -47,24 +48,33 @@ function initTOC() {
 
       activateTOCLink(index) {
         const target = document.querySelectorAll('.post-toc li a.nav-link')[index];
-
-        if ( (!target || target.classList.contains('active-current')) ) {
+      
+        if (!target || target.classList.contains('active-current')) {
           return;
         }
-
+      
         document.querySelectorAll('.post-toc .active').forEach(element => {
           element.classList.remove('active', 'active-current');
         });
         target.classList.add('active', 'active-current');
-        // Scrolling to center active TOC element if TOC content is taller then viewport.
-        const tocElement = document.querySelector('.post-toc-wrap');
+      
+        // Scroll to the active TOC item and keep it centered
+        const tocElement = document.querySelector('.toc-content-container');
+        const tocRect = tocElement.getBoundingClientRect();
+        const targetRect = target.getBoundingClientRect();
+        const scrollTopOffset = tocElement.offsetHeight > window.innerHeight ? (tocElement.offsetHeight - window.innerHeight) / 2 : 0;
+        const targetTop = targetRect.top - tocRect.top + tocElement.scrollTop;
+        const targetCenter = targetTop - scrollTopOffset + (targetRect.height / 2);
+        const tocCenter = tocRect.top + (tocRect.height / 2);
+        const scrollOffset = targetCenter - tocCenter;
         window.anime({
           targets: tocElement,
-          duration: 200,
-          easing: 'linear',
-          scrollTop: tocElement.scrollTop - (tocElement.offsetHeight / 2) + target.getBoundingClientRect().top - tocElement.getBoundingClientRect().top
+          duration: 400,
+          easing: 'easeOutQuad',
+          scrollTop: tocElement.scrollTop + scrollOffset
         });
       },
+      
 
       showTOCAside() {
 

@@ -37,11 +37,11 @@ Hexo Theme Redefine source code is based on [hexo-theme-keep](https://github.com
 
 ## 📷 Screenshots
 
-![redefine-1-final](https://user-images.githubusercontent.com/68590232/228013035-a254e19d-18b7-4a40-b769-a5d0d075fe89.png)
+![redefine-1-final](https://user-images.githubusercontent.com/68590232/229380553-d36b0776-b59b-4e46-bcdb-b817546ab84c.png)
 
-![redefine-2-final](https://user-images.githubusercontent.com/68590232/228013043-8df44917-8af9-443c-951a-ceec6663b988.png)
+![redefine-2-final](https://user-images.githubusercontent.com/68590232/229380555-b428de32-a13d-4012-9601-d4634ed1a7de.png)
 
-![redefine-3-final](https://user-images.githubusercontent.com/68590232/228013046-92c3e5b0-9ef3-4203-a0d3-ddf8d5ff3996.png)
+![redefine-3-final](https://user-images.githubusercontent.com/68590232/229380556-45626258-545e-403d-b388-a215ae8e696c.png)
 
 
 ## 🌐 Online Demo

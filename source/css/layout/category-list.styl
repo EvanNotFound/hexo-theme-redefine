@@ -6,27 +6,42 @@
 
     .all-category-list {
 
-      li.all-category-list-item {
-        font-size 1rem
-        margin-bottom 15px
+      display flex
+      flex-wrap wrap
 
-        &:last-child {
-          margin-bottom 0
+      li.all-category-list-item {
+        font-size 1.2rem
+        margin-bottom 15px
+        box-shadow var(--redefine-box-shadow-flat)
+        padding 10px
+        border-radius $redefine-border-radius-medium
+        margin  10px
+        transition all 0.2s ease
+        cursor pointer
+
+        &:hover,
+        &:focus {
+          box-shadow var(--redefine-box-shadow-flat-hover) !important
+          background-color var(--primary-color)
+          transition all 0.2s ease
+
+          a {
+            color var(--background-color)
+          }
         }
 
+        &:active {
+          transform scale(0.95)
+        }
+
+        
+
         span.all-category-list-count {
-          float right
-          color var(--default-text-color)
-
-
-          &::before {
-            content '['
-          }
-
-          &::after {
-            content ']'
-          }
-
+          color var(--third-text-color)
+          margin-left  5px
+          background-color var(--third-background-color)
+          padding 2px 5px
+          border-radius $redefine-border-radius-small
         }
 
 

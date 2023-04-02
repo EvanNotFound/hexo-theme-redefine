@@ -17,10 +17,13 @@ category: 分类
 categories: 分类
 tag: 标签
 tags: 标签
+post: 文章
+posts: 文章
 tagcloud: 标签云
 comment: 评论
 comments: 评论
 top: 置顶
+sticky: 置顶
 
 # ----------------------------------------
 # 菜单翻译
