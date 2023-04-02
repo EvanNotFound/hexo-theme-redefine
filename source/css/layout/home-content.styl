@@ -191,3 +191,30 @@
     }
   }
 }
+
+@media (prefers-color-scheme light) {
+
+}
+
+@media (prefers-color-scheme dark) {
+.home-article-thumbnail {
+    img {
+      filter: brightness(0.7);
+      -webkit-filter: brightness(0.7);
+      transition filter 0.3s ease;
+    }
+  }
+}
+
+
+
+.dark-mode {
+  .home-article-thumbnail {
+    img {
+      filter: brightness(0.7);
+      -webkit-filter: brightness(0.7);
+      transition filter 0.3s ease;
+    }
+  }
+
+}
