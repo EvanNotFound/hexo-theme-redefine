@@ -51,7 +51,7 @@
     %>
     <% if(is_post() && theme.hasOwnProperty('articles') && theme.articles.word_count.enable && theme.articles.word_count.count && temp_wordcount){ %>
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-file-word"></i>&nbsp;<span><%= temp_wordcount %> <%- __('wordcount') %></span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span><%= temp_wordcount %> <%- __('wordcount') %></span>
         </span>
     <% } %>
     <% if(is_post() && theme.hasOwnProperty('articles') && theme.articles.word_count.enable && theme.articles.word_count.min2read && temp_min2read){ %>
