@@ -192,7 +192,7 @@ home:
   # Sidebar settings
   sidebar:
     enable: true # Whether to enable sidebar
-    position: right # Sidebar position. left, right
+    position: left # Sidebar position. left, right
     announcement: # Announcement text
     links:
       # Archives: 
