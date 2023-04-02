@@ -24,6 +24,9 @@
 @import "layout/_partials/article-meta-info.styl"
 @import "layout/_partials/article-copyright-info.styl"
 @import "layout/home-content.styl"
+if (hexo-config('home.sidebar.enable') == true) {
+  @import "layout/home-sidebar.styl"
+}
 @import "layout/archive-content.styl"
 @import "layout/article-content.styl"
 @import "layout/category-content.styl"

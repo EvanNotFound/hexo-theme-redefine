@@ -13,11 +13,14 @@
 
         <div class="main-content-body">
 
+            <% if (is_home() && theme.home.sidebar.enable === true && theme.home.sidebar.position === "left") { %>
+                <%- partial('_partials/home-sidebar') %>
+            <% } %>
+
             <div class="main-content">
 
                 <% if (is_home()) { %>
-                    <%- partial('home-content') %>
-
+                    <%- partial('_partials/home-content') %>
                 <% } else if (is_archive()) { %>
                     <%- partial('archive-content') %>
 
@@ -45,8 +48,10 @@
                 <% } %>
 
             </div>
-
-
+            
+            <% if (is_home() && theme.home.sidebar.enable === true && theme.home.sidebar.position === "right") { %>
+                <%- partial('_partials/home-sidebar') %>
+            <% } %>
 
         </div>
 
