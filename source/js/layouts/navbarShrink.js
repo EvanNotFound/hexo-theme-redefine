@@ -34,9 +34,13 @@ const navbarShrink = {
     }
 
     domList.forEach(v => {
-      v.addEventListener('click', () => {
-        document.body.classList.toggle('navbar-drawer-show');
-      });
+      if (!v.dataset.navbarInitialized)
+      {
+        v.dataset.navbarInitialized = 1;
+        v.addEventListener('click', () => {
+          document.body.classList.toggle('navbar-drawer-show');
+        });
+      }
     });
   }
 };
