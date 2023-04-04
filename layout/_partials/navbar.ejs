@@ -93,7 +93,7 @@
                     <% if (theme.navbar.links[i].submenus) { %>          
                         <% for (var submenu in theme.navbar.links[i].submenus){ %>
                             <li class="dropdown-item flex-center">
-                                <a class="dropdown-item" href="<%- url_for(theme.navbar.links[i].submenus[submenu]) %>"><%= __(submenu.toLowerCase()).toUpperCase() %></a>
+                                <a href="<%- url_for(theme.navbar.links[i].submenus[submenu]) %>"><%= __(submenu.toLowerCase()).toUpperCase() %></a>
                             </li>
                         <% } %>
                     <% } %>
