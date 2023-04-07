@@ -337,6 +337,7 @@ plugins:
   # Aplayer (fixed). See https://github.com/DIYgod/APlayer
   aplayer:
     enable: false # Whether to enable
+    type: mini # fixed, mini
     audios:
       - name: # audio name
         artist: # audio artist

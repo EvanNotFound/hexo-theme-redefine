@@ -4,7 +4,7 @@
 <body>
 <%- body %>
 <%- partial('_partials/scripts') %>
-<% if (theme.plugins.aplayer.enable) { %>
+<% if (theme.plugins.aplayer.enable && theme.plugins.aplayer.type === "fixed") { %>
     <%- partial('_plugins/aplayer') %>
 <% } %>
 </body>
