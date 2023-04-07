@@ -334,19 +334,20 @@ plugins:
   # RSS feed. Requires hexo-generator-feed (npm i hexo-generator-feed). See https://github.com/hexojs/hexo-generator-feed
   feed:
     enable: false # Whether to enable
-  # Aplayer (fixed). See https://github.com/DIYgod/APlayer
+  # Aplayer. See https://github.com/DIYgod/APlayer
   aplayer:
     enable: false # Whether to enable
-    type: mini # fixed, mini
+    type: fixed # fixed, mini
     audios:
       - name: # audio name
         artist: # audio artist
         url: # audio url
         cover: # audio cover url
-      - name: 
-        artist: 
-        url: 
-        cover: 
+      # - name: # audio name
+      #   artist: # audio artist
+      #   url: # audio url
+      #   cover: # audio cover url
+      # .... you can add more audios here
   # Mermaid JS. Requires hexo-filter-mermaid-diagrams (npm i hexo-filter-mermaid-diagrams). See https://mermaid.js.org/
   mermaid:
     enable: false # enable mermaid or not

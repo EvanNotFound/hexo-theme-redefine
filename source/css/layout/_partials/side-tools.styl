@@ -111,33 +111,12 @@ $right-bottom-tools-border-radius = 12px
 
     if (hexo-config('plugins.aplayer.enable') == true && hexo-config('plugins.aplayer.type') == "mini") {
       .tool-aplayer {
+        +redefine-tablet() {
+          display none
+        }
 
-        padding 0 !important
-        .aplayer {
-          width $right-bottom-tools-width - 2px !important
-          height $right-bottom-tools-width - 2px !important
-          border-radius $right-bottom-tools-border-radius - 0.8px
-          margin 0  !important
-        }
-        .aplayer-pic {
-          width $right-bottom-tools-width - 4px !important
-          height $right-bottom-tools-width - 4px !important
-          border-radius $right-bottom-tools-border-radius - 0.8px
-        }
-        .aplayer-play {
-          width: 13px;
-          height: 13px;
-          border: 2px solid #fff;
-          bottom: 50%;
-          right: 50%;
-          margin: 0 -9px -9px 0;
-        }
-        .aplayer-play svg {
-          position: absolute;
-          top 0px
-          left: 1px;
-          height: 13px;
-          width: 13px;
+        +redefine-mobile() {
+          display none
         }
       }
     }

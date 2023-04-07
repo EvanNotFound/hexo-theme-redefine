@@ -756,3 +756,51 @@ $aplayer-height-lrc= $aplayer-height + $lrc-height - 6
     transform rotate(360deg)
   }
 }
+
+if (hexo-config('plugins.aplayer.enable') == true && hexo-config('plugins.aplayer.type') == "mini") {
+  .aplayer {
+    position fixed
+    bottom 46px
+    right 39px
+    margin 0
+    z-index 99
+    overflow-y hidden
+    max-width 400px
+    width $right-bottom-tools-width - 2px !important
+    height $right-bottom-tools-width - 2px !important
+    border-radius $right-bottom-tools-border-radius - 0.8px !important
+
+    +redefine-tablet() {
+      display none
+    }
+
+    +redefine-mobile() {
+      display none
+    }
+
+  }
+
+
+  .aplayer-pic {
+    position fixed !important
+    width $right-bottom-tools-width - 4px !important
+    height $right-bottom-tools-width - 4px !important
+    border-radius $right-bottom-tools-border-radius - 0.8px !important
+  }
+  .aplayer-play {
+    width: 13px !important
+    height: 13px !important
+    border: 2px solid #fff !important
+    bottom: 50% !important
+    right: 50% !important
+    margin: 0 -9px -9px 0 !important
+  }
+  .aplayer-play svg {
+    position: absolute !important
+    top 0px !important
+    left: 1px !important
+    height: 13px  !important
+    width: 13px !important
+  }
+
+}
