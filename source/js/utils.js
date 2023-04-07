@@ -54,9 +54,7 @@ Global.initUtils = () => {
     registerWindowScroll() {
       window.addEventListener("scroll", () => {
         // style handle when scroll
-        if (this.isHasScrollPercent || this.isHasScrollProgressBar) {
-          this.updateScrollStyle();
-        }
+        this.updateScrollStyle();
 
         // TOC scroll handle
         if (

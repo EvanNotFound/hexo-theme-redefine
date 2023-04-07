@@ -45,7 +45,6 @@ function initTOC() {
       },
 
 
-
       activateTOCLink(index) {
         const target = document.querySelectorAll('.post-toc li a.nav-link')[index];
       
@@ -58,22 +57,23 @@ function initTOC() {
         });
         target.classList.add('active', 'active-current');
       
-        // Scroll to the active TOC item and keep it centered
+        // Scroll to the active TOC item
         const tocElement = document.querySelector('.toc-content-container');
-        const tocRect = tocElement.getBoundingClientRect();
-        const targetRect = target.getBoundingClientRect();
+        const tocTop = tocElement.getBoundingClientRect().top;
         const scrollTopOffset = tocElement.offsetHeight > window.innerHeight ? (tocElement.offsetHeight - window.innerHeight) / 2 : 0;
-        const targetTop = targetRect.top - tocRect.top + tocElement.scrollTop;
-        const targetCenter = targetTop - scrollTopOffset + (targetRect.height / 2);
-        const tocCenter = tocRect.top + (tocRect.height / 2);
-        const scrollOffset = targetCenter - tocCenter;
+        const targetTop = target.getBoundingClientRect().top - tocTop;
+        const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+        const distanceToCenter = targetTop - (viewportHeight / 2) + (target.offsetHeight / 2) - scrollTopOffset;
+        const scrollTop = tocElement.scrollTop + distanceToCenter;
+        
         window.anime({
           targets: tocElement,
-          duration: 400,
+          duration: 300,
           easing: 'easeOutQuad',
-          scrollTop: tocElement.scrollTop + scrollOffset
+          scrollTop: scrollTop
         });
       },
+      
       
 
       showTOCAside() {

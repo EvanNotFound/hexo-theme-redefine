@@ -108,5 +108,17 @@ $right-bottom-tools-border-radius = 12px
       }
 
     }
+
+    if (hexo-config('plugins.aplayer.enable') == true && hexo-config('plugins.aplayer.type') == "mini") {
+      .tool-aplayer {
+        +redefine-tablet() {
+          display none
+        }
+
+        +redefine-mobile() {
+          display none
+        }
+      }
+    }
   }
 }
