@@ -49,22 +49,6 @@ hexo.extend.helper.register('export_config', function () {
     navbar: theme.navbar,
     page_templates: theme.page_templates,
     home: theme.home,
-
-
-
-    
-
-
-
-    //toc: theme.articles.toc,
-    //style: theme.style,
-    //local_search: theme.navbar.search,
-    
-    //side_tools: theme.side_tools,
-    //lazyload: articles.lazyload,
-    
-    //friend_links: theme.friend_links,
-    //home_article: theme.home,
   }
 
   return `<script id="hexo-configurations">

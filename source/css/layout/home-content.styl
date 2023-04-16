@@ -6,7 +6,11 @@
     margin-left $spacing-unit
 
     +redefine-tablet() {
-      margin-left ($spacing-unit * 0.5)
+      margin-left 0
+    }
+
+    +redefine-mobile() {
+      margin-left 0
     }
   }
 
@@ -14,7 +18,11 @@
     margin-right $spacing-unit
 
     +redefine-tablet() {
-      margin-right ($spacing-unit * 0.5)
+      margin-right 0
+    }
+
+    +redefine-mobile() {
+      margin-right 0
     }
   }
 
@@ -96,6 +104,8 @@
 
         img {
           width 100%
+          height 100%
+          object-fit cover
           position: absolute;
           top: 50%;
           transform: translateY(-50%);

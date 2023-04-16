@@ -103,6 +103,9 @@ home_banner:
   # Home banner subtitle
   subtitle:
     text: [] # subtitle text, array
+    hitokoto:  # 一言配置
+      enable: false # Whether to enable hitokoto
+      api: https://v1.hitokoto.cn # API URL, can add types, see https://developer.hitokoto.cn/sentence/#%E5%8F%A5%E5%AD%90%E7%B1%BB%E5%9E%8B-%E5%8F%82%E6%95%B0
     typing_speed: 100 # Typing speed (ms)
     backing_speed: 80 # Backing speed (ms)
     starting_delay: 500 # Start delay (ms)
@@ -193,6 +196,7 @@ home:
   sidebar:
     enable: true # Whether to enable sidebar
     position: left # Sidebar position. left, right
+    first_item: menu # First item in sidebar. menu, info
     announcement: # Announcement text
     links:
       # Archives: 
@@ -226,6 +230,8 @@ articles:
     line_height: 1.5 # Line height
     image_border_radius: 14px # image border radius
     image_alignment: center # image alignment. left, center
+    image_caption: false # Whether to display image caption
+    link_icon: true # Whether to display link icon
   # Word count. Requires hexo-wordcount (npm install hexo-wordcount). See https://github.com/willin/hexo-wordcount
   word_count:
     enable: true # Whether to enable

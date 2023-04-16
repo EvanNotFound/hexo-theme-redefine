@@ -18,6 +18,12 @@
                                     <i class="fa-solid fa-envelope"></i>
                                 </a>
                             </span>
+                        <% } else if(key.includes("fa-")) { %>
+                            <span class="social-contact-item">
+                                <a target="_blank" href="<%- theme.home_banner.social_links.links[key] %>">
+                                    <i class="<%= key %> fa-sm"></i>
+                                </a>
+                            </span>
                         <% } else { %>
                             <span class="social-contact-item <%= key %>">
                                 <a target="_blank" href="<%- theme.home_banner.social_links.links[key] %>">
