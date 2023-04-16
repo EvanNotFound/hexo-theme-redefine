@@ -5,7 +5,7 @@ Global.initUtils = () => {
     html_root_dom: document.querySelector("html"),
     pageContainer_dom: document.querySelector(".page-container"),
     pageTop_dom: document.querySelector(".main-content-header"),
-    firstScreen_dom: document.querySelector(".home-banner-container"),
+    homeBanner_dom: document.querySelector(".home-banner-container"),
     scrollProgressBar_dom: document.querySelector(".scroll-progress-bar"),
     pjaxProgressBar_dom: document.querySelector(".pjax-progress-bar"),
     pjaxProgressIcon_dom: document.querySelector(".pjax-progress-icon"),
@@ -253,14 +253,14 @@ Global.initUtils = () => {
     },
 
     // init first screen height
-    initFirstScreenHeight() {
-      this.firstScreen_dom &&
-        (this.firstScreen_dom.style.height = this.innerHeight + "px");
+    inithomeBannerHeight() {
+      this.homeBanner_dom &&
+        (this.homeBanner_dom.style.height = this.innerHeight + "px");
     },
 
     // init page height handle
     initPageHeightHandle() {
-      if (this.firstScreen_dom) return;
+      if (this.homeBanner_dom) return;
       const temp_h1 = this.getElementHeight(".main-content-header");
       const temp_h2 = this.getElementHeight(".main-content-body");
       const temp_h3 = this.getElementHeight(".main-content-footer");
@@ -501,7 +501,7 @@ Global.initUtils = () => {
   Global.utils.initPageHeightHandle();
 
   // init first screen height
-  Global.utils.initFirstScreenHeight();
+  Global.utils.inithomeBannerHeight();
 
   // big image viewer handle
   Global.utils.imageViewer();
