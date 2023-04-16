@@ -1,58 +1,114 @@
 <div class="home-sidebar-container fade-in-down-animation">
     <div class="sticky-container">
-        <% if (theme.home.sidebar.links !== null || theme.home.sidebar.announcement !== null) {%>
-            <div class="sidebar-links">
-                <div class="site-info">
-                    <div class="site-name"><%= theme.info.title || config.title %></div>
-                    <% if (theme.home.sidebar.announcement !== null && theme.home.sidebar.links !== null) { %>
-                        <div class="announcement">
+        <% if (theme.home.sidebar.first_item == "info") { %>
+            <div class="sidebar-content">
+                <div class="avatar">
+                    <%- image_tag(url_for(theme.defaults.avatar)) %>
+                </div>
+                <div class="author">
+                    <div class="name"><%= theme.info.author || config.author %></div>
+                    <% if (theme.hasOwnProperty('articles') && theme.articles.author_label.enable === true) { %>
+                        <div class="label"><%- getAuthorLabel(site.posts.length, theme.articles.author_label.auto, theme.articles.author_label.list) %></div>
+                    <% } %>
+                </div>
+                <div class="statistics">
+                    <a class="item" href="<%- url_for(config.tag_dir) %>">
+                        <div class="number"><%= site.tags.length %></div>
+                        <div class="label"><%- __('tags') %></div>
+                    </a>
+                    <a class="item" href="<%- url_for(config.category_dir) %>">
+                        <div class="number"><%= site.categories.length %></div>
+                        <div class="label"><%- __('categories') %></div>
+                    </a>
+                    <a class="item" href="<%- url_for(config.archive_dir) %>">
+                        <div class="number"><%= site.posts.length %></div>
+                        <div class="label"><%- __('posts') %></div>
+                    </a>
+                </div>
+            </div>
+            <% if (theme.home.sidebar.links !== null || theme.home.sidebar.announcement !== null) {%>
+                <div class="sidebar-links"  <% if (theme.home.sidebar.links !== null || theme.home.sidebar.announcement !== null) { %> marginTop <% } %>>
+                    <div class="site-info">
+                        <div class="site-name"><%= theme.info.title || config.title %></div>
+                        <% if (theme.home.sidebar.announcement !== null && theme.home.sidebar.links !== null) { %>
+                            <div class="announcement">
+                                <%- theme.home.sidebar.announcement %>
+                            </div>
+                        <% } %>
+                    </div>
+                    <% if (theme.home.sidebar.links !== null) {%>
+                        <% for (let i in theme.home.sidebar.links) { %>
+                            <% if (theme.home.sidebar.links[i].path === 'none') {} else {%>
+                                <a class="links" href="<%= theme.home.sidebar.links[i].path %>" target="_blank">
+                                    <% if (theme.home.sidebar.links[i].icon) { %>
+                                        <i class="<%- theme.home.sidebar.links[i].icon %> icon-space"></i>
+                                    <% } %>
+                                    <span class="link-name"><%= __(i) %></span>
+                                </a>
+                            <% } %>
+                        <% } %>
+                    <% } else {%>
+                        <div class="announcement-outside">
                             <%- theme.home.sidebar.announcement %>
                         </div>
                     <% } %>
                 </div>
-                <% if (theme.home.sidebar.links !== null) {%>
-                    <% for (let i in theme.home.sidebar.links) { %>
-                        <% if (theme.home.sidebar.links[i].path === 'none') {} else {%>
-                            <a class="links" href="<%= theme.home.sidebar.links[i].path %>" target="_blank">
-                                <% if (theme.home.sidebar.links[i].icon) { %>
-                                    <i class="<%- theme.home.sidebar.links[i].icon %> icon-space"></i>
-                                <% } %>
-                                <span class="link-name"><%= __(i) %></span>
-                            </a>
+            <% } %>
+        <% } else { %>
+            <% if (theme.home.sidebar.links !== null || theme.home.sidebar.announcement !== null) {%>
+                <div class="sidebar-links">
+                    <div class="site-info">
+                        <div class="site-name"><%= theme.info.title || config.title %></div>
+                        <% if (theme.home.sidebar.announcement !== null && theme.home.sidebar.links !== null) { %>
+                            <div class="announcement">
+                                <%- theme.home.sidebar.announcement %>
+                            </div>
                         <% } %>
-                    <% } %>
-                <% } else {%>
-                    <div class="announcement-outside">
-                        <%- theme.home.sidebar.announcement %>
                     </div>
-                <% } %>
+                    <% if (theme.home.sidebar.links !== null) {%>
+                        <% for (let i in theme.home.sidebar.links) { %>
+                            <% if (theme.home.sidebar.links[i].path === 'none') {} else {%>
+                                <a class="links" href="<%= theme.home.sidebar.links[i].path %>" target="_blank">
+                                    <% if (theme.home.sidebar.links[i].icon) { %>
+                                        <i class="<%- theme.home.sidebar.links[i].icon %> icon-space"></i>
+                                    <% } %>
+                                    <span class="link-name"><%= __(i) %></span>
+                                </a>
+                            <% } %>
+                        <% } %>
+                    <% } else {%>
+                        <div class="announcement-outside">
+                            <%- theme.home.sidebar.announcement %>
+                        </div>
+                    <% } %>
+                </div>
+            <% } %>
+            <div class="sidebar-content" <% if (theme.home.sidebar.links !== null || theme.home.sidebar.announcement !== null) { %> marginTop <% } %>>
+                <div class="avatar">
+                    <%- image_tag(url_for(theme.defaults.avatar)) %>
+                </div>
+                <div class="author">
+                    <div class="name"><%= theme.info.author || config.author %></div>
+                    <% if (theme.hasOwnProperty('articles') && theme.articles.author_label.enable === true) { %>
+                        <div class="label"><%- getAuthorLabel(site.posts.length, theme.articles.author_label.auto, theme.articles.author_label.list) %></div>
+                    <% } %>
+                </div>
+                <div class="statistics">
+                    <a class="item" href="<%- url_for(config.tag_dir) %>">
+                        <div class="number"><%= site.tags.length %></div>
+                        <div class="label"><%- __('tags') %></div>
+                    </a>
+                    <a class="item" href="<%- url_for(config.category_dir) %>">
+                        <div class="number"><%= site.categories.length %></div>
+                        <div class="label"><%- __('categories') %></div>
+                    </a>
+                    <a class="item" href="<%- url_for(config.archive_dir) %>">
+                        <div class="number"><%= site.posts.length %></div>
+                        <div class="label"><%- __('posts') %></div>
+                    </a>
+                </div>
             </div>
         <% } %>
-        <div class="sidebar-content" <% if (theme.home.sidebar.links !== null || theme.home.sidebar.announcement !== null) { %> marginTop <% } %>>
-            <div class="avatar">
-                <%- image_tag(url_for(theme.defaults.avatar)) %>
-            </div>
-            <div class="author">
-                <div class="name"><%= theme.info.author || config.author %></div>
-                <% if (theme.hasOwnProperty('articles') && theme.articles.author_label.enable === true) { %>
-                    <div class="label"><%- getAuthorLabel(site.posts.length, theme.articles.author_label.auto, theme.articles.author_label.list) %></div>
-                <% } %>
-            </div>
-            <div class="statistics">
-                <a class="item" href="<%- url_for(config.tag_dir) %>">
-                    <div class="number"><%= site.tags.length %></div>
-                    <div class="label"><%- __('tags') %></div>
-                </a>
-                <a class="item" href="<%- url_for(config.category_dir) %>">
-                    <div class="number"><%= site.categories.length %></div>
-                    <div class="label"><%- __('categories') %></div>
-                </a>
-                <a class="item" href="<%- url_for(config.archive_dir) %>">
-                    <div class="number"><%= site.posts.length %></div>
-                    <div class="label"><%- __('posts') %></div>
-                </a>
-            </div>
-        </div>
 
     </div>
 </div>
