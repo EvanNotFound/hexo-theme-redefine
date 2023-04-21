@@ -375,5 +375,5 @@ cdn:
   # Whether to enable CDN
   enable: false
   # CDN Provider
-  provider: unpkg # jsdelivr, unpkg, aliyun
+  provider: aliyun # aliyun, jsdelivr, unpkg, personal
 # CDN <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
