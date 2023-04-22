@@ -8,7 +8,7 @@
     <script <%= theme.global.pjax === true ? 'data-pjax' : '' %> defer>
         async function loadGiscus() {
             // wait until styleStatus is available
-            while (!Global || !Global.styleStatus) await new Promise(r => setTimeout(r, 1000));
+            while (!Global || !Global.colorSchemeConfirmed) await new Promise(r => setTimeout(r, 1000));
             const giscusConfig = {
                 'src': 'https://giscus.app/client.js',
                 'data-repo': '<%= theme.comment.config.giscus.repo %>',
@@ -19,7 +19,7 @@
                 'data-strict': '<%= theme.comment.config.giscus.strict || '0' %>',
                 'data-reactions-enabled': '<%= theme.comment.config.giscus.reactions_enabled || '1' %>',
                 'data-emit-metadata': '<%= theme.comment.config.giscus.emit_metadata || '1' %>',
-                'data-theme': '<%= theme.comment.config.giscus.theme || 'preferred_color_scheme' %>',
+                'data-theme': Global.styleStatus.isDark ? 'dark' : 'light',
                 'data-lang': '<%= theme.comment.config.giscus.lang || 'en' %>',
                 'data-input-position': '<%= theme.comment.config.giscus.input_position || 'bottom' %>',
                 'data-loading': '<%= theme.comment.config.giscus.loading || 'lazy' %>',
