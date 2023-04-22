@@ -34,6 +34,9 @@
     <%- renderJS('js/plugins/mermaid.js') %>
 <% } %>
 
+<% if (is_home() && theme.home_banner.style === "fixed") { %>
+    <%- renderJS('js/tools/scrollBlur.js') %>
+<% } %>
 
 
 <div class="post-scripts<%= theme.global.pjax === true ? ' pjax' : '' %>">
