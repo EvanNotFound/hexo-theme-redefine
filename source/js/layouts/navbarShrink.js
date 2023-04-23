@@ -43,6 +43,14 @@ const navbarShrink = {
         });
       }
     });
+
+    const logoTitleDom = document.querySelector('.navbar-container .navbar-content .logo-title')
+    if (logoTitleDom && !logoTitleDom.dataset.navbarInitialized) {
+      logoTitleDom.dataset.navbarInitialized = 1;
+      logoTitleDom.addEventListener('click', () => {
+        document.body.classList.remove('navbar-drawer-show');
+      });
+    }
   }
 };
 
