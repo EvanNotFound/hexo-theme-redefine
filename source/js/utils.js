@@ -254,8 +254,13 @@ Global.initUtils = () => {
       this.goComment_dom = document.querySelector(".go-comment");
       if (this.goComment_dom) {
         this.goComment_dom.addEventListener("click", () => {
-          document.querySelector("#comment-anchor").scrollIntoView({
-            behavior: "smooth",
+          const target = document.querySelector("#comment-anchor");
+          const offset = target.getBoundingClientRect().top + window.scrollY;
+          window.anime({
+            targets: document.scrollingElement,
+            duration: 500,
+            easing: 'linear',
+            scrollTop: offset - 10
           });
         });
       }
