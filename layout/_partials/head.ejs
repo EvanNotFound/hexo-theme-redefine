@@ -29,7 +29,18 @@
     <meta name="revisit-after" content="1 days">
     <% if (theme.global.open_graph) { %>
         <%- open_graph() %>
-    <% }%>
+    <% } %>
+    <% if (theme.global.google_analytics.enable) { %>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=<%= theme.global.google_analytics.id %>"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '<%= theme.global.google_analytics.id %>');
+        </script>
+    <% } %>
     <!--- Icon Part-->
     <link rel="icon" type="image/png" href="<%= url_for(theme.defaults.favicon) %>" sizes="192x192">
     <link rel="apple-touch-icon" sizes="180x180" href="<%= url_for(theme.defaults.favicon) %>">

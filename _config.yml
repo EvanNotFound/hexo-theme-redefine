@@ -74,6 +74,10 @@ global:
   pjax: true
   # Whether to enable open graph
   open_graph: true
+  # Google Analytics
+  google_analytics:
+    enable: false # Whether to enable Google Analytics
+    id:  # Google Analytics Measurement ID
 # SITE CUSTOMIZATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
     
 
