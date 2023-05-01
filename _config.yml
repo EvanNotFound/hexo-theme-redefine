@@ -74,6 +74,10 @@ global:
   pjax: true
   # Whether to enable open graph
   open_graph: true
+  # Google Analytics
+  google_analytics:
+    enable: false # Whether to enable Google Analytics
+    id:  # Google Analytics Measurement ID
 # SITE CUSTOMIZATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
     
 
@@ -94,6 +98,8 @@ fontawesome: # Pro v6.2.1
 home_banner:
   # Whether to enable home banner
   enable: true
+  # style of home banner
+  style: static # static or fixed
   # Home banner image
   image: 
     light: /images/wallhaven-wqery6-light.webp # light mode
@@ -375,5 +381,5 @@ cdn:
   # Whether to enable CDN
   enable: false
   # CDN Provider
-  provider: unpkg # jsdelivr, unpkg, aliyun
+  provider: aliyun # aliyun, jsdelivr, unpkg, personal
 # CDN <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end

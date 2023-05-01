@@ -5,10 +5,10 @@
   font-weight: 400;
   font-display: swap;
   src: local("Open Sans"),
-    url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/open-sans-v34-latin-regular.woff2")
+    url("../fonts/open-sans-v34-latin-regular.woff2")
       format("woff2"),
     /* Chrome 26+, Opera 23+, Firefox 39+ */
-      url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/open-sans-v34-latin-regular.woff")
+      url("../fonts/open-sans-v34-latin-regular.woff")
       format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* open-sans-700 - latin */
@@ -18,10 +18,10 @@
   font-weight: 700;
   font-display: swap;
   src: local("Open Sans"),
-    url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/open-sans-v34-latin-700.woff2")
+    url("../fonts/open-sans-v34-latin-700.woff2")
       format("woff2"),
     /* Chrome 26+, Opera 23+, Firefox 39+ */
-      url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/open-sans-v34-latin-700.woff")
+      url("../fonts/open-sans-v34-latin-700.woff")
       format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* noto-sans-sc-regular - chinese-simplified */
@@ -31,10 +31,10 @@
   font-weight: 400;
   font-display: swap;
   src: local("Noto Sans SC"),
-    url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/noto-sans-sc-v26-chinese-simplified-regular.woff2")
+    url("../fonts/noto-sans-sc-v26-chinese-simplified-regular.woff2")
       format("woff2"),
     /* Chrome 26+, Opera 23+, Firefox 39+ */
-      url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/noto-sans-sc-v26-chinese-simplified-regular.woff")
+      url("../fonts/noto-sans-sc-v26-chinese-simplified-regular.woff")
       format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* noto-sans-sc-700 - chinese-simplified */
@@ -44,10 +44,10 @@
   font-weight: 700;
   font-display: swap;
   src: local("Noto Sans SC"),
-    url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/noto-sans-sc-v26-chinese-simplified-700.woff2")
+    url("../fonts/noto-sans-sc-v26-chinese-simplified-700.woff2")
       format("woff2"),
     /* Chrome 26+, Opera 23+, Firefox 39+ */
-      url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/noto-sans-sc-v26-chinese-simplified-700.woff")
+      url("../fonts/noto-sans-sc-v26-chinese-simplified-700.woff")
       format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
@@ -57,7 +57,7 @@
   font-weight: normal;
   font-display: swap;
   src: local("Optima"),
-    url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/OPTIMA.woff")
+    url("../fonts/OPTIMA.woff")
       format("woff");
 }
 
@@ -67,7 +67,7 @@
   font-weight: normal;
   font-display: swap;
   src: local("Optima Medium"),
-    url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/Optima Medium.woff")
+    url("../fonts/Optima Medium.woff")
       format("woff");
 }
 
@@ -77,7 +77,7 @@
   font-weight: bold;
   font-display: swap;
   src: local("Optima Bold"),
-    url("https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/OPTIMA_B.woff")
+    url("../fonts/OPTIMA_B.woff")
       format("woff");
 }
 
@@ -87,6 +87,6 @@
   font-family: 'Ubuntu Mono';
   font-style: normal;
   font-weight: 400;
-  src: url('https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/ubuntu-mono-v15-latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+ */
-       url('https://evan.beee.top/projects/hexo-theme-redefine/statics/fonts/ubuntu-mono-v15-latin-regular.woff') format('woff'); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: url('../fonts/ubuntu-mono-v15-latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+ */
+       url('../fonts/ubuntu-mono-v15-latin-regular.woff') format('woff'); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }

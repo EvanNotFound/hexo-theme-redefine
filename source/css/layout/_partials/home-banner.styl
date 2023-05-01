@@ -8,6 +8,19 @@ $home-banner-icon-size = 1.6rem
 
 @import "../../common/variables"
 
+.home-banner-background {
+  position fixed
+  top 0
+  left 0
+  width 100vw
+  height 100vh
+  background var(--home-banner-img) center center / cover no-repeat
+  background-size cover
+  will-change transform
+  box-sizing border-box
+  transform scale(1.1)
+}
+
 .home-banner-container {
   font-family "Optima Bold", sans-serif
   position relative

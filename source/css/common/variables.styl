@@ -106,6 +106,8 @@ $nav-color-bg = linear-gradient(120deg, $nav-color-1 0%, $nav-color-2 100%)
 // ========================================================================================
 $background-color = #fff
 $background-color-transparent = rgba(255, 255, 255, 0.6)
+$background-color-transparent-80 = rgba(255, 255, 255, 0.8)
+$background-color-transparent-15 = rgba(255, 255, 255, 0.15)
 $second-background-color = darken($background-color, 2%)
 $third-background-color = darken($background-color, 3%)
 $third-background-color-transparent = rgba(241, 241, 241, 0.6)
@@ -150,6 +152,8 @@ $home-banner-icons-container-background-color = rgba(255, 255, 255, 0.3)
 $dark-primary-color = $primary-color
 $dark-background-color = #202124
 $dark-background-color-transparent = rgba(32, 33, 36, 0.4)
+$dark-background-color-transparent-80 = rgba(32, 33, 36, 0.8)
+$dark-background-color-transparent-15 = rgba(32, 33, 36, 0.15)
 $dark-second-background-color = lighten($dark-background-color, 2%)
 $dark-third-background-color = lighten($dark-background-color, 4.5%)
 $dark-third-background-color-transparent = rgba(32, 33, 36, 0.6)
@@ -227,6 +231,8 @@ $default-font-weight = 400
 root-color(mode) {
   --background-color mode == 'light' ? $background-color : $dark-background-color
   --background-color-transparent mode == 'light' ? $background-color-transparent : $dark-background-color-transparent
+  --background-color-transparent-15 mode == 'light' ? $background-color-transparent-15 : $dark-background-color-transparent-15
+  --background-color-transparent-80 mode == 'light' ? $background-color-transparent-80 : $dark-background-color-transparent-80
   --second-background-color mode == 'light' ? $second-background-color : $dark-second-background-color
   --third-background-color mode == 'light' ? $third-background-color : $dark-third-background-color
   --third-background-color-transparent mode == 'light' ? $third-background-color-transparent : $dark-third-background-color-transparent

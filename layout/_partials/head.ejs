@@ -9,12 +9,16 @@
     <!-- preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    
     <% if (theme.cdn.enable == true) { %>
         <% if (theme.cdn.provider == 'jsdelivr') { %>
             <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
         <% } else if (theme.cdn.provider == 'unpkg') { %>
             <link rel="preconnect" href="https://unpkg.com" crossorigin>
+        <% } else if (theme.cdn.provider == 'personal') { %>
+            <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+        <% } else { %>
+            <link rel="preconnect" href="https://npm.elemecdn.com" crossorigin>
         <% } %>
     <% } %>
     <!--- Seo Part-->
@@ -25,7 +29,18 @@
     <meta name="revisit-after" content="1 days">
     <% if (theme.global.open_graph) { %>
         <%- open_graph() %>
-    <% }%>
+    <% } %>
+    <% if (theme.global.google_analytics.enable) { %>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=<%= theme.global.google_analytics.id %>"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '<%= theme.global.google_analytics.id %>');
+        </script>
+    <% } %>
     <!--- Icon Part-->
     <link rel="icon" type="image/png" href="<%= url_for(theme.defaults.favicon) %>" sizes="192x192">
     <link rel="apple-touch-icon" sizes="180x180" href="<%= url_for(theme.defaults.favicon) %>">

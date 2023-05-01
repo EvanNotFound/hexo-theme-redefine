@@ -1,3 +1,31 @@
+<% if (theme.home_banner.style === "fixed") { %>
+    <style>
+        .home-banner-container {
+            background: transparent !important;
+        }
+        .home-article-item,
+        .sidebar-links,
+        .sidebar-content,
+        a.page-number,
+        a.extend,
+        .sidebar-links .links:hover,
+        .right-bottom-tools,
+        footer.footer {
+            background-color: var(--background-color-transparent-80) !important;
+        }
+        .site-info,
+        .home-article-sticky-label {
+            background-color: var(--background-color-transparent-15) !important;
+        }
+        .home-article-sticky-label {
+            backdrop-filter: none !important;
+        }
+    </style>
+
+    <div class="home-banner-background">
+    </div>
+<% } %>
+
 <div class="home-banner-container flex-center">
     <div class="content flex-center">
         <div class="description fade-in-down-animation" <% if (theme.home_banner.custom_font.enable) { %>
@@ -37,3 +65,5 @@
         <% } %>
     </div>
 </div>
+
+

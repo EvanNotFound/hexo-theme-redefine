@@ -1,7 +1,6 @@
 @import "../common/variables"
 
 .home-content-container {
-  background var(--background-color)
   if (hexo-config('home.sidebar.enable') && hexo-config('home.sidebar.position') == 'right') {
     margin-left $spacing-unit
 
@@ -66,7 +65,7 @@
         -webkit-backdrop-filter blur(10px)
 
         .fa-thumbtack {
-          color var(--default-text-color)
+          color var(--third-text-color)
           margin-right 3px
           font-size 0.65rem
         }
@@ -119,7 +118,7 @@
         font-size 1.4rem
         line-height 1.5
         color var(--second-text-color)
-
+        font-family $english-font-family, $chinese-font-family, "Noto Sans SC", sans-serif
 
         +redefine-tablet() {
           font-size 1.3rem
