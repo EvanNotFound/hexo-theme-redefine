@@ -247,7 +247,7 @@ articles:
   author_label: 
     enable: true # Whether to enable
     auto: false # Whether to automatically add author label, e.g. Lv1, Lv2, Lv3...
-    list: [""]
+    list: []
   # Code block settings
   code_block:
     copy: true # Whether to enable code block copy button

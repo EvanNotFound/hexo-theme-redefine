@@ -37,18 +37,17 @@ Hexo Theme Redefine source code is based on [hexo-theme-keep](https://github.com
 
 ## 📷 Screenshots
 
-![redefine-1-final](https://user-images.githubusercontent.com/68590232/229380553-d36b0776-b59b-4e46-bcdb-b817546ab84c.png)
+![redefine-1-final](https://user-images.githubusercontent.com/68590232/235559377-ac157edd-19eb-4596-9ef2-211eec0b6fe7.png)
 
-![redefine-2-final](https://user-images.githubusercontent.com/68590232/229380555-b428de32-a13d-4012-9601-d4634ed1a7de.png)
+![redefine-2-final](https://user-images.githubusercontent.com/68590232/235559385-c13132ca-29c5-4b01-bd1b-e37ca500c824.png)
 
-![redefine-3-final](https://user-images.githubusercontent.com/68590232/229380556-45626258-545e-403d-b388-a215ae8e696c.png)
+![redefine-3-final](https://user-images.githubusercontent.com/68590232/235559394-ebf339f6-3297-485c-85cc-834eb3ea986e.png)
 
 
 ## 🌐 Online Demo
 
 - [EvanNotFound's Blog](https://ohevan.com)
 - [Theme Redefine Demo](https://redefine.ohevan.com)
-- [Theme Redefine Preview](https://redefine-dev.ohevan.com)
 - [Redefine Theme Showcase](https://redefine.ohevan.com/showcase)
 
 If you are also using Redefine, please go to [Redefine Theme Showcase](https://redefine.ohevan.com/showcase) to add your blog link.
