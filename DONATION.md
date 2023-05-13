@@ -45,4 +45,6 @@
 | Apr 19, 2023 | [@yzsong06](https://github.com/yzsong06) | ¥3.00 | 微信赞赏码 | / |
 | Apr 23, 2023 | **博 | ¥10.00 | 支付宝 | / |
 | May 7, 2023 | JiaqiGemini | ¥14.99 | 微信赞赏码 | / |
+| May 12 | [@Sevdawk](https://github.com/Sevdawk) | ¥8.88 | 微信赞赏码 | https://sevdawk.github.io/about/ |
 
+ 
