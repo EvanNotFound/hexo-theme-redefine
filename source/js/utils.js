@@ -68,7 +68,7 @@ Global.initUtils = () => {
         navbarShrink.init();
 
         // scroll blur
-        if (Global.theme_config.home_banner.style === "fixed") {
+        if (Global.theme_config.home_banner.style === "fixed" && location.pathname === Global.hexo_config.root) {
           const blurElement = document.querySelector(".home-banner-background");
           const viewHeight = window.innerHeight;
           const scrollY = window.scrollY || window.pageYOffset;

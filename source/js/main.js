@@ -46,7 +46,7 @@ window.addEventListener('DOMContentLoaded', () => {
     navbarShrink.init();
     Global.initModeToggle();
     Global.initBackToTop();
-    if (Global.theme_config.home_banner.subtitle.text.length !== 0) {
+    if (Global.theme_config.home_banner.subtitle.text.length !== 0  && location.pathname === Global.hexo_config.root) {
       Global.initTyped('subtitle');
     }
 
