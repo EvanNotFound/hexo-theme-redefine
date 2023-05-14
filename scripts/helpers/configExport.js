@@ -26,7 +26,10 @@ hexo.extend.helper.register('export_config', function () {
     console.log(e);
   }
   // -----------------------------------------------------------------------
-
+  let masonryFlag = false;
+  if (this.theme.masonry){
+    masonryFlag = true;
+  } 
 
   let hexo_config = {
     hostname: url.parse(config.url).hostname || config.url,
@@ -51,10 +54,15 @@ hexo.extend.helper.register('export_config', function () {
     home: theme.home,
   }
 
+  let data_config = {
+    masonry: masonryFlag
+  }
+
   return `<script id="hexo-configurations">
     let Global = window.Global || {};
     Global.hexo_config = ${JSON.stringify(hexo_config)};
     Global.theme_config = ${JSON.stringify(theme_config)};
     Global.language_ago = ${JSON.stringify(languageContent['ago'])};
+    Global.data_config = ${JSON.stringify(data_config)};
   </script>`;
 });
