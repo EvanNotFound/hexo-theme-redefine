@@ -38,6 +38,7 @@ Hexo Theme Redefine source code is based on [hexo-theme-keep](https://github.com
 ## 📷 Screenshots
 
 ![redefine-1-final](https://user-images.githubusercontent.com/68590232/235559377-ac157edd-19eb-4596-9ef2-211eec0b6fe7.png)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FEvanNotFound%2Fhexo-theme-redefine.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FEvanNotFound%2Fhexo-theme-redefine?ref=badge_shield)
 
 ![redefine-2-final](https://user-images.githubusercontent.com/68590232/235559385-c13132ca-29c5-4b01-bd1b-e37ca500c824.png)
 
@@ -138,3 +139,7 @@ This is the list of all the people who have donated to me: [Donation List](https
 
 Thanks to all of you!
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FEvanNotFound%2Fhexo-theme-redefine.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FEvanNotFound%2Fhexo-theme-redefine?ref=badge_large)
