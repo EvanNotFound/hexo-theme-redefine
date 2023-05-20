@@ -9,7 +9,7 @@
                     </div>
                 <% } %>
 
-                <% if (post.thumbnail && post.thumbnail == false) { %>
+                <% if (typeof post.thumbnail !== 'undefined' && post.thumbnail === false) { %>
 
                 <% } else if (post.thumbnail && post.thumbnail !== null) { %>
                     <div class="home-article-thumbnail">

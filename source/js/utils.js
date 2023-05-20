@@ -68,16 +68,17 @@ Global.initUtils = () => {
         navbarShrink.init();
 
         // scroll blur
-        if (Global.theme_config.home_banner.style === "fixed") {
+        if (Global.theme_config.home_banner.style === "fixed" && location.pathname === Global.hexo_config.root) {
           const blurElement = document.querySelector(".home-banner-background");
           const viewHeight = window.innerHeight;
           const scrollY = window.scrollY || window.pageYOffset;
-          const quarterViewHeight = viewHeight / 4;
+          const triggerViewHeight = viewHeight / 2;
           const blurValue =
-            scrollY >= quarterViewHeight
-              ? Math.min((scrollY - quarterViewHeight) / 50, 15)
+            scrollY >= triggerViewHeight
+              ? 15
               : 0;
           try {
+            blurElement.style.transition = "0.3s";
             blurElement.style.webkitFilter = `blur(${blurValue}px)`;
           } catch (e) {}
         }

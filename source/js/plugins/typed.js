@@ -10,6 +10,7 @@ const usrSmartBackspace =
   Global.theme_config.home_banner.subtitle.smart_backspace;
 const usrHitokotoAPI = Global.theme_config.home_banner.subtitle.hitokoto.api;
 
+
 if (Global.theme_config.home_banner.subtitle.hitokoto.enable) {
   Global.initTyped = (id) => {
     function typing(dataList) {
@@ -53,3 +54,4 @@ if (Global.theme_config.home_banner.subtitle.hitokoto.enable) {
     }
   };
 }
+

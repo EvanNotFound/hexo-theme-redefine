@@ -44,9 +44,12 @@ window.addEventListener('DOMContentLoaded', () => {
   Global.refresh = () => {
     Global.initUtils();
     navbarShrink.init();
+    if (Global.data_config.masonry) {
+      Global.initMasonry();
+    }
     Global.initModeToggle();
     Global.initBackToTop();
-    if (Global.theme_config.home_banner.subtitle.text.length !== 0) {
+    if (Global.theme_config.home_banner.subtitle.text.length !== 0  && location.pathname === Global.hexo_config.root) {
       Global.initTyped('subtitle');
     }
 
@@ -65,6 +68,7 @@ window.addEventListener('DOMContentLoaded', () => {
     if (Global.theme_config.articles.lazyload === true) {
       Global.initLazyLoad();
     }
+
   }
 
   Global.printThemeInfo();

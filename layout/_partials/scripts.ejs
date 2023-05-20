@@ -34,10 +34,10 @@
     <%- renderJS('js/plugins/mermaid.js') %>
 <% } %>
 
-<% if (is_home() && theme.home_banner.style === "fixed") { %>
-    <%- renderJS('js/tools/scrollBlur.js') %>
+<% if (theme.masonry || theme.photos || theme.gallery) { %>
+    <%- renderJS('js/libs/minimasonry.min.js') %>
+    <%- renderJS('js/plugins/masonry.js') %>
 <% } %>
-
 
 <div class="post-scripts<%= theme.global.pjax === true ? ' pjax' : '' %>">
     <% if (theme.articles.toc.enable && is_post()) { %>
