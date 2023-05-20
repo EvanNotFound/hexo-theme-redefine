@@ -138,3 +138,9 @@ This is the list of all the people who have donated to me: [Donation List](https
 
 Thanks to all of you!
 
+## 🪪 License
+<p align="center">
+  <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FEvanNotFound%2Fhexo-theme-redefine?ref=badge_large">
+  <img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FEvanNotFound%2Fhexo-theme-redefine.svg?type=large">
+  </a>
+</p>
