@@ -34,7 +34,7 @@
 
 |   赞助时间   |                           赞助人                           | 赞助金额 |  赞助方式  |       网站        |
 | :----------: | :--------------------------------------------------------: | :------: | :--------: | :---------------: |
-| Mar 4, 2023  | [@username0occupied](https://github.com/username0occupied) |  ¥6.66   |  微信红包  |         /         |
+| Mar 4  | [@username0occupied](https://github.com/username0occupied) |  ¥6.66   |  微信红包  |         /         |
 | Mar 4  |             [@jkoor](https://github.com/jkoor)             |  ¥15.00  |  微信红包  | https://jkor.site |
 | Mar 10 |                            **峰                            |  ¥20.14  |   支付宝   |         /         |
 | Mar 17 |                        Summer.南方                         |  ¥1.68   | 微信赞赏码 |         /         |
