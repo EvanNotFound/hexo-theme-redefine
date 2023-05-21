@@ -138,7 +138,7 @@ This is the list of all the people who have donated to me: [Donation List](https
 
 Thanks to all of you!
 
-## Star History
+## 🌟 Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=EvanNotFound/hexo-theme-redefine&type=Date)](https://star-history.com/#EvanNotFound/hexo-theme-redefine&Date)
 

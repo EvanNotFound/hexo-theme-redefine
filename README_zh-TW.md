@@ -131,6 +131,6 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 
 再次感謝你們！
 
-## Star 記錄
+## 🌟 Star 記錄
 
 [![Star History Chart](https://api.star-history.com/svg?repos=EvanNotFound/hexo-theme-redefine&type=Date)](https://star-history.com/#EvanNotFound/hexo-theme-redefine&Date)
