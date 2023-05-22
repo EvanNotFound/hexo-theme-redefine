@@ -35,10 +35,7 @@ if (Global.theme_config.home_banner.subtitle.hitokoto.enable) {
   };
 } else {
   Global.initTyped = (id) => {
-    const sentenceList = [];
-    for (const t of Global.theme_config.home_banner.subtitle.text) {
-      sentenceList.push(t);
-    }
+    const sentenceList = [...Global.theme_config.home_banner.subtitle.text];
 
     if (document.getElementById(id)) {
       const st = new Typed("#" + id, {

@@ -39,10 +39,12 @@ Global.initLocalSearch = () => {
 
   // Merge hits into slices
   const mergeIntoSlice = (start, end, index, searchText) => {
-    let item = index[index.length - 1];
-    let {position, word} = item;
+    let currentItem = index[index.length - 1];
+    let { position, word } = currentItem;
     let hits = [];
     let searchTextCountInSlice = 0;
+  
+    // Merge hits into the slice
     while (position + word.length <= end && index.length !== 0) {
       if (word === searchText) {
         searchTextCountInSlice++;
@@ -51,21 +53,23 @@ Global.initLocalSearch = () => {
         position,
         length: word.length
       });
-      let wordEnd = position + word.length;
-
-      // Move to next position of hit
+  
+      const wordEnd = position + word.length;
+  
+      // Move to the next position of the hit
       index.pop();
-      while (index.length !== 0) {
-        item = index[index.length - 1];
-        position = item.position;
-        word = item.word;
-        if (wordEnd > position) {
-          index.pop();
-        } else {
+      for (let i = index.length - 1; i >= 0; i--) {
+        currentItem = index[i];
+        position = currentItem.position;
+        word = currentItem.word;
+        if (wordEnd <= position) {
           break;
+        } else {
+          index.pop();
         }
       }
     }
+  
     return {
       hits,
       start,
