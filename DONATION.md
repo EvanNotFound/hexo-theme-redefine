@@ -41,11 +41,12 @@
 | Mar 19 |                    那个我依旧是从前的我😄                  |  ¥100.00 | 微信赞赏码 |         /         |
 | Mar 31 |          [@牧丰086](https://github.com/mufeng086)          |  ¥6.66   |   支付宝   |https://mufeng086.top|
 | Apr 11 |                           飞呀菲呀                            |  ¥6.66  |   微信赞赏码   |         /         |
-| Apr 18 | 👺 | ¥6.66 | 微信赞赏码 | https://liohi.github.io/ |
+| Apr 18 | 👺 | ¥6.66 | 微信赞赏码 | https://liohi.github.io |
 | Apr 19 | [@yzsong06](https://github.com/yzsong06) | ¥3.00 | 微信赞赏码 | / |
 | Apr 23 | **博 | ¥10.00 | 支付宝 | / |
 | May 7 | JiaqiGemini | ¥14.99 | 微信赞赏码 | / |
-| May 12 | [@Sevdawk](https://github.com/Sevdawk) | ¥8.88 | 微信赞赏码 | https://sevdawk.github.io/about/ |
+| May 12 | [@Sevdawk](https://github.com/Sevdawk) | ¥8.88 | 微信赞赏码 | https://sevdawk.github.io |
 | May 13 | 好名字 | ¥6.66 | 微信赞赏码 | / |
+| May 24 | [@HuTa0kj](https://github.com/HuTa0kj) | ¥8.88 | 微信赞赏码 | https://huta0kj.github.io |
 
  
