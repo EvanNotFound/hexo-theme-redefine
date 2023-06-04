@@ -17,20 +17,18 @@ hexo.extend.helper.register('isInHomePaging', function (pagePath, route) {
 
 /* code block language display */
 hexo.extend.filter.register('after_post_render', function (data) {
-  while (/<figure class="highlight ([a-zA-Z\+\-\/\#]+)">.*?<\/figure>/.test(data.content)) {
-      data.content = data.content.replace(/<figure class="highlight ([a-zA-Z\+\-\/\#]+)">.*?<\/figure>/, function () {
-          var language = RegExp.$1 || 'code'
-          var lastMatch = RegExp.lastMatch
-          if (language=='plain'){
-              language='code';
-          }
-          lastMatch = lastMatch.replace(/<figure class="highlight /, '<figure class="iseeu highlight ')
-          return '<div class="highlight-container" data-rel="'
-              + language.replace(language[0],language[0].toUpperCase()) + '">' + lastMatch + '</div>'
-      })
-  }
+  const pattern = /<figure class="highlight ([a-zA-Z+\-/#]+)">.*?<\/figure>/g;
+  data.content = data.content.replace(pattern, function(match, p1) {
+    let language = p1 || 'code';
+    if (language === 'plain') {
+      language = 'code';
+    }
+    const replaced = match.replace('<figure class="highlight ', '<figure class="iseeu highlight ');
+    const container = '<div class="highlight-container" data-rel="' + language.charAt(0).toUpperCase() + language.slice(1) + '">' + replaced + '</div>';
+    return container;
+  });
   return data;
-})
+});
 
 hexo.extend.helper.register('createNewArchivePosts', function (posts) {
   const postList = [], postYearList = [];
