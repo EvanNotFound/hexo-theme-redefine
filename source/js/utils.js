@@ -318,7 +318,7 @@ Global.initUtils = () => {
           showHandle(imageViewerDom, isBigImage);
         });
 
-      const imgDoms = document.querySelectorAll(".markdown-body img");
+      const imgDoms = document.querySelectorAll(".markdown-body img, .masonry-item img");
 
       if (imgDoms.length) {
         imgDoms.forEach((img) => {
