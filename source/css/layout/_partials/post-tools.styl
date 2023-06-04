@@ -2,11 +2,9 @@ $li-border-radius = 10px
 $li-margin-bottom = 5px
 $post-tool-button-width = 42px
 
-.post-tools-container {
-
-  .article-tools-list {
-
-    li {
+.post-tools-container
+  .article-tools-list
+    li
       cursor pointer
       width $post-tool-button-width
       height $post-tool-button-width
@@ -19,35 +17,27 @@ $post-tool-button-width = 42px
       background var(--background-color)
       color var(--default-text-color)
 
-      i {
+      i
         color var(--default-text-color)
-      }
 
-      &:hover {
+      &:hover
         background var(--primary-color)
         color var(--background-color)
 
-        i {
+        i
           color var(--background-color)
-        }
-      }
 
-
-      &:last-child {
+      &:last-child
         margin-bottom 0
-      }
 
+      hover-style(
+        true,
+        1.06,
+        1.06
+      )
 
-      hover-style(true, 1.06, 1.06)
-
-      &.page-aside-toggle {
+      &.page-aside-toggle
         display none
 
-        +redefine-tablet() {
+        +redefine-tablet()
           display none !important
-        }
-      }
-    }
-  }
-
-}

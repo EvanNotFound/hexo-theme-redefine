@@ -3,57 +3,43 @@
 @require 'redefine-theme.styl'
 
 // MINXIN ======================================================================
-
-redefine-tablet() {
-  @media (max-width $media-max-width){
+redefine-tablet()
+  @media (max-width $media-max-width)
     {block}
-  }
-}
 
-redefine-mobile() {
-  @media (max-width $media-max-width-mobile){
+redefine-mobile()
+  @media (max-width $media-max-width-mobile)
     {block}
-  }
-}  
 
 // ALL ======================================================================
-
-* {
-  // Transition
+*
   transition-g()
 
-
   // scrollbar
-  &::-webkit-scrollbar {
+  &::-webkit-scrollbar
     width 6px
     height 6px
     transition all 0.2s ease
     display block
-  }
 
-  &::-webkit-scrollbar-thumb {
+  &::-webkit-scrollbar-thumb
     background var(--scrollbar-color)
     border-radius $redefine-border-radius-large
     background-clip content-box
     border 3px solid transparent
-  }
 
-  &::-webkit-scrollbar-track {
+  &::-webkit-scrollbar-track
     background-color var(--scroll-bar-bg-color)
     border 1px solid var(--shadow-color-1)
-  }
-  
-  &::-webkit-scrollbar-thumb:hover {
+
+  &::-webkit-scrollbar-thumb:hover
     background var(--scrollbar-color-hover)
     border-radius $redefine-border-radius-large
     background-clip content-box
     border 3px solid transparent
-  }
-}
-
 
 // html, body
-html, body {
+html, body
   position relative
   width 100%
   height 100%
@@ -65,145 +51,122 @@ html, body {
   font-weight $default-font-weight
   font-size $default-font-size
   line-height $default-line-height
-  
 
-  &::-webkit-scrollbar {
+  &::-webkit-scrollbar
     width 14px
     height 8px
-  }
 
-  +redefine-tablet() {
-    font-size $default-font-size * 0.96
-    line-height $default-line-height * 0.96
-  }
+  +redefine-tablet()
+    font-size: $default-font-size * 0.96
+    line-height: $default-line-height * 0.96
 
-
-  +redefine-mobile() {
-    font-size $default-font-size * 0.9
-    line-height $default-line-height * 0.9
-  }
-
-}
-
+  +redefine-mobile()
+    font-size: $default-font-size * 0.9
+    line-height: $default-line-height * 0.9
 
 // ======================================================================
 // selection
 // ======================================================================
-::selection {
+::selection
   background var(--selection-color)
   color #fff
-}
-
 
 // ======================================================================
 // ul, ol, li
 // ======================================================================
-ul, ol, li {
+ul, ol, li
   padding 0
   margin 0
   list-style none
-}
-
 
 // ======================================================================
 // a
 // ======================================================================
-a {
+a
   text-decoration none
   color var(--default-text-color)
 
-  i, span {
+  i, span
     color var(--default-text-color)
-  }
 
-  &:hover, &:active {
+  &:hover, &:active
     text-decoration none !important
     color var(--primary-color)
 
-    i, span {
+    i, span
       color var(--primary-color)
-    }
-  }
-
-}
-
 
 // ======================================================================
 // img
 // ======================================================================
-img {
-  &[lazyload] {
+img
+  &[lazyload]
     padding 10px
     margin 20px auto !important
     cursor not-allowed
     pointer-events none
-  }
-}
-
 
 // ======================================================================
 // button
 // ======================================================================
-button {
+button
   padding 0
   margin 0
   border 0
   outline none
   cursor pointer
   background transparent
-}
 
-.btn {
+.btn
   display inline-block
   position relative
   text-align center
   cursor pointer
   white-space nowrap
   padding 8px 16px
-  background-color var(--second-background-color)  !important
+  background-color var(--second-background-color) !important
   border-radius $redefine-border-radius-medium !important
   padding 12px 16px !important
   text-decoration none !important
-  redefine-container(false, 0, 0, 0, 1rem)
+  redefine-container(
+    false,
+    0,
+    0,
+    0,
+    1rem
+  )
   box-shadow var(--redefine-box-shadow-flat) !important
+  user-select none
+  -moz-user-select none
+  -webkit-user-select none
+  -ms-user-select none
+  hover-style(
+    true,
+    1.06,
+    1.06
+  )
 
-  
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-
-  hover-style(true, 1.06, 1.06)
-
-  &:hover,
-  &:focus {
+  &:hover, &:focus
     color var(--primary-color)
     background-color var(--background-color) !important
     box-shadow var(--redefine-box-shadow) !important
-  }
 
-  &:active {
+  &:active
     box-shadow var(--redefine-box-shadow-flat) !important
     transform scale(0.95)
     transition transform 0.1s ease
     background-color var(--third-background-color) !important
-  }
-}
-
 
 // ======================================================================
 // flex center
 // ======================================================================
-.flex-center {
+.flex-center
   display flex
   justify-content center
   align-items center
-}
-
 
 // ======================================================================
 // clear float
 // ======================================================================
-.clear {
+.clear
   clear both
-}

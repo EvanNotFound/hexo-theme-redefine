@@ -1,23 +1,19 @@
-@import "../../common/variables"
+@import '../../common/variables'
 
-.article-meta-info {
+.article-meta-info
   font-size 0.8rem
   color var(--third-text-color)
 
-  .article-meta-item {
+  .article-meta-item
     margin-right 10px
 
-
-
-    &:last-child {
+    &:last-child
       margin-right 0
-    }
-  }
 
-  .article-date {
+  .article-date
     position relative
 
-    .hover-info {
+    .hover-info
       opacity 0
       position absolute
       transition opacity 0.3s
@@ -29,57 +25,38 @@
       padding 0 5px
       border-radius $redefine-border-radius-small
       background-color var(--second-background-color)
-    }
 
-    &:hover {
-      .hover-info {
+    &:hover
+      .hover-info
         opacity 1
         transition opacity 0.2s
-      }
-    }
 
-    .mobile {
+    .mobile
       display none
-    }
 
-    +redefine-tablet() {
-      .desktop {
+    +redefine-tablet()
+      .desktop
         display none
-      }
 
-      .mobile {
+      .mobile
         display inline
-      }
-    }
 
-  }
-
-
-  .article-tags, .article-categories {
+  .article-tags, .article-categories
     display inline
 
-    ul, li {
+    ul, li
       display inline
-    }
 
-    a {
+    a
       color var(--third-text-color)
 
-      &:hover {
+      &:hover
         color var(--primary-color)
-      }
-    }
-  }
 
-  .article-tags {
-    +redefine-tablet() {
+  .article-tags
+    +redefine-tablet()
       display none
-    }
-  }
 
-  .article-min2read, .article-wordcount {
-    +redefine-mobile() {
+  .article-min2read, .article-wordcount
+    +redefine-mobile()
       display none
-    }
-  }
-}

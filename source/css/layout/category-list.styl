@@ -1,73 +1,54 @@
-.category-list-container {
+.category-list-container
+  redefine-container(
+    false,
+    0,
+    0,
+    30px,
+    0
+  )
 
-  redefine-container(false, 0, 0, 30px, 0)
-
-  .category-list-content {
-
-    .all-category-list {
-
+  .category-list-content
+    .all-category-list
       display flex
       flex-wrap wrap
 
-      li.all-category-list-item {
+      li.all-category-list-item
         font-size 1.2rem
         margin-bottom 15px
         box-shadow var(--redefine-box-shadow-flat)
         padding 10px
         border-radius $redefine-border-radius-medium
-        margin  10px
+        margin 10px
         transition all 0.2s ease
         cursor pointer
 
-        &:hover,
-        &:focus {
+        &:hover, &:focus
           box-shadow var(--redefine-box-shadow-flat-hover) !important
           background-color var(--primary-color)
           transition all 0.2s ease
 
-          a {
+          a
             color var(--background-color)
-          }
-        }
 
-        &:active {
+        &:active
           transform scale(0.95)
-        }
 
-        
-
-        span.all-category-list-count {
+        span.all-category-list-count
           color var(--third-text-color)
-          margin-left  5px
+          margin-left 5px
           background-color var(--third-background-color)
           padding 2px 5px
           border-radius $redefine-border-radius-small
-        }
 
-
-        ul.all-category-list-child {
-
+        ul.all-category-list-child
           margin-left 10px
           margin-top 15px
 
-          li {
-
-            &::before {
+          li
+            &::before
               content '- '
-            }
 
             margin-bottom 10px
 
-            &:last-child {
+            &:last-child
               margin-bottom 0
-            }
-
-          }
-        }
-      }
-
-
-    }
-
-  }
-}

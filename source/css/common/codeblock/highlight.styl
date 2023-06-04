@@ -1,6 +1,6 @@
-@require "code-theme.styl"
+@require 'code-theme.styl'
 
-$code-block {
+$code-block
   -webkit-text-size-adjust none
   overflow auto
   margin 20px 0
@@ -9,249 +9,177 @@ $code-block {
   line-height 1.5rem
   color var(--highlight-foreground)
   background var(--highlight-background)
-}
 
+pre, code
+  if (hexo-config('articles.code_block.font.enable') && hexo-config('articles.code_block.font.family'))
+    font-family hexo-config('articles.code_block.font.family'), 'Ubuntu Mono', Courier, monospace
+  else
+    font-family 'Ubuntu Mono', Courier, monospace
 
-pre, code {
-  if (hexo-config('articles.code_block.font.enable') && hexo-config('articles.code_block.font.family')) {
-    font-family hexo-config('articles.code_block.font.family'), "Ubuntu Mono", Courier, monospace
-  } else {
-    font-family "Ubuntu Mono", Courier, monospace
-  }
-}
-
-pre.mermaid {
+pre.mermaid
   background-color var(--background-color)
-  
-  svg {
+
+  svg
     display block
     margin auto
-  }
-}
 
-code {
+code
   padding 4px
   word-wrap break-word
   border-radius $redefine-border-radius-xsmall
   font-size 0.96em
   color var(--code-foreground)
   background var(--code-background)
-}
 
-pre {
+pre
   @extend $code-block
   padding-top 14px !important
   tab-size 4
 
-  code {
+  code
     padding 0
     color var(--highlight-foreground)
     background none
     text-shadow none
-  }
-}
 
-.highlight {
+.highlight
   @extend $code-block
   border-radius $redefine-border-radius-large-bottom
   padding-bottom 5px
-  overflow: auto
+  overflow auto
   margin 0 !important
-  if (hexo-config('articles.code_block.style') == 'mac') {
+
+  if (hexo-config('articles.code_block.style') == 'mac')
     border-top 1px solid var(--shadow-color-1)
-  }
 
-  &:hover::-webkit-scrollbar-thumb {
-    border: 3px solid rgba(183, 183, 183, 0.3);
-  }
+  &:hover::-webkit-scrollbar-thumb
+    border 3px solid rgba(183, 183, 183, 0.3)
 
-  &::-webkit-scrollbar {
+  &::-webkit-scrollbar
     width 6px
     height 6px
     transition all 0.2s ease
     display block
-  }
-  
-  &::-webkit-scrollbar-track {
+
+  &::-webkit-scrollbar-track
     background transparent
     border none
-  }
 
-  &::-webkit-scrollbar-thumb {
-    border-radius: 20px;
-    border: 3px solid rgba(183, 183, 183, 0);
+  &::-webkit-scrollbar-thumb
+    border-radius 20px
+    border 3px solid rgba(183, 183, 183, 0)
     transition all 0.2s ease
-  }
 
-  pre {
+  pre
     border none
     margin 0
     padding 10px 0
-  }
 
-
-  table {
+  table
     margin 0
     width auto
     border none
     border-spacing unset
-  }
 
-
-  td {
+  td
     border none
     padding 0
-  }
 
-  figcaption {
+  figcaption
     font-size 1rem
     color var(--highlight-foreground)
     line-height 1rem
     margin-bottom 1rem
 
-    a {
+    a
       float right
       color var(--highlight-foreground)
 
-      &:hover {
+      &:hover
         border-bottom-color var(--highlight-foreground)
-      }
-    }
-  }
 
-  .gutter pre {
+  .gutter pre
     padding-left 10px
     padding-right 10px
     color var(--highlight-gutter-color)
     text-align center
     background-color var(--highlight-gutter-bg-color)
-  }
 
-  .code pre {
+  .code pre
     width 100%
     padding-left 10px
     padding-right 10px
     background-color var(--highlight-background)
-  }
-}
 
-
-.gutter {
+.gutter
   -webkit-user-select none
   -moz-user-select none
   -ms-user-select none
   user-select none
-}
 
-.gist table {
+.gist table
   width auto
 
-  td {
+  td
     border none
-  }
-}
 
+pre
+  .keyword, .literal, .symbol, .name
+    color var(--highlight-keyword)
 
-pre{
-  .keyword,
-  .literal,
-  .symbol,
-  .name {
-    color: var(--highlight-keyword);
-  }
-  
-  .link {
-    color: var(--highlight-link);
-    text-decoration: underline;
-  }
+  .link
+    color var(--highlight-link)
+    text-decoration underline
 
-  .built_in,
-  .type {
-    color: var(--highlight-built-in);
-  }
+  .built_in, .type
+    color var(--highlight-built-in)
 
-  .number,
-  .class {
-    color: var(--highlight-number);
-  }
+  .number, .class
+    color var(--highlight-number)
 
-  .string,
-  .meta .string {
-    color: var(--highlight-string);
-  }
+  .string, .meta .string
+    color var(--highlight-string)
 
-  .regexp,
-  .template-tag {
-    color: var(--highlight-regexp);
-  }
+  .regexp, .template-tag
+    color var(--highlight-regexp)
 
-  .subst,
-  .function,
-  .title,
-  .params,
-  .formula {
-    color: var(--highlight-subst);
-  }
+  .subst, .function, .title, .params, .formula
+    color var(--highlight-subst)
 
-  .comment,
-  .quote {
-    color: var(--highlight-comment);
-    font-style: italic;
-  }
+  .comment, .quote
+    color var(--highlight-comment)
+    font-style italic
 
-  .doctag {
-    color: var(--highlight-doctag);
-  }
+  .doctag
+    color var(--highlight-doctag)
 
-  .meta,
-  .meta .keyword,
-  .tag {
-    color: var(--highlight-meta);
-  }
+  .meta, .meta .keyword, .tag
+    color var(--highlight-meta)
 
-  .variable,
-  .template-variable {
-    color: var(--highlight-variable);
-  }
+  .variable, .template-variable
+    color var(--highlight-variable)
 
-  .attr,
-  .attribute {
-    color: var(--highlight-attr);
-  }
+  .attr, .attribute
+    color var(--highlight-attr)
 
-  .section {
-    color: var(--highlight-section);
-  }
+  .section
+    color var(--highlight-section)
 
-  .emphasis {
-    font-style: italic;
-  }
+  .emphasis
+    font-style italic
 
-  .strong {
-    font-weight: bold;
-  }
+  .strong
+    font-weight bold
 
-  .bullet,
-  .selector-tag,
-  .selector-id,
-  .selector-class,
-  .selector-attr,
-  .selector-pseudo {
-  color: var(--highlight-bullet);
-  }
+  .bullet, .selector-tag, .selector-id, .selector-class, .selector-attr, .selector-pseudo
+    color var(--highlight-bullet)
 
-  .addition {
-  background-color: var(--highlight-addition);
-  display: inline-block;
-  width: 100%;
-  }
+  .addition
+    background-color var(--highlight-addition)
+    display inline-block
+    width 100%
 
-  .deletion {
-  background-color: var(--highlight-deletion);
-  display: inline-block;
-  width: 100%;
-  }
-}
-
-
-
+  .deletion
+    background-color var(--highlight-deletion)
+    display inline-block
+    width 100%

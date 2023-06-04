@@ -1,45 +1,36 @@
-.paginator {
+.paginator
   font-size 1rem
   margin-top 30px
   border-radius 12px
-  display: flex;
-  justify-content: center;
+  display flex
+  justify-content center
 
-  a{
-    margin: 0 .3rem
-  }
-  a.active {
-    color: var(--background-color);
-    background: var(--primary-color);
-  }
-  a.prev {
+  a
+    margin 0 0.3rem
+
+  a.active
+    color var(--background-color)
+    background var(--primary-color)
+
+  a.prev
     float left
 
-    +redefine-mobile() {
+    +redefine-mobile()
       display none
-    }
-  }
 
-  a.next {
+  a.next
     float right
 
-    +redefine-mobile() {
+    +redefine-mobile()
       display none
-    }
-  }
 
-  .space {
+  .space
     padding 8px 10px
 
-    +redefine-mobile() {
+    +redefine-mobile()
       padding 8px 2px
-    }
-  }
-  
-  a.page-number,
-  span.page-number,
-  a.prev,
-  a.next, {
+
+  a.page-number, span.page-number, a.prev, a.next
     display inline-block
     position relative
     text-align center
@@ -48,33 +39,27 @@
     border-radius $redefine-border-radius-small
     padding 8px 16px
     background var(--background-color)
+    hover-style(
+      true,
+      1.06,
+      1.06
+    )
 
-    hover-style(true, 1.06, 1.06)
-
-    &:hover {
+    &:hover
       color var(--background-color)
       background var(--primary-color)
-    }
 
-    &:active {
+    &:active
       transform scale(0.95)
       transition transform 0.1s ease
-    }
-  }
 
-  span.current {
+  span.current
     color var(--background-color)
     background var(--primary-color)
-  }
 
-  i.fa-regular {
+  i.fa-regular
     color var(--default-text-color)
-  }
 
-  .extend:hover {
-    i.fa-regular {
+  .extend:hover
+    i.fa-regular
       color var(--background-color)
-    }
-  }
-
-}
