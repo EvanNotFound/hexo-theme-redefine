@@ -3,72 +3,59 @@ $friend-link-item-height-tablet = 68px
 $friend-link-item-interval = 16px
 $friend-link-item-border-radius = 9px
 
-@import "../../common/variables"
+@import '../../common/variables'
 
-.page-template-container {
+.page-template-container
+  redefine-container(
+    false,
+    0,
+    0,
+    30px,
+    30px
+  )
 
-  redefine-container(false, 0, 0, 30px, 30px)
-
-  +redefine-mobile() {
+  +redefine-mobile()
     padding 1.2rem 0.2rem
     box-shadow none
 
-    &:hover {
+    &:hover
       box-shadow none
-    }
-  }
 
-  .page-template-content {
+  .page-template-content
     color var(--default-text-color)
 
-    h1, h2, h3, h4, h5, h6 {
-
-      &:first-child {
+    h1, h2, h3, h4, h5, h6
+      &:first-child
         margin-top 0
         border-bottom none
-      }
 
-    }
-  }
-
-
-  
-  .friends-link-container {
-
-    .friend-links-title {
+  .friends-link-container
+    .friend-links-title
       color var(--second-text-color)
       margin-top -10px
 
-      .article-title-regular {
+      .article-title-regular
         font-size 3rem
         line-height 1
         font-weight bold
         color var(--second-text-color)
-      }
-    }
 
-    .friends-link-list {
+    .friends-link-list
       position relative
-      display: flex;
-      flex-wrap: wrap;
+      display flex
+      flex-wrap wrap
       margin-bottom 1rem
 
-
-      .friends-link-item {
-
-        if (hexo-config('page_templates.friends_column') == '3') {
+      .friends-link-item
+        if (hexo-config('page_templates.friends_column') == '3')
           width 32% !important
           margin-left 1% !important
 
-
-          &:nth-child(odd) {
+          &:nth-child(odd)
             padding-right 0 !important
-          }
 
-          &:nth-child(even) {
+          &:nth-child(even)
             padding-left 0 !important
-          }
-        }
 
         box-sizing border-box
         position relative
@@ -78,54 +65,42 @@ $friend-link-item-border-radius = 9px
         height $friend-link-item-height
         padding-bottom $friend-link-item-interval
 
-        
-
-        +redefine-tablet() {
+        +redefine-tablet()
           height $friend-link-item-height-tablet
-        }
 
-        &:nth-child(odd) {
-            padding-right $friend-link-item-interval * 0.5
-          }
+        &:nth-child(odd)
+          padding-right: $friend-link-item-interval * 0.5
 
-        &:nth-child(even) {
-          padding-left $friend-link-item-interval * 0.5
-        }
+        &:nth-child(even)
+          padding-left: $friend-link-item-interval * 0.5
 
-
-
-        .content {
+        .content
           position relative
           width 100%
           height 100%
           box-shadow var(--redefine-box-shadow)
           border-radius $friend-link-item-border-radius
-          padding-left $friend-link-item-height - $friend-link-item-interval
+          padding-left: $friend-link-item-height - $friend-link-item-interval
           box-sizing border-box
 
+          +redefine-tablet()
+            padding-left: $friend-link-item-height-tablet - $friend-link-item-interval
 
-          +redefine-tablet() {
-            padding-left $friend-link-item-height-tablet - $friend-link-item-interval
-          }
-
-          &:hover {
+          &:hover
             box-shadow var(--redefine-box-shadow)
 
-            .info .name {
+            .info .name
               color var(--primary-color)
-            }
-          }
 
-          .radius {
+          .radius
             border-top-left-radius $friend-link-item-border-radius
             border-bottom-left-radius $friend-link-item-border-radius
-          }
 
-          .avatar {
+          .avatar
             position absolute
             top 0
             left 0
-            width $friend-link-item-height  - $friend-link-item-interval
+            width: $friend-link-item-height - $friend-link-item-interval
             height 100%
             display flex
             justify-content center
@@ -134,21 +109,16 @@ $friend-link-item-border-radius = 9px
             background var(--third-background-color)
             color var(--second-text-color)
 
+            +redefine-tablet()
+              width: $friend-link-item-height-tablet - $friend-link-item-interval
 
-            +redefine-tablet() {
-              width $friend-link-item-height-tablet  - $friend-link-item-interval
-            }
-
-            img {
+            img
               box-sizing border-box
               position relative
               width 100%
               height 100%
-            }
-          }
 
-
-          .info {
+          .info
             position relative
             width 100%
             height 100%
@@ -159,239 +129,189 @@ $friend-link-item-border-radius = 9px
             align-items center
             justify-items flex-start
 
-            +redefine-tablet() {
+            +redefine-tablet()
               padding 6px
-            }
 
-            .name {
+            .name
               width 100%
               height 60%
               font-size 1.1rem
               color var(--second-text-color)
 
-              +redefine-tablet() {
+              +redefine-tablet()
                 font-size 1.08rem
-              }
-            }
 
-            .description {
+            .description
               width 100%
-              //height 40%
+              // height 40%
               font-size 0.98rem
               color var(--third-text-color)
 
-
-              +redefine-tablet() {
+              +redefine-tablet()
                 font-size 0.95rem
-              }
-            }
 
-            .ellipsis {
+            .ellipsis
               overflow hidden
               text-overflow ellipsis
               white-space nowrap
-            }
 
-          }
-        }
-
-      }
-
-    }
-
-  }
-
-  .essays-container {
+  .essays-container
     margin-top 1rem
     margin-bottom 1rem
-    .essays-title {
+
+    .essays-title
       color var(--second-text-color)
       margin-top -10px
 
-      .article-title-regular {
+      .article-title-regular
         font-size 3rem
         line-height 1
         font-weight bold
         color var(--second-text-color)
         margin-top 15px
-      }
-    }
 
-    .essays-list {
+    .essays-list
       position relative
-      display: flex;
-      flex-wrap: wrap;
+      display flex
+      flex-wrap wrap
       margin-bottom 1rem
 
-      .essay-item {
+      .essay-item
         box-sizing border-box
         position relative
         width 100%
-
         margin-bottom 1rem
-        
         display flex
 
-        p {
+        p
           margin 0
-        }
 
-        .essay-avatar {
+        .essay-avatar
           width 40px
           height 40px
           margin-right 1rem
-          img {
+
+          img
             width 40px
             height 40px
             border-radius $redefine-border-radius-small
-          }
-        }
-        .essay-content {
+
+        .essay-content
           color var(--second-text-color)
           margin-bottom 0.5rem
           box-shadow var(--redefine-box-shadow-flat)
           padding 0.8rem 1rem 0.5rem 1rem
           border-radius $redefine-border-radius-medium
 
-          .content{
+          .content
             margin-bottom 0.5rem
-          }
 
-          .date {
+          .date
             border-top 1px solid var(--third-background-color)
             color var(--third-text-color)
             font-size 0.8rem
-          }
-        }
-
-      }
-
-
-    }
-  }
 
   /* Masonry Page */
-
-  .page-template-title {
-    .article-title-regular{
+  .page-template-title
+    .article-title-regular
       font-size 3.2rem
       font-weight bold
       color var(--second-text-color)
       margin 5px 0 1.5rem 0
-      
-    }
-  }
 
-  #masonry-container {
+  #masonry-container
     position relative
     display none
 
-    .masonry-item {
+    .masonry-item
       position absolute
       box-sizing border-box
 
-      &:hover {
-
-        img {
+      &:hover
+        img
           box-shadow var(--redefine-box-shadow)
-        }
-      }
 
-      img {
+      img
         width 100%
         border-radius $redefine-border-radius-medium
         box-shadow var(--redefine-box-shadow-flat)
-      }
-    }
-  }
+        cursor zoom-in
 
   /* Loading */
-  .loading-placeholder {
+  .loading-placeholder
     display block
-    justify-content: center;
-    align-items: center;
-  }
+    justify-content center
+    align-items center
 
-  .loading {
-      -webkit-animation: gradient-slide 1.1s ease infinite;
-      animation: gradient-slide 1.1s ease infinite;
-      background: 0 0/300% 300% linear-gradient(120deg,#9c9c9c20 40%,#83838325 50%,#9c9c9c20 60%)
-  }
+  .loading
+    -webkit-animation gradient-slide 1.1s ease infinite
+    animation gradient-slide 1.1s ease infinite
+    background 0 0 / 300% 300% linear-gradient(120deg, #9c9c9c20 40%, #83838325 50%, #9c9c9c20 60%)
 
-  .flex-grid {
-      display: block;
-      @media screen and (min-width: 540px) {
-          display: flex;
-          justify-content: space-between;
-      }
-  }
+  .flex-grid
+    display block
 
-  .card {
-      border: 1px solid var(--border-color);
-      border-radius $redefine-border-radius-medium;
-      box-sizing: border-box;
-      flex: 1;
-      margin: 5px;
-      min-height: 80vh;
-      padding: 30px;
-  }
+    @media screen and (min-width 540px)
+      display flex
+      justify-content space-between
 
-  
+  .card
+    border 1px solid var(--border-color)
+    border-radius $redefine-border-radius-medium
+    box-sizing border-box
+    flex 1
+    margin 5px
+    min-height 80vh
+    padding 30px
 
-  @keyframes gradient-slide {
-      0% {
-          background-position: 100% 50%
-      }
+  @keyframes gradient-slide
+    0%
+      background-position 100% 50%
 
-      to {
-          background-position: 0% 50%
-      }
-  }
+    to
+      background-position 0% 50%
 
   /* Images */
-  .image-container {
-    position: relative;
-  }
-  .image-title {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    color: var(--default-text-color);
-    background-color: var(--background-color-transparent-40)
-    padding: 5px 10px;
-    font-size: 14px;
-    opacity: 0;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: $redefine-border-radius-small;
-    transition: opacity 0.2s ease-out;
-  }
-  .image-description {
-    position: absolute;
-    bottom: 11px;
-    right: 5px;
-    color: var(--default-text-color);
-    background-color: var(--background-color-transparent-40)
-    padding: 5px 10px;
-    font-size: 14px;
-    opacity: 0;
+  .image-container
+    position relative
+
+  .image-title
+    position absolute
+    top 5px
+    left 5px
+    color var(--default-text-color)
+    background-color var(--background-color-transparent-40)
+    padding 5px 10px
+    font-size 14px
+    opacity 0
+    backdrop-filter blur(10px)
+    -webkit-backdrop-filter blur(10px)
+    border-radius $redefine-border-radius-small
+    transition opacity 0.2s ease-out
+
+  .image-description
+    position absolute
+    bottom 11px
+    right 5px
+    color var(--default-text-color)
+    background-color var(--background-color-transparent-40)
+    padding 5px 10px
+    font-size 14px
+    opacity 0
     max-width 80%
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: $redefine-border-radius-small;
-    transition: opacity 0.2s ease-out;
-  }
-  .image-container:hover .image-title,
-  .image-container:hover .image-description{
-    opacity: 1;
-  }
-  .image-container img {
-    width: 100%;
-    height: auto;
-    transition: box-shadow 0.3s ease-in-out;
-    overflow: hidden;
-  }
-  .image-container:hover img {
-    box-shadow: var(--redefine-box-shadow-hover);
-  }
-}
+    backdrop-filter blur(10px)
+    -webkit-backdrop-filter blur(10px)
+    border-radius $redefine-border-radius-small
+    transition opacity 0.2s ease-out
+
+  .image-container:hover .image-title, .image-container:hover .image-description
+    opacity 1
+
+  .image-container img
+    width 100%
+    height auto
+    transition box-shadow 0.3s ease-in-out
+    overflow hidden
+
+  .image-container:hover img
+    box-shadow var(--redefine-box-shadow-hover)

@@ -17,20 +17,18 @@ hexo.extend.helper.register('isInHomePaging', function (pagePath, route) {
 
 /* code block language display */
 hexo.extend.filter.register('after_post_render', function (data) {
-  while (/<figure class="highlight ([a-zA-Z\+\-\/\#]+)">.*?<\/figure>/.test(data.content)) {
-      data.content = data.content.replace(/<figure class="highlight ([a-zA-Z\+\-\/\#]+)">.*?<\/figure>/, function () {
-          var language = RegExp.$1 || 'code'
-          var lastMatch = RegExp.lastMatch
-          if (language=='plain'){
-              language='code';
-          }
-          lastMatch = lastMatch.replace(/<figure class="highlight /, '<figure class="iseeu highlight ')
-          return '<div class="highlight-container" data-rel="'
-              + language.replace(language[0],language[0].toUpperCase()) + '">' + lastMatch + '</div>'
-      })
-  }
+  const pattern = /<figure class="highlight ([a-zA-Z+\-/#]+)">.*?<\/figure>/g;
+  data.content = data.content.replace(pattern, function(match, p1) {
+    let language = p1 || 'code';
+    if (language === 'plain') {
+      language = 'code';
+    }
+    const replaced = match.replace('<figure class="highlight ', '<figure class="iseeu highlight ');
+    const container = '<div class="highlight-container" data-rel="' + language.charAt(0).toUpperCase() + language.slice(1) + '">' + replaced + '</div>';
+    return container;
+  });
   return data;
-})
+});
 
 hexo.extend.helper.register('createNewArchivePosts', function (posts) {
   const postList = [], postYearList = [];
@@ -65,7 +63,7 @@ hexo.extend.helper.register('getAuthorLabel', function (postCount, isAuto, label
 hexo.extend.helper.register('getPostUrl', function (rootUrl, path) {
   if (rootUrl) {
     let { href } = url.parse(rootUrl);
-    if (href.substr(href.length - 1, 1) !== '/') {
+    if (href.substring(href.length - 1) !== '/') {
       href = href + '/';
     }
     return href + path;
@@ -76,31 +74,29 @@ hexo.extend.helper.register('getPostUrl', function (rootUrl, path) {
 
 hexo.extend.helper.register('renderJS', function (path) {
   const _js = hexo.extend.helper.get('js').bind(hexo);
-  const cdnPathHandle = (path_2) => {
-    if (this.theme.cdn.provider == "unpkg") {
+  const cdnProviders = {
+    'unpkg': 'https://unpkg.com',
+    'jsdelivr': 'https://cdn.jsdelivr.net/npm',
+    'elemecdn': 'https://npm.elemecdn.com',
+    'aliyun': 'https://evan.beee.top/projects',
+    'custom': this.theme.cdn.custom_url,
+  };
+
+  const cdnPathHandle = (path) => {
+    const cdnBase = cdnProviders[this.theme.cdn.provider] || cdnProviders.aliyun;
+    if (this.theme.cdn.provider === 'custom') {
+      const customUrl = cdnBase.replace('${version}', themeVersion).replace('${path}', path);
       return this.theme.cdn.enable
-        ? `<script src="//unpkg.com/hexo-theme-redefine@${themeVersion}/source/${path_2}"></script>`
-        : _js(path_2);
-    } else if (this.theme.cdn.provider == "jsdelivr") {
-      return this.theme.cdn.enable
-        ? `<script src="//cdn.jsdelivr.net/npm/hexo-theme-redefine@${themeVersion}/source/${path_2}"></script>`
-        : _js(path_2);
-    } else if (this.theme.cdn.provider == "aliyun") {
-      return this.theme.cdn.enable
-        ? `<script src="//npm.elemecdn.com/hexo-theme-redefine@${themeVersion}/source/${path_2}"></script>`
-        : _js(path_2);
-    } else if (this.theme.cdn.provider == "personal") {
-      return this.theme.cdn.enable
-        ? `<script src="//evan.beee.top/projects/hexo-theme-redefine/v${themeVersion}/source/${path_2}"></script>`
-        : _js(path_2);
+        ? `<script src="${customUrl}"></script>`
+        : _js(path);
     } else {
       return this.theme.cdn.enable
-      ? `<script src="//npm.elemecdn.com/hexo-theme-redefine@${themeVersion}/source/${path_2}"></script>`
-      : _js(path_2);
+        ? `<script src="${cdnBase}/hexo-theme-redefine@${themeVersion}/source/${path}"></script>`
+        : _js(path);
     }
-  }
+  };
 
-  let t = ``;
+  let t = '';
 
   if (Array.isArray(path)) {
     for (const p of path) {
@@ -115,21 +111,33 @@ hexo.extend.helper.register('renderJS', function (path) {
 
 hexo.extend.helper.register('renderCSS', function (path) {
   const _css = hexo.extend.helper.get('css').bind(hexo);
-  
-  if (this.theme.cdn.enable) {
-    if (this.theme.cdn.provider == "unpkg") {
-      return `<link rel="stylesheet" href="//unpkg.com/hexo-theme-redefine@${themeVersion}/source/${path}">`;
-    } else if (this.theme.cdn.provider == "jsdelivr") {
-      return `<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-redefine@${themeVersion}/source/${path}">`;
-    } else if (this.theme.cdn.provider == "aliyun") {
-      return `<link rel="stylesheet" href="//npm.elemecdn.com/hexo-theme-redefine@${themeVersion}/source/${path}">`;
-    } else if (this.theme.cdn.provider == "personal") {
-      return `<link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v${themeVersion}/source/${path}">`;
-    }
-  } else {
-    return _css(path);
-  }
+  const cdnProviders = {
+    'unpkg': '//unpkg.com',
+    'jsdelivr': '//cdn.jsdelivr.net/npm',
+    'elemecdn': '//npm.elemecdn.com',
+    'aliyun': '//evan.beee.top/projects',
+    'custom': this.theme.cdn.custom_url,
+  };
 
+  const cdnPathHandle = (path) => {
+    const cdnBase = cdnProviders[this.theme.cdn.provider] || cdnProviders.aliyun;
+    if (this.theme.cdn.provider === 'custom') {
+      const customUrl = cdnBase.replace('${version}', themeVersion).replace('${path}', path);
+      return this.theme.cdn.enable
+        ? `<link rel="stylesheet" href="${customUrl}">`
+        : _css(path);
+    } else {
+      return this.theme.cdn.enable
+        ? `<link rel="stylesheet" href="${cdnBase}/hexo-theme-redefine@${themeVersion}/source/${path}">`
+        : _css(path);
+    }
+  };
+
+  if (Array.isArray(path)) {
+    return path.map(cdnPathHandle).join('');
+  } else {
+    return cdnPathHandle(path);
+  }
 });
 
 hexo.extend.helper.register('getThemeVersion', function () {

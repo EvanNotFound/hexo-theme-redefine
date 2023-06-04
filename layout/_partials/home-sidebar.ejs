@@ -39,7 +39,7 @@
                     <% if (theme.home.sidebar.links !== null) {%>
                         <% for (let i in theme.home.sidebar.links) { %>
                             <% if (theme.home.sidebar.links[i].path === 'none') {} else {%>
-                                <a class="links" href="<%= theme.home.sidebar.links[i].path %>" target="_blank">
+                                <a class="links" href="<%= theme.home.sidebar.links[i].path %>">
                                     <% if (theme.home.sidebar.links[i].icon) { %>
                                         <i class="<%- theme.home.sidebar.links[i].icon %> icon-space"></i>
                                     <% } %>
@@ -68,7 +68,7 @@
                     <% if (theme.home.sidebar.links !== null) {%>
                         <% for (let i in theme.home.sidebar.links) { %>
                             <% if (theme.home.sidebar.links[i].path === 'none') {} else {%>
-                                <a class="links" href="<%= theme.home.sidebar.links[i].path %>" target="_blank">
+                                <a class="links" href="<%= theme.home.sidebar.links[i].path %>">
                                     <% if (theme.home.sidebar.links[i].icon) { %>
                                         <i class="<%- theme.home.sidebar.links[i].icon %> icon-space"></i>
                                     <% } %>

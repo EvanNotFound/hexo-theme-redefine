@@ -1,269 +1,77 @@
-.note-large {
-  box-shadow var(--redefine-box-shadow-flat) 
+.note-large
+  box-shadow var(--redefine-box-shadow-flat)
   border-radius $redefine-border-radius-small
   margin-bottom 2rem
 
-  .notel-title {
+  .notel-title
     border-radius 5px 5px 0 0
     padding 15px
     font-weight bold
     font-size 1.2rem
     background-color #A6A6A640
-    
-  }
 
-  .notel-content {
+    i
+      margin-right 8px
+      display inline
+
+    p
+      display inline
+
+  .notel-content
     border-radius 0 0 5px 5px
     font-size 1.1rem
     padding 15px
     background-color var(--background-color)
-
     line-height 2rem
-  }
 
-  p {
+  p
     margin 0
-  }
-}
 
-.notel-gray,
-.notel-default {
+.note-large.gray, .note-large.default
   border-left solid 4px #A6A6A6
 
-  .notel-title {
+  .notel-title
     background-color #A6A6A640
-  }
-}
 
-.notel-green,
-.notel-success {
+.note-large.green, .note-large.success
   border-left solid 4px #00C58E
 
-  .notel-title {
+  .notel-title
     background-color #00C58E40
-  }
-}
 
-.notel-yellow,
-.notel-warning {
+.note-large.yellow, .note-large.warning
   border-left solid 4px #FFD43B
 
-  .notel-title {
+  .notel-title
     background-color #FFD43B40
-  }
-}
 
-.notel-red,
-.notel-danger {
+.note-large.red, .note-large.danger
   border-left solid 4px #F85676
-  
-  .notel-title {
-    background-color #F8567640
-  }
-}
 
-.notel-purple,
-.notel-primary {
+  .notel-title
+    background-color #F8567640
+
+.note-large.purple, .note-large.primary
   border-left solid 4px #A763FF
 
-  .notel-title {
+  .notel-title
     background-color #A763FF40
-  }
-}
 
-.notel-orange {
+.note-large.orange
   border-left solid 4px #FFA940
 
-  .notel-title {
+  .notel-title
     background-color #FFA94040
-  }
-}
 
-.notel-blue,
-.notel-info {
+.note-large.blue, .note-large.info
   border-left solid 4px #2FD6F0
 
-  .notel-title {
+  .notel-title
     background-color #2FD6F040
-  }
-}
 
-
-//----------------legacy----------------
-
-//蓝色警告
-.wb {
-  box-shadow var(--redefine-box-shadow-flat) 
-  border-radius 5px
-
-  .t{
-    border-radius 5px 5px 0 0
-    padding 15px
-    font-weight bold
-    font-size 1.2rem
-    background-color #2FD6F040
-    border-left solid 4px #2FD6F0
-  }
-  .c{
-    border-radius 0 0 5px 5px
-    font-size 1.1rem
-    padding 15px
-    background-color var(--background-color)
-    border-left solid 4px #2FD6F0
-    line-height 2rem
-  
-  }
-}
-
-//红色警告
-.wr {
-  box-shadow var(--redefine-box-shadow-flat) 
-  border-radius 5px
-
-  .t{
-    border-radius 5px 5px 0 0
-    padding 15px
-    font-weight bold
-    font-size 1.2rem
-    background-color var(--note-red-title-bg)
-    border-left solid 4px #F85676
-  }
-  .c{
-    border-radius 0 0 5px 5px
-    font-size 1.1rem
-    padding 15px
-    background-color var(--background-color)
-    border-left solid 4px #F85676
-    line-height 2rem
-  
-  }  
-}
-
-//绿色警告
-.wg {
-  box-shadow var(--redefine-box-shadow-flat) 
-  border-radius 5px
-
-  .t{
-    border-radius 5px 5px 0 0
-    padding 15px
-    font-weight bold
-    font-size 1.2rem
-    background-color var(--note-green-title-bg)
-    border-left solid 4px #00C58E
-  }
-  .c{
-    border-radius 0 0 5px 5px
-    font-size 1.1rem
-    padding 15px
-    background-color var(--background-color)
-    border-left solid 4px #00C58E
-    line-height 2rem
-  
-  }  
-}
-
-//黄色警告
-.wy {
-  box-shadow var(--redefine-box-shadow-flat) 
-  border-radius 5px
-
-  .t{
-    border-radius 5px 5px 0 0
-    padding 15px
-    font-weight bold
-    font-size 1.2rem
-    background-color var(--note-yellow-title-bg)
-    border-left solid 4px #FFD43B
-  }
-  .c{
-    border-radius 0 0 5px 5px
-    font-size 1.1rem
-    padding 15px
-    background-color var(--background-color)
-    border-left solid 4px #FFD43B
-    line-height 2rem
-  
-  }  
-}
-
-//紫色警告
-
-.wp {
-  box-shadow var(--redefine-box-shadow-flat) 
-  border-radius 5px
-
-  .t{
-    border-radius 5px 5px 0 0
-    padding 15px
-    font-weight bold
-    font-size 1.2rem
-    background-color var(--note-purple-title-bg)
-    border-left solid 4px #A763FF
-  }
-  .c{
-    border-radius 0 0 5px 5px
-    font-size 1.1rem
-    padding 15px
-    background-color var(--background-color)
-    border-left solid 4px #A763FF
-    line-height 2rem
-  
-  }  
-}
-
-//灰色警告
-.wgra{
-  box-shadow var(--redefine-box-shadow-flat) 
-  border-radius 5px
-
-  .t{
-    border-radius 5px 5px 0 0
-    padding 15px
-    font-weight bold
-    font-size 1.2rem
-    background-color var(--note-gray-title-bg)
-    border-left solid 4px #A6A6A6
-  }
-  .c{
-    border-radius 0 0 5px 5px
-    font-size 1.1rem
-    padding 15px
-    background-color var(--background-color)
-    border-left solid 4px #A6A6A6
-    line-height 2rem
-  
-  }  
-}
-
-//橙色警告
-.wo {
-  box-shadow var(--redefine-box-shadow-flat) 
-  border-radius 5px
-
-  .t{
-    border-radius 5px 5px 0 0
-    padding 15px
-    font-weight bold
-    font-size 1.2rem
-    background-color var(--note-orange-title-bg)
-    border-left solid 4px #FFA940
-  }
-  .c{
-    border-radius 0 0 5px 5px
-    font-size 1.1rem
-    padding 15px
-    background-color var(--background-color)
-    border-left solid 4px #FFA940
-    line-height 2rem
-  
-  }  
-}
-
-//---------------------notes 笔记模块---------------------
-
-.note {
-  box-shadow var(--redefine-box-shadow-flat) 
+// ---------------------notes 笔记模块---------------------
+.note
+  box-shadow var(--redefine-box-shadow-flat)
   border-radius $redefine-border-radius-small
   padding 15px
   font-size 1.2rem
@@ -272,230 +80,175 @@
   margin-bottom 1rem
   border-left solid 4px #A6A6A6
 
-  p {
+  p
     display inline-block
     margin 0
-  }
-}
 
-.note-icon {
+.note-icon
   font-size 1rem
   padding-right 10px
   display inline-block
-}
 
-.icon-padding {
+.icon-padding
   padding-left 15px !important
-}
 
-.note-default {
+.note.default
   border-left solid 4px #A6A6A6
 
-  .note-icon {
+  .note.icon
     color #A6A6A6
-  }
-}
 
-.note-success {
+.note.success
   border-left solid 4px #00C58E
 
-  .note-icon {
+  .note.icon
     color #00C58E
-  }
-}
 
-.note-warning {
+.note.warning
   border-left solid 4px #FFD43B
 
-  .note-icon {
+  .note.icon
     color #FFD43B
-  }
-}
 
-.note-danger {
+.note.danger
   border-left solid 4px #F85676
 
-  .note-icon {
+  .note.icon
     color #F85676
-  }
-}
 
-.note-primary {
+.note.primary
   border-left solid 4px #A763FF
 
-  .note-icon {
+  .note.icon
     color #A763FF
-  }
-}
 
-.note-orange {
+.note.orange
   border-left solid 4px #FFA940
 
-  .note-icon {
+  .note.icon
     color #FFA940
-  }
-}
 
-.note-info {
+.note.info
   border-left solid 4px #2FD6F0
 
-  .note-icon {
+  .note.icon
     color #2FD6F0
-  }
-}
 
-//------------------customizable colors------------------
-
-.note-blue {
+// ------------------customizable colors------------------
+.note.blue
   border-left solid 4px #2FD6F0
 
-  .note-icon {
+  .note.icon
     color #2FD6F0
-  }
-}
 
-.note-gray {
+.note.gray
   border-left solid 4px #A6A6A6
 
-  .note-icon {
+  .note.icon
     color #A6A6A6
-  }
-}
 
-
-.note-yellow {
+.note.yellow
   border-left solid 4px #FFD43B
 
-  .note-icon {
+  .note.icon
     color #FFD43B
-  }
-}
 
-.note-red {
+.note.red
   border-left solid 4px #F85676
 
-  .note-icon {
+  .note.icon
     color #F85676
-  }
-}
 
-.note-question,
-.note-purple {
+.note.question, .note.purple
   border-left solid 4px #A763FF
 
-  .note-icon {
+  .note.icon
     color #A763FF
-  }
-}
 
-.note-red {
+.note.red
   border-left solid 4px #ff0739
 
-  .note-icon {
+  .note.icon
     color #ff0739
-  }
-}
 
-.note-pink {
+.note.pink
   border-left solid 4px #e44b8d
 
-  .note-icon {
+  .note.icon
     color #e44b8d
-  }
-}
 
-.note-green,
-.note-tip {
+.note.green, .note.tip
   border-left solid 4px #47da55
 
-  .note-icon {
+  .note.icon
     color #47da55
-  }
-}
 
-
-
-
-
-  
-
-
-//--------------------legacy--------------------
-.nb {
-  box-shadow var(--redefine-box-shadow-flat) 
+// --------------------legacy--------------------
+.nb
+  box-shadow var(--redefine-box-shadow-flat)
   border-radius 5px
   padding 15px
   font-size 1.2rem
   background-color var(--background-color)
   border-left solid 4px #2FD6F0
   line-height 2rem
-}
 
-//红色笔记
-.nr {
-  box-shadow var(--redefine-box-shadow-flat) 
+// 红色笔记
+.nr
+  box-shadow var(--redefine-box-shadow-flat)
   border-radius 5px
   padding 15px
   font-size 1.2rem
   background-color var(--background-color)
   border-left solid 4px #F85676
   line-height 2rem
-}
 
-//绿色笔记
-.ng {
-  box-shadow var(--redefine-box-shadow-flat) 
+// 绿色笔记
+.ng
+  box-shadow var(--redefine-box-shadow-flat)
   border-radius 5px
   padding 15px
   font-size 1.2rem
   background-color var(--background-color)
   border-left solid 4px #00C58E
   line-height 2rem
-}
 
-//黄色笔记
-.ny {
-  box-shadow var(--redefine-box-shadow-flat) 
+// 黄色笔记
+.ny
+  box-shadow var(--redefine-box-shadow-flat)
   border-radius 5px
   padding 15px
   font-size 1.2rem
   background-color var(--background-color)
   border-left solid 4px #FFD43B
   line-height 2rem
-}
 
-//紫色笔记
-.np {
-  box-shadow var(--redefine-box-shadow-flat) 
+// 紫色笔记
+.np
+  box-shadow var(--redefine-box-shadow-flat)
   border-radius 5px
   padding 15px
   font-size 1.2rem
   background-color var(--background-color)
   border-left solid 4px #A763FF
   line-height 2rem
-}
 
-//灰色笔记
-.ngra {
-  box-shadow var(--redefine-box-shadow-flat) 
+// 灰色笔记
+.ngra
+  box-shadow var(--redefine-box-shadow-flat)
   border-radius 5px
   padding 15px
   font-size 1.2rem
   background-color var(--background-color)
   border-left solid 4px #A6A6A6
   line-height 2rem
-}
 
-//橙色笔记
-.no {
-  box-shadow var(--redefine-box-shadow-flat) 
+// 橙色笔记
+.no
+  box-shadow var(--redefine-box-shadow-flat)
   border-radius 5px
   padding 15px
   font-size 1.2rem
   background-color var(--background-color)
   border-left solid 4px #FFA940
   line-height 2rem
-}
-
-
-

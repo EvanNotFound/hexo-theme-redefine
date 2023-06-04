@@ -1,63 +1,45 @@
-redefine-tablet() {
-  @media (max-width $media-max-width){
+redefine-tablet()
+  @media (max-width $media-max-width)
     {block}
-  }
-}
 
-redefine-mobile() {
-  @media (max-width $media-max-width-mobile){
+redefine-mobile()
+  @media (max-width $media-max-width-mobile)
     {block}
-  }
-}
 
-hover-style(isTransform, scaleX, scaleY) {
+hover-style(isTransform, scaleX, scaleY)
   box-shadow var(--redefine-box-shadow)
 
-  if (isTransform) {
-    transition-t("transform", "0", "0.2", "linear")
-  }
+  if (isTransform)
+    transition-t('transform', '0', '0.2', 'linear')
 
-  &:hover {
-    if (hexo-config('global.hover.scale') && isTransform) {
+  &:hover
+    if (hexo-config('global.hover.scale') && isTransform)
       transform scaleX(scaleX) scaleY(scaleX)
-    }
 
-    if (hexo-config('global.hover.shadow')) {
+    if (hexo-config('global.hover.shadow'))
       box-shadow var(--redefine-box-shadow-hover)
-    }
-  }
-}
 
-
-redefine-container(isTransform, scaleX, scaleY, padding, marginBottomValue) {
+redefine-container(isTransform, scaleX, scaleY, padding, marginBottomValue)
   padding padding
   border-radius $redefine-border-radius-large
   box-sizing border-box
   background var(--background-color)
 
-  if (marginBottomValue != 0) {
+  if (marginBottomValue != 0)
     margin-bottom marginBottomValue
 
-    +redefine-tablet() {
-      margin-bottom marginBottomValue * 0.8
-    }
+    +redefine-tablet()
+      margin-bottom: marginBottomValue * 0.8
 
-    +redefine-mobile() {
-      margin-bottom marginBottomValue * 0.6
-    }
-  }
-
+    +redefine-mobile()
+      margin-bottom: marginBottomValue * 0.6
 
   hover-style(isTransform, scaleX, scaleY)
 
-  +redefine-tablet() {
-    padding padding * 0.8
-    border-radius $redefine-border-radius-large * 0.8
-  }
+  +redefine-tablet()
+    padding: padding * 0.8
+    border-radius: $redefine-border-radius-large * 0.8
 
-
-  +redefine-mobile() {
-    padding padding * 0.6
-    border-radius $redefine-border-radius-large * 0.6
-  }
-}
+  +redefine-mobile()
+    padding: padding * 0.6
+    border-radius: $redefine-border-radius-large * 0.6

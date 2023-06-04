@@ -1,126 +1,102 @@
-$border-color = alpha($primary-color, .2)
-16px = 16px
-12px = 12px
+$border-color = alpha($primary-color, 0.2)
 $color-card = var(--third-background-color)
 
-div.tabs {
-  display: block
-  position: relative
-  margin-top: 16px
-  margin-bottom: 16px
-  //border-radius: $redefine-border-radius-medium
-  background: var(--color-card)
-  //box-shadow var(--redefine-box-shadow-flat)
+div.tabs
+  display block
+  position relative
+  margin-top 16px
+  margin-bottom 16px
+  background var(--color-card)
 
-  .highlight,p,ul,ol,div.note,details {    
-    margin-top: 16px
-    margin-bottom: 16px
-  }
-}
+  .highlight, p, ul, ol, div.note, details
+    margin-top 16px
+    margin-bottom 16px
 
-div.tabs {
-  ul.nav-tabs {
-    display: table
+div.tabs
+  ul.nav-tabs
+    display table
     position relative
-    overflow-x: auto
-    //white-space: nowrap
-    //justify-content: flex-start
-    margin: 0 !important
-    padding: 4px
-    background: var(--third-background-color)
-    border-radius: $redefine-border-radius-medium
-    line-height: 1.5
+    overflow-x auto
+    // white-space: nowrap
+    // justify-content: flex-start
+    margin 0 !important
+    padding 4px
+    background var(--third-background-color)
+    border-radius $redefine-border-radius-medium
+    line-height 1.5
     text-align center
     left 50%
     transform translateX(-50%)
 
-
-    li.tab {
-      list-style-type: none
-      display: inline-block;
-      float: none;
-
-      margin-top: 0
-      margin-bottom: 0
+    li.tab
+      list-style-type none
+      display inline-block
+      float none
+      margin-top 0
+      margin-bottom 0
       margin-left 10px
 
-      &:first-child {
+      &:first-child
         margin-left 0px
-      }
 
-      &:last-child {
-        padding-right: 0px
-      }
-      a {
-        display: block
-        cursor: pointer
-        border-radius: $redefine-border-radius-small
-        padding: 4px 8px
-        text-align: center
-        font-size: $fontsize-meta
-        line-height: inherit
-        font-weight: bold
-        color: var(--default-text-color)
+      &:last-child
+        padding-right 0px
+
+      a
+        display block
+        cursor pointer
+        border-radius $redefine-border-radius-small
+        padding 4px 8px
+        text-align center
+        font-size $fontsize-meta
+        line-height inherit
+        font-weight bold
+        color var(--default-text-color)
         border none
-        text-decoration: none
+        text-decoration none
 
-        &:hover {
-          color: var(--primary-color)
-        }
+        &:hover
+          color var(--primary-color)
 
-        i {
-          pointer-events: none
-        }
+        i
+          pointer-events none
 
-      } 
-      &.active a {
-        cursor: default
-        color: var(--primary-color)
+      &.active a
+        cursor default
+        color var(--primary-color)
         background-color var(--second-background-color)
         box-shadow var(--redefine-box-shadow-flat)
-        //transform translateY(-1px)
+        // transform translateY(-1px)
         transition transform 0.1s ease
-      }
-    }
-  }
-  .tab-content {
-    .highlight-container[data-rel] {
+
+  .tab-content
+    .highlight-container[data-rel]
       border-radius $redefine-border-radius-small
-    }
-    .highlight {
+
+    .highlight
       border-radius $redefine-border-radius-small-bottom
-    }
-    blockquote{
+
+    blockquote
       border-radius 0 $redefine-border-radius-small $redefine-border-radius-small 0
-    }
 
-    //border-top 1px solid var(--shadow-color-1)
+    // border-top 1px solid var(--shadow-color-1)
     background-color var(--second-background-color)
-    border-radius: $redefine-border-radius-medium
+    border-radius $redefine-border-radius-medium
     box-shadow var(--redefine-box-shadow-flat)
-    margin-top: 1rem
+    margin-top 1rem
 
-    .tab-pane {
-      padding: 20px
-      &:not(.active) {
-        display: none
-      }
-      &.active {
-        display: block
-      }
-      > p,
-      .tabs,
-      ul,
-      ol,
-      .highlight,
-      .note {
-        &:first-child {
-          margin-top: 0
-        }
-        &:last-child {
-          margin-bottom: 0
-        }
-      }
-    }
-  }
-}
+    .tab-pane
+      padding 20px
+
+      &:not(.active)
+        display none
+
+      &.active
+        display block
+
+      > p, .tabs, ul, ol, .highlight, .note
+        &:first-child
+          margin-top 0
+
+        &:last-child
+          margin-bottom 0

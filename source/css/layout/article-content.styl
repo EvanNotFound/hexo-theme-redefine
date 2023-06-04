@@ -1,14 +1,15 @@
-@import "../common/variables"
+@import '../common/variables'
+
 $avatarWidth = 46px
 $arrow-icon-width = 16px
 $post-nav-max-width = 220px
-$article-title-font-size = 3.2rem 
+$article-title-font-size = 3.2rem
 $temp-toc-width = hexo-config('global.sidebar_width')
 $toc-container-width = $temp-toc-width ? convert($temp-toc-width) : 210px
 $without-toc-container-width = calc(100% - $temp-toc-width)
 $gap = 30px
 
-.post-page-container{
+.post-page-container
   display flex
   position relative
   justify-content space-between
@@ -16,110 +17,94 @@ $gap = 30px
   width 100%
   height 100%
 
-  &.show-toc {
-    .toc-content-container {
+  &.show-toc
+    .toc-content-container
       display block
       opacity 1
       transition opacity 0.2s ease-in 0.2s
       width $toc-container-width
 
-      &:hover::-webkit-scrollbar-thumb {
-        border: 3px solid rgba(183, 183, 183, 0.3);
-      }
+      &:hover::-webkit-scrollbar-thumb
+        border 3px solid rgba(183, 183, 183, 0.3)
 
-      &::-webkit-scrollbar {
+      &::-webkit-scrollbar
         width 6px
         height 6px
         transition all 0.2s ease
         display block
-      }
-      
-      &::-webkit-scrollbar-track {
+
+      &::-webkit-scrollbar-track
         background transparent
         border none
-      }
 
-      &::-webkit-scrollbar-thumb {
-        border-radius: 20px;
-        border: 3px solid rgba(183, 183, 183, 0);
+      &::-webkit-scrollbar-thumb
+        border-radius 20px
+        border 3px solid rgba(183, 183, 183, 0)
         transition all 0.2s ease
-      }
-    }
 
-    .article-content-container {
+    .article-content-container
       width calc(100% - 210px) !important
-    }
-  }
 
-  +redefine-tablet() {
-    .toc-content-container {
+  +redefine-tablet()
+    .toc-content-container
       display none !important
-    }
 
-    .article-content-container {
+    .article-content-container
       width 100% !important
-    }
 
-    &.show-toc {
-      .toc-content-container {
+    &.show-toc
+      .toc-content-container
         display none
-      }
 
-      .article-content-container {
+      .article-content-container
         width 100% !important
-      }
-    }
-  }
 
-
-  .article-content-container {
+  .article-content-container
     width 100%
     transition width 0.2s ease
+    redefine-container(
+      false,
+      0,
+      0,
+      30px,
+      30px
+    )
 
-    redefine-container(false, 0, 0, 30px, 30px)
-
-    +redefine-mobile() {
+    +redefine-mobile()
       padding 1.2rem 0.2rem
       box-shadow none !important
-    }
 
-
-
-    .article-title {
+    .article-title
       position relative
       width 100%
 
-      img {
+      img
         margin -30px -30px 0 -30px
         width calc(100% + 60px)
         height 350px
         object-fit cover
         border-radius $redefine-border-radius-large-top
 
-        +redefine-tablet() {
+        +redefine-tablet()
           height 300px
           margin -24px -24px 0 -24px
           width calc(100% + 60px * 0.8)
-        }
 
-        +redefine-mobile() {
+        +redefine-mobile()
           height 200px
           border-radius 0px
           margin -24px -24px 0 -24px
           width calc(100% + 80px * 0.6)
-        }
-      }
 
-      .article-title-regular {
+      .article-title-regular
         font-size $article-title-font-size
         font-weight bold
         margin 0px 0 30px 0
         line-height 1.4
         color var(--second-text-color)
-        font-family $english-font-family, $chinese-font-family, "Noto Sans SC", sans-serif
-      }
+        font-family $english-font-family, $chinese-font-family, 'Noto Sans SC', sans-serif
 
-      .article-title-cover { 
+      .article-title-cover
         display flex
         padding 0.4rem 1.5rem 0.5rem 1.5rem
         line-height 1.5
@@ -128,7 +113,7 @@ $gap = 30px
         bottom 36px
         left 0
         text-align center
-        font-family $english-font-family, $chinese-font-family,"Noto Sans SC", sans-serif
+        font-family $english-font-family, $chinese-font-family, 'Noto Sans SC', sans-serif
         color var(--second-text-color)
         font-size $article-title-font-size
         font-weight 600
@@ -137,32 +122,25 @@ $gap = 30px
         -webkit-backdrop-filter blur(10px)
         border 1.5px solid var(--home-banner-icons-container-border-color)
         border-radius $redefine-border-radius-large
-        
-        +redefine-tablet() {
-          font-size $article-title-font-size * 0.8
-          bottom 36px * 0.8
-        }
 
-        +redefine-mobile() {
-          font-size $article-title-font-size * 0.6
+        +redefine-tablet()
+          font-size: $article-title-font-size * 0.8
+          bottom 36px * 0.8
+
+        +redefine-mobile()
+          font-size: $article-title-font-size * 0.6
           bottom 36px * 0.6
           border-radius $redefine-border-radius-medium
-        }
 
-      }
-
-    }
-
-
-    .article-header {
-      font-family $english-font-family, $chinese-font-family,"Noto Sans", "Noto Sans SC", sans-serif
+    .article-header
+      font-family $english-font-family, $chinese-font-family, 'Noto Sans', 'Noto Sans SC', sans-serif
       position relative
       padding-left $avatarWidth
       width 100%
       height $avatarWidth
       box-sizing border-box
 
-      .avatar {
+      .avatar
         position absolute
         top 0
         left 0
@@ -173,17 +151,13 @@ $gap = 30px
         border 1px solid var(--border-color)
         border-radius $redefine-border-radius-medium
 
-        img {
-          border-radius $redefine-border-radius-medium * 0.87
+        img
+          border-radius: $redefine-border-radius-medium * 0.87
           width 100%
           height 100%
-          //background var(--avatar-background-color)
-        }
+          // background var(--avatar-background-color)
 
-      }
-
-
-      .info {
+      .info
         padding 2px 0
         margin-left 10px
         box-sizing border-box
@@ -193,17 +167,16 @@ $gap = 30px
         width 100%
         height 100%
 
-        .author {
+        .author
           font-weight regular
           font-size 1.18rem
           display flex
           align-items center
 
-          .name {
+          .name
             color var(--default-text-color)
-          }
 
-          .author-label {
+          .author-label
             margin-left 5px
             font-size 0.8rem
             font-weight 500
@@ -211,220 +184,189 @@ $gap = 30px
             border-radius $redefine-border-radius-small
             color var(--third-text-color)
             border 1px solid var(--shadow-color-1)
-          }
 
-        }
-      }
-
-    }
-
-
-    .article-header, .article-header-meta-info {
+    .article-header, .article-header-meta-info
       margin-top 16px
-      +redefine-tablet() {
+
+      +redefine-tablet()
         transform scale(0.9)
         transform-origin left top
-      }
-    }
 
-
-    .article-content {
+    .article-content
       margin-top $spacing-unit
       padding-bottom 10px
       word-wrap break-word
       border-bottom 1px solid var(--border-color)
       color var(--default-text-color)
 
-      &>:first-child {
+      &>:first-child
         margin-top 0 !important
-      }
-    }
 
-
-    .post-tags-box {
+    .post-tags-box
       display none
       margin-top 1.6rem
       justify-content center
       font-size 1.1rem
 
-      +redefine-tablet() {
+      +redefine-tablet()
         display flex
-      }
 
-      +redefine-mobile() {
+      +redefine-mobile()
         margin-top 1.2rem
         font-size 1rem
-      }
 
-
-      .tag-item {
+      .tag-item
         margin 0 0.25rem
-      }
-    }
 
-    .post-copyright-info {
+    .post-copyright-info
       margin-top $spacing-unit
       width 100%
 
-      +redefine-tablet() {
+      +redefine-tablet()
         margin-top ($spacing-unit * 0.8) !important
-      }
-    }
 
-
-    .article-nav {
+    .article-nav
       height 40px
       margin-top $spacing-unit
 
-      .article-prev, .article-next {
+      .article-prev, .article-next
         max-width $post-nav-max-width
         height 100%
         box-sizing border-box
         border-radius $redefine-border-radius-medium !important
+        redefine-container(
+          true,
+          1.03,
+          1.03,
+          10px,
+          0
+        )
 
-        redefine-container(true, 1.03, 1.03, 10px, 0)
-
-        a {
+        a
           position relative
           display block
           width 100%
           height 100%
           box-sizing border-box
 
-          &.prev {
+          &.prev
             padding-left $arrow-icon-width
-          }
 
-          &.next {
+          &.next
             padding-right $arrow-icon-width
-          }
 
-          .arrow-icon {
+          .arrow-icon
             position absolute
             top 0
             height 100%
             width $arrow-icon-width
 
-            &.left {
+            &.left
               left 0
-            }
 
-            &.right {
+            &.right
               right 0
-            }
-          }
 
-          .title {
+          .title
             width 100%
             height 100%
-          }
-        }
 
-      }
-
-      .article-prev {
+      .article-prev
         float left
-      }
 
-      .article-next {
+      .article-next
         float right
-      }
 
-      .post-nav-item {
+      .post-nav-item
         display none
 
-        +redefine-tablet() {
+        +redefine-tablet()
           display inline-block
-        }
 
-      }
-
-
-      .post-nav-title-item {
+      .post-nav-title-item
         overflow hidden
         text-overflow ellipsis
         white-space nowrap
 
-        +redefine-tablet() {
+        +redefine-tablet()
           display none
-        }
-      }
-    }
 
-    .recommended-article{
-      overflow: visible !important
-      .recommended-article-header{
+    .recommended-article
+      overflow visible !important
+
+      .recommended-article-header
         font-size 28px
         font-weight 550
         margin-top 2.8rem
 
-      }
-      .recommended-article-group{
+      .recommended-article-group
         padding 10px 0
-        display: flex
+        display flex
         justify-content space-between
-        flex-wrap: wrap
-        overflow: visible !important
-        @media screen and (max-width: $device-tablet){
-          height: 190px
-          overflow: scroll
-          &::-webkit-scrollbar{
-            width: 0 !important
-          }
-          -ms-overflow-style: none
-        }
-        .recommended-article-item{
-          redefine-container(false, 0, 0, 10px, 0)
+        flex-wrap wrap
+        overflow visible !important
+
+        @media screen and (max-width $device-tablet)
+          height 190px
+          overflow scroll
+
+          &::-webkit-scrollbar
+            width 0 !important
+
+          -ms-overflow-style none
+
+        .recommended-article-item
+          redefine-container(
+            false,
+            0,
+            0,
+            10px,
+            0
+          )
           box-shadow var(--redefine-box-shadow-flat)
           padding 12px !important
-          display: flex
-          flex-wrap: wrap
-          align-content: center;
-          justify-content: center;
-          align-items: center;
-          overflow: hidden
-          width: 32%
-          max-height: 200px
+          display flex
+          flex-wrap wrap
+          align-content center
+          justify-content center
+          align-items center
+          overflow hidden
+          width 32%
+          max-height 200px
           margin-top: $gap * 0.5
-          margin-right: 0
-          img{
-            display: flex;
-            width: calc(100% + 24px)
-            height: 150px
-            object-fit: cover
+          margin-right 0
+
+          img
+            display flex
+            width calc(100% + 24px)
+            height 150px
+            object-fit cover
             border-radius $redefine-border-radius-medium-top
             margin -12px -12px 0 -12px !important
-            
-          }
-          span{
+
+          span
             margin-top 0.5rem
-            display: block
-            display: -webkit-box
-            -webkit-box-orient: vertical
-            -webkit-line-clamp: 1;
-            overflow: hidden
-          }
-        }
-      }
+            display block
+            display -webkit-box
+            -webkit-box-orient vertical
+            -webkit-line-clamp 1
+            overflow hidden
 
-    }
-  }
-
-  .toc-content-container {
-    white-space: nowrap;
+  .toc-content-container
+    white-space nowrap
     opacity 0
     position sticky
-    top $navbar-height + $spacing-unit
-    //border-radius $redefine-border-radius-large
+    top: $navbar-height + $spacing-unit
+    // border-radius $redefine-border-radius-large
     border-radius $redefine-border-radius-none
-    //display none
-    //visibility hidden
-    //width $toc-container-width
+    // display none
+    // visibility hidden
+    // width $toc-container-width
     width 0
     height auto
     max-height calc(100vh - 210px)
     margin-left 30px
-    //z-index $z-index-6
+    // z-index $z-index-6
     overflow-y auto
     overflow-x hidden
     float right
@@ -432,47 +374,36 @@ $gap = 30px
     box-sizing border-box
     box-shadow none !important
     transition opacity 0.3s ease-out 0.3s
-    
+    hover-style(
+      false,
+      0,
+      0
+    )
+    transition-t('display', '0', '0.3', 'ease-out')
 
-    hover-style(false, 0, 0)
-
-    transition-t("display", "0", "0.3", "ease-out")
-
-    +redefine-tablet() {
+    +redefine-tablet()
       left 0 !important
       display none !important
-    }
-  }
 
-  figure.image-caption {
-    img{
+  figure.image-caption
+    img
       margin-bottom 0
-    }
-    figcaption{
+
+    figcaption
       margin-top 5px
       margin-bottom 10px
       text-align center
       font-size 0.9rem
       color var(--third-text-color)
-    }
-  }
-}
 
+@media (prefers-color-scheme dark)
+  .article-title img
+    filter brightness(0.7)
+    -webkit-filter brightness(0.7)
+    transition filter 0.3s ease
 
-@media (prefers-color-scheme dark) {
-.article-title img {
-    filter: brightness(0.7);
-    -webkit-filter: brightness(0.7);
-    transition filter 0.3s ease;
-  }
-}
-
-
-
-.dark-mode {
-  .article-title img {
-    filter: brightness(0.7);
-    -webkit-filter: brightness(0.7);
-    transition filter 0.3s ease;
-  }
-}
+.dark-mode
+  .article-title img
+    filter brightness(0.7)
+    -webkit-filter brightness(0.7)
+    transition filter 0.3s ease

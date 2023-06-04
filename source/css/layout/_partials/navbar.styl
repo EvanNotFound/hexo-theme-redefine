@@ -3,10 +3,10 @@ $desktop-search-icon-font-size = 1.5rem
 $navbar-bar-line-height = 2.5px
 $logo-image-box-width = 46px
 
-@import "../../common/variables"
+@import '../../common/variables'
 
-.navbar-container {
-  font-family "Optima Medium", sans-serif
+.navbar-container
+  font-family 'Optima Medium', sans-serif
   width 100%
   height 100%
   box-sizing border-box
@@ -17,10 +17,13 @@ $logo-image-box-width = 46px
   -webkit-backdrop-filter blur(10px)
   backdrop-filter blur(10px)
   padding-top $scroll-progress-bar-height
+  hover-style(
+    false,
+    0,
+    0
+  )
 
-  hover-style(false, 0, 0)
-
-  .navbar-content {
+  .navbar-content
     position relative
     height 100%
     width $main-content-width
@@ -31,141 +34,107 @@ $logo-image-box-width = 46px
     align-items center
     z-index $z-index-5
 
+    &.has-home-banner
+      max-width: $content-max-width * 1.2
 
-    &.has-home-banner {
-      max-width $content-max-width * 1.2
-    }
-
-    +redefine-tablet() {
+    +redefine-tablet()
       width $main-content-width-tablet
-    }
 
-    +redefine-mobile() {
+    +redefine-mobile()
       width $main-content-width-mobile
-    }
 
-    .left {
+    .left
       display flex
       align-items center
-      transition-t("transform", "0", "0.2", "linear")
+      transition-t('transform', '0', '0.2', 'linear')
 
-      .navbar-shrink & {
+      .navbar-shrink &
         transform scale(0.72)
         transform-origin left
-      }
 
-
-      if (hexo-config('defaults.logo') && hexo-config('defaults.logo') != '') {
-        .logo-image {
+      if (hexo-config('defaults.logo') && hexo-config('defaults.logo') != '')
+        .logo-image
           width $logo-image-box-width
           height $logo-image-box-width
           margin-right 8px
 
+          +redefine-tablet()
+            width: $logo-image-box-width * 0.9
+            height: $logo-image-box-width * 0.9
 
-          +redefine-tablet() {
-            width $logo-image-box-width * 0.9
-            height $logo-image-box-width * 0.9
-          }
+          +redefine-mobile()
+            width: $logo-image-box-width * 0.8
+            height: $logo-image-box-width * 0.8
 
-          +redefine-mobile() {
-            width $logo-image-box-width * 0.8
-            height $logo-image-box-width * 0.8
-          }
-
-          img {
+          img
             border-radius 6px
             width 100%
-          }
-        }
 
-      }
-
-      .logo-title {
+      .logo-title
         font-size $logo-title-font-size
-        font-family "Optima Bold", sans-serif
-        //letter-spacing 1px
+        font-family 'Optima Bold', sans-serif
+        // letter-spacing 1px
         line-height 1
         color var(--first-text-color)
 
-        h1 {
+        h1
           margin 0
           font-size $logo-title-font-size
-          font-family "Optima Bold", sans-serif
-          //letter-spacing 1px
+          font-family 'Optima Bold', sans-serif
+          // letter-spacing 1px
           line-height 1
           color var(--first-text-color)
 
-          +redefine-tablet() {
-            font-size $logo-title-font-size * 0.9
-          }
+          +redefine-tablet()
+            font-size: $logo-title-font-size * 0.9
 
-          +redefine-mobile() {
-            font-size $logo-title-font-size * 0.8
-          }
+          +redefine-mobile()
+            font-size: $logo-title-font-size * 0.8
 
-        }
+        +redefine-tablet()
+          font-size: $logo-title-font-size * 0.9
 
-        +redefine-tablet() {
-          font-size $logo-title-font-size * 0.9
-        }
+        +redefine-mobile()
+          font-size: $logo-title-font-size * 0.8
 
-        +redefine-mobile() {
-          font-size $logo-title-font-size * 0.8
-        }
-      }
-
-    }
-
-
-    .right {
-
-      .desktop {
-
-        .navbar-list {
+    .right
+      .desktop
+        .navbar-list
           display flex
           align-items center
-          
 
-          +redefine-tablet() {
+          +redefine-tablet()
             display none
-          }
 
-
-          .navbar-item {
+          .navbar-item
             float left
-            //padding 5px
+            // padding 5px
             position relative
             margin-left 30px
             font-size 1rem
             cursor pointer
             color var(--default-text-color)
 
-            a {
+            a
               display block
               padding 5px
-            }
 
-            &:first-child {
+            &:first-child
               margin-left 0
-            }
 
-            a .fa-chevron-down{
+            a .fa-chevron-down
               transform rotate(0deg)
               transition transform 0.3s ease
-            }
 
-            &:hover a .fa-chevron-down{
+            &:hover a .fa-chevron-down
               transform rotate(180deg)
-            }
 
-            &:hover .has-dropdown{
-              &::after {
+            &:hover .has-dropdown
+              &::after
                 display none !important
-              }
-            }
 
-            &:hover a, .active {
-              &::after {
+            &:hover a, .active
+              &::after
                 content ''
                 position absolute
                 bottom -5px
@@ -175,27 +144,19 @@ $logo-image-box-width = 46px
                 transform translateX(-50%)
                 border-radius $redefine-border-radius-large
                 background var(--primary-color)
-                transition-t("transform, bottom", "0, 0", "0.2, 0.2", "linear, linear")
+                transition-t('transform, bottom', '0, 0', '0.2, 0.2', 'linear, linear')
 
-                .navbar-shrink & {
+                .navbar-shrink &
                   bottom -($navbar-shrink-height / 2 - 17)
-                }
-              }
-            }
-            
-            
 
-            &.search {
+            &.search
               font-size $desktop-search-icon-font-size
               margin-left 26px
 
-              i {
+              i
                 color var(--default-text-color)
-              }
 
-            }
-
-            .sub-menu{
+            .sub-menu
               position absolute
               right auto
               left 50%
@@ -204,18 +165,16 @@ $logo-image-box-width = 46px
               transform translate(-50%, 0)
               margin-top 0px
               width auto
-              text-align: center;
-              list-style:none;
-              padding 0 10px 
+              text-align center
+              list-style none
+              padding 0 10px
               border-radius $redefine-border-radius-large
-              //visibility hidden
-              
-
+              // visibility hidden
               max-height 0px
               overflow hidden
-              transition-t("all", "0", "0.2", "linear") 
+              transition-t('all', '0', '0.2', 'linear')
 
-              li a {
+              li a
                 white-space nowrap
                 color var(--default-text-color)
                 font-size 1rem
@@ -223,35 +182,30 @@ $logo-image-box-width = 46px
                 display block
                 text-align center
                 border-radius 8px
-                transition-t("all", "0", "0.2", "linear")
+                transition-t('all', '0', '0.2', 'linear')
 
-                &:hover {
+                &:hover
                   color var(--primary-color)
                   background-color var(--third-background-color)
-                }
-              }
-            }
 
-          }
-
-        }
-
-        .navbar-list .navbar-item:hover .sub-menu{
-          //visibility visible
+        .navbar-list .navbar-item:hover .sub-menu
+          // visibility visible
           max-height 500px
-          transition-t("all", "0", "0.2", "ease")
-          redefine-container(false, 0, 0, 10px, 5px)
-        }
-        
-      }
+          transition-t('all', '0', '0.2', 'ease')
+          redefine-container(
+            false,
+            0,
+            0,
+            10px,
+            5px
+          )
 
-
-      .mobile {
+      .mobile
         display flex
         justify-content space-between
         align-items center
 
-        .icon-item {
+        .icon-item
           display none
           position relative
           cursor pointer
@@ -261,69 +215,49 @@ $logo-image-box-width = 46px
           height 20px
           color var(--default-text-color)
 
-          i {
+          i
             color var(--default-text-color)
-          }
 
-          &:first-child {
+          &:first-child
             margin-left 0
-          }
 
-          +redefine-tablet() {
+          +redefine-tablet()
             display flex
             justify-content center
             align-items center
-          }
-        }
 
-        .navbar-bar {
-
-          .navbar-bar-middle {
+        .navbar-bar
+          .navbar-bar-middle
             width 18px
             height $navbar-bar-line-height
             position relative
             background var(--default-text-color)
 
-            .navbar-drawer-show & {
+            .navbar-drawer-show &
               background transparent
-            }
 
-
-            &::before, &::after {
+            &::before, &::after
               content ''
               position absolute
               left 0
               width 100%
               height $navbar-bar-line-height
               background var(--default-text-color)
-              transition-t("transform", "0", "0.38", "ease")
-            }
+              transition-t('transform', '0', '0.38', 'ease')
 
-
-            &::before {
+            &::before
               top -6px
 
-              .navbar-drawer-show & {
+              .navbar-drawer-show &
                 transform translateY(6px) rotate(45deg)
-              }
-            }
 
-
-            &::after {
+            &::after
               bottom -6px
 
-              .navbar-drawer-show & {
+              .navbar-drawer-show &
                 transform translateY(-6px) rotate(-45deg)
-              }
-            }
-          }
-        }
-      }
-    }
-  }
 
-
-  .navbar-drawer {
+  .navbar-drawer
     width 100%
     padding $navbar-height 0 20px 0
     position absolute
@@ -333,99 +267,79 @@ $logo-image-box-width = 46px
     transform-origin top
     z-index $z-index-2
     background var(--background-color)
-    transition-t("transform", "0", "0.38", "ease")
+    transition-t('transform', '0', '0.38', 'ease')
 
-    .navbar-drawer-show & {
+    .navbar-drawer-show &
       transform scaleY(1)
-    }
 
-    .drawer-navbar-list {
+    .drawer-navbar-list
       display flex
       flex-direction column
       justify-content flex-start
       align-items center
 
-      .drawer-navbar-item {
-        font-family: "Optima Bold", sans-serif
+      .drawer-navbar-item
+        font-family 'Optima Bold', sans-serif
         font-size 1rem
         margin 6px 0
         height 32px
 
-        a {
+        a
           padding 6px 20px
           border-radius 20px
           color var(--default-text-color)
 
-          &:hover {
+          &:hover
             color var(--second-text-color)
             border 1px solid var(--default-text-color)
-          }
 
-
-          &.active {
+          &.active
             border 1px solid var(--default-text-color)
             color var(--second-text-color)
-          }
-        }
 
-        .has-dropdown {
-          font-family: "Optima Bold", sans-serif
-        }
+        .has-dropdown
+          font-family 'Optima Bold', sans-serif
 
-        a .fa-chevron-down{
+        a .fa-chevron-down
           transform rotate(0deg)
           transition transform 0.3s ease
-        }
 
-        &:hover a .fa-chevron-down{
+        &:hover a .fa-chevron-down
           transform rotate(180deg)
-        }
 
-        &:hover .has-dropdown{
-          &::after {
+        &:hover .has-dropdown
+          &::after
             display none !important
-          }
-        }
-      }
 
-      .dropdown-item {
+      .dropdown-item
         font-size 1rem
         margin 6px 0
         height 16px
 
-        a {
+        a
           padding 6px 20px
           border-radius 20px
           color var(--default-text-color)
 
-          &:hover {
+          &:hover
             color var(--second-text-color)
             border 1px solid var(--default-text-color)
-          }
 
-
-          &.active {
+          &.active
             border 1px solid var(--default-text-color)
             color var(--second-text-color)
-          }
-        }
-      }
 
-      .sub-menu{
+      .sub-menu
         position relative
         margin-top 8px
         width 100%
-        text-align: center;
-        list-style: none;
-        padding 0 10px 
+        text-align center
+        list-style none
+        padding 0 10px
         border-radius $redefine-border-radius-large
-        //float left
-      }
-    }
-  }
+        // float left
 
-
-  .window-mask {
+  .window-mask
     position absolute
     top 0
     width 100%
@@ -434,16 +348,11 @@ $logo-image-box-width = 46px
     z-index $z-index-1
     visibility hidden
     opacity 0
-    transition-t("transform, opacity", "0, 0", "0.38, 0.38", "ease, ease")
+    transition-t('transform, opacity', '0, 0', '0.38, 0.38', 'ease, ease')
 
-    .navbar-drawer-show & {
+    .navbar-drawer-show &
       visibility visible
       opacity 1
-    }
-  }
 
-}
-
-.navbar-drawer-show {
+.navbar-drawer-show
   overflow hidden
-}

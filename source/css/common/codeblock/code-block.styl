@@ -1,24 +1,18 @@
-disable-user-select() {
+disable-user-select()
   -moz-user-select none
   -ms-user-select none
   -webkit-user-select none
   user-select none
-}
 
-.highlight-container[data-rel]{
+.highlight-container[data-rel]
   position relative
-}
 
-.highlight-container:hover .copy-button, 
-.highlight-container .copy-button:focus,
-.highlight-container:hover .fold-button,
-.highlight-container .fold-button:focus {
+.highlight-container:hover .copy-button, .highlight-container .copy-button:focus, .highlight-container:hover .fold-button, .highlight-container .fold-button:focus
   opacity 1
-}
 
-.fold-button {
+.fold-button
   cursor pointer
-  border-radius 0 0 0 0 
+  border-radius 0 0 0 0
   display inline-block
   font-weight bold
   line-height 1.8
@@ -31,16 +25,15 @@ disable-user-select() {
   font-size 1rem
   color var(--default-text-color)
   disable-user-select()
-  transition-t("opacity", "0", "0.2", "ease-in-out")
+  transition-t('opacity', '0', '0.2', 'ease-in-out')
   background var(--scond-background-color)
   border 0
   right 40px
   top 0
-}
 
-.copy-button {
+.copy-button
   cursor pointer
-  border-radius 0 $redefine-border-radius-large 0 0 
+  border-radius 0 $redefine-border-radius-large 0 0
   display inline-block
   font-weight bold
   line-height 1.8
@@ -53,27 +46,23 @@ disable-user-select() {
   font-size 1rem
   color var(--default-text-color)
   disable-user-select()
-  transition-t("opacity", "0", "0.2", "ease-in-out")
+  transition-t('opacity', '0', '0.2', 'ease-in-out')
   background var(--scond-background-color)
   border 0
   right 0
   top 0
-}
 
-
-
-
-if (hexo-config('articles.code_block.style') == 'mac') {
-  .highlight-container[data-rel]{
+if (hexo-config('articles.code_block.style') == 'mac')
+  .highlight-container[data-rel]
     background var(--third-background-color)
     border-radius $redefine-border-radius-large
-    box-shadow var(--redefine-box-shadow-flat) 
+    box-shadow var(--redefine-box-shadow-flat)
     padding-top 40px
     margin-top 10px
     margin-bottom 1.2rem
     position relative
 
-    figcaption {
+    figcaption
       font-weight bold
       font-size 16px
       position absolute
@@ -81,14 +70,12 @@ if (hexo-config('articles.code_block.style') == 'mac') {
       left 50%
       transform translateX(-50%)
 
-      a {
+      a
         margin-left 10px
-      }
-    }
 
-    &::before {
+    &::before
       position absolute
-      content:attr(data-rel)
+      content attr(data-rel)
       line-height 38px
       border-radius $redefine-border-radius-full
       box-shadow none
@@ -101,18 +88,14 @@ if (hexo-config('articles.code_block.style') == 'mac') {
       color var(--default-text-color)
       font-weight bold
       font-size 16px
-    }
 
-
-    .folded {
-      figure {
+    .folded
+      figure
         height 0 !important
         width 0 !important
         overflow hidden !important
-      }
-    }
 
-    &::after{
+    &::after
       content ' '
       position absolute
       -webkit-border-radius $redefine-border-radius-full
@@ -126,10 +109,8 @@ if (hexo-config('articles.code_block.style') == 'mac') {
       -webkit-box-shadow 20px 0px #fdbc40, 40px 0px #35cd4b
       box-shadow 20px 0px #fdbc40, 40px 0px #35cd4b
       z-index 3
-    }
-  }
-} else {
-  .highlight-container[data-rel]{
+else
+  .highlight-container[data-rel]
     background var(--highlight-background)
     border-radius $redefine-border-radius-large
     padding-top 40px
@@ -139,7 +120,7 @@ if (hexo-config('articles.code_block.style') == 'mac') {
     position relative
     box-shadow var(--redefine-box-shadow-flat)
 
-    figcaption {
+    figcaption
       font-weight bold
       font-size 16px
       position absolute
@@ -147,22 +128,18 @@ if (hexo-config('articles.code_block.style') == 'mac') {
       left 50%
       transform translateX(-50%)
 
-      a {
+      a
         margin-left 10px
-      }
-    }
 
-    .folded {
-      figure {
+    .folded
+      figure
         height 0 !important
         width 0 !important
         overflow hidden !important
-      }
-    }
 
-    &::before {
+    &::before
       position absolute
-      content:attr(data-rel)
+      content attr(data-rel)
       line-height 42px
       border-radius $redefine-border-radius-large
       box-shadow none
@@ -175,8 +152,3 @@ if (hexo-config('articles.code_block.style') == 'mac') {
       color var(--default-text-color)
       font-weight bold
       font-size 16px
-    }
-
-  }
-}
-

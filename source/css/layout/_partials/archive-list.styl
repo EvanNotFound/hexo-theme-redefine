@@ -3,78 +3,65 @@ $archive-year-count-font-size = 1.2rem
 $article-title-font-size = 1.2rem
 $article-date-font-size = 1rem
 
-@import "../../common/variables"
+@import '../../common/variables'
 
-.archive-list-container {
-  .archive-item {
+.archive-list-container
+  .archive-item
     margin-bottom $spacing-unit
 
-    &:last-child {
+    &:last-child
       margin-bottom 0
-    }
 
-    .archive-item-header {
+    .archive-item-header
       margin-bottom 10px
 
-      .archive-year {
+      .archive-year
         font-size $archive-year-font-size
 
-        +redefine-tablet() {
-          font-size $archive-year-font-size - 0.2rem
-        }
+        +redefine-tablet()
+          font-size: $archive-year-font-size - 0.2rem
 
         color var(--second-text-color)
         font-weight 600
         margin-right 6px
-      }
 
-
-      .archive-year-post-count {
+      .archive-year-post-count
         font-size $archive-year-count-font-size
         font-weight 500
         color var(--second-text-color)
 
-        +redefine-tablet() {
-          font-size $archive-year-count-font-size * 0.9
-        }
-      }
+        +redefine-tablet()
+          font-size: $archive-year-count-font-size * 0.9
 
-    }
-
-
-    .article-list {
-
+    .article-list
       padding-left 30px
       font-size 14px
       line-height 1.5
-      //font-family 'Oswald', sans-serif
 
-      +redefine-tablet() {
+      +redefine-tablet()
         padding-left 0
-      }
 
-      .article-item {
+      .article-item
         font-size 1rem
         padding 3em 2em 1em
         position relative
         color rgba(0, 0, 0, 0.7)
         border-left 2px solid var(--border-color)
-        a {
+
+        a
           overflow hidden
           display block
-          .article-title {
+
+          .article-title
             font-size 1.6rem
-            margin-bottom .5em
+            margin-bottom 0.5em
             color var(--default-text-color)
-          }
-          &:hover {
-            .article-title, .article-date {
+
+          &:hover
+            .article-title, .article-date
               color var(--primary-color)
-            }
-          }
-        }
-        
-        &::before {
+
+        &::before
           content attr(date-is)
           position absolute
           left 2em
@@ -82,10 +69,10 @@ $article-date-font-size = 1rem
           top 1em
           display block
           font-weight 700
-          font-size: .785rem
+          font-size 0.785rem
           color var(--third-text-color)
-        }
-        &::after {
+
+        &::after
           width 10px
           height 10px
           display block
@@ -93,27 +80,10 @@ $article-date-font-size = 1rem
           position absolute
           left -8px
           border-radius 10px
-          content: ''
+          content ''
           border 2px solid var(--third-text-color)
           background var(--background-color)
-          transition background .2s ease-in-out
-        }
-        &:last-child {
+          transition background 0.2s ease-in-out
+
+        &:last-child
           border-image var(--archive-timeline-last-child-color)
-        }
-
-        // +redefine-tablet() {
-        //   margin-top 16px
-        // }
-
-        // +redefine-mobile() {
-        //   margin-top 14px
-        // }
-        // .article-date {
-        //   font-size $article-date-font-size
-        //   float right
-        // }
-      }
-    }
-  }
-}

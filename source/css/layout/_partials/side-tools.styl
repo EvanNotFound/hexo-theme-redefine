@@ -2,10 +2,8 @@ $right-bottom-tools-width = 42px
 $right-bottom-tools-font-size = 1.3rem
 $right-bottom-tools-border-radius = 12px
 
-
-.side-tools-container {
-
-  .right-bottom-tools {
+.side-tools-container
+  .right-bottom-tools
     width $right-bottom-tools-width
     height $right-bottom-tools-width
     font-size $right-bottom-tools-font-size
@@ -17,108 +15,73 @@ $right-bottom-tools-border-radius = 12px
     color var(--default-text-color)
     background var(--background-color)
 
-    i {
+    i
       color var(--default-text-color)
-    }
 
-    &:hover {
+    &:hover
       color var(--background-color)
       background var(--primary-color)
       box-shadow var(--redefine-box-shadow)
 
-      i {
+      i
         color var(--background-color)
-      }
-    }
 
-    +redefine-tablet() {
-      width $right-bottom-tools-width * 0.9
-      height $right-bottom-tools-width * 0.9
-      font-size $right-bottom-tools-font-size * 0.9
+    +redefine-tablet()
+      width: $right-bottom-tools-width * 0.9
+      height: $right-bottom-tools-width * 0.9
+      font-size: $right-bottom-tools-font-size * 0.9
       margin-bottom 2px
-    }
 
-    &.rss {
-
-      a {
+    &.rss
+      a
         border-radius $right-bottom-tools-border-radius
         width 100%
         height 100%
 
-        &:hover {
+        &:hover
           color var(--background-color)
           background var(--primary-color)
           box-shadow var(--redefine-box-shadow)
-        }
-      }
-    }
-  }
 
-
-  .hidden-tools-list {
+  .hidden-tools-list
     opacity 0
     transform translateX(250%)
-    transition-t("transform, opacity", "0, 0", "0.2, 0.2", "ease, ease")
+    transition-t('transform, opacity', '0, 0', '0.2, 0.2', 'ease, ease')
 
-    .tool-expand-width {
-      +redefine-tablet() {
+    .tool-expand-width
+      +redefine-tablet()
         display none
-      }
-    }
 
-
-    &.show {
+    &.show
       opacity 1
       transform translateX(0)
-    }
-  }
 
-
-  .visible-tools-list {
-
-    if (hexo-config('global.scroll_progress.percentage') == true) {
-      .tool-scroll-to-top {
+  .visible-tools-list
+    if (hexo-config('global.scroll_progress.percentage') == true)
+      .tool-scroll-to-top
         display none
 
-        &.show {
+        &.show
           display flex
-        }
 
-        &:hover {
-
-          .percent {
+        &:hover
+          .percent
             display none
-          }
 
-          .arrow-up {
+          .arrow-up
             display flex
-          }
 
-        }
-
-        .arrow-up {
+        .arrow-up
           display none
-        }
 
-        .percent {
+        .percent
           display flex
           font-size 1rem
-        }
 
-      }
-
-    }
-
-    if (hexo-config('plugins.aplayer.enable') == true && hexo-config('plugins.aplayer.type') == "mini") {
-      .tool-aplayer {
-        +redefine-tablet() {
+    if (hexo-config('plugins.aplayer.enable') == true && hexo-config('plugins.aplayer.type') == 'mini')
+      .tool-aplayer
+        +redefine-tablet()
           display none
-        }
 
-        +redefine-mobile() {
+        +redefine-mobile()
           display none
-        }
-      }
-    }
-  }
-}

@@ -1,55 +1,50 @@
-@import "../common/variables"
+@import '../common/variables'
 
-.home-content-container {
-  if (hexo-config('home.sidebar.enable') && hexo-config('home.sidebar.position') == 'right') {
+.home-content-container
+  if (hexo-config('home.sidebar.enable') && hexo-config('home.sidebar.position') == 'right')
     margin-left $spacing-unit
 
-    +redefine-tablet() {
+    +redefine-tablet()
       margin-left 0
-    }
 
-    +redefine-mobile() {
+    +redefine-mobile()
       margin-left 0
-    }
-  }
 
-  if (hexo-config('home.sidebar.enable') && hexo-config('home.sidebar.position') == 'left') {
+  if (hexo-config('home.sidebar.enable') && hexo-config('home.sidebar.position') == 'left')
     margin-right $spacing-unit
 
-    +redefine-tablet() {
+    +redefine-tablet()
       margin-right 0
-    }
 
-    +redefine-mobile() {
+    +redefine-mobile()
       margin-right 0
-    }
-  }
 
+  .seo-reader-text
+    border 0
+    clip rect(1px, 1px, 1px, 1px)
+    -webkit-clip-path inset(50%)
+    clip-path inset(50%)
+    height 1px
+    margin -1px
+    overflow hidden
+    padding 0
+    position absolute !important
+    width 1px
+    word-wrap normal !important
+    word-break normal
 
-  .seo-reader-text {
-    border: 0;
-    clip: rect(1px, 1px, 1px, 1px);
-    -webkit-clip-path: inset(50%);
-    clip-path: inset(50%);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute !important;
-    width: 1px;
-    word-wrap: normal !important;
-    word-break: normal;
-  }
-
-
-  .home-article-list {
-
-    .home-article-item {
+  .home-article-list
+    .home-article-item
       position relative
+      redefine-container(
+        true,
+        1.015,
+        1.015,
+        28px,
+        38px
+      )
 
-      redefine-container(true, 1.015, 1.015, 28px, 38px)
-
-      .home-article-sticky-label {
+      .home-article-sticky-label
         position absolute
         top 12px
         right 12px
@@ -64,163 +59,116 @@
         backdrop-filter blur(10px)
         -webkit-backdrop-filter blur(10px)
 
-        .fa-thumbtack {
+        .fa-thumbtack
           color var(--third-text-color)
           margin-right 3px
           font-size 0.65rem
-        }
 
-        &:hover {
+        &:hover
           color var(--background-color)
           background-color var(--primary-color)
 
-          .fa-thumbtack {
+          .fa-thumbtack
             color var(--background-color)
-          }
-        }
 
-      }
-
-      .home-article-thumbnail {
+      .home-article-thumbnail
         position relative
         height 150px
         padding-bottom 28px
         overflow hidden
-        border-radius $redefine-border-radius-large-top 
+        border-radius $redefine-border-radius-large-top
         margin -28px -28px 20px -28px
 
-        +redefine-tablet() {
+        +redefine-tablet()
           border-radius ($redefine-border-radius-large * 0.8) ($redefine-border-radius-large * 0.8) 0 0
           margin -22.4px -22.4px 16px -22.4px
           padding-bottom 22.4px
-        }
 
-        +redefine-mobile() {
+        +redefine-mobile()
           border-radius ($redefine-border-radius-large * 0.6) ($redefine-border-radius-large * 0.6) 0 0
           margin -16.8px -16.8px 12px -16.8px
           padding-bottom 16.8px
-        }
 
-        img {
+        img
           width 100%
           height 100%
           object-fit cover
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-        }
-      }
+          position absolute
+          top 50%
+          transform translateY(-50%)
 
-
-      .home-article-title {
+      .home-article-title
         position relative
         font-weight 600
         font-size 1.4rem
         line-height 1.5
         color var(--second-text-color)
-        font-family $english-font-family, $chinese-font-family, "Noto Sans SC", sans-serif
+        font-family $english-font-family, $chinese-font-family, 'Noto Sans SC', sans-serif
 
-        +redefine-tablet() {
+        +redefine-tablet()
           font-size 1.3rem
-        }
 
-
-        +redefine-mobile() {
+        +redefine-mobile()
           font-size 1.2rem
-        }
 
         margin 0
 
-      }
-
-
-      .home-article-content {
+      .home-article-content
         word-wrap break-word
         text-align justify
         margin 20px 0
         color var(--default-text-color)
-      }
 
-
-      .home-article-meta-info-container {
+      .home-article-meta-info-container
         display flex
         justify-content space-between
         align-items center
         font-size 0.92rem
         color var(--third-text-color)
 
-
-        .home-article-meta-info {
+        .home-article-meta-info
           letter-spacing 0.5px
 
-          span {
+          span
             margin-right 10px
 
-            &:last-child {
+            &:last-child
               margin-right 0
-            }
 
-            ul, li {
+            ul, li
               display inline
-            }
-          }
 
-          .home-article-category {
-            +redefine-mobile() {
+          .home-article-category
+            +redefine-mobile()
               display none
-            }
-          }
 
-          .home-article-tag {
-            +redefine-tablet() {
+          .home-article-tag
+            +redefine-tablet()
               display none
-            }
-          }
-        }
 
-
-        hr {
+        hr
           border none
           flex 1
           height 1px
           background var(--border-color)
           margin 0 10px
-        }
 
-        a {
+        a
           color var(--third-text-color)
 
-          &:hover {
+          &:hover
             color var(--primary-color)
-          }
-        }
-      }
 
+@media (prefers-color-scheme dark)
+  .home-article-thumbnail
+    img
+      filter brightness(0.7)
+      -webkit-filter brightness(0.7)
+      transition filter 0.3s ease
 
-    }
-  }
-}
-
-
-@media (prefers-color-scheme dark) {
-.home-article-thumbnail {
-    img {
-      filter: brightness(0.7);
-      -webkit-filter: brightness(0.7);
-      transition filter 0.3s ease;
-    }
-  }
-}
-
-
-
-.dark-mode {
-  .home-article-thumbnail {
-    img {
-      filter: brightness(0.7);
-      -webkit-filter: brightness(0.7);
-      transition filter 0.3s ease;
-    }
-  }
-
-}
+.dark-mode
+  .home-article-thumbnail
+    img
+      filter brightness(0.7)
+      -webkit-filter brightness(0.7)
+      transition filter 0.3s ease

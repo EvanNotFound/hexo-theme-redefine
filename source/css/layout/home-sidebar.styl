@@ -1,37 +1,38 @@
-@import "../common/variables"
+@import '../common/variables'
 
-.home-sidebar-container {
-
+.home-sidebar-container
   width 240px
   height auto
-  //background-color #bbb
+  // background-color #bbb
   margin 0 $spacing-unit
 
-  +redefine-tablet() {
+  +redefine-tablet()
     margin 0 ($spacing-unit * 0.5)
-  }
 
-  +redefine-mobile() {
+  +redefine-mobile()
     display none
-  }
 
-  .sticky-container {
+  .sticky-container
     position sticky
     top $navbar-height
-  }
 
-  .sidebar-content {
-    redefine-container(false, 1.02, 1.02, 20px, 0)
+  .sidebar-content
+    redefine-container(
+      false,
+      1.02,
+      1.02,
+      20px,
+      0
+    )
 
-    &[marginTop] {
-      margin-top $spacing-unit * 0.6
-    }
+    &[marginTop]
+      margin-top: $spacing-unit * 0.6
 
-    .avatar {
+    .avatar
       display flex
       justify-content center
 
-      img {
+      img
         width 80px
         height 80px
         border-radius $redefine-border-radius-large
@@ -39,93 +40,82 @@
         border 1px solid var(--border-color)
         padding 1px
 
-        &:hover {
+        &:hover
           box-shadow var(--redefine-box-shadow)
-        }
-      }
 
-    }
-
-    .author {
+    .author
       display flex
       flex-direction column
       justify-content center
       margin 10px 0
 
-      .name {
+      .name
         text-align center
         font-size 1.2rem
         font-weight 600
         color var(--second-text-color)
-      }
 
-      .label {
+      .label
         text-align center
         font-size 0.8rem
         color var(--third-text-color)
-      }
-    }
 
-    .statistics {
+    .statistics
       display flex
       justify-content space-around
       margin 10px 0
 
-      .item {
+      .item
         display flex
         flex-direction column
         justify-content center
         align-items center
         width 80px
 
-        .number {
+        .number
           font-size 1.2rem
           font-weight 600
           color var(--second-text-color)
-        }
 
-        .label {
+        .label
           font-size 0.8rem
           color var(--third-text-color)
-        }
-      }
-    }
-  }
 
-  .sidebar-links {
+  .sidebar-links
     overflow hidden
+    redefine-container(
+      false,
+      1.02,
+      1.02,
+      15px,
+      0
+    )
 
-    redefine-container(false, 1.02, 1.02, 15px, 0)
+    &[marginTop]
+      margin-top: $spacing-unit * 0.6
 
-    &[marginTop] {
-      margin-top $spacing-unit * 0.6
-    }
-
-    .site-info {
+    .site-info
       background-color var(--second-background-color)
       margin -15px -15px 10px -15px
       border-radius $redefine-border-radius-large-top
       padding 15px
       border-bottom 1px solid var(--border-color)
 
-      .site-name {
+      .site-name
         font-size 1.2rem
         font-weight 600
         color var(--second-text-color)
         font-family 'Optima Bold', sans-serif
         text-align center
-      }
 
-      .announcement {
+      .announcement
         font-size 0.9rem
         color var(--third-text-color)
         text-align center
         margin-top 10px
         margin-bottom 5px
-      }
-    }
 
-    .links {
+    .links
       padding 5px 0
       display flex
       justify-content center
@@ -136,26 +126,20 @@
       cursor pointer
       font-family $default-font-family
 
-      .icon-space {
+      .icon-space
         margin-right 5px
-      }
 
-
-      &:hover {
+      &:hover
         color var(--primary-color)
         background-color var(--second-background-color)
-      }
 
-      .icon {
+      .icon
         font-size 1.2rem
-      }
 
-      .label {
+      .label
         font-size 0.8rem
-      }
-    }
 
-    .announcement-outside {
+    .announcement-outside
       display flex
       justify-content center
       align-items center
@@ -164,6 +148,3 @@
       padding 5px 0
       color var(--second-text-color)
       text-align center
-    }
-  }
-}

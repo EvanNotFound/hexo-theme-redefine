@@ -28,99 +28,132 @@ Global.initUtils = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       const scrollHeight = document.documentElement.scrollHeight;
       const clientHeight = window.innerHeight || document.documentElement.clientHeight;
-      const percent = Math.round((scrollTop / (scrollHeight - clientHeight)) * 100);
+      const percent = this.calculatePercentage(scrollTop, scrollHeight, clientHeight);
     
+      this.updateScrollProgressBar(percent);
+      this.updateScrollPercent(percent);
+      this.updatePageTopVisibility(scrollTop, clientHeight);
+      
+      this.prevScrollValue = scrollTop;
+    },
+
+    calculatePercentage(scrollTop, scrollHeight, clientHeight) {
+      return Math.round((scrollTop / (scrollHeight - clientHeight)) * 100);
+    },
+
+    
+    updateScrollProgressBar(percent) {
       if (this.isHasScrollProgressBar) {
-        const progressPercent = ((scrollTop / (scrollHeight - clientHeight)) * 100).toFixed(3);
-        this.scrollProgressBar_dom.style.visibility = percent === 0 ? 'hidden' : 'visible';
+        const progressPercent = percent.toFixed(3);
+        const visibility = percent === 0 ? 'hidden' : 'visible';
+    
+        this.scrollProgressBar_dom.style.visibility = visibility;
         this.scrollProgressBar_dom.style.width = `${progressPercent}%`;
       }
+    },
     
+    updateScrollPercent(percent) {
       if (this.isHasScrollPercent) {
         const percentDom = this.backToTopButton_dom.querySelector('.percent');
-        this.backToTopButton_dom.classList.toggle('show', percent !== 0 && percent !== undefined);
+        const showButton = percent !== 0 && percent !== undefined;
+    
+        this.backToTopButton_dom.classList.toggle('show', showButton);
         percentDom.innerHTML = percent.toFixed(0);
       }
+    },
     
+    updatePageTopVisibility(scrollTop, clientHeight) {
       if (Global.theme_config.navbar.auto_hide) {
-        this.pageTop_dom.classList.toggle('hide', (this.prevScrollValue > clientHeight && scrollTop  > this.prevScrollValue) );
+        const prevScrollValue = this.prevScrollValue;
+        const hidePageTop = prevScrollValue > clientHeight && scrollTop > prevScrollValue;
+    
+        this.pageTop_dom.classList.toggle('hide', hidePageTop);
       } else {
         this.pageTop_dom.classList.remove('hide');
       }
-      this.prevScrollValue = scrollTop;
+    },
+    
+    calculatePercentage(scrollTop, scrollHeight, clientHeight) {
+      return Math.round((scrollTop / (scrollHeight - clientHeight)) * 100);
     },
 
     // register window scroll event
     registerWindowScroll() {
       window.addEventListener("scroll", () => {
-        // style handle when scroll
         this.updateScrollStyle();
-
-        // TOC scroll handle
-        if (
-          Global.theme_config.articles.toc.enable &&
-          Global.utils.hasOwnProperty("updateActiveTOCLink")
-        ) {
-          Global.utils.updateActiveTOCLink();
-        }
-
-        // navbar shrink
-        navbarShrink.init();
-
-        // scroll blur
-        if (Global.theme_config.home_banner.style === "fixed" && location.pathname === Global.hexo_config.root) {
-          const blurElement = document.querySelector(".home-banner-background");
-          const viewHeight = window.innerHeight;
-          const scrollY = window.scrollY || window.pageYOffset;
-          const triggerViewHeight = viewHeight / 2;
-          const blurValue =
-            scrollY >= triggerViewHeight
-              ? 15
-              : 0;
-          try {
-            blurElement.style.transition = "0.3s";
-            blurElement.style.webkitFilter = `blur(${blurValue}px)`;
-          } catch (e) {}
-        }
-
-        // auto hide tools
-        var y = window.pageYOffset;
-        var height = document.body.scrollHeight;
-        var windowHeight = window.innerHeight;
-        var toolList = document.getElementsByClassName('right-side-tools-container');
-        
-        for (var i = 0; i < toolList.length; i++) {
-          var tools = toolList[i];
-          if (y <= 0) {
-            if (location.pathname !== '/') {
-              //console.log(location.pathname)
-            } else {
-              tools.classList.add('hide');
-            }
-          } else if (y + windowHeight >= height - 20) {
-            tools.classList.add('hide');
-          } else {
-            tools.classList.remove('hide');
-          }
-        }
-
-        /*aplayer auto hide*/
-        
-        var aplayer = document.getElementById('aplayer');
-        if (aplayer == null) {} else {
-          if (y <= 0) {
-              if (location.pathname !== '/') {
-                //console.log(location.pathname)
-              } else {
-                aplayer.classList.add('hide');
-              }
-          } else if (y + windowHeight >= height - 20) {
-            aplayer.classList.add('hide');
-          } else {
-            aplayer.classList.remove('hide');
-          }
-        }
+        this.updateTOCScroll();
+        this.updateNavbarShrink();
+        this.updateHomeBannerBlur();
+        this.updateAutoHideTools();
+        this.updateAPlayerAutoHide();
       });
+    },
+    
+    updateTOCScroll() {
+      if (Global.theme_config.articles.toc.enable && Global.utils.hasOwnProperty("updateActiveTOCLink")) {
+        Global.utils.updateActiveTOCLink();
+      }
+    },
+    
+    updateNavbarShrink() {
+      navbarShrink.init();
+    },
+    
+    updateHomeBannerBlur() {
+      if (Global.theme_config.home_banner.style === "fixed" && location.pathname === Global.hexo_config.root) {
+        const blurElement = document.querySelector(".home-banner-background");
+        const viewHeight = window.innerHeight;
+        const scrollY = window.scrollY || window.pageYOffset;
+        const triggerViewHeight = viewHeight / 2;
+        const blurValue = scrollY >= triggerViewHeight ? 15 : 0;
+    
+        try {
+          blurElement.style.transition = "0.3s";
+          blurElement.style.webkitFilter = `blur(${blurValue}px)`;
+        } catch (e) {}
+      }
+    },
+    
+    updateAutoHideTools() {
+      const y = window.pageYOffset;
+      const height = document.body.scrollHeight;
+      const windowHeight = window.innerHeight;
+      const toolList = document.getElementsByClassName('right-side-tools-container');
+    
+      for (let i = 0; i < toolList.length; i++) {
+        const tools = toolList[i];
+        if (y <= 0) {
+          if (location.pathname !== '/') {
+            //console.log(location.pathname)
+          } else {
+            tools.classList.add('hide');
+          }
+        } else if (y + windowHeight >= height - 20) {
+          tools.classList.add('hide');
+        } else {
+          tools.classList.remove('hide');
+        }
+      }
+    },
+    
+    updateAPlayerAutoHide() {
+      const aplayer = document.getElementById('aplayer');
+      if (aplayer == null) {} else {
+        const y = window.pageYOffset;
+        const height = document.body.scrollHeight;
+        const windowHeight = window.innerHeight;
+        if (y <= 0) {
+          if (location.pathname !== '/') {
+            //console.log(location.pathname)
+          } else {
+            aplayer.classList.add('hide');
+          }
+        } else if (y + windowHeight >= height - 20) {
+          aplayer.classList.add('hide');
+        } else {
+          aplayer.classList.remove('hide');
+        }
+      }
     },
 
     toggleToolsList() {
@@ -135,7 +168,7 @@ Global.initUtils = () => {
       const fontAdjustMinus = document.querySelector('.tool-font-adjust-minus');
     
       const fontSize = document.defaultView.getComputedStyle(document.body).fontSize;
-      const fs = parseFloat(fontSize);
+      const baseFontSize = parseFloat(fontSize);
     
       let fontSizeLevel = 0;
       const styleStatus = Global.getStyleStatus();
@@ -144,57 +177,25 @@ Global.initUtils = () => {
         setFontSize(fontSizeLevel);
       }
     
-      function setFontSize(fontSizeLevel) {
-        htmlRoot.style.fontSize = `${fs * (1 + fontSizeLevel * 0.05)}px`;
-        Global.styleStatus.fontSizeLevel = fontSizeLevel;
+      function setFontSize(level) {
+        const fontSize = baseFontSize * (1 + level * 0.05);
+        htmlRoot.style.fontSize = `${fontSize}px`;
+        Global.styleStatus.fontSizeLevel = level;
         Global.setStyleStatus();
       }
     
-      fontAdjustPlus.addEventListener('click', () => {
-        switch (fontSizeLevel) {
-          case 0:
-            fontSizeLevel = 1;
-            break;
-          case 1:
-            fontSizeLevel = 2;
-            break;
-          case 2:
-            fontSizeLevel = 3;
-            break;
-          case 3:
-            fontSizeLevel = 4;
-            break;
-          case 4:
-            fontSizeLevel = 5;
-            break;
-          default:
-            break;
-        }
+      function increaseFontSize() {
+        fontSizeLevel = Math.min(fontSizeLevel + 1, 5);
         setFontSize(fontSizeLevel);
-      });
+      }
     
-      fontAdjustMinus.addEventListener('click', () => {
-        switch (fontSizeLevel) {
-          case 1:
-            fontSizeLevel = 0;
-            break;
-          case 2:
-            fontSizeLevel = 1;
-            break;
-          case 3:
-            fontSizeLevel = 2;
-            break;
-          case 4:
-            fontSizeLevel = 3;
-            break;
-          case 5:
-            fontSizeLevel = 4;
-            break;
-          default:
-            break;
-        }
+      function decreaseFontSize() {
+        fontSizeLevel = Math.max(fontSizeLevel - 1, 0);
         setFontSize(fontSizeLevel);
-      });
+      }
+    
+      fontAdjustPlus.addEventListener('click', increaseFontSize);
+      fontAdjustMinus.addEventListener('click', decreaseFontSize);
     },
 
     // toggle content area width
@@ -317,7 +318,7 @@ Global.initUtils = () => {
           showHandle(imageViewerDom, isBigImage);
         });
 
-      const imgDoms = document.querySelectorAll(".markdown-body img");
+      const imgDoms = document.querySelectorAll(".markdown-body img, .masonry-item img");
 
       if (imgDoms.length) {
         imgDoms.forEach((img) => {

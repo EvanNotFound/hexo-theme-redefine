@@ -1,13 +1,12 @@
-.progress-bar-container {
+.progress-bar-container
   position fixed
   top 0
   left 0
   width 100%
   z-index $z-index-9
 
-  if (hexo-config('global.pjax') == true) {
-
-    .pjax-progress-bar {
+  if (hexo-config('global.pjax') == true)
+    .pjax-progress-bar
       position absolute
       top 0
       left 0
@@ -17,17 +16,13 @@
       visibility hidden
       opacity 0
       z-index $z-index-8
-      transition-t("width", "0", "0.1", "linear")
+      transition-t('width', '0', '0.1', 'linear')
 
-
-      &.show {
+      &.show
         opacity 1
         visibility visible
-      }
-    }
 
-
-    .pjax-progress-icon {
+    .pjax-progress-icon
       position absolute
       top 0
       right 0
@@ -40,21 +35,15 @@
       font-size 1.1rem
       color var(--default-text-color)
 
-      +redefine-tablet() {
+      +redefine-tablet()
         padding 6px 5px 0 0
         font-size 1rem
-      }
 
-      &.show {
+      &.show
         visibility visible
-      }
-    }
 
-  }
-
-  if (hexo-config('global.scroll_progress.bar') == true) {
-
-    .scroll-progress-bar {
+  if (hexo-config('global.scroll_progress.bar') == true)
+    .scroll-progress-bar
       position absolute
       top 0
       left 0
@@ -63,12 +52,7 @@
       visibility hidden
       z-index $z-index-7
       background var(--primary-color)
-      transition-t("width", "0", "0.1", "linear")
+      transition-t('width', '0', '0.1', 'linear')
 
-      &.hide {
+      &.hide
         display none !important
-      }
-    }
-
-  }
-}

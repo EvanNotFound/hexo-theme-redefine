@@ -1,10 +1,9 @@
 
-p a.button {
-    margin-bottom 0 !important
-    padding 8px 12px !important
-}
+p a.button
+  margin-bottom 0 !important
+  padding 8px 12px !important
 
-a.button {
+a.button
   background-color var(--second-background-color) !important
   border-radius $redefine-border-radius-medium !important
   cursor pointer
@@ -12,34 +11,33 @@ a.button {
   padding 12px 16px !important
   text-align center
   text-decoration none !important
-  redefine-container(false, 0, 0, 0, 1rem)
+  redefine-container(
+    false,
+    0,
+    0,
+    0,
+    1rem
+  )
   box-shadow var(--redefine-box-shadow-flat) !important
-  
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
+  user-select none
+  -moz-user-select none
+  -webkit-user-select none
+  -ms-user-select none
 
-  &:hover,
-  &:focus {
+  &:hover, &:focus
     box-shadow var(--redefine-box-shadow) !important
     background-color var(--background-color) !important
-  }
 
-  &:active {
+  &:active
     transform scale(0.95)
     transition transform 0.1s ease
     box-shadow var(--redefine-box-shadow-flat) !important
     background-color var(--third-background-color) !important
-  }
-}
 
+a.center
+  display block
+  margin 1rem auto
 
-a.center {
-    display block
-    margin 1rem auto
-}
-a.large {
-    font-size 1.2rem
-    padding 20px 24px
-}
+a.large
+  font-size 1.2rem
+  padding 20px 24px

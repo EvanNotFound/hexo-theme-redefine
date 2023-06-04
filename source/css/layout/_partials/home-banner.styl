@@ -6,9 +6,9 @@ $temp-line-height = hexo-config('style.first_screen.line_height')
 $line-height = $temp-line-height ? $temp-line-height : 1.2
 $home-banner-icon-size = 1.6rem
 
-@import "../../common/variables"
+@import '../../common/variables'
 
-.home-banner-background {
+.home-banner-background
   position fixed
   top 0
   left 0
@@ -19,10 +19,9 @@ $home-banner-icon-size = 1.6rem
   will-change transform
   box-sizing border-box
   transform scale(1.1)
-}
 
-.home-banner-container {
-  font-family "Optima Bold", sans-serif
+.home-banner-container
+  font-family 'Optima Bold', sans-serif
   position relative
   box-sizing border-box
   width 100%
@@ -32,73 +31,55 @@ $home-banner-icon-size = 1.6rem
   background-size cover
   will-change transform
 
-  .content {
+  .content
     position relative
     box-sizing border-box
     min-height 90vh
 
-    .description {
-      width: 100vw
+    .description
+      width 100vw
       font-weight bold
       font-size $title-font-size
       line-height $line-height
       text-align center
       color var(--home-banner-text-color)
 
-      p {
+      p
         margin 0
         opacity 0.9
-        font-family "Optima", sans-serif
+        font-family 'Optima', sans-serif
 
-        i {
-          font-size: $subtitle-font-size
+        i
+          font-size $subtitle-font-size
           font-style normal
-        }
 
-        span {
+        span
           font-size: $subtitle-font-size * 1.05
-          
-        }
-      }
 
+      +redefine-tablet()
+        font-size: $title-font-size * 0.9
 
-      +redefine-tablet() {
-        font-size $title-font-size * 0.9
-      }
-    }
-
-
-    .social-contacts {
+    .social-contacts
       position absolute
       bottom 60px
       font-size $home-banner-icon-size
       text-align center
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter blur(10px)
+      -webkit-backdrop-filter blur(10px)
       box-shadow 0 0 10px 0 rgba(0, 0, 0, 0.5)
       padding 4px 24px
       border-radius $redefine-border-radius-medium
-      box-shadow: inset 0 0 2000px var(--home-banner-icons-container-background-color);
-      border 1.5px solid var(--home-banner-icons-container-border-color);
+      box-shadow inset 0 0 2000px var(--home-banner-icons-container-background-color)
+      border 1.5px solid var(--home-banner-icons-container-border-color)
 
+      +redefine-tablet()
+        font-size: $home-banner-icon-size * 0.9
 
-      +redefine-tablet() {
-        font-size $home-banner-icon-size * 0.9
-      }
-
-      .social-contact-item {
+      .social-contact-item
         margin-right 20px
         cursor pointer
         line-height 2
         color #FFF
 
-        &:last-child {
+        &:last-child
           margin-right 0
-        }
-
-      }
-
-    }
-  }
-}
-

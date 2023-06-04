@@ -1,138 +1,105 @@
-.post-toc-wrap {
+.post-toc-wrap
   width 100%
   font-size 0.92rem
   box-sizing border-box
-  font-family $english-font-family, $chinese-font-family, "Noto Sans","Noto Sans SC",sans-serif
+  font-family $english-font-family, $chinese-font-family, 'Noto Sans', 'Noto Sans SC', sans-serif
 
-  .post-toc {
-    
-
-    .toc-title {
+  .post-toc
+    .toc-title
       font-size 0.8rem
       color var(--default-text-color)
       font-weight 500
       margin-bottom 0.2rem
-    }
 
-    .page-title {
+    .page-title
       white-space normal
       font-size 1.1rem
       color var(--second-text-color)
       font-weight bold
       margin-bottom 0.6rem
-    }
-    
-    ol {
-      ol {
+
+    ol
+      ol
         border-left 2px dotted var(--shadow-color-1)
-      }
 
       list-style none
       margin 0
       padding 0 2px 12px 10px
       text-align left
 
-      &:last-child {
+      &:last-child
         padding-bottom 0
-      }
 
-      > ol {
+      > ol
         padding-left 0
-      }
 
-      a {
+      a
         transition-property all
         transition()
-        
-      }
-    }
 
-
-
-    .nav-item {
+    .nav-item
       line-height 2
       overflow hidden
       text-overflow ellipsis
       white-space nowrap
-      //word-wrap:break-word
+      // word-wrap:break-word
       font-size 0.9rem
       transition all 0.3s ease
 
-      a > span {
-        &:first-child::before {
-          content " "
+      a > span
+        &:first-child::before
+          content ' '
           width 10px
           height 1.7rem
           margin auto 0
-          transform translate(-12px,0)
+          transform translate(-12px, 0)
           border-left 2px solid var(--primary-color)
           position absolute
           margin-right 4px
           color var(--primary-color)
           opacity 0
           transition all 0.1s linear
-        }
-      }
-    }
 
-
-    .nav {
-      .nav-child {
+    .nav
+      .nav-child
         display hexo-config('articles.toc.expand') ? block : none
-      }
 
-      .active > .nav-child {
-        display block
-      }
-
-      .active-current > .nav-child {
+      .active > .nav-child
         display block
 
-        > .nav-item {
+      .active-current > .nav-child
+        display block
+
+        > .nav-item
           display block
-        }
-      }
 
-
-      .nav-number, .nav-text {
+      .nav-number, .nav-text
         color var(--third-text-color)
-        padding-left 0 
+        padding-left 0
         transition all 0.3s ease
-      }
 
-      .active > a {
-        .nav-number, .nav-text {
+      .active > a
+        .nav-number, .nav-text
           color var(--primary-color)
           font-weight bold
-        }
 
-      }
-
-      .active-current {
-        .nav-number, .nav-text {
+      .active-current
+        .nav-number, .nav-text
           color var(--primary-color) !important
           font-weight bold
           transition all 0.3s ease
-          //padding-left 12px
-        }
-      }
+          // padding-left 12px
 
-      .active-current > span {
-        &:first-child::before {
-          content " "
+      .active-current > span
+        &:first-child::before
+          content ' '
           width 10px
           height 1.7rem
           margin auto 0
-          transform translate(-12px,0)
+          transform translate(-12px, 0)
           border-left 2px solid var(--primary-color)
           position absolute
           margin-right 4px
           color var(--primary-color)
           opacity 1
           transition all 0.1s linear
-        }
-      }
-    }
-  }
-}
-
