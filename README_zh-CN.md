@@ -131,3 +131,20 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 ## 🌟 Star 记录
 
 [![Star History Chart](https://api.star-history.com/svg?repos=EvanNotFound/hexo-theme-redefine&type=Date)](https://star-history.com/#EvanNotFound/hexo-theme-redefine&Date)
+
+## 📢 推广
+
+恰个饭，维持一下生活。有需要用云服务器的可以用用，我美国云服务器就是这里买的。
+
+> 雨云四周年活动优惠
+> 用我的邀请链接：https://www.rainyun.com/MjQyOTk=_
+> 注册立即领取无门槛5元代金券
+> ==云服务器特惠:
+> 1h1g 50m 15元/月
+> 2h2g 100m 22元/月
+> (免备案,预装宝塔,支持windows)
+> ==虚拟主机特惠:
+> 1h512m 20m 10元/月
+> 2h1g 50m 20元/月
+> (免备案,预装宝塔)
+> ==
