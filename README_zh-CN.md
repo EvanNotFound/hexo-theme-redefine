@@ -138,7 +138,7 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 
 > 雨云四周年活动优惠
 >
-> 用我的邀请链接：https://www.rainyun.com/MjQyOTk=_
+> 用我的邀请链接：https://www.rainyun.com/ohevan_
 >
 > 注册立即领取无门槛5元代金券
 >
