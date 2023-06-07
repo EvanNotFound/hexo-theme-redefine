@@ -48,5 +48,6 @@
 | May 12 | [@Sevdawk](https://github.com/Sevdawk) | ¥8.88 | 微信赞赏码 | https://sevdawk.github.io |
 | May 13 | 好名字 | ¥6.66 | 微信赞赏码 | / |
 | May 24 | [@HuTa0kj](https://github.com/HuTa0kj) | ¥8.88 | 微信赞赏码 | https://huta0kj.github.io |
+| Jun 5 | **杰 | ¥6.00 | 支付宝 | / |
 
  
