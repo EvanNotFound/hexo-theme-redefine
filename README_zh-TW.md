@@ -134,3 +134,9 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 ## 🌟 Star 記錄
 
 [![Star History Chart](https://api.star-history.com/svg?repos=EvanNotFound/hexo-theme-redefine&type=Date)](https://star-history.com/#EvanNotFound/hexo-theme-redefine&Date)
+
+## 📢 其他
+
+如果你恰好需要云主机，可以去 [Racknerd](https://my.racknerd.com/aff.php?aff=8346) 看看，性价比高。
+
+很多活动，比如 2核 2G 活动价一年只要 20 刀，比国内云便宜而且还没有监管，可以用来部署各种服务。
