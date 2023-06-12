@@ -170,15 +170,28 @@ hexo.extend.helper.register('文章推荐生成器', function (post) {
 
 function 用户界面(推荐文章, cfg) {
   let html = ""
+  let htmlMobile = ""
   for (const item of 推荐文章) {
     html += Item界面(item)
   }
-  return `<div class="recommended-article">
-  <div class="recommended-article-header">
-    <i aria-hidden="true"></i><span>${cfg.title}</span>
-  </div>
-  <div class="recommended-article-group">${html}</div>
-</div>`
+  for (const itemMobile of 推荐文章.slice(0, cfg.mobile_limit)) {
+    htmlMobile += Item界面(itemMobile)
+  }
+  return `
+  <div class="recommended-article">
+   <div class="recommended-desktop">
+    <div class="recommended-article-header">
+     <i aria-hidden="true"></i><span>${cfg.title}</span>
+    </div>
+    <div class="recommended-article-group">${html}</div>
+   </div>
+   <div class="recommended-mobile">
+   <div class="recommended-article-header">
+     <i aria-hidden="true"></i><span>${cfg.title}</span>
+   </div>
+   <div class="recommended-article-group">${htmlMobile}</div>
+   </div>
+  </div>`
 }
 
 function Item界面(item) {
