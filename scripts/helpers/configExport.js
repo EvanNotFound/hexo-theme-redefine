@@ -12,12 +12,33 @@ const { version } = require('../../package.json');
  * Export theme config to js
  */
 hexo.extend.helper.register('export_config', function () {
+  let hexo_config = {
+    hostname: new URL(this.config.url).hostname || this.config.url,
+    root: this.config.root,
+    language: this.config.language
+  };
 
-  let {config, theme} = this;
+  if (this.config.search) {
+    hexo_config.path = this.config.search.path;
+  }
 
-  // ------------------------ export language to js ------------------------
+  let theme_config = {
+    articles: this.theme.articles,
+    colors: this.theme.colors,
+    global: this.theme.global,
+    home_banner: this.theme.home_banner,
+    plugins: this.theme.plugins,
+    version: version,
+    code_block: this.theme.code_block,
+    navbar: this.theme.navbar,
+    page_templates: this.theme.page_templates,
+    home: this.theme.home,
+
+    footerStart: this.theme.footer.start,
+  }
+
   const languageDir = path.join(__dirname, '../../languages');
-  let file = fs.readdirSync(languageDir).find(v => v === `${config.language}.yml`);
+  let file = fs.readdirSync(languageDir).find(v => v === `${this.config.language}.yml`);
   file = languageDir + '/' + (file ? file : 'en.yml');
   let languageContent = fs.readFileSync(file, 'utf8');
   try {
@@ -25,38 +46,14 @@ hexo.extend.helper.register('export_config', function () {
   } catch (e) {
     console.log(e);
   }
-  // -----------------------------------------------------------------------
-  let masonryFlag = false;
-  if (this.theme.masonry){
-    masonryFlag = true;
-  } 
-
-  let hexo_config = {
-    hostname: url.parse(config.url).hostname || config.url,
-    root: config.root,
-    language: config.language
-  };
-
-  if (config.search) {
-    hexo_config.path = config.search.path;
-  }
-
-  let theme_config = {
-    articles: theme.articles,
-    colors: theme.colors,
-    global: theme.global,
-    home_banner: theme.home_banner,
-    plugins: theme.plugins,
-    version: version,
-    code_block: theme.code_block,
-    navbar: theme.navbar,
-    page_templates: theme.page_templates,
-    home: theme.home,
-  }
 
   let data_config = {
-    masonry: masonryFlag
+    masonry: false
   }
+
+  if (this.theme.masonry){
+    data_config.masonry = true;
+  } 
 
   return `<script id="hexo-configurations">
     let Global = window.Global || {};
