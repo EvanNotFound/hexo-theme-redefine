@@ -137,6 +137,6 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 
 ## 📢 其他
 
-如果你恰好需要云主机，可以去 [Racknerd](https://my.racknerd.com/aff.php?aff=8346) 看看，性价比高。
+如果你恰好需要雲主機，可以去 [Racknerd](https://my.racknerd.com/aff.php?aff=8346) 看看，性價比高。
 
-很多活动，比如 2核 2G 活动价一年只要 20 刀，比国内云便宜而且还没有监管，可以用来部署各种服务。
+很多活動，比如 2核 2G 活動價一年只要 20 刀，比國內云便宜而且還沒有監管，可以用來部署各種服務。
