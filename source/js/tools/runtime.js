@@ -1,7 +1,7 @@
 function footerRuntime() {
-    var startTimeDiv = document.getElementById('start_div');
+    var startTime = Global.theme_config.footerStart;
     window.setTimeout("footerRuntime()", 1000);
-    X = new Date(startTimeDiv.innerHTML);
+    X = new Date(startTime);
     Y = new Date();
     T = (Y.getTime() - X.getTime());
     M = 24 * 60 * 60 * 1000;
