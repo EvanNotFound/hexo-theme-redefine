@@ -71,7 +71,9 @@
         <%= theme.info.title || config.title || 'Redefine Theme' %>
     </title>
     <%- css('css/style') %>
-    <%- renderCSS('assets/fonts.css') %>
+    <%- renderCSS('fonts/fonts.css') %>
+    <%- renderCSS('fonts/Inter/inter.css') %>
+    <%- renderCSS('fonts/Satoshi/satoshi.css') %>
     <!--- Font Part-->
     <% if (theme.home_banner.custom_font.enable) { %>
         <link href="<%- theme.home_banner.custom_font.url %>" rel="stylesheet">
