@@ -1,3 +1,7 @@
+/*
+* Optimized by: EvanNotFound
+*/
+
 const articleLibrary = [];
 const corpus = [];
 let flag = null;
