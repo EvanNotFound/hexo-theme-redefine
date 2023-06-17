@@ -275,6 +275,8 @@ articles:
     title: 推荐阅读
     # Max number of articles to display
     limit: 3
+    # Max number of articles to display mobile
+    mobile_limit: 2
     # Placeholder image
     placeholder: /images/wallhaven-wqery6-light.webp
     # Skip directory

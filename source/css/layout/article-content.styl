@@ -294,6 +294,16 @@ $gap = 30px
     .recommended-article
       overflow visible !important
 
+      .recommended-mobile
+        display none
+        +redefine-tablet()
+          display block
+
+      .recommended-desktop
+        display block
+        +redefine-tablet()
+          display none
+
       .recommended-article-header
         font-size 28px
         font-weight 550
@@ -335,6 +345,9 @@ $gap = 30px
           max-height 200px
           margin-top: $gap * 0.5
           margin-right 0
+
+          +redefine-tablet()
+            width 49%
 
           img
             display flex
