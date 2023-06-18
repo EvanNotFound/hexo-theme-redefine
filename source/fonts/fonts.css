@@ -25,36 +25,6 @@
       format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
-@font-face {
-  font-family: "Optima";
-  font-style: normal;
-  font-weight: normal;
-  font-display: swap;
-  src: local("Optima"),
-    url("/fonts/OPTIMA.woff")
-      format("woff");
-}
-
-@font-face {
-  font-family: "Optima Medium";
-  font-style: normal;
-  font-weight: normal;
-  font-display: swap;
-  src: local("Optima Medium"),
-    url("/fonts/Optima Medium.woff")
-      format("woff");
-}
-
-@font-face {
-  font-family: "Optima Bold";
-  font-style: normal;
-  font-weight: bold;
-  font-display: swap;
-  src: local("Optima Bold"),
-    url("/fonts/OPTIMA_B.woff")
-      format("woff");
-}
-
 /* ubuntu-mono-regular - latin */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
