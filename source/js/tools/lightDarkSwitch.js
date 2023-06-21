@@ -55,11 +55,7 @@ Global.initModeToggle = () => {
           await new Promise(r => setTimeout(r, 1000));
           giscusFrame = document.querySelector("iframe.giscus-frame");
         }
-        if (giscusFrame.classList.contains('giscus-frame--loading'))
-        {
-          while (giscusFrame.classList.contains('giscus-frame--loading')) await new Promise(r => setTimeout(r, 1000));
-          await new Promise(r => setTimeout(r, 730));
-        }
+        while (giscusFrame.classList.contains('giscus-frame--loading')) await new Promise(r => setTimeout(r, 1000));
         theme ??= Global.styleStatus.isDark ? 'dark' : 'light';
         giscusFrame.contentWindow.postMessage({
           giscus: {
@@ -83,7 +79,6 @@ Global.initModeToggle = () => {
       } else {
         this.isDarkPrefersColorScheme().matches ? this.enableDarkMode() : this.enableLightMode();
       }
-      Global.colorSchemeConfirmed = true;
     },
 
     initModeToggleButton() {
