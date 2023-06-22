@@ -309,7 +309,7 @@ comment:
       region: # Twikoo region. can be empty
     # Giscus comment system. See https://giscus.app/
     giscus:
-      repo: # Github repository name
+      repo: # Github repository name e.g. EvanNotFound/hexo-theme-redefine
       repo_id: # Github repository id
       category: # Github discussion category
       category_id: # Github discussion category id
