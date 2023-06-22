@@ -6,7 +6,8 @@
         <div class="category-list-content">
             <%- list_categories(site.categories, {
                 class: 'all-category',
-                depth: 1,
+                depth: 5,
+                style: 'list',
             }) %>
         </div>
         <div class="category-comments">
@@ -16,3 +17,4 @@
         </div>
     </div>
 </div>
+<%- renderPjaxJS('js/layouts/categoryList.js') %>

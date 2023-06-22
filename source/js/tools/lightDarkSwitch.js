@@ -9,7 +9,7 @@ Global.initModeToggle = () => {
     iconDom: document.querySelector('.tool-dark-light-toggle i'),
     mermaidLightTheme: typeof Global.theme_config.mermaid !== 'undefined' && typeof Global.theme_config.mermaid.style !== 'undefined' && typeof Global.theme_config.mermaid.style.light !== 'undefined' ? Global.theme_config.mermaid.style.light : 'default',
     mermaidDarkTheme: typeof Global.theme_config.mermaid !== 'undefined' && typeof Global.theme_config.mermaid.style !== 'undefined' && typeof Global.theme_config.mermaid.style.dark !== 'undefined' ? Global.theme_config.mermaid.style.dark : 'dark',
-    
+
 
     enableLightMode() {
       document.body.classList.remove('dark-mode');
@@ -18,6 +18,7 @@ Global.initModeToggle = () => {
       Global.styleStatus.isDark = false;
       Global.setStyleStatus();
       this.mermaidLightInit();
+      this.setGiscusTheme();
     },
 
     enableDarkMode() {
@@ -27,6 +28,7 @@ Global.initModeToggle = () => {
       Global.styleStatus.isDark = true;
       Global.setStyleStatus();
       this.mermaidDarkInit();
+      this.setGiscusTheme();
     },
 
     mermaidLightInit() {
@@ -42,6 +44,26 @@ Global.initModeToggle = () => {
         mermaid.initialize({
             theme: this.mermaidDarkTheme,
         });
+      }
+    },
+
+    async setGiscusTheme(theme) {
+      if (document.querySelector('#giscus-container')) {
+        let giscusFrame = document.querySelector("iframe.giscus-frame");
+        while (!giscusFrame)
+        {
+          await new Promise(r => setTimeout(r, 1000));
+          giscusFrame = document.querySelector("iframe.giscus-frame");
+        }
+        while (giscusFrame.classList.contains('giscus-frame--loading')) await new Promise(r => setTimeout(r, 1000));
+        theme ??= Global.styleStatus.isDark ? 'dark' : 'light';
+        giscusFrame.contentWindow.postMessage({
+          giscus: {
+            setConfig: {
+              theme: theme
+            }
+          }
+        }, "https://giscus.app");
       }
     },
 

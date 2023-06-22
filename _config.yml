@@ -275,6 +275,8 @@ articles:
     title: 推荐阅读
     # Max number of articles to display
     limit: 3
+    # Max number of articles to display mobile
+    mobile_limit: 2
     # Placeholder image
     placeholder: /images/wallhaven-wqery6-light.webp
     # Skip directory
@@ -287,7 +289,7 @@ comment:
   # Whether to enable comment
   enable: true
   # Comment system
-  system: waline # waline, gitalk, twikoo
+  system: waline # waline, gitalk, twikoo, giscus
   # System configuration
   config:
     # Waline comment system. See https://waline.js.org/
@@ -305,6 +307,20 @@ comment:
       version: 1.6.10 # Twikoo version, do not modify if you dont know what it is
       server_url: # Twikoo server URL. e.g. https://example.example.com
       region: # Twikoo region. can be empty
+    # Giscus comment system. See https://giscus.app/
+    giscus:
+      repo: # Github repository name e.g. EvanNotFound/hexo-theme-redefine
+      repo_id: # Github repository id
+      category: # Github discussion category
+      category_id: # Github discussion category id
+      mapping: pathname # Which value to use as the unique identifier for the page. e.g. pathname, url, title, og:title. DO NOT USE og:title WITH PJAX ENABLED since pjax will not update og:title when the page changes
+      strict: 0 # Whether to enable strict mode. e.g. 0, 1
+      reactions_enabled: 1 # Whether to enable reactions. e.g. 0, 1
+      emit_metadata: 0 # Whether to emit metadata. e.g. 0, 1
+      lang: en # Giscus language. e.g. en, zh-CN, zh-TW
+      input_position: bottom # Place the comment box above/below the comments. e.g. top, bottom
+      loading: lazy # Load the comments lazily
+
 # COMMENT <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 

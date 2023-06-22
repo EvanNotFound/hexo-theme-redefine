@@ -2,29 +2,66 @@
     <div class="friend-links-title">
         <h1 class="article-title-regular"><%= page.title %></h1>
     </div>
+    <% for (const category of theme.links) { %>
+        <div class="friend-links-subtitle">
+            <h2 class="article-title-regular"><%= category.links_category %></h2>
+        </div>
+        <% if (category.has_thumbnail == true) { %>
     <ul class="friends-link-list">
-        <% for (const f of theme.links) { %>
-            <li class="friends-link-item">
+        <% for (const f of category.list) { %>
+            <li class="friends-link-item-has-thumbnail">
                 <a href="<%= f.link %>">
                     <div class="content">
-                        <div class="avatar radius">
-                            <% if (f.avatar) { %>
-                                <img class="radius"
-                                     src="<%= f.avatar %>"
-                                     onerror="this.style.display='none'"
-                                >
-                            <% } else { %>
-                                <i class="fa-solid fa-user-group"></i>
-                            <% } %>
+                        <div class="thumbnail radius-thumbnail">
+                            <img class="radius-thumbnail" src="<%= f.thumbnail %>"/>
                         </div>
-                        <div class="info">
-                            <div class="name ellipsis"><%= f.name %></div>
-                            <div class="description ellipsis"><%= f.description %></div>
+                        <div class="avainfo">
+                            <div class="avatar radius-avatar">
+                                <% if (f.avatar) { %>
+                                    <img class="radius-avatar"
+                                         src="<%= f.avatar %>"
+                                         onerror="this.style.display='none'"
+                                    >
+                                <% } else { %>
+                                    <i class="fa-solid fa-user-group"></i>
+                                <% } %>
+                            </div>
+                            <div class="info">
+                                <div class="name ellipsis"><%= f.name %></div>
+                                <div class="description ellipsis"><%= f.description %></div>
+                            </div>
                         </div>
                     </div>
                 </a>
             </li>
         <% } %>
     </ul>
+    <% } else { %>
+        <ul class="friends-link-list">
+            <% for (const f of category.list) { %>
+                <li class="friends-link-item">
+                    <a href="<%= f.link %>">
+                        <div class="content">
+                            <div class="avatar radius">
+                                <% if (f.avatar) { %>
+                                    <img class="radius"
+                                         src="<%= f.avatar %>"
+                                         onerror="this.style.display='none'"
+                                    >
+                                <% } else { %>
+                                    <i class="fa-solid fa-user-group"></i>
+                                <% } %>
+                            </div>
+                            <div class="info">
+                                <div class="name ellipsis"><%= f.name %></div>
+                                <div class="description ellipsis"><%= f.description %></div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            <% } %>
+        </ul>
+        <% } %>
+    <% } %>
     <div class="clear"></div>
 </div>

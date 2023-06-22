@@ -4,51 +4,117 @@
     0,
     0,
     30px,
-    0
+    60px
   )
 
   .category-list-content
     .all-category-list
       display flex
+      padding-left 16px
       flex-wrap wrap
+      justify-content center
+      gap 28px
 
-      li.all-category-list-item
-        font-size 1.2rem
-        margin-bottom 15px
-        box-shadow var(--redefine-box-shadow-flat)
-        padding 10px
-        border-radius $redefine-border-radius-medium
-        margin 10px
-        transition all 0.2s ease
+      &>.all-category-list-item // first level
+        font-size 1.5rem
+        font-weight 600
+        padding 28px
         cursor pointer
+        width 40%
 
-        &:hover, &:focus
-          box-shadow var(--redefine-box-shadow-flat-hover) !important
-          background-color var(--primary-color)
+        +redefine-tablet()
+          width 80%
+
+        +redefine-mobile()
+          width 80%
+
+        background-color var(--second-background-color)
+        border-radius $redefine-border-radius-medium
+        box-shadow var(--redefine-box-shadow-flat)
+        overflow hidden
+        transition all 0.2s ease
+
+        &:hover
+          background-color var(--background-color)
+          box-shadow var(--redefine-box-shadow)
+          transform scale(1.01)
           transition all 0.2s ease
-
-          a
-            color var(--background-color)
-
-        &:active
-          transform scale(0.95)
+          color var(--primary-color)
 
         span.all-category-list-count
           color var(--third-text-color)
-          margin-left 5px
+          margin-left 8px
           background-color var(--third-background-color)
-          padding 2px 5px
+          padding 1px 10px
           border-radius $redefine-border-radius-small
+          border solid 1px var(--border-color)
 
-        ul.all-category-list-child
-          margin-left 10px
-          margin-top 15px
+        &>.all-category-list-link
+          border-bottom 2px solid var(--border-color)
+
+        &>.all-category-list-child // second level
+          font-weight 550
+          font-size 1.3rem
+          margin-left 20px
+          
+          border-left 2px solid var(--border-color)
+          padding-left 16px
+          max-height 0
+          overflow hidden
+          transition all 0.2s ease
 
           li
             &::before
-              content '- '
+              content ''
 
             margin-bottom 10px
 
             &:last-child
               margin-bottom 0
+
+          &>li>.all-category-list-child // third level
+            font-weight 400
+            font-size 1.2rem
+            margin-left 20px
+            margin-top 15px
+            border-left 2px solid var(--border-color)
+            padding-left 16px
+            max-height 0
+            overflow hidden
+            transition all 0.2s ease
+
+            li
+              &::before
+                content ''
+
+              margin-bottom 10px
+
+              &:last-child
+                margin-bottom 0
+
+            &>li>.all-category-list-child // fourth level
+              margin-left 10px
+              margin-top 15px
+              border-left 2px solid var(--border-color)
+              padding-left 20px
+              max-height 0
+              overflow hidden
+              transition all 0.2s ease
+
+              li
+                &::before
+                  content ''
+
+                margin-bottom 10px
+
+                &:last-child
+                  margin-bottom 0
+
+              &>li>.all-category-list-child // fifth level
+                margin-left 10px
+                margin-top 15px
+                border-left 2px solid var(--border-color)
+                padding-left 20px
+                max-height 0
+                overflow hidden
+                transition all 0.2s ease

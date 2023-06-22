@@ -98,7 +98,7 @@ $gap = 30px
 
       .article-title-regular
         font-size $article-title-font-size
-        font-weight bold
+        font-weight 700
         margin 0px 0 30px 0
         line-height 1.4
         color var(--second-text-color)
@@ -116,7 +116,7 @@ $gap = 30px
         font-family $english-font-family, $chinese-font-family, 'Noto Sans SC', sans-serif
         color var(--second-text-color)
         font-size $article-title-font-size
-        font-weight 600
+        font-weight 700
         background-color var(--background-color-transparent)
         backdrop-filter blur(10px)
         -webkit-backdrop-filter blur(10px)
@@ -294,6 +294,16 @@ $gap = 30px
     .recommended-article
       overflow visible !important
 
+      .recommended-mobile
+        display none
+        +redefine-tablet()
+          display block
+
+      .recommended-desktop
+        display block
+        +redefine-tablet()
+          display none
+
       .recommended-article-header
         font-size 28px
         font-weight 550
@@ -335,6 +345,9 @@ $gap = 30px
           max-height 200px
           margin-top: $gap * 0.5
           margin-right 0
+
+          +redefine-tablet()
+            width 49%
 
           img
             display flex

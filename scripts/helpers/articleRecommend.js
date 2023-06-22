@@ -1,156 +1,168 @@
 /*
-* transplanted from hexo-theme-volantis
-* 文章推荐.js
+* Optimized by: EvanNotFound
 */
 
-const 文章库 = [];
-const 语料库 = [];
-let 标记 = null;
+const articleLibrary = [];
+const corpus = [];
+let flag = null;
 
-hexo.extend.filter.register('template_locals', function (本地变量) {
+hexo.extend.filter.register('template_locals', function (localVariables) {
   const cfg = hexo.theme.config.articles.recommendation;
   if (!cfg.enable) {
-    return 本地变量;
+    return localVariables;
   }
-  if (!标记) {
-    标记 = 1
-    获取数据(本地变量.site.posts, cfg)
-    获取数据(本地变量.site.pages, cfg)
-    文章推荐(cfg)
+  if (!flag) {
+    flag = 1;
+    fetchData(localVariables.site.posts, cfg);
+    fetchData(localVariables.site.pages, cfg);
+    articleRecommendation(cfg);
   }
-  return 本地变量;
+  return localVariables;
 });
 
-function 获取数据(s, cfg) {
+function fetchData(s, cfg) {
   s.each(function (p) {
     if (["post", "docs"].includes(p.layout)) {
-      文章库.push({
+      articleLibrary.push({
         path: p.path,
         title: p.title || p.seo_title || p.short_title,
         headimg: p.thumbnail || p.banner || p.cover || cfg.placeholder,
-      })
-      语料库.push(分词(p.raw))
+      });
+      corpus.push(tokenize(p.raw));
     }
-  })
+  });
 }
 
-function 数据清洗(数据) {
-  const 标点符号列表 = [
+function cleanData(data) {
+  const symbolLists = [
     ",", ".", "?", "!", ":", ";", "、", "……", "~", "&", "@", "#", "，", "。", "？", "！", "：", "；", "·", "…", "～", "＆", "＠", "＃", "“", "”", "‘", "’", "〝", "〞", "\"", "'", "＂", "＇", "´", "＇", "(", ")", "【",
     "】", "《", "》", "＜", "＞", "﹝", "﹞", "<", ">", "(", ")", "[", "]", "«", "»", "‹", "›", "〔", "〕", "〈", "〉", "{", "}", "［", "］", "「", "」", "｛", "｝", "〖", "〗", "『", "』", "︵", "︷", "︹", "︿", "︽", "﹁",
     "﹃", "︻", "︗", "/", "|", "\\", "︶", "︸", "︺", "﹀", "︾", "﹂", "﹄", "﹄", "︼", "︘", "／", "｜", "＼",
     "_", "¯", "＿", "￣", "﹏", "﹋", "﹍", "﹉", "﹎", "﹊", "`", "ˋ", "¦", "︴", "¡", "¿", "^", "ˇ", "­", "¨", "ˊ", " ", "　",
     "%", "*", "-", "+", "=", "￥", "$", "（", "）"
   ]
-  数据 = 数据.replace(/\s/g, " ")
-  数据 = 数据.replace(/\!\[(.*?)\]\(.*?\)/g, (_a, b) => { return b })
-  数据 = 数据.replace(/(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?/g, " ")
-  for (const 标点符号 of 标点符号列表) {
-    数据 = 数据.replace(new RegExp("\\" + 标点符号, "g"), " ")
+  data = data.replace(/\s/g, " ")
+  data = data.replace(/\!\[(.*?)\]\(.*?\)/g, (_a, b) => { return b })
+  data = data.replace(/(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?/g, " ")
+  for (const symbol of symbolLists) {
+    data = data.replace(new RegExp("\\" + symbol, "g"), " ")
   }
-  数据 = 数据.replace(/\d+/g, " ")
-  数据 = 数据.replace(/\s/g, " ")
-  return 数据
+  data = data.replace(/\d+/g, " ")
+  data = data.replace(/\s/g, " ")
+  return data
 }
 
-function 分词(数据) {
-  const 结巴 = require("nodejieba");
-  return 结巴.cut(数据清洗(数据), true).filter(词 => 词 !== " " && !/^[0-9]*$/.test(词))
+function tokenize(data) {
+  const jieba = require("nodejieba");
+  return jieba.cut(cleanData(data), true).filter(word => word !== " " && !/^[0-9]*$/.test(word));
 }
 
-function 余弦相似度(向量1, 向量2) {
-  let 分子 = 0;
-  let 根式1 = 0;
-  let 根式2 = 0;
-  if (向量1.length == 向量2.length) {
-    for (let i = 0; i < 向量1.length; i++) {
-      分子 += (向量1[i] * 向量2[i])
-      根式1 += (向量1[i] * 向量1[i])
-      根式2 += (向量2[i] * 向量2[i])
+function cosineSimilarity(vector1, vector2) {
+  let numerator = 0;
+  let sqrt1 = 0;
+  let sqrt2 = 0;
+  if (vector1.length == vector2.length) {
+    for (let i = 0; i < vector1.length; i++) {
+      numerator += (vector1[i] * vector2[i])
+      sqrt1 += (vector1[i] * vector1[i])
+      sqrt2 += (vector2[i] * vector2[i])
     }
-    return 分子 / (Math.sqrt(根式1) * Math.sqrt(根式2))
+    return numerator / (Math.sqrt(sqrt1) * Math.sqrt(sqrt2))
   }
 }
 
 
-function 文章推荐(cfg) {
-  const 数据集 = {};
-  const 相似度集 = {};
-  const 推荐集 = {}
-  let 所有文章中所有的词 = [];
 
-  for (let i = 0; i < 语料库.length; i++) {
-    const 分词表 = 语料库[i];
-    所有文章中所有的词 = [...new Set(所有文章中所有的词.concat(分词表))]
-  }
-  const 词库 = {}
-  所有文章中所有的词.forEach(e => {
-    词库[e] = 0
-  })
-  const 包含该词的文档数库 = JSON.parse(JSON.stringify(词库))
-  for (let i = 0; i < 语料库.length; i++) {
-    const 文章路径 = 文章库[i].path;
-    const 文章中的词 = 语料库[i];
-
-    const 词在文章中出现的次数库 = 文章中的词.reduce((词计数对象, 词名称) => {
-      if (词名称 in 词计数对象) {
-        词计数对象[词名称]++;
-      }
-      return 词计数对象
-    }, JSON.parse(JSON.stringify(词库)))
-
-    数据集[文章路径] = {};
-    数据集[文章路径]["词频"] = JSON.parse(JSON.stringify(词库));
-    for (const 词 of Object.keys(词库)) {
-      数据集[文章路径]["词频"][词] = 词在文章中出现的次数库[词] / 文章中的词.length;
-      if (词在文章中出现的次数库[词]) {
-        包含该词的文档数库[词]++;
-      }
-    }
-  }
-
-  for (let i = 0; i < 语料库.length; i++) {
-    const 文章路径 = 文章库[i].path;
-    数据集[文章路径]["逆文档频率"] = JSON.parse(JSON.stringify(词库));
-    数据集[文章路径]["词频-逆文档频率"] = JSON.parse(JSON.stringify(词库));
-    数据集[文章路径]["词频向量"] = []
-    for (const 词 of Object.keys(词库)) {
-      const 逆文档频率 = Math.log(语料库.length / (包含该词的文档数库[词] + 1))
-      const 词频逆文档频率 = 数据集[文章路径]["词频"][词] * 逆文档频率
-      // 数据集[文章路径]["逆文档频率"][词] = 逆文档频率
-      // 数据集[文章路径]["词频-逆文档频率"][词] = 词频逆文档频率
-      数据集[文章路径]["词频向量"].push(词频逆文档频率)
-    }
-  }
-  for (let i = 0; i < 语料库.length; i++) {
-    const 文章路径1 = 文章库[i].path;
-    相似度集[文章路径1] = {}
-    for (let j = 0; j < 语料库.length; j++) {
-      const 文章路径2 = 文章库[j].path;
-      相似度集[文章路径1][文章路径2] = 余弦相似度(数据集[文章路径1]["词频向量"], 数据集[文章路径2]["词频向量"]);
-    }
-    for (let j = 0; j < 语料库.length; j++) {
-      推荐集[文章路径1] = Object.keys(相似度集[文章路径1]).sort(function (a, b) {
-        return 相似度集[文章路径1][b] - 相似度集[文章路径1][a];   // 降序
-      })
-    }
-    const index = 推荐集[文章路径1].indexOf(文章路径1);
-    if (index > -1) {
-      推荐集[文章路径1].splice(index, 1);
-    }
-    推荐集[文章路径1] = 推荐集[文章路径1].slice(0, cfg.limit);
-    for (let j = 0; j < 推荐集[文章路径1].length; j++) {
-      const e = 推荐集[文章路径1][j];
-      推荐集[文章路径1][j] = 文章库.filter(w => w.path == e)[0]
-    }
-  }
-  hexo.locals.set('推荐集', function () {
-    return 推荐集
+function createWordLibrary(allWords) {
+  const wordLibrary = {};
+  allWords.forEach(word => {
+    wordLibrary[word] = 0;
   });
-  // console.log(hexo.locals.get('推荐集'));
+  return wordLibrary;
 }
 
-hexo.extend.helper.register('文章推荐生成器', function (post) {
+function calculateWordFrequency(wordLibrary, wordsInArticle) {
+  const wordOccurrenceLibrary = wordsInArticle.reduce((wordCountObj, wordName) => {
+    if (wordName in wordCountObj) {
+      wordCountObj[wordName]++;
+    }
+    return wordCountObj;
+  }, JSON.parse(JSON.stringify(wordLibrary)));
+
+  const wordFrequency = JSON.parse(JSON.stringify(wordLibrary));
+  for (const word of Object.keys(wordLibrary)) {
+    wordFrequency[word] = wordOccurrenceLibrary[word] / wordsInArticle.length;
+  }
+  return wordFrequency;
+}
+
+function articleRecommendation(cfg) {
+  const dataSet = {};
+  const similaritySet = {};
+  const recommendationSet = {};
+  let allWordsInAllArticles = [];
+
+  for (const wordList of corpus) {
+    allWordsInAllArticles = [...new Set(allWordsInAllArticles.concat(wordList))];
+  }
+
+  const wordLibrary = createWordLibrary(allWordsInAllArticles);
+  const documentCountLibrary = JSON.parse(JSON.stringify(wordLibrary));
+
+  for (let i = 0; i < corpus.length; i++) {
+    const articlePath = articleLibrary[i].path;
+    const wordsInArticle = corpus[i];
+
+    const wordFrequency = calculateWordFrequency(wordLibrary, wordsInArticle);
+    dataSet[articlePath] = { wordFrequency };
+
+    for (const word of Object.keys(wordLibrary)) {
+      if (wordFrequency[word]) {
+        documentCountLibrary[word]++;
+      }
+    }
+  }
+
+  for (let i = 0; i < corpus.length; i++) {
+    const articlePath = articleLibrary[i].path;
+    dataSet[articlePath]["inverseDocumentFrequency"] = JSON.parse(JSON.stringify(wordLibrary));
+    dataSet[articlePath]["wordFrequency-inverseDocumentFrequency"] = JSON.parse(JSON.stringify(wordLibrary));
+    dataSet[articlePath]["wordFrequencyVector"] = [];
+    for (const word of Object.keys(wordLibrary)) {
+      const inverseDocumentFrequency = Math.log(corpus.length / (documentCountLibrary[word] + 1));
+      const wordFrequencyInverseDocumentFrequency = dataSet[articlePath]["wordFrequency"][word] * inverseDocumentFrequency;
+      dataSet[articlePath]["wordFrequencyVector"].push(wordFrequencyInverseDocumentFrequency);
+    }
+  }
+
+  for (let i = 0; i < corpus.length; i++) {
+    const articlePath1 = articleLibrary[i].path;
+    similaritySet[articlePath1] = {};
+    for (let j = 0; j < corpus.length; j++) {
+      const articlePath2 = articleLibrary[j].path;
+      similaritySet[articlePath1][articlePath2] = cosineSimilarity(dataSet[articlePath1]["wordFrequencyVector"], dataSet[articlePath2]["wordFrequencyVector"]);
+    }
+    for (let j = 0; j < corpus.length; j++) {
+      recommendationSet[articlePath1] = Object.keys(similaritySet[articlePath1]).sort(function (a, b) {
+        return similaritySet[articlePath1][b] - similaritySet[articlePath1][a];   // Descending order
+      });
+    }
+    const index = recommendationSet[articlePath1].indexOf(articlePath1);
+    if (index > -1) {
+      recommendationSet[articlePath1].splice(index, 1);
+    }
+    recommendationSet[articlePath1] = recommendationSet[articlePath1].slice(0, cfg.limit);
+    for (let j = 0; j < recommendationSet[articlePath1].length; j++) {
+      const e = recommendationSet[articlePath1][j];
+      recommendationSet[articlePath1][j] = articleLibrary.filter(w => w.path == e)[0];
+    }
+  }
+  hexo.locals.set('recommendationSet', function () {
+    return recommendationSet;
+  });
+}
+
+hexo.extend.helper.register('articleRecommendationGenerator', function (post) {
   if (!post) return '';
   const cfg = hexo.theme.config.articles.recommendation;
   if (!cfg.enable) {
@@ -161,29 +173,40 @@ hexo.extend.helper.register('文章推荐生成器', function (post) {
       return "";
     }
   }
-  const 推荐集 = hexo.locals.get('推荐集');
-  const 推荐文章 = 推荐集[post.path];
-  //console.log(post.path);
-  //console.log(推荐文章);
-  return 用户界面(推荐文章, cfg);
+  const recommendationSet = hexo.locals.get('recommendationSet');
+  const recommendedArticles = recommendationSet[post.path];
+  return userInterface(recommendedArticles, cfg);
 });
 
-function 用户界面(推荐文章, cfg) {
-  let html = ""
-  for (const item of 推荐文章) {
-    html += Item界面(item)
+function userInterface(recommendedArticles, cfg) {
+  let html = "";
+  let htmlMobile = "";
+  for (const item of recommendedArticles) {
+    html += itemInterface(item);
   }
-  return `<div class="recommended-article">
-  <div class="recommended-article-header">
-    <i aria-hidden="true"></i><span>${cfg.title}</span>
-  </div>
-  <div class="recommended-article-group">${html}</div>
-</div>`
+  for (const itemMobile of recommendedArticles.slice(0, cfg.mobile_limit)) {
+    htmlMobile += itemInterface(itemMobile);
+  }
+  return `
+  <div class="recommended-article">
+   <div class="recommended-desktop">
+    <div class="recommended-article-header">
+     <i aria-hidden="true"></i><span>${cfg.title}</span>
+    </div>
+    <div class="recommended-article-group">${html}</div>
+   </div>
+   <div class="recommended-mobile">
+   <div class="recommended-article-header">
+     <i aria-hidden="true"></i><span>${cfg.title}</span>
+   </div>
+   <div class="recommended-article-group">${htmlMobile}</div>
+   </div>
+  </div>`;
 }
 
-function Item界面(item) {
+function itemInterface(item) {
   return `<a class="recommended-article-item" href="${hexo.config.root + item.path}" title="${item.title}" rel="bookmark">
   <img src="${item.headimg}" alt="${item.title}">
   <span class="title">${item.title}</span>
-</a>`
+</a>`;
 }

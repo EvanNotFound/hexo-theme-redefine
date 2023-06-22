@@ -45,7 +45,7 @@
     <link rel="icon" type="image/png" href="<%= url_for(theme.defaults.favicon) %>" sizes="192x192">
     <link rel="apple-touch-icon" sizes="180x180" href="<%= url_for(theme.defaults.favicon) %>">
     <meta name="theme-color" content="<%= theme.colors.primary %>">
-    <%- favicon_tag(url_for(theme.defaults.favicon)) %>
+    <%- favicon_tag(theme.defaults.favicon) %>
     <!--- Page Info-->
     <%
     let title = page.title;
@@ -71,7 +71,9 @@
         <%= theme.info.title || config.title || 'Redefine Theme' %>
     </title>
     <%- css('css/style') %>
-    <%- renderCSS('assets/fonts.css') %>
+    <%- renderCSS('fonts/fonts.css') %>
+    <%- renderCSS('fonts/Satoshi/satoshi.css') %>
+    <%- renderCSS('fonts/Chillax/chillax.css') %>
     <!--- Font Part-->
     <% if (theme.home_banner.custom_font.enable) { %>
         <link href="<%- theme.home_banner.custom_font.url %>" rel="stylesheet">
