@@ -109,6 +109,59 @@ hexo.extend.helper.register('renderJS', function (path) {
   return t;
 });
 
+hexo.extend.helper.register('renderPjaxJS', function (path) {
+  const _js = hexo.extend.helper.get('js').bind(hexo);
+  const urlRender = hexo.extend.helper.get('url_for').bind(hexo);
+  const cdnProviders = {
+    'unpkg': 'https://unpkg.com',
+    'jsdelivr': 'https://cdn.jsdelivr.net/npm',
+    'elemecdn': 'https://npm.elemecdn.com',
+    'aliyun': 'https://evan.beee.top/projects',
+    'custom': this.theme.cdn.custom_url,
+  };
+
+  const cdnPathHandle = (path) => {
+    const cdnBase = cdnProviders[this.theme.cdn.provider] || cdnProviders.aliyun;
+    const renderedPath = urlRender(path);
+
+    if (this.theme.global.pjax === true) {
+      if (this.theme.cdn.provider === 'custom') {
+        const customUrl = cdnBase.replace('${version}', themeVersion).replace('${path}', path);
+        return this.theme.cdn.enable
+          ? `<script async data-pjax src="${customUrl}"></script>`
+          : `<script async data-pjax src="${renderedPath}"></script>`;
+      } else {
+        return this.theme.cdn.enable
+          ? `<script async data-pjax src="${cdnBase}/hexo-theme-redefine@${themeVersion}/source/${path}"></script>`
+          : `<script async data-pjax src="${renderedPath}"></script>`;
+      }
+    } else {
+      if (this.theme.cdn.provider === 'custom') {
+        const customUrl = cdnBase.replace('${version}', themeVersion).replace('${path}', path);
+        return this.theme.cdn.enable
+          ? `<script src="${customUrl}"></script>`
+          : _js(path);
+      } else {
+        return this.theme.cdn.enable
+          ? `<script src="${cdnBase}/hexo-theme-redefine@${themeVersion}/source/${path}"></script>`
+          : _js(path);
+      }
+    }
+  };
+
+  let t = '';
+
+  if (Array.isArray(path)) {
+    for (const p of path) {
+      t += cdnPathHandle(p);
+    }
+  } else {
+    t = cdnPathHandle(path);
+  }
+
+  return t;
+});
+
 hexo.extend.helper.register('renderCSS', function (path) {
   const _css = hexo.extend.helper.get('css').bind(hexo);
   const cdnProviders = {
