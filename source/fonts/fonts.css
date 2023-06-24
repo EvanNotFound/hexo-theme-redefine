@@ -23,16 +23,6 @@
       url("./fonts/noto-sans-sc-v26-chinese-simplified-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
-/* noto-sans-cjk-variable - chinese-simplified */
-@font-face {
-  font-family: "Noto Sans CJK";
-  src: local("Noto Sans CJK"),
-    url("./fonts/NotoSansCJKsc-VF.ttf") format("truetype"); /* Chrome 26+, Opera 23+, Firefox 39+ */
-  font-weight: 300 900;
-  font-style: normal;
-  font-display: swap;
-}
-
 /* ubuntu-mono-regular - latin */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
