@@ -16,8 +16,11 @@ $gap = 30px
   box-sizing border-box
   width 100%
   height 100%
+  gap 0px
 
   &.show-toc
+    gap 30px
+
     .toc-content-container
       display block
       opacity 1
@@ -378,7 +381,7 @@ $gap = 30px
     width 0
     height auto
     max-height calc(100vh - 210px)
-    margin-left 30px
+    //margin-left 30px
     // z-index $z-index-6
     overflow-y auto
     overflow-x hidden

@@ -3,6 +3,8 @@
 
     <% if (theme.home_banner.enable === true && is_home() && !page.prev) { %>
         <%- partial('_partials/home-banner') %>
+    <% } else if (theme.home_banner.enable === true && is_home() && page.prev && theme.home_banner.style === "fixed") { %>
+        <%- partial('_partials/home-background') %>
     <% } %>
 
     <div class="main-content-container">
