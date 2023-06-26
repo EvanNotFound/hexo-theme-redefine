@@ -2,34 +2,30 @@
     <div class="post-page-container">
         <div class="article-content-container">
 
+            <div class="article-title">
+                <% if (page.cover || page.banner || (page.thumbnail && page.thumbnail !== false)) { %>
+                  <% let articleCover = "";
+                  if (page.cover && page.cover.includes("/")) {
+                    articleCover = page.cover;
+                  } else if (page.banner && page.banner.includes("/")) {
+                    articleCover = page.banner;
+                  } else if (page.thumbnail && page.thumbnail !== null) {
+                    articleCover = page.thumbnail;
+                  } else if (config.marked.postAsset && config.marked.postAsset == true) {
+                    articleCover = [page.path, page.cover || page.banner].join("/");
+                  }
+                  %>
+                  <% if (articleCover) { %>
+                    <img src="<%= url_for(articleCover) %>" alt="<%= page.title %>" />
+                  <% } %>
+                  <h1 class="article-title-cover"><%= page.title %></h1>
+                <% } else { %>
+                  <h1 class="article-title-regular"><%= page.title %></h1>
+                <% } %>
+              </div>
+              
+                     
             
-            <% if (page.cover == false || page.banner == false) { %>
-                <div class="article-title">
-                    <h1 class="article-title-regular"><%= page.title %></h1>
-                </div>
-            <% } else if (page.cover && page.cover !== null) { %> 
-                <div class="article-title">         
-                    <img src="<%= url_for(page.cover) %>" alt="<%= page.title %>" />
-                    <h1 class="article-title-cover"><%= page.title %></h1>
-                </div>
-            <% } else if (page.banner && page.banner !== null) {%> 
-                <div class="article-title">       
-                    <img src="<%= url_for(page.banner) %>" alt="<%= page.title %>" />
-                    <h1 class="article-title-cover"><%= page.title %></h1>
-                </div>
-            <% } else if (page.thumbnail && page.thumbnail !== null && page.thumbnail !== false) {%>          
-                <div class="article-title">
-                    <img src="<%= url_for(page.thumbnail) %>" alt="<%= page.title %>" />
-                    <h1 class="article-title-cover"><%= page.title %></h1>
-                </div>
-            <% } else { %>
-                <div class="article-title">
-                    <h1 class="article-title-regular"><%= page.title %></h1>
-                </div>
-            <% } %>
-                
-            
-
             <% if (theme.info.author || config.author) { %>
                 <div class="article-header">
                     <div class="avatar">
