@@ -111,7 +111,7 @@
             <% } %>
 
 
-            <% if (theme.comment.enable === true && theme.comment.hasOwnProperty('system')) { %>
+            <% if (theme.comment.enable === true && theme.comment.hasOwnProperty('system') && page.comment !== false && page.comment !== false) { %>
                 <div class="comment-container">
                     <%- partial('_partials/comments/comment') %>
                 </div>
