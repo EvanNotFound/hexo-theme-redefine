@@ -49,7 +49,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     Global.initModeToggle();
     Global.initBackToTop();
-    if (Global.theme_config.home_banner.subtitle.text.length !== 0  && location.pathname === Global.hexo_config.root) {
+    if (Global.theme_config.home_banner.subtitle.hitokoto.enable || Global.theme_config.home_banner.subtitle.text.length !== 0  && location.pathname === Global.hexo_config.root) {
       Global.initTyped('subtitle');
     }
 
