@@ -18,10 +18,21 @@
         <span class="article-categories article-meta-item">
             <i class="fa-regular fa-folders"></i>&nbsp;
             <ul>
+                <% let previousParentId = null; %>
                 <% articleObject.categories.forEach((category, i) => { %>
-                    <li>
-                        <%= i === 0 ? '' : '> ' %><a href="<%- url_for(category.path) %>"><%= category.name %></a>&nbsp;
-                    </li>
+                    <% if (previousParentId !== category.parent) { %>
+                        <% if (previousParentId !== null) { %>
+                            <li>></li>
+                        <% } %>
+                        <li>
+                            <a href="<%- url_for(category.path) %>"><%= category.name %></a>&nbsp;
+                        </li>
+                    <% } else { %>
+                        <li>
+                            | <a href="<%- url_for(category.path) %>"><%= category.name %></a>&nbsp;
+                        </li>
+                    <% } %>
+                    <% previousParentId = category.parent; %>
                 <% }); %>
             </ul>
         </span>
