@@ -1,15 +1,15 @@
 <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop"><%= date(articleObject.date, is_post() ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD').replace(" 00:00:00", "").replace(":00", "") %></span>
-        <span class="mobile"><%= date(articleObject.date, is_post() ? 'YYYY-MM-DD HH:mm' : 'YYYY-MM-DD').replace(" 00:00:00", "").replace(":00", "") %></span>
+        <span class="desktop"><%= date(articleObject.date, is_post() ? `${config.date_format} ${config.time_format}` : `${config.date_format}`).replace(" 00:00:00", "").replace(":00", "") %></span>
+        <span class="mobile"><%= date(articleObject.date, is_post() ? `${config.date_format} ${config.time_format}` : `${config.date_format}`).replace(" 00:00:00", "").replace(":00", "") %></span>
         <span class="hover-info"><%= __("create_time") %></span>
     </span>
     <% if (articleObject.updated && articleObject.updated !== articleObject.date) { %>
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop"><%= date(articleObject.updated, is_post() ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD').replace(" 00:00:00", "").replace(":00", "") %></span>
-            <span class="mobile"><%= date(articleObject.updated, is_post() ? 'YYYY-MM-DD HH:mm' : 'YYYY-MM-DD').replace(" 00:00:00", "").replace(":00", "") %></span>
+            <span class="desktop"><%= date(articleObject.updated, is_post() ? `${config.date_format} ${config.time_format}` : `${config.date_format}`).replace(" 00:00:00", "").replace(":00", "") %></span>
+            <span class="mobile"><%= date(articleObject.updated, is_post() ? `${config.date_format} ${config.time_format}` : `${config.date_format}`).replace(" 00:00:00", "").replace(":00", "") %></span>
             <span class="hover-info"><%= __("update_time") %></span>
         </span>
     <% } %>
