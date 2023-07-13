@@ -101,6 +101,7 @@ $logo-image-box-width = 46px
       .desktop
         .navbar-list
           display flex
+          gap 24px
           align-items center
 
           +redefine-tablet()
@@ -110,7 +111,6 @@ $logo-image-box-width = 46px
             float left
             // padding 5px
             position relative
-            margin-left 30px
             font-size 1rem
             font-weight 450
             cursor pointer
@@ -119,9 +119,6 @@ $logo-image-box-width = 46px
             a
               display block
               padding 5px
-
-            &:first-child
-              margin-left 0
 
             a .fa-chevron-down
               transform rotate(0deg)

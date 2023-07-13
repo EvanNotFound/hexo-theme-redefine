@@ -9,24 +9,38 @@
                     </div>
                 <% } %>
 
-                <% if (typeof post.thumbnail !== 'undefined' && post.thumbnail === false) { %>
-
-                <% } else if (post.thumbnail && post.thumbnail !== null) { %>
+                <%  let articleThumbnail = "";
+                if (post.cover || post.banner || (post.thumbnail && post.thumbnail !== false)) { %>
+                    <%
+                    if (post.thumbnail && post.thumbnail !== null) {
+                      articleThumbnail = post.thumbnail;
+                    } else if (post.cover && post.cover.includes("/")) {
+                      articleThumbnail = post.cover;
+                    } else if (post.banner && post.banner.includes("/")) {
+                      articleThumbnail = post.banner;
+                    } else if (config.marked.postAsset && config.marked.postAsset == true) {
+                      articleThumbnail = [post.path, post.cover || post.banner].join("/");
+                    }
+                    %>
+                <% } %>
+                <% if (typeof post.thumbnail !== 'undefined' && post.thumbnail === false) {} 
+                
+                else if (post.thumbnail && post.thumbnail !== null) { %>
                     <div class="home-article-thumbnail">
                         <a href="<%- url_for(post.path) %>">
-                            <img src="<%- url_for(post.thumbnail) %>" alt="<%= post.title %>" />
+                            <img src="<%- url_for(articleThumbnail) %>" alt="<%= post.title %>" />
                         </a>
                     </div>
                 <% } else if (post.cover && post.cover !== null && post.cover !== false) { %>
                     <div class="home-article-thumbnail">
                         <a href="<%- url_for(post.path) %>">
-                            <img src="<%- url_for(post.cover) %>" alt="<%= post.title %>" />
+                            <img src="<%- url_for(articleThumbnail) %>" alt="<%= post.title %>" />
                         </a>
                     </div>
                 <% } else if (post.banner && post.banner !== null && post.banner !== false) { %>
                     <div class="home-article-thumbnail">
                         <a href="<%- url_for(post.path) %>">
-                            <img src="<%- url_for(post.banner) %>" alt="<%= post.title %>" />
+                            <img src="<%- url_for(articleThumbnail) %>" alt="<%= post.title %>" />
                         </a>
                     </div>
                 <% } %>

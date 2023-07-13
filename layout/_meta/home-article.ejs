@@ -10,18 +10,27 @@
             </span>
         </span>
         <% if (post.categories.length && theme.home.categories.enable === true) { %>
-            <span class="home-article-category"><i class="fa-solid fa-folders"></i></i>&nbsp;
-                <ul>
-                    <% post.categories.forEach((category, i) => {
-                    if (theme.home.categories.limit === 0 || i + 1 <= theme.home.categories.limit) { %>
+            <span class="home-article-category">
+                <i class="fa-solid fa-folders"></i>&nbsp;
+            <ul>
+                <% let previousParentId = null; %>
+                <% post.categories.forEach((category, i) => { %>
+                    <% if (previousParentId !== category.parent) { %>
+                        <% if (previousParentId !== null) { %>
+                            <li>></li>
+                        <% } %>
                         <li>
-                            <%= i === 0 ? '' : '> ' %>
                             <a href="<%- url_for(category.path) %>"><%= category.name %></a>&nbsp;
                         </li>
+                    <% } else { %>
+                        <li>
+                            | <a href="<%- url_for(category.path) %>"><%= category.name %></a>&nbsp;
+                        </li>
                     <% } %>
-                    <% }); %>
-                </ul>
-            </span>
+                    <% previousParentId = category.parent; %>
+                <% }); %>
+            </ul>
+        </span>
         <% } %>
         <% if (post.tags.length && theme.home.tags.enable === true) { %>
             <span class="home-article-tag">

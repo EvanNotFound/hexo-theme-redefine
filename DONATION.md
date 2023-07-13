@@ -48,5 +48,6 @@
 | May 24 | [@HuTa0kj](https://github.com/HuTa0kj) | ¥8.88 | 微信赞赏码 | https://huta0kj.github.io |
 | Jun 5 | **杰 | ¥6.00 | 支付宝 | / |
 | Jun 12 | Anonymous | ¥0.99 | 微信赞赏码 | / |
-
+| Jun 22 | [@JuTemp](https://github.com/JuTemp) | ¥15.00 | 支付宝 | https://jtp0415.top |
+| Jul 13 | [@825i](https://github.com/825i) | $20.00 | Paypal |  https://blog.xtu.icu/ |
  

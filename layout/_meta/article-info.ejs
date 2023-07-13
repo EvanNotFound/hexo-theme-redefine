@@ -1,15 +1,15 @@
 <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop"><%= date(articleObject.date, is_post() ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD').replace(" 00:00:00", "").replace(":00", "") %></span>
-        <span class="mobile"><%= date(articleObject.date, is_post() ? 'YYYY-MM-DD HH:mm' : 'YYYY-MM-DD').replace(" 00:00:00", "").replace(":00", "") %></span>
+        <span class="desktop"><%= date(articleObject.date, is_post() ? `${config.date_format} ${config.time_format}` : `${config.date_format}`).replace(" 00:00:00", "").replace(":00", "") %></span>
+        <span class="mobile"><%= date(articleObject.date, is_post() ? `${config.date_format} ${config.time_format}` : `${config.date_format}`).replace(" 00:00:00", "").replace(":00", "") %></span>
         <span class="hover-info"><%= __("create_time") %></span>
     </span>
     <% if (articleObject.updated && articleObject.updated !== articleObject.date) { %>
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop"><%= date(articleObject.updated, is_post() ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD').replace(" 00:00:00", "").replace(":00", "") %></span>
-            <span class="mobile"><%= date(articleObject.updated, is_post() ? 'YYYY-MM-DD HH:mm' : 'YYYY-MM-DD').replace(" 00:00:00", "").replace(":00", "") %></span>
+            <span class="desktop"><%= date(articleObject.updated, is_post() ? `${config.date_format} ${config.time_format}` : `${config.date_format}`).replace(" 00:00:00", "").replace(":00", "") %></span>
+            <span class="mobile"><%= date(articleObject.updated, is_post() ? `${config.date_format} ${config.time_format}` : `${config.date_format}`).replace(" 00:00:00", "").replace(":00", "") %></span>
             <span class="hover-info"><%= __("update_time") %></span>
         </span>
     <% } %>
@@ -18,10 +18,21 @@
         <span class="article-categories article-meta-item">
             <i class="fa-regular fa-folders"></i>&nbsp;
             <ul>
+                <% let previousParentId = null; %>
                 <% articleObject.categories.forEach((category, i) => { %>
-                    <li>
-                        <%= i === 0 ? '' : '> ' %><a href="<%- url_for(category.path) %>"><%= category.name %></a>&nbsp;
-                    </li>
+                    <% if (previousParentId !== category.parent) { %>
+                        <% if (previousParentId !== null) { %>
+                            <li>></li>
+                        <% } %>
+                        <li>
+                            <a href="<%- url_for(category.path) %>"><%= category.name %></a>&nbsp;
+                        </li>
+                    <% } else { %>
+                        <li>
+                            | <a href="<%- url_for(category.path) %>"><%= category.name %></a>&nbsp;
+                        </li>
+                    <% } %>
+                    <% previousParentId = category.parent; %>
                 <% }); %>
             </ul>
         </span>
