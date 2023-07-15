@@ -3,7 +3,7 @@
         <% if (theme.home.sidebar.first_item == "info") { %>
             <div class="sidebar-content">
                 <div class="avatar">
-                    <%- image_tag(url_for(theme.defaults.avatar)) %>
+                    <%- image_tag(theme.defaults.avatar) %>
                 </div>
                 <div class="author">
                     <div class="name"><%= theme.info.author || config.author %></div>
@@ -85,7 +85,7 @@
             <% } %>
             <div class="sidebar-content" <% if (theme.home.sidebar.links !== null || theme.home.sidebar.announcement !== null) { %> marginTop <% } %>>
                 <div class="avatar">
-                    <%- image_tag(url_for(theme.defaults.avatar)) %>
+                    <%- image_tag(theme.defaults.avatar) %>
                 </div>
                 <div class="author">
                     <div class="name"><%= theme.info.author || config.author %></div>
