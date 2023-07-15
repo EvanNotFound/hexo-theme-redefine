@@ -248,6 +248,10 @@ Global.initUtils = () => {
       toolExpandDom.addEventListener("click", () => {
         isExpand = !isExpand;
         setPageWidth(isExpand);
+        document.querySelector(".loading-placeholder").style.display = "block";
+        setTimeout(() => {
+          Global.initMasonry();
+        }, 300);
       });
     },
 
