@@ -30,16 +30,22 @@ Global.initMasonry = () => {
   }
 
   function initializeMasonryLayout() {
-    loadingPlaceholder.style.display = "none";
-    masonryContainer.style.display = "block";
+    loadingPlaceholder.style.opacity = 0;
+    setTimeout(() => {
+      loadingPlaceholder.style.display = "none";
+      masonryContainer.style.display = "block";
+      var masonry = new MiniMasonry({
+        container: masonryContainer,
+        gutterX: 10,
+        gutterY: 5,
+        surroundingGutter: false,
+      });
+      masonry.layout();
+      masonryContainer.style.opacity = 1;
+    }, 100);
+    
 
-    var masonry = new MiniMasonry({
-      container: masonryContainer,
-      gutterX: 10,
-      gutterY: 5,
-      surroundingGutter: false,
-    });
-    masonry.layout();
+
   }
 }
 

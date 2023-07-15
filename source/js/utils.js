@@ -248,7 +248,15 @@ Global.initUtils = () => {
       toolExpandDom.addEventListener("click", () => {
         isExpand = !isExpand;
         setPageWidth(isExpand);
-        document.querySelector(".loading-placeholder").style.display = "block";
+
+        var loadingPlaceholder = document.querySelector(".loading-placeholder");
+        var masonryContainer = document.querySelector("#masonry-container");
+        if (!loadingPlaceholder || !masonryContainer) return;
+
+        loadingPlaceholder.style.opacity = 1;
+        loadingPlaceholder.style.display = "block";
+        masonryContainer.style.display = "none";
+        
         setTimeout(() => {
           Global.initMasonry();
         }, 300);
