@@ -150,6 +150,9 @@ home_banner:
       twitter:  # your twitter URL
       email:  # your email
       # ...... # you can add more
+    # Social links with QRcode drawers
+    qrs:
+      weixin: # your Wechat QRcode image URL
 # HOME BANNER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
