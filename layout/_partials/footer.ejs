@@ -8,15 +8,15 @@
             <% } %>
             <%= date(new Date(), 'YYYY') %>&nbsp;&nbsp;<%- theme.footer.icon || '<i class="fa-regular fa-computer-classic"></i>' %>&nbsp;&nbsp;<a href="/"><%= theme.info.author || config.author %></a>
         </div>
-        <% if (theme.global.busuanzi_counter.enable === true) { %>
-            <script async <%= theme.global.pjax === true ? 'data-pjax' : '' %> src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <% if (theme.global.website_counter.enable === true) { %>
+            <script async <%= theme.global.pjax === true ? 'data-pjax' : '' %> src="<%= theme.global.website_counter.url ? theme.global.website_counter.url : "//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" %>"></script>
             <div class="website-count info-item">
-                <% if (theme.global.busuanzi_counter.site_uv) { %>
+                <% if (theme.global.website_counter.site_uv) { %>
                     <span id="busuanzi_container_site_uv" class="busuanzi_container_site_uv">
                         <%- __('site_uv') %>&nbsp;<span id="busuanzi_value_site_uv" class="busuanzi_value_site_uv"></span>
                     </span>
                 <% } %>
-                <% if (theme.global.busuanzi_counter.site_pv) { %>
+                <% if (theme.global.website_counter.site_pv) { %>
                     <span id="busuanzi_container_site_pv" class="busuanzi_container_site_pv">
                         <%- __('site_pv') %>&nbsp;<span id="busuanzi_value_site_pv" class="busuanzi_value_site_pv"></span>
                     </span>
@@ -36,11 +36,6 @@
                 https://beian.miit.gov.cn
                 <% } %>
                 "><%= theme.footer.icp.number %></a></div>
-        <% } %>
-        <% if (theme.footer.hasOwnProperty('upyun') && theme.footer.upyun) { %>
-            <div class="icp-info info-item"><a target="_blank" rel="nofollow" href="<%= theme.footer.upyun %>">本网站由
-                <img src="/images/upyun.png" alt="upyun" srcset="" height="24" style="position:relative; top:6px">
-                提供CDN加速/云存储服务</a></div>
         <% } %>
         <% if (theme.footer.runtime === true) {%>
             <div>
