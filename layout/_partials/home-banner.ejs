@@ -27,13 +27,13 @@
         }
     </style>
 
-    <div class="home-banner-background">
+    <div class="home-banner-background transition-fade">
     </div>
 <% } %>
 
-<div class="home-banner-container flex-center">
+<div class="home-banner-container flex-center transition-fade">
     <div class="content flex-center">
-        <div class="description fade-in-down-animation" <% if (theme.home_banner.custom_font.enable) { %>
+        <div class="description" <% if (theme.home_banner.custom_font.enable) { %>
          style="font-family: '<%- theme.home_banner.custom_font.family %>', sans-serif; !important;"
         <% } %>>
           <%- theme.home_banner.title || theme.style.first_screen.description || config.description %> <%# theme.style.first_screen.description is deprecated %>
@@ -42,7 +42,7 @@
           <% } %>
         </div>
         <% if (theme.home_banner.social_links.enable) { %>
-            <div class="social-contacts fade-in-down-animation">
+            <div class="social-contacts">
                 <% for (const key in theme.home_banner.social_links.links) { %>
                     <% if(theme.home_banner.social_links.links[key]) { %>
                         <% if(key === 'email') { %>

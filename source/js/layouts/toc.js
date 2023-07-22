@@ -110,8 +110,9 @@ function initTOC() {
   }
 }
 
-if (Global.theme_config.global.pjax === true && Global.utils) {
+swup.on('pageView', () => {
   initTOC();
-} else {
-  window.addEventListener('DOMContentLoaded', initTOC);
-}
+});
+
+window.addEventListener('DOMContentLoaded', initTOC);
+

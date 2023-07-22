@@ -1,10 +1,10 @@
 <% if(theme.comment.system === 'twikoo' && theme.comment.config.twikoo.server_url) { %>
     <div class="twikoo-container">
-        <script <%= theme.global.pjax === true ? 'data-pjax' : '' %>
+        <script <%= theme.global.single_page === true ? 'data-swup-reload-script' : '' %>
                 src='https://cdn.staticfile.org/twikoo/<%- theme.comment.config.twikoo.version %>/twikoo.all.min.js'
         ></script>
         <div id="twikoo-comment"></div>
-        <script <%= theme.global.pjax === true ? 'data-pjax' : '' %>>
+        <script <%= theme.global.single_page === true ? 'data-swup-reload-script' : '' %>>
             function loadTwikoo() {
                 twikoo.init({
                     el: '#twikoo-comment',
@@ -12,7 +12,7 @@
                 });
             }
 
-            if ('<%= theme.global.pjax %>') {
+            if ('<%= theme.global.single_page %>') {
                 const loadTwikooTimeout = setTimeout(() => {
                     loadTwikoo();
                     clearTimeout(loadTwikooTimeout);
@@ -24,11 +24,11 @@
     </div>
 <% } else if (theme.comment.system === 'twikoo' && theme.comment.config.twikoo.server_url && theme.comment.config.twikoo.region) { %>
     <div class="twikoo-container">
-        <script <%= theme.global.pjax === true ? 'data-pjax' : '' %>
+        <script <%= theme.global.single_page === true ? 'data-swup-reload-script' : '' %>
                 src='<%- theme.comment_version.twikoo %>'
         ></script>
         <div id="twikoo-comment"></div>
-        <script <%= theme.global.pjax === true ? 'data-pjax' : '' %>>
+        <script <%= theme.global.single_page === true ? 'data-swup-reload-script' : '' %>>
             function loadTwikoo() {
                 twikoo.init({
                     el: '#twikoo-comment',
@@ -37,7 +37,7 @@
                 });
             }
 
-            if ('<%= theme.global.pjax %>') {
+            if ('<%= theme.global.single_page %>') {
                 const loadTwikooTimeout = setTimeout(() => {
                     loadTwikoo();
                     clearTimeout(loadTwikooTimeout);

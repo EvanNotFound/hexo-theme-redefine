@@ -1,31 +1,28 @@
 <% if (site.tags.length){ %>
-    <div class="fade-in-down-animation">
-        <div class="tagcloud-container">
-          <% if (theme.page_templates.tags_style == 'cloud') { %>
-            <div class="tagcloud-header">
-              <h1 style="margin: 15px 5px; margin-bottom: 30px;"><%- __('tags') %></h1>
-            </div>
-            <div class="tagcloud-content">
-              <%- tagcloud({
-                min_font: 1,
-                max_font: 5,
-                unit: 'rem',
-                amount: 100
-              }) %>
-            </div>
-            
-          <% } else {%>
-            <div class="tagcloud-header">
-                <h1 style="margin: 15px 5px; margin-bottom: 30px;"><%- __('tags') %></h1>
-            </div>
-            <div class="tagcloud-content">
-              <ul class="tag-list" data-show-value="true">
-                <% for (const tag of site.tags.data) { %>
-                  <li><a data-weight="<%- tag.posts.length %>" href="/<%- tag.path %>"><i class="fa-solid fa-hashtag"></i><%- tag.name %></a></li>
-                <% } %>
-              </ul>
-            </div>
-            <% } %>
-        </div>
-    </div>
+<div class="tagcloud-container">
+	<% if (theme.page_templates.tags_style == 'cloud') { %>
+	<div class="tagcloud-header">
+		<h1 style="margin: 15px 5px; margin-bottom: 30px"><%- __('tags') %></h1>
+	</div>
+	<div class="tagcloud-content">
+		<%- tagcloud({ min_font: 1, max_font: 5, unit: 'rem', amount: 100 }) %>
+	</div>
+
+	<% } else {%>
+	<div class="tagcloud-header">
+		<h1 style="margin: 15px 5px; margin-bottom: 30px"><%- __('tags') %></h1>
+	</div>
+	<div class="tagcloud-content">
+		<ul class="tag-list" data-show-value="true">
+			<% for (const tag of site.tags.data) { %>
+			<li>
+				<a data-weight="<%- tag.posts.length %>" href="/<%- tag.path %>"
+					><i class="fa-solid fa-hashtag"></i><%- tag.name %></a
+				>
+			</li>
+			<% } %>
+		</ul>
+	</div>
+	<% } %>
+</div>
 <% } %>

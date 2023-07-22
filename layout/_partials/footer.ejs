@@ -9,7 +9,7 @@
             <%= date(new Date(), 'YYYY') %>&nbsp;&nbsp;<%- theme.footer.icon || '<i class="fa-regular fa-computer-classic"></i>' %>&nbsp;&nbsp;<a href="/"><%= theme.info.author || config.author %></a>
         </div>
         <% if (theme.global.website_counter.enable === true) { %>
-            <script async <%= theme.global.pjax === true ? 'data-pjax' : '' %> src="<%= theme.global.website_counter.url ? theme.global.website_counter.url : "//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" %>"></script>
+            <script <%= theme.global.single_page === true ? 'data-swup-reload-script' : '' %> src="<%= theme.global.website_counter.url ? theme.global.website_counter.url : "//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" %>"></script>
             <div class="website-count info-item">
                 <% if (theme.global.website_counter.site_uv) { %>
                     <span id="busuanzi_container_site_uv" class="busuanzi_container_site_uv">
@@ -26,7 +26,7 @@
         <div class="theme-info info-item">
             <span class="powered-by-container"><%- __('powered_by', '<?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" href="https://hexo.io">Hexo</a>') %></span>
                 <br>
-            <%# 保留主题信息是对作者的尊重，感谢！ %><span class="theme-version-container"><%- __('theme') %>&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v<%- getThemeVersion() %></a><%# 保留主题信息是对作者的尊重，感谢！ %>
+            <%# 保留主题信息是对作者的尊重，感谢！ %><span class="theme-version-container"><%- __('theme') %>&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v<%- getThemeVersion() %></a></span><%# 保留主题信息是对作者的尊重，感谢！ %>
         </div>
         <% if (theme.footer.icp.enable && theme.footer.icp.hasOwnProperty('number')) { %>
             <div class="icp-info info-item"><a target="_blank" rel="nofollow" href="
@@ -46,7 +46,7 @@
             <div class="customize-info info-item"><%- theme.footer.customize %></div>
         <% } %>
         <% if (theme.footer.runtime === true) {%>
-            <script async <%= theme.global.pjax === true ? 'data-pjax' : '' %>>
+            <script <%= theme.global.single_page === true ? 'data-swup-reload-script' : '' %>>
                 try {
                     function odometer_init() {
                     const elements = document.querySelectorAll('.odometer');
@@ -62,12 +62,12 @@
                 } catch (error) {}
             </script>
         <% } %>
-        <% if (theme.inject.enable == true) { %>
+        <% if (theme.inject.enable === true) { %>
             <% for (let i in theme.inject.footer) { %>
                 <% if (theme.inject.footer[i] !== null ){ %>
 
-                    <% if (theme.global.pjax == true) { %>
-                        <%- theme.inject.footer[i].replace("<script", "<script data-pjax") %>
+                    <% if (theme.global.single_page === true) { %>
+                        <%- theme.inject.footer[i].replace("<script", "<script data-swup-reload-script") %>
                     <% } else { %>
                         <%- theme.inject.footer[i] %>
                 <% } } %>

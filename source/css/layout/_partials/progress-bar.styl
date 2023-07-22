@@ -1,58 +1,57 @@
 .progress-bar-container
-  position fixed
-  top 0
-  left 0
-  width 100%
-  z-index $z-index-9
+    position fixed
+    top 0
+    left 0
+    width 100%
+    z-index $z-index-9
 
-  if (hexo-config('global.pjax') == true)
-    .pjax-progress-bar
-      position absolute
-      top 0
-      left 0
-      height 2px
-      width 0
-      background var(--pjax-progress-bar-color)
-      visibility hidden
-      opacity 0
-      z-index $z-index-8
-      transition-t('width', '0', '0.1', 'linear')
+    if (hexo-config('global.single_page') == true)
 
-      &.show
-        opacity 1
-        visibility visible
+        .swup-progress-icon
+            position absolute
+            top 5px
+            right 8px
+            z-index $z-index-8
+            display flex
+            align-items center
+            justify-content center
+            padding 7px 6px 0 0
+            font-size 1.1rem
+            color var(--default-text-color)
+            opacity 0
+            transition opacity 0.1s ease-out
 
-    .pjax-progress-icon
-      position absolute
-      top 0
-      right 0
-      z-index $z-index-8
-      display flex
-      align-items center
-      justify-content center
-      padding 7px 6px 0 0
-      visibility hidden
-      font-size 1.1rem
-      color var(--default-text-color)
+            +redefine-tablet()
+                padding 6px 5px 0 0
+                font-size 1rem
 
-      +redefine-tablet()
-        padding 6px 5px 0 0
-        font-size 1rem
+    if (hexo-config('global.scroll_progress.bar') == true)
+        .scroll-progress-bar
+            position absolute
+            top 0
+            left 0
+            width 0
+            height $scroll-progress-bar-height
+            visibility hidden
+            z-index $z-index-7
+            background var(--primary-color)
+            transition-t('width, opacity', '0, 0', '0.1, 0.1', 'ease, ease')
 
-      &.show
-        visibility visible
+            &.hide
+                display none !important
 
-  if (hexo-config('global.scroll_progress.bar') == true)
+html.is-animating
     .scroll-progress-bar
-      position absolute
-      top 0
-      left 0
-      width 0
-      height $scroll-progress-bar-height
-      visibility hidden
-      z-index $z-index-7
-      background var(--primary-color)
-      transition-t('width', '0', '0.1', 'linear')
+        opacity 0
+        transition opacity 0.1s ease-out
 
-      &.hide
-        display none !important
+    .swup-progress-icon
+        opacity 1
+        transition opacity 0.1s ease
+
+
+
+.swup-progress-bar
+    background: #12c2e9;
+    height 2px
+    background linear-gradient(to right, #12c2e9, #c471ed, #f64f59);

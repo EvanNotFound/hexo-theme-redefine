@@ -1,127 +1,126 @@
-<div class="fade-in-down-animation">
-    <div class="post-page-container">
-        <div class="article-content-container">
+<div class="post-page-container">
+    <div class="article-content-container">
 
-            <div class="article-title">
-                <% if (page.cover || page.banner || (page.thumbnail && page.thumbnail !== false)) { %>
-                  <% let articleCover = "";
-                  if (page.cover && page.cover.includes("/")) {
-                    articleCover = page.cover;
-                  } else if (page.banner && page.banner.includes("/")) {
-                    articleCover = page.banner;
-                  } else if (page.thumbnail && page.thumbnail !== null) {
-                    articleCover = page.thumbnail;
-                  } else if (config.marked.postAsset && config.marked.postAsset == true) {
-                    articleCover = [page.path, page.cover || page.banner].join("/");
-                  }
-                  %>
-                  <% if (articleCover) { %>
-                    <img src="<%= url_for(articleCover) %>" alt="<%= page.title %>" />
-                  <% } %>
-                  <h1 class="article-title-cover"><%= page.title %></h1>
-                <% } else { %>
-                  <h1 class="article-title-regular"><%= page.title %></h1>
+        <div class="article-title">
+            <% if (page.cover || page.banner || (page.thumbnail && page.thumbnail !== false)) { %>
+                <% let articleCover = "";
+                if (page.cover && page.cover.includes("/")) {
+                articleCover = page.cover;
+                } else if (page.banner && page.banner.includes("/")) {
+                articleCover = page.banner;
+                } else if (page.thumbnail && page.thumbnail !== null) {
+                articleCover = page.thumbnail;
+                } else if (config.marked.postAsset && config.marked.postAsset == true) {
+                articleCover = [page.path, page.cover || page.banner].join("/");
+                }
+                %>
+                <% if (articleCover) { %>
+                <img src="<%= url_for(articleCover) %>" alt="<%= page.title %>" />
                 <% } %>
-              </div>
-              
-                     
-            
-            <% if (theme.info.author || config.author) { %>
-                <div class="article-header">
-                    <div class="avatar">
-                        <%- image_tag(theme.defaults.avatar) %>
-                    </div>
-                    <div class="info">
-                        <div class="author">
-                            <span class="name"><%= theme.info.author || config.author %></span>
-                            <% if (theme.hasOwnProperty('articles') && theme.articles.author_label.enable === true) { %>
-                                <span class="author-label"><%- getAuthorLabel(site.posts.length, theme.articles.author_label.auto, theme.articles.author_label.list) %></span>
-                            <% } %>
-                        </div>
-                        <div class="meta-info">
-                            <%- partial('_meta/article-info', {articleObject: page, index: true}) %>
-                        </div>
-                    </div>
-                </div>
+                <h1 class="article-title-cover"><%= page.title %></h1>
             <% } else { %>
-                <div class="article-header-meta-info">
+                <h1 class="article-title-regular"><%= page.title %></h1>
+            <% } %>
+            </div>
+            
+                    
+        
+        <% if (theme.info.author || config.author) { %>
+            <div class="article-header">
+                <div class="avatar">
+                    <%- image_tag(theme.defaults.avatar) %>
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name"><%= theme.info.author || config.author %></span>
+                        <% if (theme.hasOwnProperty('articles') && theme.articles.author_label.enable === true) { %>
+                            <span class="author-label"><%- getAuthorLabel(site.posts.length, theme.articles.author_label.auto, theme.articles.author_label.list) %></span>
+                        <% } %>
+                    </div>
                     <div class="meta-info">
                         <%- partial('_meta/article-info', {articleObject: page, index: true}) %>
                     </div>
                 </div>
-            <% } %>
-
-            <div class="article-content markdown-body">
-                <%- page.content %>
             </div>
-
-            <% if (theme.articles.copyright) { %>
-                <div class="post-copyright-info">
-                    <%- partial('_meta/article-copyright') %>
+        <% } else { %>
+            <div class="article-header-meta-info">
+                <div class="meta-info">
+                    <%- partial('_meta/article-info', {articleObject: page, index: true}) %>
                 </div>
-            <% } %>
+            </div>
+        <% } %>
 
-            <% if (page.tags.length) { %>
-                <ul class="post-tags-box">
-                    <% page.tags.forEach((tag) => { %>
-                        <li class="tag-item">
-                            <a href="<%- url_for(tag.path) %>">#<%= tag.name %></a>&nbsp;
-                        </li>
-                    <% }); %>
-                </ul>
-            <% } %>
-
-            <%- articleRecommendationGenerator(page) %>
-
-            <% if (page.prev || page.next) { %>
-                <div class="article-nav">
-                    <% if (page.prev) { %>
-                        <div class="article-prev">
-                            <a class="prev"
-                            rel="prev"
-                            href="<%= url_for(page.prev.path) %>"
-                            >
-                                <span class="left arrow-icon flex-center">
-                                    <i class="fa-solid fa-chevron-left"></i>
-                                </span>
-                                <span class="title flex-center">
-                                    <span class="post-nav-title-item"><%= page.prev.title %></span>
-                                    <span class="post-nav-item"><%= __('prev_posts') %></span>
-                                </span>
-                            </a>
-                        </div>
-                    <% } %>
-                    <% if (page.next) { %>
-                        <div class="article-next">
-                            <a class="next"
-                            rel="next"
-                            href="<%= url_for(page.next.path) %>"
-                            >
-                                <span class="title flex-center">
-                                    <span class="post-nav-title-item"><%= page.next.title %></span>
-                                    <span class="post-nav-item"><%= __('next_posts') %></span>
-                                </span>
-                                <span class="right arrow-icon flex-center">
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </span>
-                            </a>
-                        </div>
-                    <% } %>
-                </div>
-            <% } %>
-
-
-            <% if (theme.comment.enable === true && theme.comment.hasOwnProperty('system') && page.comment !== false && page.comment !== false) { %>
-                <div class="comment-container">
-                    <%- partial('_partials/comments/comment') %>
-                </div>
-            <% } %>
+        <div class="article-content markdown-body">
+            <%- page.content %>
         </div>
 
-        <% if (is_post() && theme.articles.toc.enable === true) { %>
-            <div class="toc-content-container">
-                <%- partial('_widgets/toc') %>
+        <% if (theme.articles.copyright) { %>
+            <div class="post-copyright-info">
+                <%- partial('_meta/article-copyright') %>
+            </div>
+        <% } %>
+
+        <% if (page.tags.length) { %>
+            <ul class="post-tags-box">
+                <% page.tags.forEach((tag) => { %>
+                    <li class="tag-item">
+                        <a href="<%- url_for(tag.path) %>">#<%= tag.name %></a>&nbsp;
+                    </li>
+                <% }); %>
+            </ul>
+        <% } %>
+
+        <%- articleRecommendationGenerator(page) %>
+
+        <% if (page.prev || page.next) { %>
+            <div class="article-nav">
+                <% if (page.prev) { %>
+                    <div class="article-prev">
+                        <a class="prev"
+                        rel="prev"
+                        href="<%= url_for(page.prev.path) %>"
+                        >
+                            <span class="left arrow-icon flex-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item"><%= page.prev.title %></span>
+                                <span class="post-nav-item"><%= __('prev_posts') %></span>
+                            </span>
+                        </a>
+                    </div>
+                <% } %>
+                <% if (page.next) { %>
+                    <div class="article-next">
+                        <a class="next"
+                        rel="next"
+                        href="<%= url_for(page.next.path) %>"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item"><%= page.next.title %></span>
+                                <span class="post-nav-item"><%= __('next_posts') %></span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                <% } %>
+            </div>
+        <% } %>
+
+
+        <% if (theme.comment.enable === true && theme.comment.hasOwnProperty('system') && page.comment !== false && page.comment !== false) { %>
+            <div class="comment-container">
+                <%- partial('_partials/comments/comment') %>
             </div>
         <% } %>
     </div>
+
+    <% if (is_post() && theme.articles.toc.enable === true) { %>
+        <div class="toc-content-container">
+            <%- partial('_widgets/toc') %>
+        </div>
+    <% } %>
 </div>
+

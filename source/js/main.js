@@ -44,6 +44,7 @@ window.addEventListener('DOMContentLoaded', () => {
   Global.refresh = () => {
     Global.initUtils();
     navbarShrink.init();
+
     if (Global.data_config.masonry) {
       Global.initMasonry();
     }

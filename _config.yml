@@ -71,8 +71,8 @@ global:
     site_pv: true # site page view
     site_uv: true # site unique visitor
     post_pv: true # post page view
-  # Whether to enable PJAX
-  pjax: true
+  # Whether to enable single page experience (using swup). See https://swup.js.org/. similar to pjax
+  single_page: true
   # Whether to enable open graph
   open_graph: true
   # Google Analytics

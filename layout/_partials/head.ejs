@@ -32,7 +32,7 @@
     <% } %>
     <% if (theme.global.google_analytics.enable) { %>
         <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=<%= theme.global.google_analytics.id %>"></script>
+        <script src="https://www.googletagmanager.com/gtag/js?id=<%= theme.global.google_analytics.id %>"></script>
         <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -92,8 +92,8 @@
     <% if (theme.inject.enable == true) { %>
         <% for (let i in theme.inject.head) { %>
             <% if (theme.inject.head[i] !== null){ %>
-                <% if (theme.global.pjax == true) { %>
-                    <%- theme.inject.head[i].replace("<script", "<script data-pjax") %>
+                <% if (theme.global.single_page == true) { %>
+                    <%- theme.inject.head[i].replace("<script", "<script data-swup-reload-script") %>
                 <% } else { %>
                     <%- theme.inject.head[i] %>
             <% } }%>
