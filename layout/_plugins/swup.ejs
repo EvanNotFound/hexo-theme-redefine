@@ -12,7 +12,9 @@
                 optin: true,
             }),
             new SwupProgressPlugin(),
-            new SwupScrollPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
             new SwupSlideTheme({
                 mainElement: ".main-content-body",
             }),
