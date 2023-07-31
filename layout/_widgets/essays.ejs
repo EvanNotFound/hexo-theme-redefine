@@ -9,7 +9,7 @@
         %>
         <% for (const e of newessays) { %>
             <li class="essay-item">
-                <div class="essay-avatar"><%- image_tag(url_for(theme.defaults.avatar)) %></div>
+                <div class="essay-avatar"><%- image_tag(theme.defaults.avatar) %></div>
                 <div class="essay-content">
                     <div class="content"><%- markdown(e.content) %></div>
                     <div class="date"><%- date(e.date, config.date_format) %></div>

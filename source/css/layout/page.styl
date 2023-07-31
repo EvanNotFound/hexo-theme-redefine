@@ -102,7 +102,7 @@
       top: $navbar-shrink-height + $spacing-unit
 
       +redefine-tablet()
-        top: ($navbar-shrink-height * 0.9) + $spacing-unit
+        top ($navbar-shrink-height * 0.9) + $spacing-unit
 
       +redefine-mobile()
         top: ($navbar-shrink-height * 0.8 + $spacing-unit)
@@ -133,3 +133,14 @@
 
     +redefine-mobile()
       right 12px
+
+.transition-fade
+  transition 0.4s
+  opacity 1
+
+html.is-animating
+  .transition-fade
+    opacity 0
+    transition 0.4s
+
+

@@ -8,7 +8,7 @@ Global.initUtils = () => {
     homeBanner_dom: document.querySelector(".home-banner-container"),
     scrollProgressBar_dom: document.querySelector(".scroll-progress-bar"),
     pjaxProgressBar_dom: document.querySelector(".pjax-progress-bar"),
-    pjaxProgressIcon_dom: document.querySelector(".pjax-progress-icon"),
+    pjaxProgressIcon_dom: document.querySelector(".swup-progress-icon"),
     backToTopButton_dom: document.querySelector(".tool-scroll-to-top"),
     toolsList: document.querySelector(".hidden-tools-list"),
     toggleButton: document.querySelector(".toggle-tools-list"),
@@ -248,6 +248,18 @@ Global.initUtils = () => {
       toolExpandDom.addEventListener("click", () => {
         isExpand = !isExpand;
         setPageWidth(isExpand);
+
+        var loadingPlaceholder = document.querySelector(".loading-placeholder");
+        var masonryContainer = document.querySelector("#masonry-container");
+        if (!loadingPlaceholder || !masonryContainer) return;
+
+        loadingPlaceholder.style.opacity = 1;
+        loadingPlaceholder.style.display = "block";
+        masonryContainer.style.display = "none";
+        
+        setTimeout(() => {
+          Global.initMasonry();
+        }, 300);
       });
     },
 

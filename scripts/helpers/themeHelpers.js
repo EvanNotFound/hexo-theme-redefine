@@ -124,16 +124,16 @@ hexo.extend.helper.register('renderPjaxJS', function (path) {
     const cdnBase = cdnProviders[this.theme.cdn.provider] || cdnProviders.aliyun;
     const renderedPath = urlRender(path);
 
-    if (this.theme.global.pjax === true) {
+    if (this.theme.global.single_page === true) {
       if (this.theme.cdn.provider === 'custom') {
         const customUrl = cdnBase.replace('${version}', themeVersion).replace('${path}', path);
         return this.theme.cdn.enable
-          ? `<script async data-pjax src="${customUrl}"></script>`
-          : `<script async data-pjax src="${renderedPath}"></script>`;
+          ? `<script data-swup-reload-script src="${customUrl}"></script>`
+          : `<script data-swup-reload-script src="${renderedPath}"></script>`;
       } else {
         return this.theme.cdn.enable
-          ? `<script async data-pjax src="${cdnBase}/hexo-theme-redefine@${themeVersion}/source/${path}"></script>`
-          : `<script async data-pjax src="${renderedPath}"></script>`;
+          ? `<script data-swup-reload-script src="${cdnBase}/hexo-theme-redefine@${themeVersion}/source/${path}"></script>`
+          : `<script data-swup-reload-script src="${renderedPath}"></script>`;
       }
     } else {
       if (this.theme.cdn.provider === 'custom') {

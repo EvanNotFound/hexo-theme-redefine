@@ -8,7 +8,7 @@ window.addEventListener('DOMContentLoaded', () => {
     repository: 'https://github.com/EvanNotFound/hexo-theme-redefine'
   }
 
-  Global.localStorageKey = 'Global-THEME-STATUS';
+  Global.localStorageKey = 'REDEFINE-THEME-STATUS';
 
   Global.styleStatus = {
     isExpandPageWidth: false,
@@ -44,6 +44,7 @@ window.addEventListener('DOMContentLoaded', () => {
   Global.refresh = () => {
     Global.initUtils();
     navbarShrink.init();
+
     if (Global.data_config.masonry) {
       Global.initMasonry();
     }

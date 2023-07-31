@@ -1,0 +1,34 @@
+<%- renderJS([
+    'js/libs/Swup.min.js',
+    'js/libs/SwupSlideTheme.min.js',
+    'js/libs/SwupScriptsPlugin.min.js',
+    'js/libs/SwupProgressPlugin.min.js',
+    'js/libs/SwupScrollPlugin.min.js']
+) %>
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+        ],
+        containers: ["#swup"],
+    });
+
+    swup.on("pageView", () => {
+        Global.refresh();
+    });
+
+    // if (document.readyState === "complete") {
+    //
+    // } else {
+    //     document.addEventListener("DOMContentLoaded", () => init());
+    // }
+</script>

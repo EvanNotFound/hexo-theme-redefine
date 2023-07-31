@@ -6,9 +6,9 @@
         && theme.comment.config.gitalk.repo
 ) { %>
     <div id="gitalk-container"></div>
-    <script <%= theme.global.pjax === true ? 'data-pjax' : '' %>
+    <script <%= theme.global.single_page === true ? 'data-swup-reload-script' : '' %>
             src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
-    <script <%= theme.global.pjax === true ? 'data-pjax' : '' %>>
+    <script <%= theme.global.single_page === true ? 'data-swup-reload-script' : '' %>>
 
         function loadGitalk() {
             let __gitalk__pathname = decodeURI(location.pathname);
@@ -34,7 +34,7 @@
             }
         }
 
-        if ('<%= theme.global.pjax %>') {
+        if ('<%= theme.global.single_page %>') {
             const loadGitalkTimeout = setTimeout(() => {
                 loadGitalk();
                 clearTimeout(loadGitalkTimeout);

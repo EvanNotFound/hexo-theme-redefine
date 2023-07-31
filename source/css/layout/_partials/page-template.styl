@@ -383,6 +383,8 @@ $friend-link-item-border-radius = 9px
   #masonry-container
     position relative
     display none
+    opacity 0
+    transition opacity 0.1s ease-in
 
     .masonry-item
       position absolute
@@ -403,6 +405,8 @@ $friend-link-item-border-radius = 9px
     display block
     justify-content center
     align-items center
+    opacity 1
+    transition opacity 0.1s ease-out
 
   .loading
     -webkit-animation gradient-slide 1.1s ease infinite

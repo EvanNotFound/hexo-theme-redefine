@@ -4,6 +4,7 @@
     'js/layouts/navbarShrink.js',
     'js/tools/scrollTopBottom.js',
     'js/tools/lightDarkSwitch.js',
+    'js/layouts/categoryList.js',
 ]) %>
 
 <% if (theme.navbar.search.enable) { %>
@@ -39,17 +40,13 @@
     <%- renderJS('js/plugins/masonry.js') %>
 <% } %>
 
-<div class="post-scripts<%= theme.global.pjax === true ? ' pjax' : '' %>">
-    <% if (theme.articles.toc.enable && is_post()) { %>
+<div class="post-scripts" <%= theme.global.single_page === true ? 'data-swup-reload-script' : '' %>>
+    <% if (theme.articles.toc.enable) { %>
         <%- renderJS([
             'js/tools/tocToggle.js',
-            'js/libs/anime.min.js',
             'js/layouts/toc.js',
+            'js/libs/anime.min.js',
             'js/plugins/tabs.js',
         ]) %>
     <% } %>
 </div>
-
-<% if (theme.global.pjax === true) { %>
-    <%- partial('_plugins/pjax') %>
-<% } %>

@@ -64,14 +64,15 @@ global:
   scroll_progress:
     bar: false # progress bar
     percentage: true # percentage
-  # Website counter (powered by https://busuanzi.ibruce.info/)
-  busuanzi_counter:
+  # Website counter
+  website_counter:
+    url: https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js # counter API URL (no need to change)
     enable: true # enable website counter or not
     site_pv: true # site page view
     site_uv: true # site unique visitor
     post_pv: true # post page view
-  # Whether to enable PJAX
-  pjax: true
+  # Whether to enable single page experience (using swup). See https://swup.js.org/. similar to pjax
+  single_page: true
   # Whether to enable open graph
   open_graph: true
   # Google Analytics
@@ -149,6 +150,10 @@ home_banner:
       zhihu:  # your ZhiHu URL
       twitter:  # your twitter URL
       email:  # your email
+      # ...... # you can add more
+    # Social links with QRcode drawers
+    qrs:
+      weixin:  # your Wechat QRcode image URL
       # ...... # you can add more
 # HOME BANNER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 

@@ -8,7 +8,7 @@
         <% } %>
 
         <!-- go comment -->
-        <% if (theme.comment.enable === true && theme.comment.hasOwnProperty('system')) { %>
+        <% if (theme.comment.enable === true && theme.comment.hasOwnProperty('system') && page.comment !== false) { %>
             <li class="go-comment">
                 <i class="fa-regular fa-comments"></i>
             </li>

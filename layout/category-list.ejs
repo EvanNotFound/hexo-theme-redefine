@@ -1,20 +1,15 @@
-<div class="fade-in-down-animation">
-    <div class="category-list-container">
-        <div class="tagcloud-header">
-            <h1 style="margin: 15px 0px; margin-bottom: 30px;"><%- __('categories') %></h1>
-        </div>
-        <div class="category-list-content">
-            <%- list_categories(site.categories, {
-                class: 'all-category',
-                depth: 5,
-                style: 'list',
-            }) %>
-        </div>
-        <div class="category-comments">
-            <% if (page.comment) { %>
-                <%- partial('_partials/comments/comment') %>
-            <% } %>
-        </div>
-    </div>
+<div class="category-list-container">
+	<div class="tagcloud-header">
+		<h1 style="margin: 15px 0px; margin-bottom: 30px">
+			<%- __('categories') %>
+		</h1>
+	</div>
+	<div class="category-list-content">
+		<%- list_categories(site.categories, { class: 'all-category', depth: 5,
+		style: 'list', }) %>
+	</div>
+	<div class="category-comments">
+		<% if (page.comment) { %> <%- partial('_partials/comments/comment') %>
+		<% } %>
+	</div>
 </div>
-<%- renderPjaxJS('js/layouts/categoryList.js') %>

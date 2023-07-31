@@ -3,6 +3,7 @@
         .home-banner-container {
             background: transparent !important;
         }
+
         .home-article-item,
         .sidebar-links,
         .sidebar-content,
@@ -13,36 +14,42 @@
         footer.footer {
             background-color: var(--background-color-transparent-80) !important;
         }
+
         .right-bottom-tools:hover,
         a.page-number:hover,
         a.extend:hover {
             background-color: var(--primary-color) !important;
         }
+
         .site-info,
         .home-article-sticky-label {
             background-color: var(--background-color-transparent-15) !important;
         }
+
         .home-article-sticky-label {
             backdrop-filter: none !important;
         }
     </style>
 
-    <div class="home-banner-background">
+    <div class="home-banner-background transition-fade">
     </div>
 <% } %>
 
-<div class="home-banner-container flex-center">
+<div class="home-banner-container flex-center transition-fade">
     <div class="content flex-center">
-        <div class="description fade-in-down-animation" <% if (theme.home_banner.custom_font.enable) { %>
-         style="font-family: '<%- theme.home_banner.custom_font.family %>', sans-serif; !important;"
-        <% } %>>
-          <%- theme.home_banner.title || theme.style.first_screen.description || config.description %> <%# theme.style.first_screen.description is deprecated %>
-          <% if (theme.home_banner.subtitle.length !== 0) { %>
-            <p><i id="subtitle"></i></p>
-          <% } %>
+        <div class="description"
+        <% if (theme.home_banner.custom_font.enable) { %>
+             style="font-family: '<%- theme.home_banner.custom_font.family %>', sans-serif; !important;"
+                <% } %>
+        >
+            <%- theme.home_banner.title || theme.style.first_screen.description || config.description %>
+            <%# theme.style.first_screen.description is deprecated %>
+            <% if (theme.home_banner.subtitle.length !== 0) { %>
+                <p><i id="subtitle"></i></p>
+            <% } %>
         </div>
         <% if (theme.home_banner.social_links.enable) { %>
-            <div class="social-contacts fade-in-down-animation">
+            <div class="social-contacts">
                 <% for (const key in theme.home_banner.social_links.links) { %>
                     <% if(theme.home_banner.social_links.links[key]) { %>
                         <% if(key === 'email') { %>
@@ -63,6 +70,33 @@
                                     <i class="fa-brands fa-<%= key %>"></i>
                                 </a>
                             </span>
+                        <% } %>
+                    <% } %>
+                <% } %>
+                <% if (theme.home_banner.social_links.qrs && theme.home_banner.social_links.qrs.length !== 0) { %>
+                    <% for (const key in theme.home_banner.social_links.qrs) { %>
+                        <% if(theme.home_banner.social_links.qrs[key]) { %>
+                            <% if(key.includes("fa-")) { %>
+                                <span class="social-contact-item-qr">
+                                <a target="_blank">
+                                    <i class="<%= key %> fa-sm"></i>
+									<div class="social-qr-container fade-in-down-animation">
+										<img class="social-contacts-qr"
+                                             src="<%- url_for(theme.home_banner.social_links.qrs[key]) %>"/>
+									</div>
+                                </a>
+                            </span>
+                            <% } else { %>
+                                <span class="social-contact-item-qr <%= key %>">
+                                <a target="_blank">
+                                    <i class="fa-brands fa-<%= key %>"></i>
+									<div class="social-qr-container fade-in-down-animation">
+										<img class="social-contacts-qr"
+                                             src="<%- url_for(theme.home_banner.social_links.qrs[key]) %>"/>
+									</div>
+                                </a>
+                            </span>
+                            <% } %>
                         <% } %>
                     <% } %>
                 <% } %>
