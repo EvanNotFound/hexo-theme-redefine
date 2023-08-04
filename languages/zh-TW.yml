@@ -74,6 +74,9 @@ copyright:
   update_time: 更新于
   license_title: 版權宣告
   license_content: "本作品采用 %s 进行许可。"
+  all_rights_reserved: "保留所有權利 &#169 %s"
+  public_domain: "本作品已在公共領域中，可自由轉載、修改、散佈，無需經過作者同意。"
+
 ago:
   second: "%s 秒前"
   minute: "%s 分鐘前"
