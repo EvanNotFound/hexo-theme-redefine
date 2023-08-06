@@ -139,8 +139,6 @@ Thanks to all of you!
 
 ## 🌟 Star History
 
-## Star History
-
 <a href="https://star-history.com/#EvanNotFound/hexo-theme-redefine&Date">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=EvanNotFound/hexo-theme-redefine&type=Date&theme=dark" />
