@@ -130,7 +130,13 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 
 ## 🌟 Star 记录
 
-[![Star History Chart](https://api.star-history.com/svg?repos=EvanNotFound/hexo-theme-redefine&type=Date)](https://star-history.com/#EvanNotFound/hexo-theme-redefine&Date)
+<a href="https://star-history.com/#EvanNotFound/hexo-theme-redefine&Date">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=EvanNotFound/hexo-theme-redefine&type=Date&theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=EvanNotFound/hexo-theme-redefine&type=Date" />
+    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=EvanNotFound/hexo-theme-redefine&type=Date" />
+  </picture>
+</a>
 
 ## 📢 其他
 
