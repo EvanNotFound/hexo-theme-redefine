@@ -65,6 +65,7 @@ Thank you!
 |    Jun 5    |                            **杰                             |     ¥6.00     |      支付宝      |             /             |
 |   Jun 12    |                         Anonymous                          |     ¥0.99     |     微信赞赏码     |             /             |
 |   Jun 22    |            [@JuTemp](https://github.com/JuTemp)            |    ¥15.00     |      支付宝      |    https://jtp0415.top    |
+|   Jul 11    |                             匿名                             |    ¥40.00     |      支付宝      |             /             |
 |   Jul 13    |              [@825i](https://github.com/825i)              |    $20.00     |    Paypal     |   https://blog.xtu.icu/   |
 |   Jul 14    |                             点点                             |     ¥8.88     |     微信赞赏码     |             /             |
 |    Aug 1    |                             风宇                             |    ¥14.99     |     微信赞赏码     |    https://krazyu.com     |
