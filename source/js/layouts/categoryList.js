@@ -65,7 +65,7 @@ function categoryListInit() {
 }
 
 try {
-  swup.on("pageView", () => {
+  swup.hooks.on("page:view", () => {
     categoryListInit();
   });
 } catch (e) {}

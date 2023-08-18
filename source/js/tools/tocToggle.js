@@ -45,7 +45,7 @@ function initTocToggle() {
 }
 
 try {
-  swup.on("pageView", () => {
+  swup.hooks.on("page:view", () => {
     initTocToggle();
   });
 } catch (e) {}

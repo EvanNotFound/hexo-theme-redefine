@@ -82,7 +82,7 @@ function initTOC() {
 }
 
 try {
-  swup.on("pageView", () => {
+  swup.hooks.on("page:view", () => {
     initTOC();
   });
 } catch (e) {}
