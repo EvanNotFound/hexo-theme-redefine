@@ -26,8 +26,9 @@ $friend-link-item-border-radius = 9px
 
     h1, h2, h3, h4, h5, h6
       &:first-child
-        margin-top 0
+        margin 6px 0 36px 0
         border-bottom none
+        line-height 1
 
   .friends-link-container
     .friend-links-title
@@ -317,19 +318,15 @@ $friend-link-item-border-radius = 9px
               white-space nowrap
 
   .essays-container
-    margin-top 1rem
+
     margin-bottom 1rem
 
-    .essays-title
+    .essays-header
+      font-size 3.2rem
+      line-height 1
+      font-weight bold
       color var(--second-text-color)
-      margin-top -10px
-
-      .article-title-regular
-        font-size 3rem
-        line-height 1
-        font-weight bold
-        color var(--second-text-color)
-        margin-top 15px
+      margin 6px 0 36px 0
 
     .essays-list
       position relative
@@ -373,12 +370,12 @@ $friend-link-item-border-radius = 9px
             font-size 0.8rem
 
   /* Masonry Page */
-  .page-template-title
-    .article-title-regular
-      font-size 3.2rem
-      font-weight bold
-      color var(--second-text-color)
-      margin 5px 0 1.5rem 0
+  .masonry-header
+    font-size 3.2rem
+    line-height 1
+    font-weight bold
+    color var(--second-text-color)
+    margin 6px 0 36px 0
 
   #masonry-container
     position relative
