@@ -50,4 +50,4 @@ try {
   });
 } catch (e) {}
 
-window.addEventListener("DOMContentLoaded", initTocToggle);
+document.addEventListener("DOMContentLoaded", initTocToggle);
