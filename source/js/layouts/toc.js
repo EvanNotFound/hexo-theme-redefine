@@ -87,4 +87,4 @@ try {
   });
 } catch (e) {}
 
-window.addEventListener("DOMContentLoaded", initTOC);
+document.addEventListener("DOMContentLoaded", initTOC);
