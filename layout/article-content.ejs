@@ -50,6 +50,21 @@
             </div>
         <% } %>
 
+        <% if (page.expires && page.expires !== "") {%>
+            <% const expireDate = new Date(page.expires);
+                const now = new Date();
+                const timeDifference = now - expireDate;
+                const daysAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24)); %>
+
+            <% if (expireDate < now) { %>
+                <div class="note red icon article-expire">
+                    <i class="fa-solid fa-timer expire-icon"></i>
+                    <span class="expire-label"><%= __('expired', daysAgo) %></span>
+                </div>
+            <% } %>
+        <% } %>
+
+
         <div class="article-content markdown-body">
             <%- page.content %>
         </div>

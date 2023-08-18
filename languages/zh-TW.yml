@@ -88,3 +88,4 @@ ago:
 
 create_time: 撰寫
 update_time: 更新
+expired: "这篇文章最後更新於 %s 天前，內容可能已經過時。"
