@@ -737,6 +737,10 @@ video {
   max-width: none;
 }
 
+.\!max-w-none {
+  max-width: none !important;
+}
+
 .scale-100 {
   --tw-scale-x: 1;
   --tw-scale-y: 1;
