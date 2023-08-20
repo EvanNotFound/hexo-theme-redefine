@@ -87,7 +87,7 @@ hexo.extend.filter.register(
     }
 
     // read theme from file
-    let template = hbeDefaultTheme;
+    let template = hbeTheme;
 
     if (tagUsed === false) {
       dlog(

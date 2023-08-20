@@ -8,7 +8,9 @@
     "format": "prettier --write ./source/js/*.js ./scripts",
     "lint:style": "stylelint --fix ./source/css",
     "git:push": "git push --tag && git push -u origin dev",
-    "git:add": "npm run lint:style && git add ."
+    "git:add": "npm run lint:style && git add .",
+    "build:css": "tailwindcss build -i source/css/style.styl -o source/css/build/styles.css",
+    "watch:css": "tailwindcss build -i source/css/style.styl -o source/css/build/styles.css --watch"
   },
   "repository": {
     "type": "git",
@@ -28,5 +30,12 @@
   "bugs": {
     "url": "https://github.com/EvanNotFound/hexo-theme-redefine/issues"
   },
-  "homepage": "https://github.com/EvanNotFound/hexo-theme-redefine#readme"
+  "homepage": "https://github.com/EvanNotFound/hexo-theme-redefine#readme",
+  "devDependencies": {
+    "eslint": "^8.47.0",
+    "tailwindcss": "^3.3.3"
+  },
+  "dependencies": {
+    "postcss": "^8.4.28"
+  }
 }

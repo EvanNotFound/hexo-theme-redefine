@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import 'common/animated.styl'
 @import 'common/variables.styl'
 @import 'common/basic.styl'
@@ -15,7 +19,7 @@
 @import 'layout/_partials/post-tools.styl'
 @import 'layout/_partials/side-tools.styl'
 @import 'layout/_partials/archive-list.styl'
-@import 'layout/_partials/footer.styl'
+@import 'layout/_partials/footer.styl' //tailwind done
 @import 'layout/_partials/paginator.styl'
 @import 'layout/_partials/page-template.styl'
 @import 'layout/_partials/home-banner.styl'
@@ -40,3 +44,22 @@ if (hexo-config('home.sidebar.enable') == true)
 @import 'layout/_modules/folding.styl'
 @import 'layout/_modules/buttons.styl'
 @import 'layout/_modules/tabs.styl'
+
+.redefine-box-shadow
+  box-shadow var(--redefine-box-shadow)
+
+  &:hover
+    box-shadow var(--redefine-box-shadow-hover)
+
+
+.redefine-box-shadow-flat
+  box-shadow var(--redefine-box-shadow-flat)
+
+  &:hover
+    box-shadow var(--redefine-box-shadow)
+
+.ellipsis
+  overflow hidden
+  text-overflow ellipsis
+  white-space nowrap
+  width 100%

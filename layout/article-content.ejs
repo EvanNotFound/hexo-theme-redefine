@@ -15,7 +15,7 @@
                 }
                 %>
                 <% if (articleCover) { %>
-                <img src="<%= url_for(articleCover) %>" alt="<%= page.title %>" />
+                <img src="<%= url_for(articleCover) %>" alt="<%= page.title %>" class="max-w-none"/>
                 <% } %>
                 <h1 class="article-title-cover"><%= page.title %></h1>
             <% } else { %>
