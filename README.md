@@ -147,3 +147,7 @@ Thanks to all of you!
     <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=EvanNotFound/hexo-theme-redefine&type=Date" />
   </picture>
 </a>
+
+## 💻 Development
+
+If you want to contribute to this project, you can clone the `dev` branch and check out the [Development Docs](https://redefine-docs.ohevan.com/developer) to get started.
