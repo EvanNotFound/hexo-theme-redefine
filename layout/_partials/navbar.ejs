@@ -3,11 +3,11 @@
     <div class="navbar-content<%- (theme.home_banner.enable === true && is_home() && !page.prev) ? ' has-home-banner' : '' %>">
         <div class="left">
             <% if (theme.defaults.hasOwnProperty('logo') && theme.defaults.logo) { %>
-                <a class="logo-image" href="<%= config.url %>">
+                <a class="logo-image" href="<%= url_for(config.url) + "/" %>">
                     <%- image_tag(theme.defaults.logo) %>
                 </a>
             <% } %>
-            <a class="logo-title" href="<%= config.url %>">
+            <a class="logo-title" href="<%= url_for(config.url) + "/" %>">
                 <%- is_home() ? '<h1>' : '' %>
                 <%= theme.info.title || config.title || 'Redefine Theme' %>
                 <%- is_home() ? '</h1>' : '' %>
