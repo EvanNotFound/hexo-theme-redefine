@@ -1,12 +1,12 @@
 /*
-* Optimized by: EvanNotFound
-*/
+ * Optimized by: EvanNotFound
+ */
 
 const articleLibrary = [];
 const corpus = [];
 let flag = null;
 
-hexo.extend.filter.register('template_locals', function (localVariables) {
+hexo.extend.filter.register("template_locals", function (localVariables) {
   const cfg = hexo.theme.config.articles.recommendation;
   if (!cfg.enable) {
     return localVariables;
@@ -35,26 +35,157 @@ function fetchData(s, cfg) {
 
 function cleanData(data) {
   const symbolLists = [
-    ",", ".", "?", "!", ":", ";", "、", "……", "~", "&", "@", "#", "，", "。", "？", "！", "：", "；", "·", "…", "～", "＆", "＠", "＃", "“", "”", "‘", "’", "〝", "〞", "\"", "'", "＂", "＇", "´", "＇", "(", ")", "【",
-    "】", "《", "》", "＜", "＞", "﹝", "﹞", "<", ">", "(", ")", "[", "]", "«", "»", "‹", "›", "〔", "〕", "〈", "〉", "{", "}", "［", "］", "「", "」", "｛", "｝", "〖", "〗", "『", "』", "︵", "︷", "︹", "︿", "︽", "﹁",
-    "﹃", "︻", "︗", "/", "|", "\\", "︶", "︸", "︺", "﹀", "︾", "﹂", "﹄", "﹄", "︼", "︘", "／", "｜", "＼",
-    "_", "¯", "＿", "￣", "﹏", "﹋", "﹍", "﹉", "﹎", "﹊", "`", "ˋ", "¦", "︴", "¡", "¿", "^", "ˇ", "­", "¨", "ˊ", " ", "　",
-    "%", "*", "-", "+", "=", "￥", "$", "（", "）"
-  ]
-  data = data.replace(/\s/g, " ")
-  data = data.replace(/\!\[(.*?)\]\(.*?\)/g, (_a, b) => { return b })
-  data = data.replace(/(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?/g, " ")
+    ",",
+    ".",
+    "?",
+    "!",
+    ":",
+    ";",
+    "、",
+    "……",
+    "~",
+    "&",
+    "@",
+    "#",
+    "，",
+    "。",
+    "？",
+    "！",
+    "：",
+    "；",
+    "·",
+    "…",
+    "～",
+    "＆",
+    "＠",
+    "＃",
+    "“",
+    "”",
+    "‘",
+    "’",
+    "〝",
+    "〞",
+    '"',
+    "'",
+    "＂",
+    "＇",
+    "´",
+    "＇",
+    "(",
+    ")",
+    "【",
+    "】",
+    "《",
+    "》",
+    "＜",
+    "＞",
+    "﹝",
+    "﹞",
+    "<",
+    ">",
+    "(",
+    ")",
+    "[",
+    "]",
+    "«",
+    "»",
+    "‹",
+    "›",
+    "〔",
+    "〕",
+    "〈",
+    "〉",
+    "{",
+    "}",
+    "［",
+    "］",
+    "「",
+    "」",
+    "｛",
+    "｝",
+    "〖",
+    "〗",
+    "『",
+    "』",
+    "︵",
+    "︷",
+    "︹",
+    "︿",
+    "︽",
+    "﹁",
+    "﹃",
+    "︻",
+    "︗",
+    "/",
+    "|",
+    "\\",
+    "︶",
+    "︸",
+    "︺",
+    "﹀",
+    "︾",
+    "﹂",
+    "﹄",
+    "﹄",
+    "︼",
+    "︘",
+    "／",
+    "｜",
+    "＼",
+    "_",
+    "¯",
+    "＿",
+    "￣",
+    "﹏",
+    "﹋",
+    "﹍",
+    "﹉",
+    "﹎",
+    "﹊",
+    "`",
+    "ˋ",
+    "¦",
+    "︴",
+    "¡",
+    "¿",
+    "^",
+    "ˇ",
+    "­",
+    "¨",
+    "ˊ",
+    " ",
+    "　",
+    "%",
+    "*",
+    "-",
+    "+",
+    "=",
+    "￥",
+    "$",
+    "（",
+    "）",
+  ];
+  data = data.replace(/\s/g, " ");
+  data = data.replace(/\!\[(.*?)\]\(.*?\)/g, (_a, b) => {
+    return b;
+  });
+  data = data.replace(
+    /(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?/g,
+    " ",
+  );
   for (const symbol of symbolLists) {
-    data = data.replace(new RegExp("\\" + symbol, "g"), " ")
+    data = data.replace(new RegExp("\\" + symbol, "g"), " ");
   }
-  data = data.replace(/\d+/g, " ")
-  data = data.replace(/\s/g, " ")
-  return data
+  data = data.replace(/\d+/g, " ");
+  data = data.replace(/\s/g, " ");
+  return data;
 }
 
 function tokenize(data) {
   const jieba = require("nodejieba");
-  return jieba.cut(cleanData(data), true).filter(word => word !== " " && !/^[0-9]*$/.test(word));
+  return jieba
+    .cut(cleanData(data), true)
+    .filter((word) => word !== " " && !/^[0-9]*$/.test(word));
 }
 
 function cosineSimilarity(vector1, vector2) {
@@ -63,31 +194,32 @@ function cosineSimilarity(vector1, vector2) {
   let sqrt2 = 0;
   if (vector1.length == vector2.length) {
     for (let i = 0; i < vector1.length; i++) {
-      numerator += (vector1[i] * vector2[i])
-      sqrt1 += (vector1[i] * vector1[i])
-      sqrt2 += (vector2[i] * vector2[i])
+      numerator += vector1[i] * vector2[i];
+      sqrt1 += vector1[i] * vector1[i];
+      sqrt2 += vector2[i] * vector2[i];
     }
-    return numerator / (Math.sqrt(sqrt1) * Math.sqrt(sqrt2))
+    return numerator / (Math.sqrt(sqrt1) * Math.sqrt(sqrt2));
   }
 }
 
-
-
 function createWordLibrary(allWords) {
   const wordLibrary = {};
-  allWords.forEach(word => {
+  allWords.forEach((word) => {
     wordLibrary[word] = 0;
   });
   return wordLibrary;
 }
 
 function calculateWordFrequency(wordLibrary, wordsInArticle) {
-  const wordOccurrenceLibrary = wordsInArticle.reduce((wordCountObj, wordName) => {
-    if (wordName in wordCountObj) {
-      wordCountObj[wordName]++;
-    }
-    return wordCountObj;
-  }, JSON.parse(JSON.stringify(wordLibrary)));
+  const wordOccurrenceLibrary = wordsInArticle.reduce(
+    (wordCountObj, wordName) => {
+      if (wordName in wordCountObj) {
+        wordCountObj[wordName]++;
+      }
+      return wordCountObj;
+    },
+    JSON.parse(JSON.stringify(wordLibrary)),
+  );
 
   const wordFrequency = JSON.parse(JSON.stringify(wordLibrary));
   for (const word of Object.keys(wordLibrary)) {
@@ -103,7 +235,9 @@ function articleRecommendation(cfg) {
   let allWordsInAllArticles = [];
 
   for (const wordList of corpus) {
-    allWordsInAllArticles = [...new Set(allWordsInAllArticles.concat(wordList))];
+    allWordsInAllArticles = [
+      ...new Set(allWordsInAllArticles.concat(wordList)),
+    ];
   }
 
   const wordLibrary = createWordLibrary(allWordsInAllArticles);
@@ -125,13 +259,22 @@ function articleRecommendation(cfg) {
 
   for (let i = 0; i < corpus.length; i++) {
     const articlePath = articleLibrary[i].path;
-    dataSet[articlePath]["inverseDocumentFrequency"] = JSON.parse(JSON.stringify(wordLibrary));
-    dataSet[articlePath]["wordFrequency-inverseDocumentFrequency"] = JSON.parse(JSON.stringify(wordLibrary));
+    dataSet[articlePath]["inverseDocumentFrequency"] = JSON.parse(
+      JSON.stringify(wordLibrary),
+    );
+    dataSet[articlePath]["wordFrequency-inverseDocumentFrequency"] = JSON.parse(
+      JSON.stringify(wordLibrary),
+    );
     dataSet[articlePath]["wordFrequencyVector"] = [];
     for (const word of Object.keys(wordLibrary)) {
-      const inverseDocumentFrequency = Math.log(corpus.length / (documentCountLibrary[word] + 1));
-      const wordFrequencyInverseDocumentFrequency = dataSet[articlePath]["wordFrequency"][word] * inverseDocumentFrequency;
-      dataSet[articlePath]["wordFrequencyVector"].push(wordFrequencyInverseDocumentFrequency);
+      const inverseDocumentFrequency = Math.log(
+        corpus.length / (documentCountLibrary[word] + 1),
+      );
+      const wordFrequencyInverseDocumentFrequency =
+        dataSet[articlePath]["wordFrequency"][word] * inverseDocumentFrequency;
+      dataSet[articlePath]["wordFrequencyVector"].push(
+        wordFrequencyInverseDocumentFrequency,
+      );
     }
   }
 
@@ -140,30 +283,40 @@ function articleRecommendation(cfg) {
     similaritySet[articlePath1] = {};
     for (let j = 0; j < corpus.length; j++) {
       const articlePath2 = articleLibrary[j].path;
-      similaritySet[articlePath1][articlePath2] = cosineSimilarity(dataSet[articlePath1]["wordFrequencyVector"], dataSet[articlePath2]["wordFrequencyVector"]);
+      similaritySet[articlePath1][articlePath2] = cosineSimilarity(
+        dataSet[articlePath1]["wordFrequencyVector"],
+        dataSet[articlePath2]["wordFrequencyVector"],
+      );
     }
     for (let j = 0; j < corpus.length; j++) {
-      recommendationSet[articlePath1] = Object.keys(similaritySet[articlePath1]).sort(function (a, b) {
-        return similaritySet[articlePath1][b] - similaritySet[articlePath1][a];   // Descending order
+      recommendationSet[articlePath1] = Object.keys(
+        similaritySet[articlePath1],
+      ).sort(function (a, b) {
+        return similaritySet[articlePath1][b] - similaritySet[articlePath1][a]; // Descending order
       });
     }
     const index = recommendationSet[articlePath1].indexOf(articlePath1);
     if (index > -1) {
       recommendationSet[articlePath1].splice(index, 1);
     }
-    recommendationSet[articlePath1] = recommendationSet[articlePath1].slice(0, cfg.limit);
+    recommendationSet[articlePath1] = recommendationSet[articlePath1].slice(
+      0,
+      cfg.limit,
+    );
     for (let j = 0; j < recommendationSet[articlePath1].length; j++) {
       const e = recommendationSet[articlePath1][j];
-      recommendationSet[articlePath1][j] = articleLibrary.filter(w => w.path == e)[0];
+      recommendationSet[articlePath1][j] = articleLibrary.filter(
+        (w) => w.path == e,
+      )[0];
     }
   }
-  hexo.locals.set('recommendationSet', function () {
+  hexo.locals.set("recommendationSet", function () {
     return recommendationSet;
   });
 }
 
-hexo.extend.helper.register('articleRecommendationGenerator', function (post) {
-  if (!post) return '';
+hexo.extend.helper.register("articleRecommendationGenerator", function (post) {
+  if (!post) return "";
   const cfg = hexo.theme.config.articles.recommendation;
   if (!cfg.enable) {
     return "";
@@ -173,7 +326,7 @@ hexo.extend.helper.register('articleRecommendationGenerator', function (post) {
       return "";
     }
   }
-  const recommendationSet = hexo.locals.get('recommendationSet');
+  const recommendationSet = hexo.locals.get("recommendationSet");
   const recommendedArticles = recommendationSet[post.path];
   return userInterface(recommendedArticles, cfg);
 });
@@ -205,8 +358,10 @@ function userInterface(recommendedArticles, cfg) {
 }
 
 function itemInterface(item) {
-  return `<a class="recommended-article-item" href="${hexo.config.root + item.path}" title="${item.title}" rel="bookmark">
-  <img src="${item.headimg}" alt="${item.title}">
+  return `<a class="recommended-article-item" href="${
+    hexo.config.root + item.path
+  }" title="${item.title}" rel="bookmark">
+  <img src="${item.headimg}" alt="${item.title}" class="!max-w-none">
   <span class="title">${item.title}</span>
 </a>`;
 }
