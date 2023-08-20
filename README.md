@@ -43,7 +43,7 @@ Hexo Theme Redefine source code is based on [hexo-theme-keep](https://github.com
 
 ![redefine-3-final](https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/33ee3d7c-189c-4b75-89c9-914b0cb63caf)
 
-## 🌐 Online Demo
+## 🌐 Demo
 
 - [EvanNotFound's Blog](https://ohevan.com)
 - [Theme Redefine Demo](https://redefine.ohevan.com)
@@ -51,7 +51,7 @@ Hexo Theme Redefine source code is based on [hexo-theme-keep](https://github.com
 
 If you are also using Redefine, please go to [Redefine Theme Showcase](https://redefine.ohevan.com/showcase) to add your blog link.
 
-## ⛰️ Some functions
+## ⛰️ Features
 
 - [Note Module](https://redefine-docs.ohevan.com/modules/notes)
 - [Friend Link Page](https://redefine-docs.ohevan.com/page_templates/friends)
@@ -68,6 +68,7 @@ If you are also using Redefine, please go to [Redefine Theme Showcase](https://r
 - [Aplayer support](https://redefine-docs.ohevan.com/plugins/aplayer)
 - [Shuoshuo support](https://redefine-docs.ohevan.com/shuoshuo)
 - [Customizable Font](https://redefine-docs.ohevan.com/basic/global#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93)
+- Tailwind CSS Included
 
 
 

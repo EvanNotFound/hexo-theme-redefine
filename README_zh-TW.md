@@ -64,6 +64,7 @@
 - [Aplayer 音樂播放器支持](https://redefine-docs.ohevan.com/plugins/aplayer)
 - [說說模塊](https://redefine-docs.ohevan.com/shuoshuo)
 - [自定義字體](https://redefine-docs.ohevan.com/basic/global#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93)
+- Tailwind CSS 支持
 
 ## ☁️ 安裝
 
