@@ -73,6 +73,10 @@ copyright:
   update_time: 更新于
   license_title: 版权声明
   license_content: "本文章采用 %s 进行许可。"
+  all_rights_reserved: "版权所有 &#169 %s，禁止转载。"
+  public_domain: "本文为公有领域作品，可自由转载、引用。"
+
+
 ago:
   second: "%s 秒前"
   minute: "%s 分钟前"
@@ -85,3 +89,4 @@ ago:
 
 create_time: 创建
 update_time: 更新
+expired: "这篇文章最后更新于 %s 天前，内容可能已经过时。"

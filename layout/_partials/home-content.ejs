@@ -4,8 +4,8 @@
             <li class="home-article-item">
 
                 <% if (post.sticky) { %>
-                    <div class="home-article-sticky-label">
-                        <i class="fa-regular fa-thumbtack"></i><%- __('sticky') %>
+                    <div class="absolute top-[12px] right-[12px] text-[0.7rem] text-third-text-color rounded-medium bg-background-color-transparent-15 py-[2px] px-[10px] border border-border-color z-1 hover:text-first-text-color cursor-default">
+                        <i class="fa-regular fa-thumbtack mr-[3px] text-[0.65rem]"></i><%- __('sticky') %>
                     </div>
                 <% } %>
 
@@ -23,24 +23,11 @@
                     }
                     %>
                 <% } %>
-                <% if (typeof post.thumbnail !== 'undefined' && post.thumbnail === false) {} 
-                
-                else if (post.thumbnail && post.thumbnail !== null) { %>
-                    <div class="home-article-thumbnail">
+
+                <% if (post.thumbnail !== false && (post.thumbnail || post.cover || post.banner)) { %>
+                    <div id="home-article-thumbnail" class="relative h-[150px] overflow-hidden rounded-t-[10.8px] md:rounded-t-large -m-5 mb-3 sm:-m-6 sm:mb-4 md:-m-7 md:mb-5">
                         <a href="<%- url_for(post.path) %>">
-                            <img src="<%- url_for(articleThumbnail) %>" alt="<%= post.title %>" />
-                        </a>
-                    </div>
-                <% } else if (post.cover && post.cover !== null && post.cover !== false) { %>
-                    <div class="home-article-thumbnail">
-                        <a href="<%- url_for(post.path) %>">
-                            <img src="<%- url_for(articleThumbnail) %>" alt="<%= post.title %>" />
-                        </a>
-                    </div>
-                <% } else if (post.banner && post.banner !== null && post.banner !== false) { %>
-                    <div class="home-article-thumbnail">
-                        <a href="<%- url_for(post.path) %>">
-                            <img src="<%- url_for(articleThumbnail) %>" alt="<%= post.title %>" />
+                            <img src="<%- url_for(articleThumbnail) %>" alt="<%= post.title %>" class="w-full h-full object-cover dark:brightness-75 transition-all" />
                         </a>
                     </div>
                 <% } %>

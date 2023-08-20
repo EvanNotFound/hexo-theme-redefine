@@ -1,24 +1,22 @@
-<div class="friends-link-container">
-    <div class="friend-links-title">
-        <h1 class="article-title-regular"><%= page.title %></h1>
-    </div>
+<div class="friends-link-container flex flex-col">
+    <h1 class="text-[3.2rem] mt-1.5 mb-5 font-bold leading-[1]"><%= page.title %></h1>
     <% for (const category of theme.links) { %>
-        <div class="friend-links-subtitle">
-            <h2 class="article-title-regular"><%= category.links_category %></h2>
+        <div class="mt-2 mb-4">
+            <h2 class="text-2xl font-bold"><%= category.links_category %></h2>
         </div>
         <% if (category.has_thumbnail == true) { %>
-    <ul class="friends-link-list">
+    <ul class="grid grid-cols-2 mb-6 w-full gap-4">
         <% for (const f of category.list) { %>
-            <li class="friends-link-item-has-thumbnail">
+            <li class="group transform scale-100 transition-transform duration-100 ease-linear active:scale-95">
                 <a href="<%= f.link %>">
-                    <div class="content">
-                        <div class="thumbnail radius-thumbnail">
-                            <img class="radius-thumbnail" src="<%= f.thumbnail %>"/>
+                    <div class="content rounded-lg redefine-box-shadow-flat">
+                        <div class="thumbnail rounded-t-lg h-32 md:h-44 overflow-hidden">
+                            <img class="rounded-t-lg object-cover w-full h-full" src="<%= f.thumbnail %>"/>
                         </div>
-                        <div class="avainfo">
-                            <div class="avatar radius-avatar">
+                        <div class="avainfo flex flex-row items-center gap-1 sm:gap-2 overflow-hidden min-w-0">
+                            <div class="avatar h-16 w-16 rounded-bl-lg bg-third-background-color">
                                 <% if (f.avatar) { %>
-                                    <img class="radius-avatar"
+                                    <img class="rounded-bl-lg h-16 w-16 max-w-none"
                                          src="<%= f.avatar %>"
                                          onerror="this.style.display='none'"
                                     >
@@ -26,9 +24,9 @@
                                     <i class="fa-solid fa-user-group"></i>
                                 <% } %>
                             </div>
-                            <div class="info">
-                                <div class="name ellipsis"><%= f.name %></div>
-                                <div class="description ellipsis"><%= f.description %></div>
+                            <div class="flex flex-col min-w-0">
+                                <div class="text-lg text-second-text-color ellipsis group-hover:!text-primary"><%= f.name %></div>
+                                <div class="text-third-text-color ellipsis"><%= f.description %></div>
                             </div>
                         </div>
                     </div>
@@ -37,14 +35,14 @@
         <% } %>
     </ul>
     <% } else { %>
-        <ul class="friends-link-list">
+        <ul class="grid mb-6 gap-4 <%= theme.page_templates.friends_column === 3 ? "grid-cols-2 sm:grid-cols-3" : "grid-cols-2" %>">
             <% for (const f of category.list) { %>
-                <li class="friends-link-item">
+                <li class="group transform scale-100 transition-transform duration-100 ease-linear active:scale-95">
                     <a href="<%= f.link %>">
-                        <div class="content">
-                            <div class="avatar radius">
+                        <div class="flex flex-row items-center gap-1 sm:gap-2 overflow-hidden min-w-0 rounded-lg redefine-box-shadow-flat">
+                            <div class="h-16 w-16 rounded-bl-lg bg-third-background-color">
                                 <% if (f.avatar) { %>
-                                    <img class="radius"
+                                    <img class="rounded-l-lg h-16 w-16 max-w-none"
                                          src="<%= f.avatar %>"
                                          onerror="this.style.display='none'"
                                     >
@@ -52,9 +50,9 @@
                                     <i class="fa-solid fa-user-group"></i>
                                 <% } %>
                             </div>
-                            <div class="info">
-                                <div class="name ellipsis"><%= f.name %></div>
-                                <div class="description ellipsis"><%= f.description %></div>
+                            <div class="flex flex-col min-w-0">
+                                <div class="text-lg text-second-text-color ellipsis group-hover:!text-primary"><%= f.name %></div>
+                                <div class="text-third-text-color ellipsis"><%= f.description %></div>
                             </div>
                         </div>
                     </a>

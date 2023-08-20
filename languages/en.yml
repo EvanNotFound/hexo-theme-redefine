@@ -74,6 +74,8 @@ copyright:
   update_time: Updated at
   license_title: License
   license_content: "This work is licensed under %s."
+  all_rights_reserved: "All Rights Reserved &#169; %s"
+  public_domain: "This work is in the public domain."
 
 ago:
   second: "%s seconds ago"
@@ -86,3 +88,4 @@ ago:
 
 create_time: Created
 update_time: Updated
+expired: "This post is written %s days ago, and the content may not be up to date."

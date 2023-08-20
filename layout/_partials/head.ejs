@@ -71,6 +71,13 @@
         <%= theme.info.title || config.title || 'Redefine Theme' %>
     </title>
     <%- css('css/style') %>
+
+    <% if (theme.developer && theme.developer.enable) {%>
+        <%- css('css/build/styles.css') %>
+    <% } else {%>
+        <%- renderCSS('css/build/styles.css') %>
+    <% } %>
+
     <%- renderCSS('fonts/fonts.css') %>
     <%- renderCSS('fonts/Satoshi/satoshi.css') %>
     <%- renderCSS('fonts/Chillax/chillax.css') %>

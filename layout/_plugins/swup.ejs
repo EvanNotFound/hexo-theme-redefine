@@ -22,7 +22,7 @@
         containers: ["#swup"],
     });
 
-    swup.on("pageView", () => {
+    swup.hooks.on("page:view", () => {
         Global.refresh();
     });
 

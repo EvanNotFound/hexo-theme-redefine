@@ -1,20 +1,28 @@
 /* global function */
 
-
 Global.initModeToggle = () => {
-
   Global.utils.modeToggle = {
-
-    modeToggleButton_dom: document.querySelector('.tool-dark-light-toggle'),
-    iconDom: document.querySelector('.tool-dark-light-toggle i'),
-    mermaidLightTheme: typeof Global.theme_config.mermaid !== 'undefined' && typeof Global.theme_config.mermaid.style !== 'undefined' && typeof Global.theme_config.mermaid.style.light !== 'undefined' ? Global.theme_config.mermaid.style.light : 'default',
-    mermaidDarkTheme: typeof Global.theme_config.mermaid !== 'undefined' && typeof Global.theme_config.mermaid.style !== 'undefined' && typeof Global.theme_config.mermaid.style.dark !== 'undefined' ? Global.theme_config.mermaid.style.dark : 'dark',
-
+    modeToggleButton_dom: document.querySelector(".tool-dark-light-toggle"),
+    iconDom: document.querySelector(".tool-dark-light-toggle i"),
+    mermaidLightTheme:
+      typeof Global.theme_config.mermaid !== "undefined" &&
+      typeof Global.theme_config.mermaid.style !== "undefined" &&
+      typeof Global.theme_config.mermaid.style.light !== "undefined"
+        ? Global.theme_config.mermaid.style.light
+        : "default",
+    mermaidDarkTheme:
+      typeof Global.theme_config.mermaid !== "undefined" &&
+      typeof Global.theme_config.mermaid.style !== "undefined" &&
+      typeof Global.theme_config.mermaid.style.dark !== "undefined"
+        ? Global.theme_config.mermaid.style.dark
+        : "dark",
 
     enableLightMode() {
-      document.body.classList.remove('dark-mode');
-      document.body.classList.add('light-mode');
-      this.iconDom.className = 'fa-regular fa-moon';
+      document.body.classList.remove("dark-mode");
+      document.documentElement.classList.remove("dark");
+      document.body.classList.add("light-mode");
+      document.documentElement.classList.add("light");
+      this.iconDom.className = "fa-regular fa-moon";
       Global.styleStatus.isDark = false;
       Global.setStyleStatus();
       this.mermaidLightInit();
@@ -22,9 +30,11 @@ Global.initModeToggle = () => {
     },
 
     enableDarkMode() {
-      document.body.classList.add('dark-mode');
-      document.body.classList.remove('light-mode');
-      this.iconDom.className = 'fa-regular fa-brightness';
+      document.body.classList.remove("light-mode");
+      document.documentElement.classList.remove("light");
+      document.body.classList.add("dark-mode");
+      document.documentElement.classList.add("dark");
+      this.iconDom.className = "fa-regular fa-brightness";
       Global.styleStatus.isDark = true;
       Global.setStyleStatus();
       this.mermaidDarkInit();
@@ -34,7 +44,7 @@ Global.initModeToggle = () => {
     mermaidLightInit() {
       if (window.mermaid) {
         mermaid.initialize({
-            theme: this.mermaidLightTheme,
+          theme: this.mermaidLightTheme,
         });
       }
     },
@@ -42,33 +52,38 @@ Global.initModeToggle = () => {
     mermaidDarkInit() {
       if (window.mermaid) {
         mermaid.initialize({
-            theme: this.mermaidDarkTheme,
+          theme: this.mermaidDarkTheme,
         });
       }
     },
 
     async setGiscusTheme(theme) {
-      if (document.querySelector('#giscus-container')) {
+      if (document.querySelector("#giscus-container")) {
         let giscusFrame = document.querySelector("iframe.giscus-frame");
-        while (!giscusFrame)
-        {
-          await new Promise(r => setTimeout(r, 1000));
+        while (!giscusFrame) {
+          await new Promise((r) => setTimeout(r, 1000));
           giscusFrame = document.querySelector("iframe.giscus-frame");
         }
-        while (giscusFrame.classList.contains('giscus-frame--loading')) await new Promise(r => setTimeout(r, 1000));
-        theme ??= Global.styleStatus.isDark ? 'dark' : 'light';
-        giscusFrame.contentWindow.postMessage({
-          giscus: {
-            setConfig: {
-              theme: theme
-            }
-          }
-        }, "https://giscus.app");
+        while (giscusFrame.classList.contains("giscus-frame--loading"))
+          await new Promise((r) => setTimeout(r, 1000));
+        theme ??= Global.styleStatus.isDark ? "dark" : "light";
+        giscusFrame.contentWindow.postMessage(
+          {
+            giscus: {
+              setConfig: {
+                theme: theme,
+              },
+            },
+          },
+          "https://giscus.app",
+        );
       }
     },
 
     isDarkPrefersColorScheme() {
-      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+      return (
+        window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)")
+      );
     },
 
     initModeStatus() {
@@ -77,24 +92,26 @@ Global.initModeToggle = () => {
       if (styleStatus) {
         styleStatus.isDark ? this.enableDarkMode() : this.enableLightMode();
       } else {
-        this.isDarkPrefersColorScheme().matches ? this.enableDarkMode() : this.enableLightMode();
+        this.isDarkPrefersColorScheme().matches
+          ? this.enableDarkMode()
+          : this.enableLightMode();
       }
     },
 
     initModeToggleButton() {
-      this.modeToggleButton_dom.addEventListener('click', () => {
-        const isDark = document.body.classList.contains('dark-mode');
+      this.modeToggleButton_dom.addEventListener("click", () => {
+        const isDark = document.body.classList.contains("dark-mode");
         isDark ? this.enableLightMode() : this.enableDarkMode();
       });
     },
 
     initModeAutoTrigger() {
       const isDarkMode = this.isDarkPrefersColorScheme();
-      isDarkMode.addEventListener('change', e => {
+      isDarkMode.addEventListener("change", (e) => {
         e.matches ? this.enableDarkMode() : this.enableLightMode();
       });
-    }
-  }
+    },
+  };
 
   Global.utils.modeToggle.initModeStatus();
   Global.utils.modeToggle.initModeToggleButton();

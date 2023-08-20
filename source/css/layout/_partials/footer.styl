@@ -1,157 +1,19 @@
 @import '../../common/variables'
 
 .footer
-  margin-top 20px !important
-  padding-top 20px !important
-  height auto
-  min-height 100px
-  font-size 1rem
-  color var(--third-text-color)
-  background-color alpha($primary-color, 0.15)
-  border-radius 0 !important
-  redefine-container(
-    0,
-    0,
-    0,
-    0,
-    false
-  )
-  position relative
-
-  span
-    vertical-align baseline !important
-
-  .odometer
-    vertical-align baseline !important
-
-  a
-    color var(--third-text-color)
-
-    &:hover
-      color var(--primary-color)
-
-  .theme-info
-    text-align left
-    position absolute
-    left 20px
-    top 45%
-    transform translateY(-50%)
-
-    .powered-by-container
-      margin-bottom 10px
-      font-size 0.8rem
-
-      a
-        font-size 1rem
-
-      svg
-        position relative
-        top 2px
-
-    .theme-version-container
-      font-size 0.8rem
-
-      a
-        font-size 1rem
-
-    +redefine-tablet()
-      position relative
-      text-align center
-      top 0 !important
-      left 0 !important
-      transform none !important
-
-    +redefine-mobile()
-      position relative
-      text-align center
-      top 0 !important
-      left 0 !important
-      transform none !important
-
-  .copyright-info
-    text-align center
-
-  .website-count
-    text-align right
-    position absolute
-    right 20px
-    top 45%
-    transform translateY(-50%)
-
-    .busuanzi_container_site_pv
-      display block !important
-      font-size 0.8rem
-
-    .busuanzi_value_site_uv
-      font-size 1rem !important
-
-    .busuanzi_container_site_uv
-      display block !important
-      font-size 0.8rem
-
-    .busuanzi_value_site_pv
-      font-size 1rem !important
-
-    +redefine-tablet()
-      position relative
-      text-align center
-      top 0 !important
-      right 0 !important
-      transform none !important
-
-      .busuanzi_container_site_pv
-        display inline-block !important
-
-      .busuanzi_container_site_uv
-        display inline-block !important
-
-    +redefine-mobile()
-      position relative
-      text-align center
-      top 0 !important
-      right 0 !important
-      transform none !important
-
-      .busuanzi_container_site_pv
-        display inline-block !important
-
-      .busuanzi_container_site_uv
-        display inline-block !important
-
-  .info-container
-    padding-bottom 10px
-    text-align center
-    margin-top 10px
-    font-weight 450
-
-  .info-item
-    margin 5px 0
-
-  .icon-animate
-    animation icon-animate 1.2s ease-in-out infinite
-
   .odometer.odometer-auto-theme, .odometer.odometer-theme-default
     display inline-block
-    vertical-align middle
-    *vertical-align auto
-    *zoom 1
-    *display inline
+    vertical-align baseline
     position relative
 
   .odometer.odometer-auto-theme .odometer-digit, .odometer.odometer-theme-default .odometer-digit
     display inline-block
-    vertical-align middle
-    *vertical-align auto
-    *zoom 1
-    *display inline
+    vertical-align baseline
     position relative
 
   .odometer.odometer-auto-theme .odometer-digit .odometer-digit-spacer, .odometer.odometer-theme-default .odometer-digit .odometer-digit-spacer
     display inline-block
-    vertical-align middle
-    *vertical-align auto
-    *zoom 1
-    *display inline
+    vertical-align baseline
     visibility hidden
 
   .odometer.odometer-auto-theme .odometer-digit .odometer-digit-inner, .odometer.odometer-theme-default .odometer-digit .odometer-digit-inner
@@ -173,42 +35,21 @@
 
   .odometer.odometer-auto-theme .odometer-digit .odometer-value, .odometer.odometer-theme-default .odometer-digit .odometer-value
     display block
-    -webkit-transform translateZ(0)
 
   .odometer.odometer-auto-theme .odometer-digit .odometer-value.odometer-last-value, .odometer.odometer-theme-default .odometer-digit .odometer-value.odometer-last-value
     position absolute
 
   .odometer.odometer-auto-theme.odometer-animating-up .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-up .odometer-ribbon-inner
-    -webkit-transition -webkit-transform 999ms
-    -moz-transition -moz-transform 999ms
-    -ms-transition -ms-transform 999ms
-    -o-transition -o-transform 999ms
     transition transform 999ms
 
   .odometer.odometer-auto-theme.odometer-animating-up.odometer-animating .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-up.odometer-animating .odometer-ribbon-inner
-    -webkit-transform translateY(-100%)
-    -moz-transform translateY(-100%)
-    -ms-transform translateY(-100%)
-    -o-transform translateY(-100%)
     transform translateY(-100%)
 
   .odometer.odometer-auto-theme.odometer-animating-down .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-down .odometer-ribbon-inner
-    -webkit-transform translateY(-100%)
-    -moz-transform translateY(-100%)
-    -ms-transform translateY(-100%)
-    -o-transform translateY(-100%)
     transform translateY(-100%)
 
   .odometer.odometer-auto-theme.odometer-animating-down.odometer-animating .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-down.odometer-animating .odometer-ribbon-inner
-    -webkit-transition -webkit-transform 999ms
-    -moz-transition -moz-transform 999ms
-    -ms-transition -ms-transform 999ms
-    -o-transition -o-transform 999ms
     transition transform 999ms
-    -webkit-transform translateY(0)
-    -moz-transform translateY(0)
-    -ms-transform translateY(0)
-    -o-transform translateY(0)
     transform translateY(0)
 
   .odometer.odometer-auto-theme, .odometer.odometer-theme-default

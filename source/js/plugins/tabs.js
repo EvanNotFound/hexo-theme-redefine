@@ -22,9 +22,8 @@ function setTabs() {
   });
 }
 
-
 if (Global.theme_config.global.single_page === true && Global.utils) {
-    setTabs();
+  setTabs();
 } else {
-    window.addEventListener('DOMContentLoaded', setTabs);
+  document.addEventListener("DOMContentLoaded", setTabs);
 }

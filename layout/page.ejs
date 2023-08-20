@@ -1,6 +1,5 @@
 <%- partial('_widgets/progress-bar') %>
 <main class="page-container" id="swup">
-    
 
     <% if (theme.home_banner.enable === true && is_home() && !page.prev) { %>
         <%- partial('_partials/home-banner') %>
@@ -9,7 +8,7 @@
     <% } %>
 
     <div class="main-content-container">
-        
+
 
         <div class="main-content-header">
             <%- partial('_partials/navbar') %>
@@ -53,7 +52,7 @@
                 <% } %>
 
             </div>
-            
+
             <% if (is_home() && theme.home.sidebar.enable === true && theme.home.sidebar.position === "right") { %>
                 <%- partial('_partials/home-sidebar') %>
             <% } %>
@@ -81,9 +80,10 @@
         <%- partial('_widgets/local-search') %>
     <% } %>
 
-
 </main>
 
-<%- partial('_plugins/swup') %>
+<% if (theme.global.single_page !== false) { %>
+    <%- partial('_plugins/swup') %>
+<% } %>
 
 

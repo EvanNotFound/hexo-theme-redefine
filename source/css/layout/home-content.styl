@@ -44,33 +44,6 @@
         38px
       )
 
-      .home-article-sticky-label
-        position absolute
-        top 12px
-        right 12px
-        font-size 0.7rem
-        color var(--third-text-color)
-        border-radius $redefine-border-radius-medium
-        border 1px solid var(--border-color)
-        background-color var(--background-color-transparent)
-        padding 2px 10px
-        cursor default
-        z-index 1
-        backdrop-filter blur(10px)
-        -webkit-backdrop-filter blur(10px)
-
-        .fa-thumbtack
-          color var(--third-text-color)
-          margin-right 3px
-          font-size 0.65rem
-
-        &:hover
-          color var(--background-color)
-          background-color var(--primary-color)
-
-          .fa-thumbtack
-            color var(--background-color)
-
       .home-article-thumbnail
         position relative
         height 150px
@@ -158,17 +131,3 @@
 
           &:hover
             color var(--primary-color)
-
-@media (prefers-color-scheme dark)
-  .home-article-thumbnail
-    img
-      filter brightness(0.7)
-      -webkit-filter brightness(0.7)
-      transition filter 0.3s ease
-
-.dark-mode
-  .home-article-thumbnail
-    img
-      filter brightness(0.7)
-      -webkit-filter brightness(0.7)
-      transition filter 0.3s ease

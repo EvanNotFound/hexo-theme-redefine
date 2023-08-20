@@ -64,6 +64,7 @@
 - [Aplayer 音樂播放器支持](https://redefine-docs.ohevan.com/plugins/aplayer)
 - [說說模塊](https://redefine-docs.ohevan.com/shuoshuo)
 - [自定義字體](https://redefine-docs.ohevan.com/basic/global#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93)
+- Tailwind CSS 支持
 
 ## ☁️ 安裝
 
@@ -133,10 +134,16 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 
 ## 🌟 Star 記錄
 
-[![Star History Chart](https://api.star-history.com/svg?repos=EvanNotFound/hexo-theme-redefine&type=Date)](https://star-history.com/#EvanNotFound/hexo-theme-redefine&Date)
+<a href="https://star-history.com/#EvanNotFound/hexo-theme-redefine&Date">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=EvanNotFound/hexo-theme-redefine&type=Date&theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=EvanNotFound/hexo-theme-redefine&type=Date" />
+    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=EvanNotFound/hexo-theme-redefine&type=Date" />
+  </picture>
+</a>
 
-## 📢 其他
+## 💻 主题开发
 
-如果你恰好需要雲主機，可以去 [Racknerd](https://my.racknerd.com/aff.php?aff=8346) 看看，性價比高。
+如果你想參與主題開發，請 `clone` 本專案的 `dev` 分支，然後在 `dev` 分支上進行開發。
 
-很多活動，比如 2核 2G 活動價一年只要 20 刀，比國內云便宜而且還沒有監管，可以用來部署各種服務。
+同時，請查看 [Redefine 主題開發文件](https://redefine-docs.ohevan.com/developer)。

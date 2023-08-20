@@ -2,17 +2,45 @@
     <ul>
         <li><strong><%- __('copyright.title') %>:</strong> <%= page.title %></li>
         <li><strong><%- __('copyright.author') %>:</strong> <%= theme.info.author || config.author %></li>
-        <li><strong><%- __('copyright.create_time') %>:</strong> <%= date(page.date, `${config.date_format} ${config.time_format}`) %></li>
+        <li><strong><%- __('copyright.create_time') %>
+                :</strong> <%= date(page.date, `${config.date_format} ${config.time_format}`) %></li>
         <% if (page.updated && page.updated !== page.date) { %>
             <li>
-                <strong><%- __('copyright.update_time') %>:</strong> <%= date(page.updated, `${config.date_format} ${config.time_format}`) %>
+                <strong><%- __('copyright.update_time') %>
+                    :</strong> <%= date(page.updated, `${config.date_format} ${config.time_format}`) %>
             </li>
         <% } %>
         <li>
             <strong><%- __('copyright.link') %>:</strong> <%= getPostUrl((theme.info.url || config.url), page.path) %>
         </li>
         <li>
-            <strong><%- __('copyright.license_title') %>:</strong> <%- __('copyright.license_content', '<a class="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>') %>
+            <strong>
+                <%- __('copyright.license_title') %>:
+            </strong>
+            <% if (page.copyright && page.copyright !== "") { %>
+                <%= page.copyright %>
+            <% } else if (page.license) { %>
+                <% if (page.license === 'all_rights_reserved') { %>
+                   <%- __('copyright.all_rights_reserved', theme.info.author) %>
+                <% } else if (page.license === 'cc_by') { %>
+                    <%- __('copyright.license_content', '<a class="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">CC BY 4.0</a>') %>
+                <% } else if (page.license === 'cc_by_sa') { %>
+                    <%- __('copyright.license_content', '<a class="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh">CC BY-SA 4.0</a>') %>
+                <% } else if (page.license === 'cc_by_nc') { %>
+                    <%- __('copyright.license_content', '<a class="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">CC BY-NC 4.0</a>') %>
+                <% } else if (page.license === 'cc_by_nd') { %>
+                    <%- __('copyright.license_content', '<a class="license" href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh">CC BY-ND 4.0</a>') %>
+                <% } else if (page.license === 'cc_by_nc_sa') { %>
+                    <%- __('license_content', '<a class="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>') %>
+                <% } else if (page.license === 'public_domain') { %>
+                    <%- __('copyright.public_domain') %>
+                <% } else { %>
+                    <%- __('copyright.license_content', '<a class="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>') %>
+                <% } %>
+            <% } else { %>
+            <%- __('copyright.license_content', '<a class="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>') %>
+            <% } %>
+
         </li>
     </ul>
 </div>
