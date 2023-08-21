@@ -52,8 +52,9 @@
 
         <% if (page.expires && page.expires !== "") {%>
             <% const expireDate = new Date(page.expires);
+                const updateDate = page.updated? new Date(page.updated) : new Date(page.date);
                 const now = new Date();
-                const timeDifference = now - expireDate;
+                const timeDifference = now - updateDate;
                 const daysAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24)); %>
 
             <% if (expireDate < now) { %>
