@@ -1,4 +1,5 @@
 /* global function */
+import { initUtils } from "./utils.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   Global.themeInfo = {
@@ -46,12 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   Global.refresh = () => {
-    Global.initUtils();
-    navbarShrink.init();
+    initUtils();
 
-    if (Global.data_config.masonry) {
-      Global.initMasonry();
-    }
     Global.initModeToggle();
     Global.initBackToTop();
     if (
@@ -59,10 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
       location.pathname === Global.hexo_config.root
     ) {
       Global.initTyped("subtitle");
-    }
-
-    if (Global.theme_config.plugins.mermaid.enable === true) {
-      Global.initMermaid();
     }
 
     if (Global.theme_config.navbar.search.enable === true) {

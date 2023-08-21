@@ -1,6 +1,6 @@
 /* global function */
 
-function initTocToggle() {
+export function initTocToggle() {
   Global.utils.TocToggle = {
     toggleBar: document.querySelector(".page-aside-toggle"),
     postPageContainerDom: document.querySelector(".post-page-container"),

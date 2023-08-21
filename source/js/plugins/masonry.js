@@ -1,4 +1,4 @@
-Global.initMasonry = () => {
+export function initMasonry() {
   var loadingPlaceholder = document.querySelector(".loading-placeholder");
   var masonryContainer = document.querySelector("#masonry-container");
   if (!loadingPlaceholder || !masonryContainer) return;
@@ -6,7 +6,9 @@ Global.initMasonry = () => {
   loadingPlaceholder.style.display = "block";
   masonryContainer.style.display = "none";
 
-  var images = document.querySelectorAll("#masonry-container .masonry-item img");
+  var images = document.querySelectorAll(
+    "#masonry-container .masonry-item img",
+  );
   var loadedCount = 0;
 
   function onImageLoad() {
@@ -28,7 +30,6 @@ Global.initMasonry = () => {
   if (loadedCount === images.length) {
     initializeMasonryLayout();
   }
-
   function initializeMasonryLayout() {
     loadingPlaceholder.style.opacity = 0;
     setTimeout(() => {
@@ -43,10 +44,13 @@ Global.initMasonry = () => {
       masonry.layout();
       masonryContainer.style.opacity = 1;
     }, 100);
-    
-
-
   }
 }
 
-  
+if (Global.data_config.masonry) {
+  try {
+    swup.hooks.on("page:view", initMasonry);
+  } catch (e) {}
+
+  document.addEventListener("DOMContentLoaded", initMasonry);
+}
