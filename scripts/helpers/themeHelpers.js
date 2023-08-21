@@ -78,7 +78,7 @@ hexo.extend.helper.register(
 
 hexo.extend.helper.register("getPostUrl", function (rootUrl, path) {
   if (rootUrl) {
-    let { href } = url.parse(rootUrl);
+    let { href } = new URL(rootUrl);
     if (href.substring(href.length - 1) !== "/") {
       href = href + "/";
     }

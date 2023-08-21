@@ -51,17 +51,30 @@
         <% } %>
 
         <% if (page.expires && page.expires !== "") {%>
-            <% const expireDate = new Date(page.expires);
-                const now = new Date();
-                const timeDifference = now - expireDate;
-                const daysAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24)); %>
-
-            <% if (expireDate < now) { %>
-                <div class="note red icon article-expire">
+                <div class="note red icon article-expire hidden" id="expiration-container">
                     <i class="fa-solid fa-timer expire-icon"></i>
-                    <span class="expire-label"><%= __('expired', daysAgo) %></span>
+                    <span class="expire-label" id="expiration-date"><%= __('expired', "some") %></span>
                 </div>
-            <% } %>
+
+            <script data-swup-reload-script>
+                function updateExpirationDate() {
+                    var expiredDate = new Date("<%= page.expires %>");
+                    const updatedDate = new Date("<%= page.updated %>");
+                    let now = new Date();
+                    const expirationValue = document.getElementById("expiration-date");
+                    const expirationContainer = document.getElementById("expiration-container");
+                    let daysAgo = Math.floor((now - updatedDate) / (1000 * 60 * 60 * 24));
+                    if (expiredDate < now) {
+                        expirationContainer.classList.remove("hidden");
+                        console.log(daysAgo)
+                        expirationValue.innerHTML = expirationValue.innerHTML.replace("some", daysAgo);
+                    }
+                }
+                document.addEventListener("DOMContentLoaded", function () {
+                    updateExpirationDate();
+                });
+                swup.hooks.on("page:view",updateExpirationDate)
+            </script>
         <% } %>
 
 
