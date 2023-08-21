@@ -60,7 +60,7 @@
             <% if (expireDate < now) { %>
                 <div class="note red icon article-expire">
                     <i class="fa-solid fa-timer expire-icon"></i>
-                    <span class="expire-label"><%= __('expired', daysAgo) %></span>
+                    <span class="expire-label" id="expiration-date"><%= __('expired', "some") %></span>
                 </div>
             <% } %>
         <% } %>
