@@ -519,50 +519,6 @@ export function initUtils() {
           });
       }
     },
-
-    // loading progress bar start
-    pjaxProgressBarStart() {
-      this.pjaxProgressBarTimer && clearInterval(this.pjaxProgressBarTimer);
-      if (this.isHasScrollProgressBar) {
-        this.scrollProgressBar_dom.classList.add("hide");
-      }
-
-      this.pjaxProgressBar_dom.style.width = "0";
-      this.pjaxProgressIcon_dom.classList.add("show");
-
-      let width = 1;
-      const maxWidth = 99;
-
-      this.pjaxProgressBar_dom.classList.add("show");
-      this.pjaxProgressBar_dom.style.width = width + "%";
-
-      this.pjaxProgressBarTimer = setInterval(() => {
-        width += 5;
-        if (width > maxWidth) width = maxWidth;
-        this.pjaxProgressBar_dom.style.width = width + "%";
-      }, 100);
-    },
-
-    // loading progress bar end
-    pjaxProgressBarEnd() {
-      this.pjaxProgressBarTimer && clearInterval(this.pjaxProgressBarTimer);
-      this.pjaxProgressBar_dom.style.width = "100%";
-
-      const temp_1 = setTimeout(() => {
-        this.pjaxProgressBar_dom.classList.remove("show");
-        this.pjaxProgressIcon_dom.classList.remove("show");
-
-        if (this.isHasScrollProgressBar) {
-          this.scrollProgressBar_dom.classList.remove("hide");
-        }
-
-        const temp_2 = setTimeout(() => {
-          this.pjaxProgressBar_dom.style.width = "0";
-          clearTimeout(temp_1), clearTimeout(temp_2);
-        }, 200);
-      }, 200);
-    },
-
     /*
     calculateMaterialColors(hex) {
       // Convert hex to RGB
