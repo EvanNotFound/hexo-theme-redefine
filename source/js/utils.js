@@ -347,7 +347,7 @@ export function initUtils() {
         });
 
       const imgDoms = document.querySelectorAll(
-        ".markdown-body img, .masonry-item img",
+        ".markdown-body img, .masonry-item img, #shuoshuo-content img",
       );
 
       if (imgDoms.length) {
