@@ -48,14 +48,14 @@ if (hexo-config('home.sidebar.enable') == true)
 .redefine-box-shadow
   box-shadow var(--redefine-box-shadow)
 
-  &:hover
-    box-shadow var(--redefine-box-shadow-hover)
-
-
 .redefine-box-shadow-flat
   box-shadow var(--redefine-box-shadow-flat)
 
-  &:hover
+@media (min-width: 640px)
+  .redefine-box-shadow:hover
+    box-shadow var(--redefine-box-shadow-hover)
+
+  .redefine-box-shadow-flat:hover
     box-shadow var(--redefine-box-shadow)
 
 .ellipsis
