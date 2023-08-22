@@ -36,9 +36,10 @@ export function initMasonry() {
       loadingPlaceholder.style.display = "none";
       masonryContainer.style.display = "block";
       var masonry = new MiniMasonry({
+        baseWidth: 255,
         container: masonryContainer,
         gutterX: 10,
-        gutterY: 5,
+        gutterY: 10,
         surroundingGutter: false,
       });
       masonry.layout();
