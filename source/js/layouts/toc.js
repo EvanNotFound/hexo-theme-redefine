@@ -1,4 +1,5 @@
 /* global function */
+
 function initTOC() {
   Global.utils.navItems = document.querySelectorAll(
     ".post-toc-wrap .post-toc li",
@@ -45,6 +46,29 @@ function initTOC() {
           element.classList.remove("active", "active-current");
         });
         target.classList.add("active", "active-current");
+        // Scroll to the active TOC item
+        const tocElement = document.querySelector(".toc-content-container");
+        const tocTop = tocElement.getBoundingClientRect().top;
+        const scrollTopOffset =
+          tocElement.offsetHeight > window.innerHeight
+            ? (tocElement.offsetHeight - window.innerHeight) / 2
+            : 0;
+        const targetTop = target.getBoundingClientRect().top - tocTop;
+        const viewportHeight = Math.max(
+          document.documentElement.clientHeight,
+          window.innerHeight || 0,
+        );
+        const distanceToCenter =
+          targetTop -
+          viewportHeight / 2 +
+          target.offsetHeight / 2 -
+          scrollTopOffset;
+        const scrollTop = tocElement.scrollTop + distanceToCenter;
+
+        tocElement.scrollTo({
+          top: scrollTop,
+          behavior: "smooth", // Smooth scroll
+        });
       },
 
       showTOCAside() {

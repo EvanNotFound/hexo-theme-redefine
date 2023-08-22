@@ -1,4 +1,4 @@
-<%- renderJS([
+<%- renderModuleJS([
     'js/utils.js',
     'js/main.js',
     'js/layouts/navbarShrink.js',
@@ -37,16 +37,18 @@
 
 <% if (theme.masonry || theme.photos || theme.gallery) { %>
     <%- renderJS('js/libs/minimasonry.min.js') %>
-    <%- renderJS('js/plugins/masonry.js') %>
+    <%- renderModuleJS('js/plugins/masonry.js') %>
+
 <% } %>
 
 <div class="post-scripts" <%= theme.global.single_page === true ? 'data-swup-reload-script' : '' %>>
     <% if (theme.articles.toc.enable) { %>
-        <%- renderJS([
+        <%- renderJS('js/libs/anime.min.js')%>
+        <%- renderModuleJS([
             'js/tools/tocToggle.js',
             'js/layouts/toc.js',
-            'js/libs/anime.min.js',
-            'js/plugins/tabs.js',
+
+            'js/plugins/tabs.js'
         ]) %>
     <% } %>
 </div>

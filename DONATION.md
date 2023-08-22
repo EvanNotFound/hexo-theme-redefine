@@ -5,29 +5,26 @@
 
 ## 引言 / Introduction
 
-刚开始这个主题其实是自用的，后来有网友看见我的博客，就问我是怎么改的。  
-Initially, this theme was created for my personal use, but later, some readers came across my blog and asked me how I
-customized it.
+刚开始这个主题其实是自用的，后来有网友看见我的博客，就问我是怎么改的。
 
-想了一下，就开了个项目。一路走来，跌跌撞撞也写了几个版本，也收到了不少网友的反馈，而且第一次拿到这么多
-Star，在这里非常感谢各位的支持。  
-After giving it some thought, I decided to start a project. Along the way, I encountered some challenges and went
-through several versions. I also received valuable feedback from many users. Moreover, it's the first time I've received
-such a high number of stars. I want to express my sincere appreciation for all your support.
+想了一下，就开了个项目。一路走来，跌跌撞撞也写了几个版本，也收到了不少网友的反馈，而且第一次拿到这么多 Star，在这里非常感谢各位的支持。
 
-本来没想着要求打赏，但是目前阿里云国内下行流量平均一个月消耗 100GB，本人每月流量费用大概在 20 元左右，想着换 unpkg/jsdelivr
-做 cdn，但是那个速度真的感人。  
-Originally, I hadn't planned on requesting any contributions. However, currently, the average monthly consumption of
-downstream traffic on Aliyun in China is around 100GB, and my monthly traffic cost is approximately 20 yuan. I
-considered switching to unpkg/jsdelivr as a CDN, but the speed there is truly disappointing.
+本来没想着要求打赏，但是目前阿里云国内下行流量平均一个月消耗 100GB，本人每月流量费用大概在 20 元左右，想着换 unpkg/jsdelivr 做 CDN，但是那个速度真的感人。
 
-如果各位能支持一下，**一块两块都已足够**，就能维持阿里云 CDN 的流量费用，本人实在是感激不尽。  
-If any of you could provide some support, even a small amount such as one or two yuan, it would be sufficient to cover
-the CDN traffic cost on Aliyun. I would be immensely grateful for your assistance.
+如果各位能支持一下，一块两块都已足够，就能维持阿里云 CDN 的流量费用，本人实在是感激不尽。
 
-感谢所有赞助本项目的朋友，你们的支持是我继续更新的动力！  
-Thank you to all the friends who have sponsored this project. Your support is what motivates me to keep updating and
-improving it!
+感谢所有赞助本项目的朋友，你们的支持是我继续更新的动力！
+
+Initially, I designed this theme just for my personal use. However, as time went on, some readers stumbled upon my blog and inquired about the customizations I had made.
+
+After giving it some thought, I decided to turn this into a project. Along the journey, I encountered a few bumps and went through several iterations. I also received valuable feedback from numerous users. And it's quite exhilarating to see it receiving such a high number of stars for the first time. I want to express my genuine appreciation for all the support you've shown.
+
+At first, I hadn't really thought about asking for contributions. But at present, the average monthly data consumption on Aliyun in China is around 100GB. My monthly data costs are roughly 20 yuan. I considered switching to unpkg/jsdelivr for a CDN, but the speed there is a real letdown.
+
+If any of you could provide a bit of support, even a small amount like one or two dollars, it would be enough to cover the CDN data costs on Aliyun. I would be incredibly thankful for your help.
+
+A big thank you to all the friends who have sponsored this project. Your support is what keeps me motivated to keep refining and updating it!
+
 
 ## 赞助方法 / Sponsorship Methods
 

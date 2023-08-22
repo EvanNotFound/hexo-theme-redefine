@@ -69,18 +69,18 @@
     </div>
 
     <!-- Mobile drawer -->
-    <div class="navbar-drawer">
-        <ul class="drawer-navbar-list">
+    <div class="navbar-drawer w-full absolute top-0 left-0 bg-background-color">
+        <ul class="drawer-navbar-list flex flex-col justify-start items-center">
             <% for (let i in theme.navbar.links) { %>
                 <% if (theme.navbar.links[i].path === 'none') {} else {%>
-                    <li class="drawer-navbar-item flex-center">
-                        <a class="<% if (theme.navbar.links[i].submenus) { %>has-dropdown" <% } else {%><%- isInHomePaging(page.path, theme.navbar.links[i].path) ? 'active' : is_current(theme.navbar.links[i].path) ? 'active' : '' %>" <% } %>
+                    <li class="drawer-navbar-item text-base my-1.5 flex justify-center items-center">
+                        <a class="rounded-3xl py-1.5 px-5 hover:border hover:!text-primary active:!text-primary group <% if (theme.navbar.links[i].submenus) { %>has-dropdown" <% } else {%><%- isInHomePaging(page.path, theme.navbar.links[i].path) ? 'active' : is_current(theme.navbar.links[i].path) ? 'active' : '' %>" <% } %>
                         href="<% if (theme.navbar.links[i].submenus) { %>#"<% } else {%><%- url_for(theme.navbar.links[i].path) %>" <% } %> <% if (theme.navbar.links[i].submenus) { %>onClick="return false;"<% } else {%><% } %>>
                             <% if (theme.navbar.links[i].submenus) { %>
                                 <% if (theme.navbar.links[i].icon) { %>
                                     <i class="<%- theme.navbar.links[i].icon %>"></i>
                                 <% } %>
-                                <%= __(i.toLowerCase()).toUpperCase() %>&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                                <%= __(i.toLowerCase()).toUpperCase() %>&nbsp;<i class="group-hover:rotate-180 transition-transform fa-solid fa-chevron-down"></i>
                             <% } else {%> 
                                 <% if (theme.navbar.links[i].icon) { %>
                                     <i class="<%- theme.navbar.links[i].icon %>"></i>
@@ -92,8 +92,8 @@
                     <!-- Submenu -->
                     <% if (theme.navbar.links[i].submenus) { %>          
                         <% for (var submenu in theme.navbar.links[i].submenus){ %>
-                            <li class="dropdown-item flex-center">
-                                <a class="dropdown-item" href="<%- url_for(theme.navbar.links[i].submenus[submenu]) %>"><%= __(submenu.toLowerCase()).toUpperCase() %></a>
+                            <li class="text-base flex justify-center items-center hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                <a class="py-0.5" href="<%- url_for(theme.navbar.links[i].submenus[submenu]) %>"><%= __(submenu.toLowerCase()).toUpperCase() %></a>
                             </li>
                         <% } %>
                     <% } %>

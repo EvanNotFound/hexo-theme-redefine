@@ -1,6 +1,9 @@
 /* global function */
 
-Global.initUtils = () => {
+import { initMasonry } from "./plugins/masonry.js";
+import { navbarShrink } from "./layouts/navbarShrink.js";
+
+export function initUtils() {
   Global.utils = {
     html_root_dom: document.querySelector("html"),
     pageContainer_dom: document.querySelector(".page-container"),
@@ -25,54 +28,56 @@ Global.initUtils = () => {
 
     // Scroll Style
     updateScrollStyle() {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
       const scrollHeight = document.documentElement.scrollHeight;
-      const clientHeight = window.innerHeight || document.documentElement.clientHeight;
-      const percent = this.calculatePercentage(scrollTop, scrollHeight, clientHeight);
-    
+      const clientHeight =
+        window.innerHeight || document.documentElement.clientHeight;
+      const percent = this.calculatePercentage(
+        scrollTop,
+        scrollHeight,
+        clientHeight,
+      );
+
       this.updateScrollProgressBar(percent);
       this.updateScrollPercent(percent);
       this.updatePageTopVisibility(scrollTop, clientHeight);
-      
+
       this.prevScrollValue = scrollTop;
     },
 
-    calculatePercentage(scrollTop, scrollHeight, clientHeight) {
-      return Math.round((scrollTop / (scrollHeight - clientHeight)) * 100);
-    },
-
-    
     updateScrollProgressBar(percent) {
       if (this.isHasScrollProgressBar) {
         const progressPercent = percent.toFixed(3);
-        const visibility = percent === 0 ? 'hidden' : 'visible';
-    
+        const visibility = percent === 0 ? "hidden" : "visible";
+
         this.scrollProgressBar_dom.style.visibility = visibility;
         this.scrollProgressBar_dom.style.width = `${progressPercent}%`;
       }
     },
-    
+
     updateScrollPercent(percent) {
       if (this.isHasScrollPercent) {
-        const percentDom = this.backToTopButton_dom.querySelector('.percent');
+        const percentDom = this.backToTopButton_dom.querySelector(".percent");
         const showButton = percent !== 0 && percent !== undefined;
-    
-        this.backToTopButton_dom.classList.toggle('show', showButton);
+
+        this.backToTopButton_dom.classList.toggle("show", showButton);
         percentDom.innerHTML = percent.toFixed(0);
       }
     },
-    
+
     updatePageTopVisibility(scrollTop, clientHeight) {
       if (Global.theme_config.navbar.auto_hide) {
         const prevScrollValue = this.prevScrollValue;
-        const hidePageTop = prevScrollValue > clientHeight && scrollTop > prevScrollValue;
-    
-        this.pageTop_dom.classList.toggle('hide', hidePageTop);
+        const hidePageTop =
+          prevScrollValue > clientHeight && scrollTop > prevScrollValue;
+
+        this.pageTop_dom.classList.toggle("hide", hidePageTop);
       } else {
-        this.pageTop_dom.classList.remove('hide');
+        this.pageTop_dom.classList.remove("hide");
       }
     },
-    
+
     calculatePercentage(scrollTop, scrollHeight, clientHeight) {
       return Math.round((scrollTop / (scrollHeight - clientHeight)) * 100);
     },
@@ -88,70 +93,79 @@ Global.initUtils = () => {
         this.updateAPlayerAutoHide();
       });
     },
-    
+
     updateTOCScroll() {
-      if (Global.theme_config.articles.toc.enable && Global.utils.hasOwnProperty("updateActiveTOCLink")) {
+      if (
+        Global.theme_config.articles.toc.enable &&
+        Global.utils.hasOwnProperty("updateActiveTOCLink")
+      ) {
         Global.utils.updateActiveTOCLink();
       }
     },
-    
+
     updateNavbarShrink() {
       navbarShrink.init();
     },
-    
+
     updateHomeBannerBlur() {
-      if (Global.theme_config.home_banner.style === "fixed" && location.pathname === Global.hexo_config.root) {
+      if (
+        Global.theme_config.home_banner.style === "fixed" &&
+        location.pathname === Global.hexo_config.root
+      ) {
         const blurElement = document.querySelector(".home-banner-background");
         const viewHeight = window.innerHeight;
         const scrollY = window.scrollY || window.pageYOffset;
         const triggerViewHeight = viewHeight / 2;
         const blurValue = scrollY >= triggerViewHeight ? 15 : 0;
-    
+
         try {
           blurElement.style.transition = "0.3s";
           blurElement.style.webkitFilter = `blur(${blurValue}px)`;
         } catch (e) {}
       }
     },
-    
+
     updateAutoHideTools() {
       const y = window.pageYOffset;
       const height = document.body.scrollHeight;
       const windowHeight = window.innerHeight;
-      const toolList = document.getElementsByClassName('right-side-tools-container');
-    
+      const toolList = document.getElementsByClassName(
+        "right-side-tools-container",
+      );
+
       for (let i = 0; i < toolList.length; i++) {
         const tools = toolList[i];
         if (y <= 0) {
-          if (location.pathname !== '/') {
+          if (location.pathname !== "/") {
             //console.log(location.pathname)
           } else {
-            tools.classList.add('hide');
+            tools.classList.add("hide");
           }
         } else if (y + windowHeight >= height - 20) {
-          tools.classList.add('hide');
+          tools.classList.add("hide");
         } else {
-          tools.classList.remove('hide');
+          tools.classList.remove("hide");
         }
       }
     },
-    
+
     updateAPlayerAutoHide() {
-      const aplayer = document.getElementById('aplayer');
-      if (aplayer == null) {} else {
+      const aplayer = document.getElementById("aplayer");
+      if (aplayer == null) {
+      } else {
         const y = window.pageYOffset;
         const height = document.body.scrollHeight;
         const windowHeight = window.innerHeight;
         if (y <= 0) {
-          if (location.pathname !== '/') {
+          if (location.pathname !== "/") {
             //console.log(location.pathname)
           } else {
-            aplayer.classList.add('hide');
+            aplayer.classList.add("hide");
           }
         } else if (y + windowHeight >= height - 20) {
-          aplayer.classList.add('hide');
+          aplayer.classList.add("hide");
         } else {
-          aplayer.classList.remove('hide');
+          aplayer.classList.remove("hide");
         }
       }
     },
@@ -161,41 +175,43 @@ Global.initUtils = () => {
         this.toolsList.classList.toggle("show");
       });
     },
-    
+
     globalFontSizeAdjust() {
       const htmlRoot = this.html_root_dom;
-      const fontAdjustPlus = document.querySelector('.tool-font-adjust-plus');
-      const fontAdjustMinus = document.querySelector('.tool-font-adjust-minus');
-    
-      const fontSize = document.defaultView.getComputedStyle(document.body).fontSize;
+      const fontAdjustPlus = document.querySelector(".tool-font-adjust-plus");
+      const fontAdjustMinus = document.querySelector(".tool-font-adjust-minus");
+
+      const fontSize = document.defaultView.getComputedStyle(
+        document.body,
+      ).fontSize;
       const baseFontSize = parseFloat(fontSize);
-    
+
       let fontSizeLevel = 0;
       const styleStatus = Global.getStyleStatus();
       if (styleStatus) {
         fontSizeLevel = styleStatus.fontSizeLevel;
         setFontSize(fontSizeLevel);
       }
-    
+
       function setFontSize(level) {
         const fontSize = baseFontSize * (1 + level * 0.05);
         htmlRoot.style.fontSize = `${fontSize}px`;
         Global.styleStatus.fontSizeLevel = level;
         Global.setStyleStatus();
       }
-    
+
       function increaseFontSize() {
         fontSizeLevel = Math.min(fontSizeLevel + 1, 5);
         setFontSize(fontSizeLevel);
       }
-    
+
       function decreaseFontSize() {
         fontSizeLevel = Math.max(fontSizeLevel - 1, 0);
         setFontSize(fontSizeLevel);
       }
-    
-      fontAdjustPlus.addEventListener('click', increaseFontSize);
-      fontAdjustMinus.addEventListener('click', decreaseFontSize);
+
+      fontAdjustPlus.addEventListener("click", increaseFontSize);
+      fontAdjustMinus.addEventListener("click", decreaseFontSize);
     },
 
     // toggle content area width
@@ -256,9 +272,9 @@ Global.initUtils = () => {
         loadingPlaceholder.style.opacity = 1;
         loadingPlaceholder.style.display = "block";
         masonryContainer.style.display = "none";
-        
+
         setTimeout(() => {
-          Global.initMasonry();
+          initMasonry();
         }, 300);
       });
     },
@@ -269,13 +285,13 @@ Global.initUtils = () => {
       if (this.goComment_dom) {
         this.goComment_dom.addEventListener("click", () => {
           const target = document.querySelector("#comment-anchor");
-          const offset = target.getBoundingClientRect().top + window.scrollY;
-          window.anime({
-            targets: document.scrollingElement,
-            duration: 500,
-            easing: 'linear',
-            scrollTop: offset - 10
-          });
+          if (target) {
+            const offset = target.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({
+              top: offset,
+              behavior: "smooth",
+            });
+          }
         });
       }
     },
@@ -312,36 +328,127 @@ Global.initUtils = () => {
     // big image viewer
     imageViewer() {
       let isBigImage = false;
+      let scale = 1;
+      let isMouseDown = false;
+      let lastMouseX = 0;
+      let lastMouseY = 0;
+      let translateX = 0;
+      let translateY = 0;
 
-      const showHandle = (maskDom, isShow) => {
+      const maskDom = document.querySelector(".image-viewer-container");
+      const targetImg = maskDom.querySelector("img");
+
+      const showHandle = (isShow) => {
         document.body.style.overflow = isShow ? "hidden" : "auto";
-        if (isShow) {
-          maskDom.classList.add("active");
+        isShow
+          ? maskDom.classList.add("active")
+          : maskDom.classList.remove("active");
+      };
+
+      const zoomHandle = (event) => {
+        event.preventDefault();
+        const rect = targetImg.getBoundingClientRect();
+        const offsetX = event.clientX - rect.left;
+        const offsetY = event.clientY - rect.top;
+        const dx = offsetX - rect.width / 2;
+        const dy = offsetY - rect.height / 2;
+        const oldScale = scale;
+        scale += event.deltaY * -0.001;
+        scale = Math.min(Math.max(0.8, scale), 4);
+
+        if (oldScale < scale) {
+          // Zooming in
+          translateX -= dx * (scale - oldScale);
+          translateY -= dy * (scale - oldScale);
         } else {
-          maskDom.classList.remove("active");
+          // Zooming out
+          translateX = 0;
+          translateY = 0;
+        }
+
+        targetImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+      };
+
+      const dragStartHandle = (event) => {
+        event.preventDefault();
+        isMouseDown = true;
+        lastMouseX = event.clientX;
+        lastMouseY = event.clientY;
+      };
+
+      let lastTime = 0;
+      const throttle = 100;
+
+      const dragHandle = (event) => {
+        if (isMouseDown) {
+          const currentTime = new Date().getTime();
+          if (currentTime - lastTime < throttle) {
+            return;
+          }
+          lastTime = currentTime;
+          const deltaX = event.clientX - lastMouseX;
+          const deltaY = event.clientY - lastMouseY;
+          translateX += deltaX;
+          translateY += deltaY;
+          lastMouseX = event.clientX;
+          lastMouseY = event.clientY;
+          targetImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
         }
       };
 
-      const imageViewerDom = document.querySelector(".image-viewer-container");
-      const targetImg = document.querySelector(".image-viewer-container img");
-      imageViewerDom &&
-        imageViewerDom.addEventListener("click", () => {
+      const dragEndHandle = (event) => {
+        if (isMouseDown) {
+          event.stopPropagation();
+        }
+        isMouseDown = false;
+      };
+
+      targetImg.addEventListener("wheel", zoomHandle);
+      targetImg.addEventListener("mousedown", dragStartHandle);
+      targetImg.addEventListener("mousemove", dragHandle);
+      targetImg.addEventListener("mouseup", dragEndHandle);
+      targetImg.addEventListener("mouseleave", dragEndHandle);
+
+      maskDom.addEventListener("click", (event) => {
+        if (event.target !== event.currentTarget) {
+          return;
+        }
+        isBigImage = false;
+        showHandle(isBigImage);
+        scale = 1;
+        translateX = 0;
+        translateY = 0;
+        targetImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+      });
+
+      const imgDoms = document.querySelectorAll(
+        ".markdown-body img, .masonry-item img, #shuoshuo-content img",
+      );
+
+      const escapeKeyListener = (event) => {
+        if (event.key === "Escape" && isBigImage) {
           isBigImage = false;
-          showHandle(imageViewerDom, isBigImage);
-        });
+          showHandle(isBigImage);
+          scale = 1;
+          translateX = 0;
+          translateY = 0;
+          targetImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+          // Remove the event listener when the image viewer is closed
+          document.removeEventListener("keydown", escapeKeyListener);
+        }
+      };
 
-      const imgDoms = document.querySelectorAll(".markdown-body img, .masonry-item img");
-
-      if (imgDoms.length) {
-        imgDoms.forEach((img) => {
-          img.addEventListener("click", () => {
-            isBigImage = true;
-            showHandle(imageViewerDom, isBigImage);
-            targetImg.setAttribute("src", img.getAttribute("src"));
-          });
+      imgDoms.forEach((img) => {
+        img.addEventListener("click", () => {
+          isBigImage = true;
+          showHandle(isBigImage);
+          targetImg.src = img.src;
+          document.addEventListener("keydown", escapeKeyListener);
         });
-      } else {
-        this.pageContainer_dom.removeChild(imageViewerDom);
+      });
+
+      if (!imgDoms.length && maskDom) {
+        maskDom.parentNode.removeChild(maskDom);
       }
     },
 
@@ -349,7 +456,6 @@ Global.initUtils = () => {
     setHowLongAgoLanguage(p1, p2) {
       return p2.replace(/%s/g, p1);
     },
-    
 
     getHowLongAgo(timestamp) {
       const l = Global.language_ago;
@@ -381,80 +487,38 @@ Global.initUtils = () => {
 
     relativeTimeInHome() {
       const post = document.querySelectorAll(
-        ".home-article-meta-info .home-article-date"
+        ".home-article-meta-info .home-article-date",
       );
       const df = Global.theme_config.home.article_date_format;
       if (df === "relative") {
         post &&
           post.forEach((v) => {
             const nowDate = Date.now();
-            const postDate = new Date(v.dataset.date.split(" GMT")[0]).getTime();
+            const postDate = new Date(
+              v.dataset.date.split(" GMT")[0],
+            ).getTime();
             v.innerHTML = this.getHowLongAgo(
-              Math.floor((nowDate - postDate) / 1000)
+              Math.floor((nowDate - postDate) / 1000),
             );
           });
       } else if (df === "auto") {
         post &&
-        post.forEach((v) => {
-          const nowDate = Date.now();
-          const postDate = new Date(v.dataset.date.split(" GMT")[0]).getTime();
-          const finalDays = Math.floor(
-            (nowDate - postDate) / (60 * 60 * 24 * 1000)
-          );
-          if (finalDays < 7) {
-            v.innerHTML = this.getHowLongAgo(
-              Math.floor((nowDate - postDate) / 1000)
+          post.forEach((v) => {
+            const nowDate = Date.now();
+            const postDate = new Date(
+              v.dataset.date.split(" GMT")[0],
+            ).getTime();
+            const finalDays = Math.floor(
+              (nowDate - postDate) / (60 * 60 * 24 * 1000),
             );
-          }
-        });
+            if (finalDays < 7) {
+              v.innerHTML = this.getHowLongAgo(
+                Math.floor((nowDate - postDate) / 1000),
+              );
+            }
+          });
       }
     },
-
-    // loading progress bar start
-    pjaxProgressBarStart() {
-      this.pjaxProgressBarTimer && clearInterval(this.pjaxProgressBarTimer);
-      if (this.isHasScrollProgressBar) {
-        this.scrollProgressBar_dom.classList.add("hide");
-      }
-
-      this.pjaxProgressBar_dom.style.width = "0";
-      this.pjaxProgressIcon_dom.classList.add("show");
-
-      let width = 1;
-      const maxWidth = 99;
-
-      this.pjaxProgressBar_dom.classList.add("show");
-      this.pjaxProgressBar_dom.style.width = width + "%";
-
-      this.pjaxProgressBarTimer = setInterval(() => {
-        width += 5;
-        if (width > maxWidth) width = maxWidth;
-        this.pjaxProgressBar_dom.style.width = width + "%";
-      }, 100);
-    },
-
-    // loading progress bar end
-    pjaxProgressBarEnd() {
-      this.pjaxProgressBarTimer && clearInterval(this.pjaxProgressBarTimer);
-      this.pjaxProgressBar_dom.style.width = "100%";
-
-      const temp_1 = setTimeout(() => {
-        this.pjaxProgressBar_dom.classList.remove("show");
-        this.pjaxProgressIcon_dom.classList.remove("show");
-
-        if (this.isHasScrollProgressBar) {
-          this.scrollProgressBar_dom.classList.remove("hide");
-        }
-
-        const temp_2 = setTimeout(() => {
-          this.pjaxProgressBar_dom.style.width = "0";
-          clearTimeout(temp_1), clearTimeout(temp_2);
-        }, 200);
-      }, 200);
-    },
-
-
-
     /*
     calculateMaterialColors(hex) {
       // Convert hex to RGB
@@ -545,4 +609,4 @@ Global.initUtils = () => {
 
   // calculate material colors
   //Global.utils.calculateMaterialColors(Global.theme_config.colors.primary);
-};
+}

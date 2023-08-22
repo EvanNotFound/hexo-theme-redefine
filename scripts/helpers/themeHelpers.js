@@ -127,9 +127,8 @@ hexo.extend.helper.register("renderJS", function (path) {
   return t;
 });
 
-hexo.extend.helper.register("renderPjaxJS", function (path) {
+hexo.extend.helper.register("renderModuleJS", function (path) {
   const _js = hexo.extend.helper.get("js").bind(hexo);
-  const urlRender = hexo.extend.helper.get("url_for").bind(hexo);
   const cdnProviders = {
     unpkg: "https://unpkg.com",
     jsdelivr: "https://cdn.jsdelivr.net/npm",
@@ -140,34 +139,17 @@ hexo.extend.helper.register("renderPjaxJS", function (path) {
   const cdnPathHandle = (path) => {
     const cdnBase =
       cdnProviders[this.theme.cdn.provider] || cdnProviders.aliyun;
-    const renderedPath = urlRender(path);
-
-    if (this.theme.global.single_page === true) {
-      if (this.theme.cdn.provider === "custom") {
-        const customUrl = cdnBase
-          .replace("${version}", themeVersion)
-          .replace("${path}", path);
-        return this.theme.cdn.enable
-          ? `<script data-swup-reload-script src="${customUrl}"></script>`
-          : `<script data-swup-reload-script src="${renderedPath}"></script>`;
-      } else {
-        return this.theme.cdn.enable
-          ? `<script data-swup-reload-script src="${cdnBase}/hexo-theme-redefine@${themeVersion}/source/${path}"></script>`
-          : `<script data-swup-reload-script src="${renderedPath}"></script>`;
-      }
+    if (this.theme.cdn.provider === "custom") {
+      const customUrl = cdnBase
+        .replace("${version}", themeVersion)
+        .replace("${path}", path);
+      return this.theme.cdn.enable
+        ? `<script type="module" src="${customUrl}"></script>`
+        : _js({ src: path, type: "module" });
     } else {
-      if (this.theme.cdn.provider === "custom") {
-        const customUrl = cdnBase
-          .replace("${version}", themeVersion)
-          .replace("${path}", path);
-        return this.theme.cdn.enable
-          ? `<script src="${customUrl}"></script>`
-          : _js(path);
-      } else {
-        return this.theme.cdn.enable
-          ? `<script src="${cdnBase}/hexo-theme-redefine@${themeVersion}/source/${path}"></script>`
-          : _js(path);
-      }
+      return this.theme.cdn.enable
+        ? `<script type="module" src="${cdnBase}/hexo-theme-redefine@${themeVersion}/source/${path}"></script>`
+        : _js({ src: path, type: "module" });
     }
   };
 
