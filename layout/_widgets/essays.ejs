@@ -1,7 +1,5 @@
-<div class="essays-container">
-    <div>
-        <h1 class="essays-header"><%= page.title %></h1>
-    </div>
+<div class="mb-4">
+    <h1 class="page-title-header"><%= page.title %></h1>
     <ul class="flex flex-col mb-4 gap-6">
         <%
         const newessays = theme.essays.sort((a, b) => {
@@ -12,12 +10,11 @@
             <li class="w-full flex flex-row relative">
                 <div class="w-10 h-10 mr-4 rounded-lg overflow-hidden"><%- image_tag(theme.defaults.avatar, {class: "w-full h-full"}) %></div>
                 <div class="w-full border-border-color rounded-xl rounded-tl-none redefine-box-shadow-flat overflow-hidden">
-                    <div class="px-4 py-1.5 text-sm border-b border-border-color bg-zinc-50 text-third-text-color"><%- moment(e.date).locale(config.language).calendar() %></div>
+                    <div class="px-4 py-1.5 text-sm border-b border-border-color bg-zinc-50 dark:bg-zinc-800 text-third-text-color"><%- moment(e.date).locale(config.language).calendar() %></div>
                     <div class="px-4 py-2 "><%- markdown(e.content) %></div>
                 </div>
-                <div class=" absolute left-[48.5px] top-3 transform w-2 h-2 border-solid border-t border-l bg-zinc-50 -rotate-45 border-border-color "></div>
+                <div class=" absolute left-[48.5px] top-3 transform w-2 h-2 border-solid border-t border-l bg-zinc-50 -rotate-45 border-border-color dark:bg-zinc-800"></div>
             </li>
         <% } %>
     </ul>
-    <div class="clear"></div>
 </div>
