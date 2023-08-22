@@ -256,84 +256,16 @@ $logo-image-box-width = 46px
                 transform translateY(-6px) rotate(-45deg)
 
   .navbar-drawer
-    width 100%
     padding $navbar-height 0 20px 0
-    position absolute
-    top 0
-    left 0
     transform scaleY(0)
     transform-origin top
     z-index $z-index-2
-    background var(--background-color)
-    transition-t('transform', '0', '0.38', 'ease')
+    opacity 0
+    transition-t('transform,opacity', '0,0.1', '0.38,0.38', 'ease,ease')
 
     .navbar-drawer-show &
       transform scaleY(1)
-
-    .drawer-navbar-list
-      display flex
-      flex-direction column
-      justify-content flex-start
-      align-items center
-
-      .drawer-navbar-item
-        font-size 1rem
-        margin 6px 0
-        height 32px
-
-        a
-          padding 6px 20px
-          border-radius 20px
-          color var(--default-text-color)
-
-          &:hover
-            color var(--second-text-color)
-            border 1px solid var(--default-text-color)
-
-          &.active
-            border 1px solid var(--default-text-color)
-            color var(--second-text-color)
-
-        .has-dropdown
-
-        a .fa-chevron-down
-          transform rotate(0deg)
-          transition transform 0.3s ease
-
-        &:hover a .fa-chevron-down
-          transform rotate(180deg)
-
-        &:hover .has-dropdown
-          &::after
-            display none !important
-
-      .dropdown-item
-        font-size 1rem
-        margin 6px 0
-        height 16px
-
-        a
-          padding 6px 20px
-          border-radius 20px
-          color var(--default-text-color)
-
-          &:hover
-            color var(--second-text-color)
-            border 1px solid var(--default-text-color)
-
-          &.active
-            border 1px solid var(--default-text-color)
-            color var(--second-text-color)
-
-      .sub-menu
-        position relative
-        margin-top 8px
-        width 100%
-        text-align center
-        list-style none
-        padding 0 10px
-        border-radius $redefine-border-radius-large
-        // float left
+      opacity 1
 
   .window-mask
     position absolute
