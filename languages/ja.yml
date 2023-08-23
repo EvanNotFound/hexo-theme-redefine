@@ -1,0 +1,89 @@
+# ----------------------------------------
+# 网站翻译
+# ----------------------------------------
+search: 検索...
+toc: このページの目次
+prev: 前のページ
+next: 次のページ
+prev_posts: 前一篇
+next_posts: 次一篇
+page: "%d ページ"
+recent_posts: 最新記事
+share: 分かち合う
+powered_by: "%s で駆動する"
+theme: テーマ
+rss_feed: RSS Feed
+category: 分類
+categories: 分類
+tag: タグ
+tags: タグ
+post: 記事
+posts: 記事
+tagcloud: タグクラウド
+comment: コメント
+comments: コメント
+top: トップ
+sticky: 屋根
+
+# ----------------------------------------
+# 菜单翻译
+# ----------------------------------------
+home: トップページ
+archive: ファイル
+archives: ファイル
+about: について
+links: リンク
+friends: フレンドシップリンク
+friend: フレンドシップリンク
+タイムライン: 時間軸
+shuoshuo: 話す
+
+# ----------------------------------------
+# 网站统计
+# ----------------------------------------
+site_uv: 訪問者数
+site_pv: 総アクセス数
+read-more: 全文を読む
+wordcount: 字
+min2read: 分
+changelog: ログを更新
+status: 状態
+
+# ----------------------------------------
+# 页脚
+# ----------------------------------------
+runtime: ブログが稼働する
+days: 日
+hours: 時間
+ミニッツ: 分
+seconds: 秒
+
+optimized_by: そしてEvanによって最適化される
+ライツ: 著作権所有
+
+# ----------------------------------------
+# 版权声明
+# ----------------------------------------
+copyright:
+  title: タイトル
+  author: 作者
+  link: リンク
+  create_time: で作成されました
+  update_time: で更新されました
+  license_title: 著作権宣言
+  license_content: "この文章は %s を使用して許可します。"
+  all_rights_reserved: "著作権所有 &#169 %s、転載禁止です。"
+  public-domain: "この記事はパブリックドメインの著作物であて、転載、引用は自由。"
+
+ago:
+  second: "%s 秒前"
+  minute: "%s 分前"
+  hour: "%s 時間前"
+  day: "%s 日前"
+  week: "%s 週間前"
+  month: "%s 月前"
+  year: "%s 年前"
+
+create_time: 作成
+update_time: 更新
+expired: "この記事は %s 日前に最後に更新される"
