@@ -66,4 +66,10 @@ export const navbarShrink = {
   },
 };
 
-navbarShrink.init();
+swup.hooks.on("page:view", () => {
+  navbarShrink.init();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  navbarShrink.init();
+});
