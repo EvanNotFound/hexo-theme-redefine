@@ -38,11 +38,6 @@ export const navbarShrink = {
           ".navbar-drawer .drawer-navbar-list .drawer-navbar-item",
         ),
       );
-      domList.push(
-        ...document.querySelectorAll(
-          ".navbar-drawer .drawer-navbar-list .dropdown-item",
-        ),
-      );
     }
 
     domList.forEach((v) => {

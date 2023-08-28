@@ -92,7 +92,7 @@
                     <!-- Submenu -->
                     <% if (theme.navbar.links[i].submenus) { %>          
                         <% for (var submenu in theme.navbar.links[i].submenus){ %>
-                            <li class="text-base flex justify-center items-center hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                            <li class="drawer-navbar-item text-base flex justify-center items-center hover:underline active:underline hover:underline-offset-1 rounded-3xl">
                                 <a class="py-0.5" href="<%- url_for(theme.navbar.links[i].submenus[submenu]) %>"><%= __(submenu.toLowerCase()).toUpperCase() %></a>
                             </li>
                         <% } %>
