@@ -43,26 +43,27 @@ Thank you!
 
 按时间先后排序 / Sorted by chronological order
 
-| 赞助时间 / Date | 赞助人 / Sponsor | 赞助金额 / Amount | 赞助方式 / Method | 网站 / Website |
-|:---------------:|:----------------:|:----------------:|:----------------:|:--------------:|
-|     Mar 4       | [@username0occupied](https://github.com/username0occupied) | ¥6.66  | 微信红包 | - |
-|     Mar 4       | [@jkoor](https://github.com/jkoor) | ¥15.00 | 微信红包 | [https://jkor.site](https://jkor.site) |
-|     Mar 10      | **峰 | ¥20.14 | 支付宝 | - |
-|     Mar 17      | Summer.南方 | ¥1.68 | 微信赞赏码 | - |
-|     Mar 19      | 那个我依旧是从前的我😄 | ¥100.00 | 微信赞赏码 | - |
-|     Mar 31      | [@牧丰086](https://github.com/mufeng086) | ¥6.66 | 支付宝 | [https://mufeng086.top](https://mufeng086.top) |
-|     Apr 11      | 飞呀菲呀 | ¥6.66 | 微信赞赏码 | - |
-|     Apr 18      | 👺 | ¥6.66 | 微信赞赏码 | [https://liohi.github.io](https://liohi.github.io) |
-|     Apr 19      | [@yzsong06](https://github.com/yzsong06) | ¥3.00 | 微信赞赏码 | - |
-|     Apr 23      | **博 | ¥10.00 | 支付宝 | - |
-|     May 7       | JiaqiGemini | ¥14.99 | 微信赞赏码 | - |
-|     May 12      | [@Sevdawk](https://github.com/Sevdawk) | ¥8.88 | 微信赞赏码 | [https://sevdawk.github.io](https://sevdawk.github.io) |
-|     May 13      | 好名字 | ¥6.66 | 微信赞赏码 | - |
-|     May 24      | [@HuTa0kj](https://github.com/HuTa0kj) | ¥8.88 | 微信赞赏码 | [https://huta0kj.github.io](https://huta0kj.github.io) |
-|     Jun 5       | **杰 | ¥6.00 | 支付宝 | - |
-|     Jun 12      | Anonymous | ¥0.99 | 微信赞赏码 | - |
-|     Jun 22      | [@JuTemp](https://github.com/JuTemp) | ¥15.00 | 支付宝 | [https://jtp0415.top](https://jtp0415.top) |
-|     Jul 11      | 匿名 | ¥40.00 | 支付宝 | - |
-|     Jul 13      | [@825i](https://github.com/825i) | $20.00 | Paypal | [https://blog.xtu.icu/](https://blog.xtu.icu/) |
-|     Jul 14      | 点点 | ¥8.88 | 微信赞赏码 | - |
-|     Aug 1       | 风宇 | ¥14.99 | 微信赞赏码 | [https://krazyu.com](https://krazyu.com) |
+| 赞助时间 / Date |                       赞助人 / Sponsor                        | 赞助金额 / Amount | 赞助方式 / Method |                      网站 / Website                      |
+|:-----------:|:----------------------------------------------------------:|:-------------:|:----------------:|:------------------------------------------------------:|
+|    Mar 4    | [@username0occupied](https://github.com/username0occupied) |     ¥6.66     | 微信红包 |                           -                            |
+|    Mar 4    |             [@jkoor](https://github.com/jkoor)             |    ¥15.00     | 微信红包 |         [https://jkor.site](https://jkor.site)         |
+|   Mar 10    |                            **峰                             |    ¥20.14     | 支付宝 |                           -                            |
+|   Mar 17    |                         Summer.南方                          |     ¥1.68     | 微信赞赏码 |                           -                            |
+|   Mar 19    |                        那个我依旧是从前的我😄                        |    ¥100.00    | 微信赞赏码 |                           -                            |
+|   Mar 31    |           [@牧丰086](https://github.com/mufeng086)           |     ¥6.66     | 支付宝 |     [https://mufeng086.top](https://mufeng086.top)     |
+|   Apr 11    |                            飞呀菲呀                            |     ¥6.66     | 微信赞赏码 |                           -                            |
+|   Apr 18    |                             👺                             |     ¥6.66     | 微信赞赏码 |   [https://liohi.github.io](https://liohi.github.io)   |
+|   Apr 19    |          [@yzsong06](https://github.com/yzsong06)          |     ¥3.00     | 微信赞赏码 |                           -                            |
+|   Apr 23    |                            **博                             |    ¥10.00     | 支付宝 |                           -                            |
+|    May 7    |                        JiaqiGemini                         |    ¥14.99     | 微信赞赏码 |                           -                            |
+|   May 12    |           [@Sevdawk](https://github.com/Sevdawk)           |     ¥8.88     | 微信赞赏码 | [https://sevdawk.github.io](https://sevdawk.github.io) |
+|   May 13    |                            好名字                             |     ¥6.66     | 微信赞赏码 |                           -                            |
+|   May 24    |           [@HuTa0kj](https://github.com/HuTa0kj)           |     ¥8.88     | 微信赞赏码 | [https://huta0kj.github.io](https://huta0kj.github.io) |
+|    Jun 5    |                            **杰                             |     ¥6.00     | 支付宝 |                           -                            |
+|   Jun 12    |                         Anonymous                          |     ¥0.99     | 微信赞赏码 |                           -                            |
+|   Jun 22    |            [@JuTemp](https://github.com/JuTemp)            |    ¥15.00     | 支付宝 |       [https://jtp0415.top](https://jtp0415.top)       |
+|   Jul 11    |                             匿名                             |    ¥40.00     | 支付宝 |                           -                            |
+|   Jul 13    |              [@825i](https://github.com/825i)              |    $20.00     | Paypal |     [https://blog.xtu.icu/](https://blog.xtu.icu/)     |
+|   Jul 14    |                             点点                             |     ¥8.88     | 微信赞赏码 |                           -                            |
+|    Aug 1    |                             风宇                             |    ¥14.99     | 微信赞赏码 |        [https://krazyu.com](https://krazyu.com)        |
+|   Aug 27    |                             匿名                             |    ¥88.00     | 微信赞赏码 |                           -                            |
