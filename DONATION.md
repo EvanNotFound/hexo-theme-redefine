@@ -69,4 +69,5 @@ Thank you!
 |   Aug 27    |                             匿名                             |    ¥88.00     | 微信赞赏码 |                           -                            |
 |   Sep 03    |  Locam  |   ¥30.00     |     支付宝 |                          [https://locam-cyj.github.io](https://locam-cyj.github.io)                          |
 |   Sep 03    |  夜鹿  |   ¥6.66     |     微信赞赏码 |                          -                          |
+|   Sep 03    |  **辉  |   ¥6.66     |     支付宝 |                          -                          |
 |   Sep 04    |  匿名  |   ¥10.00     |    微信赞赏码 |                          -                         |
