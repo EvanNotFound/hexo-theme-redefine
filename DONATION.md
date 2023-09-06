@@ -68,3 +68,5 @@ Thank you!
 |    Aug 1    |                             风宇                             |    ¥14.99     | 微信赞赏码 |        [https://krazyu.com](https://krazyu.com)        |
 |   Aug 27    |                             匿名                             |    ¥88.00     | 微信赞赏码 |                           -                            |
 |   Sep 03    |  Locam  |   ¥30.00     |     支付宝 |                          [https://locam-cyj.github.io](https://locam-cyj.github.io)                          |
+|   Sep 03    |  夜鹿  |   ¥6.66     |     微信赞赏码 |                          -                          |
+|   Sep 04    |  匿名  |   ¥10.00     |    微信赞赏码 |                          -                         |
