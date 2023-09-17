@@ -9,8 +9,8 @@
     "lint:style": "stylelint --fix ./source/css",
     "git:push": "git push --tag && git push -u origin dev",
     "git:add": "npm run lint:style && git add .",
-    "build:css": "tailwindcss build -i source/css/style.styl -o source/css/build/styles.css",
-    "watch:css": "tailwindcss build -i source/css/style.styl -o source/css/build/styles.css --watch"
+    "build:css": "tailwindcss build -i source/css/style.styl -o source/assets/build/styles.css",
+    "watch:css": "tailwindcss build -i source/css/style.styl -o source/assets/build/styles.css --watch"
   },
   "repository": {
     "type": "git",

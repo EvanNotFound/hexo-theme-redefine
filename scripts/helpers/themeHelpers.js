@@ -91,6 +91,9 @@ hexo.extend.helper.register("getPostUrl", function (rootUrl, path) {
 hexo.extend.helper.register("renderJS", function (path) {
   const _js = hexo.extend.helper.get("js").bind(hexo);
   const cdnProviders = {
+    staticfile: "https://cdn.staticfile.org",
+    bootcdn: "https://cdn.bootcdn.net/ajax/libs",
+    cdnjs: "https://cdnjs.cloudflare.com/ajax/libs",
     unpkg: "https://unpkg.com",
     jsdelivr: "https://cdn.jsdelivr.net/npm",
     aliyun: "https://evan.beee.top/projects",
@@ -99,13 +102,21 @@ hexo.extend.helper.register("renderJS", function (path) {
 
   const cdnPathHandle = (path) => {
     const cdnBase =
-      cdnProviders[this.theme.cdn.provider] || cdnProviders.aliyun;
+      cdnProviders[this.theme.cdn.provider] || cdnProviders.staticfile;
     if (this.theme.cdn.provider === "custom") {
       const customUrl = cdnBase
         .replace("${version}", themeVersion)
         .replace("${path}", path);
       return this.theme.cdn.enable
         ? `<script src="${customUrl}"></script>`
+        : _js(path);
+    } else if (
+      this.theme.cdn.provider === "staticfile" ||
+      this.theme.cdn.provider === "bootcdn" ||
+      this.theme.cdn.provider === "cdnjs"
+    ) {
+      return this.theme.cdn.enable
+        ? `<script src="${cdnBase}/hexo-theme-redefine/${themeVersion}/${path}"></script>`
         : _js(path);
     } else {
       return this.theme.cdn.enable
@@ -130,6 +141,9 @@ hexo.extend.helper.register("renderJS", function (path) {
 hexo.extend.helper.register("renderModuleJS", function (path) {
   const _js = hexo.extend.helper.get("js").bind(hexo);
   const cdnProviders = {
+    staticfile: "https://cdn.staticfile.org",
+    bootcdn: "https://cdn.bootcdn.net/ajax/libs",
+    cdnjs: "https://cdnjs.cloudflare.com/ajax/libs",
     unpkg: "https://unpkg.com",
     jsdelivr: "https://cdn.jsdelivr.net/npm",
     aliyun: "https://evan.beee.top/projects",
@@ -138,13 +152,21 @@ hexo.extend.helper.register("renderModuleJS", function (path) {
 
   const cdnPathHandle = (path) => {
     const cdnBase =
-      cdnProviders[this.theme.cdn.provider] || cdnProviders.aliyun;
+      cdnProviders[this.theme.cdn.provider] || cdnProviders.staticfile;
     if (this.theme.cdn.provider === "custom") {
       const customUrl = cdnBase
         .replace("${version}", themeVersion)
         .replace("${path}", path);
       return this.theme.cdn.enable
         ? `<script type="module" src="${customUrl}"></script>`
+        : _js({ src: path, type: "module" });
+    } else if (
+      this.theme.cdn.provider === "staticfile" ||
+      this.theme.cdn.provider === "bootcdn" ||
+      this.theme.cdn.provider === "cdnjs"
+    ) {
+      return this.theme.cdn.enable
+        ? `<script type="module" src="${cdnBase}/hexo-theme-redefine/${themeVersion}/${path}"></script>`
         : _js({ src: path, type: "module" });
     } else {
       return this.theme.cdn.enable
@@ -169,6 +191,9 @@ hexo.extend.helper.register("renderModuleJS", function (path) {
 hexo.extend.helper.register("renderCSS", function (path) {
   const _css = hexo.extend.helper.get("css").bind(hexo);
   const cdnProviders = {
+    staticfile: "//cdn.staticfile.org",
+    bootcdn: "//cdn.bootcdn.net/ajax/libs",
+    cdnjs: "//cdnjs.cloudflare.com/ajax/libs",
     unpkg: "//unpkg.com",
     jsdelivr: "//cdn.jsdelivr.net/npm",
     aliyun: "//evan.beee.top/projects",
@@ -177,13 +202,21 @@ hexo.extend.helper.register("renderCSS", function (path) {
 
   const cdnPathHandle = (path) => {
     const cdnBase =
-      cdnProviders[this.theme.cdn.provider] || cdnProviders.aliyun;
+      cdnProviders[this.theme.cdn.provider] || cdnProviders.staticfile;
     if (this.theme.cdn.provider === "custom") {
       const customUrl = cdnBase
         .replace("${version}", themeVersion)
         .replace("${path}", path);
       return this.theme.cdn.enable
         ? `<link rel="stylesheet" href="${customUrl}">`
+        : _css(path);
+    } else if (
+      this.theme.cdn.provider === "staticfile" ||
+      this.theme.cdn.provider === "bootcdn" ||
+      this.theme.cdn.provider === "cdnjs"
+    ) {
+      return this.theme.cdn.enable
+        ? `<link rel="stylesheet" href="${cdnBase}/hexo-theme-redefine/${themeVersion}/${path}">`
         : _css(path);
     } else {
       return this.theme.cdn.enable
