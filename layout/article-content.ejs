@@ -25,16 +25,29 @@
             
                     
         
-        <% if (theme.info.author || config.author) { %>
+        
+        <% if (theme.info.author || config.author || page.author.name) { %>
             <div class="article-header">
                 <div class="avatar">
-                    <%- image_tag(theme.defaults.avatar) %>
+                    <% if (page.author.avatar) { %>
+                        <%- image_tag(page.author.avatar) %>
+                    <% } else { %>
+                        <%- image_tag(theme.defaults.avatar) %>
+                    <% } %>
                 </div>
                 <div class="info">
                     <div class="author">
-                        <span class="name"><%= theme.info.author || config.author %></span>
+                        <% if (page.author.name) { %>
+                            <span class="name"><%= page.author.name %></span>
+                        <% } else { %>
+                            <span class="name"><%= theme.info.author || config.author %></span>
+                        <% } %>
                         <% if (theme.hasOwnProperty('articles') && theme.articles.author_label.enable === true) { %>
-                            <span class="author-label"><%- getAuthorLabel(site.posts.length, theme.articles.author_label.auto, theme.articles.author_label.list) %></span>
+                            <% if (page.author.label) { %>
+                                <span class="author-label"><%= page.author.label %></span>
+                            <% } else { %>
+                                <span class="author-label"><%- getAuthorLabel(site.posts.length, theme.articles.author_label.auto, theme.articles.author_label.list) %></span>
+                            <% } %>
                         <% } %>
                     </div>
                     <div class="meta-info">
