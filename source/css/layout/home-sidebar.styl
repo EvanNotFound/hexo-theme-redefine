@@ -13,7 +13,6 @@
     display none
 
   .sticky-container
-    position sticky
     top $navbar-height
 
   .sidebar-content
@@ -28,11 +27,7 @@
     &[marginTop]
       margin-top: $spacing-unit * 0.6
 
-    .avatar
-      display flex
-      justify-content center
-
-      img
+    .avatar img
         width 80px
         height 80px
         border-radius $redefine-border-radius-large
@@ -44,10 +39,6 @@
           box-shadow var(--redefine-box-shadow)
 
     .author
-      display flex
-      flex-direction column
-      justify-content center
-      margin 10px 0
 
       .name
         text-align center
