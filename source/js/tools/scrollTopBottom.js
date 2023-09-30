@@ -5,13 +5,16 @@ const initScrollTopBottom = () => {
   );
 
   const backToTop = () => {
-    document.body.scrollIntoView({
+    window.scrollTo({
+      top: 0, // scrolls to the top of the page
       behavior: "smooth",
     });
   };
 
   const backToBottom = () => {
-    document.querySelector("footer.footer").scrollIntoView({
+    const docHeight = document.body.scrollHeight;
+    window.scrollTo({
+      top: docHeight, // scrolls to the bottom of the page
       behavior: "smooth",
     });
   };
