@@ -4,19 +4,19 @@
     'js/layouts/navbarShrink.js',
     'js/tools/scrollTopBottom.js',
     'js/tools/lightDarkSwitch.js',
-    'js/layouts/categoryList.js',
+    'js/layouts/categoryList.js'
 ]) %>
 
 <% if (theme.navbar.search.enable) { %>
-    <%- renderJS('js/tools/localSearch.js') %>
+    <%- renderModuleJS('js/tools/localSearch.js') %>
 <% } %>
 
 <% if (theme.articles.code_block.copy) { %>
-    <%- renderJS('js/tools/codeBlock.js') %>
+    <%- renderModuleJS('js/tools/codeBlock.js') %>
 <% } %>
 
 <% if (theme.articles.lazyload) { %>
-    <%- renderJS('js/layouts/lazyload.js') %>
+    <%- renderModuleJS('js/layouts/lazyload.js') %>
 <% } %>
 
 <% if (theme.footer.runtime) { %>
@@ -27,7 +27,7 @@
 
 <% if (theme.home_banner.subtitle.length !== 0) { %>
   <%- renderJS('js/libs/Typed.min.js') %>
-  <%- renderJS('js/plugins/typed.js') %>
+  <%- renderModuleJS('js/plugins/typed.js') %>
 <% } %>
 
 <% if (theme.plugins.mermaid.enable) { %>
@@ -47,7 +47,6 @@
         <%- renderModuleJS([
             'js/tools/tocToggle.js',
             'js/layouts/toc.js',
-
             'js/plugins/tabs.js'
         ]) %>
     <% } %>

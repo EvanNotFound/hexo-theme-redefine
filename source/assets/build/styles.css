@@ -632,6 +632,11 @@ video {
   margin: 0.25rem;
 }
 
+.mx-0 {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
 .my-1 {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
@@ -650,11 +655,6 @@ video {
 .my-2\.5 {
   margin-top: 0.625rem;
   margin-bottom: 0.625rem;
-}
-
-.mx-0 {
-  margin-left: 0px;
-  margin-right: 0px;
 }
 
 .mb-3 {
@@ -791,6 +791,10 @@ video {
 
 .max-w-none {
   max-width: none;
+}
+
+.shrink {
+  flex-shrink: 1;
 }
 
 .-rotate-45 {

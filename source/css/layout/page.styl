@@ -13,9 +13,11 @@
   .main-content-container
     padding-top $navbar-height
     position relative
+    transition padding 0.2s ease
 
     .navbar-shrink &
       padding-top $navbar-shrink-height
+      transition padding 0.2s ease
 
       +redefine-tablet()
         padding-top: ($navbar-shrink-height * 0.9)

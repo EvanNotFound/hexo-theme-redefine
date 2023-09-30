@@ -73,7 +73,9 @@
                 document.addEventListener("DOMContentLoaded", function () {
                     updateExpirationDate();
                 });
-                swup.hooks.on("page:view",updateExpirationDate)
+                try {
+                    swup.hooks.on("page:view",updateExpirationDate)
+                } catch (e){}
             </script>
         <% } %>
 

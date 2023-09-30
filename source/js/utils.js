@@ -1,10 +1,14 @@
-/* global function */
-
-import { initMasonry } from "./plugins/masonry.js";
+/* utils function */
 import { navbarShrink } from "./layouts/navbarShrink.js";
+import { initTOC } from "./layouts/toc.js";
+import { main } from "./main.js";
 
-export function initUtils() {
-  Global.utils = {
+export const navigationState = {
+  isNavigating: false,
+};
+
+export default function initUtils() {
+  const utils = {
     html_root_dom: document.querySelector("html"),
     pageContainer_dom: document.querySelector(".page-container"),
     pageTop_dom: document.querySelector(".main-content-header"),
@@ -28,6 +32,7 @@ export function initUtils() {
 
     // Scroll Style
     updateScrollStyle() {
+      console.log("update scroll style");
       const scrollTop =
         window.pageYOffset || document.documentElement.scrollTop;
       const scrollHeight = document.documentElement.scrollHeight;
@@ -84,6 +89,7 @@ export function initUtils() {
 
     // register window scroll event
     registerWindowScroll() {
+      console.log("register window scroll");
       window.addEventListener("scroll", () => {
         this.updateScrollStyle();
         this.updateTOCScroll();
@@ -97,14 +103,16 @@ export function initUtils() {
     updateTOCScroll() {
       if (
         Global.theme_config.articles.toc.enable &&
-        Global.utils.hasOwnProperty("updateActiveTOCLink")
+        initTOC().hasOwnProperty("updateActiveTOCLink")
       ) {
-        Global.utils.updateActiveTOCLink();
+        initTOC().updateActiveTOCLink();
       }
     },
 
     updateNavbarShrink() {
-      navbarShrink.init();
+      if (!navigationState.isNavigating) {
+        navbarShrink.init();
+      }
     },
 
     updateHomeBannerBlur() {
@@ -187,7 +195,7 @@ export function initUtils() {
       const baseFontSize = parseFloat(fontSize);
 
       let fontSizeLevel = 0;
-      const styleStatus = Global.getStyleStatus();
+      const styleStatus = main.getStyleStatus();
       if (styleStatus) {
         fontSizeLevel = styleStatus.fontSizeLevel;
         setFontSize(fontSizeLevel);
@@ -196,8 +204,8 @@ export function initUtils() {
       function setFontSize(level) {
         const fontSize = baseFontSize * (1 + level * 0.05);
         htmlRoot.style.fontSize = `${fontSize}px`;
-        Global.styleStatus.fontSizeLevel = level;
-        Global.setStyleStatus();
+        main.styleStatus.fontSizeLevel = level;
+        main.setStyleStatus();
       }
 
       function increaseFontSize() {
@@ -213,72 +221,6 @@ export function initUtils() {
       fontAdjustPlus.addEventListener("click", increaseFontSize);
       fontAdjustMinus.addEventListener("click", decreaseFontSize);
     },
-
-    // toggle content area width
-    contentAreaWidthAdjust() {
-      const toolExpandDom = document.querySelector(".tool-expand-width");
-      const navbarContentDom = document.querySelector(".navbar-content");
-      const mainContentDom = document.querySelector(".main-content");
-      const iconDom = toolExpandDom.querySelector("i");
-
-      const defaultMaxWidth =
-        Global.theme_config.global.content_max_width || "1000px";
-      const expandMaxWidth = "90%";
-      let navbarMaxWidth = defaultMaxWidth;
-
-      let isExpand = false;
-
-      if (
-        Global.theme_config.home_banner.enable === true &&
-        window.location.pathname === "/"
-      ) {
-        navbarMaxWidth = parseInt(defaultMaxWidth) * 1.2 + "px";
-      }
-
-      const setPageWidth = (isExpand) => {
-        Global.styleStatus.isExpandPageWidth = isExpand;
-        Global.setStyleStatus();
-        if (isExpand) {
-          iconDom.classList.remove("fa-expand");
-          iconDom.classList.add("fa-compress");
-          navbarContentDom.style.maxWidth = expandMaxWidth;
-          mainContentDom.style.maxWidth = expandMaxWidth;
-        } else {
-          iconDom.classList.remove("fa-compress");
-          iconDom.classList.add("fa-expand");
-          navbarContentDom.style.maxWidth = navbarMaxWidth;
-          mainContentDom.style.maxWidth = defaultMaxWidth;
-        }
-      };
-
-      const initPageWidth = () => {
-        const styleStatus = Global.getStyleStatus();
-        if (styleStatus) {
-          isExpand = styleStatus.isExpandPageWidth;
-          setPageWidth(isExpand);
-        }
-      };
-
-      initPageWidth();
-
-      toolExpandDom.addEventListener("click", () => {
-        isExpand = !isExpand;
-        setPageWidth(isExpand);
-
-        var loadingPlaceholder = document.querySelector(".loading-placeholder");
-        var masonryContainer = document.querySelector("#masonry-container");
-        if (!loadingPlaceholder || !masonryContainer) return;
-
-        loadingPlaceholder.style.opacity = 1;
-        loadingPlaceholder.style.display = "block";
-        masonryContainer.style.display = "none";
-
-        setTimeout(() => {
-          initMasonry();
-        }, 300);
-      });
-    },
-
     // go comment anchor
     goComment() {
       this.goComment_dom = document.querySelector(".go-comment");
@@ -519,94 +461,29 @@ export function initUtils() {
           });
       }
     },
-    /*
-    calculateMaterialColors(hex) {
-      // Convert hex to RGB
-      hex = hex.replace(/#/g, "");
-      if (hex.length === 3) {
-        hex = hex
-          .split("")
-          .map(function (hex) {
-            return hex + hex;
-          })
-          .join("");
-      }
-      var result = /^([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})[\da-z]{0,0}$/i.exec(
-        hex
-      );
-      if (!result) {
-        return null;
-      }
-      var r = parseInt(result[1], 16);
-      var g = parseInt(result[2], 16);
-      var b = parseInt(result[3], 16);
-      (r /= 255), (g /= 255), (b /= 255);
-      var max = Math.max(r, g, b),
-        min = Math.min(r, g, b);
-      var h,
-        s,
-        l = (max + min) / 2;
-      if (max == min) {
-        h = s = 0;
-      } else {
-        var d = max - min;
-        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-        switch (max) {
-          case r:
-            h = (g - b) / d + (g < b ? 6 : 0);
-            break;
-          case g:
-            h = (b - r) / d + 2;
-            break;
-          case b:
-            h = (r - g) / d + 4;
-            break;
-        }
-        h /= 6;
-      }
-      s = s * 100;
-      s = Math.round(s);
-      l = l * 100;
-      l = Math.round(l);
-      h = Math.round(360 * h);
-
-      // Compute primary, secondary, and tertiary colors
-      const primaryColor = `hsl(${h}, ${s}%, ${l}%)`;
-      const secondaryColor = `hsl(${h}, ${s - 15}%, ${l - 15}%)`;
-      const tertiaryColor = `hsl(${h}, ${s - 25}%, ${l - 25}%)`;
-      document.documentElement.style.setProperty('--primary-color-temp', primaryColor);
-      document.documentElement.style.setProperty('--secondary-color-temp', secondaryColor);
-      document.documentElement.style.setProperty('--tertiary-color-temp', tertiaryColor);
-    },*/
   };
 
   // init scroll
-  Global.utils.registerWindowScroll();
+  utils.registerWindowScroll();
 
   // toggle show tools list
-  Global.utils.toggleToolsList();
+  utils.toggleToolsList();
 
-  // global font adjust
-  Global.utils.globalFontSizeAdjust();
-
-  // adjust content area width
-  Global.utils.contentAreaWidthAdjust();
+  // main font adjust
+  utils.globalFontSizeAdjust();
 
   // go comment
-  Global.utils.goComment();
+  utils.goComment();
 
   // init page height handle
-  Global.utils.initPageHeightHandle();
+  utils.initPageHeightHandle();
 
   // init first screen height
-  Global.utils.inithomeBannerHeight();
+  utils.inithomeBannerHeight();
 
   // big image viewer handle
-  Global.utils.imageViewer();
+  utils.imageViewer();
 
   // set how long ago in home article block
-  Global.utils.relativeTimeInHome();
-
-  // calculate material colors
-  //Global.utils.calculateMaterialColors(Global.theme_config.colors.primary);
+  utils.relativeTimeInHome();
 }

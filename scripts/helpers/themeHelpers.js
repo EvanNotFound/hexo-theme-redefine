@@ -1,4 +1,4 @@
-/* global hexo */
+/* main hexo */
 
 "use strict";
 

@@ -33,9 +33,10 @@ $logo-image-box-width = 46px
     justify-content space-between
     align-items center
     z-index $z-index-5
+    transition max-width 0.3s ease
 
     &.has-home-banner
-      max-width: $content-max-width * 1.2
+      max-width $content-max-width * 1.2
 
     +redefine-tablet()
       width $main-content-width-tablet
@@ -46,6 +47,7 @@ $logo-image-box-width = 46px
     .left
       display flex
       align-items center
+      transform-origin left
       transition-t('transform', '0', '0.2', 'linear')
 
       .navbar-shrink &

@@ -1,4 +1,4 @@
-Global.initLocalSearch = () => {
+export default function initLocalSearch() {
   // Search DB path
   let searchPath = Global.hexo_config.path;
   if (!searchPath) {
@@ -324,4 +324,4 @@ Global.initLocalSearch = () => {
       onPopupClose();
     }
   });
-};
+}
