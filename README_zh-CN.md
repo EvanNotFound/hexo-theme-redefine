@@ -144,24 +144,3 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 如果你想参与主题开发，请 `clone` 本项目的 `dev` 分支，然后在 `dev` 分支上进行开发。
 
 同时，请查看 [Redefine 主题开发文档](https://redefine-docs.ohevan.com/developer)。
-
-## 🥳 Cirno CDN 
-
-> 找不到稳定的公共图床存放你的博客图片和文件？
-> 
-> 公共图床访问速度慢？
-> 
-> 写文章上传图片麻烦？
-
-我个人搭建了一个 CDN，使用阿里云 OSS 存储。
-
-- 全球加速 
-- PicGo 支持，Typora / VSCode 拖拽图片自动上传 
-- 阿里云官方 OSS Browser 支持 
-- 已备案域名，已开启全国加速，延迟 <50ms 
-- Redefine 主题同款 CDN (`aliyun`)
-- 数据保证，即使取消订阅也保留图片 
-- 只要 Redefine 主题这个项目还在，图床就还在
-- 支持除图片以外的小文件托管（word/ppt/...）
-
-需要请查看 [Cirno CDN](https://cdn.ohevan.com/)。
