@@ -2,6 +2,7 @@
 import { navbarShrink } from "./layouts/navbarShrink.js";
 import { initTOC } from "./layouts/toc.js";
 import { main } from "./main.js";
+import imageViewer from "./tools/imageViewer.js";
 
 export const navigationState = {
   isNavigating: false,
@@ -264,131 +265,6 @@ export default function initUtils() {
     },
 
     // big image viewer
-    imageViewer() {
-      let isBigImage = false;
-      let scale = 1;
-      let isMouseDown = false;
-      let lastMouseX = 0;
-      let lastMouseY = 0;
-      let translateX = 0;
-      let translateY = 0;
-
-      const maskDom = document.querySelector(".image-viewer-container");
-      const targetImg = maskDom.querySelector("img");
-
-      const showHandle = (isShow) => {
-        document.body.style.overflow = isShow ? "hidden" : "auto";
-        isShow
-          ? maskDom.classList.add("active")
-          : maskDom.classList.remove("active");
-      };
-
-      const zoomHandle = (event) => {
-        event.preventDefault();
-        const rect = targetImg.getBoundingClientRect();
-        const offsetX = event.clientX - rect.left;
-        const offsetY = event.clientY - rect.top;
-        const dx = offsetX - rect.width / 2;
-        const dy = offsetY - rect.height / 2;
-        const oldScale = scale;
-        scale += event.deltaY * -0.001;
-        scale = Math.min(Math.max(0.8, scale), 4);
-
-        if (oldScale < scale) {
-          // Zooming in
-          translateX -= dx * (scale - oldScale);
-          translateY -= dy * (scale - oldScale);
-        } else {
-          // Zooming out
-          translateX = 0;
-          translateY = 0;
-        }
-
-        targetImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-      };
-
-      const dragStartHandle = (event) => {
-        event.preventDefault();
-        isMouseDown = true;
-        lastMouseX = event.clientX;
-        lastMouseY = event.clientY;
-      };
-
-      let lastTime = 0;
-      const throttle = 100;
-
-      const dragHandle = (event) => {
-        if (isMouseDown) {
-          const currentTime = new Date().getTime();
-          if (currentTime - lastTime < throttle) {
-            return;
-          }
-          lastTime = currentTime;
-          const deltaX = event.clientX - lastMouseX;
-          const deltaY = event.clientY - lastMouseY;
-          translateX += deltaX;
-          translateY += deltaY;
-          lastMouseX = event.clientX;
-          lastMouseY = event.clientY;
-          targetImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-        }
-      };
-
-      const dragEndHandle = (event) => {
-        if (isMouseDown) {
-          event.stopPropagation();
-        }
-        isMouseDown = false;
-      };
-
-      targetImg.addEventListener("wheel", zoomHandle);
-      targetImg.addEventListener("mousedown", dragStartHandle);
-      targetImg.addEventListener("mousemove", dragHandle);
-      targetImg.addEventListener("mouseup", dragEndHandle);
-      targetImg.addEventListener("mouseleave", dragEndHandle);
-
-      maskDom.addEventListener("click", (event) => {
-        if (event.target !== event.currentTarget) {
-          return;
-        }
-        isBigImage = false;
-        showHandle(isBigImage);
-        scale = 1;
-        translateX = 0;
-        translateY = 0;
-        targetImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-      });
-
-      const imgDoms = document.querySelectorAll(
-        ".markdown-body img, .masonry-item img, #shuoshuo-content img",
-      );
-
-      const escapeKeyListener = (event) => {
-        if (event.key === "Escape" && isBigImage) {
-          isBigImage = false;
-          showHandle(isBigImage);
-          scale = 1;
-          translateX = 0;
-          translateY = 0;
-          targetImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-          // Remove the event listener when the image viewer is closed
-          document.removeEventListener("keydown", escapeKeyListener);
-        }
-      };
-
-      imgDoms.forEach((img) => {
-        img.addEventListener("click", () => {
-          isBigImage = true;
-          showHandle(isBigImage);
-          targetImg.src = img.src;
-          document.addEventListener("keydown", escapeKeyListener);
-        });
-      });
-
-      if (!imgDoms.length && maskDom) {
-        maskDom.parentNode.removeChild(maskDom);
-      }
-    },
 
     // set how long ago language
     setHowLongAgoLanguage(p1, p2) {
@@ -477,9 +353,9 @@ export default function initUtils() {
   // init first screen height
   utils.inithomeBannerHeight();
 
-  // big image viewer handle
-  utils.imageViewer();
-
   // set how long ago in home article block
   utils.relativeTimeInHome();
+
+  // image viewer handle
+  imageViewer();
 }
