@@ -58,23 +58,25 @@
 
             <script data-swup-reload-script>
                 function updateExpirationDate() {
-                    var expiredDate = new Date("<%= page.expires %>");
-                    const updatedDate = new Date("<%= page.updated %>");
-                    let now = new Date();
-                    const expirationValue = document.getElementById("expiration-date");
-                    const expirationContainer = document.getElementById("expiration-container");
-                    let daysAgo = Math.floor((now - updatedDate) / (1000 * 60 * 60 * 24));
-                    if (expiredDate < now) {
-                        expirationContainer.classList.remove("hidden");
-                        console.log(daysAgo)
-                        expirationValue.innerHTML = expirationValue.innerHTML.replace("some", daysAgo);
-                    }
+                    try{
+                        const expiredDate = new Date("<%= page.expires %>");
+                        const updatedDate = new Date("<%= page.updated %>");
+                        const now = new Date();
+                        const expirationValue = document.getElementById("expiration-date");
+                        const expirationContainer = document.getElementById("expiration-container");
+                        let daysAgo = Math.floor((now - updatedDate) / (1000 * 60 * 60 * 24));
+                        if (expiredDate < now) {
+                            expirationContainer.classList.remove("hidden");
+                            console.log(daysAgo)
+                            expirationValue.innerHTML = expirationValue.innerHTML.replace("some", daysAgo);
+                        }
+                    } catch (e) {}
                 }
                 document.addEventListener("DOMContentLoaded", function () {
                     updateExpirationDate();
                 });
                 try {
-                    swup.hooks.on("page:view",updateExpirationDate)
+                    swup.hooks.on("page:view", updateExpirationDate)
                 } catch (e){}
             </script>
         <% } %>

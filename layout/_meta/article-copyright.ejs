@@ -1,7 +1,7 @@
 <div class="article-copyright-info-container">
     <ul>
         <li><strong><%- __('copyright.title') %>:</strong> <%= page.title %></li>
-        <li><strong><%- __('copyright.author') %>:</strong> <%=(typeof page.author === "string" && (page.author)) || page.author.name || theme.info.author || config.author %></li>
+        <li><strong><%- __('copyright.author') %>:</strong> <%=(typeof page.author === "string" && (page.author)) || page.author?.name || theme.info.author || config.author %></li>
         <li><strong><%- __('copyright.create_time') %>
                 :</strong> <%= date(page.date, `${config.date_format} ${config.time_format}`) %></li>
         <% if (page.updated && page.updated !== page.date) { %>

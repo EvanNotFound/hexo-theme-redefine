@@ -9,7 +9,7 @@
               <span><%= date(new Date(theme.footer.start), 'YYYY') %></span>
               -
             <% } %>
-            <%= date(new Date(), 'YYYY') %>&nbsp;&nbsp;<%- theme.footer.icon || '<i class="fa-regular fa-computer-classic"></i>' %>&nbsp;&nbsp;<a href="/"><%= theme.info.author || config.author %></a>
+            <%= date(new Date(), 'YYYY') %>&nbsp;&nbsp;<%- theme.footer.icon || '<i class="fa-regular fa-computer-classic"></i>' %>&nbsp;&nbsp;<a href="<%= config.root %>"><%= theme.info.author || config.author %></a>
         </div>
         <% if (theme.global.website_counter.enable === true) { %>
             <script <%= theme.global.single_page === true ? 'data-swup-reload-script' : '' %> src="<%= theme.global.website_counter.url ? theme.global.website_counter.url : "//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" %>"></script>
