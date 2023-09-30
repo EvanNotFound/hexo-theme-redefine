@@ -2,13 +2,13 @@
 author: @jiangwen5945 & EvanNotFound
 */
 export const config = {
-  usrTypeSpeed: Global.theme_config.home_banner.subtitle.typing_speed,
-  usrBackSpeed: Global.theme_config.home_banner.subtitle.backing_speed,
-  usrBackDelay: Global.theme_config.home_banner.subtitle.backing_delay,
-  usrStartDelay: Global.theme_config.home_banner.subtitle.starting_delay,
-  usrLoop: Global.theme_config.home_banner.subtitle.loop,
-  usrSmartBackspace: Global.theme_config.home_banner.subtitle.smart_backspace,
-  usrHitokotoAPI: Global.theme_config.home_banner.subtitle.hitokoto.api,
+  usrTypeSpeed: theme.home_banner.subtitle.typing_speed,
+  usrBackSpeed: theme.home_banner.subtitle.backing_speed,
+  usrBackDelay: theme.home_banner.subtitle.backing_delay,
+  usrStartDelay: theme.home_banner.subtitle.starting_delay,
+  usrLoop: theme.home_banner.subtitle.loop,
+  usrSmartBackspace: theme.home_banner.subtitle.smart_backspace,
+  usrHitokotoAPI: theme.home_banner.subtitle.hitokoto.api,
 };
 
 export default function initTyped(id) {
@@ -34,7 +34,7 @@ export default function initTyped(id) {
     });
   }
 
-  if (Global.theme_config.home_banner.subtitle.hitokoto.enable) {
+  if (theme.home_banner.subtitle.hitokoto.enable) {
     fetch(usrHitokotoAPI)
       .then((response) => response.json())
       .then((data) => {
@@ -42,7 +42,7 @@ export default function initTyped(id) {
       })
       .catch(console.error);
   } else {
-    const sentenceList = [...Global.theme_config.home_banner.subtitle.text];
+    const sentenceList = [...theme.home_banner.subtitle.text];
     if (document.getElementById(id)) {
       const st = new Typed("#" + id, {
         strings: sentenceList,

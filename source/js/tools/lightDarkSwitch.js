@@ -1,6 +1,4 @@
 import { main } from "../main.js";
-
-// Exported object to replace Global
 export const ModeToggle = {
   modeToggleButton_dom: null,
   iconDom: null,
@@ -108,16 +106,16 @@ export const ModeToggle = {
     );
     this.iconDom = document.querySelector(".tool-dark-light-toggle i");
     this.mermaidLightTheme =
-      typeof Global.theme_config.mermaid !== "undefined" &&
-      typeof Global.theme_config.mermaid.style !== "undefined" &&
-      typeof Global.theme_config.mermaid.style.light !== "undefined"
-        ? Global.theme_config.mermaid.style.light
+      typeof theme.mermaid !== "undefined" &&
+      typeof theme.mermaid.style !== "undefined" &&
+      typeof theme.mermaid.style.light !== "undefined"
+        ? theme.mermaid.style.light
         : "default";
     this.mermaidDarkTheme =
-      typeof Global.theme_config.mermaid !== "undefined" &&
-      typeof Global.theme_config.mermaid.style !== "undefined" &&
-      typeof Global.theme_config.mermaid.style.dark !== "undefined"
-        ? Global.theme_config.mermaid.style.dark
+      typeof theme.mermaid !== "undefined" &&
+      typeof theme.mermaid.style !== "undefined" &&
+      typeof theme.mermaid.style.dark !== "undefined"
+        ? theme.mermaid.style.dark
         : "dark";
 
     this.initModeStatus();

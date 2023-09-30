@@ -25,14 +25,11 @@ export default function initUtils() {
     prevScrollValue: 0,
     fontSizeLevel: 0,
 
-    isHasScrollProgressBar:
-      Global.theme_config.global.scroll_progress.bar === true,
-    isHasScrollPercent:
-      Global.theme_config.global.scroll_progress.percentage === true,
+    isHasScrollProgressBar: theme.global.scroll_progress.bar === true,
+    isHasScrollPercent: theme.global.scroll_progress.percentage === true,
 
     // Scroll Style
     updateScrollStyle() {
-      console.log("update scroll style");
       const scrollTop =
         window.pageYOffset || document.documentElement.scrollTop;
       const scrollHeight = document.documentElement.scrollHeight;
@@ -72,7 +69,7 @@ export default function initUtils() {
     },
 
     updatePageTopVisibility(scrollTop, clientHeight) {
-      if (Global.theme_config.navbar.auto_hide) {
+      if (theme.navbar.auto_hide) {
         const prevScrollValue = this.prevScrollValue;
         const hidePageTop =
           prevScrollValue > clientHeight && scrollTop > prevScrollValue;
@@ -89,7 +86,6 @@ export default function initUtils() {
 
     // register window scroll event
     registerWindowScroll() {
-      console.log("register window scroll");
       window.addEventListener("scroll", () => {
         this.updateScrollStyle();
         this.updateTOCScroll();
@@ -102,7 +98,7 @@ export default function initUtils() {
 
     updateTOCScroll() {
       if (
-        Global.theme_config.articles.toc.enable &&
+        theme.articles.toc.enable &&
         initTOC().hasOwnProperty("updateActiveTOCLink")
       ) {
         initTOC().updateActiveTOCLink();
@@ -117,8 +113,8 @@ export default function initUtils() {
 
     updateHomeBannerBlur() {
       if (
-        Global.theme_config.home_banner.style === "fixed" &&
-        location.pathname === Global.hexo_config.root
+        theme.home_banner.style === "fixed" &&
+        location.pathname === config.root
       ) {
         const blurElement = document.querySelector(".home-banner-background");
         const viewHeight = window.innerHeight;
@@ -400,7 +396,7 @@ export default function initUtils() {
     },
 
     getHowLongAgo(timestamp) {
-      const l = Global.language_ago;
+      const l = lang_ago;
 
       const __Y = Math.floor(timestamp / (60 * 60 * 24 * 30) / 12);
       const __M = Math.floor(timestamp / (60 * 60 * 24 * 30));
@@ -431,7 +427,7 @@ export default function initUtils() {
       const post = document.querySelectorAll(
         ".home-article-meta-info .home-article-date",
       );
-      const df = Global.theme_config.home.article_date_format;
+      const df = theme.home.article_date_format;
       if (df === "relative") {
         post &&
           post.forEach((v) => {

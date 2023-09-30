@@ -9,7 +9,7 @@ import initCopyCode from "./tools/codeBlock.js";
 
 export const main = {
   themeInfo: {
-    theme: `Redefine v${Global.theme_config.version}`,
+    theme: `Redefine v${theme.version}`,
     author: "EvanNotFound",
     repository: "https://github.com/EvanNotFound/hexo-theme-redefine",
   },
@@ -48,21 +48,21 @@ export const main = {
     initModeToggle();
     initScrollTopBottom();
     if (
-      Global.theme_config.home_banner.subtitle.text.length !== 0 &&
-      location.pathname === Global.hexo_config.root
+      theme.home_banner.subtitle.text.length !== 0 &&
+      location.pathname === config.root
     ) {
       initTyped("subtitle");
     }
 
-    if (Global.theme_config.navbar.search.enable === true) {
+    if (theme.navbar.search.enable === true) {
       initLocalSearch();
     }
 
-    if (Global.theme_config.articles.code_block.copy === true) {
+    if (theme.articles.code_block.copy === true) {
       initCopyCode();
     }
 
-    if (Global.theme_config.articles.lazyload === true) {
+    if (theme.articles.lazyload === true) {
       initLazyLoad();
     }
   },

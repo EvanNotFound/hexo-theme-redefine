@@ -81,8 +81,8 @@ export function initTOC() {
 
       const initOpenKey = "init_open";
 
-      if (Global.theme_config.articles.toc.hasOwnProperty(initOpenKey)) {
-        Global.theme_config.articles.toc[initOpenKey]
+      if (theme.articles.toc.hasOwnProperty(initOpenKey)) {
+        theme.articles.toc[initOpenKey]
           ? openHandle()
           : initTocToggle().pageAsideHandleOfTOC(false);
       } else {

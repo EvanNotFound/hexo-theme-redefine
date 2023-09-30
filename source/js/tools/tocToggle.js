@@ -18,7 +18,6 @@ export function initTocToggle() {
       this.toggleBar &&
         this.toggleBar.addEventListener("click", () => {
           this.isOpenPageAside = !this.isOpenPageAside;
-          // Assume Global.styleStatus and Global.setStyleStatus are defined elsewhere
           main.styleStatus.isOpenPageAside = this.isOpenPageAside;
           main.setStyleStatus();
           this.changePageLayoutWhenOpenToggle(this.isOpenPageAside);
