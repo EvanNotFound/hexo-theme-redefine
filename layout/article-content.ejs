@@ -28,11 +28,11 @@
         <% if (theme.info.author || config.author) { %>
             <div class="article-header">
                 <div class="avatar">
-                    <%- image_tag(theme.defaults.avatar) %>
+                    <%- image_tag((typeof page.avatar === "string" && (page.avatar)) || page.author.avatar || theme.defaults.avatar) %>
                 </div>
                 <div class="info">
                     <div class="author">
-                        <span class="name"><%= theme.info.author || config.author %></span>
+                        <span class="name"><%= (typeof page.author === "string" && (page.author)) || page.author.name || theme.info.author || config.author %></span>
                         <% if (theme.hasOwnProperty('articles') && theme.articles.author_label.enable === true) { %>
                             <span class="author-label"><%- getAuthorLabel(site.posts.length, theme.articles.author_label.auto, theme.articles.author_label.list) %></span>
                         <% } %>
