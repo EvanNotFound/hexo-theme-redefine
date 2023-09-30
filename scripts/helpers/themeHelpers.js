@@ -138,7 +138,7 @@ hexo.extend.helper.register("renderJS", function (path) {
   return t;
 });
 
-hexo.extend.helper.register("renderModuleJS", function (path) {
+hexo.extend.helper.register("renderJSModule", function (path) {
   const _js = hexo.extend.helper.get("js").bind(hexo);
   const cdnProviders = {
     staticfile: "https://cdn.staticfile.org",
@@ -172,6 +172,54 @@ hexo.extend.helper.register("renderModuleJS", function (path) {
       return this.theme.cdn.enable
         ? `<script type="module" src="${cdnBase}/hexo-theme-redefine@${themeVersion}/source/${path}"></script>`
         : _js({ src: path, type: "module" });
+    }
+  };
+
+  let t = "";
+
+  if (Array.isArray(path)) {
+    for (const p of path) {
+      t += cdnPathHandle(p);
+    }
+  } else {
+    t = cdnPathHandle(path);
+  }
+
+  return t;
+});
+
+hexo.extend.helper.register("renderJSPath", function (path) {
+  const _url_for = hexo.extend.helper.get("url_for").bind(hexo);
+  const cdnProviders = {
+    staticfile: "https://cdn.staticfile.org",
+    bootcdn: "https://cdn.bootcdn.net/ajax/libs",
+    cdnjs: "https://cdnjs.cloudflare.com/ajax/libs",
+    unpkg: "https://unpkg.com",
+    jsdelivr: "https://cdn.jsdelivr.net/npm",
+    aliyun: "https://evan.beee.top/projects",
+    custom: this.theme.cdn.custom_url,
+  };
+
+  const cdnPathHandle = (path) => {
+    const cdnBase =
+      cdnProviders[this.theme.cdn.provider] || cdnProviders.staticfile;
+    if (this.theme.cdn.provider === "custom") {
+      const customUrl = cdnBase
+        .replace("${version}", themeVersion)
+        .replace("${path}", path);
+      return this.theme.cdn.enable ? customUrl : _url_for(path);
+    } else if (
+      this.theme.cdn.provider === "staticfile" ||
+      this.theme.cdn.provider === "bootcdn" ||
+      this.theme.cdn.provider === "cdnjs"
+    ) {
+      return this.theme.cdn.enable
+        ? `${cdnBase}/hexo-theme-redefine/${themeVersion}/${path}`
+        : _url_for(path);
+    } else {
+      return this.theme.cdn.enable
+        ? `${cdnBase}/hexo-theme-redefine@${themeVersion}/source/${path}`
+        : _url_for(path);
     }
   };
 
