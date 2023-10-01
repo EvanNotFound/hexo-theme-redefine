@@ -1,4 +1,4 @@
-/* global hexo */
+/* main hexo */
 
 "use strict";
 
@@ -35,8 +35,8 @@ hexo.extend.filter.register(
         } else {
           return `<a class="link" ${attrBegin} href="${href}" ${attrEnd}>${html} <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>`;
         }
-      }
+      },
     );
   },
-  0
+  0,
 );

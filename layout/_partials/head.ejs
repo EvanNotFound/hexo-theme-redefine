@@ -9,16 +9,19 @@
     <!-- preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <% if (theme.cdn.enable == true) { %>
-        <% if (theme.cdn.provider == 'jsdelivr') { %>
-            <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-        <% } else if (theme.cdn.provider == 'unpkg') { %>
-            <link rel="preconnect" href="https://unpkg.com" crossorigin>
-        <% } else if (theme.cdn.provider == 'personal') { %>
-            <link rel="preconnect" href="https://evan.beee.top" crossorigin>
-        <% } else { %>
-            <link rel="preconnect" href="https://npm.elemecdn.com" crossorigin>
+
+    <% if (theme.cdn.enable) { %>
+        <% const provider = theme.cdn.provider; %>
+        <% const cdnLinks = {
+            'jsdelivr': 'https://cdn.jsdelivr.net',
+            'unpkg': 'https://unpkg.com',
+            'personal': 'https://evan.beee.top',
+            'cdnjs': 'https://cdnjs.cloudflare.com',
+            'bootcdn': 'https://cdn.bootcdn.net',
+            'staticfile': 'https://cdn.staticfile.org'
+        }; %>
+        <% if (cdnLinks[provider]) { %>
+            <link rel="preconnect" href="<%= cdnLinks[provider] %>" crossorigin>
         <% } %>
     <% } %>
     <!--- Seo Part-->
@@ -73,9 +76,9 @@
     <%- css('css/style') %>
 
     <% if (theme.developer && theme.developer.enable) {%>
-        <%- css('css/build/styles.css') %>
+        <%- css('assets/build/styles.css') %>
     <% } else {%>
-        <%- renderCSS('css/build/styles.css') %>
+        <%- renderCSS('assets/build/styles.css') %>
     <% } %>
 
     <%- renderCSS('fonts/fonts.css') %>

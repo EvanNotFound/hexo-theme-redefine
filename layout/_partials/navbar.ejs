@@ -3,11 +3,11 @@
     <div class="navbar-content<%- (theme.home_banner.enable === true && is_home() && !page.prev) ? ' has-home-banner' : '' %>">
         <div class="left">
             <% if (theme.defaults.hasOwnProperty('logo') && theme.defaults.logo) { %>
-                <a class="logo-image" href="<%= url_for(config.url) + "/" %>">
+                <a class="logo-image" href="<%= config.root %>">
                     <%- image_tag(theme.defaults.logo) %>
                 </a>
             <% } %>
-            <a class="logo-title" href="<%= url_for(config.url) + "/" %>">
+            <a class="logo-title" href="<%= config.root %>">
                 <%- is_home() ? '<h1>' : '' %>
                 <%= theme.info.title || config.title || 'Redefine Theme' %>
                 <%- is_home() ? '</h1>' : '' %>
@@ -92,7 +92,7 @@
                     <!-- Submenu -->
                     <% if (theme.navbar.links[i].submenus) { %>          
                         <% for (var submenu in theme.navbar.links[i].submenus){ %>
-                            <li class="text-base flex justify-center items-center hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                            <li class="drawer-navbar-item text-base flex justify-center items-center hover:underline active:underline hover:underline-offset-1 rounded-3xl">
                                 <a class="py-0.5" href="<%- url_for(theme.navbar.links[i].submenus[submenu]) %>"><%= __(submenu.toLowerCase()).toUpperCase() %></a>
                             </li>
                         <% } %>

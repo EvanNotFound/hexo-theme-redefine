@@ -1,21 +1,21 @@
-/* global hexo */
+/* main hexo */
 
-'use strict';
+"use strict";
 
-const url = require('url');
-const fs = require('fs');
-const path = require('path');
-const yaml = require('js-yaml');
-const { version } = require('../../package.json');
+const url = require("url");
+const fs = require("fs");
+const path = require("path");
+const yaml = require("js-yaml");
+const { version } = require("../../package.json");
 
 /**
  * Export theme config to js
  */
-hexo.extend.helper.register('export_config', function () {
+hexo.extend.helper.register("export_config", function () {
   let hexo_config = {
     hostname: new URL(this.config.url).hostname || this.config.url,
     root: this.config.root,
-    language: this.config.language
+    language: this.config.language,
   };
 
   if (this.config.search) {
@@ -35,12 +35,14 @@ hexo.extend.helper.register('export_config', function () {
     home: this.theme.home,
 
     footerStart: this.theme.footer.start,
-  }
+  };
 
-  const languageDir = path.join(__dirname, '../../languages');
-  let file = fs.readdirSync(languageDir).find(v => v === `${this.config.language}.yml`);
-  file = languageDir + '/' + (file ? file : 'en.yml');
-  let languageContent = fs.readFileSync(file, 'utf8');
+  const languageDir = path.join(__dirname, "../../languages");
+  let file = fs
+    .readdirSync(languageDir)
+    .find((v) => v === `${this.config.language}.yml`);
+  file = languageDir + "/" + (file ? file : "en.yml");
+  let languageContent = fs.readFileSync(file, "utf8");
   try {
     languageContent = yaml.load(languageContent);
   } catch (e) {
@@ -48,18 +50,17 @@ hexo.extend.helper.register('export_config', function () {
   }
 
   let data_config = {
-    masonry: false
+    masonry: false,
+  };
+
+  if (this.theme.masonry) {
+    data_config.masonry = true;
   }
 
-  if (this.theme.masonry){
-    data_config.masonry = true;
-  } 
-
   return `<script id="hexo-configurations">
-    let Global = window.Global || {};
-    Global.hexo_config = ${JSON.stringify(hexo_config)};
-    Global.theme_config = ${JSON.stringify(theme_config)};
-    Global.language_ago = ${JSON.stringify(languageContent['ago'])};
-    Global.data_config = ${JSON.stringify(data_config)};
+    window.config = ${JSON.stringify(hexo_config)};
+    window.theme = ${JSON.stringify(theme_config)};
+    window.lang_ago = ${JSON.stringify(languageContent["ago"])};
+    window.data = ${JSON.stringify(data_config)};
   </script>`;
 });

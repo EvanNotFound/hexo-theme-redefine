@@ -1,4 +1,4 @@
-/* global hexo, __dirname */
+/* main hexo, __dirname */
 
 "use strict";
 

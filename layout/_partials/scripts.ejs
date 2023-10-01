@@ -1,22 +1,23 @@
-<%- renderModuleJS([
+<%- renderJSModule([
+    'js/tools/imageViewer.js',
     'js/utils.js',
     'js/main.js',
     'js/layouts/navbarShrink.js',
     'js/tools/scrollTopBottom.js',
     'js/tools/lightDarkSwitch.js',
-    'js/layouts/categoryList.js',
+    'js/layouts/categoryList.js'
 ]) %>
 
 <% if (theme.navbar.search.enable) { %>
-    <%- renderJS('js/tools/localSearch.js') %>
+    <%- renderJSModule('js/tools/localSearch.js') %>
 <% } %>
 
 <% if (theme.articles.code_block.copy) { %>
-    <%- renderJS('js/tools/codeBlock.js') %>
+    <%- renderJSModule('js/tools/codeBlock.js') %>
 <% } %>
 
 <% if (theme.articles.lazyload) { %>
-    <%- renderJS('js/layouts/lazyload.js') %>
+    <%- renderJSModule('js/layouts/lazyload.js') %>
 <% } %>
 
 <% if (theme.footer.runtime) { %>
@@ -27,7 +28,7 @@
 
 <% if (theme.home_banner.subtitle.length !== 0) { %>
   <%- renderJS('js/libs/Typed.min.js') %>
-  <%- renderJS('js/plugins/typed.js') %>
+  <%- renderJSModule('js/plugins/typed.js') %>
 <% } %>
 
 <% if (theme.plugins.mermaid.enable) { %>
@@ -37,17 +38,16 @@
 
 <% if (theme.masonry || theme.photos || theme.gallery) { %>
     <%- renderJS('js/libs/minimasonry.min.js') %>
-    <%- renderModuleJS('js/plugins/masonry.js') %>
+    <%- renderJSModule('js/plugins/masonry.js') %>
 
 <% } %>
 
 <div class="post-scripts" <%= theme.global.single_page === true ? 'data-swup-reload-script' : '' %>>
     <% if (theme.articles.toc.enable) { %>
         <%- renderJS('js/libs/anime.min.js')%>
-        <%- renderModuleJS([
+        <%- renderJSModule([
             'js/tools/tocToggle.js',
             'js/layouts/toc.js',
-
             'js/plugins/tabs.js'
         ]) %>
     <% } %>

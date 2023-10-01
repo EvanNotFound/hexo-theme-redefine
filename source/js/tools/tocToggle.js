@@ -1,7 +1,9 @@
-/* global function */
+/* main function */
+
+import { main } from "../main.js";
 
 export function initTocToggle() {
-  Global.utils.TocToggle = {
+  const TocToggle = {
     toggleBar: document.querySelector(".page-aside-toggle"),
     postPageContainerDom: document.querySelector(".post-page-container"),
     toggleBarIcon: document.querySelector(".page-aside-toggle i"),
@@ -16,8 +18,8 @@ export function initTocToggle() {
       this.toggleBar &&
         this.toggleBar.addEventListener("click", () => {
           this.isOpenPageAside = !this.isOpenPageAside;
-          Global.styleStatus.isOpenPageAside = this.isOpenPageAside;
-          Global.setStyleStatus();
+          main.styleStatus.isOpenPageAside = this.isOpenPageAside;
+          main.setStyleStatus();
           this.changePageLayoutWhenOpenToggle(this.isOpenPageAside);
         });
     },
@@ -41,9 +43,12 @@ export function initTocToggle() {
       this.changePageLayoutWhenOpenToggle(isOpen);
     },
   };
-  Global.utils.TocToggle.initToggleBarButton();
+
+  TocToggle.initToggleBarButton();
+  return TocToggle;
 }
 
+// Event listeners
 try {
   swup.hooks.on("page:view", () => {
     initTocToggle();

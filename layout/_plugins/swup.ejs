@@ -3,7 +3,8 @@
     'js/libs/SwupSlideTheme.min.js',
     'js/libs/SwupScriptsPlugin.min.js',
     'js/libs/SwupProgressPlugin.min.js',
-    'js/libs/SwupScrollPlugin.min.js']
+    'js/libs/SwupScrollPlugin.min.js',
+    'js/libs/SwupPreloadPlugin.min.js']
 ) %>
 <script>
     const swup = new Swup({
@@ -18,17 +19,9 @@
             new SwupSlideTheme({
                 mainElement: ".main-content-body",
             }),
+            new SwupPreloadPlugin(),
         ],
         containers: ["#swup"],
     });
-
-    swup.hooks.on("page:view", () => {
-        Global.refresh();
-    });
-
-    // if (document.readyState === "complete") {
-    //
-    // } else {
-    //     document.addEventListener("DOMContentLoaded", () => init());
-    // }
 </script>
+

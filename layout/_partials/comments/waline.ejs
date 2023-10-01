@@ -6,7 +6,7 @@
  
     <div id="waline"></div>
     <script type="module"  <%= theme.global.single_page === true ? 'data-swup-reload-script' : '' %>>
-        import { init } from 'https://evan.beee.top/js/waline.mjs';
+        import { init } from '<%= renderJSPath('js/libs/waline.mjs') %>';
 
         function loadWaline() {
             init({

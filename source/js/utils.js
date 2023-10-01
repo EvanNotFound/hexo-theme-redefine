@@ -1,10 +1,15 @@
-/* global function */
-
-import { initMasonry } from "./plugins/masonry.js";
+/* utils function */
 import { navbarShrink } from "./layouts/navbarShrink.js";
+import { initTOC } from "./layouts/toc.js";
+import { main } from "./main.js";
+import imageViewer from "./tools/imageViewer.js";
 
-export function initUtils() {
-  Global.utils = {
+export const navigationState = {
+  isNavigating: false,
+};
+
+export default function initUtils() {
+  const utils = {
     html_root_dom: document.querySelector("html"),
     pageContainer_dom: document.querySelector(".page-container"),
     pageTop_dom: document.querySelector(".main-content-header"),
@@ -21,10 +26,8 @@ export function initUtils() {
     prevScrollValue: 0,
     fontSizeLevel: 0,
 
-    isHasScrollProgressBar:
-      Global.theme_config.global.scroll_progress.bar === true,
-    isHasScrollPercent:
-      Global.theme_config.global.scroll_progress.percentage === true,
+    isHasScrollProgressBar: theme.global.scroll_progress.bar === true,
+    isHasScrollPercent: theme.global.scroll_progress.percentage === true,
 
     // Scroll Style
     updateScrollStyle() {
@@ -67,7 +70,7 @@ export function initUtils() {
     },
 
     updatePageTopVisibility(scrollTop, clientHeight) {
-      if (Global.theme_config.navbar.auto_hide) {
+      if (theme.navbar.auto_hide) {
         const prevScrollValue = this.prevScrollValue;
         const hidePageTop =
           prevScrollValue > clientHeight && scrollTop > prevScrollValue;
@@ -96,21 +99,23 @@ export function initUtils() {
 
     updateTOCScroll() {
       if (
-        Global.theme_config.articles.toc.enable &&
-        Global.utils.hasOwnProperty("updateActiveTOCLink")
+        theme.articles.toc.enable &&
+        initTOC().hasOwnProperty("updateActiveTOCLink")
       ) {
-        Global.utils.updateActiveTOCLink();
+        initTOC().updateActiveTOCLink();
       }
     },
 
     updateNavbarShrink() {
-      navbarShrink.init();
+      if (!navigationState.isNavigating) {
+        navbarShrink.init();
+      }
     },
 
     updateHomeBannerBlur() {
       if (
-        Global.theme_config.home_banner.style === "fixed" &&
-        location.pathname === Global.hexo_config.root
+        theme.home_banner.style === "fixed" &&
+        location.pathname === config.root
       ) {
         const blurElement = document.querySelector(".home-banner-background");
         const viewHeight = window.innerHeight;
@@ -187,7 +192,7 @@ export function initUtils() {
       const baseFontSize = parseFloat(fontSize);
 
       let fontSizeLevel = 0;
-      const styleStatus = Global.getStyleStatus();
+      const styleStatus = main.getStyleStatus();
       if (styleStatus) {
         fontSizeLevel = styleStatus.fontSizeLevel;
         setFontSize(fontSizeLevel);
@@ -196,8 +201,8 @@ export function initUtils() {
       function setFontSize(level) {
         const fontSize = baseFontSize * (1 + level * 0.05);
         htmlRoot.style.fontSize = `${fontSize}px`;
-        Global.styleStatus.fontSizeLevel = level;
-        Global.setStyleStatus();
+        main.styleStatus.fontSizeLevel = level;
+        main.setStyleStatus();
       }
 
       function increaseFontSize() {
@@ -213,72 +218,6 @@ export function initUtils() {
       fontAdjustPlus.addEventListener("click", increaseFontSize);
       fontAdjustMinus.addEventListener("click", decreaseFontSize);
     },
-
-    // toggle content area width
-    contentAreaWidthAdjust() {
-      const toolExpandDom = document.querySelector(".tool-expand-width");
-      const navbarContentDom = document.querySelector(".navbar-content");
-      const mainContentDom = document.querySelector(".main-content");
-      const iconDom = toolExpandDom.querySelector("i");
-
-      const defaultMaxWidth =
-        Global.theme_config.global.content_max_width || "1000px";
-      const expandMaxWidth = "90%";
-      let navbarMaxWidth = defaultMaxWidth;
-
-      let isExpand = false;
-
-      if (
-        Global.theme_config.home_banner.enable === true &&
-        window.location.pathname === "/"
-      ) {
-        navbarMaxWidth = parseInt(defaultMaxWidth) * 1.2 + "px";
-      }
-
-      const setPageWidth = (isExpand) => {
-        Global.styleStatus.isExpandPageWidth = isExpand;
-        Global.setStyleStatus();
-        if (isExpand) {
-          iconDom.classList.remove("fa-expand");
-          iconDom.classList.add("fa-compress");
-          navbarContentDom.style.maxWidth = expandMaxWidth;
-          mainContentDom.style.maxWidth = expandMaxWidth;
-        } else {
-          iconDom.classList.remove("fa-compress");
-          iconDom.classList.add("fa-expand");
-          navbarContentDom.style.maxWidth = navbarMaxWidth;
-          mainContentDom.style.maxWidth = defaultMaxWidth;
-        }
-      };
-
-      const initPageWidth = () => {
-        const styleStatus = Global.getStyleStatus();
-        if (styleStatus) {
-          isExpand = styleStatus.isExpandPageWidth;
-          setPageWidth(isExpand);
-        }
-      };
-
-      initPageWidth();
-
-      toolExpandDom.addEventListener("click", () => {
-        isExpand = !isExpand;
-        setPageWidth(isExpand);
-
-        var loadingPlaceholder = document.querySelector(".loading-placeholder");
-        var masonryContainer = document.querySelector("#masonry-container");
-        if (!loadingPlaceholder || !masonryContainer) return;
-
-        loadingPlaceholder.style.opacity = 1;
-        loadingPlaceholder.style.display = "block";
-        masonryContainer.style.display = "none";
-
-        setTimeout(() => {
-          initMasonry();
-        }, 300);
-      });
-    },
-
     // go comment anchor
     goComment() {
       this.goComment_dom = document.querySelector(".go-comment");
@@ -326,131 +265,6 @@ export function initUtils() {
     },
 
     // big image viewer
-    imageViewer() {
-      let isBigImage = false;
-      let scale = 1;
-      let isMouseDown = false;
-      let lastMouseX = 0;
-      let lastMouseY = 0;
-      let translateX = 0;
-      let translateY = 0;
-
-      const maskDom = document.querySelector(".image-viewer-container");
-      const targetImg = maskDom.querySelector("img");
-
-      const showHandle = (isShow) => {
-        document.body.style.overflow = isShow ? "hidden" : "auto";
-        isShow
-          ? maskDom.classList.add("active")
-          : maskDom.classList.remove("active");
-      };
-
-      const zoomHandle = (event) => {
-        event.preventDefault();
-        const rect = targetImg.getBoundingClientRect();
-        const offsetX = event.clientX - rect.left;
-        const offsetY = event.clientY - rect.top;
-        const dx = offsetX - rect.width / 2;
-        const dy = offsetY - rect.height / 2;
-        const oldScale = scale;
-        scale += event.deltaY * -0.001;
-        scale = Math.min(Math.max(0.8, scale), 4);
-
-        if (oldScale < scale) {
-          // Zooming in
-          translateX -= dx * (scale - oldScale);
-          translateY -= dy * (scale - oldScale);
-        } else {
-          // Zooming out
-          translateX = 0;
-          translateY = 0;
-        }
-
-        targetImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-      };
-
-      const dragStartHandle = (event) => {
-        event.preventDefault();
-        isMouseDown = true;
-        lastMouseX = event.clientX;
-        lastMouseY = event.clientY;
-      };
-
-      let lastTime = 0;
-      const throttle = 100;
-
-      const dragHandle = (event) => {
-        if (isMouseDown) {
-          const currentTime = new Date().getTime();
-          if (currentTime - lastTime < throttle) {
-            return;
-          }
-          lastTime = currentTime;
-          const deltaX = event.clientX - lastMouseX;
-          const deltaY = event.clientY - lastMouseY;
-          translateX += deltaX;
-          translateY += deltaY;
-          lastMouseX = event.clientX;
-          lastMouseY = event.clientY;
-          targetImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-        }
-      };
-
-      const dragEndHandle = (event) => {
-        if (isMouseDown) {
-          event.stopPropagation();
-        }
-        isMouseDown = false;
-      };
-
-      targetImg.addEventListener("wheel", zoomHandle);
-      targetImg.addEventListener("mousedown", dragStartHandle);
-      targetImg.addEventListener("mousemove", dragHandle);
-      targetImg.addEventListener("mouseup", dragEndHandle);
-      targetImg.addEventListener("mouseleave", dragEndHandle);
-
-      maskDom.addEventListener("click", (event) => {
-        if (event.target !== event.currentTarget) {
-          return;
-        }
-        isBigImage = false;
-        showHandle(isBigImage);
-        scale = 1;
-        translateX = 0;
-        translateY = 0;
-        targetImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-      });
-
-      const imgDoms = document.querySelectorAll(
-        ".markdown-body img, .masonry-item img, #shuoshuo-content img",
-      );
-
-      const escapeKeyListener = (event) => {
-        if (event.key === "Escape" && isBigImage) {
-          isBigImage = false;
-          showHandle(isBigImage);
-          scale = 1;
-          translateX = 0;
-          translateY = 0;
-          targetImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-          // Remove the event listener when the image viewer is closed
-          document.removeEventListener("keydown", escapeKeyListener);
-        }
-      };
-
-      imgDoms.forEach((img) => {
-        img.addEventListener("click", () => {
-          isBigImage = true;
-          showHandle(isBigImage);
-          targetImg.src = img.src;
-          document.addEventListener("keydown", escapeKeyListener);
-        });
-      });
-
-      if (!imgDoms.length && maskDom) {
-        maskDom.parentNode.removeChild(maskDom);
-      }
-    },
 
     // set how long ago language
     setHowLongAgoLanguage(p1, p2) {
@@ -458,7 +272,7 @@ export function initUtils() {
     },
 
     getHowLongAgo(timestamp) {
-      const l = Global.language_ago;
+      const l = lang_ago;
 
       const __Y = Math.floor(timestamp / (60 * 60 * 24 * 30) / 12);
       const __M = Math.floor(timestamp / (60 * 60 * 24 * 30));
@@ -489,7 +303,7 @@ export function initUtils() {
       const post = document.querySelectorAll(
         ".home-article-meta-info .home-article-date",
       );
-      const df = Global.theme_config.home.article_date_format;
+      const df = theme.home.article_date_format;
       if (df === "relative") {
         post &&
           post.forEach((v) => {
@@ -519,94 +333,29 @@ export function initUtils() {
           });
       }
     },
-    /*
-    calculateMaterialColors(hex) {
-      // Convert hex to RGB
-      hex = hex.replace(/#/g, "");
-      if (hex.length === 3) {
-        hex = hex
-          .split("")
-          .map(function (hex) {
-            return hex + hex;
-          })
-          .join("");
-      }
-      var result = /^([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})[\da-z]{0,0}$/i.exec(
-        hex
-      );
-      if (!result) {
-        return null;
-      }
-      var r = parseInt(result[1], 16);
-      var g = parseInt(result[2], 16);
-      var b = parseInt(result[3], 16);
-      (r /= 255), (g /= 255), (b /= 255);
-      var max = Math.max(r, g, b),
-        min = Math.min(r, g, b);
-      var h,
-        s,
-        l = (max + min) / 2;
-      if (max == min) {
-        h = s = 0;
-      } else {
-        var d = max - min;
-        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-        switch (max) {
-          case r:
-            h = (g - b) / d + (g < b ? 6 : 0);
-            break;
-          case g:
-            h = (b - r) / d + 2;
-            break;
-          case b:
-            h = (r - g) / d + 4;
-            break;
-        }
-        h /= 6;
-      }
-      s = s * 100;
-      s = Math.round(s);
-      l = l * 100;
-      l = Math.round(l);
-      h = Math.round(360 * h);
-
-      // Compute primary, secondary, and tertiary colors
-      const primaryColor = `hsl(${h}, ${s}%, ${l}%)`;
-      const secondaryColor = `hsl(${h}, ${s - 15}%, ${l - 15}%)`;
-      const tertiaryColor = `hsl(${h}, ${s - 25}%, ${l - 25}%)`;
-      document.documentElement.style.setProperty('--primary-color-temp', primaryColor);
-      document.documentElement.style.setProperty('--secondary-color-temp', secondaryColor);
-      document.documentElement.style.setProperty('--tertiary-color-temp', tertiaryColor);
-    },*/
   };
 
   // init scroll
-  Global.utils.registerWindowScroll();
+  utils.registerWindowScroll();
 
   // toggle show tools list
-  Global.utils.toggleToolsList();
+  utils.toggleToolsList();
 
-  // global font adjust
-  Global.utils.globalFontSizeAdjust();
-
-  // adjust content area width
-  Global.utils.contentAreaWidthAdjust();
+  // main font adjust
+  utils.globalFontSizeAdjust();
 
   // go comment
-  Global.utils.goComment();
+  utils.goComment();
 
   // init page height handle
-  Global.utils.initPageHeightHandle();
+  utils.initPageHeightHandle();
 
   // init first screen height
-  Global.utils.inithomeBannerHeight();
-
-  // big image viewer handle
-  Global.utils.imageViewer();
+  utils.inithomeBannerHeight();
 
   // set how long ago in home article block
-  Global.utils.relativeTimeInHome();
+  utils.relativeTimeInHome();
 
-  // calculate material colors
-  //Global.utils.calculateMaterialColors(Global.theme_config.colors.primary);
+  // image viewer handle
+  imageViewer();
 }

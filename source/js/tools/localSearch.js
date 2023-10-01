@@ -1,6 +1,6 @@
-Global.initLocalSearch = () => {
+export default function initLocalSearch() {
   // Search DB path
-  let searchPath = Global.hexo_config.path;
+  let searchPath = config.path;
   if (!searchPath) {
     // Search DB path
     console.warn("`hexo-generator-searchdb` plugin is not installed!");
@@ -172,8 +172,8 @@ Global.initLocalSearch = () => {
 
           // Select top N slices in content
           let upperBound = parseInt(
-            Global.theme_config.navbar.search.top_n_per_article
-              ? Global.theme_config.navbar.search.top_n_per_article
+            theme.navbar.search.top_n_per_article
+              ? theme.navbar.search.top_n_per_article
               : 1,
             10,
           );
@@ -235,7 +235,7 @@ Global.initLocalSearch = () => {
   };
 
   const fetchData = () => {
-    fetch(Global.hexo_config.root + searchPath)
+    fetch(config.root + searchPath)
       .then((response) => response.text())
       .then((res) => {
         // Get the contents from search data
@@ -272,7 +272,7 @@ Global.initLocalSearch = () => {
       });
   };
 
-  if (Global.theme_config.navbar.search.preload) {
+  if (theme.navbar.search.preload) {
     fetchData();
   }
 
@@ -324,4 +324,4 @@ Global.initLocalSearch = () => {
       onPopupClose();
     }
   });
-};
+}

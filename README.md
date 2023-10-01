@@ -10,11 +10,9 @@
 
 # hexo-theme-redefine
 
-"Redefine" hexo theme is **a simple & fast & pure theme**, but with **no compromise**. This theme contains lots of widely use functions and great web design.
+"Redefine" hexo theme is a blend of **simplicity, speed, and purity**, yet it makes **no compromises** on functionality or design. Loaded with widely utilized features and polished web design, it seamlessly marries practicality with aesthetics.
 
-Hexo Theme Redefine source code is based on [hexo-theme-keep](https://github.com/XPoet/hexo-theme-keep). Redefine Theme optimized its style and added useful writing modules and plugins. Also, you can customize many things in this theme.
-
-
+Drawing its core from [hexo-theme-keep](https://github.com/XPoet/hexo-theme-keep), this theme elevates the foundation by enhancing the style and integrating valuable writing modules and plugins. The theme encourages personalization, offering extensive customizability to mold various facets to your liking, making your blogging journey truly unique and user-friendly.
 
 
 <p align="center">
@@ -132,7 +130,7 @@ Also, if you are using [Typora](https://typora.io/), check out [Typora Theme Red
 
 Thanks to all the people who have donated to me. Your support is my greatest motivation.
 
-If you like this theme, you can also support me by donating.
+If you like this theme, please give a star. You can also support me by [donating](https://github.com/EvanNotFound/hexo-theme-redefine/blob/dev/DONATION.md).
 
 This is the list of all the people who have donated to me: [Donation List](https://github.com/EvanNotFound/hexo-theme-redefine/blob/dev/DONATION.md)
 
