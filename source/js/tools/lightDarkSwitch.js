@@ -150,10 +150,12 @@ export const ModeToggle = {
       typeof theme.mermaid.style.dark !== "undefined"
         ? theme.mermaid.style.dark
         : "dark";
-    await saveOriginalData().catch(console.error);
     this.initModeStatus();
     this.initModeToggleButton();
     this.initModeAutoTrigger();
+    try {
+      await saveOriginalData().catch(console.error);
+    } catch (error) {}
   },
 };
 
