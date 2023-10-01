@@ -596,8 +596,8 @@ video {
   left: 0px;
 }
 
-.left-\[48\.5px\] {
-  left: 48.5px;
+.left-\[50\.5px\] {
+  left: 50.5px;
 }
 
 .right-\[12px\] {
@@ -673,6 +673,14 @@ video {
   margin-bottom: 1.5rem;
 }
 
+.ml-1 {
+  margin-left: 0.25rem;
+}
+
+.ml-1\.5 {
+  margin-left: 0.375rem;
+}
+
 .mr-4 {
   margin-right: 1rem;
 }
@@ -695,14 +703,6 @@ video {
 
 .mt-5 {
   margin-top: 1.25rem;
-}
-
-.ml-1 {
-  margin-left: 0.25rem;
-}
-
-.ml-1\.5 {
-  margin-left: 0.375rem;
 }
 
 .block {
@@ -765,16 +765,16 @@ video {
   height: 150px;
 }
 
+.h-\[46px\] {
+  height: 46px;
+}
+
 .h-auto {
   height: auto;
 }
 
 .h-full {
   height: 100%;
-}
-
-.h-\[46px\] {
-  height: 46px;
 }
 
 .w-10 {
@@ -789,12 +789,12 @@ video {
   width: 0.5rem;
 }
 
-.w-full {
-  width: 100%;
-}
-
 .w-\[46px\] {
   width: 46px;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .min-w-0 {
@@ -872,16 +872,16 @@ video {
   gap: 0.25rem;
 }
 
+.gap-2 {
+  gap: 0.5rem;
+}
+
 .gap-4 {
   gap: 1rem;
 }
 
 .gap-6 {
   gap: 1.5rem;
-}
-
-.gap-2 {
-  gap: 0.5rem;
 }
 
 .overflow-hidden {
@@ -910,12 +910,12 @@ video {
   border-radius: 14px;
 }
 
-.rounded-xl {
-  border-radius: 0.75rem;
-}
-
 .rounded-small {
   border-radius: 9px;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
 }
 
 .rounded-l-lg {
@@ -1011,6 +1011,11 @@ video {
   padding: 1px;
 }
 
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1066,21 +1071,6 @@ video {
   padding-bottom: 2px;
 }
 
-.px-0 {
-  padding-left: 0px;
-  padding-right: 0px;
-}
-
-.px-0\.5 {
-  padding-left: 0.125rem;
-  padding-right: 0.125rem;
-}
-
-.px-2 {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-}
-
 .text-center {
   text-align: center;
 }
@@ -1130,10 +1120,6 @@ video {
   font-weight: 700;
 }
 
-.font-normal {
-  font-weight: 400;
-}
-
 .font-semibold {
   font-weight: 600;
 }
@@ -1159,16 +1145,16 @@ video {
   line-height: 1;
 }
 
+.text-default-text-color {
+  color: var(--default-text-color);
+}
+
 .text-second-text-color {
   color: var(--second-text-color);
 }
 
 .text-third-text-color {
   color: var(--third-text-color);
-}
-
-.text-default-text-color {
-  color: var(--default-text-color);
 }
 
 .shadow {
