@@ -63,16 +63,17 @@ export const navbarShrink = {
   },
 };
 
-swup.hooks.on("page:view", () => {
-  navbarShrink.init();
-  navigationState.isNavigating = false;
-});
+try {
+  swup.hooks.on("page:view", () => {
+    navbarShrink.init();
+    navigationState.isNavigating = false;
+  });
 
-swup.hooks.on("visit:start", () => {
-  navigationState.isNavigating = true;
-  document.body.classList.remove("navbar-shrink");
-  // navbarShrink.init();
-});
+  swup.hooks.on("visit:start", () => {
+    navigationState.isNavigating = true;
+    document.body.classList.remove("navbar-shrink");
+  });
+} catch (error) {}
 
 document.addEventListener("DOMContentLoaded", () => {
   navbarShrink.init();
