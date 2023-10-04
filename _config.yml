@@ -79,6 +79,8 @@ global:
   google_analytics:
     enable: false # Whether to enable Google Analytics
     id:  # Google Analytics Measurement ID
+  # Root color mode, light/dark
+  root_color_mode: dark
 # SITE CUSTOMIZATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
     
 

@@ -294,8 +294,10 @@ root-color(mode) {
 }
 
 
+$default-root-color-mode = hexo-config('global.root_color_mode')
+
 :root {
-  root-color('light')
+  root-color(default-root-color-mode)
 }
 
 @media (prefers-color-scheme light) {
