@@ -34,7 +34,7 @@ A big thank you to all the friends who have sponsored this project. Your support
 
 
 赞助完以后，请各位加我微信 `do-not-go-plzzz` 联系我添加 GitHub 账号和网站链接！  
-After making a donation, if you want to get in touch with me, please add me on Discord with my username `evan404`.
+After making a donation, if you want to get in touch with me, please add me on Discord with my username `evannotfound`.
 
 感谢！  
 Thank you!
