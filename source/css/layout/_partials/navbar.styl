@@ -263,6 +263,8 @@ $logo-image-box-width = 46px
     transform-origin top
     z-index $z-index-2
     opacity 0
+    max-height 100vh  // 添加这行
+    overflow-y auto    // 添加这行
     transition-t('transform,opacity', '0,0.1', '0.38,0.38', 'ease,ease')
 
     .navbar-drawer-show &
