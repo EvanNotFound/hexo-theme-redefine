@@ -67,9 +67,10 @@ Thank you!
 |   Jul 14    |                             点点                             |     ¥8.88     | 微信赞赏码 |                           -                            |
 |    Aug 1    |                             风宇                             |    ¥14.99     | 微信赞赏码 |        [https://krazyu.com](https://krazyu.com)        |
 |   Aug 27    |                             匿名                             |    ¥88.00     | 微信赞赏码 |                           -                            |
-|   Sep 03    |  Locam  |   ¥30.00     |     支付宝 |                          [https://locam-cyj.github.io](https://locam-cyj.github.io)                          |
-|   Sep 03    |  夜鹿  |   ¥6.66     |     微信赞赏码 |                          -                          |
-|   Sep 03    |  **辉  |   ¥6.66     |     支付宝 |                          -                          |
-|   Sep 04    |  匿名  |   ¥10.00     |    微信赞赏码 |                          -                         |
-|   Sep 23    |  今日店休.  |   ¥6.66     |    微信赞赏码 |                          -                         |
-|   Sep 29    |  Ficon  |   ¥6.00     |    微信 |                 -                       |
+|   Sep 03    |                           Locam                            |    ¥30.00     |     支付宝 |                          [https://locam-cyj.github.io](https://locam-cyj.github.io)                          |
+|   Sep 03    |                             夜鹿                             |     ¥6.66     |     微信赞赏码 |                          -                          |
+|   Sep 03    |                            **辉                             |     ¥6.66     |     支付宝 |                          -                          |
+|   Sep 04    |                             匿名                             |    ¥10.00     |    微信赞赏码 |                          -                         |
+|   Sep 23    |                           今日店休.                            |     ¥6.66     |    微信赞赏码 |                          -                         |
+|   Sep 29    |                           Ficon                            |     ¥6.00     |    微信 |                 -                       |
+|   Oct 05    |                            Ryou                            |    ¥14.99     |    微信赞赏码 |                 -                       |
