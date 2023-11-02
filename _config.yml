@@ -44,12 +44,12 @@ global:
   fonts:
     # Chinese fonts
     chinese: 
-      enable: false # Whether to enable custom chinese font
+      enable: false # Whether to enable custom chinese fonts
       family:  # Font family
       url:  # Font URL to CSS file
     # English fonts
     english: 
-      enable: false # Whether to enable custom chinese font
+      enable: false # Whether to enable custom english fonts
       family:  # Font family
       url:  # Font URL to CSS file
   # Content max width
