@@ -5,13 +5,11 @@ labels: ["bug"]
 assignees: ["EvanNotFound"]
 
 body:
-  - type: markdown
-    attributes:
-      value: "## 提交前检查单"
-
   - type: checkboxes
     id: pre-check
     attributes:
+      label: 提交 Issue 前检查清单
+      description: 请确保确认后，再提交 Issue
       options:
         - label: "已经尝试执行 `hexo clean`，问题仍然存在"
         - label: "[已经更新到主题最新版本](https://redefine-docs.ohevan.com/getting-started#%E6%9B%B4%E6%96%B0)"
