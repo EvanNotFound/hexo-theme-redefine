@@ -1,0 +1,21 @@
+name: Feature Request
+description: Suggestions to enhance the Redefine theme.
+title: "[Feature Request]:"
+labels: ["enhancement"]
+assignees: ["EvanNotFound"]
+body:
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: "Describe Your Idea"
+      description: "Tell us about the feature you'd love to see."
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: "Visual Aids"
+      description: "Feel free to sketch or doodle your idea, Picasso-style!"
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: "Anything Else?"
+      placeholder: "Share any other details or context here."
