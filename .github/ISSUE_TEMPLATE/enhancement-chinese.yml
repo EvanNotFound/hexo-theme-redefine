@@ -1,0 +1,21 @@
+name: 功能建议 [中文版本]
+description: 帮助改进 Redefine 主题
+title: "[功能建议]："
+labels: ["enhancement"]
+assignees: ["EvanNotFound"]
+body:
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: "功能描述"
+      description: "清晰地描述你想要的功能是怎么样的"
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: "图片描述"
+      description: "可以用你的毕加索画作"
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: "其他"
+      placeholder: "如有其他内容，请提供"
