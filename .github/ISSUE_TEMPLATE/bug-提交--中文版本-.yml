@@ -1,7 +1,7 @@
 name: Bug 提交 [中文版本]
 description: 帮助修复 Redefine 主题的 Bug
 title: "[BUG] Bug描述"
-labels: ["bug"]
+label: ["bug"]
 assignees: ["EvanNotFound"]
 body:
   - type: markdown
