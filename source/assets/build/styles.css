@@ -1236,6 +1236,10 @@ video {
   transition-timing-function: linear;
 }
 
+.\[a-zA-Z\:_\] {
+  a-z-a--z: ;
+}
+
 .hover\:border:hover {
   border-width: 1px;
 }

@@ -6,7 +6,7 @@
  
     <div id="waline"></div>
     <script type="module"  <%= theme.global.single_page === true ? 'data-swup-reload-script' : '' %>>
-        import { init } from '<%= renderJSPath('js/libs/waline.mjs') %>';
+        import { init } from '<%= renderJSPath('js/libs/waline.js') %>';
 
         function loadWaline() {
             init({
@@ -26,7 +26,7 @@
         } else {
             window.addEventListener('DOMContentLoaded', loadWaline);
         }
-        
+
     </script>
 
 <% } %>
