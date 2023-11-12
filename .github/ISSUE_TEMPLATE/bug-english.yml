@@ -1,0 +1,75 @@
+name: Bug Report
+description: Help us squash bugs in the Redefine theme.
+title: "[BUG] "
+labels: ["bug"]
+assignees: ["EvanNotFound"]
+body:
+  - type: checkboxes
+    id: pre-check
+    attributes:
+      label: Pre-Submission Checklist
+      description: Please ensure you've checked the following before submitting.
+      options:
+        - label: "I've run `hexo clean`, but the problem persists."
+        - label: "[I've updated to the latest theme version](https://redefine-docs.ohevan.com/getting-started#update)"
+        - label: "[Post theme update, I've ensured the theme's configuration is in sync](https://redefine-docs.ohevan.com/getting-started#migrate-configuration)"
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: "Describe the Bug"
+      description: "Provide a clear description. Include relevant details from the `_config.yml` in the hexo root and `_config.redefine.yml` or `_config.yml`. Redact any sensitive information."
+  - type: textarea
+    id: reproduce-steps
+    attributes:
+      label: "Reproduction Steps"
+      placeholder: "How did you come across this bug?"
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: "Expected Behavior"
+      placeholder: "What were you expecting to happen?"
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: "Screenshots (if any)"
+      description: "Screenshots can help illustrate the problem."
+  - type: input
+    id: pc-os
+    attributes:
+      label: "Your Computer's OS"
+      placeholder: "e.g., macOS, Windows"
+  - type: input
+    id: pc-browser
+    attributes:
+      label: "Which Browser?"
+      placeholder: "e.g., Chrome, Safari"
+  - type: input
+    id: pc-version
+    attributes:
+      label: "Browser Version"
+      placeholder: "e.g., 108"
+  - type: input
+    id: mobile-device
+    attributes:
+      label: "Mobile Device Used"
+      placeholder: "e.g., iPhone 14"
+  - type: input
+    id: mobile-os
+    attributes:
+      label: "Mobile OS"
+      placeholder: "e.g., iOS16.1"
+  - type: input
+    id: mobile-browser
+    attributes:
+      label: "Mobile Browser"
+      placeholder: "e.g., Chrome, Safari"
+  - type: input
+    id: mobile-version
+    attributes:
+      label: "Browser Version"
+      placeholder: "e.g., 108"
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: "Anything Else?"
+      placeholder: "Any other information you'd like to share?"
