@@ -29,12 +29,6 @@ Drawing its core from [hexo-theme-keep](https://github.com/XPoet/hexo-theme-keep
     <img src="https://img.shields.io/badge/node-%3E=12.0-a6d189?style=for-the-badge&amp;logo=node.js&amp;logoColor=a6d189" referrerpolicy="no-referrer" alt="NodeJS Version" />
 </p>
 
-
-<p align="center">
-  <a href>
-
-## 📷 Screenshots
-
 <p align="center">
 <picture>
   <source media="(prefers-color-scheme: light)" srcset="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/863f7dd7-2f59-4ef4-a876-5b0a707289b1" />

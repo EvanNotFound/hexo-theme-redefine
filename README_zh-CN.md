@@ -28,8 +28,6 @@
 </p>
 
 
-## 📷 屏幕截图
-
 <p align="center">
 <picture>
   <source media="(prefers-color-scheme: light)" srcset="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/863f7dd7-2f59-4ef4-a876-5b0a707289b1" />
