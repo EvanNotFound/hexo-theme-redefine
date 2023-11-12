@@ -51,7 +51,7 @@
         <% } %>
 
         <% if (page.expires && page.expires !== "") {%>
-                <div class="note red icon article-expire hidden" id="expiration-container">
+                <div class="note p-4 rounded-lg red icon article-expire hidden" id="expiration-container">
                     <i class="fa-solid fa-timer expire-icon"></i>
                     <span class="expire-label" id="expiration-date"><%= __('expired', "some") %></span>
                 </div>
@@ -86,7 +86,7 @@
             <%- page.content %>
         </div>
 
-        <% if (theme.articles.copyright) { %>
+        <% if (theme.articles.copyright.enable || theme.articles.copyright === true) { %>
             <div class="post-copyright-info">
                 <%- partial('_meta/article-copyright') %>
             </div>
