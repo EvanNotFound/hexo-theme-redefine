@@ -1,7 +1,7 @@
 <% if(theme.comment.system === 'waline' && theme.comment.config.waline.serverUrl && theme.comment.config.waline.lang) { %>
     <div id="waline"></div>
     <script type="module" data-swup-reload-script>
-      import { init } from '<%= renderJSPath('js/libs/waline.js') %>';
+      import { init } from '<%= url_for('js/libs/waline.mjs') %>';
 
       function loadWaline() {
         init({
