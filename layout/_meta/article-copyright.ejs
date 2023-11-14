@@ -48,24 +48,15 @@
                     url: null
                 }
             };
-            const isValidLicense = (licenseKey) => {
-                return licenseMap.hasOwnProperty(licenseKey);
-            };
 
-
-            const getLicenseType = () => {
-                if (page.copyright && page.copyright !== "") {
-                    return 'custom';
-                } else if (page.license && isValidLicense(page.license)) {
-                    return page.license;
-                } else if (theme.articles.copyright.default && isValidLicense(theme.articles.copyright.default)) {
-                    return theme.articles.copyright.default;
-                } else {
-                    return 'cc_by_nc_sa';
-                }
-            };
-            const licenseType = getLicenseType();
-
+            let licenseType = 'cc_by_nc_sa'; // Default license type
+            if (page.copyright && page.copyright !== "") {
+                licenseType = 'custom';
+            } else if (page.license && licenseMap[page.license]) {
+                licenseType = page.license;
+            } else if (theme.articles.copyright.default && licenseMap[theme.articles.copyright.default]) {
+                licenseType = theme.articles.copyright.default;
+            }
             %>
 
             <% if (licenseType === 'custom') { %>
@@ -73,8 +64,6 @@
             <% } else { %>
                 <%- licenseMap[licenseType].label %>
             <% } %>
-
-
         </li>
     </ul>
 </div>
