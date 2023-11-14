@@ -34,7 +34,7 @@ A big thank you to all the friends who have sponsored this project. Your support
 
 
 赞助完以后，请各位加我微信 `do-not-go-plzzz` 联系我添加 GitHub 账号和网站链接！  
-After making a donation, if you want to get in touch with me, please add me on Discord with my username `evan404`.
+After making a donation, if you want to get in touch with me, please add me on Discord with my username `evannotfound`.
 
 感谢！  
 Thank you!
@@ -67,9 +67,12 @@ Thank you!
 |   Jul 14    |                             点点                             |     ¥8.88     | 微信赞赏码 |                           -                            |
 |    Aug 1    |                             风宇                             |    ¥14.99     | 微信赞赏码 |        [https://krazyu.com](https://krazyu.com)        |
 |   Aug 27    |                             匿名                             |    ¥88.00     | 微信赞赏码 |                           -                            |
-|   Sep 03    |  Locam  |   ¥30.00     |     支付宝 |                          [https://locam-cyj.github.io](https://locam-cyj.github.io)                          |
-|   Sep 03    |  夜鹿  |   ¥6.66     |     微信赞赏码 |                          -                          |
-|   Sep 03    |  **辉  |   ¥6.66     |     支付宝 |                          -                          |
-|   Sep 04    |  匿名  |   ¥10.00     |    微信赞赏码 |                          -                         |
-|   Sep 23    |  今日店休.  |   ¥6.66     |    微信赞赏码 |                          -                         |
-|   Sep 29    |  Ficon  |   ¥6.00     |    微信 |                 -                       |
+|   Sep 03    |                           Locam                            |    ¥30.00     |     支付宝 |                          [https://locam-cyj.github.io](https://locam-cyj.github.io)                          |
+|   Sep 03    |                             夜鹿                             |     ¥6.66     |     微信赞赏码 |                          -                          |
+|   Sep 03    |                            **辉                             |     ¥6.66     |     支付宝 |                          -                          |
+|   Sep 04    |                             匿名                             |    ¥10.00     |    微信赞赏码 |                          -                         |
+|   Sep 23    |                           今日店休.                            |     ¥6.66     |    微信赞赏码 |                          -                         |
+|   Sep 29    |                           Ficon                            |     ¥6.00     |    微信 |                 -                       |
+|   Oct 05    |                            Ryou                            |    ¥14.99     |    微信赞赏码 |                 -                       |
+|   Oct 16    |                            沈*昊                             |    ¥20.00     |    微信赞赏码 |                 -                       |
+|   Oct 24    |                            Neptune.                           |    ¥14.99     |   微信赞赏码 |                 -                       |

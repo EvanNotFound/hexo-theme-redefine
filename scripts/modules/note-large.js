@@ -10,13 +10,21 @@ function postNoteLarge(args, content) {
     args[1] = "icon-padding";
   }
 
-  return `<div class="note-large ${args[0]}"><div class="notel-title">${icon}${hexo.render.renderSync({
-    text: args[args.length - 1],
-    engine: "markdown"
-  })}</div><div class="notel-content">${hexo.render.renderSync({
-    text: content,
-    engine: "markdown"
-  })}</div></div>`;
+  return `
+  <div class="note-large ${args[0]}">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      ${icon}${hexo.render.renderSync({
+        text: args[args.length - 1],
+        engine: "markdown",
+      })}
+    </div>
+    <div class="notel-content">
+      ${hexo.render.renderSync({
+        text: content,
+        engine: "markdown",
+      })}
+    </div>
+  </div>`;
 }
 
 hexo.extend.tag.register("noteL", postNoteLarge, { ends: true });

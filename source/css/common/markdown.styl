@@ -57,7 +57,7 @@
     color var(--default-text-color)
 
   ul > li, ol > li
-    margin-left 16px
+    margin-left 20px
     line-height 2rem
 
   ul
@@ -79,6 +79,14 @@
 
     li
       list-style decimal
+
+      ul
+        li
+          list-style disc
+
+        ul
+          li
+            list-style circle
 
       ol
         li
@@ -215,6 +223,8 @@
 
   mjx-container
     display inline-block
+    vertical-align bottom
 
   mjx-container[display="true"]
-    display block
+    display flex !important
+    justify-content center

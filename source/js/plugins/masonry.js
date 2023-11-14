@@ -35,8 +35,15 @@ export function initMasonry() {
     setTimeout(() => {
       loadingPlaceholder.style.display = "none";
       masonryContainer.style.display = "block";
+      var screenWidth = window.innerWidth;
+      var baseWidth;
+      if (screenWidth >= 768) {
+        baseWidth = 255;
+      } else {
+        baseWidth = 150;
+      }
       var masonry = new MiniMasonry({
-        baseWidth: 255,
+        baseWidth: baseWidth,
         container: masonryContainer,
         gutterX: 10,
         gutterY: 10,

@@ -25,34 +25,35 @@
                 <% } %>
 
                 <% if (post.thumbnail !== false && (post.thumbnail || post.cover || post.banner)) { %>
-                    <div id="home-article-thumbnail" class="relative h-[150px] overflow-hidden rounded-t-[10.8px] md:rounded-t-large -m-5 mb-3 sm:-m-6 sm:mb-4 md:-m-7 md:mb-5">
+                    <div id="home-article-thumbnail" class="home-article-thumbnail relative h-[150px] overflow-hidden rounded-t-large">
                         <a href="<%- url_for(post.path) %>">
                             <img src="<%- url_for(articleThumbnail) %>" alt="<%= post.title %>" class="w-full h-full object-cover dark:brightness-75 transition-all" />
                         </a>
                     </div>
                 <% } %>
+                <div class="flex flex-col gap-5 px-7 pb-7 <%= post.thumbnail !== false && (post.thumbnail || post.cover || post.banner) ? "pt-5" : "pt-7" %>">
+                    <h3 class="home-article-title">
+                        <a href="<%- url_for(post.path) %>">
+                            <%= post.title %>
+                        </a>
+                    </h3>
 
-                <h3 class="home-article-title">
-                    <a href="<%- url_for(post.path) %>">
-                        <%= post.title %>
-                    </a>
-                </h3>
+                    <div class="home-article-content markdown-body">
+                        <% if (post.excerpt && post.excerpt == "false") { %>
+                        <% } else if (post.excerpt && post.excerpt !== "false") { %>
+                            <%- render(post.excerpt, "markdown") %>
+                        <% } else { %>
+                            <%- truncate(strip_html(post.content), {length: 128}) %>
+                        <% } %>
+                    </div>
 
-                <div class="home-article-content markdown-body">
-                    <% if (post.excerpt && post.excerpt == "false") { %>
-                    <% } else if (post.excerpt && post.excerpt !== "false") { %>
-                        <%- render(post.excerpt, "markdown") %>
-                    <% } else { %>
-                        <%- truncate(strip_html(post.content), {length: 128}) %>
-                    <% } %>
+                    <%- partial('_meta/home-article', {post: post}) %>
                 </div>
-
-                <%- partial('_meta/home-article', {post: post}) %>
             </li>
         <% }) %>
     </ul>
 
-    <div class="home-paginator">
+    <div class="home-paginator px-7 py-5">
         <%- partial('_widgets/paginator', {pageObject: page}) %>
     </div>
 </div>

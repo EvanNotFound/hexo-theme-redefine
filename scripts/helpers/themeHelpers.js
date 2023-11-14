@@ -101,6 +101,13 @@ hexo.extend.helper.register("renderJS", function (path) {
   };
 
   const cdnPathHandle = (path) => {
+    if (
+      this.theme.cdn.provider === ("staticfile" || "bootcdn" || "cdnjs") &&
+      hexo.locals.get(`cdnTestStatus_${this.theme.cdn.provider}`) !== 200
+    ) {
+      return _js(path);
+    }
+
     const cdnBase =
       cdnProviders[this.theme.cdn.provider] || cdnProviders.staticfile;
     if (this.theme.cdn.provider === "custom") {
@@ -151,6 +158,13 @@ hexo.extend.helper.register("renderJSModule", function (path) {
   };
 
   const cdnPathHandle = (path) => {
+    if (
+      this.theme.cdn.provider === ("staticfile" || "bootcdn" || "cdnjs") &&
+      hexo.locals.get(`cdnTestStatus_${this.theme.cdn.provider}`) !== 200
+    ) {
+      return _js({ src: path, type: "module" });
+    }
+
     const cdnBase =
       cdnProviders[this.theme.cdn.provider] || cdnProviders.staticfile;
     if (this.theme.cdn.provider === "custom") {
@@ -201,6 +215,13 @@ hexo.extend.helper.register("renderJSPath", function (path) {
   };
 
   const cdnPathHandle = (path) => {
+    if (
+      this.theme.cdn.provider === ("staticfile" || "bootcdn" || "cdnjs") &&
+      hexo.locals.get(`cdnTestStatus_${this.theme.cdn.provider}`) !== 200
+    ) {
+      return _url_for(path);
+    }
+
     const cdnBase =
       cdnProviders[this.theme.cdn.provider] || cdnProviders.staticfile;
     if (this.theme.cdn.provider === "custom") {
@@ -249,6 +270,13 @@ hexo.extend.helper.register("renderCSS", function (path) {
   };
 
   const cdnPathHandle = (path) => {
+    if (
+      this.theme.cdn.provider === ("staticfile" || "bootcdn" || "cdnjs") &&
+      hexo.locals.get(`cdnTestStatus_${this.theme.cdn.provider}`) !== 200
+    ) {
+      return _css(path);
+    }
+
     const cdnBase =
       cdnProviders[this.theme.cdn.provider] || cdnProviders.staticfile;
     if (this.theme.cdn.provider === "custom") {

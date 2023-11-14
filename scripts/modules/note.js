@@ -16,10 +16,13 @@ function postNote(args, content) {
     args[args.length - 1] = "icon-padding";
   }
 
-  return `<div class="note ${args.join(" ")}">${icon}${hexo.render.renderSync({
-    text: content,
-    engine: "markdown"
-  })}</div>`;
+  return `
+  <div class="note p-4 mb-4 rounded-small ${args.join(" ")}">
+    ${icon}${hexo.render.renderSync({
+      text: content,
+      engine: "markdown",
+    })}
+  </div>`;
 }
 
 hexo.extend.tag.register("note", postNote, { ends: true });

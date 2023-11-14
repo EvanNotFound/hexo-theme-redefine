@@ -69,18 +69,17 @@ $friend-link-item-border-radius = 9px
     background 0 0 / 300% 300% linear-gradient(120deg, #9c9c9c20 40%, #83838325 50%, #9c9c9c20 60%)
 
   .flex-grid
-    display block
+    display grid
+    grid-template-columns repeat(auto-fill, minmax(150px, 1fr))
+    gap 10px
 
-    @media screen and (min-width 540px)
-      display flex
-      justify-content space-between
+    @media screen and (min-width: 768px)
+      grid-template-columns repeat(auto-fill, minmax(255px, 1fr))
 
   .card
     border 1px solid var(--border-color)
     border-radius $redefine-border-radius-medium
     box-sizing border-box
-    flex 1
-    margin 5px
     min-height 80vh
     padding 30px
 

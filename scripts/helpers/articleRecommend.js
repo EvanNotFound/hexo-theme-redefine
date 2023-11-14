@@ -341,7 +341,7 @@ function userInterface(recommendedArticles, cfg) {
     htmlMobile += itemInterface(itemMobile);
   }
   return `
-  <div class="recommended-article">
+  <div class="recommended-article px-2 sm:px-6 md:px-8">
    <div class="recommended-desktop">
     <div class="recommended-article-header">
      <i aria-hidden="true"></i><span>${cfg.title}</span>

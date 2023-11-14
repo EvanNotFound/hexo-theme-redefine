@@ -1,7 +1,7 @@
-$logo-title-font-size = 2rem
+$logo-title-font-size = 1.7rem
 $desktop-search-icon-font-size = 1.5rem
 $navbar-bar-line-height = 2.5px
-$logo-image-box-width = 46px
+$logo-image-box-width = 34px
 
 @import '../../common/variables'
 
@@ -47,18 +47,18 @@ $logo-image-box-width = 46px
     .left
       display flex
       align-items center
-      transform-origin left
-      transition-t('transform', '0', '0.2', 'linear')
-
-      .navbar-shrink &
-        transform scale(0.72)
-        transform-origin left
+      //transform-origin bottom
+      //transition-t('transform', '0', '0.15', 'ease')
+      //
+      //.navbar-shrink &
+      //  transform scale(0.9)
+      //  transform-origin bottom
 
       if (hexo-config('defaults.logo') && hexo-config('defaults.logo') != '')
         .logo-image
           width $logo-image-box-width
           height $logo-image-box-width
-          margin-right 8px
+          margin-right 12px
 
           +redefine-tablet()
             width: $logo-image-box-width * 0.9
@@ -75,9 +75,10 @@ $logo-image-box-width = 46px
       .logo-title
         font-size $logo-title-font-size
         font-weight 520
-        // letter-spacing 1px
+        //letter-spacing 1px
         line-height 1
         color var(--first-text-color)
+        transform translateY(1px)
 
         h1
           margin 0
@@ -86,6 +87,7 @@ $logo-image-box-width = 46px
           //letter-spacing 1px
           line-height 1
           color var(--first-text-color)
+          transform translateY(1px)
 
           +redefine-tablet()
             font-size: $logo-title-font-size * 0.9
@@ -263,6 +265,8 @@ $logo-image-box-width = 46px
     transform-origin top
     z-index $z-index-2
     opacity 0
+    max-height 100vh
+    overflow-y auto
     transition-t('transform,opacity', '0,0.1', '0.38,0.38', 'ease,ease')
 
     .navbar-drawer-show &
