@@ -47,12 +47,12 @@ $logo-image-box-width = 46px
     .left
       display flex
       align-items center
-      transform-origin left
-      transition-t('transform', '0', '0.2', 'linear')
+      transform-origin bottom
+      transition-t('transform', '0', '0.15', 'ease')
 
       .navbar-shrink &
-        transform scale(0.72)
-        transform-origin left
+        transform scale(0.9)
+        transform-origin bottom
 
       if (hexo-config('defaults.logo') && hexo-config('defaults.logo') != '')
         .logo-image
