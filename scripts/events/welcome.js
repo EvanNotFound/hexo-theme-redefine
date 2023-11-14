@@ -32,8 +32,8 @@ hexo.on("ready", async () => {
       |     | | |  _  | |___| |  | | |___  |  _ <| |___| |_| | |___|  _|  | || |\\  | |___    |
       |     |_| |_| |_|_____|_|  |_|_____| |_| \\_\\_____|____/|_____|_|   |___|_| \\_|_____|   |
       |                                                                                      |
-      |                            current version v${version}                                    |
-      |                             latest version v${jsonData["dist-tags"].latest}                                    |
+      |                            current v${version}  latest v${jsonData["dist-tags"].latest}                             |
+      |                  https://github.com/EvanNotFound/hexo-theme-redefine                 |
       +======================================================================================+
                       `,
       );
@@ -55,8 +55,8 @@ hexo.on("ready", async () => {
       |     | | |  _  | |___| |  | | |___  |  _ <| |___| |_| | |___|  _|  | || |\\  | |___    |
       |     |_| |_| |_|_____|_|  |_|_____| |_| \\_\\_____|____/|_____|_|   |___|_| \\_|_____|   |
       |                                                                                      |
-      |                             current version v2.5.1                                   |
-      |                           fetch latest version failed                                |
+      |                        current v${version}  fetch latest failed                           |
+      |                  https://github.com/EvanNotFound/hexo-theme-redefine                 |
       +======================================================================================+
        `,
       );
