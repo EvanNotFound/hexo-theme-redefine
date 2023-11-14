@@ -36,6 +36,7 @@
     "tailwindcss": "^3.3.3"
   },
   "dependencies": {
+    "axios": "^1.6.1",
     "postcss": "^8.4.28"
   }
 }
