@@ -127,6 +127,8 @@ export default function initUtils() {
     },
 
     updateHomeBannerBlur() {
+      if (!this.homeBannerBackground_dom) return;
+
       if (
         theme.home_banner.style === "fixed" &&
         location.pathname === config.root
