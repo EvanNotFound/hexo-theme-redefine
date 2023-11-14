@@ -773,6 +773,14 @@ video {
   margin-right: 0.125rem;
 }
 
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mt-8 {
+  margin-top: 2rem;
+}
+
 .block {
   display: block;
 }
@@ -1236,6 +1244,11 @@ video {
   padding-right: 1px;
 }
 
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
 .pb-7 {
   padding-bottom: 1.75rem;
 }
@@ -1409,6 +1422,23 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
 }
 
+.shadow-redefine-flat {
+  --tw-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.05), 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
+  --tw-shadow-colored: 0px 1px 4px 0px var(--tw-shadow-color), 0px 0px 0px 1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.shadow-lg {
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.shadow-shadow-color-2 {
+  --tw-shadow-color: var(--shadow-color-2);
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
 .blur {
   --tw-blur: blur(8px);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
@@ -1489,6 +1519,17 @@ video {
 
 .hover\:underline-offset-1:hover {
   text-underline-offset: 1px;
+}
+
+.hover\:shadow-redefine-flat-hover:hover {
+  --tw-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.05), 0px 0px 0px 1px rgba(0, 0, 0, 0.08), 0px 0px 0px 1px inset rgba(0, 0, 0, 0.08);
+  --tw-shadow-colored: 0px 1px 4px 0px var(--tw-shadow-color), 0px 0px 0px 1px var(--tw-shadow-color), inset 0px 0px 0px 1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.hover\:shadow-shadow-color-2:hover {
+  --tw-shadow-color: var(--shadow-color-2);
+  --tw-shadow: var(--tw-shadow-colored);
 }
 
 .active\:scale-95:active {
