@@ -1,6 +1,6 @@
 {
   "name": "hexo-theme-redefine",
-  "version": "2.5.2",
+  "version": "2.5.3",
   "private": false,
   "description": "Redefine your writing in Hexo Theme Redefine.",
   "scripts": {
@@ -36,7 +36,6 @@
     "tailwindcss": "^3.3.3"
   },
   "dependencies": {
-    "axios": "^1.6.1",
     "postcss": "^8.4.28"
   }
 }
