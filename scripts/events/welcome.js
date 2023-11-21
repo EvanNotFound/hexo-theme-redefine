@@ -94,13 +94,16 @@ hexo.on("ready", async () => {
       +======================================================================================+
        `,
           );
-          hexo.log.warn(`Check latest version failed: ${error}`);
-          hexo.locals.set(`cdnTestStatus_bootcdn`, 404);
-          hexo.locals.set(`cdnTestStatus_staticfile`, 404);
           reject(error);
         });
     });
   }
 
-  await fetchRedefineInfo();
+  try {
+    await fetchRedefineInfo();
+  } catch (error) {
+    hexo.log.warn(`Check latest version failed: ${error}`);
+    hexo.locals.set(`cdnTestStatus_bootcdn`, 404);
+    hexo.locals.set(`cdnTestStatus_staticfile`, 404);
+  }
 });
