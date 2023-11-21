@@ -94,7 +94,9 @@ hexo.on("ready", async () => {
       +======================================================================================+
        `,
           );
-          hexo.log.error(`Check latest version failed: ${error}`);
+          hexo.log.warn(`Check latest version failed: ${error}`);
+          hexo.locals.set(`cdnTestStatus_bootcdn`, 404);
+          hexo.locals.set(`cdnTestStatus_staticfile`, 404);
           reject(error);
         });
     });
