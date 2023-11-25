@@ -37,9 +37,9 @@ Drawing its core from [hexo-theme-keep](https://github.com/XPoet/hexo-theme-keep
 </picture>
 
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/5c1f93ec-ff0d-4459-83c1-894b7538f713" />
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/ee04971c-a199-448b-a91c-6f4bbe17d105" />
-  <img alt="Pages Image" src="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/5c1f93ec-ff0d-4459-83c1-894b7538f713" />
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/f2238745-8da8-4203-935c-649715a1f271" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/e121c236-478b-4bc1-9df9-829e51217be7" />
+  <img alt="Pages Image" src="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/f2238745-8da8-4203-935c-649715a1f271" />
 </picture>
 </p>
 
