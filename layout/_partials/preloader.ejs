@@ -5,13 +5,17 @@
     }
 
     @media (prefers-color-scheme: dark) {
-        --preloader-background-color: #1a202c;
-        --preloader-text-color: #fff;
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
     }
 
     @media (prefers-color-scheme: light) {
-        --preloader-background-color: #fff;
-        --preloader-text-color: #000;
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
     }
 
     .preloader {
