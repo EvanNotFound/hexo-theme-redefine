@@ -134,10 +134,14 @@ If you like this theme, please give a star. You can also support me by [donating
 
 This is the list of all the people who have donated to me: [Donation List](https://github.com/EvanNotFound/hexo-theme-redefine/blob/dev/DONATION.md)
 
-Thanks to all of you!
+
+Want to use OpenAI GPT-4 but don't want to pay $20 per month? Check out [GPT Plus Tokens](https://gpt.oknice.ca)! You can use up to 100 ChatGPT Plus Accounts!
+
+![CleanShot 2023-12-08 at 12 47 20@2x](https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/b25196a1-3ba4-43bb-9d0f-e23d3527e6ff)
 
 ## 🌟 Star History
 
+<p align="center">
 <a href="https://star-history.com/#EvanNotFound/hexo-theme-redefine&Date">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=EvanNotFound/hexo-theme-redefine&type=Date&theme=dark" />
@@ -145,6 +149,7 @@ Thanks to all of you!
     <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=EvanNotFound/hexo-theme-redefine&type=Date" />
   </picture>
 </a>
+</p>
 
 ## 💻 Development
 
