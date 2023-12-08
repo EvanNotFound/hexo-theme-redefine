@@ -35,7 +35,7 @@
     </div>
 <% } %>
 
-<div class="home-banner-container flex justify-center items-center transition-fade">
+<div class="home-banner-container flex justify-center items-center transition-fade relative">
     <div class="content flex justify-center items-center">
         <div class="description flex flex-col justify-center items-center"
         <% if (theme.home_banner.custom_font.enable) { %>
@@ -102,6 +102,18 @@
                 <% } %>
             </div>
         <% } %>
+    </div>
+    <script>
+        const scrollToMain = ()=> {
+            console.log('scroll');
+            const target = document.querySelector('.main-content-container');
+            target.scrollIntoView({ behavior: 'smooth'});
+        }
+    </script>
+    <div class="scroll-down-arrow fixed bottom-12 left-1/2 -translate-x-1/2">
+        <div onclick="scrollToMain()" class="cursor-pointer">
+            <i class="fa-solid fa-chevron-down text-lg text-background-color-transparent-40 fa-bounce" style="--fa-animation-duration: 3s; --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; --fa-bounce-rebound: 0;"></i>
+        </div>
     </div>
 </div>
 

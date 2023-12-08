@@ -624,6 +624,14 @@ video {
   top: 2px;
 }
 
+.left-1\/2 {
+  left: 50%;
+}
+
+.bottom-12 {
+  bottom: 3rem;
+}
+
 .z-1 {
   z-index: 1001;
 }
@@ -834,6 +842,10 @@ video {
   height: 100%;
 }
 
+.h-5 {
+  height: 1.25rem;
+}
+
 .w-10 {
   width: 2.5rem;
 }
@@ -852,6 +864,10 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-5 {
+  width: 1.25rem;
 }
 
 .min-w-0 {
@@ -874,6 +890,11 @@ video {
   flex-shrink: 1;
 }
 
+.-translate-x-1\/2 {
+  --tw-translate-x: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .-rotate-45 {
   --tw-rotate: -45deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -891,6 +912,10 @@ video {
 
 .cursor-default {
   cursor: default;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .resize {
@@ -1303,6 +1328,22 @@ video {
 
 .text-third-text-color {
   color: var(--third-text-color);
+}
+
+.text-background-color {
+  color: var(--background-color);
+}
+
+.text-second-background-color {
+  color: var(--second-background-color);
+}
+
+.text-background-color-transparent-80 {
+  color: var(--background-color-transparent-80);
+}
+
+.text-background-color-transparent-40 {
+  color: var(--background-color-transparent-40);
 }
 
 .shadow {
