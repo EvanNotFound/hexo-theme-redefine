@@ -33,6 +33,7 @@
         height: 100vh; /* 'h-screen' is 100% of the viewport height */
         background-color: var(--preloader-background-color);
         z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
     }
 
     .ml13 {
@@ -77,10 +78,13 @@
             delay: (el, i) => 100 + 30 * i
         });
         window.addEventListener('load', function () {
-            document.querySelector('.preloader').classList.add('opacity-0');
             setTimeout(function () {
-                document.querySelector('.preloader').classList.add('hidden');
-            }, 200);
+                var preloader = document.querySelector('.preloader');
+                preloader.style.opacity = '0';
+                setTimeout(function () {
+                    preloader.style.display = 'none';
+                }, 200);
+            }, 1000);
         });
     </script>
 </div>
