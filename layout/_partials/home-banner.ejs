@@ -77,10 +77,10 @@
                     <% for (const key in theme.home_banner.social_links.qrs) { %>
                         <% if(theme.home_banner.social_links.qrs[key]) { %>
                             <% if(key.includes("fa-")) { %>
-                                <span class="social-contact-item-qr">
+                                <span class="social-contact-item-qr ">
                                 <a target="_blank">
                                     <i class="<%= key %> fa-sm"></i>
-									<div class="social-qr-container fade-in-down-animation">
+									<div class="social-qr-container">
 										<img class="social-contacts-qr"
                                              src="<%- url_for(theme.home_banner.social_links.qrs[key]) %>"/>
 									</div>
@@ -90,7 +90,7 @@
                                 <span class="social-contact-item-qr <%= key %>">
                                 <a target="_blank">
                                     <i class="fa-brands fa-<%= key %>"></i>
-									<div class="social-qr-container fade-in-down-animation">
+									<div class="social-qr-container">
 										<img class="social-contacts-qr"
                                              src="<%- url_for(theme.home_banner.social_links.qrs[key]) %>"/>
 									</div>

@@ -67,7 +67,6 @@ $home-banner-icon-size = 1.6rem
       text-align center
       backdrop-filter blur(10px)
       -webkit-backdrop-filter blur(10px)
-      box-shadow 0 0 10px 0 rgba(0, 0, 0, 0.5)
       padding 4px 24px
       border-radius $redefine-border-radius-medium
       box-shadow inset 0 0 2000px var(--home-banner-icons-container-background-color)
@@ -94,24 +93,29 @@ $home-banner-icon-size = 1.6rem
         &:last-child
           margin-right 0
 		  
-		    .social-qr-container
+		.social-qr-container
           width max-content
-          display none
+          visibility hidden
           position absolute
-          bottom 120%
-          right 0px
+          bottom 110%
+          right 0
           backdrop-filter blur(10px)
           -webkit-backdrop-filter blur(10px)
-          box-shadow 0 0 10px 0 rgba(0, 0, 0, 0.5)
+          box-shadow  inset 0 0 2000px var(--home-banner-icons-container-background-color)
           border-radius $redefine-border-radius-medium
-          box-shadow inset 0 0 2000px var(--home-banner-icons-container-background-color)
           border 1.5px solid var(--home-banner-icons-container-border-color)
           overflow hidden
+          opacity 0
+          transform translate3d(0, 2%, 0)
+          transition opacity 0.2s cubic-bezier(0.215, 0.61, 0.355, 1), visibility 0.2s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1)
 
           .social-contacts-qr
             display flex
-            width 150px
-            padding 15px
+            width 250px
+            border-radius 0
 
       .social-contact-item-qr:hover .social-qr-container
-        display initial
+        visibility visible
+        opacity 1
+        transform translate3d(0, 0, 0)
+        transition opacity 0.2s cubic-bezier(0.215, 0.61, 0.355, 1), visibility 0.2s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1)

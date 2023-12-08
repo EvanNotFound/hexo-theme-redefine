@@ -1446,6 +1446,10 @@ video {
   color: var(--primary-color) !important;
 }
 
+.peer:hover ~ .peer-hover\:opacity-70 {
+  opacity: 0.7;
+}
+
 :is(.dark .dark\:bg-zinc-800) {
   --tw-bg-opacity: 1;
   background-color: rgb(39 39 42 / var(--tw-bg-opacity));
