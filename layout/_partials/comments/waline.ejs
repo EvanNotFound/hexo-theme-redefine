@@ -14,6 +14,12 @@
             (item) => `'${item}'`
           ).join(','
           ) %>],
+          <%- theme.comment.config.waline.recaptchaV3Key &&
+              `recaptchaV3Key: "${theme.comment.config.waline.recaptchaV3Key}",`;
+          %>
+          <%- theme.comment.config.waline.turnstileKey &&
+              `turnstileKey: "${theme.comment.config.waline.turnstileKey}",`;
+          %>
         });
       }
 
