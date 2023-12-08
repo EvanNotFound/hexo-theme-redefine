@@ -29,19 +29,11 @@ Drawing its core from [hexo-theme-keep](https://github.com/XPoet/hexo-theme-keep
     <img src="https://img.shields.io/badge/node-%3E=12.0-a6d189?style=for-the-badge&amp;logo=node.js&amp;logoColor=a6d189" referrerpolicy="no-referrer" alt="NodeJS Version" />
 </p>
 
-<p align="center">
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/863f7dd7-2f59-4ef4-a876-5b0a707289b1" />
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/92427ac8-fbb8-4ce9-9807-5d0ed98484ac" />
-  <img alt="Cover Image" src="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/863f7dd7-2f59-4ef4-a876-5b0a707289b1" />
-</picture>
+![cover-light@1x](https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/20425f75-d866-45a0-ac58-fed676f4bff2)
+![pages-light@1x](https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/c6df4b81-557d-4e0b-8038-b056075d0fa4)
 
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/f2238745-8da8-4203-935c-649715a1f271" />
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/e121c236-478b-4bc1-9df9-829e51217be7" />
-  <img alt="Pages Image" src="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/f2238745-8da8-4203-935c-649715a1f271" />
-</picture>
-</p>
+![cover-dark@1x](https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/89928d81-a604-4755-a0f2-ff99ab538d0a)
+![pages-dark@1x](https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/5d51b48d-7b08-4da0-a304-933424739203)
 
 ## 🌐 Demo
 

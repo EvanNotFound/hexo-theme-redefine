@@ -28,19 +28,12 @@
 </p>
 
 
-<p align="center">
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/863f7dd7-2f59-4ef4-a876-5b0a707289b1" />
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/92427ac8-fbb8-4ce9-9807-5d0ed98484ac" />
-  <img alt="Cover Image" src="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/863f7dd7-2f59-4ef4-a876-5b0a707289b1" />
-</picture>
+![cover-light@1x](https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/20425f75-d866-45a0-ac58-fed676f4bff2)
+![pages-light@1x](https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/c6df4b81-557d-4e0b-8038-b056075d0fa4)
 
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/5c1f93ec-ff0d-4459-83c1-894b7538f713" />
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/ee04971c-a199-448b-a91c-6f4bbe17d105" />
-  <img alt="Pages Image" src="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/5c1f93ec-ff0d-4459-83c1-894b7538f713" />
-</picture>
-</p>
+![cover-dark@1x](https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/89928d81-a604-4755-a0f2-ff99ab538d0a)
+![pages-dark@1x](https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/5d51b48d-7b08-4da0-a304-933424739203)
+
 
 ## 🌐 官方演示站
 
