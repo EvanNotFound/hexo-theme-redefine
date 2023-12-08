@@ -24,17 +24,17 @@ export function initTocToggle() {
         });
     },
 
+    toggleClassName(element, className, condition) {
+      if (element) {
+        element.classList.toggle(className, condition);
+      }
+    },
     changePageLayoutWhenOpenToggle(isOpen) {
-      this.toggleBarIcon &&
-        (this.toggleBarIcon.className = isOpen
-          ? "fas fa-indent"
-          : "fas fa-outdent");
-      this.postPageContainerDom.className = isOpen
-        ? "post-page-container show-toc"
-        : "post-page-container";
-      this.mainContentDom.className = isOpen
-        ? "main-content has-toc"
-        : "main-content";
+      this.toggleClassName(this.toggleBarIcon, "fas", isOpen);
+      this.toggleClassName(this.toggleBarIcon, "fa-indent", isOpen);
+      this.toggleClassName(this.toggleBarIcon, "fa-outdent", !isOpen);
+      this.toggleClassName(this.postPageContainerDom, "show-toc", isOpen);
+      this.toggleClassName(this.mainContentDom, "has-toc", isOpen);
     },
 
     pageAsideHandleOfTOC(isOpen) {
