@@ -1,0 +1,6 @@
+<div class="author flex flex-col justify-center my-2.5 mx-0">
+    <div class="name"><%= theme.info.author || config.author %></div>
+    <% if (theme.hasOwnProperty('articles') && theme.articles.author_label.enable === true) { %>
+        <div class="label"><%- getAuthorLabel(site.posts.length, theme.articles.author_label.auto, theme.articles.author_label.list) %></div>
+    <% } %>
+</div>
