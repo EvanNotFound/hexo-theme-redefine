@@ -95,7 +95,6 @@ export default function initUtils() {
         this.updateNavbarShrink();
         // this.updateHomeBannerBlur();
         this.updateAutoHideTools();
-        this.updateAPlayerAutoHide();
       });
       window.addEventListener(
         "scroll",
