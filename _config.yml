@@ -314,6 +314,7 @@ comment:
     waline:
       serverUrl: https://example.example.com # Waline server URL. e.g. https://example.example.com
       lang: zh-CN # Waline language. e.g. zh-CN, en-US. See https://waline.js.org/guide/client/i18n.html
+      emoji: [] # Waline emojis, see https://waline.js.org/guide/features/emoji.html
     # Gitalk comment system. See https://github.com/gitalk/gitalk
     gitalk:
       clientID: # GitHub Application Client ID

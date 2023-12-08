@@ -9,7 +9,11 @@
           serverURL: '<%= theme.comment.config.waline.serverUrl %>',
           lang: '<%= theme.comment.config.waline.lang %>',
           dark: 'body[class~="dark-mode"]',
-          requiredMeta: ['nick', 'mail']
+          requiredMeta: ['nick', 'mail'],
+          emoji: [<%- theme.comment.config.waline.emoji && theme.comment.config.waline.emoji.map(
+            (item) => `'${item}'`
+          ).join(','
+          ) %>],
         });
       }
 
