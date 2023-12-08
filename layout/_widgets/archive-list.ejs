@@ -3,24 +3,24 @@
 <div class="archive-list-container">
     <% postList.forEach(postYear => { %>
         <section class="archive-item">
-            <div class="archive-item-header">
-                <span class="archive-year"><%= postYear.year %></span>
-                <span class="archive-year-post-count">[<%= postYear.postList.length %>]</span>
+            <div class="archive-item-header flex flex-row items-center mb-2">
+                <span class="archive-year font-semibold text-3xl mr-2"><%= postYear.year %></span>
+                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color"><%= postYear.postList.length %></span>
             </div>
-            <ul class="article-list">
+            <ul class="article-list pl-8 text-lg leading-[1.5]">
               <% postYear.postList.forEach(post => { %>
                 <% if (!cachedDate || cachedDate != date(post.date, 'MM-DD')) { %>
                     <% cachedDate = date(post.date, 'MM-DD') %>
                     <li class="article-item" date-is='<%= date(post.date, 'MM-DD') %>'>
                 <% } %>
                 <% if (cachedDate == date(post.date, 'MM-DD')) { %>
-                    <a href="<%- url_for(post.path) %>">
-                        <span class="article-title"><%= post.title %></span>
+                    <a href="<%- url_for(post.path) %>" class="block overflow-hidden">
+                        <span class="article-title mb-0.5 text-2xl"><%= post.title %></span>
                     </a>
                 <% } else {%>
                     <% cachedDate = date(post.date, 'MM-DD') %>
-                    <a href="<%- url_for(post.path) %>">
-                        <span class="article-title"><%= post.title %></span>
+                    <a href="<%- url_for(post.path) %>" class="block overflow-hidden">
+                        <span class="article-title mb-0.5 text-2xl"><%= post.title %></span>
                     </a>
                 </li>
                 <% } %>
