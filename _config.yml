@@ -77,6 +77,8 @@ global:
     post_pv: true # post page view
   # Whether to enable single page experience (using swup). See https://swup.js.org/. similar to pjax
   single_page: true
+  # Whether to enable Preloader.
+  preloader: true
   # Whether to enable open graph
   open_graph: true
   # Google Analytics

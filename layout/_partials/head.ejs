@@ -73,6 +73,11 @@
         <% } %>
         <%= theme.info.title || config.title || 'Redefine Theme' %>
     </title>
+
+    <% if (theme.global.preloader) { %>
+        <%- partial('_partials/preloader') %>
+    <% } %>
+
     <%- css('css/style') %>
 
     <% if (theme.developer && theme.developer.enable) {%>

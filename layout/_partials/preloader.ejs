@@ -1,0 +1,82 @@
+<style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        --preloader-background-color: #1a202c;
+        --preloader-text-color: #fff;
+    }
+
+    @media (prefers-color-scheme: light) {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: "Chillax", sans-serif;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    <%- renderJS('js/libs/anime.min.js')%>
+    <h1 class="ml13">
+        <%= theme.info.title %>
+    </h1>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+        anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [100,0],
+                translateZ: 0,
+                opacity: [0,1],
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i
+            }).add({
+            targets: '.ml13 .letter',
+            translateY: [0,-100],
+            opacity: [1,0],
+            easing: "easeInExpo",
+            duration: 1200,
+            delay: (el, i) => 100 + 30 * i
+        });
+        window.addEventListener('load', function () {
+            document.querySelector('.preloader').classList.add('opacity-0');
+            setTimeout(function () {
+                document.querySelector('.preloader').classList.add('hidden');
+            }, 200);
+        });
+    </script>
+</div>

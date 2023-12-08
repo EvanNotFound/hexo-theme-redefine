@@ -44,7 +44,9 @@
 
 <div class="post-scripts" <%= theme.global.single_page === true ? 'data-swup-reload-script' : '' %>>
     <% if (theme.articles.toc.enable) { %>
-        <%- renderJS('js/libs/anime.min.js')%>
+        <% if (!theme.global.preloader) { %>
+            <%- renderJS('js/libs/anime.min.js')%>'
+        <% } %>
         <%- renderJSModule([
             'js/tools/tocToggle.js',
             'js/layouts/toc.js',
