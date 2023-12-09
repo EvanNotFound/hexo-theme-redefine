@@ -30,9 +30,9 @@
 
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/89928d81-a604-4755-a0f2-ff99ab538d0a" />
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/20425f75-d866-45a0-ac58-fed676f4bff2" />
-  <img alt="Cover Image" src="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/20425f75-d866-45a0-ac58-fed676f4bff2" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/02a0bad0-e65e-412c-ae8d-fc036bacc8b8" />
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/6eef22aa-dcfe-48a8-b2b2-e0c3c1362dd6" />
+  <img alt="Cover Image" src="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/6eef22aa-dcfe-48a8-b2b2-e0c3c1362dd6" />
 </picture>
 
 <picture>
