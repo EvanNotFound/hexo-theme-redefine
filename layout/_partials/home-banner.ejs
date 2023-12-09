@@ -71,11 +71,20 @@
                             <% } %>
                         <% } %>
                     <% } %>
-                    <% if (theme.home_banner.social_links.qrs && theme.home_banner.social_links.qrs.length !== 0) { %>
+                    <%
+                        let qrs = theme.home_banner.social_links.qrs;
+                        let qrCount = 0;
+                        for (const key in qrs) {
+                            if(qrs[key]) {
+                                qrCount++;
+                            }
+                        }
+                    if (qrs && qrCount >= 1) { %>
+
                         <div class="social-links-divider vertical-separator w-[1px] h-4 bg-third-text-color mx-0.5"></div>
 
-                        <% for (const key in theme.home_banner.social_links.qrs) { %>
-                            <% if(theme.home_banner.social_links.qrs[key]) { %>
+                        <% for (const key in qrs) { %>
+                            <% if(qrs[key]) { %>
                                 <% if(key.includes("fa-")) { %>
                                     <span class="social-contact-item-qr cursor-pointer group">
                                         <a target="_blank">
