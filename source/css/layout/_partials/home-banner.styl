@@ -9,16 +9,7 @@ $home-banner-icon-size = 1.6rem
 @import '../../common/variables'
 
 .home-banner-background
-  position fixed
-  top 0
-  left 0
-  width 100vw
-  height 100vh
   background var(--home-banner-img) center center / cover no-repeat
-  background-size cover
-  will-change transform
-  box-sizing border-box
-  transform scale(1.1)
 
 .home-banner-container
   font-family 'Chillax-Variable', sans-serif
@@ -37,11 +28,8 @@ $home-banner-icon-size = 1.6rem
     min-height 90vh
 
     .description
-      width 100vw
-      font-weight 450
       font-size $title-font-size
       line-height $line-height
-      text-align center
       color var(--home-banner-text-color)
 
       p
@@ -59,57 +47,3 @@ $home-banner-icon-size = 1.6rem
 
       +redefine-tablet()
         font-size: $title-font-size * 0.9
-
-    //.social-contacts
-    //  font-size $home-banner-icon-size
-    //  text-align center
-    //  backdrop-filter blur(10px)
-    //  -webkit-backdrop-filter blur(10px)
-    //  padding 4px 24px
-    //  border-radius $redefine-border-radius-medium
-    //  box-shadow inset 0 0 2000px var(--home-banner-icons-container-background-color)
-    //  border 1.5px solid var(--home-banner-icons-container-border-color)
-    //
-    //  +redefine-tablet()
-    //    font-size: $home-banner-icon-size * 0.9
-    //
-    //  .social-contact-item
-    //    margin-right 20px
-    //    cursor pointer
-    //    line-height 2
-    //    color #FFF
-    //
-    //    &:last-child
-    //      margin-right 0
-
-  //.social-contact-item-qr
-  //  cursor pointer
-  //  line-height 2
-  //  color #FFF
-  //
-  //  .social-qr-container
-  //    width max-content
-  //    visibility visible
-  //    position absolute
-  //    bottom 110%
-  //    right 0
-  //    backdrop-filter blur(10px)
-  //    -webkit-backdrop-filter blur(10px)
-  //    box-shadow  inset 0 0 2000px var(--home-banner-icons-container-background-color)
-  //    border-radius $redefine-border-radius-medium
-  //    border 1.5px solid var(--home-banner-icons-container-border-color)
-  //    overflow hidden
-  //    opacity 0
-  //    transform translate3d(0,1%, 0)
-  //    transition opacity 0.2s cubic-bezier(0.215, 0.61, 0.355, 1), visibility 0.2s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1)
-  //
-  //    .social-contacts-qr
-  //      display flex
-  //      width 250px
-  //      border-radius 0
-  //
-  //  .social-contact-item-qr:hover .social-qr-container
-  //    visibility visible
-  //    opacity 1
-  //    transform translate3d(0, -1%, 0)
-  //    transition opacity 0.2s cubic-bezier(0.215, 0.61, 0.355, 1), visibility 0.2s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1)

@@ -26,12 +26,12 @@
             backdrop-filter: none !important;
         }
     </style>
-    <div class="home-banner-background transition-fade"></div>
+    <div class="home-banner-background transition-fade fixed top-0 left-0 w-screen h-screen scale-125 sm:scale-110 box-border will-change-transform bg-cover"></div>
 <% } %>
 
 <div class="home-banner-container flex justify-center items-center transition-fade relative">
-    <div class="content flex flex-col justify-center items-center">
-        <div class="description flex flex-col justify-center items-center"
+    <div class="content mt-8 flex flex-col justify-center items-center">
+        <div class="description flex flex-col justify-center items-center w-screen font-medium text-center"
         <% if (theme.home_banner.custom_font.enable) { %>
              style="font-family: '<%- theme.home_banner.custom_font.family %>', sans-serif; !important;"
                 <% } %>
