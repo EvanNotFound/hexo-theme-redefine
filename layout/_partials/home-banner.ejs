@@ -3,7 +3,6 @@
         .home-banner-container {
             background: transparent !important;
         }
-
         .home-article-item,
         .sidebar-links,
         .sidebar-content,
@@ -14,29 +13,24 @@
         footer.footer {
             background-color: var(--background-color-transparent-80) !important;
         }
-
         .right-bottom-tools:hover,
         a.page-number:hover,
         a.extend:hover {
             background-color: var(--primary-color) !important;
         }
-
         .site-info,
         .home-article-sticky-label {
             background-color: var(--background-color-transparent-15) !important;
         }
-
         .home-article-sticky-label {
             backdrop-filter: none !important;
         }
     </style>
-
-    <div class="home-banner-background transition-fade">
-    </div>
+    <div class="home-banner-background transition-fade"></div>
 <% } %>
 
 <div class="home-banner-container flex justify-center items-center transition-fade relative">
-    <div class="content flex justify-center items-center">
+    <div class="content flex flex-col justify-center items-center">
         <div class="description flex flex-col justify-center items-center"
         <% if (theme.home_banner.custom_font.enable) { %>
              style="font-family: '<%- theme.home_banner.custom_font.family %>', sans-serif; !important;"
@@ -49,57 +43,62 @@
             <% } %>
         </div>
         <% if (theme.home_banner.social_links.enable) { %>
-            <div class="social-contacts">
-                <% for (const key in theme.home_banner.social_links.links) { %>
-                    <% if(theme.home_banner.social_links.links[key]) { %>
-                        <% if(key === 'email') { %>
-                            <span class="social-contact-item <%= key %>">
+            <div class="absolute bottom-0.5 flex flex-row justify-between items-center w-full px-12">
+                <div class="p-3 bg-gray-300/50 dark:bg-gray-500/40 backdrop-blur-lg border border-white/20 dark:border-gray-500/30 group rounded-full cursor-pointer flex justify-center items-center aspect-square h-full shadow-redefine-flat hover:shadow-redefine-flat-hover transition-shadow" onclick="scrollToMain()" >
+                    <i class="fa-solid fa-arrow-down fa-fw fa-lg group-hover:translate-y-1 transition-transform"></i>
+                </div>
+                <div class="social-contacts px-6 py-2 bg-gray-300/50 dark:bg-gray-500/40 backdrop-blur-lg border border-white/20 dark:border-gray-500/30 shadow-redefine-flat hover:shadow-redefine-flat-hover rounded-full flex flex-row gap-3 items-center">
+                    <% for (const key in theme.home_banner.social_links.links) { %>
+                        <% if(theme.home_banner.social_links.links[key]) { %>
+                            <% if(key === 'email') { %>
+                                <span class="social-contact-item <%= key %> ">
                                 <a href="mailto:<%- theme.home_banner.social_links.links[key] %>">
-                                    <i class="fa-solid fa-envelope"></i>
+                                    <i class="fa-solid fa-fw fa-at fa-lg"></i>
                                 </a>
                             </span>
-                        <% } else if(key.includes("fa-")) { %>
-                            <span class="social-contact-item">
+                            <% } else if(key.includes("fa-")) { %>
+                                <span class="social-contact-item">
                                 <a target="_blank" href="<%- theme.home_banner.social_links.links[key] %>">
-                                    <i class="<%= key %> fa-sm"></i>
-                                </a>
-                            </span>
-                        <% } else { %>
-                            <span class="social-contact-item <%= key %>">
-                                <a target="_blank" href="<%- theme.home_banner.social_links.links[key] %>">
-                                    <i class="fa-brands fa-<%= key %>"></i>
-                                </a>
-                            </span>
-                        <% } %>
-                    <% } %>
-                <% } %>
-                <% if (theme.home_banner.social_links.qrs && theme.home_banner.social_links.qrs.length !== 0) { %>
-                    <% for (const key in theme.home_banner.social_links.qrs) { %>
-                        <% if(theme.home_banner.social_links.qrs[key]) { %>
-                            <% if(key.includes("fa-")) { %>
-                                <span class="social-contact-item-qr ">
-                                <a target="_blank">
-                                    <i class="<%= key %> fa-sm"></i>
-									<div class="social-qr-container">
-										<img class="social-contacts-qr"
-                                             src="<%- url_for(theme.home_banner.social_links.qrs[key]) %>"/>
-									</div>
+                                    <i class="<%= key %> fa-fw  fa-lg"></i>
                                 </a>
                             </span>
                             <% } else { %>
-                                <span class="social-contact-item-qr <%= key %>">
-                                <a target="_blank">
-                                    <i class="fa-brands fa-<%= key %>"></i>
-									<div class="social-qr-container">
-										<img class="social-contacts-qr"
-                                             src="<%- url_for(theme.home_banner.social_links.qrs[key]) %>"/>
-									</div>
+                                <span class="social-contact-item <%= key %>">
+                                <a target="_blank" href="<%- theme.home_banner.social_links.links[key] %>">
+                                    <i class="fa-brands fa-fw fa-lg fa-<%= key %>"></i>
                                 </a>
                             </span>
                             <% } %>
                         <% } %>
                     <% } %>
-                <% } %>
+                    <% if (theme.home_banner.social_links.qrs && theme.home_banner.social_links.qrs.length !== 0) { %>
+                        <% for (const key in theme.home_banner.social_links.qrs) { %>
+                            <% if(theme.home_banner.social_links.qrs[key]) { %>
+                                <% if(key.includes("fa-")) { %>
+                                    <span class="social-contact-item-qr">
+                                    <a target="_blank">
+                                        <i class="<%= key %> fa-fw fa-lg"></i>
+										<div class="social-qr-container">
+											<img class="social-contacts-qr"
+                                                 src="<%- url_for(theme.home_banner.social_links.qrs[key]) %>"/>
+										</div>
+                                    </a>
+                                </span>
+                                <% } else { %>
+                                    <span class="social-contact-item-qr <%= key %>">
+                                    <a target="_blank">
+                                        <i class="fa-brands fa-fw fa-lg fa-<%= key %>"></i>
+										<div class="social-qr-container">
+											<img class="social-contacts-qr"
+                                                 src="<%- url_for(theme.home_banner.social_links.qrs[key]) %>"/>
+										</div>
+                                    </a>
+                                </span>
+                                <% } %>
+                            <% } %>
+                        <% } %>
+                    <% } %>
+                </div>
             </div>
         <% } %>
     </div>
@@ -110,11 +109,4 @@
             target.scrollIntoView({ behavior: 'smooth'});
         }
     </script>
-    <div class="scroll-down-arrow fixed bottom-12 left-1/2 -translate-x-1/2">
-        <div onclick="scrollToMain()" class="cursor-pointer">
-            <i class="fa-solid fa-chevron-down text-lg text-second-text-color fa-bounce" style="--fa-animation-duration: 3s; --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; --fa-bounce-rebound: 0;"></i>
-        </div>
-    </div>
 </div>
-
-

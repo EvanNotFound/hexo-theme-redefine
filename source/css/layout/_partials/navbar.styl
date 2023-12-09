@@ -128,6 +128,23 @@ $logo-image-box-width = 34px
               transform rotate(0deg)
               transition transform 0.3s ease
 
+            a, .active
+              &::after
+                content ''
+                position absolute
+                bottom -5px
+                left 50%
+                width 100%
+                height 2px
+                transform translate3d(-50%, -5px, 0)
+                border-radius $redefine-border-radius-large
+                background var(--primary-color)
+                opacity 0
+                transition-t('transform, bottom, opacity', '0.2, 0.2, 0.2', '0.2, 0.2, 0.2', 'ease, ease, ease')
+
+                .navbar-shrink &
+                  bottom -($navbar-shrink-height / 2 - 17)
+
             &:hover a .fa-chevron-down
               transform rotate(180deg)
 
@@ -137,16 +154,9 @@ $logo-image-box-width = 34px
 
             &:hover a, .active
               &::after
-                content ''
-                position absolute
-                bottom -5px
-                left 50%
-                width 100%
-                height 2px
-                transform translateX(-50%)
-                border-radius $redefine-border-radius-large
-                background var(--primary-color)
-                transition-t('transform, bottom', '0, 0', '0.2, 0.2', 'linear, linear')
+                transform translate3d(-50%, 0, 0)
+                opacity 1
+                transition-t('transform, bottom, opacity', '0, 0, 0', '0.2, 0.2, 0.2', 'ease, ease, ease')
 
                 .navbar-shrink &
                   bottom -($navbar-shrink-height / 2 - 17)
