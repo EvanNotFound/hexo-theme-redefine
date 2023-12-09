@@ -18,6 +18,12 @@
         }
     }
 
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
     .preloader {
         display: flex;
         flex-direction: column;
@@ -25,6 +31,7 @@
         align-items: center;
         justify-content: center;
         position: fixed;
+        padding: 12px;
         top: 0;
         right: 0;
         bottom: 0;
@@ -43,6 +50,13 @@
         letter-spacing: -1px;
         font-weight: 500;
         font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
     }
 
     .ml13 .letter {
@@ -58,7 +72,21 @@
     </h1>
     <script>
         var textWrapper = document.querySelector('.ml13');
-        textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
 
         anime.timeline({loop: true})
             .add({
