@@ -572,6 +572,10 @@ video {
   visibility: visible;
 }
 
+.invisible {
+  visibility: hidden;
+}
+
 .static {
   position: static;
 }
@@ -644,6 +648,10 @@ video {
   bottom: 0.125rem;
 }
 
+.right-0 {
+  right: 0px;
+}
+
 .z-1 {
   z-index: 1001;
 }
@@ -704,6 +712,11 @@ video {
 .my-8 {
   margin-top: 2rem;
   margin-bottom: 2rem;
+}
+
+.mx-1 {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
 }
 
 .mb-0 {
@@ -776,6 +789,22 @@ video {
 
 .mt-5 {
   margin-top: 1.25rem;
+}
+
+.mb-20 {
+  margin-bottom: 5rem;
+}
+
+.mb-12 {
+  margin-bottom: 3rem;
+}
+
+.mb-16 {
+  margin-bottom: 4rem;
+}
+
+.mb-14 {
+  margin-bottom: 3.5rem;
 }
 
 .box-border {
@@ -866,6 +895,10 @@ video {
   height: 100vh;
 }
 
+.h-4 {
+  height: 1rem;
+}
+
 .w-10 {
   width: 2.5rem;
 }
@@ -886,6 +919,19 @@ video {
   width: 100%;
 }
 
+.w-max {
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.w-64 {
+  width: 16rem;
+}
+
+.w-\[1px\] {
+  width: 1px;
+}
+
 .min-w-0 {
   min-width: 0px;
 }
@@ -904,6 +950,16 @@ video {
 
 .shrink {
   flex-shrink: 1;
+}
+
+.translate-y-0 {
+  --tw-translate-y: 0px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-y-0\.5 {
+  --tw-translate-y: 0.125rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .-rotate-45 {
@@ -1027,6 +1083,10 @@ video {
   border-radius: 0.75rem;
 }
 
+.rounded-2xl {
+  border-radius: 1rem;
+}
+
 .rounded-l-lg {
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
@@ -1094,6 +1154,10 @@ video {
   border-color: rgb(255 255 255 / 0.2);
 }
 
+.border-shadow-color-2 {
+  border-color: var(--shadow-color-2);
+}
+
 .border-t-border-color {
   border-top-color: var(--border-color);
 }
@@ -1137,6 +1201,14 @@ video {
 
 .bg-gray-300\/50 {
   background-color: rgb(209 213 219 / 0.5);
+}
+
+.bg-second-text-color {
+  background-color: var(--second-text-color);
+}
+
+.bg-third-text-color {
+  background-color: var(--third-text-color);
 }
 
 .object-cover {
@@ -1257,6 +1329,11 @@ video {
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .pb-7 {
@@ -1386,6 +1463,10 @@ video {
 
 .text-third-text-color {
   color: var(--third-text-color);
+}
+
+.opacity-0 {
+  opacity: 0;
 }
 
 .shadow {
@@ -1532,6 +1613,10 @@ video {
   text-decoration-line: underline;
 }
 
+.group:hover .group-hover\:visible {
+  visibility: visible;
+}
+
 .group:hover .group-hover\:-translate-y-0 {
   --tw-translate-y: -0px;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1557,6 +1642,11 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.group:hover .group-hover\:\!translate-y-1 {
+  --tw-translate-y: 0.25rem !important;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
+}
+
 .group:hover .group-hover\:rotate-180 {
   --tw-rotate: 180deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1564,6 +1654,10 @@ video {
 
 .group:hover .group-hover\:\!text-primary {
   color: var(--primary-color) !important;
+}
+
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
 }
 
 :is(.dark .dark\:border-black\/20) {
@@ -1623,6 +1717,11 @@ video {
   .sm\:px-6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+  }
+
+  .sm\:px-12 {
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 
   .sm\:text-4xl {
