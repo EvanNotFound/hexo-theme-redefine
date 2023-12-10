@@ -10,6 +10,7 @@ export const navbarShrink = {
     this.navbarHeight = this.navbarDom.getBoundingClientRect().height;
     this.shrink();
     this.togglenavbarDrawerShow();
+    this.toggleSubmenu();
     window.addEventListener("scroll", () => {
       this.shrink();
     });
@@ -60,6 +61,55 @@ export const navbarShrink = {
         document.body.classList.remove("navbar-drawer-show");
       });
     }
+  },
+
+  toggleSubmenu() {
+    const toggleElements = document.querySelectorAll("[navbar-data-toggle]");
+
+    toggleElements.forEach((toggle) => {
+      toggle.addEventListener("click", function () {
+        const target = document.querySelector(
+          '[data-target="' + this.getAttribute("navbar-data-toggle") + '"]',
+        );
+        const submenuItems = target.children; // Get submenu items
+        const icon = this.querySelector(".fa-chevron-right");
+
+        if (target) {
+          const isVisible = !target.classList.contains("hidden");
+
+          if (icon) {
+            icon.classList.toggle("icon-rotated", !isVisible);
+          }
+
+          if (isVisible) {
+            // Animate to hide (reverse stagger effect)
+            anime({
+              targets: submenuItems,
+              opacity: 0,
+              translateY: -10,
+              duration: 300,
+              easing: "easeInQuart",
+              delay: anime.stagger(80, { start: 20, direction: "reverse" }),
+              complete: function () {
+                target.classList.add("hidden");
+              },
+            });
+          } else {
+            // Animate to show with stagger effect
+            target.classList.remove("hidden");
+
+            anime({
+              targets: submenuItems,
+              opacity: [0, 1],
+              translateY: [10, 0],
+              duration: 300,
+              easing: "easeOutQuart",
+              delay: anime.stagger(80, { start: 20 }),
+            });
+          }
+        }
+      });
+    });
   },
 };
 

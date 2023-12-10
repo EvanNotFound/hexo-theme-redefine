@@ -271,17 +271,15 @@ $logo-image-box-width = 34px
 
   .navbar-drawer
     padding $navbar-height 0 20px 0
-    transform scaleY(0)
+    transform translateX(100%)
     transform-origin top
     z-index $z-index-2
-    opacity 0
-    max-height 100vh
+    height 100vh
     overflow-y auto
-    transition-t('transform,opacity', '0,0.1', '0.38,0.38', 'ease,ease')
+    transition-t('transform', '0', '0.38', 'ease')
 
     .navbar-drawer-show &
-      transform scaleY(1)
-      opacity 1
+      transform translateX(0)
 
   .window-mask
     position absolute
@@ -300,3 +298,16 @@ $logo-image-box-width = 34px
 
 .navbar-drawer-show
   overflow hidden
+
+[data-target] {
+  display: block; /* or flex, depending on your layout */
+  overflow: hidden;
+}
+
+[data-target] .submenu-item {
+  opacity: 0;
+}
+
+.icon-rotated {
+  transform: rotate(90deg);
+}
