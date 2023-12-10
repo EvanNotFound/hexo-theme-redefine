@@ -98,7 +98,7 @@ export default function initUtils() {
       });
       window.addEventListener(
         "scroll",
-        this.debounce(() => this.updateHomeBannerBlur(), 80),
+        this.debounce(() => this.updateHomeBannerBlur(), 20),
       );
     },
 
