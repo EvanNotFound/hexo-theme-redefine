@@ -952,6 +952,10 @@ video {
   width: 100vw;
 }
 
+.w-20 {
+  width: 5rem;
+}
+
 .min-w-0 {
   min-width: 0px;
 }
@@ -1055,6 +1059,10 @@ video {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
 }
 
 .gap-1 {
@@ -1869,6 +1877,11 @@ video {
   .sm\:text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
+  }
+
+  .sm\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 
   .sm\:shadow-redefine {

@@ -1,14 +1,14 @@
-<div class="statistics">
-    <a class="item" href="<%- url_for(config.tag_dir) %>">
-        <div class="number"><%= site.tags.length %></div>
-        <div class="label"><%- __('tags') %></div>
+<div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="<%- url_for(config.tag_dir) %>">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold"><%= site.tags.length %></div>
+        <div class="label text-third-text-color"><%- __('tags') %></div>
     </a>
-    <a class="item" href="<%- url_for(config.category_dir) %>">
-        <div class="number"><%= site.categories.length %></div>
-        <div class="label"><%- __('categories') %></div>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="<%- url_for(config.category_dir) %>">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold"><%= site.categories.length %></div>
+        <div class="label text-third-text-color"><%- __('categories') %></div>
     </a>
-    <a class="item" href="<%- url_for(config.archive_dir) %>">
-        <div class="number"><%= site.posts.length %></div>
-        <div class="label"><%- __('posts') %></div>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="<%- url_for(config.archive_dir) %>">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold"><%= site.posts.length %></div>
+        <div class="label text-third-text-color"><%- __('posts') %></div>
     </a>
 </div>

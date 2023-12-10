@@ -40,6 +40,7 @@ export const navbarShrink = {
         ...document.querySelectorAll(
           ".navbar-drawer .drawer-navbar-list .drawer-navbar-item",
         ),
+        ...document.querySelectorAll(".navbar-drawer .tag-count-item"),
       );
     }
 
@@ -67,48 +68,52 @@ export const navbarShrink = {
     const toggleElements = document.querySelectorAll("[navbar-data-toggle]");
 
     toggleElements.forEach((toggle) => {
-      toggle.addEventListener("click", function () {
-        const target = document.querySelector(
-          '[data-target="' + this.getAttribute("navbar-data-toggle") + '"]',
-        );
-        const submenuItems = target.children; // Get submenu items
-        const icon = this.querySelector(".fa-chevron-right");
+      if (!toggle.dataset.eventListenerAdded) {
+        toggle.dataset.eventListenerAdded = "true";
+        toggle.addEventListener("click", function () {
+          // console.log("click");
+          const target = document.querySelector(
+            '[data-target="' + this.getAttribute("navbar-data-toggle") + '"]',
+          );
+          const submenuItems = target.children; // Get submenu items
+          const icon = this.querySelector(".fa-chevron-right");
 
-        if (target) {
-          const isVisible = !target.classList.contains("hidden");
+          if (target) {
+            const isVisible = !target.classList.contains("hidden");
 
-          if (icon) {
-            icon.classList.toggle("icon-rotated", !isVisible);
+            if (icon) {
+              icon.classList.toggle("icon-rotated", !isVisible);
+            }
+
+            if (isVisible) {
+              // Animate to hide (reverse stagger effect)
+              anime({
+                targets: submenuItems,
+                opacity: 0,
+                translateY: -10,
+                duration: 300,
+                easing: "easeInQuart",
+                delay: anime.stagger(80, { start: 20, direction: "reverse" }),
+                complete: function () {
+                  target.classList.add("hidden");
+                },
+              });
+            } else {
+              // Animate to show with stagger effect
+              target.classList.remove("hidden");
+
+              anime({
+                targets: submenuItems,
+                opacity: [0, 1],
+                translateY: [10, 0],
+                duration: 300,
+                easing: "easeOutQuart",
+                delay: anime.stagger(80, { start: 20 }),
+              });
+            }
           }
-
-          if (isVisible) {
-            // Animate to hide (reverse stagger effect)
-            anime({
-              targets: submenuItems,
-              opacity: 0,
-              translateY: -10,
-              duration: 300,
-              easing: "easeInQuart",
-              delay: anime.stagger(80, { start: 20, direction: "reverse" }),
-              complete: function () {
-                target.classList.add("hidden");
-              },
-            });
-          } else {
-            // Animate to show with stagger effect
-            target.classList.remove("hidden");
-
-            anime({
-              targets: submenuItems,
-              opacity: [0, 1],
-              translateY: [10, 0],
-              duration: 300,
-              easing: "easeOutQuart",
-              delay: anime.stagger(80, { start: 20 }),
-            });
-          }
-        }
-      });
+        });
+      }
     });
   },
 };
