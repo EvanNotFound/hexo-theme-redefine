@@ -39,12 +39,14 @@
 <% if (theme.masonry || theme.photos || theme.gallery) { %>
     <%- renderJS('js/libs/minimasonry.min.js') %>
     <%- renderJSModule('js/plugins/masonry.js') %>
+<% } %>
 
+<% if (!theme.global.preloader) { %>
+    <%- renderJS('js/libs/anime.min.js')%>'
 <% } %>
 
 <div class="post-scripts" <%= theme.global.single_page === true ? 'data-swup-reload-script' : '' %>>
     <% if (theme.articles.toc.enable) { %>
-        <%- renderJS('js/libs/anime.min.js')%>
         <%- renderJSModule([
             'js/tools/tocToggle.js',
             'js/layouts/toc.js',

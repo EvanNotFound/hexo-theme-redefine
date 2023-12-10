@@ -30,7 +30,6 @@ module.exports = {
         large: "18px",
         xlarge: "24px",
         xxlarge: "48px",
-        full: "50%",
       },
       fontFamily: {
         chinese: ["Noto Sans SC", "sans-serif"],

@@ -1,4 +1,4 @@
-<div class="post-page-container">
+<div class="post-page-container flex relative justify-between box-border w-full h-full">
     <div class="article-content-container">
 
         <div class="article-title relative w-full">
@@ -53,7 +53,7 @@
         <% } %>
 
         <% if (page.expires && page.expires !== "") {%>
-                <div class="article-expire mt-1.5 mx-2 sm:mx-6 md:mx-8 note p-4 rounded-lg red icon hidden" id="expiration-container">
+                <div class="article-expire mt-4 mx-2 sm:mx-6 md:mx-8 note p-4 rounded-lg red icon hidden" id="expiration-container">
                     <i class="expire-icon fa-solid fa-timer mr-0.5 text-red-600 dark:text-red-400"></i>
                     <span class="expire-label text-red-600 dark:text-red-400 " id="expiration-date"><%= __('expired', "some") %></span>
                 </div>
@@ -89,15 +89,15 @@
         </div>
 
         <% if (theme.articles.copyright.enable || theme.articles.copyright === true) { %>
-            <div class="post-copyright-info my-8 px-2 sm:px-6 md:px-8">
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <%- partial('_meta/article-copyright') %>
             </div>
         <% } %>
 
         <% if (page.tags.length) { %>
-            <ul class="post-tags-box">
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
                 <% page.tags.forEach((tag) => { %>
-                    <li class="tag-item">
+                    <li class="tag-item mx-0.5">
                         <a href="<%- url_for(tag.path) %>">#<%= tag.name %></a>&nbsp;
                     </li>
                 <% }); %>

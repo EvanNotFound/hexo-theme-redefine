@@ -20,7 +20,7 @@ Drawing its core from [hexo-theme-keep](https://github.com/XPoet/hexo-theme-keep
         <img src="https://img.shields.io/npm/v/hexo-theme-redefine?color=F38181&amp;label=version&amp;logo=npm&amp;logoColor=F38181&amp;style=for-the-badge" referrerpolicy="no-referrer" alt="NPM version" />
     </a>
     <a href="https://www.npmjs.com/package/hexo-theme-redefine">
-        <img src="https://img.shields.io/npm/dw/hexo-theme-redefine?color=FCE38A&amp;logo=npm&amp;logoColor=FCE38A&amp;style=for-the-badge" referrerpolicy="no-referrer" alt="npm downloads" />
+        <img src="https://img.shields.io/npm/dm/hexo-theme-redefine?color=FCE38A&amp;logo=npm&amp;logoColor=FCE38A&amp;style=for-the-badge" referrerpolicy="no-referrer" alt="npm downloads" />
     </a>
     <a href="https://www.npmjs.com/package/hexo-theme-redefine">
         <img src="https://img.shields.io/npm/dt/hexo-theme-redefine?color=95E1D3&amp;label=total&amp;logo=npm&amp;logoColor=95E1D3&amp;style=for-the-badge" referrerpolicy="no-referrer" alt="npm-total" />
@@ -29,19 +29,17 @@ Drawing its core from [hexo-theme-keep](https://github.com/XPoet/hexo-theme-keep
     <img src="https://img.shields.io/badge/node-%3E=12.0-a6d189?style=for-the-badge&amp;logo=node.js&amp;logoColor=a6d189" referrerpolicy="no-referrer" alt="NodeJS Version" />
 </p>
 
-<p align="center">
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/863f7dd7-2f59-4ef4-a876-5b0a707289b1" />
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/92427ac8-fbb8-4ce9-9807-5d0ed98484ac" />
-  <img alt="Cover Image" src="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/863f7dd7-2f59-4ef4-a876-5b0a707289b1" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/337c1801-7a59-45af-a02a-583508be69a5" />
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/d88a5544-c86e-46ab-8e52-0582b437f989" />
+  <img alt="Cover Image" src="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/d88a5544-c86e-46ab-8e52-0582b437f989" />
 </picture>
 
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/f2238745-8da8-4203-935c-649715a1f271" />
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/e121c236-478b-4bc1-9df9-829e51217be7" />
-  <img alt="Pages Image" src="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/f2238745-8da8-4203-935c-649715a1f271" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/5d51b48d-7b08-4da0-a304-933424739203" />
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/c6df4b81-557d-4e0b-8038-b056075d0fa4" />
+  <img alt="Pages Image" src="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/c6df4b81-557d-4e0b-8038-b056075d0fa4" />
 </picture>
-</p>
 
 ## 🌐 Demo
 
@@ -136,10 +134,14 @@ If you like this theme, please give a star. You can also support me by [donating
 
 This is the list of all the people who have donated to me: [Donation List](https://github.com/EvanNotFound/hexo-theme-redefine/blob/dev/DONATION.md)
 
-Thanks to all of you!
+
+Want to use OpenAI GPT-4 but don't want to pay $20 per month? Check out [GPT Plus Tokens](https://gpt.oknice.ca)! You can use up to 100 ChatGPT Plus Accounts!
+
+![CleanShot 2023-12-08 at 12 47 20@2x](https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/b25196a1-3ba4-43bb-9d0f-e23d3527e6ff)
 
 ## 🌟 Star History
 
+<p align="center">
 <a href="https://star-history.com/#EvanNotFound/hexo-theme-redefine&Date">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=EvanNotFound/hexo-theme-redefine&type=Date&theme=dark" />
@@ -147,6 +149,7 @@ Thanks to all of you!
     <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=EvanNotFound/hexo-theme-redefine&type=Date" />
   </picture>
 </a>
+</p>
 
 ## 💻 Development
 

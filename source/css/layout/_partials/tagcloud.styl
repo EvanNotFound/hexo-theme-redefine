@@ -8,6 +8,13 @@ if (hexo-config('page_templates.tags_style') == 'cloud')
       0
     )
 
+    +redefine-mobile()
+      padding 1.2rem 0.2rem
+      box-shadow none
+
+      &:hover
+        box-shadow none
+
     .tagcloud-header
       margin 6px 0 12px 0
       font-size 3.2rem
@@ -33,6 +40,13 @@ else
       30px,
       0
     )
+
+    +redefine-mobile()
+      padding 1.2rem 0.2rem
+      box-shadow none
+
+      &:hover
+        box-shadow none
 
     .tagcloud-header
       margin 6px 0 12px 0

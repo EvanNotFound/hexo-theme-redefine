@@ -8,6 +8,7 @@
 
 
 # BASIC INFORMATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# Docs: https://redefine-docs.ohevan.com/basic/info
 info:
   # Site title
   title: Theme Redefine
@@ -19,6 +20,7 @@ info:
 
 
 # IMAGE CONFIGURATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# Docs: https://redefine-docs.ohevan.com/basic/defaults
 defaults:
   # Favicon
   favicon: /images/redefine-favicon.svg
@@ -30,6 +32,7 @@ defaults:
 
 
 # COLORS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# Docs: https://redefine-docs.ohevan.com/basic/colors
 colors:
   #Primary color
   primary: "#A31F34"
@@ -39,6 +42,7 @@ colors:
 
 
 # SITE CUSTOMIZATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# Docs: https://redefine-docs.ohevan.com/basic/global
 global:
   # Custom fonts
   fonts:
@@ -73,6 +77,8 @@ global:
     post_pv: true # post page view
   # Whether to enable single page experience (using swup). See https://swup.js.org/. similar to pjax
   single_page: true
+  # Whether to enable Preloader.
+  preloader: true
   # Whether to enable open graph
   open_graph: true
   # Google Analytics
@@ -83,6 +89,7 @@ global:
     
 
 # FONTAWESOME >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# Docs: https://redefine-docs.ohevan.com/basic/fontawesome
 fontawesome: # Pro v6.2.1
   # Thin version
   thin: false
@@ -96,6 +103,7 @@ fontawesome: # Pro v6.2.1
 
 
 # HOME BANNER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# Docs: https://redefine-docs.ohevan.com/home/home_banner
 home_banner:
   # Whether to enable home banner
   enable: true
@@ -159,6 +167,7 @@ home_banner:
 
 
 # NAVIGATION BAR >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# Docs: https://redefine-docs.ohevan.com/home/navbar
 navbar:
   # Auto hide navbar
   auto_hide: false
@@ -176,7 +185,7 @@ navbar:
     #   path: /archives 
     #   icon: fa-regular fa-archive # can be empty
     # Status: 
-    #   path: https://status.evanluo.top/
+    #   path: https://status.ohevan.com/
     #   icon: fa-regular fa-chart-bar
     # About: 
     #   icon: fa-regular fa-user
@@ -202,6 +211,7 @@ navbar:
 
 
 # HOME PAGE ARTICLE SETTINGS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# Docs: https://redefine-docs.ohevan.com/home/home
 home:
   # Sidebar settings
   sidebar:
@@ -234,6 +244,7 @@ home:
 
 
 # ARTICLE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# Docs: https://redefine-docs.ohevan.com/posts/articles
 articles:
   # Set the styles of the article
   style:
@@ -293,6 +304,7 @@ articles:
 
 
 # COMMENT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# Docs: https://redefine-docs.ohevan.com/posts/comment
 comment:
   # Whether to enable comment
   enable: true
@@ -304,12 +316,16 @@ comment:
     waline:
       serverUrl: https://example.example.com # Waline server URL. e.g. https://example.example.com
       lang: zh-CN # Waline language. e.g. zh-CN, en-US. See https://waline.js.org/guide/client/i18n.html
+      emoji: [] # Waline emojis, see https://waline.js.org/guide/features/emoji.html
+      recaptchaV3Key: wasd # Google reCAPTCHA v3 key. See https://waline.js.org/reference/client/props.html#recaptchav3key
+      turnstileKey: # Turnstile key. See https://waline.js.org/reference/client/props.html#turnstilekey
     # Gitalk comment system. See https://github.com/gitalk/gitalk
     gitalk:
       clientID: # GitHub Application Client ID
       clientSecret: # GitHub Application Client Secret
       repo: # GitHub repository
       owner: # GitHub repository owner
+      proxy: # GitHub repository proxy
     # Twikoo comment system. See https://twikoo.js.org/
     twikoo:
       version: 1.6.10 # Twikoo version, do not modify if you dont know what it is
@@ -332,6 +348,7 @@ comment:
 
 
 # FOOTER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# Docs: https://redefine-docs.ohevan.com/footer
 footer:
   # Show website running time
   runtime: true # show website running time or not
@@ -350,6 +367,7 @@ footer:
 
 
 # INJECT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# Docs: https://redefine-docs.ohevan.com/inject
 inject:
   # Whether to enable inject
   enable: false
@@ -365,6 +383,7 @@ inject:
 
 
 # PLUGINS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# Docs: https://redefine-docs.ohevan.com/plugins
 plugins:
   # RSS feed. Requires hexo-generator-feed (npm i hexo-generator-feed). See https://github.com/hexojs/hexo-generator-feed
   feed:
@@ -391,6 +410,7 @@ plugins:
 
 
 # PAGE TEMPLATES >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# Docs: https://redefine-docs.ohevan.com/page_templates
 page_templates:
   # Friend Links page column number
   friends_column: 2
@@ -400,6 +420,7 @@ page_templates:
 
 
 # CDN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# Docs: https://redefine-docs.ohevan.com/cdn
 cdn:
   # Whether to enable CDN
   enable: false
@@ -412,6 +433,7 @@ cdn:
 # CDN <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 # DEVELOPER MODE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# Docs: https://redefine-docs.ohevan.com/developer
 developer:
   # Whether to enable developer mode (only for developers who want to modify the theme source code, not for ordinary users)
   enable: false

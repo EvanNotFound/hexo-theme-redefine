@@ -73,6 +73,13 @@
         <% } %>
         <%= theme.info.title || config.title || 'Redefine Theme' %>
     </title>
+
+    <%- renderCSS('fonts/Chillax/chillax.css') %>
+
+    <% if (theme.global.preloader) { %>
+        <%- partial('_partials/preloader') %>
+    <% } %>
+
     <%- css('css/style') %>
 
     <% if (theme.developer && theme.developer.enable) {%>
@@ -83,7 +90,6 @@
 
     <%- renderCSS('fonts/fonts.css') %>
     <%- renderCSS('fonts/Satoshi/satoshi.css') %>
-    <%- renderCSS('fonts/Chillax/chillax.css') %>
     <!--- Font Part-->
     <% if (theme.home_banner.custom_font.enable) { %>
         <link href="<%- theme.home_banner.custom_font.url %>" rel="stylesheet">

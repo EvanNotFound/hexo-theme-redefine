@@ -204,13 +204,6 @@ $home-banner-icons-container-background-color-dark = rgba(197, 197, 197, 0.3)
 
 
 // ========================================================================================
-// background image
-// ========================================================================================
-$home-banner-img-light = url(url-for(hexo-config('home_banner.image.light')))
-$home-banner-img-dark = url(url-for(hexo-config('home_banner.image.dark')))
-
-
-// ========================================================================================
 // font
 // ========================================================================================
 
@@ -278,8 +271,7 @@ root-color(mode) {
   --note-type-title-bg : mode == 'light' ? $note-type-title-bg : $dark-note-type-title-bg
   --note-black-title-bg : mode == 'light' ? $note-black-title-bg : $dark-note-black-title-bg
   --note-purple-title-bg : mode == 'light' ? $note-purple-title-bg : $dark-note-purple-title-bg
-  
-  --home-banner-img mode == 'light' ? $home-banner-img-light : $home-banner-img-dark
+
   --home-banner-text-color mode == 'light' ? $home-banner-text-color : $home-banner-text-color-dark
   --home-banner-icons-container-border-color mode == 'light' ? $home-banner-icons-container-border-color : $home-banner-icons-container-border-color-dark
   --home-banner-icons-container-background-color mode == 'light' ? $home-banner-icons-container-background-color : $home-banner-icons-container-background-color-dark

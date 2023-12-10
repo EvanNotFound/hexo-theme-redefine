@@ -128,6 +128,23 @@ $logo-image-box-width = 34px
               transform rotate(0deg)
               transition transform 0.3s ease
 
+            a, .active
+              &::after
+                content ''
+                position absolute
+                bottom -5px
+                left 50%
+                width 100%
+                height 2px
+                transform translate3d(-50%, -5px, 0)
+                border-radius $redefine-border-radius-large
+                background var(--primary-color)
+                opacity 0
+                transition-t('transform, bottom, opacity', '0.2, 0.2, 0.2', '0.2, 0.2, 0.2', 'ease, ease, ease')
+
+                .navbar-shrink &
+                  bottom -($navbar-shrink-height / 2 - 17)
+
             &:hover a .fa-chevron-down
               transform rotate(180deg)
 
@@ -137,16 +154,9 @@ $logo-image-box-width = 34px
 
             &:hover a, .active
               &::after
-                content ''
-                position absolute
-                bottom -5px
-                left 50%
-                width 100%
-                height 2px
-                transform translateX(-50%)
-                border-radius $redefine-border-radius-large
-                background var(--primary-color)
-                transition-t('transform, bottom', '0, 0', '0.2, 0.2', 'linear, linear')
+                transform translate3d(-50%, 0, 0)
+                opacity 1
+                transition-t('transform, bottom, opacity', '0, 0, 0', '0.2, 0.2, 0.2', 'ease, ease, ease')
 
                 .navbar-shrink &
                   bottom -($navbar-shrink-height / 2 - 17)
@@ -261,17 +271,15 @@ $logo-image-box-width = 34px
 
   .navbar-drawer
     padding $navbar-height 0 20px 0
-    transform scaleY(0)
+    transform translateX(100%)
     transform-origin top
     z-index $z-index-2
-    opacity 0
-    max-height 100vh
+    height 100vh
     overflow-y auto
-    transition-t('transform,opacity', '0,0.1', '0.38,0.38', 'ease,ease')
+    transition-t('transform', '0', '0.38', 'ease')
 
     .navbar-drawer-show &
-      transform scaleY(1)
-      opacity 1
+      transform translateX(0)
 
   .window-mask
     position absolute
@@ -290,3 +298,16 @@ $logo-image-box-width = 34px
 
 .navbar-drawer-show
   overflow hidden
+
+[data-target] {
+  display: block; /* or flex, depending on your layout */
+  overflow: hidden;
+}
+
+[data-target] .submenu-item {
+  opacity: 0;
+}
+
+.icon-rotated {
+  transform: rotate(90deg);
+}
