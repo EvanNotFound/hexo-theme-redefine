@@ -1576,6 +1576,14 @@ video {
   opacity: 1;
 }
 
+:is(.dark .dark\:block) {
+  display: block;
+}
+
+:is(.dark .dark\:hidden) {
+  display: none;
+}
+
 :is(.dark .dark\:border-gray-500\/30) {
   border-color: rgb(107 114 128 / 0.3);
 }
