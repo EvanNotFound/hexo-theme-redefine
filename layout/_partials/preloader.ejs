@@ -127,13 +127,20 @@
         }
 
         window.addEventListener('load', function () {
+            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
+        });
+
+        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
+        hidePreloaderAfterTimeout(5000);
+
+        function hidePreloaderAfterTimeout(delay) {
             setTimeout(function () {
                 var preloader = document.querySelector('.preloader');
                 preloader.style.opacity = '0';
                 setTimeout(function () {
                     preloader.style.display = 'none';
                 }, 200);
-            }, 1000);
-        });
+            }, delay);
+        }
     </script>
 </div>
