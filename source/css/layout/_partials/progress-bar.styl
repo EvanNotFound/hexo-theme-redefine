@@ -5,26 +5,6 @@
     width 100%
     z-index $z-index-9
 
-    if (hexo-config('global.single_page') == true)
-
-        .swup-progress-icon
-            position absolute
-            top 5px
-            right 8px
-            z-index $z-index-8
-            display flex
-            align-items center
-            justify-content center
-            padding 7px 6px 0 0
-            font-size 1.1rem
-            color var(--default-text-color)
-            opacity 0
-            transition opacity 0.1s ease-out
-
-            +redefine-tablet()
-                padding 6px 5px 0 0
-                font-size 1rem
-
     if (hexo-config('global.scroll_progress.bar') == true)
         .scroll-progress-bar
             position absolute
@@ -44,10 +24,6 @@ html.is-animating
     .scroll-progress-bar
         opacity 0
         transition opacity 0.1s ease-out
-
-    .swup-progress-icon
-        opacity 1
-        transition opacity 0.1s ease
 
 
 
