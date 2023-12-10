@@ -137,7 +137,7 @@ export default function initUtils() {
 
         try {
           requestAnimationFrame(() => {
-            this.homeBannerBackground_dom.style.transition = "0.3s";
+            this.homeBannerBackground_dom.style.filter = `blur(${blurValue}px)`;
             this.homeBannerBackground_dom.style.webkitFilter = `blur(${blurValue}px)`;
           });
         } catch (e) {
