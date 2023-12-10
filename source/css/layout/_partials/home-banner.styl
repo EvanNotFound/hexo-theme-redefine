@@ -11,8 +11,9 @@ $home-banner-icon-size = 1.6rem
 .home-banner-background
   background var(--home-banner-img) center center / cover no-repeat
   transition filter 0.3s ease
-  -webkit-backface-visibility hidden
-  -webkit-perspective 1000
+
+.no-flicker
+  -webkit-transform translate3d(0,0,-0.5px);
 
 .home-banner-container
   font-family 'Chillax-Variable', sans-serif
