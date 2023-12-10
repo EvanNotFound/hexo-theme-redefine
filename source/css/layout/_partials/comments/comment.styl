@@ -9,28 +9,3 @@ if (hexo-config('comment.enable') == true && hexo-config('comment.system') != ""
     @require "./twikoo.styl"
   }
 }
-
-.comments-container
-  display inline-block
-  margin-top $spacing-unit
-  width 100%
-
-  #comment-anchor
-    width 100%
-    height 10px
-
-  .comment-area-title
-    width 100%
-    margin 10px 0
-    font-size 1.38rem
-    color var(--default-text-color)
-    font-family 'Noto Sans', 'Noto Sans SC', sans-serif
-    font-weight bold
-
-    i
-      color var(--default-text-color)
-
-    +redefine-tablet()
-      margin 5px 0
-      font-size 1.2rem
-
