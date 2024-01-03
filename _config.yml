@@ -70,7 +70,7 @@ global:
     percentage: true # percentage
   # Website counter
   website_counter:
-    url: https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js # counter API URL (no need to change)
+    url: https://vercount.one/js # counter API URL (no need to change)
     enable: true # enable website counter or not
     site_pv: true # site page view
     site_uv: true # site unique visitor
