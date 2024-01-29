@@ -136,7 +136,7 @@
             <% } } %>
 
             <%# Add sidebar links %>
-            <% if (theme.home.sidebar.links !== null) {%>
+            <% if (theme.home.sidebar.links !== null && theme.home.sidebar.show_on_mobile !== false) {%>
                 <% for (let i in theme.home.sidebar.links) { %>
                     <% if (theme.navbar.links && theme.navbar.links.hasOwnProperty(i)) {
                         continue;
