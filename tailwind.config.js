@@ -7,6 +7,9 @@ module.exports = {
       spacing: {
         unit: "38px",
       },
+      margin: {
+        "spacing-unit": "38px",
+      },
       maxWidth: {
         content: "1000px", // You might want to adjust this value based on your use case
         "has-toc-content": "120%",
@@ -105,13 +108,13 @@ module.exports = {
       },
       boxShadow: {
         redefine:
-          "0px 6px 24px 0px rgba(0, 0, 0, 0.05), 0px 0px 0px 1px rgba(0, 0, 0, 0.08)",
+          "0px 6px 24px 0px var(--shadow-color-2), 0px 0px 0px 1px var(--shadow-color-1)",
         "redefine-hover":
-          "0px 6px 24px 0px rgba(0, 0, 0, 0.05), 0px 0px 0px 1px rgba(0, 0, 0, 0.08), 0px 0px 0px 1px inset rgba(0, 0, 0, 0.08)",
+          "0px 6px 24px 0px var(--shadow-color-2), 0px 0px 0px 1px var(--shadow-color-1), 0px 0px 0px 1px inset var(--shadow-color-1)",
         "redefine-flat":
-          "0px 1px 4px 0px rgba(0, 0, 0, 0.05), 0px 0px 0px 1px rgba(0, 0, 0, 0.08)",
+          "0px 1px 4px 0px var(--shadow-color-2), 0px 0px 0px 1px var(--shadow-color-1)",
         "redefine-flat-hover":
-          "0px 1px 4px 0px rgba(0, 0, 0, 0.05), 0px 0px 0px 1px rgba(0, 0, 0, 0.08), 0px 0px 0px 1px inset rgba(0, 0, 0, 0.08)",
+          "0px 1px 4px 0px var(--shadow-color-2), 0px 0px 0px 1px var(--shadow-color-1), 0px 0px 0px 1px inset var(--shadow-color-1)",
       },
     },
   },

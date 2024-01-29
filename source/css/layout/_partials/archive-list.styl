@@ -6,48 +6,29 @@ $article-date-font-size = 1rem
 @import '../../common/variables'
 
 .archive-list-container
-  .archive-item
-    margin-bottom $spacing-unit
+  .article-item
+    &::before
+      content attr(date-is)
+      position absolute
+      left 2em
+      font-weight bold
+      top 1em
+      display block
+      font-size 0.785rem
+      color var(--third-text-color)
+
+    &::after
+      width 10px
+      height 10px
+      display block
+      top 1em
+      position absolute
+      left -6px
+      border-radius 10px
+      content ''
+      border 2px solid var(--third-text-color)
+      background var(--background-color)
+      transition background 0.2s ease-in-out
 
     &:last-child
-      margin-bottom 0
-
-
-    .article-list
-
-      +redefine-tablet()
-        padding-left 0
-
-      .article-item
-        font-size 1rem
-        padding 3em 2em 1em
-        position relative
-        color rgba(0, 0, 0, 0.7)
-        border-left 2px solid var(--border-color)
-
-        &::before
-          content attr(date-is)
-          position absolute
-          left 2em
-          font-weight bold
-          top 1em
-          display block
-          font-weight 700
-          font-size 0.785rem
-          color var(--third-text-color)
-
-        &::after
-          width 10px
-          height 10px
-          display block
-          top 1em
-          position absolute
-          left -6px
-          border-radius 10px
-          content ''
-          border 2px solid var(--third-text-color)
-          background var(--background-color)
-          transition background 0.2s ease-in-out
-
-        &:last-child
-          border-image var(--archive-timeline-last-child-color)
+      border-image var(--archive-timeline-last-child-color)
