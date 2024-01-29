@@ -2,6 +2,7 @@
 module.exports = {
   darkMode: "class",
   content: ["source/**/*.js", "layout/**/*.ejs", "scripts/**/*.js"],
+  safelist: ["justify-center", "flex-row-reverse", "flex-row"],
   theme: {
     extend: {
       spacing: {
