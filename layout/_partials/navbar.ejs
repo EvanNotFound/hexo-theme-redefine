@@ -1,6 +1,6 @@
-<header class="navbar-container">
+<header class="navbar-container px-6 md:px-12">
 
-    <div class="navbar-content<%- (theme.home_banner.enable === true && is_home() && !page.prev) ? ' has-home-banner' : '' %>">
+    <div class="navbar-content <%- (theme.home_banner.enable === true && is_home() && !page.prev) ? 'has-home-banner' : '' %>">
         <div class="left">
             <% if (theme.defaults.hasOwnProperty('logo') && theme.defaults.logo) { %>
                 <a class="logo-image" href="<%= config.root %>">

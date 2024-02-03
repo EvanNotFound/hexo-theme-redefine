@@ -20,6 +20,11 @@ $temp-content-max-width = hexo-config('global.content_max_width')
 $content-max-width = $temp-content-max-width ? convert($temp-content-max-width) : 1000px
 $has-toc-content-max-width = $content-max-width * 1.2
 
+$navbar-width-home-data = hexo-config('navbar.width.home')
+$navbar-width-home = $navbar-width-home-data ? convert($navbar-width-home-data) : 1200px
+$navbar-width-pages-data = hexo-config('navbar.width.pages')
+$navbar-width-pages = $navbar-width-pages-data ? convert($navbar-width-pages-data) : 1000px
+
 
 // ========================================================================================
 // media query

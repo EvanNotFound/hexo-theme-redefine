@@ -26,8 +26,8 @@ $logo-image-box-width = 34px
   .navbar-content
     position relative
     height 100%
-    width $main-content-width
-    max-width $content-max-width
+    width 100%
+    max-width $navbar-width-pages
     display flex
     flex-direction row
     justify-content space-between
@@ -36,13 +36,7 @@ $logo-image-box-width = 34px
     transition max-width 0.3s ease
 
     &.has-home-banner
-      max-width $content-max-width * 1.2
-
-    +redefine-tablet()
-      width $main-content-width-tablet
-
-    +redefine-mobile()
-      width $main-content-width-mobile
+      max-width $navbar-width-home
 
     .left
       display flex
