@@ -372,6 +372,8 @@ footer:
   icon: '<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>'
   # The start time of the website, format: YYYY/MM/DD HH:mm:ss
   start: 2022/8/17 11:45:14
+  # Site statistics
+  statistics: true # show site statistics or not (total articles, total words)
   # Footer message
   customize:
   # ICP record number. See https://beian.miit.gov.cn/

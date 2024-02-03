@@ -10,6 +10,27 @@
               -
             <% } %>
             <%= date(new Date(), 'YYYY') %>&nbsp;&nbsp;<%- theme.footer.icon || '<i class="fa-regular fa-computer-classic"></i>' %>&nbsp;&nbsp;<a href="<%= config.root %>"><%= theme.info.author || config.author %></a>
+            <% if (theme.footer.hasOwnProperty('statistics') && theme.footer.statistics) {%>
+                <%
+                    const sitePostsCount = site.posts.length;
+                    let siteWordCount = null;
+                    try{
+                        siteWordCount = totalcount(site);
+                    } catch (e) {
+                        siteWordCount = null;
+                    }
+                %>
+                <p class="post-count space-x-0.5">
+                    <span>
+                        <%- __("site_posts", sitePostsCount) %>
+                    </span>
+                    <% if (siteWordCount) {%>
+                        <span>
+                            <%- __("site_wordcount", siteWordCount) %>
+                        </span>
+                    <% } %>
+                </p>
+            <% } %>
         </div>
         <% if (theme.global.website_counter.enable === true) { %>
             <script <%= theme.global.single_page === true ? 'data-swup-reload-script' : '' %> src="<%= theme.global.website_counter.url ? theme.global.website_counter.url : "//vercount.one/js" %>"></script>

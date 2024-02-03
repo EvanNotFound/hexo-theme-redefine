@@ -62,6 +62,8 @@ seconds: 秒
 
 optimized_by: 並由 Evan 進行優化
 rights: 版權所有
+site_posts: "共 %s 篇文章"
+site_wordcount: "共 %s 字"
 
 # ----------------------------------------
 # 版权声明
