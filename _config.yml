@@ -36,8 +36,10 @@ defaults:
 colors:
   #Primary color
   primary: "#A31F34"
-  # Secondary color (beta)
-  secondary: 
+  # Secondary color (TBD)
+  secondary:
+  # Default theme mode initial value (will be overwritten by prefer-color-scheme)
+  default_mode: light # light, dark
 # COLORS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
