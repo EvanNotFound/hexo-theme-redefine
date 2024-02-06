@@ -1,6 +1,6 @@
-<header class="navbar-container">
+<header class="navbar-container px-6 md:px-12">
 
-    <div class="navbar-content<%- (theme.home_banner.enable === true && is_home() && !page.prev) ? ' has-home-banner' : '' %>">
+    <div class="navbar-content <%- (theme.home_banner.enable === true && is_home() && !page.prev) ? 'has-home-banner' : '' %>">
         <div class="left">
             <% if (theme.defaults.hasOwnProperty('logo') && theme.defaults.logo) { %>
                 <a class="logo-image" href="<%= config.root %>">
@@ -76,7 +76,7 @@
         </div>
     </div>
 
-    <!-- Mobile drawer -->
+    <!-- Mobile sheet -->
     <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
         <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
             <% for (let i in theme.navbar.links) { %>
@@ -134,6 +134,23 @@
                         <% } %>
                     </li>
             <% } } %>
+
+            <%# Add sidebar links %>
+            <% if (theme.home.sidebar.links !== null && theme.home.sidebar.show_on_mobile !== false) {%>
+                <% for (let i in theme.home.sidebar.links) { %>
+                    <% if (theme.navbar.links && theme.navbar.links.hasOwnProperty(i)) {
+                        continue;
+                    } %>
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="<%= url_for(theme.home.sidebar.links[i].path) %>"
+                        >
+                            <span><%= __(i) %></span>
+                            <i class="<%= theme.home.sidebar.links[i].icon %> fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                <% } %>
+            <% } %>
         </ul>
 
         <%- partial("sidebar-components/statistics") %>

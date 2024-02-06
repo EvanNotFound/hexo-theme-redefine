@@ -59,7 +59,9 @@ hours: 時間
 seconds: 秒
 
 optimized_by: そしてEvanによって最適化される
-ライツ: 著作権所有
+rights: 著作権所有
+site_posts: "共 %s 記事"
+site_wordcount: "共 %s 字"
 
 # ----------------------------------------
 # 版权声明

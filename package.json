@@ -1,8 +1,8 @@
 {
   "name": "hexo-theme-redefine",
-  "version": "2.6.0",
+  "version": "2.6.1",
   "private": false,
-  "description": "Redefine your writing in Hexo Theme Redefine.",
+  "description": "Redefine your writing with Hexo Theme Redefine.",
   "scripts": {
     "npm:publish": "npm publish",
     "format": "prettier --write ./source/js/*.js ./scripts",

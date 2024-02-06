@@ -726,6 +726,10 @@ video {
   margin-bottom: 1.5rem;
 }
 
+.mb-spacing-unit {
+  margin-bottom: 38px;
+}
+
 .ml-1 {
   margin-left: 0.25rem;
 }
@@ -906,6 +910,11 @@ video {
   width: 46px;
 }
 
+.w-fit {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
 .w-full {
   width: 100%;
 }
@@ -989,6 +998,10 @@ video {
   flex-direction: row;
 }
 
+.flex-row-reverse {
+  flex-direction: row-reverse;
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -1043,6 +1056,24 @@ video {
 
 .gap-6 {
   gap: 1.5rem;
+}
+
+.space-y-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+}
+
+.space-x-0 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0px * var(--tw-space-x-reverse));
+  margin-left: calc(0px * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-x-0\.5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0.125rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.125rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .overflow-hidden {
@@ -1120,6 +1151,10 @@ video {
 
 .border-l {
   border-left-width: 1px;
+}
+
+.border-l-2 {
+  border-left-width: 2px;
 }
 
 .border-t {
@@ -1282,6 +1317,10 @@ video {
   padding-bottom: 2px;
 }
 
+.pb-2 {
+  padding-bottom: 0.5rem;
+}
+
 .pb-7 {
   padding-bottom: 1.75rem;
 }
@@ -1290,8 +1329,12 @@ video {
   padding-bottom: 2rem;
 }
 
-.pl-8 {
-  padding-left: 2rem;
+.pl-0 {
+  padding-left: 0px;
+}
+
+.pt-10 {
+  padding-top: 2.5rem;
 }
 
 .pt-5 {
@@ -1437,7 +1480,7 @@ video {
 }
 
 .shadow-redefine-flat {
-  --tw-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.05), 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
+  --tw-shadow: 0px 1px 4px 0px var(--shadow-color-2), 0px 0px 0px 1px var(--shadow-color-1);
   --tw-shadow-colored: 0px 1px 4px 0px var(--tw-shadow-color), 0px 0px 0px 1px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
@@ -1515,6 +1558,10 @@ video {
   will-change: transform;
 }
 
+.last\:mb-0:last-child {
+  margin-bottom: 0px;
+}
+
 .hover\:border-primary:hover {
   border-color: var(--primary-color);
 }
@@ -1542,7 +1589,7 @@ video {
 }
 
 .hover\:shadow-redefine-flat-hover:hover {
-  --tw-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.05), 0px 0px 0px 1px rgba(0, 0, 0, 0.08), 0px 0px 0px 1px inset rgba(0, 0, 0, 0.08);
+  --tw-shadow: 0px 1px 4px 0px var(--shadow-color-2), 0px 0px 0px 1px var(--shadow-color-1), 0px 0px 0px 1px inset var(--shadow-color-1);
   --tw-shadow-colored: 0px 1px 4px 0px var(--tw-shadow-color), 0px 0px 0px 1px var(--tw-shadow-color), inset 0px 0px 0px 1px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
@@ -1669,13 +1716,13 @@ video {
   }
 
   .sm\:shadow-redefine {
-    --tw-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.05), 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
+    --tw-shadow: 0px 6px 24px 0px var(--shadow-color-2), 0px 0px 0px 1px var(--shadow-color-1);
     --tw-shadow-colored: 0px 6px 24px 0px var(--tw-shadow-color), 0px 0px 0px 1px var(--tw-shadow-color);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   }
 
   .sm\:hover\:shadow-redefine-hover:hover {
-    --tw-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.05), 0px 0px 0px 1px rgba(0, 0, 0, 0.08), 0px 0px 0px 1px inset rgba(0, 0, 0, 0.08);
+    --tw-shadow: 0px 6px 24px 0px var(--shadow-color-2), 0px 0px 0px 1px var(--shadow-color-1), 0px 0px 0px 1px inset var(--shadow-color-1);
     --tw-shadow-colored: 0px 6px 24px 0px var(--tw-shadow-color), 0px 0px 0px 1px var(--tw-shadow-color), inset 0px 0px 0px 1px var(--tw-shadow-color);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   }
@@ -1712,6 +1759,15 @@ video {
   .md\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .md\:px-12 {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .md\:pl-8 {
+    padding-left: 2rem;
   }
 
   .md\:text-3xl {

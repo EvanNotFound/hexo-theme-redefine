@@ -36,8 +36,10 @@ defaults:
 colors:
   #Primary color
   primary: "#A31F34"
-  # Secondary color (beta)
-  secondary: 
+  # Secondary color (TBD)
+  secondary:
+  # Default theme mode initial value (will be overwritten by prefer-color-scheme)
+  default_mode: light # light, dark
 # COLORS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
@@ -151,6 +153,8 @@ home_banner:
   social_links:
     # Whether to enable
     enable: false
+    # Social links style
+    style: default # default, reverse, center
     # Social links
     links:
       github:  # your GitHub URL
@@ -176,6 +180,10 @@ navbar:
     left: "#f78736" #left side 
     right: "#367df7"  #right side
     transparency: 35 #percent (10-99)
+  # Navbar width (usually no need to modify)
+  width:
+    home: 1200px #home page
+    pages: 1000px #other pages
   # Navbar links
   links:
     Home: 
@@ -219,6 +227,7 @@ home:
     position: left # Sidebar position. left, right
     first_item: menu # First item in sidebar. menu, info
     announcement: # Announcement text
+    show_on_mobile: true # Whether to show sidebar navigation on mobile sheet menu
     links:
       # Archives: 
       #   path: /archives 
@@ -255,6 +264,13 @@ articles:
     image_caption: false # Whether to display image caption
     link_icon: true # Whether to display link icon
     title_alignment: left # Title alignment. left, center
+    headings_top_spacing: # Top spacing for headings from h1-h6
+      h1: 5rem
+      h2: 4rem
+      h3: 2.8rem
+      h4: 2.5rem
+      h5: 2.2rem
+      h6: 2rem
   # Word count. Requires hexo-wordcount (npm install hexo-wordcount). See https://github.com/willin/hexo-wordcount
   word_count:
     enable: true # Whether to enable
@@ -356,6 +372,8 @@ footer:
   icon: '<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>'
   # The start time of the website, format: YYYY/MM/DD HH:mm:ss
   start: 2022/8/17 11:45:14
+  # Site statistics
+  statistics: true # show site statistics or not (total articles, total words)
   # Footer message
   customize:
   # ICP record number. See https://beian.miit.gov.cn/

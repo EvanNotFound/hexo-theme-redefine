@@ -16,7 +16,7 @@ export const main = {
   localStorageKey: "REDEFINE-THEME-STATUS",
   styleStatus: {
     isExpandPageWidth: false,
-    isDark: false,
+    isDark: theme.colors.default_mode && theme.colors.default_mode === "dark",
     fontSizeLevel: 0,
     isOpenPageAside: true,
   },

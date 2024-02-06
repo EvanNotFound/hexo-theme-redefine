@@ -20,9 +20,32 @@ $temp-content-max-width = hexo-config('global.content_max_width')
 $content-max-width = $temp-content-max-width ? convert($temp-content-max-width) : 1000px
 $has-toc-content-max-width = $content-max-width * 1.2
 
+$navbar-width-home-data = hexo-config('navbar.width.home')
+$navbar-width-home = $navbar-width-home-data ? convert($navbar-width-home-data) : 1200px
+$navbar-width-pages-data = hexo-config('navbar.width.pages')
+$navbar-width-pages = $navbar-width-pages-data ? convert($navbar-width-pages-data) : 1000px
+
 
 // ========================================================================================
-// media query
+//                                         TITLES
+// ========================================================================================
+
+$h1-heading-margin-top-data = hexo-config('articles.style.headings_top_spacing.h1')
+$h1-heading-margin-top = $h1-heading-margin-top-data ? convert($h1-heading-margin-top-data) : 5rem
+$h2-heading-margin-top-data = hexo-config('articles.style.headings_top_spacing.h2')
+$h2-heading-margin-top = $h2-heading-margin-top-data ? convert($h2-heading-margin-top-data) : 4rem
+$h3-heading-margin-top-data = hexo-config('articles.style.headings_top_spacing.h3')
+$h3-heading-margin-top = $h3-heading-margin-top-data ? convert($h3-heading-margin-top-data) : 2.8rem
+$h4-heading-margin-top-data = hexo-config('articles.style.headings_top_spacing.h4')
+$h4-heading-margin-top = $h4-heading-margin-top-data ? convert($h4-heading-margin-top-data) : 2.5rem
+$h5-heading-margin-top-data = hexo-config('articles.style.headings_top_spacing.h5')
+$h5-heading-margin-top = $h5-heading-margin-top-data ? convert($h5-heading-margin-top-data) : 2.2rem
+$h6-heading-margin-top-data = hexo-config('articles.style.headings_top_spacing.h6')
+$h6-heading-margin-top = $h6-heading-margin-top-data ? convert($h6-heading-margin-top-data) : 2rem
+
+
+// ========================================================================================
+//                                          MEDIA
 // ========================================================================================
 $media-max-width = 768px;                                 // media query max width (tablet)
 $media-max-width-mobile = 640px;                          // media query max width (mobile)
@@ -40,7 +63,7 @@ redefine-mobile() {
 }
 
 // ========================================================================================
-// z-index
+//                                         Z-INDEX
 // ========================================================================================
 $z-index-1 = 1001
 $z-index-2 = 1002
@@ -53,7 +76,7 @@ $z-index-8 = 1008
 $z-index-9 = 1009
 
 // ========================================================================================
-// note modules colors
+//                                       NOTE COLORS
 // ========================================================================================
 
 $note-default-text-color = #A6A6A6
@@ -62,7 +85,7 @@ $note-red-text-color = #f85676
 
 
 // ========================================================================================
-// border-radius
+//                                      BORDER RADIUS
 // ========================================================================================
 
 $redefine-border-radius-none = 0px
@@ -92,14 +115,14 @@ $temp-usr-img-border-radius = hexo-config('articles.style.image_border_radius')
 $usr-img-border-radius = $temp-usr-img-border-radius ? convert($temp-usr-img-border-radius) : $redefine-border-radius-medium
 
 // ========================================================================================
-// mermaid js theme
+//                                    MERMAID THEME
 // ========================================================================================
 $mermaid-theme = hexo-config('mermaid.theme.light')
 $dark-mermaid-theme = hexo-config('mermaid.theme.dark')
 
 
 // ========================================================================================
-// color
+//                                   COLOR VARIABLES
 // ========================================================================================
 // primary color
 $temp-color = hexo-config('colors.primary')
@@ -111,7 +134,7 @@ $nav-color-2 = convert(hexo-config('navbar.color.right') + hexo-config('navbar.c
 $nav-color-bg = linear-gradient(120deg, $nav-color-1 0%, $nav-color-2 100%)
 
 // ========================================================================================
-// light mode color
+//                                       LIGHT MODE
 // ========================================================================================
 $background-color = #fff
 $background-color-transparent = rgba(255, 255, 255, 0.6)
@@ -157,7 +180,7 @@ $home-banner-icons-container-background-color = rgba(255, 255, 255, 0.3)
 
 
 // ========================================================================================
-// dark mode color
+//                                      DARK MODE
 // ========================================================================================
 $dark-primary-color = $primary-color
 $dark-background-color = #202124
@@ -204,7 +227,7 @@ $home-banner-icons-container-background-color-dark = rgba(197, 197, 197, 0.3)
 
 
 // ========================================================================================
-// font
+//                                     FONT VARIABLES
 // ========================================================================================
 
 if hexo-config('global.fonts.chinese.enable') {
@@ -230,7 +253,7 @@ $default-line-height = $temp-default-line-height ? $temp-default-line-height : 1
 $default-font-weight = 450
 
 // ========================================================================================
-//  light/dark mode color
+//                                  LIGHT/DARK MODE SWITCH
 // ========================================================================================
 root-color(mode) {
   --background-color mode == 'light' ? $background-color : $dark-background-color

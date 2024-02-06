@@ -62,6 +62,8 @@ minutes: Min
 seconds: Sec
 optimized_by: and Optimized by Evan
 rights: All Rights Reserved
+site_posts: "%s posts in total"
+site_wordcount: "%s words in total"
 
 # ----------------------------------------
 # Post
