@@ -132,9 +132,9 @@ $ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redef
 
 所有贊助者名單：[贊助者名單](https://github.com/EvanNotFound/hexo-theme-redefine/blob/dev/DONATION.md)
 
-想要使用OpenAI GPT-4，但不想每月支付 20 美元吗？来看看 [GPT Plus Tokens](https://gpt.oknice.ca)！可以使用多达 100 个 ChatGPT Plus 账户！
+想要使用OpenAI GPT-4，但不想每月支付 20 美元吗？来看看 [GPT Plus Share](https://gpt.oknice.ca)，可以使用多达 100 个 ChatGPT Plus 账户！
 
-![CleanShot 2023-12-08 at 12 47 20@2x](https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/b25196a1-3ba4-43bb-9d0f-e23d3527e6ff)
+![GPT Billboard](https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/55346629-cd54-45a4-9b31-3f979750b0c0)
 
 
 ## 🌟 Star 記錄
