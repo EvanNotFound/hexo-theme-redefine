@@ -91,7 +91,7 @@ hexo.extend.helper.register("getPostUrl", function (rootUrl, path) {
 hexo.extend.helper.register("renderJS", function (path) {
   const _js = hexo.extend.helper.get("js").bind(hexo);
   const cdnProviders = {
-    staticfile: "https://cdn.staticfile.org",
+    staticfile: "https://cdn.staticfile.net",
     bootcdn: "https://cdn.bootcdn.net/ajax/libs",
     cdnjs: "https://cdnjs.cloudflare.com/ajax/libs",
     unpkg: "https://unpkg.com",
@@ -148,7 +148,7 @@ hexo.extend.helper.register("renderJS", function (path) {
 hexo.extend.helper.register("renderJSModule", function (path) {
   const _js = hexo.extend.helper.get("js").bind(hexo);
   const cdnProviders = {
-    staticfile: "https://cdn.staticfile.org",
+    staticfile: "https://cdn.staticfile.net",
     bootcdn: "https://cdn.bootcdn.net/ajax/libs",
     cdnjs: "https://cdnjs.cloudflare.com/ajax/libs",
     unpkg: "https://unpkg.com",
@@ -205,7 +205,7 @@ hexo.extend.helper.register("renderJSModule", function (path) {
 hexo.extend.helper.register("renderJSPath", function (path) {
   const _url_for = hexo.extend.helper.get("url_for").bind(hexo);
   const cdnProviders = {
-    staticfile: "https://cdn.staticfile.org",
+    staticfile: "https://cdn.staticfile.net",
     bootcdn: "https://cdn.bootcdn.net/ajax/libs",
     cdnjs: "https://cdnjs.cloudflare.com/ajax/libs",
     unpkg: "https://unpkg.com",
@@ -260,7 +260,7 @@ hexo.extend.helper.register("renderJSPath", function (path) {
 hexo.extend.helper.register("renderCSS", function (path) {
   const _css = hexo.extend.helper.get("css").bind(hexo);
   const cdnProviders = {
-    staticfile: "//cdn.staticfile.org",
+    staticfile: "//cdn.staticfile.net",
     bootcdn: "//cdn.bootcdn.net/ajax/libs",
     cdnjs: "//cdnjs.cloudflare.com/ajax/libs",
     unpkg: "//unpkg.com",
