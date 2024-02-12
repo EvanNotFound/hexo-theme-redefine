@@ -415,10 +415,12 @@ plugins:
         artist: # audio artist
         url: # audio url
         cover: # audio cover url
+        lrc: # audio cover lrc
 #      - name: # audio name
 #        artist: # audio artist
 #        url: # audio url
 #        cover: # audio cover url
+#        lrc: # audio cover lrc
       # .... you can add more audios here
   # Mermaid JS. Requires hexo-filter-mermaid-diagrams (npm i hexo-filter-mermaid-diagrams). See https://mermaid.js.org/
   mermaid:
