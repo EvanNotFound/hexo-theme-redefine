@@ -333,6 +333,7 @@ comment:
       serverUrl: https://example.example.com # Waline server URL. e.g. https://example.example.com
       lang: zh-CN # Waline language. e.g. zh-CN, en-US. See https://waline.js.org/guide/client/i18n.html
       emoji: [] # Waline emojis, see https://waline.js.org/guide/features/emoji.html
+      reaction: false
       recaptchaV3Key: wasd # Google reCAPTCHA v3 key. See https://waline.js.org/reference/client/props.html#recaptchav3key
       turnstileKey: # Turnstile key. See https://waline.js.org/reference/client/props.html#turnstilekey
     # Gitalk comment system. See https://github.com/gitalk/gitalk
@@ -415,10 +416,12 @@ plugins:
         artist: # audio artist
         url: # audio url
         cover: # audio cover url
+        lrc: # audio lrc url
 #      - name: # audio name
 #        artist: # audio artist
 #        url: # audio url
 #        cover: # audio cover url
+#        lrc: # audio lrc url
       # .... you can add more audios here
   # Mermaid JS. Requires hexo-filter-mermaid-diagrams (npm i hexo-filter-mermaid-diagrams). See https://mermaid.js.org/
   mermaid:
