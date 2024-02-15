@@ -91,8 +91,9 @@ hexo.extend.helper.register("getPostUrl", function (rootUrl, path) {
 hexo.extend.helper.register("renderJS", function (path) {
   const _js = hexo.extend.helper.get("js").bind(hexo);
   const cdnProviders = {
-    staticfile: "https://cdn.staticfile.net",
-    bootcdn: "https://cdn.bootcdn.net/ajax/libs",
+    sustech: "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs",
+    baomitu: "https://lib.baomitu.com",    
+    zstatic: "https://s4.zstatic.net/ajax/libs",
     cdnjs: "https://cdnjs.cloudflare.com/ajax/libs",
     unpkg: "https://unpkg.com",
     jsdelivr: "https://cdn.jsdelivr.net/npm",
@@ -102,14 +103,14 @@ hexo.extend.helper.register("renderJS", function (path) {
 
   const cdnPathHandle = (path) => {
     if (
-      this.theme.cdn.provider === ("staticfile" || "bootcdn" || "cdnjs") &&
+      this.theme.cdn.provider === ("sustech" || "baomitu" || "zstatic" || "cdnjs") &&
       hexo.locals.get(`cdnTestStatus_${this.theme.cdn.provider}`) !== 200
     ) {
       return _js(path);
     }
 
     const cdnBase =
-      cdnProviders[this.theme.cdn.provider] || cdnProviders.staticfile;
+      cdnProviders[this.theme.cdn.provider] || cdnProviders.sustech;
     if (this.theme.cdn.provider === "custom") {
       const customUrl = cdnBase
         .replace("${version}", themeVersion)
@@ -118,8 +119,9 @@ hexo.extend.helper.register("renderJS", function (path) {
         ? `<script src="${customUrl}"></script>`
         : _js(path);
     } else if (
-      this.theme.cdn.provider === "staticfile" ||
-      this.theme.cdn.provider === "bootcdn" ||
+      this.theme.cdn.provider === "sustech" ||
+      this.theme.cdn.provider === "baomitu" ||
+      this.theme.cdn.provider === "zstatic" ||
       this.theme.cdn.provider === "cdnjs"
     ) {
       return this.theme.cdn.enable
@@ -148,8 +150,9 @@ hexo.extend.helper.register("renderJS", function (path) {
 hexo.extend.helper.register("renderJSModule", function (path) {
   const _js = hexo.extend.helper.get("js").bind(hexo);
   const cdnProviders = {
-    staticfile: "https://cdn.staticfile.net",
-    bootcdn: "https://cdn.bootcdn.net/ajax/libs",
+    sustech: "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs",
+    baomitu: "https://lib.baomitu.com",    
+    zstatic: "https://s4.zstatic.net/ajax/libs",
     cdnjs: "https://cdnjs.cloudflare.com/ajax/libs",
     unpkg: "https://unpkg.com",
     jsdelivr: "https://cdn.jsdelivr.net/npm",
@@ -159,14 +162,14 @@ hexo.extend.helper.register("renderJSModule", function (path) {
 
   const cdnPathHandle = (path) => {
     if (
-      this.theme.cdn.provider === ("staticfile" || "bootcdn" || "cdnjs") &&
+      this.theme.cdn.provider === ("sustech" || "baomitu" || "zstatic" || "cdnjs") &&
       hexo.locals.get(`cdnTestStatus_${this.theme.cdn.provider}`) !== 200
     ) {
       return _js({ src: path, type: "module" });
     }
 
     const cdnBase =
-      cdnProviders[this.theme.cdn.provider] || cdnProviders.staticfile;
+      cdnProviders[this.theme.cdn.provider] || cdnProviders.sustech;
     if (this.theme.cdn.provider === "custom") {
       const customUrl = cdnBase
         .replace("${version}", themeVersion)
@@ -175,8 +178,9 @@ hexo.extend.helper.register("renderJSModule", function (path) {
         ? `<script type="module" src="${customUrl}"></script>`
         : _js({ src: path, type: "module" });
     } else if (
-      this.theme.cdn.provider === "staticfile" ||
-      this.theme.cdn.provider === "bootcdn" ||
+      this.theme.cdn.provider === "sustech" ||
+      this.theme.cdn.provider === "baomitu" ||
+      this.theme.cdn.provider === "zstatic" ||
       this.theme.cdn.provider === "cdnjs"
     ) {
       return this.theme.cdn.enable
@@ -205,8 +209,9 @@ hexo.extend.helper.register("renderJSModule", function (path) {
 hexo.extend.helper.register("renderJSPath", function (path) {
   const _url_for = hexo.extend.helper.get("url_for").bind(hexo);
   const cdnProviders = {
-    staticfile: "https://cdn.staticfile.net",
-    bootcdn: "https://cdn.bootcdn.net/ajax/libs",
+    sustech: "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs",
+    baomitu: "https://lib.baomitu.com",    
+    zstatic: "https://s4.zstatic.net/ajax/libs",
     cdnjs: "https://cdnjs.cloudflare.com/ajax/libs",
     unpkg: "https://unpkg.com",
     jsdelivr: "https://cdn.jsdelivr.net/npm",
@@ -216,22 +221,23 @@ hexo.extend.helper.register("renderJSPath", function (path) {
 
   const cdnPathHandle = (path) => {
     if (
-      this.theme.cdn.provider === ("staticfile" || "bootcdn" || "cdnjs") &&
+      this.theme.cdn.provider === ("sustech" || "baomitu" || "zstatic" || "cdnjs") &&
       hexo.locals.get(`cdnTestStatus_${this.theme.cdn.provider}`) !== 200
     ) {
       return _url_for(path);
     }
 
     const cdnBase =
-      cdnProviders[this.theme.cdn.provider] || cdnProviders.staticfile;
+      cdnProviders[this.theme.cdn.provider] || cdnProviders.sustech;
     if (this.theme.cdn.provider === "custom") {
       const customUrl = cdnBase
         .replace("${version}", themeVersion)
         .replace("${path}", path);
       return this.theme.cdn.enable ? customUrl : _url_for(path);
     } else if (
-      this.theme.cdn.provider === "staticfile" ||
-      this.theme.cdn.provider === "bootcdn" ||
+      this.theme.cdn.provider === "sustech" ||
+      this.theme.cdn.provider === "baomitu" ||
+      this.theme.cdn.provider === "zstatic" ||
       this.theme.cdn.provider === "cdnjs"
     ) {
       return this.theme.cdn.enable
@@ -260,25 +266,26 @@ hexo.extend.helper.register("renderJSPath", function (path) {
 hexo.extend.helper.register("renderCSS", function (path) {
   const _css = hexo.extend.helper.get("css").bind(hexo);
   const cdnProviders = {
-    staticfile: "//cdn.staticfile.net",
-    bootcdn: "//cdn.bootcdn.net/ajax/libs",
-    cdnjs: "//cdnjs.cloudflare.com/ajax/libs",
-    unpkg: "//unpkg.com",
-    jsdelivr: "//cdn.jsdelivr.net/npm",
-    aliyun: "//evan.beee.top/projects",
+    sustech: "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs",
+    baomitu: "https://lib.baomitu.com",    
+    zstatic: "https://s4.zstatic.net/ajax/libs",
+    cdnjs: "https://cdnjs.cloudflare.com/ajax/libs",
+    unpkg: "https://unpkg.com",
+    jsdelivr: "https://cdn.jsdelivr.net/npm",
+    aliyun: "https://evan.beee.top/projects",
     custom: this.theme.cdn.custom_url,
   };
 
   const cdnPathHandle = (path) => {
     if (
-      this.theme.cdn.provider === ("staticfile" || "bootcdn" || "cdnjs") &&
+      this.theme.cdn.provider === ("sustech" || "baomitu" || "zstatic" || "cdnjs") &&
       hexo.locals.get(`cdnTestStatus_${this.theme.cdn.provider}`) !== 200
     ) {
       return _css(path);
     }
 
     const cdnBase =
-      cdnProviders[this.theme.cdn.provider] || cdnProviders.staticfile;
+      cdnProviders[this.theme.cdn.provider] || cdnProviders.sustech;
     if (this.theme.cdn.provider === "custom") {
       const customUrl = cdnBase
         .replace("${version}", themeVersion)
@@ -287,8 +294,9 @@ hexo.extend.helper.register("renderCSS", function (path) {
         ? `<link rel="stylesheet" href="${customUrl}">`
         : _css(path);
     } else if (
-      this.theme.cdn.provider === "staticfile" ||
-      this.theme.cdn.provider === "bootcdn" ||
+      this.theme.cdn.provider === "sustech" ||
+      this.theme.cdn.provider === "baomitu" ||
+      this.theme.cdn.provider === "zstatic" ||
       this.theme.cdn.provider === "cdnjs"
     ) {
       return this.theme.cdn.enable
