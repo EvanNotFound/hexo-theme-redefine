@@ -85,7 +85,7 @@ jobs:
           ALIAS_DOMAINS: |
             redefine-preview.vercel.app
             redefine-preview-git-{SHA}.vercel.app
-          PR_PREVIEW_DOMAIN: "redefine-preview-pr-{PR}.now.sh"
+          PR_PREVIEW_DOMAIN: "redefine-preview-pr-{PR}.vercel.app"
 
 
         # - name: Pull Vercel Environment Information
