@@ -84,6 +84,8 @@ jobs:
           DEPLOY_PR_FROM_FORK: true
           ALIAS_DOMAINS: |
             redefine-preview.vercel.app
+            redefine-preview-git-{SHA}.vercel.app
+          PR_PREVIEW_DOMAIN: "redefine-preview-pr-{PR}.now.sh"
 
 
         # - name: Pull Vercel Environment Information
