@@ -7,6 +7,9 @@ on:
   push:
     branches:
       - dev
+  pull_request: # Trigger the workflow on pull request activities
+    branches:
+      - main # Specify the target branch for PRs
 
 jobs:
   Deploy-Preview:
@@ -24,7 +27,7 @@ jobs:
           node-version: '20.x' # Specify your required Node.js version
 
       - name: Clone Hexo site repository
-        run: git clone https://github.com/Evanovation/redefine-dev-preview.git hexo-site
+        run: git clone https://github.com/EvanNotFound/redefine-demo.git hexo-site
 
       - name: Move theme into Hexo site
         run: |
@@ -35,20 +38,33 @@ jobs:
           cd hexo-site
           npm install
 
+      - name: Build Hexo
+        run: |
+          cd hexo-site
+          npm install
+
       - name: Install Vercel CLI
         run: npm install --global vercel@canary
 
       - name: Change directory to hexo-site
         run: echo "HEXO_SITE_DIR=${{ github.workspace }}/hexo-site" >> $GITHUB_ENV
 
-      - name: Pull Vercel Environment Information
-        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
-        working-directory: ${{ env.HEXO_SITE_DIR }}
+      - uses: amondnet/vercel-action@v20 #deploy
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}  #Required
+          github-token: ${{ secrets.GITHUB_TOKEN }} #Optional 
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}} #Required 
+          working-directory: ${{ env.HEXO_SITE_DIR }}
+
+      # - name: Pull Vercel Environment Information
+      #   run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+      #   working-directory: ${{ env.HEXO_SITE_DIR }}
         
-      - name: Build Project Artifacts
-        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
-        working-directory: ${{ env.HEXO_SITE_DIR }}
+      # - name: Build Project Artifacts
+      #   run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+      #   working-directory: ${{ env.HEXO_SITE_DIR }}
         
-      - name: Deploy Project Artifacts to Vercel
-        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
-        working-directory: ${{ env.HEXO_SITE_DIR }}
+      # - name: Deploy Project Artifacts to Vercel
+      #   run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+      #   working-directory: ${{ env.HEXO_SITE_DIR }}
