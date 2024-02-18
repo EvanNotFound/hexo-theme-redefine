@@ -9,7 +9,7 @@ on:
     - main
 
 jobs:
-  Deploy-Preview:
+  Deploy-Production:
     runs-on: ubuntu-latest
     
     steps:
@@ -68,8 +68,6 @@ jobs:
           VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE }}
           PRODUCTION: true
           DEPLOY_PR_FROM_FORK: true
-          ALIAS_DOMAINS: |
-            redefine.ohevan.com
           PR_PREVIEW_DOMAIN: "redefine-preview-pr-{PR}.vercel.app"
 
 
