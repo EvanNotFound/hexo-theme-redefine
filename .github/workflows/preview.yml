@@ -21,7 +21,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18' # Specify your required Node.js version
+          node-version: '20.x' # Specify your required Node.js version
 
       - name: Clone Hexo site repository
         run: git clone https://github.com/Evanovation/redefine-dev-preview.git hexo-site
