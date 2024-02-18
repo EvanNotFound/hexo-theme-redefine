@@ -33,7 +33,7 @@ jobs:
       - name: Install dependencies
         run: |
           cd hexo-site
-      #     npm install
+          npm install
 
       # - name: Generate static pages
       #   run: |
