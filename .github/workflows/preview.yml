@@ -1,0 +1,57 @@
+name: GitHub Actions Vercel Preview Deployment
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - dev
+
+jobs:
+  Deploy-Preview:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout theme repository
+        uses: actions/checkout@v2
+        with:
+          path: 'theme' # Checkout the theme repository into a directory named 'theme'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18' # Specify your required Node.js version
+
+      - name: Clone Hexo site repository
+        run: git clone https://github.com/Evanovation/redefine-dev-preview.git hexo-site
+
+      - name: Move theme into Hexo site
+        run: |
+          mv theme hexo-site/themes/redefine
+
+      - name: Install dependencies
+        run: |
+          cd hexo-site
+      #     npm install
+
+      # - name: Generate static pages
+      #   run: |
+      #     cd hexo-site
+      #     npm run build
+
+      - name: Install Vercel CLI
+        run: npm install --global vercel@canary
+        
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+        
+      - name: Build Project Artifacts
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+        
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+
+
+
+        
