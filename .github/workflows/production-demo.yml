@@ -43,8 +43,8 @@ jobs:
           npm run build
 
 
-      - name: Install Vercel CLI
-        run: npm install --global vercel@canary
+#      - name: Install Vercel CLI
+#        run: npm install --global vercel@canary
 
       - name: Change directory to hexo-site
         run: echo "HEXO_SITE_DIR=${{ github.workspace }}/hexo-site" >> $GITHUB_ENV
