@@ -42,7 +42,8 @@ jobs:
         run: |
           cd hexo-site
           npm install
-#          npm run build
+          npm uninstall hexo-theme-redefine
+          npm run build
 
 
       - name: Install Vercel CLI
