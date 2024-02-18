@@ -69,7 +69,7 @@ jobs:
           PRODUCTION: true
           DEPLOY_PR_FROM_FORK: true
           ALIAS_DOMAINS: |
-            redefine-demo.ohevan.com
+            redefine.ohevan.com
           PR_PREVIEW_DOMAIN: "redefine-preview-pr-{PR}.now.sh"
 
 
