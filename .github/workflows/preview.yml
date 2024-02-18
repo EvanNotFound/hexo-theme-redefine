@@ -43,6 +43,7 @@ jobs:
           cd hexo-site
           npm install
           npm run build
+          git init 
 
       - name: Install Vercel CLI
         run: npm install --global vercel@canary
