@@ -79,11 +79,11 @@ jobs:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           WORKING_DIRECTORY: ${{ env.HEXO_SITE_DIR }}
-#          VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE }}
+          VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE }}
           PRODUCTION: false
           DEPLOY_PR_FROM_FORK: true
           ALIAS_DOMAINS: |
-            redefine-preview.ohevan.com
+            redefine-preview.vercel.app
 
 
         # - name: Pull Vercel Environment Information
