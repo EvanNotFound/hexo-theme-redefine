@@ -72,7 +72,7 @@ jobs:
 #          working-directory: ${{ env.HEXO_SITE_DIR }}
 
       - name: Deploy to Vercel Action
-        uses: BetaHuhn/deploy-to-vercel-action@v1
+        uses: EvanNotFound/vercel-deployment-for-github-actions@v1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
