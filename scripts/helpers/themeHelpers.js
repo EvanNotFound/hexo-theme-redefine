@@ -93,6 +93,8 @@ hexo.extend.helper.register("renderJS", function (path) {
   const cdnProviders = {
     staticfile: "https://cdn.staticfile.net",
     bootcdn: "https://cdn.bootcdn.net/ajax/libs",
+    sustech: "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs",
+    zstatic: "https://s4.zstatic.net/ajax/libs",
     cdnjs: "https://cdnjs.cloudflare.com/ajax/libs",
     unpkg: "https://unpkg.com",
     jsdelivr: "https://cdn.jsdelivr.net/npm",
@@ -120,7 +122,9 @@ hexo.extend.helper.register("renderJS", function (path) {
     } else if (
       this.theme.cdn.provider === "staticfile" ||
       this.theme.cdn.provider === "bootcdn" ||
-      this.theme.cdn.provider === "cdnjs"
+      this.theme.cdn.provider === "cdnjs" ||
+      this.theme.cdn.provider === "sustech" ||
+      this.theme.cdn.provider === "zstatic"
     ) {
       return this.theme.cdn.enable
         ? `<script src="${cdnBase}/hexo-theme-redefine/${themeVersion}/${path}"></script>`
@@ -150,6 +154,8 @@ hexo.extend.helper.register("renderJSModule", function (path) {
   const cdnProviders = {
     staticfile: "https://cdn.staticfile.net",
     bootcdn: "https://cdn.bootcdn.net/ajax/libs",
+    sustech: "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs",
+    zstatic: "https://s4.zstatic.net/ajax/libs",
     cdnjs: "https://cdnjs.cloudflare.com/ajax/libs",
     unpkg: "https://unpkg.com",
     jsdelivr: "https://cdn.jsdelivr.net/npm",
@@ -177,7 +183,9 @@ hexo.extend.helper.register("renderJSModule", function (path) {
     } else if (
       this.theme.cdn.provider === "staticfile" ||
       this.theme.cdn.provider === "bootcdn" ||
-      this.theme.cdn.provider === "cdnjs"
+      this.theme.cdn.provider === "cdnjs" ||
+      this.theme.cdn.provider === "sustech" ||
+      this.theme.cdn.provider === "zstatic"
     ) {
       return this.theme.cdn.enable
         ? `<script type="module" src="${cdnBase}/hexo-theme-redefine/${themeVersion}/${path}"></script>`
@@ -207,6 +215,8 @@ hexo.extend.helper.register("renderJSPath", function (path) {
   const cdnProviders = {
     staticfile: "https://cdn.staticfile.net",
     bootcdn: "https://cdn.bootcdn.net/ajax/libs",
+    sustech: "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs",
+    zstatic: "https:https://s4.zstatic.net/ajax/libs",
     cdnjs: "https://cdnjs.cloudflare.com/ajax/libs",
     unpkg: "https://unpkg.com",
     jsdelivr: "https://cdn.jsdelivr.net/npm",
@@ -232,7 +242,9 @@ hexo.extend.helper.register("renderJSPath", function (path) {
     } else if (
       this.theme.cdn.provider === "staticfile" ||
       this.theme.cdn.provider === "bootcdn" ||
-      this.theme.cdn.provider === "cdnjs"
+      this.theme.cdn.provider === "cdnjs" ||
+      this.theme.cdn.provider === "sustech" ||
+      this.theme.cdn.provider === "zstatic"
     ) {
       return this.theme.cdn.enable
         ? `${cdnBase}/hexo-theme-redefine/${themeVersion}/${path}`
@@ -260,12 +272,14 @@ hexo.extend.helper.register("renderJSPath", function (path) {
 hexo.extend.helper.register("renderCSS", function (path) {
   const _css = hexo.extend.helper.get("css").bind(hexo);
   const cdnProviders = {
-    staticfile: "//cdn.staticfile.net",
-    bootcdn: "//cdn.bootcdn.net/ajax/libs",
-    cdnjs: "//cdnjs.cloudflare.com/ajax/libs",
-    unpkg: "//unpkg.com",
-    jsdelivr: "//cdn.jsdelivr.net/npm",
-    aliyun: "//evan.beee.top/projects",
+    staticfile: "https://cdn.staticfile.net",
+    bootcdn: "https://cdn.bootcdn.net/ajax/libs",
+    sustech: "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs",
+    zstatic: "https://s4.zstatic.net/ajax/libs",
+    cdnjs: "https://cdnjs.cloudflare.com/ajax/libs",
+    unpkg: "https://unpkg.com",
+    jsdelivr: "https://cdn.jsdelivr.net/npm",
+    aliyun: "https://evan.beee.top/projects",
     custom: this.theme.cdn.custom_url,
   };
 
@@ -289,7 +303,9 @@ hexo.extend.helper.register("renderCSS", function (path) {
     } else if (
       this.theme.cdn.provider === "staticfile" ||
       this.theme.cdn.provider === "bootcdn" ||
-      this.theme.cdn.provider === "cdnjs"
+      this.theme.cdn.provider === "cdnjs" ||
+      this.theme.cdn.provider === "sustech" ||
+      this.theme.cdn.provider === "zstatic"
     ) {
       return this.theme.cdn.enable
         ? `<link rel="stylesheet" href="${cdnBase}/hexo-theme-redefine/${themeVersion}/${path}">`
