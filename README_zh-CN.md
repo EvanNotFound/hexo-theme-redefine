@@ -104,7 +104,8 @@ $ npm install hexo-theme-redefine@latest
 通过 `git` 更新到最新的 `main` 分支：
 
 ```sh
-$ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redefine
+$ cd themes/redefine
+$ git pull
 ```
 
 

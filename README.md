@@ -100,10 +100,11 @@ To update hexo-theme-redefine, you can run the same **npm** command
 $ npm install hexo-theme-redefine@latest
 ```
 
-Another method is by **git clone**
+If you installed the theme by **git clone**, you can update the theme by running the following command
 
 ```sh
-$ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redefine
+$ cd themes/redefine
+$ git pull
 ```
 
 
