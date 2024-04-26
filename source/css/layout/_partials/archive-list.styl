@@ -32,3 +32,19 @@ $article-date-font-size = 1rem
 
     &:last-child
       border-image var(--archive-timeline-last-child-color)
+		
+		span.article-title
+			position relative
+			padding-left 15px
+			display block
+			
+			&::after
+				content ""
+				width 7px
+				height 7px
+				background var(--background-color)
+				border 2px solid var(--third-text-color)
+				position absolute
+				left 0
+				top 0.5em
+				border-radius 50px
