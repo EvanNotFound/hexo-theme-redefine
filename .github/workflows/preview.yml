@@ -42,9 +42,21 @@ jobs:
       - name: Clone Hexo site repository
         run: git clone https://github.com/EvanNotFound/redefine-demo.git hexo-site
 
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'  # Ensure compatibility with Python 3.x
+
       - name: Enable Developer Mode in Config
         run: |
-          sed -i '/# DEVELOPER MODE >>>/,/# DEVELOPER MODE <<</{s/enable: false/enable: true/}' hexo-site/_config.redefine.yml
+          echo "import yaml
+          with open('hexo-site/_config.redefine.yml', 'r') as file:
+              config = yaml.safe_load(file)
+          config['developer']['enable'] = True
+          with open('hexo-site/_config.redefine.yml', 'w') as file:
+              yaml.safe_dump(config, file, default_flow_style=False, sort_keys=False)
+          " > update_yaml.py
+          python update_yaml.py
 
       - name: Move theme into Hexo site
         run: |
