@@ -698,6 +698,16 @@ video {
   margin-bottom: 2rem;
 }
 
+.my-0 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.my-0\.5 {
+  margin-top: 0.125rem;
+  margin-bottom: 0.125rem;
+}
+
 .mb-0 {
   margin-bottom: 0px;
 }
@@ -921,6 +931,14 @@ video {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-12 {
+  width: 3rem;
+}
+
+.w-4 {
+  width: 1rem;
 }
 
 .min-w-0 {
@@ -1713,6 +1731,16 @@ video {
   .sm\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .sm\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .sm\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .sm\:shadow-redefine {
