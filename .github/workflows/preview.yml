@@ -47,6 +47,9 @@ jobs:
         with:
           python-version: '3.x'  # Ensure compatibility with Python 3.x
 
+      - name: Install PyYAML
+        run: pip install pyyaml
+
       - name: Enable Developer Mode in Config
         run: |
           echo "import yaml
