@@ -14,10 +14,10 @@ on:
 jobs:
   Deploy-Preview:
     runs-on: ubuntu-latest
-    if: >
-      github.event_name == 'workflow_dispatch' ||
-      (github.event_name == 'push' && github.repository == 'EvanNotFound/hexo-theme-redefine') ||
-      (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == 'EvanNotFound/hexo-theme-redefine')
+#    if: >
+#      github.event_name == 'workflow_dispatch' ||
+#      (github.event_name == 'push' && github.repository == 'EvanNotFound/hexo-theme-redefine') ||
+#      (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == 'EvanNotFound/hexo-theme-redefine')
     steps:
       - id: script
         uses: actions/github-script@v3
