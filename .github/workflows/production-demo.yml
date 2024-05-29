@@ -14,7 +14,7 @@ jobs:
     
     steps:
       - name: Checkout theme repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           path: 'theme' # Checkout the theme repository into a directory named 'theme'
 
@@ -43,8 +43,8 @@ jobs:
           npm run build
 
 
-      - name: Install Vercel CLI
-        run: npm install --global vercel@canary
+#      - name: Install Vercel CLI
+#        run: npm install --global vercel@canary
 
       - name: Change directory to hexo-site
         run: echo "HEXO_SITE_DIR=${{ github.workspace }}/hexo-site" >> $GITHUB_ENV
@@ -58,7 +58,7 @@ jobs:
 #          working-directory: ${{ env.HEXO_SITE_DIR }}
 
       - name: Deploy to Vercel Action
-        uses: EvanNotFound/vercel-deployment-for-github-actions@v1
+        uses: EvanNotFound/vercel-deployment-for-github-actions@v1.1.0
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
