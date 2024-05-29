@@ -26,7 +26,10 @@ jobs:
             const isPr = [ 'pull_request', 'pull_request_target' ].includes(context.eventName)
             core.setOutput('ref', isPr ? context.payload.pull_request.head.ref : context.ref)
             core.setOutput('repo', isPr ? context.payload.pull_request.head.repo.full_name : context.repo.full_name)
-      
+
+      - name: Enable Developer Mode in Config
+        run: |
+          sed -i '/# DEVELOPER MODE >>>/,/# DEVELOPER MODE <<</{s/enable: false/enable: true/}' hexo-site/_config.redefine.yml
 
       - name: Checkout theme repository
         uses: actions/checkout@v3
