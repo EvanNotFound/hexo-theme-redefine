@@ -64,9 +64,12 @@ jobs:
                   config = yaml.safe_load(file)
                   logging.info('YAML file loaded successfully.')
 
-              # Modify the developer mode setting
+              # Modify the developer mode and CDN settings
               config['developer']['enable'] = True
               logging.info('Developer mode set to True.')
+
+              config['cdn']['enable'] = False
+              logging.info('CDN set to False.')
 
               # Save the modified YAML file
               with open('hexo-site/_config.redefine.yml', 'w') as file:
