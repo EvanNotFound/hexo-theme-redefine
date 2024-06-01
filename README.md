@@ -4,16 +4,15 @@
   <a title="zh-TW" href="README_zh-TW.md"><img src="https://img.shields.io/badge/-%E7%B9%81%E4%BD%93%E4%B8%AD%E6%96%87-545759?style=for-the-badge" alt="繁体中文"></a>
 </div>
 
-<a href="https://redefine.ohevan.com"><img align="center" src="https://user-images.githubusercontent.com/68590232/226141917-68124e8f-fde0-4edd-b86d-c62932ec369a.png"  alt="Redefine"></a>
+<a href="https://redefine.ohevan.com"><img align="center" src="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/e1d4d384-5cb5-43f9-ad8b-d694480581ca"  alt="Redefine"></a>
 
 
 
 # hexo-theme-redefine
 
-"Redefine" hexo theme is a blend of **simplicity, speed, and purity**, yet it makes **no compromises** on functionality or design. Loaded with widely utilized features and polished web design, it seamlessly marries practicality with aesthetics.
+The "Redefine" Hexo theme captures **simplicity, speed, and purity** without sacrificing functionality or design. With a sleek, modern look and a host of practical features, it combines beauty with utility effortlessly.
 
-Drawing its core from [hexo-theme-keep](https://github.com/XPoet/hexo-theme-keep), this theme elevates the foundation by enhancing the style and integrating valuable writing modules and plugins. The theme encourages personalization, offering extensive customizability to mold various facets to your liking, making your blogging journey truly unique and user-friendly.
-
+Building on the solid foundation of [hexo-theme-keep](https://github.com/XPoet/hexo-theme-keep), "Redefine" enhances the style and integrates valuable writing modules and plugins. This theme invites personalization, with extensive customization options that let you tailor every detail to your liking. Your blogging journey becomes a unique, user-friendly experience, reflecting your personal style and needs.
 
 <p align="center">
     <a href="https://www.npmjs.com/package/hexo-theme-redefine">
