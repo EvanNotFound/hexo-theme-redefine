@@ -4,7 +4,7 @@
   <a title="zh-TW" href="README_zh-TW.md"><img src="https://img.shields.io/badge/-%E7%B9%81%E4%BD%93%E4%B8%AD%E6%96%87-545759?style=for-the-badge" alt="繁体中文"></a>
 </div>
 
-<a href="https://redefine.ohevan.com"><img align="center" src="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/e1d4d384-5cb5-43f9-ad8b-d694480581ca"  alt="Redefine"></a>
+<a href="https://redefine.ohevan.com"><img align="center" src="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/f2ff10f6-a740-4120-ba04-1b2a518fb019"  alt="Redefine"></a>
 
 
 
