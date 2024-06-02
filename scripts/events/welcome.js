@@ -12,7 +12,7 @@ hexo.on("ready", async () => {
     return new Promise((resolve, reject) => {
       https
         .get(
-          `https://redefine-version.ohevan.com/api/info`,
+          `https://redefine-version.ohevan.com/api/v2/info`,
           { timeout: timeout },
           (response) => {
             if (response.statusCode < 200 || response.statusCode > 299) {
