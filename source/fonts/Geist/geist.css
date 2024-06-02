@@ -5,7 +5,9 @@
 
 @font-face {
     font-family: 'Geist Variable';
-    src: url('GeistVF.woff2') format('woff2'),
+    src: local('Geist Variable'),
+    local('GeistVariable'),
+    url('GeistVF.woff2') format('woff2'),
     url('GeistVF.woff') format('woff'),
     url('GeistVF.ttf') format('truetype');
     font-weight: 200 700;
