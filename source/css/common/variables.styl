@@ -239,18 +239,18 @@ if hexo-config('global.fonts.chinese.enable') {
 
 if hexo-config('global.fonts.english.enable') {
   $temp-english-font-family = hexo-config('global.fonts.english.family')
-  $english-font-family = $temp-english-font-family ? $temp-english-font-family : 'Satoshi-Variable'
+  $english-font-family = $temp-english-font-family ? $temp-english-font-family : 'Geist Variable'
 } else {
-  $english-font-family = 'Satoshi-Variable', sans-serif
+  $english-font-family = 'Geist Variable', sans-serif
 }
 
-$default-font-family = Satoshi-Variable, Noto Sans SC, -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial
+$default-font-family = Geist Variable, Noto Sans SC, -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial
 $default-font-size = 16px
 $temp-default-article-font-size = hexo-config('articles.style.font_size')
 $temp-default-line-height = hexo-config('articles.style.line_height')
 $default-article-font-size = $temp-default-article-font-size ? convert($temp-default-article-font-size) : 16px
 $default-line-height = $temp-default-line-height ? $temp-default-line-height : 1.5
-$default-font-weight = 450
+$default-font-weight = 400
 
 // ========================================================================================
 //                                  LIGHT/DARK MODE SWITCH

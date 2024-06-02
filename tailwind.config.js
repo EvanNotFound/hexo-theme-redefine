@@ -37,13 +37,8 @@ module.exports = {
       },
       fontFamily: {
         chinese: ["Noto Sans SC", "sans-serif"],
-        english: ["Satoshi-Variable", "sans-serif"],
-        default: [
-          "Satoshi-Variable",
-          "Noto Sans SC",
-          "system-ui",
-          "sans-serif",
-        ],
+        english: ["Geist Variable", "sans-serif"],
+        default: ["Geist Variable", "Noto Sans SC", "system-ui", "sans-serif"],
       },
       fontSize: {
         default: "16px", // You might want to adjust this value based on your use case

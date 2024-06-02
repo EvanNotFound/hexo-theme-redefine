@@ -33,3 +33,12 @@
     /* Chrome 36+, Opera 23+, Firefox 39+ */
       url("./ubuntu-mono-v15-latin-regular.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
+
+@font-face {
+  font-display: swap;
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./GeistMonoVF.woff2") format("woff2"),
+  url("./GeistMonoVF.woff") format("woff");
+}
