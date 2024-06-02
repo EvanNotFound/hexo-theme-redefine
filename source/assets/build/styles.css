@@ -1448,6 +1448,10 @@ video {
   line-height: 1;
 }
 
+.tracking-tight {
+  letter-spacing: -0.025em;
+}
+
 .text-default-text-color {
   color: var(--default-text-color);
 }
