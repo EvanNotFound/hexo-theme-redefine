@@ -16,6 +16,7 @@ hexo.on("ready", async () => {
           { timeout: timeout },
           (response) => {
             if (response.statusCode < 200 || response.statusCode > 299) {
+              logFailedInfo();
               return reject(
                 new Error(
                   `Failed to load page, status code: ${response.statusCode}`,
@@ -29,8 +30,18 @@ hexo.on("ready", async () => {
             response.on("end", () => {
               try {
                 const jsonData = JSON.parse(data);
-                logInfo(jsonData);
-                checkVersionAndCDNAvailability(jsonData);
+
+                if (jsonData.status !== "success") {
+                  logFailedInfo();
+                  return reject(
+                    new Error(`Failed to fetch data: ${jsonData.message}`),
+                  );
+                }
+
+                const redefineData = jsonData.data;
+
+                logInfo(redefineData);
+                checkVersionAndCDNAvailability(redefineData);
                 resolve();
               } catch (error) {
                 logFailedInfo();
@@ -51,6 +62,9 @@ hexo.on("ready", async () => {
     hexo.log.warn(`Check latest version failed: ${error}`);
     hexo.locals.set(`cdnTestStatus_bootcdn`, 404);
     hexo.locals.set(`cdnTestStatus_staticfile`, 404);
+    hexo.locals.set(`cdnTestStatus_cdnjs`, 404);
+    hexo.locals.set(`cdnTestStatus_sustech`, 404);
+    hexo.locals.set(`cdnTestStatus_zstatic`, 404);
   }
 });
 
@@ -96,6 +110,30 @@ function checkVersionAndCDNAvailability(data) {
       `\x1b[33m%s\x1b[0m`,
       `Redefine v${version} is outdated, please update to v${data.npmVersion}!`,
     );
+  }
+
+  if (data.zstaticCDN) {
+    hexo.log.info(`\x1b[32m%s\x1b[0m`, `CDN available: ZStatic (Recommended)`);
+    hexo.locals.set(`cdnTestStatus_zstatic`, 200);
+  } else {
+    hexo.log.warn(`\x1b[31m%s\x1b[0m`, `ZStatic CDN is unavailable yet.`);
+    hexo.locals.set(`cdnTestStatus_zstatic`, 404);
+  }
+
+  if (data.sustechCDN) {
+    hexo.log.info(`\x1b[32m%s\x1b[0m`, `CDN available: SUSTech`);
+    hexo.locals.set(`cdnTestStatus_sustech`, 200);
+  } else {
+    hexo.log.warn(`\x1b[31m%s\x1b[0m`, `SUSTech CDN is unavailable yet.`);
+    hexo.locals.set(`cdnTestStatus_sustech`, 404);
+  }
+
+  if (data.cdnjsCDN) {
+    hexo.log.info(`\x1b[32m%s\x1b[0m`, `CDN available: CDNJS`);
+    hexo.locals.set(`cdnTestStatus_cdnjs`, 200);
+  } else {
+    hexo.log.warn(`\x1b[31m%s\x1b[0m`, `CDNJS CDN is unavailable yet.`);
+    hexo.locals.set(`cdnTestStatus_cdnjs`, 404);
   }
 
   if (data.staticfileCDN) {
