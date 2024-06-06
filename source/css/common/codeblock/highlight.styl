@@ -11,10 +11,12 @@ $code-block
   background var(--highlight-background)
 
 pre, code
+  font-size 0.9rem !important
+  line-height 1.5 !important
   if (hexo-config('articles.code_block.font.enable') && hexo-config('articles.code_block.font.family'))
-    font-family hexo-config('articles.code_block.font.family'), 'Ubuntu Mono', Courier, monospace !important
+    font-family hexo-config('articles.code_block.font.family'), 'Geist Mono', Courier, monospace !important
   else
-    font-family 'Ubuntu Mono', Courier, monospace
+    font-family 'Geist Mono', Courier, monospace !important
 
 pre.mermaid
   background-color var(--background-color)
