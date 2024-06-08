@@ -2,34 +2,18 @@ name: Vercel Preview Deployment
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-
 on:
   workflow_dispatch:
   push:
     branches:
       - dev
-  pull_request:
+  pull_request: # Trigger the workflow on pull request activities
     branches:
       - dev
       - main
 
 jobs:
-  request-approval:
-    if: github.event_name == 'pull_request' && github.actor != 'EvanNotFound' && github.event.pull_request.head.repo.full_name != github.repository
-    runs-on: ubuntu-latest
-    steps:
-      - name: Request Manual Approval
-        uses: trstringer/manual-approval@v1
-        with:
-          secret: ${{ secrets.GITHUB_TOKEN }}
-          approvers: EvanNotFound
-          issue-title: "Manual Approval Required"
-          issue-body: "Please approve or deny this PR to proceed with deployment."
-          minimum-approvals: 1
-
   preview-deployment:
-    needs: [request-approval]
-    if: needs.request-approval.result == 'success' || github.actor == 'EvanNotFound' || github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - id: script
@@ -39,17 +23,18 @@ jobs:
             const isPr = [ 'pull_request', 'pull_request_target' ].includes(context.eventName)
             core.setOutput('ref', isPr ? context.payload.pull_request.head.ref : context.ref)
             core.setOutput('repo', isPr ? context.payload.pull_request.head.repo.full_name : context.repo.full_name)
+
       - name: Checkout theme repository
         uses: actions/checkout@v3
         with:
-          path: 'theme'
+          path: 'theme' # Checkout the theme repository into a directory named 'theme'
           ref: ${{ steps.script.outputs.ref }}
           repository: ${{ steps.script.outputs.repo }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20.x'
+          node-version: '20.x' # Specify your required Node.js version
 
       - name: Clone Hexo site repository
         run: git clone https://github.com/EvanNotFound/redefine-demo.git hexo-site
@@ -57,7 +42,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: '3.x'  # Ensure compatibility with Python 3.x
 
       - name: Install PyYAML
         run: pip install pyyaml
@@ -66,25 +51,36 @@ jobs:
         run: |
           echo "import yaml
           import logging
+
+          # Set up logging
           logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
           try:
+              # Load YAML file
               with open('hexo-site/_config.redefine.yml', 'r') as file:
                   config = yaml.safe_load(file)
                   logging.info('YAML file loaded successfully.')
+
+              # Modify the developer mode and CDN settings
               config['developer']['enable'] = True
               logging.info('Developer mode set to True.')
+
               config['cdn']['enable'] = False
               logging.info('CDN set to False.')
+
+              # Save the modified YAML file
               with open('hexo-site/_config.redefine.yml', 'w') as file:
                   yaml.safe_dump(config, file, default_flow_style=False, sort_keys=False)
                   logging.info('YAML file saved with new settings.')
+
           except Exception as e:
               logging.error('An error occurred: {}'.format(e))
           " > update_yaml.py
           python update_yaml.py
 
       - name: Move theme into Hexo site
-        run: mv theme hexo-site/themes/redefine
+        run: |
+          mv theme hexo-site/themes/redefine
 
       - name: Install dependencies
         run: |
@@ -116,3 +112,16 @@ jobs:
             redefine-preview.vercel.app
             redefine-preview-git-{SHA}.vercel.app
           PR_PREVIEW_DOMAIN: "redefine-preview-pr-{PR}.vercel.app"
+
+
+        # - name: Pull Vercel Environment Information
+      #   run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+      #   working-directory: ${{ env.HEXO_SITE_DIR }}
+
+      # - name: Build Project Artifacts
+      #   run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+      #   working-directory: ${{ env.HEXO_SITE_DIR }}
+
+      # - name: Deploy Project Artifacts to Vercel
+      #   run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+      #   working-directory: ${{ env.HEXO_SITE_DIR }}
