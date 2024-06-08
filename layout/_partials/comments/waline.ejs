@@ -9,6 +9,7 @@
           serverURL: '<%= theme.comment.config.waline.serverUrl %>',
           lang: '<%= theme.comment.config.waline.lang %>',
           dark: 'body[class~="dark-mode"]',
+          reaction: <%- waline_reaction_config(theme.comment.config.waline.reaction) %>,
           requiredMeta: ['nick', 'mail'],
           emoji: [<%- theme.comment.config.waline.emoji && theme.comment.config.waline.emoji.map(
             (item) => `'${item}'`
