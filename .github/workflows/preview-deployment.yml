@@ -25,14 +25,14 @@ jobs:
             core.setOutput('repo', isPr ? context.payload.pull_request.head.repo.full_name : context.repo.full_name)
 
       - name: Checkout theme repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: 'theme' # Checkout the theme repository into a directory named 'theme'
           ref: ${{ steps.script.outputs.ref }}
           repository: ${{ steps.script.outputs.repo }}
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '20.x' # Specify your required Node.js version
 
@@ -40,7 +40,7 @@ jobs:
         run: git clone https://github.com/EvanNotFound/redefine-demo.git hexo-site
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'  # Ensure compatibility with Python 3.x
 
