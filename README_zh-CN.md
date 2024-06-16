@@ -90,7 +90,6 @@ theme: redefine
 ```
 
 
-
 ## ⏫ 更新
 
 Theme Redefine 经常发布新版本，你可以通过如下命令更新 Theme Redefine。
