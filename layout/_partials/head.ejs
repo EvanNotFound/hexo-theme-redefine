@@ -87,10 +87,6 @@
             <% } }%>
     <% } }%>
 
-    <% if (theme.global.preloader) { %>
-        <%- partial('_partials/preloader') %>
-    <% } %>
-
     <%- css('css/style') %>
 
     <% if (theme.developer && theme.developer.enable) {%>
@@ -115,6 +111,9 @@
         <link href="<%- theme.global.fonts.english.url %>" rel="stylesheet">
     <% } %>
 
+    <% if (theme.global.preloader) { %>
+        <%- renderJS('js/libs/anime.min.js')%>
+    <% } %>
 
     <%- export_config() %>
     
