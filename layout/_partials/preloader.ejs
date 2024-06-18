@@ -89,20 +89,20 @@
         var animation = anime.timeline({loop: true})
             .add({
                 targets: '.ml13 .letter',
-                translateY: [60,0],
+                translateY: [40,0],
                 translateZ: 0,
                 opacity: [0,1],
                 filter: ['blur(5px)', 'blur(0px)'], // Starting from blurred to unblurred
                 easing: "easeOutExpo",
-                duration: 1200,
+                duration: 1400,
                 delay: (el, i) => 300 + 30 * i,
             }).add({
                 targets: '.ml13 .letter',
-                translateY: [0,-60],
+                translateY: [0,-40],
                 opacity: [1,0],
                 filter: ['blur(0px)', 'blur(5px)'], // Ending from unblurred to blurred
                 easing: "easeInExpo",
-                duration: 1000,
+                duration: 1200,
                 delay: (el, i) => 100 + 30 * i,
                 complete: function() {
                     hidePreloader(); // Call hidePreloader after the animation completes
