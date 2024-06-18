@@ -10,9 +10,9 @@
 
 # hexo-theme-redefine
 
-The "Redefine" Hexo theme captures **simplicity, speed, and purity** without sacrificing functionality or design. With a sleek, modern look and a host of practical features, it combines beauty with utility effortlessly.
+Hexo-theme-Redefine reimagines simplicity, speed, and purity, without sacrificing functionality or design. Its sleek, modern aesthetic is packed with useful features, blending style and practicality seamlessly.
 
-Building on the solid foundation of [hexo-theme-keep](https://github.com/XPoet/hexo-theme-keep), "Redefine" enhances the style and integrates valuable writing modules and plugins. This theme invites personalization, with extensive customization options that let you tailor every detail to your liking. Your blogging journey becomes a unique, user-friendly experience, reflecting your personal style and needs.
+Building on the solid foundation of hexo-theme-keep, "Redefine" elevates the style and incorporates valuable writing tools and plugins. It offers extensive customization options, allowing you to tailor every detail to your preferences. With Redefine, your blogging experience becomes unique and effortless, showcasing your personal style and needs.
 
 <p align="center">
     <a href="https://www.npmjs.com/package/hexo-theme-redefine">
