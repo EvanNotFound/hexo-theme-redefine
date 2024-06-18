@@ -31,17 +31,17 @@ $navbar-width-pages = $navbar-width-pages-data ? convert($navbar-width-pages-dat
 // ========================================================================================
 
 $h1-heading-margin-top-data = hexo-config('articles.style.headings_top_spacing.h1')
-$h1-heading-margin-top = $h1-heading-margin-top-data ? convert($h1-heading-margin-top-data) : 5rem
+$h1-heading-margin-top = $h1-heading-margin-top-data ? convert($h1-heading-margin-top-data) : 3.2rem
 $h2-heading-margin-top-data = hexo-config('articles.style.headings_top_spacing.h2')
-$h2-heading-margin-top = $h2-heading-margin-top-data ? convert($h2-heading-margin-top-data) : 4rem
+$h2-heading-margin-top = $h2-heading-margin-top-data ? convert($h2-heading-margin-top-data) : 2.4rem
 $h3-heading-margin-top-data = hexo-config('articles.style.headings_top_spacing.h3')
-$h3-heading-margin-top = $h3-heading-margin-top-data ? convert($h3-heading-margin-top-data) : 2.8rem
+$h3-heading-margin-top = $h3-heading-margin-top-data ? convert($h3-heading-margin-top-data) : 1.9rem
 $h4-heading-margin-top-data = hexo-config('articles.style.headings_top_spacing.h4')
-$h4-heading-margin-top = $h4-heading-margin-top-data ? convert($h4-heading-margin-top-data) : 2.5rem
+$h4-heading-margin-top = $h4-heading-margin-top-data ? convert($h4-heading-margin-top-data) : 1.6rem
 $h5-heading-margin-top-data = hexo-config('articles.style.headings_top_spacing.h5')
-$h5-heading-margin-top = $h5-heading-margin-top-data ? convert($h5-heading-margin-top-data) : 2.2rem
+$h5-heading-margin-top = $h5-heading-margin-top-data ? convert($h5-heading-margin-top-data) : 1.4rem
 $h6-heading-margin-top-data = hexo-config('articles.style.headings_top_spacing.h6')
-$h6-heading-margin-top = $h6-heading-margin-top-data ? convert($h6-heading-margin-top-data) : 2rem
+$h6-heading-margin-top = $h6-heading-margin-top-data ? convert($h6-heading-margin-top-data) : 1.3rem
 
 
 // ========================================================================================
@@ -232,25 +232,25 @@ $home-banner-icons-container-background-color-dark = rgba(197, 197, 197, 0.3)
 
 if hexo-config('global.fonts.chinese.enable') {
   $temp-chinese-font-family = hexo-config('global.fonts.chinese.family')
-  $chinese-font-family = $temp-chinese-font-family ? $temp-chinese-font-family : 'Noto Sans SC'
+  $chinese-font-family = $temp-chinese-font-family ? $temp-chinese-font-family : 'PingFang SC'
 } else {
-  $chinese-font-family = 'Noto Sans SC', sans-serif
+  $chinese-font-family = -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', 'Heiti SC', 'WenQuanYi Micro Hei', sans-serif;
 }
 
 if hexo-config('global.fonts.english.enable') {
   $temp-english-font-family = hexo-config('global.fonts.english.family')
-  $english-font-family = $temp-english-font-family ? $temp-english-font-family : 'Satoshi-Variable'
+  $english-font-family = $temp-english-font-family ? $temp-english-font-family : 'Geist Variable'
 } else {
-  $english-font-family = 'Satoshi-Variable', sans-serif
+  $english-font-family = 'Geist Variable'
 }
 
-$default-font-family = Satoshi-Variable, Noto Sans SC, -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial
+$default-font-family = Geist Variable, Noto Sans SC, -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial
 $default-font-size = 16px
 $temp-default-article-font-size = hexo-config('articles.style.font_size')
 $temp-default-line-height = hexo-config('articles.style.line_height')
 $default-article-font-size = $temp-default-article-font-size ? convert($temp-default-article-font-size) : 16px
 $default-line-height = $temp-default-line-height ? $temp-default-line-height : 1.5
-$default-font-weight = 450
+$default-font-weight = 400
 
 // ========================================================================================
 //                                  LIGHT/DARK MODE SWITCH

@@ -103,63 +103,82 @@
     font-family $english-font-family, $chinese-font-family, sans-serif
     color var(--second-text-color)
     line-height $default-line-height
-    margin-bottom 1rem !important
 
     +redefine-tablet()
       line-height: $default-line-height * 0.96
 
   h1, .h1
     font-size 3.2rem
-    font-weight 700
+    font-weight 650
     border-bottom solid 2px var(--fourth-text-color)
     margin-top $h1-heading-margin-top
+    margin-bottom 1rem
+    letter-spacing -0.025em
+    line-height 1.2
 
     +redefine-tablet()
       font-size 1.7rem
+      line-height 1.2
 
   h2, .h2
     font-size 2.5rem
-    font-weight 700
+    font-weight 650
     padding 3px 0
     border-bottom solid 2px var(--fourth-text-color)
     margin-top $h2-heading-margin-top
+    margin-bottom 1rem
+    letter-spacing -0.025em
+    line-height 1.1
 
     +redefine-tablet()
       font-size 1.6rem
+      line-height 1.1
 
   h3, .h3
     font-size 1.8rem
     font-weight 600
     margin-top $h3-heading-margin-top
+    margin-bottom 0.75rem
+    letter-spacing -0.025em
+    line-height 1.3
 
     +redefine-tablet()
       font-size 1.5rem
+      line-height 1.2
 
   h4, .h4
     font-size 1.5rem
     font-weight 600
     margin-top $h4-heading-margin-top
+    margin-bottom 0.75rem
+    line-height 1.4
 
     +redefine-tablet()
       font-size 1.4rem
+      line-height 1.3
 
   h5, .h5
     font-size 1.28rem
     font-weight 600
     margin-top $h5-heading-margin-top
+    margin-bottom 0.5rem
+    line-height 1.3
 
     +redefine-tablet()
       font-size 1.18rem
+      line-height 1.2
 
   h6, .h6
     font-size 1.2rem
     font-weight 600
-    line-height $default-line-height
     margin-top $h6-heading-margin-top
+    margin-bottom 0.5rem
+    line-height 1.2
 
     +redefine-tablet()
       font-size 1.1rem
       line-height 1.1
+
 
   img
     box-sizing border-box
@@ -176,7 +195,8 @@
 
   
 
-  & > table
+  & > table,
+  .tab-pane > table
     border-spacing 0
     border-collapse collapse
     width 100%

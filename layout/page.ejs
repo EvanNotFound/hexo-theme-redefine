@@ -1,4 +1,7 @@
 <%- partial('_widgets/progress-bar') %>
+<% if (theme.global.preloader) { %>
+    <%- partial('_partials/preloader') %>
+<% } %>
 <main class="page-container" id="swup">
 
     <% if (theme.home_banner.enable === true && is_home() && !page.prev) { %>

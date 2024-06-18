@@ -87,10 +87,6 @@
             <% } }%>
     <% } }%>
 
-    <% if (theme.global.preloader) { %>
-        <%- partial('_partials/preloader') %>
-    <% } %>
-
     <%- css('css/style') %>
 
     <% if (theme.developer && theme.developer.enable) {%>
@@ -99,8 +95,8 @@
         <%- renderCSS('assets/build/styles.css') %>
     <% } %>
 
-    <%- renderCSS('fonts/fonts.css') %>
-    <%- renderCSS('fonts/Satoshi/satoshi.css') %>
+    <%- renderCSS('fonts/GeistMono/geist-mono.css') %>
+    <%- renderCSS('fonts/Geist/geist.css') %>
     <!--- Font Part-->
     <% if (theme.home_banner.custom_font.enable) { %>
         <link href="<%- theme.home_banner.custom_font.url %>" rel="stylesheet">
@@ -115,6 +111,9 @@
         <link href="<%- theme.global.fonts.english.url %>" rel="stylesheet">
     <% } %>
 
+    <% if (theme.global.preloader) { %>
+        <%- renderJS('js/libs/anime.min.js')%>
+    <% } %>
 
     <%- export_config() %>
     

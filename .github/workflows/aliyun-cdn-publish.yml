@@ -1,0 +1,32 @@
+name: Publish to Aliyun
+
+on:
+  release:
+    types: [published]
+
+  workflow_dispatch:
+
+jobs:
+  aliyun-cdn-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Setup Aliyun OSS
+        uses: manyuanrong/setup-ossutil@master
+        with:
+          endpoint: ${{ secrets.ALI_ENDPOINT }}
+          access-key-id: ${{ secrets.ALI_ACCESSKEYID }}
+          access-key-secret: ${{ secrets.ALI_ACCESSKEYSECRET }}
+
+      - name: Upload to Aliyun OSS
+        run: |
+          VERSION=$(echo ${{ github.event.release.name }} | sed 's/v//')
+          ossutil cp -r source/ oss://${{ secrets.ALI_BUCKET }}/projects/hexo-theme-redefine@$VERSION/source/

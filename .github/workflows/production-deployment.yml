@@ -9,17 +9,17 @@ on:
     - main
 
 jobs:
-  Deploy-Production:
+  production-deployment:
     runs-on: ubuntu-latest
     
     steps:
       - name: Checkout theme repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: 'theme' # Checkout the theme repository into a directory named 'theme'
 
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: '20.x' # Specify your required Node.js version
 
@@ -42,20 +42,8 @@ jobs:
           npm uninstall hexo-theme-redefine
           npm run build
 
-
-#      - name: Install Vercel CLI
-#        run: npm install --global vercel@canary
-
       - name: Change directory to hexo-site
         run: echo "HEXO_SITE_DIR=${{ github.workspace }}/hexo-site" >> $GITHUB_ENV
-
-#      - uses: amondnet/vercel-action@v20 #deploy
-#        with:
-#          vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
-#          vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}  #Required
-#          github-token: ${{ secrets.GITHUB_TOKEN }} #Optional
-#          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}} #Required
-#          working-directory: ${{ env.HEXO_SITE_DIR }}
 
       - name: Deploy to Vercel Action
         uses: EvanNotFound/vercel-deployment-for-github-actions@v1.1.0
@@ -69,16 +57,3 @@ jobs:
           PRODUCTION: true
           DEPLOY_PR_FROM_FORK: true
           PR_PREVIEW_DOMAIN: "redefine-preview-pr-{PR}.vercel.app"
-
-
-        # - name: Pull Vercel Environment Information
-      #   run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
-      #   working-directory: ${{ env.HEXO_SITE_DIR }}
-        
-      # - name: Build Project Artifacts
-      #   run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
-      #   working-directory: ${{ env.HEXO_SITE_DIR }}
-        
-      # - name: Deploy Project Artifacts to Vercel
-      #   run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
-      #   working-directory: ${{ env.HEXO_SITE_DIR }}

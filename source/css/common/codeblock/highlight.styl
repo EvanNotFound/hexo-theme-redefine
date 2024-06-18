@@ -11,10 +11,11 @@ $code-block
   background var(--highlight-background)
 
 pre, code
+  line-height 1.5 !important
   if (hexo-config('articles.code_block.font.enable') && hexo-config('articles.code_block.font.family'))
-    font-family hexo-config('articles.code_block.font.family'), 'Ubuntu Mono', Courier, monospace !important
+    font-family hexo-config('articles.code_block.font.family'), 'Geist Mono', Courier, monospace !important
   else
-    font-family 'Ubuntu Mono', Courier, monospace
+    font-family 'Geist Mono', Courier, monospace !important
 
 pre.mermaid
   background-color var(--background-color)
@@ -24,15 +25,16 @@ pre.mermaid
     margin auto
 
 code
-  padding 4px
+  padding 3px 4px
   word-wrap break-word
   border-radius $redefine-border-radius-xsmall
-  font-size 0.96em
+  font-size 0.875rem !important
   color var(--code-foreground)
   background var(--code-background)
 
 pre
   @extend $code-block
+  font-size 0.9rem !important
   padding-top 14px !important
   tab-size 4
 
