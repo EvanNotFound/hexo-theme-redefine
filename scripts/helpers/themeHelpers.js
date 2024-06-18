@@ -94,7 +94,7 @@ hexo.extend.helper.register("renderJS", function (path) {
     staticfile: "https://cdn.staticfile.net",
     bootcdn: "https://cdn.bootcdn.net/ajax/libs",
     sustech: "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs",
-    zstatic: "https://s4.zstatic.net/npm",
+    zstatic: "https://s4.zstatic.net/ajax/libs",
     cdnjs: "https://cdnjs.cloudflare.com/ajax/libs",
     unpkg: "https://unpkg.com",
     jsdelivr: "https://cdn.jsdelivr.net/npm",
@@ -123,7 +123,8 @@ hexo.extend.helper.register("renderJS", function (path) {
       this.theme.cdn.provider === "staticfile" ||
       this.theme.cdn.provider === "bootcdn" ||
       this.theme.cdn.provider === "cdnjs" ||
-      this.theme.cdn.provider === "sustech"
+      this.theme.cdn.provider === "sustech" ||
+      this.theme.cdn.provider === "zstatic"
     ) {
       return this.theme.cdn.enable
         ? `<script src="${cdnBase}/hexo-theme-redefine/${themeVersion}/${path}"></script>`
@@ -183,7 +184,8 @@ hexo.extend.helper.register("renderJSModule", function (path) {
       this.theme.cdn.provider === "staticfile" ||
       this.theme.cdn.provider === "bootcdn" ||
       this.theme.cdn.provider === "cdnjs" ||
-      this.theme.cdn.provider === "sustech"
+      this.theme.cdn.provider === "sustech" ||
+      this.theme.cdn.provider === "zstatic"
     ) {
       return this.theme.cdn.enable
         ? `<script type="module" src="${cdnBase}/hexo-theme-redefine/${themeVersion}/${path}"></script>`
@@ -241,7 +243,8 @@ hexo.extend.helper.register("renderJSPath", function (path) {
       this.theme.cdn.provider === "staticfile" ||
       this.theme.cdn.provider === "bootcdn" ||
       this.theme.cdn.provider === "cdnjs" ||
-      this.theme.cdn.provider === "sustech"
+      this.theme.cdn.provider === "sustech" ||
+      this.theme.cdn.provider === "zstatic"
     ) {
       return this.theme.cdn.enable
         ? `${cdnBase}/hexo-theme-redefine/${themeVersion}/${path}`
@@ -301,7 +304,8 @@ hexo.extend.helper.register("renderCSS", function (path) {
       this.theme.cdn.provider === "staticfile" ||
       this.theme.cdn.provider === "bootcdn" ||
       this.theme.cdn.provider === "cdnjs" ||
-      this.theme.cdn.provider === "sustech"
+      this.theme.cdn.provider === "sustech" ||
+      this.theme.cdn.provider === "zstatic"
     ) {
       return this.theme.cdn.enable
         ? `<link rel="stylesheet" href="${cdnBase}/hexo-theme-redefine/${themeVersion}/${path}">`
