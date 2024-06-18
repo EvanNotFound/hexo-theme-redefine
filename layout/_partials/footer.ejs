@@ -33,7 +33,7 @@
             <% } %>
         </div>
         <% if (theme.global.website_counter.enable === true) { %>
-            <script <%= theme.global.single_page === true ? 'data-swup-reload-script' : '' %> src="<%= theme.global.website_counter.url ? theme.global.website_counter.url : "//vercount.one/js" %>"></script>
+            <script <%= theme.global.single_page === true ? 'data-swup-reload-script' : '' %> src="<%= theme.global.website_counter.url ? theme.global.website_counter.url : "https://vercount.one/js" %>"></script>
             <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
                 <% if (theme.global.website_counter.site_uv) { %>
                     <span id="busuanzi_container_site_uv" class="lg:!block">
