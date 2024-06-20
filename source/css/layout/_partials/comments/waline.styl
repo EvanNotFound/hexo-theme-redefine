@@ -626,15 +626,19 @@
     font-size 0.75em
 
 .wl-card .wl-meta
+    display flex
+    flex-direction row
     position relative
     line-height 1
 
 .wl-card .wl-meta>span
-    display inline-block
+    display flex
+    align-items center
+    flex-direction row
     margin-inline-end 0.25em
     padding 2px 4px
     border-radius 0.2em
-    background var(--waline-info-bgcolor)
+    background var(--second-background-color)
     color var(--waline-info-color)
     font-size var(--waline-info-font-size)
     line-height 1.5
