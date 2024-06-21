@@ -65,6 +65,7 @@ hexo.on("ready", async () => {
     hexo.locals.set(`cdnTestStatus_cdnjs`, 404);
     hexo.locals.set(`cdnTestStatus_sustech`, 404);
     hexo.locals.set(`cdnTestStatus_zstatic`, 404);
+    hexo.locals.set(`cdnTestStatus_npmMirror`, 404);
   }
 });
 
@@ -112,8 +113,19 @@ function checkVersionAndCDNAvailability(data) {
     );
   }
 
+  if (data.npmMirrorCDN) {
+    hexo.log.info(
+      `\x1b[32m%s\x1b[0m`,
+      `CDN available: NPMMirror (Recommended)`,
+    );
+    hexo.locals.set(`cdnTestStatus_npmMirror`, 200);
+  } else {
+    hexo.log.warn(`\x1b[31m%s\x1b[0m`, `NPMMirror CDN is unavailable yet.`);
+    hexo.locals.set(`cdnTestStatus_npmMirror`, 404);
+  }
+
   if (data.zstaticCDN) {
-    hexo.log.info(`\x1b[32m%s\x1b[0m`, `CDN available: ZStatic (Recommended)`);
+    hexo.log.info(`\x1b[32m%s\x1b[0m`, `CDN available: ZStatic`);
     hexo.locals.set(`cdnTestStatus_zstatic`, 200);
   } else {
     hexo.log.warn(`\x1b[31m%s\x1b[0m`, `ZStatic CDN is unavailable yet.`);
