@@ -6,7 +6,7 @@ const url = require("url");
 const { version } = require("../../package.json");
 const themeVersion = version;
 
-hexo.extend.helper.register("isInHomePaging", function (pagePath, route) {
+hexo.extend.helper.register("isInHomePaging", (pagePath, route) => {
   if (pagePath.length > 5 && route === "/") {
     return pagePath.slice(0, 5) === "page/";
   }
@@ -15,7 +15,7 @@ hexo.extend.helper.register("isInHomePaging", function (pagePath, route) {
 });
 
 /* code block language display */
-hexo.extend.filter.register("after_post_render", function (data) {
+hexo.extend.filter.register("after_post_render", (data) => {
   const pattern = /<figure class="highlight ([a-zA-Z+\-/#]+)">.*?<\/figure>/g;
   data.content = data.content.replace(pattern, function (match, p1) {
     let language = p1 || "code";
@@ -38,7 +38,7 @@ hexo.extend.filter.register("after_post_render", function (data) {
   return data;
 });
 
-hexo.extend.helper.register("createNewArchivePosts", function (posts) {
+hexo.extend.helper.register("createNewArchivePosts", (posts) => {
   const postList = [],
     postYearList = [];
   posts.forEach((post) => postYearList.push(post.date.year()));
@@ -76,7 +76,7 @@ hexo.extend.helper.register(
   },
 );
 
-hexo.extend.helper.register("getPostUrl", function (rootUrl, path) {
+hexo.extend.helper.register("getPostUrl", (rootUrl, path) => {
   if (rootUrl) {
     let { href } = new URL(rootUrl);
     if (href.substring(href.length - 1) !== "/") {
@@ -88,7 +88,7 @@ hexo.extend.helper.register("getPostUrl", function (rootUrl, path) {
   }
 });
 
-hexo.extend.helper.register("renderJS", function (path) {
+hexo.extend.helper.register("renderJS", (path) => {
   const _js = hexo.extend.helper.get("js").bind(hexo);
 
   const cdnProviders = {
@@ -147,7 +147,7 @@ hexo.extend.helper.register("renderJS", function (path) {
   return renderedScripts;
 });
 
-hexo.extend.helper.register("renderJSModule", function (path) {
+hexo.extend.helper.register("renderJSModule", (path) => {
   const _js = hexo.extend.helper.get("js").bind(hexo);
 
   const cdnProviders = {
@@ -206,7 +206,7 @@ hexo.extend.helper.register("renderJSModule", function (path) {
   return renderedScripts;
 });
 
-hexo.extend.helper.register("renderJSPath", function (path) {
+hexo.extend.helper.register("renderJSPath", (path) => {
   const _url_for = hexo.extend.helper.get("url_for").bind(hexo);
 
   const cdnProviders = {
@@ -263,7 +263,7 @@ hexo.extend.helper.register("renderJSPath", function (path) {
   return renderedScripts;
 });
 
-hexo.extend.helper.register("renderCSS", function (path) {
+hexo.extend.helper.register("renderCSS", (path) => {
   const _css = hexo.extend.helper.get("css").bind(hexo);
 
   const cdnProviders = {
