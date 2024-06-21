@@ -40,10 +40,10 @@
                 <% } else if (is_tag()) { %>
                     <%- partial('tag-content') %>
 
-                <% } else if (page.title === 'category' || page.title === 'categories') { %>
+                <% } else if (page.title === 'category' || page.title === 'categories' || page.type === "categories" || page.type === "category") { %>
                     <%- partial('category-list') %>
 
-                <% } else if (page.title === 'tag' || page.title === 'tags') { %>
+                <% } else if (page.title === 'tag' || page.title === 'tags' || page.type === "tags" || page.type === "tag") { %>
                     <%- partial('_widgets/tagcloud') %>
 
                 <% } else if (page.title === 'Page Not Found' || page.title === '404') { %>
