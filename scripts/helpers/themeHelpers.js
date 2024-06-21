@@ -90,231 +90,223 @@ hexo.extend.helper.register("getPostUrl", function (rootUrl, path) {
 
 hexo.extend.helper.register("renderJS", function (path) {
   const _js = hexo.extend.helper.get("js").bind(hexo);
+
   const cdnProviders = {
-    staticfile: "https://cdn.staticfile.net",
-    bootcdn: "https://cdn.bootcdn.net/ajax/libs",
-    sustech: "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs",
-    zstatic: "https://s4.zstatic.net/ajax/libs",
-    cdnjs: "https://cdnjs.cloudflare.com/ajax/libs",
-    unpkg: "https://unpkg.com",
-    jsdelivr: "https://cdn.jsdelivr.net/npm",
-    aliyun: "https://evan.beee.top/projects",
+    staticfile: "https://cdn.staticfile.net/hexo-theme-redefine/:version/:path",
+    bootcdn:
+      "https://cdn.bootcdn.net/ajax/libs/hexo-theme-redefine/:version/:path",
+    sustech:
+      "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-redefine/:version/:path",
+    zstatic:
+      "https://s4.zstatic.net/ajax/libs/hexo-theme-redefine/:version/:path",
+    cdnjs:
+      "https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-redefine/:version/:path",
+    unpkg: "https://unpkg.com/hexo-theme-redefine@:version/source/:path",
+    jsdelivr:
+      "https://cdn.jsdelivr.net/npm/hexo-theme-redefine@:version/source/:path",
+    aliyun:
+      "https://evan.beee.top/projects/hexo-theme-redefine/:version/source/:path",
+    npmmirror:
+      "https://registry.npmmirror.com/hexo-theme-redefine/:version/files/source/:path",
     custom: this.theme.cdn.custom_url,
   };
 
   const cdnPathHandle = (path) => {
-    if (
-      this.theme.cdn.provider === ("staticfile" || "bootcdn" || "cdnjs") &&
-      hexo.locals.get(`cdnTestStatus_${this.theme.cdn.provider}`) !== 200
-    ) {
-      return _js(path);
-    }
-
     const cdnBase =
       cdnProviders[this.theme.cdn.provider] || cdnProviders.staticfile;
-    if (this.theme.cdn.provider === "custom") {
-      const customUrl = cdnBase
-        .replace("${version}", themeVersion)
-        .replace("${path}", path);
-      return this.theme.cdn.enable
-        ? `<script src="${customUrl}"></script>`
-        : _js(path);
-    } else if (
-      this.theme.cdn.provider === "staticfile" ||
-      this.theme.cdn.provider === "bootcdn" ||
-      this.theme.cdn.provider === "cdnjs" ||
-      this.theme.cdn.provider === "sustech" ||
-      this.theme.cdn.provider === "zstatic"
-    ) {
-      return this.theme.cdn.enable
-        ? `<script src="${cdnBase}/hexo-theme-redefine/${themeVersion}/${path}"></script>`
-        : _js(path);
+    let jsScript;
+
+    if (this.theme.cdn.enable) {
+      if (this.theme.cdn.provider === "custom") {
+        const customUrl = cdnBase
+          .replace(":version", themeVersion)
+          .replace(":path", path);
+        jsScript = `<script src="${
+          this.theme.cdn.enable ? customUrl : _js(path)
+        }"></script>`;
+      } else {
+        jsScript = `<script src="${cdnBase
+          .replace(":version", themeVersion)
+          .replace(":path", path)}"></script>`;
+      }
     } else {
-      return this.theme.cdn.enable
-        ? `<script src="${cdnBase}/hexo-theme-redefine@${themeVersion}/source/${path}"></script>`
-        : _js(path);
+      jsScript = _js(path);
     }
+
+    return jsScript;
   };
 
-  let t = "";
+  let renderedScripts = "";
 
   if (Array.isArray(path)) {
-    for (const p of path) {
-      t += cdnPathHandle(p);
-    }
+    renderedScripts = path.map(cdnPathHandle).join("");
   } else {
-    t = cdnPathHandle(path);
+    renderedScripts = cdnPathHandle(path);
   }
 
-  return t;
+  return renderedScripts;
 });
 
 hexo.extend.helper.register("renderJSModule", function (path) {
   const _js = hexo.extend.helper.get("js").bind(hexo);
+
   const cdnProviders = {
-    staticfile: "https://cdn.staticfile.net",
-    bootcdn: "https://cdn.bootcdn.net/ajax/libs",
-    sustech: "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs",
-    zstatic: "https://s4.zstatic.net/ajax/libs",
-    cdnjs: "https://cdnjs.cloudflare.com/ajax/libs",
-    unpkg: "https://unpkg.com",
-    jsdelivr: "https://cdn.jsdelivr.net/npm",
-    aliyun: "https://evan.beee.top/projects",
+    staticfile: "https://cdn.staticfile.net/hexo-theme-redefine/:version/:path",
+    bootcdn:
+      "https://cdn.bootcdn.net/ajax/libs/hexo-theme-redefine/:version/:path",
+    sustech:
+      "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-redefine/:version/:path",
+    zstatic:
+      "https://s4.zstatic.net/ajax/libs/hexo-theme-redefine/:version/:path",
+    cdnjs:
+      "https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-redefine/:version/:path",
+    unpkg: "https://unpkg.com/hexo-theme-redefine@:version/source/:path",
+    jsdelivr:
+      "https://cdn.jsdelivr.net/npm/hexo-theme-redefine@:version/source/:path",
+    aliyun:
+      "https://evan.beee.top/projects/hexo-theme-redefine/:version/source/:path",
+    npmmirror:
+      "https://registry.npmmirror.com/hexo-theme-redefine/:version/files/source/:path",
     custom: this.theme.cdn.custom_url,
   };
 
   const cdnPathHandle = (path) => {
-    if (
-      this.theme.cdn.provider === ("staticfile" || "bootcdn" || "cdnjs") &&
-      hexo.locals.get(`cdnTestStatus_${this.theme.cdn.provider}`) !== 200
-    ) {
-      return _js({ src: path, type: "module" });
-    }
-
     const cdnBase =
       cdnProviders[this.theme.cdn.provider] || cdnProviders.staticfile;
-    if (this.theme.cdn.provider === "custom") {
-      const customUrl = cdnBase
-        .replace("${version}", themeVersion)
-        .replace("${path}", path);
-      return this.theme.cdn.enable
-        ? `<script type="module" src="${customUrl}"></script>`
-        : _js({ src: path, type: "module" });
-    } else if (
-      this.theme.cdn.provider === "staticfile" ||
-      this.theme.cdn.provider === "bootcdn" ||
-      this.theme.cdn.provider === "cdnjs" ||
-      this.theme.cdn.provider === "sustech" ||
-      this.theme.cdn.provider === "zstatic"
-    ) {
-      return this.theme.cdn.enable
-        ? `<script type="module" src="${cdnBase}/hexo-theme-redefine/${themeVersion}/${path}"></script>`
-        : _js({ src: path, type: "module" });
+    let jsModuleScript;
+
+    if (this.theme.cdn.enable) {
+      if (this.theme.cdn.provider === "custom") {
+        const customUrl = cdnBase
+          .replace(":version", themeVersion)
+          .replace(":path", path);
+        jsModuleScript = `<script type="module" src="${
+          this.theme.cdn.enable ? customUrl : _js({ src: path, type: "module" })
+        }"></script>`;
+      } else {
+        jsModuleScript = `<script type="module" src="${cdnBase
+          .replace(":version", themeVersion)
+          .replace(":path", path)}"></script>`;
+      }
     } else {
-      return this.theme.cdn.enable
-        ? `<script type="module" src="${cdnBase}/hexo-theme-redefine@${themeVersion}/source/${path}"></script>`
-        : _js({ src: path, type: "module" });
+      jsModuleScript = _js({ src: path, type: "module" });
     }
+
+    return jsModuleScript;
   };
 
-  let t = "";
+  let renderedScripts = "";
 
   if (Array.isArray(path)) {
-    for (const p of path) {
-      t += cdnPathHandle(p);
-    }
+    renderedScripts = path.map(cdnPathHandle).join("");
   } else {
-    t = cdnPathHandle(path);
+    renderedScripts = cdnPathHandle(path);
   }
 
-  return t;
+  return renderedScripts;
 });
 
 hexo.extend.helper.register("renderJSPath", function (path) {
   const _url_for = hexo.extend.helper.get("url_for").bind(hexo);
+
   const cdnProviders = {
-    staticfile: "https://cdn.staticfile.net",
-    bootcdn: "https://cdn.bootcdn.net/ajax/libs",
-    sustech: "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs",
-    zstatic: "https://s4.zstatic.net/ajax/libs",
-    cdnjs: "https://cdnjs.cloudflare.com/ajax/libs",
-    unpkg: "https://unpkg.com",
-    jsdelivr: "https://cdn.jsdelivr.net/npm",
-    aliyun: "https://evan.beee.top/projects",
+    staticfile: "https://cdn.staticfile.net/hexo-theme-redefine/:version/:path",
+    bootcdn:
+      "https://cdn.bootcdn.net/ajax/libs/hexo-theme-redefine/:version/:path",
+    sustech:
+      "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-redefine/:version/:path",
+    zstatic:
+      "https://s4.zstatic.net/ajax/libs/hexo-theme-redefine/:version/:path",
+    cdnjs:
+      "https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-redefine/:version/:path",
+    unpkg: "https://unpkg.com/hexo-theme-redefine@:version/source/:path",
+    jsdelivr:
+      "https://cdn.jsdelivr.net/npm/hexo-theme-redefine@:version/source/:path",
+    aliyun:
+      "https://evan.beee.top/projects/hexo-theme-redefine/:version/source/:path",
+    npmmirror:
+      "https://registry.npmmirror.com/hexo-theme-redefine/:version/files/source/:path",
     custom: this.theme.cdn.custom_url,
   };
 
   const cdnPathHandle = (path) => {
-    if (
-      this.theme.cdn.provider === ("staticfile" || "bootcdn" || "cdnjs") &&
-      hexo.locals.get(`cdnTestStatus_${this.theme.cdn.provider}`) !== 200
-    ) {
-      return _url_for(path);
-    }
-
     const cdnBase =
       cdnProviders[this.theme.cdn.provider] || cdnProviders.staticfile;
-    if (this.theme.cdn.provider === "custom") {
-      const customUrl = cdnBase
-        .replace("${version}", themeVersion)
-        .replace("${path}", path);
-      return this.theme.cdn.enable ? customUrl : _url_for(path);
-    } else if (
-      this.theme.cdn.provider === "staticfile" ||
-      this.theme.cdn.provider === "bootcdn" ||
-      this.theme.cdn.provider === "cdnjs" ||
-      this.theme.cdn.provider === "sustech" ||
-      this.theme.cdn.provider === "zstatic"
-    ) {
-      return this.theme.cdn.enable
-        ? `${cdnBase}/hexo-theme-redefine/${themeVersion}/${path}`
-        : _url_for(path);
+    let jsScript;
+
+    if (this.theme.cdn.enable) {
+      if (this.theme.cdn.provider === "custom") {
+        const customUrl = cdnBase
+          .replace(":version", themeVersion)
+          .replace(":path", path);
+        jsScript = this.theme.cdn.enable ? customUrl : _url_for(path);
+      } else {
+        jsScript = `${cdnBase
+          .replace(":version", themeVersion)
+          .replace(":path", path)}`;
+      }
     } else {
-      return this.theme.cdn.enable
-        ? `${cdnBase}/hexo-theme-redefine@${themeVersion}/source/${path}`
-        : _url_for(path);
+      jsScript = _url_for(path);
     }
+
+    return jsScript;
   };
 
-  let t = "";
+  let renderedScripts = "";
 
   if (Array.isArray(path)) {
-    for (const p of path) {
-      t += cdnPathHandle(p);
-    }
+    renderedScripts = path.map(cdnPathHandle).join("");
   } else {
-    t = cdnPathHandle(path);
+    renderedScripts = cdnPathHandle(path);
   }
 
-  return t;
+  return renderedScripts;
 });
 
 hexo.extend.helper.register("renderCSS", function (path) {
   const _css = hexo.extend.helper.get("css").bind(hexo);
+
   const cdnProviders = {
-    staticfile: "https://cdn.staticfile.net",
-    bootcdn: "https://cdn.bootcdn.net/ajax/libs",
-    sustech: "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs",
-    zstatic: "https://s4.zstatic.net/ajax/libs",
-    cdnjs: "https://cdnjs.cloudflare.com/ajax/libs",
-    unpkg: "https://unpkg.com",
-    jsdelivr: "https://cdn.jsdelivr.net/npm",
-    aliyun: "https://evan.beee.top/projects",
+    staticfile: "https://cdn.staticfile.net/hexo-theme-redefine/:version/:path",
+    bootcdn:
+      "https://cdn.bootcdn.net/ajax/libs/hexo-theme-redefine/:version/:path",
+    sustech:
+      "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-redefine/:version/:path",
+    zstatic:
+      "https://s4.zstatic.net/ajax/libs/hexo-theme-redefine/:version/:path",
+    cdnjs:
+      "https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-redefine/:version/:path",
+    unpkg: "https://unpkg.com/hexo-theme-redefine@:version/source/:path",
+    jsdelivr:
+      "https://cdn.jsdelivr.net/npm/hexo-theme-redefine@:version/source/:path",
+    aliyun:
+      "https://evan.beee.top/projects/hexo-theme-redefine/:version/source/:path",
+    npmmirror:
+      "https://registry.npmmirror.com/hexo-theme-redefine/:version/files/source/:path",
     custom: this.theme.cdn.custom_url,
   };
 
   const cdnPathHandle = (path) => {
-    if (
-      this.theme.cdn.provider === ("staticfile" || "bootcdn" || "cdnjs") &&
-      hexo.locals.get(`cdnTestStatus_${this.theme.cdn.provider}`) !== 200
-    ) {
-      return _css(path);
-    }
-
     const cdnBase =
       cdnProviders[this.theme.cdn.provider] || cdnProviders.staticfile;
-    if (this.theme.cdn.provider === "custom") {
-      const customUrl = cdnBase
-        .replace("${version}", themeVersion)
-        .replace("${path}", path);
-      return this.theme.cdn.enable
-        ? `<link rel="stylesheet" href="${customUrl}">`
-        : _css(path);
-    } else if (
-      this.theme.cdn.provider === "staticfile" ||
-      this.theme.cdn.provider === "bootcdn" ||
-      this.theme.cdn.provider === "cdnjs" ||
-      this.theme.cdn.provider === "sustech" ||
-      this.theme.cdn.provider === "zstatic"
-    ) {
-      return this.theme.cdn.enable
-        ? `<link rel="stylesheet" href="${cdnBase}/hexo-theme-redefine/${themeVersion}/${path}">`
-        : _css(path);
+    let cssLink;
+
+    if (this.theme.cdn.enable) {
+      if (this.theme.cdn.provider === "custom") {
+        const customUrl = cdnBase
+          .replace(":version", themeVersion)
+          .replace(":path", path);
+        cssLink = `<link rel="stylesheet" href="${customUrl}">`;
+      } else {
+        cssLink = `<link rel="stylesheet" href="${cdnBase
+          .replace(":version", themeVersion)
+          .replace(":path", path)}">`;
+      }
     } else {
-      return this.theme.cdn.enable
-        ? `<link rel="stylesheet" href="${cdnBase}/hexo-theme-redefine@${themeVersion}/source/${path}">`
-        : _css(path);
+      cssLink = _css(path);
     }
+
+    return cssLink;
   };
 
   if (Array.isArray(path)) {
