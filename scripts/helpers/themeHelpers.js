@@ -105,7 +105,7 @@ hexo.extend.helper.register("renderJS", function (path) {
     jsdelivr:
       "https://cdn.jsdelivr.net/npm/hexo-theme-redefine@:version/source/:path",
     aliyun:
-      "https://evan.beee.top/projects/hexo-theme-redefine/:version/source/:path",
+      "https://evan.beee.top/projects/hexo-theme-redefine@:version/source/:path",
     npmmirror:
       "https://registry.npmmirror.com/hexo-theme-redefine/:version/files/source/:path",
     custom: this.theme.cdn.custom_url,
@@ -164,7 +164,7 @@ hexo.extend.helper.register("renderJSModule", function (path) {
     jsdelivr:
       "https://cdn.jsdelivr.net/npm/hexo-theme-redefine@:version/source/:path",
     aliyun:
-      "https://evan.beee.top/projects/hexo-theme-redefine/:version/source/:path",
+      "https://evan.beee.top/projects/hexo-theme-redefine@:version/source/:path",
     npmmirror:
       "https://registry.npmmirror.com/hexo-theme-redefine/:version/files/source/:path",
     custom: this.theme.cdn.custom_url,
@@ -223,7 +223,7 @@ hexo.extend.helper.register("renderJSPath", function (path) {
     jsdelivr:
       "https://cdn.jsdelivr.net/npm/hexo-theme-redefine@:version/source/:path",
     aliyun:
-      "https://evan.beee.top/projects/hexo-theme-redefine/:version/source/:path",
+      "https://evan.beee.top/projects/hexo-theme-redefine@:version/source/:path",
     npmmirror:
       "https://registry.npmmirror.com/hexo-theme-redefine/:version/files/source/:path",
     custom: this.theme.cdn.custom_url,
@@ -280,7 +280,7 @@ hexo.extend.helper.register("renderCSS", function (path) {
     jsdelivr:
       "https://cdn.jsdelivr.net/npm/hexo-theme-redefine@:version/source/:path",
     aliyun:
-      "https://evan.beee.top/projects/hexo-theme-redefine/:version/source/:path",
+      "https://evan.beee.top/projects/hexo-theme-redefine@:version/source/:path",
     npmmirror:
       "https://registry.npmmirror.com/hexo-theme-redefine/:version/files/source/:path",
     custom: this.theme.cdn.custom_url,
