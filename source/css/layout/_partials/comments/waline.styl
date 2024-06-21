@@ -6,14 +6,14 @@
     --waline-theme-color var(--primary-color)
     --waline-active-color lighten($primary-color, 10%)
     --waline-color #444
-    --waline-bgcolor #fff
-    --waline-bgcolor-light #f8f8f8
-    --waline-bgcolor-hover #f0f0f0
+    --waline-bgcolor var(--background-color)
+    --waline-bgcolor-light var(--second-background-color)
+    --waline-bgcolor-hover var(--second-background-color)
     --waline-border-color #ddd
     --waline-disable-bgcolor #f8f8f8
     --waline-disable-color #000
     --waline-code-bgcolor #282c34
-    --waline-bq-color #f0f0f0
+    --waline-bq-color var(--background-color)
     --waline-avatar-size 3.25rem
     --waline-m-avatar-size calc((var(--waline-avatar-size) * 9 / 13))
     --waline-badge-color #3498db
@@ -58,13 +58,13 @@
 [data-waline] hr
     margin 0.825em 0
     border-style dashed
-    border-color var(--waline-bgcolor-light)
+    border-color var(--second-background-color)
 
 [data-waline] code, [data-waline] pre
     margin 0
     padding 0.2em 0.4em
     border-radius 3px
-    background var(--waline-bgcolor-light)
+    background var(--second-background-color)
     font-size 85%
 
 [data-waline] pre
@@ -225,7 +225,7 @@
     margin 0.5em
     border var(--waline-border)
     border-radius 0.75em
-    background var(--waline-bgcolor)
+    background var(--background-color)
     box-shadow var(--redefine-box-shadow-flat)
 
     &:hover
@@ -302,7 +302,7 @@
     transition all 0.25s ease
 
 .wl-editor:focus, .wl-input:focus
-    background var(--waline-bgcolor-light)
+    background var(--second-background-color)
 
 .wl-preview
     padding 0 0.5em 0.5em
@@ -393,7 +393,7 @@
     max-width 526px
     border var(--waline-border)
     border-radius 6px
-    background var(--waline-bgcolor)
+    background var(--background-color)
     box-shadow var(--redefine-box-shadow-flat)
     opacity 0
     visibility hidden
@@ -490,7 +490,7 @@
     border-top-width 0
     border-bottom-right-radius 6px
     border-bottom-left-radius 6px
-    background var(--waline-bgcolor)
+    background var(--background-color)
 
 .wl-gif-popup
     position absolute
@@ -501,7 +501,7 @@
     padding 0.75em 0.75em 0.25em
     border var(--waline-border)
     border-radius 6px
-    background var(--waline-bgcolor)
+    background var(--background-color)
     box-shadow var(--redefine-box-shadow-flat)
     opacity 0
     visibility hidden
@@ -567,7 +567,7 @@
     top calc((var(--avatar-size) * 3 / 4))
     inset-inline-start calc((var(--avatar-size) * 3 / 4))
     border-radius 50%
-    background var(--waline-bgcolor)
+    background var(--background-color)
     box-shadow var(--redefine-box-shadow-flat)
 
 .wl-card-item
@@ -626,15 +626,19 @@
     font-size 0.75em
 
 .wl-card .wl-meta
+    display flex
+    flex-direction row
     position relative
     line-height 1
 
 .wl-card .wl-meta>span
-    display inline-block
+    display flex
+    align-items center
+    flex-direction row
     margin-inline-end 0.25em
     padding 2px 4px
     border-radius 0.2em
-    background var(--waline-info-bgcolor)
+    background var(--second-background-color)
     color var(--waline-info-color)
     font-size var(--waline-info-font-size)
     line-height 1.5
@@ -881,7 +885,7 @@
     padding 2px
     border 1px solid var(--waline-theme-color)
     border-radius 1em
-    background var(--waline-bgcolor)
+    background var(--background-color)
     color var(--waline-theme-color)
     font-weight 700
     font-size 0.75em
@@ -889,7 +893,7 @@
 
 .wl-reaction-item.active .wl-reaction-votes
     background var(--waline-theme-color)
-    color var(--waline-bgcolor)
+    color var(--background-color)
 
 .wl-reaction-text
     font-size 0.875em
@@ -1096,7 +1100,7 @@
     width var(--waline-user-avatar-size, 48px)
     height var(--waline-user-avatar-size, 48px)
 
-/* # sourceMappingURL=waline.css.map */
+
 /* # sourceMappingURL=waline.css.map */
 /* Waline meta */
 .wl-meta > span::before
