@@ -8,7 +8,7 @@
             </div>
             <% let previousDate = null; %>
             <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
-                <% postYear.postList.sort((a,b) => a.title.localeCompare(b.title)).forEach(post => { %>
+                <% postYear.postList.sort((a,b) => (a.date > b.date ? -1 : (a.date < b.date ? 1 : a.title.localeCompare(b.title)))).forEach(post => { %>
                     <% const currentDate = date(post.date, 'MM-DD'); %>
                     <% if (previousDate !== currentDate) { %>
                         <% if (previousDate) { %>
