@@ -38,7 +38,11 @@ export default function initTyped(id) {
     fetch(usrHitokotoAPI)
       .then((response) => response.json())
       .then((data) => {
-        typing(data.hitokoto);
+        if (data.from_who && theme.home_banner.subtitle.hitokoto.show_author) {
+          typing(data.hitokoto + "——" + data.from_who);
+        } else {
+          typing(data.hitokoto);
+        }
       })
       .catch(console.error);
   } else {
