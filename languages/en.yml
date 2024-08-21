@@ -40,6 +40,7 @@ friends: Friends
 friend: Friend
 timeline: Timeline
 shuoshuo: Shuoshuo
+status: Status
 
 # ----------------------------------------
 # Website count
@@ -49,7 +50,7 @@ site_pv: TOTAL PAGE VIEWS
 read_more: Read more
 wordcount: Words
 min2read: Mins
-status: Status
+
 
 # ----------------------------------------
 # Footer
