@@ -1,53 +1,47 @@
 @import '../variables.styl'
 
-$code-foreground = lighten($default-text-color, 2%)
-$code-background = darken($background-color, 5%)
-$highlight-foreground = lighten($default-text-color, 2%)
-$highlight-background = #fafafa
-$highlight-gutter-color = #373D3F
-$highlight-gutter-bg-color = #EEEEEE
-$highlight-keyword = #d73a49
-$highlight-link = #d73a49
-$highlight-built-in = #6f42c1
-$highlight-number = #005cc5
-$highlight-string = #032f62
-$highlight-regexp = #e36209
-$highlight-subst = #24292e
-$highlight-comment = #6a737d
-$highlight-doctag = #22863a
-$highlight-variable = #005cc5
-$highlight-attr = #22863a
-$highlight-bullet = #6f42c1
-$highlight-addition = #abe338
-$highlight-deletion = #ffa07a
-$night-code-foreground = lighten($dark-default-text-color, 2%)
-$night-code-background = lighten($dark-background-color, 10%)
-$night-highlight-foreground = lighten($dark-default-text-color, 2%)
-$night-highlight-background = #21252b
-$night-highlight-gutter-color = #bebec6
-$night-highlight-gutter-bg-color = #21252b
-$dark-highlight-keyword = #569CD6
-$dark-highlight-link = #569CD6
-$dark-highlight-built-in = #4EC9B0
-$dark-highlight-number = #B8D7A3
-$dark-highlight-string = #D69D85
-$dark-highlight-regexp = #9A5334
-$dark-highlight-subst = #DCDCDC
-$dark-highlight-comment = #57A64A
-$dark-highlight-doctag = #608B4E
-$dark-highlight-meta = #9B9B9B
-$dark-highlight-variable = #BD63C5
-$dark-highlight-attr = #9CDCFE
-$dark-highlight-section = gold
-$dark-highlight-bullet = #D7BA7D
-$dark-highlight-addition = #144212
-$dark-highlight-deletion = #600
+if (hexo-config('articles.code_block.highlight_theme.light') == 'github') {
+  @import 'hljs-themes/light/github.styl'
+} else if (hexo-config('articles.code_block.highlight_theme.light') == 'atom-one-light') {
+  @import 'hljs-themes/light/atom-one-light.styl'
+} else if (hexo-config('articles.code_block.highlight_theme.light') == 'default') {
+  @import 'hljs-themes/light/default.styl'
+} else {
+  @import 'hljs-themes/light/github.styl'
+}
+
+if (hexo-config('articles.code_block.highlight_theme.dark') == 'github-dark') {
+  @import 'hljs-themes/dark/github-dark.styl'
+} else if (hexo-config('articles.code_block.highlight_theme.dark') == 'vs2015') {
+  @import 'hljs-themes/dark/vs2015.styl'
+} else if (hexo-config('articles.code_block.highlight_theme.dark') == 'atom-one-dark') {
+  @import 'hljs-themes/dark/atom-one-dark.styl'
+} else if (hexo-config('articles.code_block.highlight_theme.dark') == 'a11y-dark') {
+  @import 'hljs-themes/dark/a11y-dark.styl'
+} else if (hexo-config('articles.code_block.highlight_theme.dark') == 'agate') {
+  @import 'hljs-themes/dark/agate.styl'
+} else if (hexo-config('articles.code_block.highlight_theme.dark') == 'monokai-sublime') {
+  @import 'hljs-themes/dark/monokai-sublime.styl'
+} else if (hexo-config('articles.code_block.highlight_theme.dark') == 'night-owl') {
+  @import 'hljs-themes/dark/night-owl.styl'
+} else if (hexo-config('articles.code_block.highlight_theme.dark') == 'nord') {
+  @import 'hljs-themes/dark/nord.styl'
+} else if (hexo-config('articles.code_block.highlight_theme.dark') == 'tokyo-night-dark') {
+  @import 'hljs-themes/dark/tokyo-night-dark.styl'
+} else {
+  @import 'hljs-themes/dark/github-dark.styl'
+}
+
+$highlight-gutter-color = #6a737d
+$highlight-gutter-bg-color = #f6f8fa
+$dark-highlight-gutter-color = #8b949e
+$dark-highlight-gutter-bg-color = #161b22
 
 code-theme(mode)
-  --code-foreground: mode == 'light' ? $code-foreground : $night-code-foreground
-  --code-background: mode == 'light' ? $code-background : $night-code-background
-  --highlight-background: mode == 'light' ? $highlight-background : $night-highlight-background
-  --highlight-foreground: mode == 'light' ? $highlight-foreground : $night-highlight-foreground
+  --code-foreground: mode == 'light' ? $highlight-foreground : $dark-code-foreground
+  --code-background: mode == 'light' ? $highlight-background : $dark-code-background
+  --highlight-background: mode == 'light' ? $highlight-background : $dark-highlight-background
+  --highlight-foreground: mode == 'light' ? $highlight-foreground : $dark-highlight-foreground
   --highlight-keyword: mode == 'light' ? $highlight-keyword : $dark-highlight-keyword
   --highlight-link: mode == 'light' ? $highlight-link : $dark-highlight-link
   --highlight-built-in: mode == 'light' ? $highlight-built-in : $dark-highlight-built-in

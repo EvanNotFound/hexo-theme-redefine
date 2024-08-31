@@ -20,8 +20,8 @@ const defaultConfig = {
   silent: false,
 };
 
-const keySalt = textToArray("hexo-blog-encrypt的作者们都是大帅比!");
-const ivSalt = textToArray("hexo-blog-encrypt是地表最强Hexo加密插件!");
+const keySalt = textToArray("too young too simple");
+const ivSalt = textToArray("sometimes naive!");
 
 // As we can't detect the wrong password with AES-CBC,
 // so adding an empty tag and check it when decrption.
@@ -121,7 +121,13 @@ hexo.extend.filter.register(
       .replace(/{{hbeWrongPassMessage}}/g, config.wrong_pass_message)
       .replace(/{{hbeWrongHashMessage}}/g, config.wrong_hash_message)
       .replace(/{{hbeMessage}}/g, config.message);
-    data.content += `<script data-swup-reload-script src="${hexo.config.root}lib/hbe.js"></script><link href="${hexo.config.root}css/hbe.style.css" rel="stylesheet" type="text/css">`;
+    data.content += `<link href="${hexo.config.root}css/hbe.style.css" rel="stylesheet" type="text/css"><script data-swup-reload-script type="module" src="${hexo.config.root}js/plugins/hbe.js"></script>
+<script data-swup-reload-script type="module">
+import {initHBE} from "${hexo.config.root}js/plugins/hbe.js";
+  console.log("hexo-blog-encrypt: loaded.");
+    initHBE();
+</script>
+`;
     data.excerpt = data.more = config.abstract;
 
     return data;
@@ -142,7 +148,7 @@ hexo.extend.generator.register("hexo-blog-encrypt", () => [
       fs.createReadStream(
         path.resolve(__dirname, "../../source/js/plugins/hbe.js"),
       ),
-    path: "lib/hbe.js",
+    path: "js/plugins/hbe.js",
   },
 ]);
 

@@ -60,8 +60,6 @@ hexo.on("ready", async () => {
     await fetchRedefineInfo();
   } catch (error) {
     hexo.log.warn(`Check latest version failed: ${error}`);
-    hexo.locals.set(`cdnTestStatus_bootcdn`, 404);
-    hexo.locals.set(`cdnTestStatus_staticfile`, 404);
     hexo.locals.set(`cdnTestStatus_cdnjs`, 404);
     hexo.locals.set(`cdnTestStatus_sustech`, 404);
     hexo.locals.set(`cdnTestStatus_zstatic`, 404);
@@ -146,21 +144,5 @@ function checkVersionAndCDNAvailability(data) {
   } else {
     hexo.log.warn(`\x1b[31m%s\x1b[0m`, `CDNJS CDN is unavailable yet.`);
     hexo.locals.set(`cdnTestStatus_cdnjs`, 404);
-  }
-
-  if (data.staticfileCDN) {
-    hexo.log.info(`\x1b[32m%s\x1b[0m`, `CDN available: StaticfileCDN`);
-    hexo.locals.set(`cdnTestStatus_staticfile`, 200);
-  } else {
-    hexo.log.warn(`\x1b[31m%s\x1b[0m`, `StaticfileCDN is unavailable yet.`);
-    hexo.locals.set(`cdnTestStatus_staticfile`, 404);
-  }
-
-  if (data.bootCDN) {
-    hexo.log.info(`\x1b[32m%s\x1b[0m`, `CDN available: BootCDN`);
-    hexo.locals.set(`cdnTestStatus_bootcdn`, 200);
-  } else {
-    hexo.log.warn(`\x1b[31m%s\x1b[0m`, `BootCDN CDN is unavailable yet.`);
-    hexo.locals.set(`cdnTestStatus_bootcdn`, 404);
   }
 }

@@ -1,13 +1,15 @@
 name: Vercel Preview Deployment
+
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
 on:
   workflow_dispatch:
   push:
     branches:
       - dev
-  pull_request: # Trigger the workflow on pull request activities
+  pull_request_target:
     branches:
       - dev
       - main
@@ -15,21 +17,28 @@ on:
 jobs:
   preview-deployment:
     runs-on: ubuntu-latest
+    environment:
+      name: ${{ github.event_name == 'pull_request_target' && 'PR Preview' || 'Preview' }}
+      url: ${{ steps.deploy-to-vercel.outputs.preview-url }}
     steps:
-      - id: script
+      - name: Determine checkout details
+        id: checkout-details
         uses: actions/github-script@v7
         with:
           script: |
-            const isPr = [ 'pull_request', 'pull_request_target' ].includes(context.eventName)
-            core.setOutput('ref', isPr ? context.payload.pull_request.head.ref : context.ref)
-            core.setOutput('repo', isPr ? context.payload.pull_request.head.repo.full_name : context.repo.full_name)
+            const isPr = context.eventName === 'pull_request_target'
+            const ref = isPr ? context.payload.pull_request.head.ref : context.ref
+            const repo = isPr ? context.payload.pull_request.head.repo.full_name : context.repo.full_name
+            core.setOutput('ref', ref)
+            core.setOutput('repo', repo)
 
       - name: Checkout theme repository
         uses: actions/checkout@v4
         with:
-          path: 'theme' # Checkout the theme repository into a directory named 'theme'
-          ref: ${{ steps.script.outputs.ref }}
-          repository: ${{ steps.script.outputs.repo }}
+          path: 'theme'
+          ref: ${{ steps.checkout-details.outputs.ref }}
+          repository: ${{ steps.checkout-details.outputs.repo }}
+
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -98,6 +107,7 @@ jobs:
         run: echo "HEXO_SITE_DIR=${{ github.workspace }}/hexo-site" >> $GITHUB_ENV
 
       - name: Deploy to Vercel Action
+        id: deploy-to-vercel
         uses: EvanNotFound/vercel-deployment-for-github-actions@v1.1.0
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

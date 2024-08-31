@@ -77,6 +77,9 @@
         color var(--second-text-color)
         font-family 'Chillax-Variable', sans-serif
         text-align center
+        if hexo-config('global.fonts.title.enable') {
+          font-family hexo-config('global.fonts.title.family')
+        }
 
       .announcement
         font-size 0.9rem

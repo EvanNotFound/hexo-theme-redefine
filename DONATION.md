@@ -33,7 +33,7 @@ A big thank you to all the friends who have sponsored this project. Your support
 | ![IMG_0382](https://user-images.githubusercontent.com/68590232/223455834-d2e5ab6e-9d75-4bbf-adfb-2c519d6b4582.JPG) | ![IMG_9570](https://user-images.githubusercontent.com/68590232/223463950-f7276ef8-0198-4070-8541-697ec25e5b9a.png) | ![IMG_0385](https://user-images.githubusercontent.com/68590232/223459896-593e105e-89f3-4631-8cab-cb7798a53bf1.jpg) |
 
 
-赞助完以后，请各位加我微信 `do-not-go-plzzz` 联系我添加 GitHub 账号和网站链接！  
+赞助完以后，请各位加我微信，在 [evannotfound.com/contact](https://evannotfound.com/contact) 联系我添加 GitHub 账号和网站链接！  
 After making a donation, if you want to get in touch with me, please add me on Discord with my username `evannotfound`.
 
 感谢！  
