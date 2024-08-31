@@ -1,33 +1,52 @@
 name: Vercel Preview Deployment
+
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
 on:
   workflow_dispatch:
   push:
     branches:
       - dev
-  pull_request: # Trigger the workflow on pull request activities
+  pull_request_target:
     branches:
       - dev
       - main
 
 jobs:
-  preview-deployment:
+  approval:
     runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request_target'
+    steps:
+      - name: Approve deployment
+        uses: trstringer/manual-approval@v1
+        with:
+          secret: ${{ secrets.GITHUB_TOKEN }}
+          approvers: EvanNotFound
+          minimum-approvals: 1
+          issue-title: "Approve preview deployment for PR #${{ github.event.pull_request.number }}"
+          issue-body: "A preview deployment has been requested for PR #${{ github.event.pull_request.number }}. Please review and approve if it's safe to proceed."
+          exclude-workflow-initiator-as-approver: false
+
+  preview-deployment:
+    needs: approval
+    if: always() && (github.event_name != 'pull_request_target' || needs.approval.result == 'success')
+    runs-on: ubuntu-latest
+    environment: preview
     steps:
       - id: script
         uses: actions/github-script@v7
         with:
           script: |
-            const isPr = [ 'pull_request', 'pull_request_target' ].includes(context.eventName)
+            const isPr = [ 'pull_request_target' ].includes(context.eventName)
             core.setOutput('ref', isPr ? context.payload.pull_request.head.ref : context.ref)
             core.setOutput('repo', isPr ? context.payload.pull_request.head.repo.full_name : context.repo.full_name)
 
       - name: Checkout theme repository
         uses: actions/checkout@v4
         with:
-          path: 'theme' # Checkout the theme repository into a directory named 'theme'
+          path: 'theme'
           ref: ${{ steps.script.outputs.ref }}
           repository: ${{ steps.script.outputs.repo }}
 
