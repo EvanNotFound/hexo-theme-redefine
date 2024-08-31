@@ -73,6 +73,9 @@ $logo-image-box-width = 34px
         line-height 1
         color var(--first-text-color)
         transform translateY(1px)
+        if hexo-config('global.fonts.title.enable') {
+          font-family hexo-config('global.fonts.title.family')
+        }
 
         h1
           margin 0

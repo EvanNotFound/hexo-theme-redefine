@@ -46,7 +46,7 @@ colors:
 # SITE CUSTOMIZATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 # Docs: https://redefine-docs.ohevan.com/basic/global
 global:
-  # Custom fonts
+  # Custom global fonts
   fonts:
     # Chinese fonts
     chinese: 
@@ -56,6 +56,11 @@ global:
     # English fonts
     english: 
       enable: false # Whether to enable custom english fonts
+      family:  # Font family
+      url:  # Font URL to CSS file
+    # Custom title fonts (navbar, sidebar)
+    title:
+      enable: false # Whether to enable custom title fonts
       family:  # Font family
       url:  # Font URL to CSS file
   # Content max width
