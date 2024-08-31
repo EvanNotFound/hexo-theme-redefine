@@ -111,7 +111,7 @@
         <link href="<%- theme.global.fonts.english.url %>" rel="stylesheet">
     <% } %>
 
-    <% if (theme.global.preloader) { %>
+    <% if (theme.global.preloader === true || theme.global.preloader.enable === true) { %>
         <%- renderJS('js/libs/anime.min.js')%>
     <% } %>
 

@@ -67,7 +67,9 @@
 
 <div class="preloader">
     <h2 class="ml13">
-        <%= theme.info.title %>
+        <%=
+        theme.global.preloader.custom_message || theme.info.title
+         %>
     </h2>
     <script>
         var textWrapper = document.querySelector('.ml13');

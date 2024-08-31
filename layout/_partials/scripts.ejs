@@ -41,7 +41,7 @@
     <%- renderJSModule('js/plugins/masonry.js') %>
 <% } %>
 
-<% if (!theme.global.preloader) { %>
+<% if (theme.global.preloader === false || theme.global.preloader.enable === false) { %>
     <%- renderJS('js/libs/anime.min.js')%>
 <% } %>
 
