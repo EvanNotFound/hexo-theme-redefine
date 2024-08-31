@@ -15,31 +15,17 @@ on:
       - main
 
 jobs:
-  approval:
-    runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request_target'
-    steps:
-      - name: Approve deployment
-        uses: trstringer/manual-approval@v1
-        with:
-          secret: ${{ secrets.GITHUB_TOKEN }}
-          approvers: EvanNotFound
-          minimum-approvals: 1
-          issue-title: "Approve preview deployment for PR #${{ github.event.pull_request.number }}"
-          issue-body: "A preview deployment has been requested for PR #${{ github.event.pull_request.number }}. Please review and approve if it's safe to proceed."
-          exclude-workflow-initiator-as-approver: false
-
   preview-deployment:
-    needs: approval
-    if: always() && (github.event_name != 'pull_request_target' || needs.approval.result == 'success')
     runs-on: ubuntu-latest
-    environment: preview
+    environment:
+      name: PR Preview
+      url: ${{ steps.deploy-to-vercel.outputs.preview-url }}
     steps:
       - id: script
         uses: actions/github-script@v7
         with:
           script: |
-            const isPr = [ 'pull_request_target' ].includes(context.eventName)
+            const isPr = ['pull_request_target'].includes(context.eventName)
             core.setOutput('ref', isPr ? context.payload.pull_request.head.ref : context.ref)
             core.setOutput('repo', isPr ? context.payload.pull_request.head.repo.full_name : context.repo.full_name)
 
@@ -117,6 +103,7 @@ jobs:
         run: echo "HEXO_SITE_DIR=${{ github.workspace }}/hexo-site" >> $GITHUB_ENV
 
       - name: Deploy to Vercel Action
+        id: deploy-to-vercel
         uses: EvanNotFound/vercel-deployment-for-github-actions@v1.1.0
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
