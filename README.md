@@ -114,8 +114,6 @@ Please read [Redefine Docs](https://redefine-docs.ohevan.com/) when installing
 
 It's very easy to understand.
 
-
-
 ## ☕ Support
 
 Feel free to **pull request** and **send issues**.
