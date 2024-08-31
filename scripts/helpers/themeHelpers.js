@@ -92,9 +92,8 @@ hexo.extend.helper.register("renderJS", function (path) {
   const _js = hexo.extend.helper.get("js").bind(hexo);
 
   const cdnProviders = {
-    staticfile: "https://cdn.staticfile.net/hexo-theme-redefine/:version/:path",
-    bootcdn:
-      "https://cdn.bootcdn.net/ajax/libs/hexo-theme-redefine/:version/:path",
+    // FUCK STATICFILE, CDN POISONING
+    // FUCK BOOTCDN, CDN POISONING
     sustech:
       "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-redefine/:version/:path",
     zstatic:
@@ -113,7 +112,7 @@ hexo.extend.helper.register("renderJS", function (path) {
 
   const cdnPathHandle = (path) => {
     const cdnBase =
-      cdnProviders[this.theme.cdn.provider] || cdnProviders.staticfile;
+      cdnProviders[this.theme.cdn.provider] || cdnProviders.npmmirror;
     let jsScript;
 
     if (this.theme.cdn.enable) {
@@ -151,9 +150,8 @@ hexo.extend.helper.register("renderJSModule", function (path) {
   const _js = hexo.extend.helper.get("js").bind(hexo);
 
   const cdnProviders = {
-    staticfile: "https://cdn.staticfile.net/hexo-theme-redefine/:version/:path",
-    bootcdn:
-      "https://cdn.bootcdn.net/ajax/libs/hexo-theme-redefine/:version/:path",
+    // FUCK STATICFILE, CDN POISONING
+    // FUCK BOOTCDN, CDN POISONING
     sustech:
       "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-redefine/:version/:path",
     zstatic:
@@ -172,7 +170,7 @@ hexo.extend.helper.register("renderJSModule", function (path) {
 
   const cdnPathHandle = (path) => {
     const cdnBase =
-      cdnProviders[this.theme.cdn.provider] || cdnProviders.staticfile;
+      cdnProviders[this.theme.cdn.provider] || cdnProviders.npmmirror;
     let jsModuleScript;
 
     if (this.theme.cdn.enable) {
@@ -210,9 +208,8 @@ hexo.extend.helper.register("renderJSPath", function (path) {
   const _url_for = hexo.extend.helper.get("url_for").bind(hexo);
 
   const cdnProviders = {
-    staticfile: "https://cdn.staticfile.net/hexo-theme-redefine/:version/:path",
-    bootcdn:
-      "https://cdn.bootcdn.net/ajax/libs/hexo-theme-redefine/:version/:path",
+    // FUCK STATICFILE, CDN POISONING
+    // FUCK BOOTCDN, CDN POISONING
     sustech:
       "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-redefine/:version/:path",
     zstatic:
@@ -231,7 +228,7 @@ hexo.extend.helper.register("renderJSPath", function (path) {
 
   const cdnPathHandle = (path) => {
     const cdnBase =
-      cdnProviders[this.theme.cdn.provider] || cdnProviders.staticfile;
+      cdnProviders[this.theme.cdn.provider] || cdnProviders.npmmirror;
     let jsScript;
 
     if (this.theme.cdn.enable) {
@@ -267,9 +264,8 @@ hexo.extend.helper.register("renderCSS", function (path) {
   const _css = hexo.extend.helper.get("css").bind(hexo);
 
   const cdnProviders = {
-    staticfile: "https://cdn.staticfile.net/hexo-theme-redefine/:version/:path",
-    bootcdn:
-      "https://cdn.bootcdn.net/ajax/libs/hexo-theme-redefine/:version/:path",
+    // FUCK STATICFILE, CDN POISONING
+    // FUCK BOOTCDN, CDN POISONING
     sustech:
       "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-redefine/:version/:path",
     zstatic:
@@ -288,7 +284,7 @@ hexo.extend.helper.register("renderCSS", function (path) {
 
   const cdnPathHandle = (path) => {
     const cdnBase =
-      cdnProviders[this.theme.cdn.provider] || cdnProviders.staticfile;
+      cdnProviders[this.theme.cdn.provider] || cdnProviders.npmmirror;
     let cssLink;
 
     if (this.theme.cdn.enable) {
