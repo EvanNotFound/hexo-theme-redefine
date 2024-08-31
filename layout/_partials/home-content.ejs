@@ -43,7 +43,7 @@
                         <% } else if (post.excerpt && post.excerpt !== "false") { %>
                             <%- render(post.excerpt, "markdown") %>
                         <% } else { %>
-                            <%- truncate(strip_html(post.content), {length: 128}) %>
+                            <%- truncate(strip_html(post.content), {length: 300}) %>
                         <% } %>
                     </div>
 

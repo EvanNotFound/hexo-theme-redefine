@@ -27,6 +27,7 @@ archive: Archive
 archives: Archives
 top: TOP
 sticky: Sticky
+go-back-home: Go Back Home
 
 
 # ----------------------------------------
@@ -34,7 +35,6 @@ sticky: Sticky
 # ----------------------------------------
 about: About
 changelog: Changelog
-status: Status
 links: Links
 link: Link
 friends: Friends
@@ -50,7 +50,7 @@ site_pv: TOTAL PAGE VIEWS
 read_more: Read more
 wordcount: Words
 min2read: Mins
-
+status: Status
 
 # ----------------------------------------
 # Footer

@@ -122,6 +122,7 @@ home_banner:
     text: [] # subtitle text, array
     hitokoto:  # 一言配置
       enable: false # Whether to enable hitokoto
+      show_author: false # Whether to show author
       api: https://v1.hitokoto.cn # API URL, can add types, see https://developer.hitokoto.cn/sentence/#%E5%8F%A5%E5%AD%90%E7%B1%BB%E5%9E%8B-%E5%8F%82%E6%95%B0
     typing_speed: 100 # Typing speed (ms)
     backing_speed: 80 # Backing speed (ms)
