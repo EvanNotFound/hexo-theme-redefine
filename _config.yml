@@ -12,6 +12,8 @@
 info:
   # Site title
   title: Theme Redefine
+  # Site subtitle
+  subtitle: Redefine Your Hexo Journey.
   # Author name
   author: The Redefine Team
   # Site URL
