@@ -73,7 +73,7 @@
         <% if (title) { %>
             <%= title %> |
         <% } %>
-        <% if (theme.info.subtitle) { %>
+        <% else if (theme.info.subtitle) { %>
             <%= theme.info.title || config.title || 'Redefine Theme' %> - <%= theme.info.subtitle %>
         <% } %>
         <%= theme.info.title || config.title || 'Redefine Theme' %>
