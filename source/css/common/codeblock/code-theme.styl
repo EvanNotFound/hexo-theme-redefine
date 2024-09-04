@@ -37,9 +37,14 @@ $highlight-gutter-bg-color = #f6f8fa
 $dark-highlight-gutter-color = #8b949e
 $dark-highlight-gutter-bg-color = #161b22
 
+$inline-code-foreground = #24292e
+$inline-code-background = #f1f1f1
+$dark-inline-code-foreground = #c9d1d9
+$dark-inline-code-background = #313131
+
 code-theme(mode)
-  --code-foreground: mode == 'light' ? $highlight-foreground : $dark-code-foreground
-  --code-background: mode == 'light' ? $highlight-background : $dark-code-background
+  --inline-code-foreground: mode == 'light' ? $inline-code-foreground : $dark-inline-code-foreground
+  --inline-code-background: mode == 'light' ? $inline-code-background : $dark-inline-code-background
   --highlight-background: mode == 'light' ? $highlight-background : $dark-highlight-background
   --highlight-foreground: mode == 'light' ? $highlight-foreground : $dark-highlight-foreground
   --highlight-keyword: mode == 'light' ? $highlight-keyword : $dark-highlight-keyword
