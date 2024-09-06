@@ -1,6 +1,12 @@
 <% 
 // Load the appropriate album based on the page's front-matter
 const images = site.data.masonry[page.masonry] || [];
+if (!site.data.masonry || typeof site.data.masonry !== 'object') {
+    throw new Error('Invalid masonry data structure');
+}
+if (typeof page.masonry !== 'string') {
+    throw new Error('Page masonry key must be a string');
+}
 %>
 
 <h1 class="page-title-header"><%= page.title %></h1>
