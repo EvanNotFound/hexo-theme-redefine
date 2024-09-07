@@ -182,6 +182,20 @@ $logo-image-box-width = 34px
               max-height 0px
               overflow hidden
               transition-t('all', '0', '0.2', 'linear')
+              // 为 a 元素添加 padding
+              .submenu-padding
+                padding 3px 5px
+              .submenu-icon
+                flex-basis 10%
+                text-align center
+              // 设置图标的 flex-basis 和居中对齐
+              .submenu-icon
+                flex-basis 10%
+                text-align center
+              // 设置文本的 flex-basis 和左侧内边距
+              .submenu-text
+                flex-basis 90%
+                padding-left 5px
 
               li a
                 white-space nowrap
@@ -277,6 +291,17 @@ $logo-image-box-width = 34px
 
     .navbar-drawer-show &
       transform translateX(0)
+    // 为 drawer-navbar-item 添加外边距
+    .drawer-item-margin
+      margin 7.2px 0
+// 设置 icon-container 的 flex 和 max-width
+    .icon-flex
+      flex 2
+      max-width 15%
+// 设置 text-container 的 flex 和 max-width
+    .text-flex
+      flex 8
+      max-width 85%
 
   .window-mask
     position absolute

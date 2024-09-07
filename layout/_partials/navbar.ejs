@@ -47,13 +47,13 @@
                                     <ul class="sub-menu">
                                         <% for (var submenu in link.submenus) { %>
                                             <li class="flex items-center">
-                                                <a href="<%- url_for(link.submenus[submenu].url) %>" class="flex items-center w-full" style="padding: 3px 5px;">
-                                                    <i class="<%= link.submenus[submenu].icon %> flex-shrink-0" style="flex-basis: 10%; text-align: center;"></i>
-                                                    <span style="flex-basis: 90%; padding-left: 5px;">
+                                                <a href="<%- url_for(link.submenus[submenu].url) %>" class="flex items-center w-full submenu-padding">
+                                                    <i class="<%= link.submenus[submenu].icon %> flex-shrink-0 submenu-icon"></i>
+                                                    <span class="submenu-text">
                                                         <%= __(submenu.toLowerCase()).toUpperCase() %>
                                                     </span>
                                                 </a>
-                                            </li>
+                                            </li>                                            
                                         <% } %>
                                     </ul>
                                 <% } %>
@@ -128,18 +128,17 @@
                         <% if (hasSubmenus) { %>
                             <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-<%= i %>">
                                 <% for (var submenu in linkData.submenus) { %>
-                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl" style="margin: 7.2px 0;">
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl drawer-item-margin">
                                         <a class="text-third-text-color text-xl flex items-center w-full" href="<%- url_for(linkData.submenus[submenu].url) %>">
-                                            <div class="icon-container flex justify-center items-center" style="flex: 2; max-width: 15%;">
+                                            <div class="icon-container flex justify-center items-center icon-flex">
                                                 <i class="<%= linkData.submenus[submenu].icon %> text-xl"></i>
                                             </div>
-                                            <div class="text-container" style="flex: 8; max-width: 85%;">
+                                            <div class="text-container text-flex">
                                                 <%= __(submenu.toLowerCase()).toUpperCase() %>
                                             </div>
                                         </a>
-                                    </div>
-                                <% } %>
-                                
+                                    </div>                                                                      
+                                <% } %>            
                             </div>
                         <% } %>
                     </li>
