@@ -72,8 +72,7 @@
     <title>
         <% if (title) { %>
             <%= title %> | <%= theme.info.title || config.title || 'Redefine Theme' %>
-        <% } %>
-        <% else { %>
+        <% } else { %>
             <%= theme.info.title || config.title || 'Redefine Theme' %> - <%= theme.info.subtitle || config.subtitle || 'Redefine Your Hexo Journey.' %>
         <% } %>
     </title>
