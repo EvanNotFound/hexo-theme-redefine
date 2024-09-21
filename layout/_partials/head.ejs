@@ -71,9 +71,10 @@
     %>
     <title>
         <% if (title) { %>
-            <%= title %> -
+            <%= title %> | <%= theme.info.title || config.title || 'Redefine Theme' %>
+        <% } else { %>
+            <%= theme.info.title || config.title || 'Redefine Theme' %> - <%= theme.info.subtitle || config.subtitle || 'Redefine Your Hexo Journey.' %>
         <% } %>
-        <%= theme.info.title || config.title || 'Redefine Theme' %>
     </title>
 
     <%- renderCSS('fonts/Chillax/chillax.css') %>
