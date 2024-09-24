@@ -11,7 +11,6 @@
           dark: 'body[class~="dark-mode"]',
           reaction: <%- waline_reaction_config(theme.comment.config.waline.reaction) %>,
           requiredMeta: ['nick', 'mail'],
-          locale: <%- waline_locale_config(theme.comment.config.waline.locale) %>,
           emoji: [<%- theme.comment.config.waline.emoji && theme.comment.config.waline.emoji.map(
             (item) => `'${item}'`
           ).join(','
