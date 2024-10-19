@@ -244,10 +244,23 @@
   mjx-container
     display inline-block
     vertical-align baseline
+    width 100%
+    overflow-x auto
+    white-space nowrap
+    scrollbar-width: thin  // For Firefox, if needed
+    text-align center /* Center the content */
+    padding-bottom 8px
+
 
     svg
-      display inline
+      display inline-block /* Allow content to be centered properly */
+
 
   mjx-container[display="true"]
-    display flex !important
+    display block
     justify-content center
+    overflow-x auto
+    text-align center
+
+    svg
+      display inline-block
