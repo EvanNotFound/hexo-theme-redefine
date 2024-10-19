@@ -2,6 +2,10 @@
 function formatEssayDates() {
   const dateElements = document.querySelectorAll(".essay-date");
 
+  if (!dateElements) {
+    return;
+  }
+
   dateElements.forEach(function (element) {
     const rawDate = element.getAttribute("data-date");
     const locale = config.language || "en";
