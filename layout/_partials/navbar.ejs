@@ -3,8 +3,10 @@
     <div class="navbar-content <%- (theme.home_banner.enable === true && is_home() && !page.prev) ? 'has-home-banner' : '' %>">
         <div class="left">
             <% if (theme.defaults.hasOwnProperty('logo') && theme.defaults.logo) { %>
-                <a class="logo-image" href="<%= config.root %>">
-                    <%- image_tag(theme.defaults.logo) %>
+                <a class="logo-image h-8 w-8 sm:w-10 sm:h-10 mr-3" href="<%= config.root %>">
+                    <%- image_tag(theme.defaults.logo, {
+                        class: "w-full h-full rounded-sm"
+                    }) %>
                 </a>
             <% } %>
             <a class="logo-title" href="<%= config.root %>">
