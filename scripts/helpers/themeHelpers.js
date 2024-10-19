@@ -135,6 +135,7 @@ hexo.extend.helper.register("renderJS", function (path, options = {}) {
       scriptTag = _js({
         src: path,
         type: module ? "module" : undefined,
+        [swupAttr]: swupReload,
         // async: async,
       });
     }
