@@ -21,5 +21,6 @@
         <% } %>
     </ul>
 </div>
-<%- renderJS('js/libs/moment-with-locales.min.js') %>
-<%- renderJSModule('js/layouts/essays.js') %>
+<%- renderJS('js/libs/moment-with-locales.min.js', { swupReload: true }) %>
+<%- renderJS('js/layouts/essays.js', { swupReload: true, module: true }) %>
+
