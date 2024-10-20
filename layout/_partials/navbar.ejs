@@ -48,11 +48,14 @@
                                 <% if (hasSubmenus) { %>
                                     <ul class="sub-menu">
                                         <% for (var submenu in link.submenus) { %>
-                                            <li>
-                                                <a href="<%- url_for(link.submenus[submenu]) %>">
-                                                    <%= __(submenu.toLowerCase()).toUpperCase() %>
+                                            <li class="flex items-center">
+                                                <a href="<%- url_for(link.submenus[submenu].url) %>" class="flex items-center w-full submenu-padding">
+                                                    <i class="<%= link.submenus[submenu].icon %> flex-shrink-0 submenu-icon"></i>
+                                                    <span class="submenu-text">
+                                                        <%= __(submenu.toLowerCase()).toUpperCase() %>
+                                                    </span>
                                                 </a>
-                                            </li>
+                                            </li>                                            
                                         <% } %>
                                     </ul>
                                 <% } %>
@@ -127,11 +130,17 @@
                         <% if (hasSubmenus) { %>
                             <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-<%= i %>">
                                 <% for (var submenu in linkData.submenus) { %>
-                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
-                                        <a class=" text-third-text-color text-xl"
-                                           href="<%- url_for(linkData.submenus[submenu]) %>"><%= __(submenu.toLowerCase()).toUpperCase() %></a>
-                                    </div>
-                                <% } %>
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl drawer-item-margin">
+                                        <a class="text-third-text-color text-xl flex items-center w-full" href="<%- url_for(linkData.submenus[submenu].url) %>">
+                                            <div class="icon-container flex justify-center items-center icon-flex">
+                                                <i class="<%= linkData.submenus[submenu].icon %> text-xl"></i>
+                                            </div>
+                                            <div class="text-container text-flex">
+                                                <%= __(submenu.toLowerCase()).toUpperCase() %>
+                                            </div>
+                                        </a>
+                                    </div>                                                                      
+                                <% } %>            
                             </div>
                         <% } %>
                     </li>
@@ -161,4 +170,3 @@
     <div class="window-mask"></div>
 
 </header>
-
