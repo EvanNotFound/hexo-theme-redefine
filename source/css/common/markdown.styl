@@ -244,10 +244,59 @@
   mjx-container
     display inline-block
     vertical-align baseline
+    width 100%
+    overflow-x auto
+    white-space nowrap
+    scrollbar-width: thin  // For Firefox, if needed
+    text-align center /* Center the content */
+    padding-bottom 8px
+
+    &:hover::-webkit-scrollbar-thumb
+      border 3px solid rgba(183, 183, 183, 0.3)
+
+    &::-webkit-scrollbar
+      width 6px
+      height 6px
+      transition all 0.2s ease
+      display block
+
+    &::-webkit-scrollbar-track
+      background transparent
+      border none
+
+    &::-webkit-scrollbar-thumb
+      border-radius 20px
+      border 3px solid rgba(183, 183, 183, 0)
+      transition all 0.2s ease
 
     svg
-      display inline
+      display inline-block /* Allow content to be centered properly */
+
 
   mjx-container[display="true"]
-    display flex !important
+    display block
     justify-content center
+    overflow-x auto
+    text-align center
+
+    &:hover::-webkit-scrollbar-thumb
+      border 3px solid rgba(183, 183, 183, 0.3)
+
+    &::-webkit-scrollbar
+      width 6px
+      height 6px
+      transition all 0.2s ease
+      display block
+
+    &::-webkit-scrollbar-track
+      background transparent
+      border none
+
+    &::-webkit-scrollbar-thumb
+      border-radius 20px
+      border 3px solid rgba(183, 183, 183, 0)
+      transition all 0.2s ease
+
+
+    svg
+      display inline-block

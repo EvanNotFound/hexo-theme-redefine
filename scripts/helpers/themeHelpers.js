@@ -88,12 +88,11 @@ hexo.extend.helper.register("getPostUrl", function (rootUrl, path) {
   }
 });
 
-hexo.extend.helper.register("renderJS", function (path) {
+hexo.extend.helper.register("renderJS", function (path, options = {}) {
   const _js = hexo.extend.helper.get("js").bind(hexo);
+  const { module = false, async = false, swupReload = false } = options;
 
   const cdnProviders = {
-    // FUCK STATICFILE, CDN POISONING
-    // FUCK BOOTCDN, CDN POISONING
     sustech:
       "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-redefine/:version/:path",
     zstatic:
@@ -113,140 +112,35 @@ hexo.extend.helper.register("renderJS", function (path) {
   const cdnPathHandle = (path) => {
     const cdnBase =
       cdnProviders[this.theme.cdn.provider] || cdnProviders.npmmirror;
-    let jsScript;
+    let scriptTag;
+
+    const typeAttr = module ? 'type="module"' : "";
+    // const asyncAttr = async ? "async" : "";
+    const swupAttr = swupReload ? "data-swup-reload-script" : "";
 
     if (this.theme.cdn.enable) {
       if (this.theme.cdn.provider === "custom") {
         const customUrl = cdnBase
           .replace(":version", themeVersion)
           .replace(":path", path);
-        jsScript = `<script src="${
-          this.theme.cdn.enable ? customUrl : _js(path)
-        }"></script>`;
+        scriptTag = `<script ${typeAttr} src="${
+          this.theme.cdn.enable ? customUrl : _js({ src: path })
+        }" ${swupAttr}></script>`;
       } else {
-        jsScript = `<script src="${cdnBase
+        scriptTag = `<script ${typeAttr} src="${cdnBase
           .replace(":version", themeVersion)
-          .replace(":path", path)}"></script>`;
+          .replace(":path", path)}" ${swupAttr}></script>`;
       }
     } else {
-      jsScript = _js(path);
+      scriptTag = _js({
+        src: path,
+        type: module ? "module" : undefined,
+        "data-swup-reload-script": swupReload ? "" : undefined,
+        // async: async,
+      });
     }
 
-    return jsScript;
-  };
-
-  let renderedScripts = "";
-
-  if (Array.isArray(path)) {
-    renderedScripts = path.map(cdnPathHandle).join("");
-  } else {
-    renderedScripts = cdnPathHandle(path);
-  }
-
-  return renderedScripts;
-});
-
-hexo.extend.helper.register("renderJSModule", function (path) {
-  const _js = hexo.extend.helper.get("js").bind(hexo);
-
-  const cdnProviders = {
-    // FUCK STATICFILE, CDN POISONING
-    // FUCK BOOTCDN, CDN POISONING
-    sustech:
-      "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-redefine/:version/:path",
-    zstatic:
-      "https://s4.zstatic.net/ajax/libs/hexo-theme-redefine/:version/:path",
-    cdnjs:
-      "https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-redefine/:version/:path",
-    unpkg: "https://unpkg.com/hexo-theme-redefine@:version/source/:path",
-    jsdelivr:
-      "https://cdn.jsdelivr.net/npm/hexo-theme-redefine@:version/source/:path",
-    aliyun:
-      "https://evan.beee.top/projects/hexo-theme-redefine@:version/source/:path",
-    npmmirror:
-      "https://registry.npmmirror.com/hexo-theme-redefine/:version/files/source/:path",
-    custom: this.theme.cdn.custom_url,
-  };
-
-  const cdnPathHandle = (path) => {
-    const cdnBase =
-      cdnProviders[this.theme.cdn.provider] || cdnProviders.npmmirror;
-    let jsModuleScript;
-
-    if (this.theme.cdn.enable) {
-      if (this.theme.cdn.provider === "custom") {
-        const customUrl = cdnBase
-          .replace(":version", themeVersion)
-          .replace(":path", path);
-        jsModuleScript = `<script type="module" src="${
-          this.theme.cdn.enable ? customUrl : _js({ src: path, type: "module" })
-        }"></script>`;
-      } else {
-        jsModuleScript = `<script type="module" src="${cdnBase
-          .replace(":version", themeVersion)
-          .replace(":path", path)}"></script>`;
-      }
-    } else {
-      jsModuleScript = _js({ src: path, type: "module" });
-    }
-
-    return jsModuleScript;
-  };
-
-  let renderedScripts = "";
-
-  if (Array.isArray(path)) {
-    renderedScripts = path.map(cdnPathHandle).join("");
-  } else {
-    renderedScripts = cdnPathHandle(path);
-  }
-
-  return renderedScripts;
-});
-
-hexo.extend.helper.register("renderJSPath", function (path) {
-  const _url_for = hexo.extend.helper.get("url_for").bind(hexo);
-
-  const cdnProviders = {
-    // FUCK STATICFILE, CDN POISONING
-    // FUCK BOOTCDN, CDN POISONING
-    sustech:
-      "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-redefine/:version/:path",
-    zstatic:
-      "https://s4.zstatic.net/ajax/libs/hexo-theme-redefine/:version/:path",
-    cdnjs:
-      "https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-redefine/:version/:path",
-    unpkg: "https://unpkg.com/hexo-theme-redefine@:version/source/:path",
-    jsdelivr:
-      "https://cdn.jsdelivr.net/npm/hexo-theme-redefine@:version/source/:path",
-    aliyun:
-      "https://evan.beee.top/projects/hexo-theme-redefine@:version/source/:path",
-    npmmirror:
-      "https://registry.npmmirror.com/hexo-theme-redefine/:version/files/source/:path",
-    custom: this.theme.cdn.custom_url,
-  };
-
-  const cdnPathHandle = (path) => {
-    const cdnBase =
-      cdnProviders[this.theme.cdn.provider] || cdnProviders.npmmirror;
-    let jsScript;
-
-    if (this.theme.cdn.enable) {
-      if (this.theme.cdn.provider === "custom") {
-        const customUrl = cdnBase
-          .replace(":version", themeVersion)
-          .replace(":path", path);
-        jsScript = this.theme.cdn.enable ? customUrl : _url_for(path);
-      } else {
-        jsScript = `${cdnBase
-          .replace(":version", themeVersion)
-          .replace(":path", path)}`;
-      }
-    } else {
-      jsScript = _url_for(path);
-    }
-
-    return jsScript;
+    return scriptTag;
   };
 
   let renderedScripts = "";

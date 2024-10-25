@@ -1,14 +1,10 @@
 {
   "name": "hexo-theme-redefine",
-  "version": "2.7.1",
+  "version": "2.7.2",
   "private": false,
   "description": "Redefine your writing with Hexo Theme Redefine.",
   "scripts": {
-    "npm:publish": "npm publish",
-    "format": "prettier --write ./source/js/*.js ./scripts",
-    "lint:style": "stylelint --fix ./source/css",
-    "git:push": "git push --tag && git push -u origin dev",
-    "git:add": "npm run lint:style && git add .",
+    "npm:publish": "tailwindcss build -i source/css/style.styl -o source/assets/build/styles.css && npm publish",
     "build:css": "tailwindcss build -i source/css/style.styl -o source/assets/build/styles.css",
     "watch:css": "tailwindcss build -i source/css/style.styl -o source/assets/build/styles.css --watch"
   },
@@ -26,16 +22,14 @@
     "hexo-theme"
   ],
   "author": "EvanNotFound",
-  "license": "AGPL-3.0",
+  "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/EvanNotFound/hexo-theme-redefine/issues"
   },
   "homepage": "https://redefine.ohevan.com",
   "devDependencies": {
     "eslint": "^8.47.0",
-    "tailwindcss": "^3.3.3"
-  },
-  "dependencies": {
-    "postcss": "^8.4.28"
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14"
   }
 }

@@ -134,10 +134,10 @@ If you like this theme, please give a star. You can also support me by [donating
 
 This is the list of all the people who have donated to me: [Donation List](https://github.com/EvanNotFound/hexo-theme-redefine/blob/dev/DONATION.md)
 
+如果你想要使用OpenAI GPT-4，但不想每月支付 20 美元吗，来看看我的 [GPT Plus Share](https://gpt.oknice.ca) GPT Plus 共享站，使用多达 100 个 ChatGPT Plus 账户，每月仅 17 人民币起步！
 
-Want to use OpenAI GPT-4 but don't want to pay $20 per month? Check out [GPT Plus Share](https://gpt.oknice.ca)! You can use up to 100 ChatGPT Plus Accounts!
 
-![GPT Billboard](https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/55346629-cd54-45a4-9b31-3f979750b0c0)
+[![GPT Billboard](https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/55346629-cd54-45a4-9b31-3f979750b0c0)](https://gpt.oknice.ca)
 
 ## 🌟 Star History
 

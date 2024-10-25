@@ -1,4 +1,4 @@
-<%- renderJSModule([
+<%- renderJS([
     'js/tools/imageViewer.js',
     'js/utils.js',
     'js/main.js',
@@ -6,18 +6,26 @@
     'js/tools/scrollTopBottom.js',
     'js/tools/lightDarkSwitch.js',
     'js/layouts/categoryList.js'
-]) %>
+],{
+    module: true
+}) %>
 
 <% if (theme.navbar.search.enable) { %>
-    <%- renderJSModule('js/tools/localSearch.js') %>
+    <%- renderJS('js/tools/localSearch.js', {
+        module: true
+    }) %>
 <% } %>
 
 <% if (theme.articles.code_block.copy) { %>
-    <%- renderJSModule('js/tools/codeBlock.js') %>
+    <%- renderJS('js/tools/codeBlock.js', {
+        module: true
+    }) %>
 <% } %>
 
 <% if (theme.articles.lazyload) { %>
-    <%- renderJSModule('js/layouts/lazyload.js') %>
+    <%- renderJS('js/layouts/lazyload.js', {
+        module: true
+    }) %>
 <% } %>
 
 <% if (theme.footer.runtime) { %>
@@ -28,7 +36,9 @@
 
 <% if (theme.home_banner.subtitle.length !== 0) { %>
   <%- renderJS('js/libs/Typed.min.js') %>
-  <%- renderJSModule('js/plugins/typed.js') %>
+  <%- renderJS('js/plugins/typed.js', {
+      module: true
+  }) %>
 <% } %>
 
 <% if (theme.plugins.mermaid.enable) { %>
@@ -38,19 +48,27 @@
 
 <% if (theme.masonry || theme.photos || theme.gallery) { %>
     <%- renderJS('js/libs/minimasonry.min.js') %>
-    <%- renderJSModule('js/plugins/masonry.js') %>
+    <%- renderJS('js/plugins/masonry.js', {
+        module: true
+    }) %>
 <% } %>
 
 <% if (theme.global.preloader === false || theme.global.preloader.enable === false) { %>
     <%- renderJS('js/libs/anime.min.js')%>
 <% } %>
 
-<div class="post-scripts" <%= theme.global.single_page === true ? 'data-swup-reload-script' : '' %>>
-    <% if (theme.articles.toc.enable) { %>
-        <%- renderJSModule([
-            'js/tools/tocToggle.js',
-            'js/layouts/toc.js',
-            'js/plugins/tabs.js'
-        ]) %>
-    <% } %>
-</div>
+
+<% if (theme.articles.toc.enable) { %>
+    <%- renderJS([
+        'js/tools/tocToggle.js',
+        'js/layouts/toc.js',
+        'js/plugins/tabs.js'
+    ], {
+        module: true,
+        swupReload: true
+    }) %>
+<% } %>
+
+<%- renderJS('js/libs/moment-with-locales.min.js', { swupReload: true }) %>
+<%- renderJS('js/layouts/essays.js', { swupReload: true, module: true }) %>
+

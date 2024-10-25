@@ -1,10 +1,11 @@
 <header class="navbar-container px-6 md:px-12">
-
-    <div class="navbar-content <%- (theme.home_banner.enable === true && is_home() && !page.prev) ? 'has-home-banner' : '' %>">
+    <div class="navbar-content transition-navbar <%- (theme.home_banner.enable === true && is_home() && !page.prev) ? 'has-home-banner' : '' %>">
         <div class="left">
             <% if (theme.defaults.hasOwnProperty('logo') && theme.defaults.logo) { %>
-                <a class="logo-image" href="<%= config.root %>">
-                    <%- image_tag(theme.defaults.logo) %>
+                <a class="logo-image h-8 w-8 sm:w-10 sm:h-10 mr-3" href="<%= config.root %>">
+                    <%- image_tag(theme.defaults.logo, {
+                        class: "w-full h-full rounded-sm"
+                    }) %>
                 </a>
             <% } %>
             <a class="logo-title" href="<%= config.root %>">
@@ -77,7 +78,7 @@
     </div>
 
     <!-- Mobile sheet -->
-    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
         <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
             <% for (let i in theme.navbar.links) { %>
                 <% if (theme.navbar.links[i].path !== 'none') { %>

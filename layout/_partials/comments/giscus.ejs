@@ -5,7 +5,7 @@
         theme.comment.config.giscus.category_id
     ) { %>
     <div id="giscus-container"></div>
-    <script <%= theme.global.single_page === true ? 'data-swup-reload-script' : '' %> defer>
+    <script <%= theme.global.single_page === true && 'data-swup-reload-script' %> defer>
         async function loadGiscus() {
             const giscusConfig = {
                 'src': 'https://giscus.app/client.js',
