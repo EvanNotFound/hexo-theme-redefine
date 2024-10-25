@@ -33,9 +33,7 @@
   "homepage": "https://redefine.ohevan.com",
   "devDependencies": {
     "eslint": "^8.47.0",
-    "tailwindcss": "^3.3.3"
-  },
-  "dependencies": {
-    "postcss": "^8.4.28"
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14"
   }
 }
