@@ -308,3 +308,11 @@ $logo-image-box-width = 34px
 .icon-rotated {
   transform: rotate(90deg);
 }
+
+.transition-navbar
+  transition max-width 0.3s ease-out
+
+html.is-animating
+  .transition-navbar
+    max-width $navbar-width-pages !important
+    transition max-width 0.2s ease-out
