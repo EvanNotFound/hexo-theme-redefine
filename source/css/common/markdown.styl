@@ -242,14 +242,10 @@
       background-color var(--second-background-color)
 
   mjx-container
-    display inline-block
-    vertical-align baseline
-    width 100%
+    display inline
     overflow-x auto
     white-space nowrap
-    scrollbar-width: thin  // For Firefox, if needed
-    text-align center /* Center the content */
-    padding-bottom 8px
+    margin 0 0.2rem
 
     &:hover::-webkit-scrollbar-thumb
       border 3px solid rgba(183, 183, 183, 0.3)
@@ -276,8 +272,12 @@
   mjx-container[display="true"]
     display block
     justify-content center
+    vertical-align baseline
     overflow-x auto
     text-align center
+    white-space nowrap
+    scrollbar-width: thin  // For Firefox, if needed
+    padding-bottom 8px
 
     &:hover::-webkit-scrollbar-thumb
       border 3px solid rgba(183, 183, 183, 0.3)
