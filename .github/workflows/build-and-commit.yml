@@ -5,6 +5,10 @@ on:
     branches:
       - main
       - dev
+    paths:
+      - 'source/js/**'
+      - 'source/css/**'
+      - 'source/build/**'
 
 jobs:
   build:
