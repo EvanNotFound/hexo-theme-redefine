@@ -93,9 +93,9 @@
     <%- css('css/style') %>
 
     <% if (theme.developer && theme.developer.enable) {%>
-        <%- css('assets/build/styles.css') %>
+        <%- css('build/css/tailwind.css') %>
     <% } else {%>
-        <%- renderCSS('assets/build/styles.css') %>
+        <%- renderCSS('build/css/tailwind.css') %>
     <% } %>
 
     <%- renderCSS('fonts/GeistMono/geist-mono.css') %>

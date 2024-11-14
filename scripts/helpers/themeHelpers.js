@@ -92,6 +92,12 @@ hexo.extend.helper.register("renderJS", function (path, options = {}) {
   const _js = hexo.extend.helper.get("js").bind(hexo);
   const { module = false, async = false, swupReload = false } = options;
 
+  if (Array.isArray(path)) {
+    path = path.map((p) => "build/" + p);
+  } else {
+    path = "build/" + path;
+  }
+
   const cdnProviders = {
     sustech:
       "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-redefine/:version/:path",
@@ -158,8 +164,6 @@ hexo.extend.helper.register("renderCSS", function (path) {
   const _css = hexo.extend.helper.get("css").bind(hexo);
 
   const cdnProviders = {
-    // FUCK STATICFILE, CDN POISONING
-    // FUCK BOOTCDN, CDN POISONING
     sustech:
       "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-redefine/:version/:path",
     zstatic:

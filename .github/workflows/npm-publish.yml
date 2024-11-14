@@ -21,7 +21,7 @@ jobs:
 
       - run: npm ci
 
-      - run: npm run build:css
+      - run: npm run build
 
       - run: npm publish
         env:
