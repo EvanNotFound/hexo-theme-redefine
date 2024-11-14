@@ -1,4 +1,4 @@
-name: JS and CSS Build
+name: Build JS and CSS
 
 on:
   push:
