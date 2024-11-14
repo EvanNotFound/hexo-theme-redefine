@@ -41,7 +41,7 @@ jobs:
           # Check if there are any changes
           if ! git diff --cached --quiet; then
             git commit -m "ci: build and update source/build/js and source/build/css [skip ci]"
-            git push origin HEAD:${GITHUB_REF}
+            git push "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git" HEAD:${GITHUB_REF#refs/heads/}
           else
             echo "No changes to commit"
           fi 
