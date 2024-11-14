@@ -61,7 +61,6 @@ hexo.on("ready", async () => {
   } catch (error) {
     hexo.log.warn(`Check latest version failed: ${error}`);
     hexo.locals.set(`cdnTestStatus_cdnjs`, 404);
-    hexo.locals.set(`cdnTestStatus_sustech`, 404);
     hexo.locals.set(`cdnTestStatus_zstatic`, 404);
     hexo.locals.set(`cdnTestStatus_npmMirror`, 404);
   }
@@ -128,14 +127,6 @@ function checkVersionAndCDNAvailability(data) {
   } else {
     hexo.log.warn(`\x1b[31m%s\x1b[0m`, `ZStatic CDN is unavailable yet.`);
     hexo.locals.set(`cdnTestStatus_zstatic`, 404);
-  }
-
-  if (data.sustechCDN) {
-    hexo.log.info(`\x1b[32m%s\x1b[0m`, `CDN available: SUSTech`);
-    hexo.locals.set(`cdnTestStatus_sustech`, 200);
-  } else {
-    hexo.log.warn(`\x1b[31m%s\x1b[0m`, `SUSTech CDN is unavailable yet.`);
-    hexo.locals.set(`cdnTestStatus_sustech`, 404);
   }
 
   if (data.cdnjsCDN) {

@@ -99,8 +99,6 @@ hexo.extend.helper.register("renderJS", function (path, options = {}) {
   }
 
   const cdnProviders = {
-    sustech:
-      "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-redefine/:version/:path",
     zstatic:
       "https://s4.zstatic.net/ajax/libs/hexo-theme-redefine/:version/:path",
     cdnjs:
@@ -164,8 +162,6 @@ hexo.extend.helper.register("renderCSS", function (path) {
   const _css = hexo.extend.helper.get("css").bind(hexo);
 
   const cdnProviders = {
-    sustech:
-      "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-redefine/:version/:path",
     zstatic:
       "https://s4.zstatic.net/ajax/libs/hexo-theme-redefine/:version/:path",
     cdnjs:
