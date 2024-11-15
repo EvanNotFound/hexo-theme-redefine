@@ -1,7 +1,6 @@
 function initPanguJS() {
   // Add space between Chinese and English
-  pangu.spacingElementByClassName("article-content-container");
-  pangu.spacingElementByClassName("page-template-container");
+  pangu.spacingElementByClassName("markdown-body");
 
   pangu.autoSpacingPage();
 }
