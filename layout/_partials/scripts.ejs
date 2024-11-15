@@ -72,3 +72,9 @@
 <%- renderJS('js/libs/moment-with-locales.min.js', { swupReload: true }) %>
 <%- renderJS('js/layouts/essays.js', { swupReload: true, module: true }) %>
 
+<% if (theme.articles.pangu_js) { %>
+    <%- renderJS([
+        'js/libs/pangu.min.js',
+        'js/plugins/pangu.js'
+    ]) %>
+<% } %>

@@ -1,0 +1,2 @@
+function initPanguJS(){pangu.spacingElementByClassName("article-content-container"),pangu.spacingElementByClassName("page-template-container"),pangu.autoSpacingPage()}document.addEventListener("DOMContentLoaded",initPanguJS);try{swup.hooks.on("page:view",initPanguJS)}catch(n){}
+//# sourceMappingURL=pangu.js.map
