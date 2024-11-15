@@ -6,9 +6,9 @@
   "scripts": {
     "npm:publish": "npm run build && npm publish",
     "build": "npm run build:css && npm run build:js",
-    "build:css": "tailwindcss build -i source/css/style.styl -o source/build/css/tailwind.css --minify",
+    "build:css": "tailwindcss build -i source/css/tailwind.source.css -o source/build/css/tailwind.css --minify",
     "build:js": "node source/js/build.js",
-    "watch:css": "tailwindcss build -i source/css/style.styl -o source/build/css/tailwind.css --watch --minify",
+    "watch:css": "tailwindcss build -i source/css/tailwind.source.css -o source/build/css/tailwind.css --watch --minify",
     "prepare": "husky"
   },
   "repository": {

@@ -1,11 +1,11 @@
 if (hexo-config('comment.enable') == true && hexo-config('comment.system') != "") {
   if (hexo-config('comment.system') == "waline") {
-    @require "./waline.styl"
+    @import "./waline.styl"
 
   } else if (hexo-config('comment.system') == "gitalk") {
-    @require "./gitalk.styl"
+    @import "./gitalk.styl"
 
   } else if (hexo-config('comment.system') == "twikoo") {
-    @require "./twikoo.styl"
+    @import "./twikoo.styl"
   }
 }
