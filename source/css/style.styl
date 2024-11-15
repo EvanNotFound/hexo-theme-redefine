@@ -23,29 +23,3 @@
 
 if (hexo-config('home.sidebar.enable') == true)
   @require 'layout/home-sidebar.styl'
-
-.page-title-header
-  font-size 3.2rem
-  line-height 1
-  font-weight bold
-  color var(--second-text-color)
-  margin 6px 0 36px 0
-
-.redefine-box-shadow
-  box-shadow var(--redefine-box-shadow)
-
-.redefine-box-shadow-flat
-  box-shadow var(--redefine-box-shadow-flat)
-
-@media (min-width: 640px)
-  .redefine-box-shadow:hover
-    box-shadow var(--redefine-box-shadow-hover)
-
-  .redefine-box-shadow-flat:hover
-    box-shadow var(--redefine-box-shadow)
-
-.ellipsis
-  overflow hidden
-  text-overflow ellipsis
-  white-space nowrap
-  width 100%
