@@ -56,8 +56,11 @@ root-color(mode) {
 }
 
 
+$temp-mode = hexo-config('colors.default_mode')
+$default-mode = $temp-mode == 'dark' ? 'dark' : 'light'
+
 :root {
-  root-color('light')
+  root-color($default-mode)
 }
 
 .light-mode {
