@@ -6,16 +6,16 @@
     <% if (theme.comment.enable === true && theme.comment.hasOwnProperty('system')) { %>
 
         <% if  (theme.comment.system === 'waline') { %>
-            <%- partial('waline') %>
+            <%- partial('components/comments/waline') %>
 
         <% } else if (theme.comment.system === 'gitalk') { %>
-            <%- partial('gitalk') %>
+            <%- partial('components/comments/gitalk') %>
 
         <% } else if (theme.comment.system === 'twikoo') { %>
-            <%- partial('twikoo') %>
+            <%- partial('components/comments/twikoo') %>
         
         <% } else if (theme.comment.system === 'giscus') { %>
-            <%- partial('giscus') %>
+            <%- partial('components/comments/giscus') %>
         
         <% } %>
     <% } %>

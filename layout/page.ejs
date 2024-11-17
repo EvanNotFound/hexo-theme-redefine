@@ -1,23 +1,23 @@
-<%- partial('_widgets/progress-bar') %>
+<%- partial('components/header/progress-bar') %>
 <% if (theme.global.preloader === true || theme.global.preloader.enable === true) { %>
-<%- partial('_partials/preloader') %>
+<%- partial('components/header/preloader') %>
 <% } %>
 <main class="page-container" id="swup">
 
 	<% if (theme.home_banner.enable === true && is_home() && !page.prev) { %>
-	<%- partial('_partials/home-banner') %>
+	<%- partial('pages/home/home-banner') %>
 	<% } else if (theme.home_banner.enable === true && is_home() && page.prev && theme.home_banner.style === "fixed") { %>
-	<%- partial('_partials/home-background') %>
+	<%- partial('pages/home/home-background') %>
 	<% } %>
 
 	<div class="main-content-container flex flex-col justify-between min-h-dvh">
 		<div class="main-content-header">
-			<%- partial('_partials/navbar') %>
+			<%- partial('components/header/navbar') %>
 		</div>
 
 		<div class="main-content-body">
 			<% if (is_home() && theme.home.sidebar.enable === true && theme.home.sidebar.position === "left") { %>
-			<%- partial('_partials/home-sidebar') %>
+			<%- partial('pages/home/home-sidebar') %>
 			<% } %>
 
 			<div class="main-content">
@@ -25,33 +25,33 @@
 			</div>
 
 			<% if (is_home() && theme.home.sidebar.enable === true && theme.home.sidebar.position === "right") { %>
-			<%- partial('_partials/home-sidebar') %>
+			<%- partial('pages/home/home-sidebar') %>
 			<% } %>
 		</div>
 
 		<div class="main-content-footer">
-			<%- partial('_partials/footer') %>
+			<%- partial('components/footer/footer') %>
 		</div>
 	</div>
 
 	<% if (is_post()) { %>
 	<div class="post-tools">
-		<%- partial('_widgets/post-tools') %>
+		<%- partial('pages/post/post-tools') %>
 	</div>
 	<% } %>
 
 	<div class="right-side-tools-container">
-		<%- partial('_widgets/side-tools') %>
+		<%- partial('utils/side-tools') %>
 	</div>
 
-	<%- partial('_widgets/image-viewer') %>
+	<%- partial('utils/image-viewer') %>
 
 	<% if (theme.navbar.search.enable) { %>
-	<%- partial('_widgets/local-search') %>
+	<%- partial('utils/local-search') %>
 	<% } %>
 
 </main>
 
 <% if (theme.global.single_page !== false) { %>
-<%- partial('_plugins/swup') %>
+<%- partial('components/swup') %>
 <% } %>

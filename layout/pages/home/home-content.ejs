@@ -50,13 +50,13 @@
                         <% } %>
                     </div>
 
-                    <%- partial('_meta/home-article', {post: post}) %>
+                    <%- partial('components/meta/home-article', {post: post}) %>
                 </div>
             </li>
         <% }) %>
     </ul>
 
     <div class="home-paginator px-7 py-5">
-        <%- partial('_widgets/paginator', {pageObject: page}) %>
+        <%- partial('utils/paginator', {pageObject: page}) %>
     </div>
 </div>

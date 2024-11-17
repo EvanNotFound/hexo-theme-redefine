@@ -40,14 +40,14 @@
 					<% } %>
 				</div>
 				<div class="meta-info">
-					<%- partial('_meta/article-info', {articleObject: page, index: true}) %>
+					<%- partial('components/meta/article-info', {articleObject: page, index: true}) %>
 				</div>
 			</div>
 		</div>
 		<% } else { %>
 		<div class="article-header-meta-info px-2 sm:px-6 md:px-8">
 			<div class="meta-info">
-				<%- partial('_meta/article-info', {articleObject: page, index: true}) %>
+				<%- partial('components/meta/article-info', {articleObject: page, index: true}) %>
 			</div>
 		</div>
 		<% } %>
@@ -90,7 +90,7 @@
 
 		<% if (theme.articles.copyright.enable || theme.articles.copyright === true) { %>
 		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
-			<%- partial('_meta/article-copyright') %>
+			<%- partial('components/meta/article-copyright') %>
 		</div>
 		<% } %>
 
@@ -140,14 +140,14 @@
 
 		<% if (theme.comment.enable === true && theme.comment.hasOwnProperty('system') && page.comment !== false) { %>
 		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
-			<%- partial('_partials/comments/comment') %>
+			<%- partial('components/comments/comment') %>
 		</div>
 		<% } %>
 	</div>
 
 	<% if (is_post() && theme.articles.toc.enable === true) { %>
 	<div class="toc-content-container">
-		<%- partial('_widgets/toc') %>
+		<%- partial('pages/post/toc') %>
 	</div>
 	<% } %>
 </div>
