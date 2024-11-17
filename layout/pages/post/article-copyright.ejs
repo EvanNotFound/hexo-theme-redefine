@@ -1,0 +1,69 @@
+<div class="article-copyright-info-container">
+    <ul>
+        <li><strong><%- __('copyright.title') %>:</strong> <%= page.title %></li>
+        <li><strong><%- __('copyright.author') %>:</strong> <%=(typeof page.author === "string" && (page.author)) || page.author?.name || theme.info.author || config.author %></li>
+        <li><strong><%- __('copyright.create_time') %>
+                :</strong> <%= date(page.date, `${config.date_format} ${config.time_format}`) %></li>
+        <% if (page.updated && page.updated !== page.date) { %>
+            <li>
+                <strong><%- __('copyright.update_time') %>
+                    :</strong> <%= date(page.updated, `${config.date_format} ${config.time_format}`) %>
+            </li>
+        <% } %>
+        <li>
+            <strong><%- __('copyright.link') %>:</strong> <%= getPostUrl((theme.info.url || config.url), page.path) %>
+        </li>
+        <li>
+            <strong>
+                <%- __('copyright.license_title') %>:
+            </strong>
+            <%
+            const licenseMap = {
+                'all_rights_reserved': {
+                    label: __('copyright.all_rights_reserved', theme.info.author),
+                    url: null
+                },
+                'cc_by': {
+                    label: __('copyright.license_content', '<a class="license" href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>'),
+                    url: 'https://creativecommons.org/licenses/by/4.0'
+                },
+                'cc_by_sa': {
+                    label: __('copyright.license_content', '<a class="license" href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>'),
+                    url: 'https://creativecommons.org/licenses/by-sa/4.0'
+                },
+                'cc_by_nc': {
+                    label: __('copyright.license_content', '<a class="license" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a>'),
+                    url: 'https://creativecommons.org/licenses/by-nc/4.0'
+                },
+                'cc_by_nd': {
+                    label: __('copyright.license_content', '<a class="license" href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a>'),
+                    url: 'https://creativecommons.org/licenses/by-nd/4.0'
+                },
+                'cc_by_nc_sa': {
+                    label: __('copyright.license_content', '<a class="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>'),
+                    url: 'https://creativecommons.org/licenses/by-nc-sa/4.0'
+                },
+                'public_domain': {
+                    label: __('copyright.public_domain'),
+                    url: null
+                }
+            };
+
+            let licenseType = 'cc_by_nc_sa'; // Default license type
+            if (page.copyright && page.copyright !== "") {
+                licenseType = 'custom';
+            } else if (page.license && licenseMap[page.license]) {
+                licenseType = page.license;
+            } else if (theme.articles.copyright.default && licenseMap[theme.articles.copyright.default]) {
+                licenseType = theme.articles.copyright.default;
+            }
+            %>
+
+            <% if (licenseType === 'custom') { %>
+                <%- page.copyright %>
+            <% } else { %>
+                <%- licenseMap[licenseType].label %>
+            <% } %>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,52 @@
+<div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="<%= post.date %>">
+                <% if (theme.home.article_date_format == 'auto' || theme.home.article_date_format == 'relative') { %>
+                    <%= date(post.date, config.date_format) %>
+                <% } else { %>
+                    <%= date(post.date, theme.home.article_date_format) %>
+                <% } %>
+            </span>
+        </span>
+        <% if (post.categories.length && theme.home.categories.enable === true) { %>
+            <span class="home-article-category">
+                <i class="fa-solid fa-folders"></i>&nbsp;
+            <ul>
+                <% let previousParentId = null; %>
+                <% post.categories.forEach((category, i) => { %>
+                    <% if (previousParentId !== category.parent) { %>
+                        <% if (previousParentId !== null) { %>
+                            <li>></li>
+                        <% } %>
+                        <li>
+                            <a href="<%- url_for(category.path) %>"><%= category.name %></a>&nbsp;
+                        </li>
+                    <% } else { %>
+                        <li>
+                            | <a href="<%- url_for(category.path) %>"><%= category.name %></a>&nbsp;
+                        </li>
+                    <% } %>
+                    <% previousParentId = category.parent; %>
+                <% }); %>
+            </ul>
+        </span>
+        <% } %>
+        <% if (post.tags.length && theme.home.tags.enable === true) { %>
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    <% post.tags.forEach((tag, i) => {
+                    if (theme.home.tags.limit === 0 || i + 1 <= theme.home.tags.limit) { %>
+                        <li>
+                            <%= i === 0 ? '' : '| ' %>
+                            <a href="<%- url_for(tag.path) %>"><%= tag.name %></a>&nbsp;
+                        </li>
+                    <% }}); %>
+                </ul>
+            </span>
+        <% } %>
+    </div>
+
+    <a href="<%- url_for(post.path) %>"><%- __('read_more') %><span class="seo-reader-text"><%= post.title %></span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
