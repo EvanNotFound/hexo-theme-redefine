@@ -1,15 +1,7 @@
 <% if (site.tags.length){ %>
-<div class="tagcloud-container">
-	<div>
-		<h1 class="tagcloud-header">
-			<% const useCustomTitle = page.title.toLowerCase() !== "tags" && page.title.toLowerCase() !=="tag" && page.title !=="标签" %>
-			<% if (useCustomTitle) { %>
-				<%= page.title %>
-			<% } else { %>
-				<%- __('tags') %>
-			<% } %>
-		</h1>
-	</div>
+	<h1 class="page-title-header">
+		<%- getPageTitle(page) %>
+	</h1>
 
 	<% if (theme.page_templates.tags_style == 'cloud') { %>
 	<div class="tagcloud-content">
@@ -29,5 +21,4 @@
 		</ul>
 	</div>
 	<% } %>
-</div>
 <% } %>

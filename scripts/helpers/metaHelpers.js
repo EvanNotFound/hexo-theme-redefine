@@ -1,4 +1,4 @@
-hexo.extend.helper.register('generate_seo', function (theme, page) {
+hexo.extend.helper.register('generateMeta', function (theme, page) {
   const hexo = this;
   let robots_content="";
   if (page.robots) {

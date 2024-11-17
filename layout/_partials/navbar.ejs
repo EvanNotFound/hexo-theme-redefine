@@ -25,7 +25,7 @@
                             <%
                                 let link = theme.navbar.links[i];
                                 let hasSubmenus = link.submenus;
-                                let isActive = isInHomePaging(page.path, link.path) || is_current(link.path);
+                                let isActive = isHomePagePagination(page.path, link.path) || is_current(link.path);
                                 let linkHref = hasSubmenus ? '#' : url_for(link.path);
                                 let onClickAction = hasSubmenus ? 'onClick="return false;"' : '';
                                 let iconClass = link.icon ? `<i class="${link.icon} fa-fw"></i>` : '';
@@ -85,7 +85,7 @@
                     <%
                         // Function to check if link is active
                         function isActiveLink(pagePath, linkPath) {
-                            return isInHomePaging(pagePath, linkPath) || is_current(linkPath);
+                            return isHomePagePagination(pagePath, linkPath) || is_current(linkPath);
                         }
 
                         // Variables for cleaner code
