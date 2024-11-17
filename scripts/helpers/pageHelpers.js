@@ -1,98 +1,62 @@
+/*
+	pageData is an object that defines various page types and their associated rendering details.
+	
+	Each page type includes the following properties:
+	
+	- titles: An array of possible titles for the page, which are used to identify the page type.
+	- types: An array of page types that can be matched; the type takes precedence over the title for identification.
+	- partial: The path to the partial template that will be used to render the content of the page.
+	- layout: Specifies the layout style for the page. "raw" indicates that no theme layout will be applied, while "default" means the standard theme layout (container) will be used.
+*/
+
 const pageData = {
 	home: {
-		titles: ["home", "Home", "首页"],
 		types: ["home"],
-		themeKey: "home",
 		partial: "pages/home/home-content",
-        layout: "raw"
+		layout: "raw"
 	},
 	archive: {
-		titles: ["archive", "archives", "归档", "Archives", "Archive"],
 		types: ["archive", "archives"],
-		themeKey: "archives",
 		partial: "pages/archive/archive-content",
 		layout: "raw",
 	},
 	post: {
-		titles: ["post", "posts", "文章", "Post", "Posts"],
 		types: ["post", "posts"],
-		themeKey: "posts",
 		partial: "pages/post/article-content",
 		layout: "raw",
 	},
 	category: {
-		titles: ["category", "categories", "分类", "Categories", "Category"],
 		types: ["category", "categories"],
-		themeKey: "categories",
 		partial: "pages/category/category-list",
 		layout: "default",
 	},
 	tag: {
-		titles: ["tag", "tags", "标签", "Tags", "Tag"],
 		types: ["tag", "tags"],
-		themeKey: "tags",
 		partial: "pages/tag/tagcloud",
 		layout: "default",
 	},
 	notFound: {
-		titles: ["Page Not Found", "404", "未找到页面"],
 		types: ["404", "notfound"],
-		themeKey: "404",
 		partial: "pages/404/404-template",
 		layout: "raw",
 	},
 	friends: {
-		titles: [
-			"friends",
-			"friend",
-			"友情链接",
-			"友情鏈接",
-			"友情鏈結",
-			"朋友",
-			"朋友們",
-			"朋友们",
-			"links",
-			"link",
-			"Link",
-			"Links",
-		],
 		types: ["links", "link"],
-		themeKey: "links",
 		partial: "pages/friends/friends-link",
 		layout: "default",
 	},
 	shuoshuo: {
-		titles: ["essays", "essay", "shuoshuo", "说说", "即刻短文", "Shuoshuo"],
 		types: ["essays", "essay", "shuoshuo"],
-		themeKey: ["essays", "shuoshuo"],
 		partial: "pages/shuoshuo/essays",
 		layout: "default",
 	},
 	masonry: {
-		titles: [
-			"masonry",
-			"gallery",
-			"Masonry",
-			"Gallery",
-			"照片墙",
-			"照片牆",
-			"相册",
-			"相冊",
-			"瀑布流",
-			"photos",
-			"Photos",
-			"photo",
-			"Photo",
-		],
 		types: ["masonry", "gallery", "瀑布流", "相册", "photos", "photo"],
-		themeKey: ["masonry", "gallery", "photos"],
 		partial: "pages/masonry/masonry",
 		layout: "default",
 	},
 	pageTemplate: {
-		titles: [],
 		types: [],
-		themeKey: "page",
 		partial: "pages/page-template",
 		layout: "default",
 	},
@@ -105,9 +69,7 @@ hexo.extend.helper.register("getPageData", function () {
 hexo.extend.helper.register("getPagePartialPath", function (page) {
 	const matchesPageType = (type) => {
 		const config = pageData[type];
-		return (
-			config.types.includes(page.type) || config.titles.includes(page.title)
-		);
+		return config.types.includes(page.template || page.type);
 	};
 
 	// Check built-in page types first
@@ -128,32 +90,25 @@ hexo.extend.helper.register("getPagePartialPath", function (page) {
 });
 
 hexo.extend.helper.register('getPageTitle', function(page) {
-  const pageData = this.getPageData();
-  
-  let type = null;
+	const pageData = this.getPageData();
+	let type = null;
 
-  // Determine the type based on page properties
-  if (this.is_home()) type = 'home';
-  else if (this.is_archive()) type = 'archive';
-  else if (this.is_post()) type = 'post';
-  else if (this.is_category()) type = 'category';
-  else if (this.is_tag()) type = 'tag';
-  else {
-    // Iterate through custom page types
-    for (const [key, config] of Object.entries(pageData)) {
-      if (config.types.includes(page.type) || config.titles.includes(page.title)) {
-        type = key;
-        break;
-      }
-    }
-  }
+	// Determine the type based on page properties
+	if (this.is_home()) type = 'home';
+	else if (this.is_archive()) type = 'archive';
+	else if (this.is_post()) type = 'post';
+	else if (this.is_category()) type = 'category';
+	else if (this.is_tag()) type = 'tag';
+	else {
+		// Iterate through custom page types
+		for (const [key, config] of Object.entries(pageData)) {
+			if (config.types.includes(page.template || page.type)) {
+				type = key;
+				break;
+			}
+		}
+	}
 
-  const config = type ? pageData[type] : null;
-  
-  if (!config) return page.title || 'Untitled';
-
-  const hasCustomTitle = page.title && 
-    !config.titles.map(title => title.toLowerCase()).includes(page.title.toLowerCase());
-
-  return hasCustomTitle ? page.title : this.__(type);
+	const config = type ? pageData[type] : null;
+	return page.title || this.__(type) || 'Untitled';
 });

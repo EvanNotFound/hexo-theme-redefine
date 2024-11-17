@@ -1,6 +1,6 @@
 <div class="page-template-container">
 	<% const currentPageType = Object.entries(getPageData()).find(([type, config]) => {
-		return config.types.includes(page.type) || config.titles.includes(page.title);
+		return config.types.includes(page.template || page.type);
 	}); %>
 
 	<% if (currentPageType) { %>
