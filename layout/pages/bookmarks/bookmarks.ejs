@@ -41,7 +41,7 @@
                                                 transform group-hover:scale-105 transition-transform duration-300">
 									<img src="<%= item.image %>" alt="<%= item.name %>" class="w-full h-full object-cover" onerror="this.src='/images/default-bookmark.png'">
 								</div>
-								<div class="flex-1 min-w-0">
+								<div class="flex-1 min-w-0 flex flex-col gap-1">
 									<div class="flex items-center justify-between">
 										<h3 class="font-medium text-second-text-color group-hover:text-primary transition-colors">
 											<%= item.name %>
@@ -49,7 +49,7 @@
 										<i class="fa-regular fa-arrow-right text-third-text-color opacity-0 group-hover:opacity-100 -translate-x-1
                                                       group-hover:translate-x-0 transition-all duration-300"></i>
 									</div>
-									<p class="mt-2 text-sm text-third-text-color line-clamp-2">
+									<p class="text-sm text-third-text-color line-clamp-2">
 										<%= item.description %>
 									</p>
 								</div>
