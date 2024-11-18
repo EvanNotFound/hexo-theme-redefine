@@ -4,7 +4,6 @@ hexo.on('generateBefore', function () {
     const data = hexo.locals.get('data');
 
     if (data) {
-
       // theme config file handle
       if (data._config) {
         hexo.theme.config = data._config;
@@ -27,6 +26,10 @@ hexo.on('generateBefore', function () {
 
       if (data.masonry || data.gallery || data.photos) {
         hexo.theme.config.masonry = (data.masonry || data.gallery || data.photos);
+      }
+
+      if (data.bookmarks || data.tools) {
+        hexo.theme.config.bookmarks = data.bookmarks || data.tools;
       }
 
     }

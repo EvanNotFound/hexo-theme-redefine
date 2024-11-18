@@ -76,6 +76,12 @@ const pageData = {
 		partial: "pages/masonry/masonry",
 		layout: "default",
 	},
+	bookmarks: {
+		titles: ["bookmarks", "bookmark", "书签", "工具", "tools"],
+		types: ["bookmarks", "bookmark", "tools"],
+		partial: "pages/bookmarks/bookmarks",
+		layout: "raw",
+	},
 	pageTemplate: {
 		titles: [],
 		types: [],
