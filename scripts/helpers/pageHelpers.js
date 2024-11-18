@@ -84,8 +84,21 @@ const pageData = {
 	},
 };
 
-hexo.extend.helper.register("getPageData", function () {
+hexo.extend.helper.register("getAllPageData", function () {
 	return pageData;
+});
+
+hexo.extend.helper.register("getPageData", function (page) {
+	if (this.is_home()) return pageData.home;
+	if (this.is_archive()) return pageData.archive;
+	if (this.is_post()) return pageData.post;
+	if (this.is_category()) return pageData.categoryDetail;
+	if (this.is_tag()) return pageData.tagDetail;
+
+	const currentPageConfig = Object.entries(pageData).find(([type, config]) => {
+		return config.types.includes(page.template || page.type) || config.titles.includes(page.title?.toLowerCase());
+	});
+	return currentPageConfig ? pageData[currentPageConfig[0]] : null;
 });
 
 hexo.extend.helper.register("getPagePartialPath", function (page) {
@@ -99,12 +112,18 @@ hexo.extend.helper.register("getPagePartialPath", function (page) {
 
 	// Check built-in page types first
 	if (this.is_home()) return pageData.home.partial;
-	if (this.is_archive()) return pageData.archive.partial;
+
 	if (this.is_post()) return pageData.post.partial;
 	// Check custom page types
 	for (const [type, config] of Object.entries(pageData)) {
 		if (matchesPageType(type) && config.layout === "raw") {
 			return config.partial;
+		} else if (this.is_archive() && pageData.archive.layout === "raw") { // return raw layout for archive page
+			return pageData.archive.partial;
+		} else if (this.is_category() && pageData.categoryDetail.layout === "raw") { // return raw layout for category page
+			return pageData.categoryDetail.partial;
+		} else if (this.is_tag() && pageData.tagDetail.layout === "raw") { // return raw layout for tag page
+			return pageData.tagDetail.partial;
 		}
 	}
 
@@ -112,7 +131,7 @@ hexo.extend.helper.register("getPagePartialPath", function (page) {
 });
 
 hexo.extend.helper.register("getPageTitle", function (page) {
-	const pageData = this.getPageData();
+	const pageData = this.getPageData(page);
 	let type = null;
 
 	// Determine the type based on page properties
@@ -120,13 +139,7 @@ hexo.extend.helper.register("getPageTitle", function (page) {
 	else if (this.is_archive()) type = "archive";
 	else if (this.is_post()) type = "post";
 	else {
-		// Iterate through custom page types
-		for (const [key, config] of Object.entries(pageData)) {
-			if (config.types.includes(page.template || page.type) || config.titles.includes(page.title?.toLowerCase())) {
-				type = key;
-				break;
-			}
-		}
+		type = pageData.type;
 	}
 
 	// const config = type ? pageData[type] : null;

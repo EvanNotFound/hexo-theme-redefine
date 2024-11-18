@@ -1,31 +1,23 @@
 <div class="page-template-container">
-	<% if (is_category()) { %>
-		<%- partial('pages/category/category-detail') %>
-	<% } else if (is_tag()) { %>
-		<%- partial('pages/tag/tag-detail') %>
-	<% } else { %>
-		<% const currentPageType = Object.entries(getPageData()).find(([type, config]) => {
-			return config.types.includes(page.template || page.type) || config.titles.includes(page.title?.toLowerCase());
-		}); %>
+	<% const pageData = getPageData(page); %>
 
-		<% if (currentPageType) { %>
-			<%- partial(currentPageType[1].partial) %>
+	<% if (pageData) { %>
+	<%- partial(pageData.partial) %>
+	<% } %>
+
+	<div class="page-template-content markdown-body">
+		<% if (!pageData) { %>
+		<h1><%- page.title %></h1>
 		<% } %>
 
-		<div class="page-template-content markdown-body">
-			<% if (currentPageType || page.content) { %>
-				<%- page.content %>
-			<% } else { %>
-				<h1><%- page.title %></h1>
-			<% } %>
-		</div>
+		<%- page.content %>
+	</div>
 
-		<div class="page-template-comments">
-			<% if (page.hasOwnProperty('comment') && (page.comment === true || page.comments === true) ) { %>
-				<%- partial('components/comments/comment') %>
-			<% } %>
-		</div>
-	<% } %>
+	<div class="page-template-comments">
+		<% if (page.hasOwnProperty('comment') && (page.comment === true || page.comments === true) ) { %>
+		<%- partial('components/comments/comment') %>
+		<% } %>
+	</div>
 </div>
 
 <%- partial('utils/paginator', {pageObject: page}) %>
