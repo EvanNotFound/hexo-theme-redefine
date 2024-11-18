@@ -6,7 +6,7 @@ const url = require("url");
 const fs = require("fs");
 const path = require("path");
 const yaml = require("js-yaml");
-const { version } = require("../../package.json");
+const { version } = require("../package.json");
 
 /**
  * Export theme config to js
@@ -37,7 +37,7 @@ hexo.extend.helper.register("export_config", function () {
     footerStart: this.theme.footer.start,
   };
 
-  const languageDir = path.join(__dirname, "../../languages");
+  const languageDir = path.join(__dirname, "../languages");
   let file = fs
     .readdirSync(languageDir)
     .find((v) => v === `${this.config.language}.yml`);
