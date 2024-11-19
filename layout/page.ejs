@@ -15,7 +15,7 @@
 			<%- partial('components/header/navbar') %>
 		</div>
 
-		<div class="main-content-body">
+		<div class="main-content-body transition-main-content-body">
 			<% if (is_home() && theme.home.sidebar.enable === true && theme.home.sidebar.position === "left") { %>
 			<%- partial('pages/home/home-sidebar') %>
 			<% } %>
