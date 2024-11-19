@@ -78,3 +78,9 @@
         'js/plugins/pangu.js'
     ]) %>
 <% } %>
+
+<% if (theme.bookmarks && theme.bookmarks.length !== 0) { %>
+    <%- renderJS('js/layouts/bookmarkNav.js', {
+        module: true
+    }) %>
+<% } %>

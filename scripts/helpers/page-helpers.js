@@ -65,7 +65,7 @@ const pageData = {
 		layout: "default",
 	},
 	shuoshuo: {
-		titles: ["shuoshuo", "说说", "随笔"],
+		titles: ["shuoshuo", "说说"],
 		types: ["essays", "essay", "shuoshuo"],
 		partial: "pages/shuoshuo/essays",
 		layout: "default",
@@ -77,7 +77,7 @@ const pageData = {
 		layout: "default",
 	},
 	bookmarks: {
-		titles: ["bookmarks", "bookmark", "书签", "工具", "tools"],
+		titles: [],
 		types: ["bookmarks", "bookmark", "tools"],
 		partial: "pages/bookmarks/bookmarks",
 		layout: "raw",

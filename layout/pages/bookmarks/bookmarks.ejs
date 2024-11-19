@@ -8,14 +8,16 @@
 
 
 		<!-- Left Sidebar - Categories -->
-		<div class="w-full md:w-64 flex-shrink-0 md:sticky md:top-[var(--navbar-height)] h-fit sm:py-6">
+		<div class="w-full md:w-48 flex-shrink-0 md:sticky md:top-[var(--navbar-height)] h-fit sm:py-6">
 			<nav class="flex md:block overflow-x-auto scrollbar-hide pb-4 md:pb-0 gap-2">
 				<% for (const category of theme.bookmarks) { %>
 				<a href="#<%= category.category.toLowerCase().replace(/\s+/g, '-') %>" class="whitespace-nowrap md:whitespace-normal block px-3 py-2 rounded-lg 
                    hover:bg-second-background-color hover:text-primary hover:scale-102 
                    transition-all duration-200 border border-transparent 
                    hover:border-second-background-color
-                   flex-shrink-0 font-medium">
+                          flex-shrink-0 font-medium
+                          bookmark-nav-item"
+                   data-category="<%= category.category.toLowerCase().replace(/\s+/g, '-') %>">
 					<i class="fa-regular <%= category.icon %> mr-2 w-6 h-6"></i>
 					<%= category.category %>
 				</a>
@@ -39,7 +41,7 @@
 							<div class="flex items-center gap-5">
 								<div class="w-12 h-12 rounded-xl overflow-hidden bg-second-background-color flex-shrink-0
                                                 transform group-hover:scale-105 transition-transform duration-300">
-									<img src="<%= item.image %>" alt="<%= item.name %>" class="w-full h-full object-cover" onerror="this.src='/images/default-bookmark.png'">
+									<img src="<%= item.image %>" alt="<%= item.name %>" class="w-full h-full object-cover" onerror="this.src='/images/bookmark-placeholder.svg'">
 								</div>
 								<div class="flex-1 min-w-0 flex flex-col gap-1">
 									<div class="flex items-center justify-between">
