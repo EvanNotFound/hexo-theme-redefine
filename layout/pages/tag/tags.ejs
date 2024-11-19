@@ -1,0 +1,24 @@
+<% if (site.tags.length){ %>
+	<h1 class="page-title-header">
+		<%- getPageTitle(page) %>
+	</h1>
+
+	<% if (theme.page_templates.tags_style == 'cloud') { %>
+	<div class="tagcloud-content">
+		<%- tagcloud({ min_font: 1, max_font: 5, unit: 'rem', amount: 100 }) %>
+	</div>
+
+	<% } else {%>
+	<div class="tagcloud-content">
+		<ul class="tag-list" data-show-value="true">
+			<% site.tags.forEach(function(tag){ %>
+				<li>
+					<a data-weight="<%- tag.posts.length %>" href="<%- url_for("/" + tag.path) %>">
+						<i class="fa-solid fa-hashtag"></i><%- tag.name %>
+					</a>
+				</li>
+			<% }) %>
+		</ul>
+	</div>
+	<% } %>
+<% } %>

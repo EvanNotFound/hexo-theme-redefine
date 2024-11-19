@@ -1,0 +1,153 @@
+<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			<% if (page.cover || page.banner || (page.thumbnail && page.thumbnail !== false)) { %>
+			<% let articleCover = "";
+                if (page.cover && page.cover.includes("/")) {
+                articleCover = page.cover;
+                } else if (page.banner && page.banner.includes("/")) {
+                articleCover = page.banner;
+                } else if (page.thumbnail && page.thumbnail !== null) {
+                articleCover = page.thumbnail;
+                } else if (config.marked.postAsset && config.marked.postAsset == true) {
+                articleCover = [page.path, page.cover || page.banner].join("/");
+                }
+                %>
+			<% if (articleCover) { %>
+			<img src="<%= url_for(articleCover) %>" alt="<%= page.title %>" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75" />
+			<% } %>
+			<div class="w-full flex items-center absolute bottom-0 <%= theme.articles.style.title_alignment === "center" ? "justify-center" : "justify-start" %>">
+				<h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-semibold backdrop-blur-lg rounded-xl border border-border-color "><%= page.title %></h1>
+			</div>
+			<% } else { %>
+			<div class="w-full flex items-center pt-6 <%= theme.articles.style.title_alignment === "center" ? "justify-center" : "justify-start" %>">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3"><%= page.title %></h1>
+			</div>
+			<% } %>
+		</div>
+
+		<% if (theme.info.author || config.author) { %>
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<%- image_tag((typeof page.avatar === "string" && (page.avatar)) || page.author?.avatar || theme.defaults.avatar) %>
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold"><%= (typeof page.author === "string" && (page.author)) || page.author?.name || theme.info.author || config.author %></span>
+					<% if (theme.hasOwnProperty('articles') && theme.articles.author_label.enable === true) { %>
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1"><%- getAuthorLabel(site.posts.length, theme.articles.author_label.auto, theme.articles.author_label.list) %></span>
+					<% } %>
+				</div>
+				<div class="meta-info">
+					<%- partial('pages/post/article-info', {articleObject: page, index: true}) %>
+				</div>
+			</div>
+		</div>
+		<% } else { %>
+		<div class="article-header-meta-info px-2 sm:px-6 md:px-8">
+			<div class="meta-info">
+				<%- partial('pages/post/article-info', {articleObject: page, index: true}) %>
+			</div>
+		</div>
+		<% } %>
+
+		<% if (page?.expires && page?.expires !== "") {%>
+		<div class="article-expire mt-4 mx-2 sm:mx-6 md:mx-8 note p-4 rounded-lg red icon hidden" id="expiration-container">
+			<i class="expire-icon fa-solid fa-timer mr-0.5 text-red-600 dark:text-red-400"></i>
+			<span class="expire-label text-red-600 dark:text-red-400 " id="expiration-date"><%= __('expired', "some") %></span>
+		</div>
+
+		<script data-swup-reload-script>
+			function updateExpirationDate() {
+				try {
+					const expiredDate = new Date("<%= page?.expires %>");
+					const updatedDate = new Date("<%= page?.updated %>");
+					const now = new Date();
+					const expirationValue = document.getElementById("expiration-date");
+					const expirationContainer = document.getElementById("expiration-container");
+					let daysAgo = Math.floor((now - updatedDate) / (1000 * 60 * 60 * 24));
+					if (expiredDate < now) {
+						expirationContainer.classList.remove("hidden");
+						// console.log(daysAgo)
+						expirationValue.innerHTML = expirationValue.innerHTML.replace("some", daysAgo);
+					}
+				} catch (e) {}
+			}
+			document.addEventListener("DOMContentLoaded", function() {
+				updateExpirationDate();
+			});
+			try {
+				swup.hooks.on("page:view", updateExpirationDate)
+			} catch (e) {}
+		</script>
+		<% } %>
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<%- page.content %>
+		</div>
+
+		<% if (theme.articles.copyright.enable || theme.articles.copyright === true) { %>
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<%- partial('pages/post/article-copyright') %>
+		</div>
+		<% } %>
+
+		<% if (page?.tags?.length) { %>
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			<% page.tags.forEach((tag) => { %>
+			<li class="tag-item mx-0.5">
+				<a href="<%- url_for(tag.path) %>">#<%= tag.name %></a>&nbsp;
+			</li>
+			<% }); %>
+		</ul>
+		<% } %>
+
+		<%- articleRecommendationGenerator(page) %>
+
+		<% if (page?.prev || page?.next) { %>
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			<% if (page?.prev) { %>
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="<%= url_for(page.prev.path) %>">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item"><%= page.prev.title %></span>
+						<span class="post-nav-item"><%= __('prev_posts') %></span>
+					</span>
+				</a>
+			</div>
+			<% } %>
+			<% if (page?.next) { %>
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="<%= url_for(page.next.path) %>">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item"><%= page.next.title %></span>
+						<span class="post-nav-item"><%= __('next_posts') %></span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			<% } %>
+		</div>
+		<% } %>
+
+
+		<% if (theme.comment.enable === true && theme.comment.hasOwnProperty('system') && page.comment !== false) { %>
+		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+			<%- partial('components/comments/comment') %>
+		</div>
+		<% } %>
+	</div>
+
+	<% if (is_post() && theme.articles.toc.enable === true) { %>
+	<div class="toc-content-container">
+		<%- partial('pages/post/toc') %>
+	</div>
+	<% } %>
+</div>

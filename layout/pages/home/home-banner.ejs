@@ -1,0 +1,137 @@
+<% if (theme.home_banner.style === "fixed") { %>
+    <style>
+        .home-banner-container {
+            background: none !important;
+        }
+        .home-article-item,
+        .sidebar-links,
+        .sidebar-content,
+        a.page-number,
+        a.extend,
+        .sidebar-links .links:hover,
+        .right-bottom-tools,
+        footer.footer {
+            background-color: var(--background-color-transparent-80) !important;
+        }
+        .right-bottom-tools:hover,
+        a.page-number:hover,
+        a.extend:hover {
+            background-color: var(--primary-color) !important;
+        }
+        .site-info,
+        .home-article-sticky-label {
+            background-color: var(--background-color-transparent-15) !important;
+        }
+        .home-article-sticky-label {
+            backdrop-filter: none !important;
+        }
+    </style>
+    <div class="home-banner-background transition-fade fixed top-0 left-0 w-screen h-screen scale-125 sm:scale-110 box-border will-change-transform bg-cover">
+        <img src="<%- url_for(theme.home_banner.image.light) %>" alt="home-banner-background" class="w-full h-full object-cover dark:hidden">
+        <img src="<%- url_for(theme.home_banner.image.dark) %>" alt="home-banner-background" class="w-full h-full object-cover hidden dark:block">
+    </div>
+<% } %>
+
+<div class="home-banner-container flex justify-center items-center transition-fade relative">
+    <% if (theme.home_banner.style !== "fixed") {%>
+    <div class="home-banner-background transition-fade absolute top-0 left-0 w-screen h-screen scale-125 sm:scale-110 box-border will-change-transform bg-cover">
+        <img src="<%- url_for(theme.home_banner.image.light) %>" alt="home-banner-background" class="w-full h-full object-cover dark:hidden">
+        <img src="<%- url_for(theme.home_banner.image.dark) %>" alt="home-banner-background" class="w-full h-full object-cover hidden dark:block">
+    </div>
+    <% } %>
+    <div class="content mt-8 flex flex-col justify-center items-center transition-fade-down">
+        <div class="description flex flex-col justify-center items-center w-screen font-medium text-center"
+        <% if (theme.home_banner.custom_font.enable) { %>
+             style="font-family: '<%- theme.home_banner.custom_font.family %>', sans-serif; !important;"
+                <% } %>
+        >
+            <%- theme.home_banner.title || theme.style.first_screen.description || config.description %>
+            <%# theme.style.first_screen.description is deprecated %>
+            <% if (theme.home_banner.subtitle.length !== 0) { %>
+                <p><i id="subtitle"></i></p>
+            <% } %>
+        </div>
+        <% if (theme.home_banner.social_links.enable) { %>
+            <%
+                const flexDirection = theme.home_banner.social_links.style === "reverse" ? "flex-row-reverse" : "flex-row";
+                const justify = theme.home_banner.social_links.style === "center" ? "justify-center" : "justify-between";
+                const display = theme.home_banner.social_links.style === "center" ? "hidden" : "flex";
+            %>
+            <div class="absolute bottom-0.5 flex <%- flexDirection %> <%- justify %> max-w-[1340px] items-center w-full px-8 sm:px-12">
+                <div class="<%- display %> p-3 bg-gray-300/50 dark:bg-gray-500/40 backdrop-blur-lg border border-white/20 dark:border-gray-500/30 group rounded-full cursor-pointer flex justify-center items-center aspect-square h-full shadow-redefine-flat hover:shadow-redefine-flat-hover transition-shadow" onclick="scrollToMain()" >
+                    <i class="fa-solid fa-arrow-down fa-fw fa-lg group-hover:translate-y-1 transition-transform"></i>
+                </div>
+                <div class="social-contacts px-6 py-3 bg-gray-300/50 dark:bg-gray-500/40 backdrop-blur-lg border border-white/20 dark:border-gray-500/30 shadow-redefine-flat rounded-full flex flex-row gap-3 items-center">
+                    <% for (const key in theme.home_banner.social_links.links) { %>
+                        <% if(theme.home_banner.social_links.links[key]) { %>
+                            <% if(key === 'email') { %>
+                                <span class="social-contact-item <%= key %> ">
+                                    <a href="mailto:<%- theme.home_banner.social_links.links[key] %>">
+                                        <i class="fa-solid fa-fw fa-at fa-lg"></i>
+                                    </a>
+                                </span>
+                            <% } else if(key.includes("fa-")) { %>
+                                <span class="social-contact-item">
+                                    <a target="_blank" href="<%- theme.home_banner.social_links.links[key] %>">
+                                        <i class="<%= key %> fa-fw fa-lg"></i>
+                                    </a>
+                                </span>
+                            <% } else { %>
+                                <span class="social-contact-item <%= key %>">
+                                    <a target="_blank" href="<%- theme.home_banner.social_links.links[key] %>">
+                                        <i class="fa-brands fa-fw fa-lg fa-<%= key %>"></i>
+                                    </a>
+                                </span>
+                            <% } %>
+                        <% } %>
+                    <% } %>
+                    <%
+                        let qrs = theme.home_banner.social_links.qrs;
+                        let qrCount = 0;
+                        for (const key in qrs) {
+                            if(qrs[key]) {
+                                qrCount++;
+                            }
+                        }
+                    if (qrs && qrCount >= 1) { %>
+
+                        <div class="social-links-divider vertical-separator w-[1px] h-4 bg-third-text-color mx-0.5"></div>
+
+                        <% for (const key in qrs) { %>
+                            <% if(qrs[key]) { %>
+                                <% if(key.includes("fa-")) { %>
+                                    <span class="social-contact-item-qr cursor-pointer group">
+                                        <a target="_blank">
+                                            <i class="<%= key %> fa-fw fa-lg"></i>
+                                            <div class="social-qr-container absolute h-auto bg-background-color-transparent-40 border border-white/20 dark:border-gray-500/30 overflow-hidden rounded-2xl bottom-0 mb-14 right-0 invisible group-hover:visible opacity-0 group-hover:opacity-100 translate-y-0.5 group-hover:translate-y-0 transition-all">
+                                                <img class="social-contacts-qr w-64"
+                                                     src="<%- url_for(theme.home_banner.social_links.qrs[key]) %>"/>
+                                            </div>
+                                        </a>
+                                    </span>
+                                <% } else { %>
+                                    <span class="social-contact-item-qr <%= key %> cursor-pointer group">
+                                        <a target="_blank">
+                                            <i class="fa-brands fa-fw fa-lg fa-<%= key %>"></i>
+                                            <div class="social-qr-container absolute h-auto bg-background-color-transparent-40 border border-white/20 dark:border-gray-500/30 overflow-hidden rounded-2xl bottom-0 mb-14 right-0 invisible group-hover:visible opacity-0 group-hover:opacity-100 translate-y-0.5 group-hover:translate-y-0 transition-all">
+                                                <img class="social-contacts-qr w-64"
+                                                     src="<%- url_for(theme.home_banner.social_links.qrs[key]) %>"/>
+                                            </div>
+                                        </a>
+                                    </span>
+                                <% } %>
+                            <% } %>
+                        <% } %>
+                    <% } %>
+                </div>
+            </div>
+        <% } %>
+    </div>
+    <script>
+        const scrollToMain = ()=> {
+            console.log('scroll');
+            const target = document.querySelector('.main-content-container');
+            target.scrollIntoView({ behavior: 'smooth'});
+        }
+    </script>
+</div>

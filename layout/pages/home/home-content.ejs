@@ -1,0 +1,62 @@
+<div class="home-content-container">
+    <ul class="home-article-list">
+        <% page.posts.forEach(post => { %>
+            <li class="home-article-item">
+
+                <% if (post.sticky) { %>
+                    <div class="absolute top-[12px] right-[12px] text-[0.7rem] text-third-text-color rounded-medium bg-background-color-transparent-15 py-[2px] px-[10px] border border-border-color z-1 hover:text-first-text-color cursor-default">
+                        <i class="fa-regular fa-thumbtack mr-[3px] text-[0.65rem]"></i><%- __('sticky') %>
+                    </div>
+                <% } %>
+
+                <%  let articleThumbnail = "";
+                if (post.cover || post.banner || (post.thumbnail && post.thumbnail !== false)) { %>
+                    <%
+                    if (post.thumbnail && post.thumbnail !== null) {
+                      articleThumbnail = post.thumbnail;
+                    } else if (post.cover && post.cover.includes("/")) {
+                      articleThumbnail = post.cover;
+                    } else if (post.banner && post.banner.includes("/")) {
+                      articleThumbnail = post.banner;
+                    } else if (config.marked.postAsset && config.marked.postAsset == true) {
+                      articleThumbnail = [post.path, post.cover || post.banner].join("/");
+                    }
+                    %>
+                <% } %>
+
+                <% if (post.thumbnail !== false && (post.thumbnail || post.cover || post.banner)) { %>
+                    <div id="home-article-thumbnail" class="home-article-thumbnail relative h-[150px] overflow-hidden rounded-t-large">
+                        <a href="<%- url_for(post.path) %>">
+                            <img src="<%- url_for(articleThumbnail) %>" alt="<%= post.title %>" class="w-full h-full object-cover dark:brightness-75 transition-all" />
+                        </a>
+                    </div>
+                <% } %>
+                <div class="flex flex-col gap-5 px-7 pb-7 <%= post.thumbnail !== false && (post.thumbnail || post.cover || post.banner) ? "pt-5" : "pt-7" %>">
+                    <h3 class="home-article-title">
+                        <a href="<%- url_for(post.path) %>">
+                            <%= post.title %>
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        <% if (post.excerpt && post.excerpt == "false") { %>
+                        <% } else if (post.excerpt && post.excerpt !== "false") { %>
+                            <%- render(post.excerpt, "markdown") %>
+                        <% } else { %>
+                            <%
+                                const excerptLength = theme.home.excerpt_length || 200;
+                            %>
+                            <%- truncate(strip_html(post.content), {length: excerptLength}) %>
+                        <% } %>
+                    </div>
+
+                    <%- partial('pages/home/home-article', {post: post}) %>
+                </div>
+            </li>
+        <% }) %>
+    </ul>
+
+    <div class="home-paginator px-7 py-5">
+        <%- partial('utils/paginator', {pageObject: page}) %>
+    </div>
+</div>

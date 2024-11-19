@@ -1,0 +1,1 @@
+{"version":3,"file":"pangu.js","names":["initPanguJS","pangu","spacingElementByClassName","autoSpacingPage","document","addEventListener","swup","hooks","on","e"],"sources":["0"],"mappings":"AAAA,SAASA,cAEPC,MAAMC,0BAA0B,iBAEhCD,MAAME,iBACR,CAEAC,SAASC,iBAAiB,mBAAoBL,aAE9C,IACEM,KAAKC,MAAMC,GAAG,YAAaR,YAC7B,CAAE,MAAOS,GAAI","ignoreList":[]}

@@ -1,0 +1,28 @@
+<%
+// Define an array of images to display in the masonry layout
+const images = theme.masonry;
+%>
+
+<h1 class="page-title-header">
+	<%- getPageTitle(page) %>
+</h1>
+
+<div class="loading-placeholder">
+	<div class="flex-grid generic-card">
+		<div class="card loading"></div>
+		<div class="card loading"></div>
+		<div class="card loading"></div>
+	</div>
+</div>
+
+<div id="masonry-container">
+	<% images.forEach(function(image) { %>
+	<div class="masonry-item">
+		<div class="image-container">
+			<img src="<%- image.image %>" alt="<%- image.title %>">
+			<div class="image-title"><%- image.title %></div>
+			<div class="image-description"><%- image.description %></div>
+		</div>
+	</div>
+	<% }); %>
+</div>

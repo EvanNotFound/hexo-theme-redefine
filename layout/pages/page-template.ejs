@@ -1,0 +1,23 @@
+<div class="page-template-container">
+	<% const pageData = getPageData(page); %>
+
+	<% if (pageData) { %>
+	<%- partial(pageData.partial) %>
+	<% } %>
+
+	<div class="page-template-content markdown-body">
+		<% if (!pageData) { %>
+		<h1><%- page.title %></h1>
+		<% } %>
+
+		<%- page.content %>
+	</div>
+
+	<div class="page-template-comments">
+		<% if (page.hasOwnProperty('comment') && (page.comment === true || page.comments === true) ) { %>
+		<%- partial('components/comments/comment') %>
+		<% } %>
+	</div>
+</div>
+
+<%- partial('utils/paginator', {pageObject: page}) %>

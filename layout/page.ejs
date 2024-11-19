@@ -1,92 +1,57 @@
-<%- partial('_widgets/progress-bar') %>
+<%- partial('components/header/progress-bar') %>
 <% if (theme.global.preloader === true || theme.global.preloader.enable === true) { %>
-    <%- partial('_partials/preloader') %>
+<%- partial('components/header/preloader') %>
 <% } %>
 <main class="page-container" id="swup">
 
-    <% if (theme.home_banner.enable === true && is_home() && !page.prev) { %>
-        <%- partial('_partials/home-banner') %>
-    <% } else if (theme.home_banner.enable === true && is_home() && page.prev && theme.home_banner.style === "fixed") { %>
-        <%- partial('_partials/home-background') %>
-    <% } %>
+	<% if (theme.home_banner.enable === true && is_home() && !page.prev) { %>
+	<%- partial('pages/home/home-banner') %>
+	<% } else if (theme.home_banner.enable === true && is_home() && page.prev && theme.home_banner.style === "fixed") { %>
+	<%- partial('pages/home/home-background') %>
+	<% } %>
 
-    <div class="main-content-container flex flex-col justify-between min-h-dvh">
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<%- partial('components/header/navbar') %>
+		</div>
 
+		<div class="main-content-body transition-fade-up">
+			<% if (is_home() && theme.home.sidebar.enable === true && theme.home.sidebar.position === "left") { %>
+			<%- partial('pages/home/home-sidebar') %>
+			<% } %>
 
-        <div class="main-content-header">
-            <%- partial('_partials/navbar') %>
-        </div>
+			<div class="main-content">
+				<%- partial(getPagePartialPath(page)) %>
+			</div>
 
-        <div class="main-content-body">
+			<% if (is_home() && theme.home.sidebar.enable === true && theme.home.sidebar.position === "right") { %>
+			<%- partial('pages/home/home-sidebar') %>
+			<% } %>
+		</div>
 
-            <% if (is_home() && theme.home.sidebar.enable === true && theme.home.sidebar.position === "left") { %>
-                <%- partial('_partials/home-sidebar') %>
-            <% } %>
+		<div class="main-content-footer">
+			<%- partial('components/footer/footer') %>
+		</div>
+	</div>
 
-            <div class="main-content">
+	<% if (is_post()) { %>
+	<div class="post-tools">
+		<%- partial('pages/post/post-tools') %>
+	</div>
+	<% } %>
 
-                <% if (is_home()) { %>
-                    <%- partial('_partials/home-content') %>
-                    <div class="comment-container pjax"></div>
-                <% } else if (is_archive()) { %>
-                    <%- partial('archive-content') %>
+	<div class="right-side-tools-container">
+		<%- partial('utils/side-tools') %>
+	</div>
 
-                <% } else if (is_post()) { %>
-                    <%- partial('article-content') %>
+	<%- partial('utils/image-viewer') %>
 
-                <% } else if (is_category()) { %>
-                    <%- partial('category-content') %>
-
-                <% } else if (is_tag()) { %>
-                    <%- partial('tag-content') %>
-
-                <% } else if (page.title === 'category' || page.title === 'categories' || page.type === "categories" || page.type === "category") { %>
-                    <%- partial('category-list') %>
-
-                <% } else if (page.title === 'tag' || page.title === 'tags' || page.type === "tags" || page.type === "tag") { %>
-                    <%- partial('_widgets/tagcloud') %>
-
-                <% } else if (page.title === 'Page Not Found' || page.title === '404') { %>
-                    <%- partial('_partials/404-template') %>
-
-                <% } else { %>
-                    <%- partial('_partials/page-template') %>
-
-                <% } %>
-
-            </div>
-
-            <% if (is_home() && theme.home.sidebar.enable === true && theme.home.sidebar.position === "right") { %>
-                <%- partial('_partials/home-sidebar') %>
-            <% } %>
-
-        </div>
-
-        <div class="main-content-footer">
-            <%- partial('_partials/footer') %>
-        </div>
-    </div>
-
-    <% if (is_post()) { %>
-        <div class="post-tools">
-            <%- partial('_widgets/post-tools') %>
-        </div>
-    <% } %>
-
-    <div class="right-side-tools-container">
-        <%- partial('_widgets/side-tools') %>
-    </div>
-
-    <%- partial('_widgets/image-viewer') %>
-
-    <% if (theme.navbar.search.enable) { %>
-        <%- partial('_widgets/local-search') %>
-    <% } %>
+	<% if (theme.navbar.search.enable) { %>
+	<%- partial('utils/local-search') %>
+	<% } %>
 
 </main>
 
 <% if (theme.global.single_page !== false) { %>
-    <%- partial('_plugins/swup') %>
+<%- partial('components/swup') %>
 <% } %>
-
-

@@ -1,4 +1,11 @@
-@import '../common/variables'
+@require '../common/variables'
+
+.page-title-header
+  font-size 3.2rem
+  line-height 1
+  font-weight bold
+  color var(--second-text-color)
+  margin 6px 0 36px 0
 
 .page-container
   position relative
@@ -135,12 +142,3 @@
 
     +redefine-mobile()
       right 12px
-
-.transition-fade
-  transition 0.4s
-  opacity 1
-
-html.is-animating
-  .transition-fade
-    opacity 0
-    transition 0.4s

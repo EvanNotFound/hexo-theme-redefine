@@ -1,0 +1,72 @@
+@require "./colors.styl"
+// ========================================================================================
+//                                  LIGHT/DARK MODE SWITCH
+// ========================================================================================
+root-color(mode) {
+  --background-color mode == 'light' ? $background-color : $dark-background-color
+  --background-color-transparent mode == 'light' ? $background-color-transparent : $dark-background-color-transparent
+  --background-color-transparent-15 mode == 'light' ? $background-color-transparent-15 : $dark-background-color-transparent-15
+  --background-color-transparent-40 mode == 'light' ? $background-color-transparent-40 : $dark-background-color-transparent-40
+  --background-color-transparent-80 mode == 'light' ? $background-color-transparent-80 : $dark-background-color-transparent-80
+  --second-background-color mode == 'light' ? $second-background-color : $dark-second-background-color
+  --third-background-color mode == 'light' ? $third-background-color : $dark-third-background-color
+  --third-background-color-transparent mode == 'light' ? $third-background-color-transparent : $dark-third-background-color-transparent
+  --primary-color mode == 'light' ? $primary-color : $dark-primary-color
+  --first-text-color mode == 'light' ? $first-text-color : $dark-first-text-color
+  --second-text-color mode == 'light' ? $second-text-color : $dark-second-text-color
+  --third-text-color mode == 'light' ? $third-text-color : $dark-third-text-color
+  --fourth-text-color mode == 'light' ? $fourth-text-color : $dark-fourth-text-color
+  --default-text-color mode == 'light' ? $default-text-color : $dark-default-text-color
+  --invert-text-color mode == 'light' ? $invert-text-color : $dark-invert-text-color
+  --border-color mode == 'light' ? $border-color : $dark-border-color
+  --selection-color mode == 'light' ? $selection-color : $dark-selection-color
+  --shadow-color-1 mode == 'light' ? $shadow-color-1 : $dark-shadow-color-1
+  --shadow-color-2 mode == 'light' ? $shadow-color-2 : $dark-shadow-color-2
+  --shadow-hover-color mode == 'light' ? $shadow-hover-color : $dark-shadow-hover-color
+  --scrollbar-color mode == 'light' ? $scrollbar-color : $dark-scrollbar-color
+  --scrollbar-color-hover mode == 'light' ? $scrollbar-color-hover : $dark-scrollbar-color-hover
+  --scroll-bar-bg-color mode == 'light' ? $scroll-bar-bg-color : $dark-scroll-bar-bg-color
+  --link-color mode == 'light' ? $link-color : $dark-link-color
+  --copyright-info-color mode == 'light' ? $copyright-info-color : $dark-copyright-info-color
+  --avatar-background-color mode == 'light' ? $avatar-background-color : $dark-avatar-background-color
+  --pjax-progress-bar-color : mode == 'light' ? $pjax-progress-bar-color : $dark-pjax-progress-bar-color
+  --archive-timeline-last-child-color : mode == 'light' ? $archive-timeline-last-child-color : $dark-archive-timeline-last-child-color
+
+  --note-blue-title-bg : mode == 'light' ? $note-blue-title-bg : $dark-note-blue-title-bg
+  --note-red-title-bg : mode == 'light' ? $note-red-title-bg : $dark-note-red-title-bg
+  --note-cyan-title-bg : mode == 'light' ? $note-cyan-title-bg : $dark-note-cyan-title-bg
+  --note-green-title-bg : mode == 'light' ? $note-green-title-bg : $dark-note-green-title-bg
+  --note-yellow-title-bg : mode == 'light' ? $note-yellow-title-bg : $dark-note-yellow-title-bg
+  --note-gray-title-bg : mode == 'light' ? $note-gray-title-bg : $dark-note-gray-title-bg
+  --note-type-title-bg : mode == 'light' ? $note-type-title-bg : $dark-note-type-title-bg
+  --note-black-title-bg : mode == 'light' ? $note-black-title-bg : $dark-note-black-title-bg
+  --note-purple-title-bg : mode == 'light' ? $note-purple-title-bg : $dark-note-purple-title-bg
+
+  --home-banner-text-color mode == 'light' ? $home-banner-text-color : $home-banner-text-color-dark
+  --home-banner-icons-container-border-color mode == 'light' ? $home-banner-icons-container-border-color : $home-banner-icons-container-border-color-dark
+  --home-banner-icons-container-background-color mode == 'light' ? $home-banner-icons-container-background-color : $home-banner-icons-container-background-color-dark
+
+  --redefine-box-shadow : var(--shadow-color-2) 0px 6px 24px 0px, var(--shadow-color-1) 0px 0px 0px 1px
+  --redefine-box-shadow-hover : var(--shadow-color-2) 0px 6px 24px 0px, var(--shadow-color-1) 0px 0px 0px 1px, var(--shadow-color-1) 0px 0px 0px 1px inset
+  --redefine-box-shadow-flat : var(--shadow-color-2) 0px 1px 4px 0px, var(--shadow-color-1) 0px 0px 0px 1px
+  --redefine-box-shadow-flat-hover : var(--shadow-color-2) 0px 1px 4px 0px, var(--shadow-color-1) 0px 0px 0px 1px, var(--shadow-color-1) 0px 0px 0px 1px inset
+
+  --mermaid-theme : mode == 'light' ? $mermaid-theme : $dark-mermaid-theme
+
+}
+
+
+$temp-mode = hexo-config('colors.default_mode')
+$default-mode = $temp-mode == 'dark' ? 'dark' : 'light'
+
+:root {
+  root-color($default-mode)
+}
+
+.light-mode {
+  root-color('light')
+}
+
+.dark-mode {
+  root-color('dark')
+}

@@ -1,0 +1,92 @@
+# ----------------------------------------
+# Traduction du site
+# ----------------------------------------
+search: recherche...
+toc: Sur cette page
+prev: Précédent
+next: Suivant
+prev_posts: Articles précédents
+next_posts: Articles suivants
+page: Page %d
+recent_posts: Articles récents
+share: Partager
+powered_by: "POWERED BY %s"
+theme: THEME
+rss_feed: Flux RSS
+category: Catégorie
+categories: Catégories
+tag: Tag
+tags: Tags
+post: Post
+posts: Posts
+tagcloud: Nuage de tags
+comment: Commentaire
+comments: Commentaires
+home: Accueil
+archive: Archive
+archives: Archives
+top: TOP
+sticky: Sticky
+go-back-home: Retour à l'accueil
+
+# ----------------------------------------
+# Traduction du menu
+# ----------------------------------------
+about: À propos
+changelog: Journal des modifications
+links: Liens
+link: Lien
+friends: Amis
+friend: Ami
+timeline: Chronologie
+shuoshuo: Shuoshuo
+
+# ----------------------------------------
+# Nombre de sites Web
+# ----------------------------------------
+site_uv: VISITEURS
+site_pv: NOMBRE TOTAL DE PAGES VUES
+read_more: Lire la suite
+wordcount: Mots
+min2read: Min
+status: Status
+
+# ----------------------------------------
+# Pied de page
+# ----------------------------------------
+runtime: Blog en ligne depuis
+days: Jours
+hours: Hrs
+minutes: Min
+seconds: Sec
+optimized_by: et Propulsé par Evan
+rights: Tous droits réservés
+site_posts: "%s  posts au total"
+site_wordcount: "%s mots au total"
+
+# ----------------------------------------
+# Post
+# ----------------------------------------
+copyright:
+  author: Auteur
+  title: Titre
+  link: Lien
+  create_time: Créé à
+  update_time: Mis à jour à
+  license_title: Licence
+  license_content: "Cette œuvre est sous licence %s."
+  all_rights_reserved: "Tous droits réservés à &#169; %s"
+  public_domain: "Cette œuvre est dans le domaine public."
+
+ago:
+  second: "Il y a %s secondes"
+  minute: "Il y a %s minutes"
+  hour: "Il y a %s heures"
+  day: "Il y a %s jours"
+  week: "Il y a %s semaines"
+  month: "Il y a %s mois"
+  year: "Il y a %s années"
+
+create_time: Créé
+update_time: Mis à jour
+expired: "Ce message a été écrit il y a %s jours et son contenu peut être obsolète."

@@ -30,6 +30,8 @@ html, body
   font-size $default-font-size
   line-height $default-line-height
 
+  --navbar-height: $navbar-height
+
   // Custom scrollbar
   &::-webkit-scrollbar
     width 14px
@@ -60,6 +62,9 @@ html, body
   +redefine-mobile()
     font-size: $default-font-size * 0.9
     line-height: $default-line-height * 0.9
+
+  .navbar-shrink
+    --navbar-height: $navbar-shrink-height
 
 // ======================================================================
 // selection
@@ -159,3 +164,6 @@ button
 // ======================================================================
 .clear
   clear both
+
+
+
