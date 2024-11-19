@@ -11,5 +11,10 @@ reviews:
   auto_review:
     enabled: true
     drafts: false
+  path_filters: 
+    - "!source/build/**"
+    - "*.min.js"
+    - "*.min.css"
+    - "*.map"
 chat:
   auto_reply: true
