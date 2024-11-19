@@ -39,7 +39,7 @@
         <img src="<%- url_for(theme.home_banner.image.dark) %>" alt="home-banner-background" class="w-full h-full object-cover hidden dark:block">
     </div>
     <% } %>
-    <div class="content mt-8 flex flex-col justify-center items-center">
+    <div class="content mt-8 flex flex-col justify-center items-center transition-fade-down">
         <div class="description flex flex-col justify-center items-center w-screen font-medium text-center"
         <% if (theme.home_banner.custom_font.enable) { %>
              style="font-family: '<%- theme.home_banner.custom_font.family %>', sans-serif; !important;"

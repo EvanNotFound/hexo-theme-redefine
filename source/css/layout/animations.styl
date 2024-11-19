@@ -7,6 +7,11 @@
   opacity 1
   transition transform 0.4s ease, opacity 0.4s ease
 
+.transition-fade-down
+  transform translateY(0)
+  opacity 1
+  transition transform 0.4s ease, opacity 0.4s ease
+
 // Define transitions for both classes
 html.is-changing
   .transition-fade
@@ -18,6 +23,11 @@ html.is-changing
     transform translateY(0)
     opacity 1
 
+  .transition-fade-down
+    transition transform 0.4s ease, opacity 0.4s ease
+    transform translateY(0)
+    opacity 1
+
 // Define states for unloaded pages
 html.is-animating
   .transition-fade
@@ -25,4 +35,8 @@ html.is-animating
   
   .transition-fade-up
     transform translateY(20px)
+    opacity 0
+
+  .transition-fade-down
+    transform translateY(-20px)
     opacity 0
