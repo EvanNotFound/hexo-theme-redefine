@@ -109,7 +109,7 @@ fontawesome: # Pro v6.2.1
   # Duotone version
   duotone: false
   # Sharp Solid version
-  sharp_solid: true
+  sharp_solid: false
 # FONTAWESOME <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 

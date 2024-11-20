@@ -33,6 +33,10 @@
     padding-bottom 2px
     text-underline-offset 2px
     text-decoration-color var(--fourth-text-color)
+    transition: text-decoration-color 0.2s ease
+
+    &.link
+      padding-right 0.1em
 
     .fas, .far, fab
       margin 0 2px 0 6px
@@ -40,12 +44,22 @@
       color var(--third-text-color)
       font-size 0.88rem
 
-    &:hover
-      text-decoration underline
+    .link-icon
+      transition transform 0.2s ease
+
+    &:hover,
+    &:focus
+      text-decoration underline !important
+      text-decoration-color var(--primary-color) !important
+
+      .link-icon
+        transform translate(0.1em, -0.1em)
 
       &::after
         background var(--primary-color)
         text-decoration underline
+
+
 
   strong
     color var(--default-text-color)
