@@ -33,7 +33,7 @@ hexo.extend.filter.register(
         if (theme.config.articles.style.link_icon == false) {
           return `<a class="link" ${attrBegin} href="${href}" ${attrEnd}>${html}</a>`;
         } else {
-          return `<a class="link" ${attrBegin} href="${href}" ${attrEnd}>${html}<i class="fa-sharp fa-regular fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em]"></i>`;
+          return `<a class="link" ${attrBegin} href="${href}" ${attrEnd}>${html}<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>`;
         }
       },
     );
