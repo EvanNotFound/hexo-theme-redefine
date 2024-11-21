@@ -210,6 +210,24 @@
       margin 1rem 0 1rem
 
   
+  del.mask
+    text-decoration none !important
+    transition .2s cubic-bezier(.25, .46, .45, .94) color, .2s cubic-bezier(.25, .46, .45, .94) background
+
+    * 
+      transition .35s cubic-bezier(.25, .46, .45, .94) opacity
+
+    &:not(:hover)
+      color transparent !important
+      background #000 !important
+
+      * 
+        opacity 0 !important
+
+      &, *
+        border none !important
+
+  
 
   & > table,
   .tab-pane > table
