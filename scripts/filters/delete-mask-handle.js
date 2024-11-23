@@ -8,7 +8,7 @@ hexo.extend.filter.register(
     const theme = this.theme;
 
     // 处理del标签的代码
-    const regPureDelTag = /<del>([^<]*)<\/del>/gim;
+    const regPureDelTag = /<del(?:\s+[^>]*)?>((?:(?!<\/?del[\s>])[^])*)<\/del>/g;
 
     data.content = data.content.replace(
       regPureDelTag,
