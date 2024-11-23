@@ -1,3 +1,14 @@
+// 处理 del 标签
+function processDelTags(renderedContent, theme) {
+  const regPureDelTag = /<del>(.*?)<\/del>/gim;
+  return renderedContent.replace(regPureDelTag, function (match, html) {
+    if (theme.config.articles.style.delete_mask === true) {
+      return `<del class="mask">${html}</del>`;
+    }
+    return match;
+  });
+}
+
 function postNoteLarge(args, content) {
   if (args.length === 0) {
     args.push("default", "Warning");
@@ -10,19 +21,27 @@ function postNoteLarge(args, content) {
     args[1] = "icon-padding";
   }
 
+  // 先渲染 Markdown
+  const renderedTitle = hexo.render.renderSync({
+    text: args[args.length - 1],
+    engine: "markdown",
+  });
+  const renderedContent = hexo.render.renderSync({
+    text: content,
+    engine: "markdown",
+  });
+
+  // 再处理 del 标签
+  const processedTitle = processDelTags(renderedTitle, hexo.theme);
+  const processedContent = processDelTags(renderedContent, hexo.theme);
+
   return `
   <div class="note-large ${args[0]}">
     <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      ${icon}${hexo.render.renderSync({
-        text: args[args.length - 1],
-        engine: "markdown",
-      })}
+      ${icon}${processedTitle}
     </div>
     <div class="notel-content">
-      ${hexo.render.renderSync({
-        text: content,
-        engine: "markdown",
-      })}
+      ${processedContent}
     </div>
   </div>`;
 }
