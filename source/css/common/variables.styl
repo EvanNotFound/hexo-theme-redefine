@@ -105,8 +105,24 @@ $redefine-border-radius-full = 50%
 $redefine-border-radius-full-top = 50% 50% 0px 0px
 $redefine-border-radius-full-bottom = 0px 0px 50% 50%
 
+$redefine-border-width-base = 2px
+$redefine-border-style-base = solid
+
+// 文章内图片圆角
 $temp-usr-img-border-radius = hexo-config('articles.style.image_border_radius')
 $usr-img-border-radius = $temp-usr-img-border-radius ? convert($temp-usr-img-border-radius) : $redefine-border-radius-medium
+
+// 文章内图片描边宽度
+$temp-usr-img-border-width = hexo-config('articles.style.image_border_width')
+$usr-img-border-width = $temp-usr-img-border-width ? convert($temp-usr-img-border-width) : $redefine-border-width-base
+
+// 文章内图片描边样式
+$temp-usr-img-border-style = hexo-config('articles.style.image_border_style')
+$usr-img-border-style = $temp-usr-img-border-style ? convert($temp-usr-img-border-style) : $redefine-border-style-base
+
+// 文章内图片描边颜色
+$temp-color = hexo-config('colors.primary')
+$usr-img-border-color = $temp-color ? convert($temp-color) : #000
 
 // ========================================================================================
 //                                    MERMAID THEME

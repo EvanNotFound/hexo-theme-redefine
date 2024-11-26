@@ -76,10 +76,10 @@
                                         <i class="<%= key %> fa-fw fa-lg"></i>
                                     </a>
                                 </span>
-                            <% } else if(key.includes(" ") && key.includes("iconfont")) { %>
-                                <!-- 次格式可能会引起两种嵌套存在，如icon的css中写了content后可能会存在叠层样式，建议修改 -->
+                            <% } else if(key.includes("icon-")) { %>
+                                <!-- 次格式可能会引起两种嵌套存在，如icon的css中写了content后可能会存在!important，建议修改 -->
                                 <a target="_blank" href="<%- theme.home_banner.social_links.links[key] %>">
-                                    <span class="social-contact-item  <%= key %>">
+                                    <span class="social-contact-item iconfont <%= key %>">
                                     </span>
                                 </a>
                             <% } else { %>
