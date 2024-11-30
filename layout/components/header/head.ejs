@@ -31,14 +31,24 @@
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
-    <% if (theme.global.open_graph) { %>
+    
+    <% checkDeprecation(
+      theme.global.open_graph === true,
+      'open_graph',
+      "Using 'open_graph: true' is deprecated. Please update to the new format:\nglobal:\n  open_graph:\n    enable: true\n    image: your_image_path\n    description: your_description"
+    ) %>
+    <% if (theme.global.open_graph?.enable || theme.global.open_graph === true) { %>
         <% 
-        let ogImage = page.og_image || theme.global.og_settings.image;
-        let ogDescription = page.og_description || theme.global.og_settings.description || page.description || config.description;
+        let ogImage = page.og_image || theme.global.open_graph?.image;
+        let ogDescription = page.og_description || theme.global.open_graph?.description || page.description || config.description;
+        let author = page.author || config.author || 'Redefine Team';
         %>
         <%- open_graph({
             image: ogImage,
-            description: ogDescription
+            author: author,
+            description: ogDescription,
+            twitter_card: 'summary',
+            twitter_image: ogImage,
         }) %>
     <% } %>
     <% if (theme.global.google_analytics.enable) { %>

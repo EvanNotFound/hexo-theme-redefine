@@ -209,3 +209,19 @@ hexo.extend.helper.register("renderCSS", function (path) {
 hexo.extend.helper.register("getThemeVersion", function () {
   return themeVersion;
 });
+
+hexo.extend.helper.register("checkDeprecation", function (condition, id, message) {
+  if (condition) {
+    // Use Set to ensure each warning is only logged once per Hexo process
+    if (!global.deprecationWarnings) {
+      global.deprecationWarnings = new Set();
+    }
+    
+    if (!global.deprecationWarnings.has(id)) {
+      hexo.log.warn(`${message}`);
+      global.deprecationWarnings.add(id);
+    }
+    return true;
+  }
+  return false;
+});
