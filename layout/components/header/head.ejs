@@ -32,7 +32,14 @@
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     <% if (theme.global.open_graph) { %>
-        <%- open_graph() %>
+        <% 
+        let ogImage = page.og_image || theme.global.og_settings.image;
+        let ogDescription = page.og_description || theme.global.og_settings.description || page.description || config.description;
+        %>
+        <%- open_graph({
+            image: ogImage,
+            description: ogDescription
+        }) %>
     <% } %>
     <% if (theme.global.google_analytics.enable) { %>
         <!-- Google tag (gtag.js) -->
