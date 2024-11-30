@@ -91,10 +91,10 @@ global:
     enable: false
     custom_message: # Custom message. If empty, the site title will be displayed
   # Whether to enable open graph
-  open_graph: true
-  og_settings:
-    image: /images/redefine-avatar.svg  # default og:image
-    description: this is og description
+  open_graph:
+    enable: true
+    image: /images/redefine-og.webp  # default og:image
+    description: Hexo Theme Redefine, Redefine Your Hexo Journey.
   # Google Analytics
   google_analytics:
     enable: false # Whether to enable Google Analytics
