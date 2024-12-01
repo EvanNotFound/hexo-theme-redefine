@@ -8,7 +8,6 @@ on:
     paths:
       - 'source/js/**'
       - 'source/css/**'
-      - 'source/build/**'
 
 jobs:
   build:
