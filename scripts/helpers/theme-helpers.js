@@ -93,9 +93,9 @@ hexo.extend.helper.register("renderJS", function (path, options = {}) {
   const { module = false, async = false, swupReload = false } = options;
 
   if (Array.isArray(path)) {
-    path = path.map((p) => "build/" + p);
+    path = path.map((p) => "js/build/" + p);
   } else {
-    path = "build/" + path;
+    path = "js/build/" + path;
   }
 
   const cdnProviders = {

@@ -19,7 +19,6 @@
             'cdnjs': 'https://cdnjs.cloudflare.com',
             'zstatic': 'https://s4.zstatic.net',
             'npmmirror': 'https://registry.npmmirror.com',
-
         }; %>
         <% if (cdnLinks[provider]) { %>
             <link rel="preconnect" href="<%= cdnLinks[provider] %>" crossorigin>
@@ -109,9 +108,9 @@
     <%- css('css/style') %>
 
     <% if (theme.developer && theme.developer.enable) {%>
-        <%- css('build/css/tailwind.css') %>
+        <%- css('css/build/tailwind.css') %>
     <% } else {%>
-        <%- renderCSS('build/css/tailwind.css') %>
+        <%- renderCSS('css/build/tailwind.css') %>
     <% } %>
 
     <%- renderCSS('fonts/GeistMono/geist-mono.css') %>
@@ -133,7 +132,7 @@
         <link href="<%- theme.global.fonts.title.url %>" rel="stylesheet">
     <% } %>
     <% if (theme.global.preloader === true || theme.global.preloader.enable === true) { %>
-        <%- renderJS('js/libs/anime.min.js')%>
+        <%- renderJS('libs/anime.min.js')%>
     <% } %>
 
     <%- export_config() %>
