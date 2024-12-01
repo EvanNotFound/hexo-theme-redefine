@@ -122,13 +122,3 @@ jobs:
             redefine-preview.vercel.app
             redefine-preview-git-{SHA}.vercel.app
           PR_PREVIEW_DOMAIN: "redefine-preview-pr-{PR}.vercel.app"
-
-      - name: Debug environment selection
-        run: |
-          echo "Event name: ${{ github.event_name }}"
-          echo "PR author: ${{ github.event.pull_request.user.login }}"
-          echo "Selected environment: ${{ 
-            github.event_name == 'pull_request_target' && github.event.pull_request.user.login == 'EvanNotFound' && 'PR Preview Bypass' ||
-            github.event_name == 'pull_request_target' && 'PR Preview' ||
-            'Preview'
-          }}"
