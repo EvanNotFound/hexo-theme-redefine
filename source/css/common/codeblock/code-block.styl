@@ -4,10 +4,10 @@ disable-user-select()
   -webkit-user-select none
   user-select none
 
-.highlight-container[data-rel]
+.code-container
   position relative
 
-.highlight-container:hover .copy-button, .highlight-container .copy-button:focus, .highlight-container:hover .fold-button, .highlight-container .fold-button:focus
+.code-container:hover .copy-button, .code-container .copy-button:focus, .code-container:hover .fold-button, .code-container .fold-button:focus
   opacity 1
 
 .fold-button
@@ -53,7 +53,7 @@ disable-user-select()
   top 0
 
 if (hexo-config('articles.code_block.style') == 'mac')
-  .highlight-container[data-rel]
+  .code-container
     background var(--third-background-color)
     border-radius $redefine-border-radius-large
     box-shadow var(--redefine-box-shadow-flat)
@@ -90,6 +90,8 @@ if (hexo-config('articles.code_block.style') == 'mac')
       font-size 16px
 
     .folded
+      height 0 !important
+
       figure
         height 0 !important
         width 0 !important
@@ -110,7 +112,7 @@ if (hexo-config('articles.code_block.style') == 'mac')
       box-shadow 20px 0px #fdbc40, 40px 0px #35cd4b
       z-index 3
 else
-  .highlight-container[data-rel]
+  .code-container
     background var(--highlight-background)
     border-radius $redefine-border-radius-large
     padding-top 40px
@@ -132,6 +134,8 @@ else
         margin-left 10px
 
     .folded
+      height 0 !important
+
       figure
         height 0 !important
         width 0 !important
