@@ -18,7 +18,7 @@ jobs:
   preview-deployment:
     runs-on: ubuntu-latest
     environment:
-      name: ${{ github.event_name == 'pull_request_target' && 'PR Preview' || 'Preview' }}
+      name: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.user.login == 'EvanNotFound' && 'PR Preview Bypass' || github.event_name == 'pull_request_target' && 'PR Preview' || 'Preview' }}
       url: ${{ steps.deploy-to-vercel.outputs.preview-url }}
     steps:
       - name: Determine checkout details
