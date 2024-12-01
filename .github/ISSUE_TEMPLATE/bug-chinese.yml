@@ -100,12 +100,12 @@ body:
       label: 优先级
       description: 请根据问题的严重程度选择优先级
       options:
-        - 低
-        - 中
-        - 高
+        - 低（慢慢来）
+        - 中（尽快解决）
+        - 高（需立即解决）
 
   - type: textarea
     id: additional-info
     attributes:
       label: 其他信息
-      placeholder: 您还想分享的其他信息？
+      placeholder: 还有什么需要补充的信息吗？
