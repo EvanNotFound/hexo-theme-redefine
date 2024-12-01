@@ -1,21 +1,55 @@
 name: Feature Request
-description: Suggestions to enhance the Redefine theme.
+description: Suggestions to enhance the Redefine theme
 title: "[Feature Request]:"
 labels: ["enhancement"]
 assignees: ["EvanNotFound"]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting a feature! Please fill out the information below to help us better understand your idea.
+
   - type: textarea
     id: feature-description
     attributes:
-      label: "Describe Your Idea"
-      description: "Tell us about the feature you'd love to see."
+      label: "Feature Description"
+      description: "Please describe the feature you'd like to see in detail"
+      placeholder: |
+        1. What is this feature?
+        2. What problem does it solve?
+        3. What are your expected use cases?
+    validations:
+      required: true
+
+  - type: textarea
+    id: implementation
+    attributes:
+      label: "Implementation Suggestions"
+      description: "If you have ideas about how to implement this feature, please share them here"
+      placeholder: "How do you think this feature should be implemented? You can reference similar implementations from other projects."
+
   - type: textarea
     id: screenshots
     attributes:
-      label: "Visual Aids"
-      description: "Feel free to sketch or doodle your idea, Picasso-style!"
+      label: "Design References"
+      description: "Share any mockups, screenshots, or design references that help illustrate your idea"
+      placeholder: "This can include sketches, screenshots, or other reference materials"
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: "Priority"
+      description: "How important do you think this feature is?"
+      options:
+        - Low (Nice to have)
+        - Medium (Important)
+        - High (Critical)
+    validations:
+      required: true
+
   - type: textarea
     id: additional-info
     attributes:
-      label: "Anything Else?"
-      placeholder: "Share any other details or context here."
+      label: "Additional Context"
+      description: "Any other information you'd like to share?"
+      placeholder: "For example: usage scenarios, potential impact, etc."
