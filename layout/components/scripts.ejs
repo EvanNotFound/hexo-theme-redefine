@@ -42,7 +42,11 @@
 <% } %>
 
 <% if (theme.plugins.mermaid.enable) { %>
-    <%- renderJS('libs/mermaid.min.js') %>
+    <% if (theme.plugins.mermaid.version === '11.4.1') { %>
+        <%- renderJS('libs/mermaid.min.js') %>
+    <% } else { %>
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@<%= theme.plugins.mermaid.version %>/dist/mermaid.min.js"></script>
+    <% } %>
     <%- renderJS('plugins/mermaid.js') %>
 <% } %>
 
