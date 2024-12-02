@@ -1,21 +1,55 @@
 name: 功能建议 [中文版本]
-description: 帮助改进 Redefine 主题
+description: 帮助我们改进 Redefine 主题
 title: "[功能建议]："
 labels: ["enhancement"]
 assignees: ["EvanNotFound"]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢您提出功能建议！请填写以下信息，以便我们更好地理解您的想法。
+
   - type: textarea
     id: feature-description
     attributes:
       label: "功能描述"
-      description: "清晰地描述你想要的功能是怎么样的"
+      description: "请详细描述您希望的功能"
+      placeholder: |
+        1. 这个功能是什么？
+        2. 这个功能解决了什么问题？
+        3. 您期望的使用场景是什么？
+    validations:
+      required: true
+
+  - type: textarea
+    id: implementation
+    attributes:
+      label: "实现建议"
+      description: "如果您对如何实现此功能有想法，请在此分享"
+      placeholder: "您认为这个功能应该如何实现？可以参考其他类似项目的实现方式。"
+
   - type: textarea
     id: screenshots
     attributes:
-      label: "图片描述"
-      description: "可以用你的毕加索画作"
+      label: "设计参考"
+      description: "如果有类似功能的截图或设计稿，请在此分享"
+      placeholder: "可以是草图、截图或其他参考资料"
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: "优先级"
+      description: "您认为此功能的重要程度如何？"
+      options:
+        - 低（锦上添花）
+        - 中（较为重要）
+        - 高（急需解决）
+    validations:
+      required: true
+
   - type: textarea
     id: additional-info
     attributes:
-      label: "其他"
-      placeholder: "如有其他内容，请提供"
+      label: "补充信息"
+      description: "还有什么需要补充的信息吗？"
+      placeholder: "例如：使用场景示例、潜在影响等"

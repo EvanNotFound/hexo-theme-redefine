@@ -1,75 +1,106 @@
 name: Bug Report
-description: Help us squash bugs in the Redefine theme.
+description: Found a bug? Let us help you fix it!
 title: "[BUG] "
 labels: ["bug"]
 assignees: ["EvanNotFound"]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Fill out the details below to help us solve the issue quickly.
+
   - type: checkboxes
     id: pre-check
     attributes:
-      label: Pre-Submission Checklist
-      description: Please ensure you've checked the following before submitting.
+      label: Quick Checklist
+      description: "Before submitting, please make sure you've done the following:"
       options:
-        - label: "I've run `hexo clean`, but the problem persists."
-        - label: "[I've updated to the latest theme version](https://redefine-docs.ohevan.com/getting-started#update)"
-        - label: "[Post theme update, I've ensured the theme's configuration is in sync](https://redefine-docs.ohevan.com/getting-started#migrate-configuration)"
+        - label: "I've tried running `hexo clean` but the issue is still there"
+          required: true
+        - label: "[I'm using the latest version of the theme](https://redefine-docs.ohevan.com/getting-started#update)"
+          required: true
+        - label: "[I've updated my theme configuration after updating](https://redefine-docs.ohevan.com/getting-started#migrate-configuration)"
+          required: true
+
   - type: textarea
     id: bug-description
     attributes:
-      label: "Describe the Bug"
-      description: "Provide a clear description. Include relevant details from the `_config.yml` in the hexo root and `_config.redefine.yml` or `_config.yml`. Redact any sensitive information."
+      label: "What's the issue?"
+      description: "Tell us what's happening. Please include your relevant config settings from `_config.yml` and `_config.redefine.yml` (remember to remove any sensitive info)."
+    validations:
+      required: true
+
   - type: textarea
     id: reproduce-steps
     attributes:
-      label: "Reproduction Steps"
-      placeholder: "How did you come across this bug?"
+      label: "How can we reproduce this?"
+      placeholder: "Walk us through the steps to see this bug in action"
+    validations:
+      required: true
+
   - type: textarea
     id: expected-behavior
     attributes:
-      label: "Expected Behavior"
-      placeholder: "What were you expecting to happen?"
+      label: "What should have happened?"
+      placeholder: "Tell us what you expected to see"
+
   - type: textarea
     id: screenshots
     attributes:
       label: "Screenshots (if any)"
       description: "Screenshots can help illustrate the problem."
-  - type: input
-    id: pc-os
+
+  - type: textarea
+    id: logs
     attributes:
-      label: "Your Computer's OS"
-      placeholder: "e.g., macOS, Windows"
-  - type: input
+      label: "Related Logs"
+      description: "Please copy and paste any relevant log output. This will be automatically formatted as code, so no backticks are needed."
+      render: shell
+
+  - type: dropdown
     id: pc-browser
     attributes:
-      label: "Which Browser?"
-      placeholder: "e.g., Chrome, Safari"
+      label: "What browser(s) are you using?"
+      multiple: true
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Other
+
+  - type: dropdown
+    id: pc-os
+    attributes:
+      label: "What operating system are you on?"
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - iOS
+        - Android
+        - Other
+
   - type: input
     id: pc-version
     attributes:
       label: "Browser Version"
-      placeholder: "e.g., 108"
-  - type: input
-    id: mobile-device
+      placeholder: "e.g., Chrome 108.0.5359.124"
+
+  - type: dropdown
+    id: priority
+    validations:
+      required: true
     attributes:
-      label: "Mobile Device Used"
-      placeholder: "e.g., iPhone 14"
-  - type: input
-    id: mobile-os
-    attributes:
-      label: "Mobile OS"
-      placeholder: "e.g., iOS16.1"
-  - type: input
-    id: mobile-browser
-    attributes:
-      label: "Mobile Browser"
-      placeholder: "e.g., Chrome, Safari"
-  - type: input
-    id: mobile-version
-    attributes:
-      label: "Browser Version"
-      placeholder: "e.g., 108"
+      label: "Priority"
+      description: "Please select the priority based on the severity of the issue."
+      options:
+        - Low
+        - Medium
+        - High
+
   - type: textarea
     id: additional-info
     attributes:
-      label: "Anything Else?"
-      placeholder: "Any other information you'd like to share?"
+      label: "Anything else we should know?"
+      placeholder: "Add any other helpful context about the problem here"

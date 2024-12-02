@@ -1,0 +1,65 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      release-type:
+        description: 'Release type (major/minor/patch)'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          registry-url: https://registry.npmjs.org/
+          
+      - name: Git config
+        run: |
+          git config --local user.email "github-actions@github.com"
+          git config --local user.name "github-actions"
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Merge dev into main
+        run: |
+          git checkout main
+          git merge origin/dev
+          
+      - name: Create Release
+        run: npm run release:${{ github.event.inputs.release-type }}
+        
+      - name: Update package-lock.json
+        run: npm install
+        
+      - name: Commit package-lock.json if changed
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          if [[ -n "$(git status --porcelain package-lock.json)" ]]; then
+            git add package-lock.json
+            git commit -m "chore: bump version to ${VERSION}"
+          fi
+        
+      - name: Push changes
+        run: |
+          git push --follow-tags origin main
+          git checkout dev
+          git merge main
+          git push origin dev
