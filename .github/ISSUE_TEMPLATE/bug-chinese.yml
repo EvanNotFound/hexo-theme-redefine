@@ -18,7 +18,7 @@ body:
           required: true
         - label: 我已更新到[最新版本](https://redefine-docs.ohevan.com/getting-started#%E6%9B%B4%E6%96%B0)
           required: true
-        - label: 我已确认[同步了主题配置文件](https://redefine-docs.ohevan.com/getting-started#%E8%BF%81%E7%A7%BB%E9%85%8D%E7%BD%AE)
+        - label: 我已确认[同步了主题最新配置文件](https://redefine-docs.ohevan.com/getting-started#%E8%BF%81%E7%A7%BB%E9%85%8D%E7%BD%AE)
           required: true
 
   - type: textarea
@@ -98,6 +98,8 @@ body:
 
   - type: dropdown
     id: priority
+    validations:
+      required: true
     attributes:
       label: 优先级
       description: 请根据问题的严重程度选择优先级

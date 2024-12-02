@@ -89,6 +89,8 @@ body:
 
   - type: dropdown
     id: priority
+    validations:
+      required: true
     attributes:
       label: "Priority"
       description: "Please select the priority based on the severity of the issue."
