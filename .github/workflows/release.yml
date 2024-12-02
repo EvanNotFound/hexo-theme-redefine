@@ -55,8 +55,9 @@ jobs:
         run: |
           CURRENT_VERSION=$(node -p "require('./package.json').version")
           NEW_VERSION=$(npm version ${{ github.event.inputs.release-type }} --no-git-tag-version)
+          NEW_VERSION_CLEAN=${NEW_VERSION#v}
           echo "current_version=$CURRENT_VERSION" >> $GITHUB_ENV
-          echo "new_version=$NEW_VERSION" >> $GITHUB_ENV
+          echo "new_version=$NEW_VERSION_CLEAN" >> $GITHUB_ENV
 
       - name: Create or Checkout Release Branch
         run: |
