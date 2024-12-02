@@ -81,7 +81,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "chore: bump version to ${{ env.new_version }}"
           branch: "release/v${{ env.new_version }}"
           base: main
