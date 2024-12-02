@@ -21,9 +21,10 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: Checkout dev Branch
         uses: actions/checkout@v4
         with:
+          ref: dev
           fetch-depth: 0
 
       - name: Import GPG Key
@@ -59,42 +60,33 @@ jobs:
           echo "current_version=$CURRENT_VERSION" >> $GITHUB_ENV
           echo "new_version=$NEW_VERSION_CLEAN" >> $GITHUB_ENV
 
-      - name: Create or Checkout Release Branch
-        run: |
-          BRANCH="release/v${{ env.new_version }}"
-          if git show-ref --quiet refs/heads/$BRANCH; then
-            git checkout $BRANCH
-          else
-            git checkout -b $BRANCH
-          fi
-
       - name: Update Dependencies and Version
         run: |
           npm install
           git add package.json package-lock.json
           git commit -m "chore: bump version to ${{ env.new_version }}" || echo "No changes to commit"
 
-      - name: Push Changes
+      - name: Push Changes to dev
         run: |
-          BRANCH="release/v${{ env.new_version }}"
-          git push origin $BRANCH
+          git push origin dev
 
-      - name: Create Pull Request
+      - name: Create Pull Request to main
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "chore: bump version to ${{ env.new_version }}"
-          branch: "release/v${{ env.new_version }}"
           base: main
+          branch: dev
           title: "Release v${{ env.new_version }}"
           body: "Automated release PR for version ${{ env.new_version }}"
           delete-branch: false
-          draft: false
+          draft: true
           labels: 'release, automated'
           reviewers: 'EvanNotFound'
           assignees: 'EvanNotFound'
 
       - name: Create GitHub Release (Draft)
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         uses: ncipollo/release-action@v1
         with:
           tag: "v${{ env.new_version }}"
