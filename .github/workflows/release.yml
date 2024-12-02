@@ -80,13 +80,12 @@ jobs:
           title: "Release v${{ env.new_version }}"
           body: "Automated release PR for version ${{ env.new_version }}"
           delete-branch: false
-          draft: true
+          draft: false
           labels: 'release, automated'
           reviewers: 'EvanNotFound'
           assignees: 'EvanNotFound'
 
       - name: Create GitHub Release (Draft)
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         uses: ncipollo/release-action@v1
         with:
           tag: "v${{ env.new_version }}"
