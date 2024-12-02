@@ -15,6 +15,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   release:
@@ -24,16 +25,25 @@ jobs:
         with:
           fetch-depth: 0
           
+      - name: Import GPG key
+        id: import-gpg
+        uses: crazy-max/ghaction-import-gpg@v4
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.PASSPHRASE }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+          
+      - name: Configure Git
+        run: |
+          git config --global user.email "${{ steps.import-gpg.outputs.email }}"
+          git config --global user.name "${{ steps.import-gpg.outputs.name }}"
+          
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
           registry-url: https://registry.npmjs.org/
-          
-      - name: Git config
-        run: |
-          git config --local user.email "github-actions@github.com"
-          git config --local user.name "github-actions"
           
       - name: Install dependencies
         run: npm ci
