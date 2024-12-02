@@ -48,37 +48,43 @@ jobs:
       - name: Install dependencies
         run: npm ci
         
-      - name: Merge dev into main
-        run: |
-          git checkout main
-          git merge origin/dev
-          
-      - name: Create Release
-        run: npm run release:${{ github.event.inputs.release-type }}
-        
-      - name: Update package-lock.json
-        run: npm install
-        
-      - name: Commit package-lock.json if changed
-        run: |
-          VERSION=$(node -p "require('./package.json').version")
-          if [[ -n "$(git status --porcelain package-lock.json)" ]]; then
-            git add package-lock.json
-            git commit -m "chore: bump version to ${VERSION}"
-          fi
-        
-      - name: Create Pull Request
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create Release Branch and Update Version
         run: |
           VERSION=$(node -p "require('./package.json').version")
           BRANCH="release/v${VERSION}"
           git checkout -b $BRANCH
-          git push -u origin $BRANCH
-          gh pr create --base main --head $BRANCH --title "Release v${VERSION}" --body "Automated release PR for version ${VERSION}"
+          npm run release:${{ github.event.inputs.release-type }}
           
+      - name: Update package-lock.json
+        run: npm install
+        
+      - name: Commit Changes
+        run: |
+          NEW_VERSION=$(node -p "require('./package.json').version")
+          git add package.json package-lock.json
+          git commit -m "chore: bump version to ${NEW_VERSION}"
+          git push -u origin $BRANCH
+          
+      - name: Create Pull Request
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          NEW_VERSION=$(node -p "require('./package.json').version")
+          gh pr create --base main --head "release/v${NEW_VERSION}" --title "Release v${NEW_VERSION}" --body "Automated release PR for version ${NEW_VERSION}"
+
+      - name: Create GitHub Release (Draft)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          NEW_VERSION=$(node -p "require('./package.json').version")
+          gh release create "v${NEW_VERSION}" \
+            --draft \
+            --title "v${NEW_VERSION}" \
+            --notes "Release v${NEW_VERSION}"
+
       - name: Update dev branch
         run: |
+          NEW_VERSION=$(node -p "require('./package.json').version")
           git checkout dev
-          git merge $BRANCH
+          git merge "release/v${NEW_VERSION}"
           git push origin dev
