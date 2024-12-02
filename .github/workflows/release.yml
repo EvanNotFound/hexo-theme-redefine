@@ -57,9 +57,18 @@ jobs:
             git commit -m "chore: bump version to ${VERSION}"
           fi
         
-      - name: Push changes
+      - name: Create Pull Request
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git push --follow-tags origin main
+          VERSION=$(node -p "require('./package.json').version")
+          BRANCH="release/v${VERSION}"
+          git checkout -b $BRANCH
+          git push -u origin $BRANCH
+          gh pr create --base main --head $BRANCH --title "Release v${VERSION}" --body "Automated release PR for version ${VERSION}"
+          
+      - name: Update dev branch
+        run: |
           git checkout dev
-          git merge main
+          git merge $BRANCH
           git push origin dev
