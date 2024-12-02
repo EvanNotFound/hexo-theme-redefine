@@ -29,8 +29,10 @@ body:
       placeholder: |
         问题描述：
         
-        相关配置：        ```yaml
-        # 在此粘贴配置        ```
+        相关配置：        
+        ```yaml
+        # 在此粘贴配置        
+        ```
     validations:
       required: true
 
