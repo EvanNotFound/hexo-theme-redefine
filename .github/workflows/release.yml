@@ -21,11 +21,12 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          
-      - name: Import GPG key
+
+      - name: Import GPG Key
         id: import-gpg
         uses: crazy-max/ghaction-import-gpg@v4
         with:
@@ -33,58 +34,70 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           git_user_signingkey: true
           git_commit_gpgsign: true
-          
+
       - name: Configure Git
         run: |
           git config --global user.email "${{ steps.import-gpg.outputs.email }}"
           git config --global user.name "${{ steps.import-gpg.outputs.name }}"
-          
+          git config --global commit.gpgsign true
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
           registry-url: https://registry.npmjs.org/
-          
-      - name: Install dependencies
+
+      - name: Install Dependencies
         run: npm ci
-        
-      - name: Create Release Branch and Update Version
+
+      - name: Determine New Version
+        id: new_version
         run: |
-          VERSION=$(node -p "require('./package.json').version")
-          BRANCH="release/v${VERSION}"
-          git checkout -b $BRANCH || git checkout $BRANCH
-          npm run release:${{ github.event.inputs.release-type }}
-          
-      - name: Update package-lock.json
-        run: npm install
-        
-      - name: Commit Changes
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          NEW_VERSION=$(npm version ${{ github.event.inputs.release-type }} --no-git-tag-version)
+          echo "current_version=$CURRENT_VERSION" >> $GITHUB_ENV
+          echo "new_version=$NEW_VERSION" >> $GITHUB_ENV
+
+      - name: Create or Checkout Release Branch
         run: |
-          NEW_VERSION=$(node -p "require('./package.json').version")
-          if ! git diff --quiet; then
-            git add package.json package-lock.json
-            git commit -m "chore: bump version to ${NEW_VERSION}"
-            git push -u origin $BRANCH
+          BRANCH="release/v${{ env.new_version }}"
+          if git show-ref --quiet refs/heads/$BRANCH; then
+            git checkout $BRANCH
           else
-            echo "No changes to commit"
-            exit 1
+            git checkout -b $BRANCH
           fi
-          
-      - name: Create Pull Request
-        if: success()
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update Dependencies and Version
         run: |
-          NEW_VERSION=$(node -p "require('./package.json').version")
-          gh pr create --base main --head "release/v${NEW_VERSION}" --title "Release v${NEW_VERSION}" --body "Automated release PR for version ${NEW_VERSION}" || echo "PR already exists"
+          npm install
+          git add package.json package-lock.json
+          git commit -m "chore: bump version to ${{ env.new_version }}" || echo "No changes to commit"
+
+      - name: Push Changes
+        run: |
+          BRANCH="release/v${{ env.new_version }}"
+          git push origin $BRANCH
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.PAT }}
+          commit-message: "chore: bump version to ${{ env.new_version }}"
+          branch: "release/v${{ env.new_version }}"
+          base: main
+          title: "Release v${{ env.new_version }}"
+          body: "Automated release PR for version ${{ env.new_version }}"
+          delete-branch: false
+          draft: false
+          labels: 'release, automated'
+          reviewers: 'EvanNotFound'
+          assignees: 'EvanNotFound'
 
       - name: Create GitHub Release (Draft)
-        if: success()
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          NEW_VERSION=$(node -p "require('./package.json').version")
-          gh release create "v${NEW_VERSION}" \
-            --draft \
-            --title "v${NEW_VERSION}" \
-            --notes "Release v${NEW_VERSION}" || echo "Release already exists"
+        uses: ncipollo/release-action@v1
+        with:
+          tag: "v${{ env.new_version }}"
+          name: "v${{ env.new_version }}"
+          body: "Release v${{ env.new_version }}"
+          draft: true
+          prerelease: false
