@@ -133,10 +133,17 @@ $ git pull
 
 所有贊助者名單：[贊助者名單](https://github.com/EvanNotFound/hexo-theme-redefine/blob/dev/DONATION.md)
 
-如果你想要使用OpenAI GPT-4，但不想每月支付 20 美元吗，来看看我的 [GPT Plus Share](https://gpt.oknice.ca) GPT Plus 共享站，使用多达 100 个 ChatGPT Plus 账户，每月仅 17 人民币起步！
+🎉 **想体验 OpenAI 的 ChatGPT Plus 会员？官网 20 美元每月太贵了？不用担心！**
 
+🚀 立即加入我的 [GPT Plus Share](https://gpt.oknice.ca) GPT Plus 共享站，ChatGPT Plus 随心用。
 
-[![GPT Billboard](https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/55346629-cd54-45a4-9b31-3f979750b0c0)](https://gpt.oknice.ca)
+- ✅ 支持 OpenAI 最新所有模型，包括 `GPT-4o`, `o1` 系列模型。
+- ✅ 后台大量官方正版账号号池，随心使用
+- ✅ 每月仅需低至 23.99 人民币，支持一天免费试用
+- ✅ 无需梯子，国内免翻访问！
+- ✅ 由 Evan 本人运营，售后保证，已稳定运行超过一年
+
+[![gpt-billboard copy@1x](https://github.com/user-attachments/assets/2a9f6e40-b801-477f-9075-37499e2bb5ff)](https://www.gptplus.ca/home)
 
 
 ## 🌟 Star 記錄
