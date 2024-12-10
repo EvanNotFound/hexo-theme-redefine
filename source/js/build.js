@@ -5,7 +5,7 @@ const glob = require("glob-promise");
 
 const THEME_ROOT = path.join(__dirname, "../..");
 const SOURCE_DIR = path.join(THEME_ROOT, "source/js");
-const BUILD_DIR = path.join(THEME_ROOT, "source/build/js");
+const BUILD_DIR = path.join(THEME_ROOT, "source/js/build");
 const IGNORE_PATTERNS = [
   path.join(SOURCE_DIR, "libs/**"),
   path.join(BUILD_DIR, "**"),

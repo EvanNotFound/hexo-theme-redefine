@@ -16,25 +16,35 @@ hexo.extend.helper.register("isHomePagePagination", function (pagePath, route) {
 
 /* code block language display */
 hexo.extend.filter.register("after_post_render", function (data) {
-  const pattern = /<figure class="highlight ([a-zA-Z+\-/#]+)">.*?<\/figure>/g;
-  data.content = data.content.replace(pattern, function (match, p1) {
+  // Only process if not already processed
+  if (data._processedHighlight) return data;
+  
+  // Updated pattern to include numbers and other special characters
+  const pattern = /<figure class="highlight ([^"]+)">([\s\S]*?)<\/figure>/g;
+  data.content = data.content.replace(pattern, function (match, p1, p2) {
+    // If already has code-container anywhere in the match, return unchanged
+    if (match.includes('code-container')) {
+      return match;
+    }
+
     let language = p1 || "code";
     if (language === "plain") {
       language = "code";
     }
-    const replaced = match.replace(
-      '<figure class="highlight ',
-      '<figure class="iseeu highlight ',
-    );
-    const container =
-      '<div class="highlight-container" data-rel="' +
+
+    return '<div class="code-container" data-rel="' +
       language.charAt(0).toUpperCase() +
       language.slice(1) +
       '">' +
-      replaced +
+      match.replace(
+        '<figure class="highlight ',
+        '<figure class="iseeu highlight '
+      ) +
       "</div>";
-    return container;
   });
+
+  // Mark as processed
+  data._processedHighlight = true;
   return data;
 });
 
@@ -93,9 +103,9 @@ hexo.extend.helper.register("renderJS", function (path, options = {}) {
   const { module = false, async = false, swupReload = false } = options;
 
   if (Array.isArray(path)) {
-    path = path.map((p) => "build/" + p);
+    path = path.map((p) => "js/build/" + p);
   } else {
-    path = "build/" + path;
+    path = "js/build/" + path;
   }
 
   const cdnProviders = {
@@ -208,4 +218,20 @@ hexo.extend.helper.register("renderCSS", function (path) {
 
 hexo.extend.helper.register("getThemeVersion", function () {
   return themeVersion;
+});
+
+hexo.extend.helper.register("checkDeprecation", function (condition, id, message) {
+  if (condition) {
+    // Use Set to ensure each warning is only logged once per Hexo process
+    if (!global.deprecationWarnings) {
+      global.deprecationWarnings = new Set();
+    }
+    
+    if (!global.deprecationWarnings.has(id)) {
+      hexo.log.warn(`${message}`);
+      global.deprecationWarnings.add(id);
+    }
+    return true;
+  }
+  return false;
 });

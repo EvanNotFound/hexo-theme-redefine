@@ -8,7 +8,6 @@ on:
     paths:
       - 'source/js/**'
       - 'source/css/**'
-      - 'source/build/**'
 
 jobs:
   build:
@@ -41,7 +40,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git add source/build/js source/build/css
+          git add source/js/build source/css/build
           # Check if there are any changes
           if ! git diff --cached --quiet; then
             git commit -m "ci: build and update source/build/js and source/build/css [skip ci]"

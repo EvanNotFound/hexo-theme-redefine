@@ -19,7 +19,6 @@
             'cdnjs': 'https://cdnjs.cloudflare.com',
             'zstatic': 'https://s4.zstatic.net',
             'npmmirror': 'https://registry.npmmirror.com',
-
         }; %>
         <% if (cdnLinks[provider]) { %>
             <link rel="preconnect" href="<%= cdnLinks[provider] %>" crossorigin>
@@ -31,8 +30,25 @@
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
-    <% if (theme.global.open_graph) { %>
-        <%- open_graph() %>
+    
+    <% checkDeprecation(
+      theme.global.open_graph === true,
+      'open_graph',
+      "Using 'open_graph: true' is deprecated. Please update to the new format:\nglobal:\n  open_graph:\n    enable: true\n    image: your_image_path\n    description: your_description"
+    ) %>
+    <% if (theme.global.open_graph?.enable || theme.global.open_graph === true) { %>
+        <% 
+        let ogImage = page.og_image || theme.global.open_graph?.image;
+        let ogDescription = page.og_description || theme.global.open_graph?.description || page.description || config.description;
+        let author = page.author || config.author || 'Redefine Team';
+        %>
+        <%- open_graph({
+            image: ogImage,
+            author: author,
+            description: ogDescription,
+            twitter_card: 'summary',
+            twitter_image: ogImage,
+        }) %>
     <% } %>
     <% if (theme.global.google_analytics.enable) { %>
         <!-- Google tag (gtag.js) -->
@@ -92,9 +108,9 @@
     <%- css('css/style') %>
 
     <% if (theme.developer && theme.developer.enable) {%>
-        <%- css('build/css/tailwind.css') %>
+        <%- css('css/build/tailwind.css') %>
     <% } else {%>
-        <%- renderCSS('build/css/tailwind.css') %>
+        <%- renderCSS('css/build/tailwind.css') %>
     <% } %>
 
     <%- renderCSS('fonts/GeistMono/geist-mono.css') %>
@@ -116,7 +132,7 @@
         <link href="<%- theme.global.fonts.title.url %>" rel="stylesheet">
     <% } %>
     <% if (theme.global.preloader === true || theme.global.preloader.enable === true) { %>
-        <%- renderJS('js/libs/anime.min.js')%>
+        <%- renderJS('libs/anime.min.js')%>
     <% } %>
 
     <%- export_config() %>
