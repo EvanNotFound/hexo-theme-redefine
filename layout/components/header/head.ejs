@@ -41,12 +41,13 @@
         let ogImage = page.og_image || theme.global.open_graph?.image;
         let ogDescription = page.og_description || theme.global.open_graph?.description || page.description || config.description;
         let author = page.author || config.author || 'Redefine Team';
+        let twitterCard = page.twitter_card || theme.global.open_graph?.twitter_card || 'summary';
         %>
         <%- open_graph({
             image: ogImage,
             author: author,
             description: ogDescription,
-            twitter_card: 'summary',
+            twitter_card: twitterCard,
             twitter_image: ogImage,
         }) %>
     <% } %>
