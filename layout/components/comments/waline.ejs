@@ -19,6 +19,8 @@
           login: '<%= theme.comment.config.waline.login %>',
           wordLimit: <%= theme.comment.config.waline.wordLimit %>,
           pageSize: <%= theme.comment.config.waline.pageSize %>,
+          commentSorting: '<%= theme.comment.config.waline.commentSorting %>'
+          meta: <%= theme.comment.config.waline.meta %>
           <%- theme.comment.config.waline.recaptchaV3Key &&
               `recaptchaV3Key: "${theme.comment.config.waline.recaptchaV3Key}",`;
           %>
