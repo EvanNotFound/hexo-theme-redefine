@@ -15,6 +15,8 @@
             (item) => `'${item}'`
           ).join(','
           ) %>],
+          locale: <%= theme.comment.config.waline.locale %>,
+          login: '<%= theme.comment.config.waline.login %>',
           <%- theme.comment.config.waline.recaptchaV3Key &&
               `recaptchaV3Key: "${theme.comment.config.waline.recaptchaV3Key}",`;
           %>
