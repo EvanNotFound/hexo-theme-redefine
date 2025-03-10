@@ -1,5 +1,5 @@
 # ----------------------------------------
-# 网站翻译
+# 網站翻譯
 # ----------------------------------------
 search: 站內搜尋您想要的內容...
 toc: 目錄
@@ -27,23 +27,23 @@ sticky: 置頂
 go-back-home: 回到首頁
 
 # ----------------------------------------
-# 菜单翻译
+# 選單翻譯
 # ----------------------------------------
 home: 首頁
 archive: 歸檔
 archives: 歸檔
 about: 關於
-links: 鏈接
-link: 鏈接
-friends: 友情鏈接
-friend: 友情鏈接
+links: 連結
+link: 連結
+friends: 友情連結
+friend: 友情連結
 timeline: 時間軸
 shuoshuo: 說說
 changelog: 日誌
 status: 狀態
 
 # ----------------------------------------
-# 网站统计
+# 網站統計
 # ----------------------------------------
 site_uv: 讀者
 site_pv: 閱覽
@@ -53,30 +53,30 @@ wordcount: 字數
 min2read: 分鐘
 
 # ----------------------------------------
-# 页脚
+# 頁尾
 # ----------------------------------------
-runtime: 博客已運行
+runtime: 部落格已運行
 days: 天
 hours: 小時
 minutes: 分鐘
 seconds: 秒
 
-optimized_by: 並由 Evan 進行優化
+optimized_by: 並由 Evan 進行最佳化
 rights: 版權所有
 site_posts: "共 %s 篇文章"
 site_wordcount: "共 %s 字"
 
 # ----------------------------------------
-# 版权声明
+# 版權聲明
 # ----------------------------------------
 copyright:
   author: 作者
   title: 標題
   link: 連結
-  create_time: 撰寫于
-  update_time: 更新于
+  create_time: 撰寫於
+  update_time: 更新於
   license_title: 版權宣告
-  license_content: "本作品采用 %s 进行许可。"
+  license_content: "本作品採用 %s 進行許可。"
   all_rights_reserved: "保留所有權利 &#169 %s"
   public_domain: "本作品已在公共領域中，可自由轉載、修改、散佈，無需經過作者同意。"
 
@@ -91,4 +91,4 @@ ago:
 
 create_time: 撰寫
 update_time: 更新
-expired: "这篇文章最後更新於 %s 天前，內容可能已經過時。"
+expired: "這篇文章最後更新於 %s 天前，內容可能已經過時。"
