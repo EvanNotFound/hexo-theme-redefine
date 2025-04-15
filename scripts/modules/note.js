@@ -1,9 +1,3 @@
-/**
- * note.js
- * transplant from hexo-theme-butterfly
- * Modified by Evan
- */
-
 function postNote(args, content) {
   if (args.length === 0) {
     args.push("default");
