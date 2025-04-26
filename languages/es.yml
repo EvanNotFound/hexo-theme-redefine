@@ -1,0 +1,92 @@
+# ----------------------------------------
+# Traducción del sitio
+# ----------------------------------------
+search: Buscar...
+toc: En esta página
+prev: Anterior
+next: Siguiente
+prev_posts: Publicaciones anteriores
+next_posts: Publicaciones siguientes
+page: Página %d
+recent_posts: Publicaciones recientes
+share: Compartir
+powered_by: "DESARROLLADO POR %s"
+theme: TEMA
+rss_feed: RSS Feed
+category: Categoría
+categories: Categorías
+tag: Etiqueta
+tags: Etiquetas
+post: Publicación
+posts: Publicaciones
+tagcloud: Nube de etiquetas
+comment: Comentario
+comments: Comentarios
+home: Inicio
+archive: Archivo
+archives: Archivos
+top: PRINCIPAL
+sticky: Fijado
+go-back-home: Volver al inicio
+
+# ----------------------------------------
+# Traducción del menú
+# ----------------------------------------
+about: Acerca de
+changelog: Registro de cambios
+links: Enlaces
+link: Enlace
+friends: Amigos
+friend: Amigo
+timeline: Cronología
+shuoshuo: Shuoshuo
+
+# ----------------------------------------
+# Contador del sitio
+# ----------------------------------------
+site_uv: CONTADOR DE VISITANTES
+site_pv: TOTAL DE VISITAS
+read_more: Leer más
+wordcount: Palabras
+min2read: Minutos
+status: Estado
+
+# ----------------------------------------
+# Pie de página
+# ----------------------------------------
+runtime: Blog en línea por
+days: días
+hours: horas
+minutes: Min
+seconds: Seg
+optimized_by: y optimizado por Evan
+rights: Todos los derechos reservados
+site_posts: "%s publicaciones en total"
+site_wordcount: "%s palabras en total"
+
+# ----------------------------------------
+# Publicación
+# ----------------------------------------
+copyright:
+  author: Autor
+  title: Título
+  link: Enlace
+  create_time: Creado el
+  update_time: Actualizado el
+  license_title: Licencia
+  license_content: "Este trabajo está licenciado bajo %s."
+  all_rights_reserved: "Todos los derechos reservados &#169; %s"
+  public_domain: "Este trabajo es de dominio público."
+
+ago:
+  second: "hace %s segundos"
+  minute: "hace %s minutos"
+  hour: "hace %s horas"
+  day: "hace %s días"
+  week: "hace %s semanas"
+  month: "hace %s meses"
+  year: "hace %s años"
+
+create_time: Creado
+update_time: Actualizado
+expired: "Esta publicación fue escrita hace %s días, el contenido puede no estar actualizado."
