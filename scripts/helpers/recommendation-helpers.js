@@ -182,7 +182,8 @@ function cleanData(data) {
 }
 
 function tokenize(data) {
-  const jieba = require("nodejieba");
+  const { Jieba } = require("@node-rs/jieba");
+  const jieba = new Jieba();
   return jieba
     .cut(cleanData(data), true)
     .filter((word) => word !== " " && !/^[0-9]*$/.test(word));
