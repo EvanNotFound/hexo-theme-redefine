@@ -1,0 +1,163 @@
+<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar <%- (theme.home_banner.enable === true && is_home() && !page.prev) ? 'has-home-banner' : '' %>">
+        <div class="left">
+            <% if (theme.defaults.hasOwnProperty('logo') && theme.defaults.logo) { %>
+                <a class="logo-image h-8 w-8 sm:w-10 sm:h-10 mr-3" href="<%= config.root %>">
+                    <%- image_tag(theme.defaults.logo, {
+                        class: "w-full h-full rounded-sm"
+                    }) %>
+                </a>
+            <% } %>
+            <a class="logo-title" href="<%= config.root %>">
+                <%- is_home() ? '<h1>' : '' %>
+                <%= theme.info.title || config.title || 'Redefine Theme' %>
+                <%- is_home() ? '</h1>' : '' %>
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    <% for (let i in theme.navbar.links) { %>
+                        <% if (theme.navbar.links[i].path === 'none') {
+                        } else { %>
+                            <%
+                                let link = theme.navbar.links[i];
+                                let hasSubmenus = link.submenus;
+                                let isActive = isHomePagePagination(page.path, link.path) || is_current(link.path);
+                                let linkHref = hasSubmenus ? '#' : url_for(link.path);
+                                let onClickAction = hasSubmenus ? 'onClick="return false;"' : '';
+                                let iconClass = link.icon ? `<i class="${link.icon} fa-fw"></i>` : '';
+                                let linkText = __(i.toLowerCase()).toUpperCase();
+                                let dropdownIcon = hasSubmenus ? '<i class="fa-solid fa-chevron-down fa-fw"></i>' : '';
+                            %>
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="<%= hasSubmenus ? 'has-dropdown' : (isActive ? 'active' : '') %>"
+                                   href="<%= linkHref %>"
+                                        <%= onClickAction %>>
+                                    <%- iconClass %>
+                                    <%= linkText %>
+                                    <%- dropdownIcon %>
+                                </a>
+
+                                <!-- Submenu -->
+                                <% if (hasSubmenus) { %>
+                                    <ul class="sub-menu">
+                                        <% for (var submenu in link.submenus) { %>
+                                            <li>
+                                                <a href="<%- url_for(link.submenus[submenu]) %>">
+                                                    <%= __(submenu.toLowerCase()).toUpperCase() %>
+                                                </a>
+                                            </li>
+                                        <% } %>
+                                    </ul>
+                                <% } %>
+                            </li>
+                    <% } } %>
+                    <% if (theme.navbar.search.enable === true) { %>
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    <% } %>
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                <% if (theme.navbar.search.enable === true) { %>
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                <% } %>
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            <% for (let i in theme.navbar.links) { %>
+                <% if (theme.navbar.links[i].path !== 'none') { %>
+                    <%
+                        // Function to check if link is active
+                        function isActiveLink(pagePath, linkPath) {
+                            return isHomePagePagination(pagePath, linkPath) || is_current(linkPath);
+                        }
+
+                        // Variables for cleaner code
+                        let linkData = theme.navbar.links[i];
+                        let hasSubmenus = linkData.submenus;
+                        let isActive = isActiveLink(page.path, linkData.path);
+                        let iconClass = linkData.icon;
+                        let linkText = __(i.toLowerCase()).toUpperCase();
+                        let linkPath = hasSubmenus ? '#' : url_for(linkData.path);
+                        let drawerNavbarItemClass = hasSubmenus ? 'drawer-navbar-item-sub' : 'drawer-navbar-item';
+                    %>
+
+                    <li class="<%= drawerNavbarItemClass %> text-base my-1.5 flex flex-col w-full">
+                        <% if (hasSubmenus) {%>
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full <%= isActive ? 'active' : '' %>"
+                             navbar-data-toggle="submenu-<%= i %>"
+                        >
+                            <span>
+                                <%= linkText %>
+                            </span>
+                            <% if (iconClass) { %>
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            <% } %>
+                        </div>
+                        <% } else { %>
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full <%= isActive ? 'active' : '' %>"
+                           href="<%= linkPath %>"
+                        >
+                            <span>
+                                <%= linkText %>
+                            </span>
+                            <% if (iconClass) { %>
+                                <i class="<%= iconClass %> fa-sm fa-fw"></i>
+                            <% } %>
+                        </a>
+                        <% } %>
+
+                        <% if (hasSubmenus) { %>
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-<%= i %>">
+                                <% for (var submenu in linkData.submenus) { %>
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="<%- url_for(linkData.submenus[submenu]) %>"><%= __(submenu.toLowerCase()).toUpperCase() %></a>
+                                    </div>
+                                <% } %>
+                            </div>
+                        <% } %>
+                    </li>
+            <% } } %>
+
+            <%# Add sidebar links %>
+            <% if (theme.home.sidebar.links !== null && theme.home.sidebar.show_on_mobile !== false) {%>
+                <% for (let i in theme.home.sidebar.links) { %>
+                    <% if (theme.navbar.links && theme.navbar.links.hasOwnProperty(i)) {
+                        continue;
+                    } %>
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="<%= url_for(theme.home.sidebar.links[i].path) %>"
+                        >
+                            <span><%= __(i) %></span>
+                            <i class="<%= theme.home.sidebar.links[i].icon %> fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                <% } %>
+            <% } %>
+        </ul>
+
+        <%- partial("components/sidebar/statistics") %>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+

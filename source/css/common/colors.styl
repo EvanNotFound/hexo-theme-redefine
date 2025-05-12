@@ -1,0 +1,112 @@
+// ========================================================================================
+//                                   COLOR VARIABLES
+// ========================================================================================
+// primary color
+$temp-color = hexo-config('colors.primary')
+$primary-color = $temp-color ? convert($temp-color) : #0066CC
+
+//navbar color
+$nav-color-1 = convert(hexo-config('navbar.color.left') + hexo-config('navbar.color.transparency'))
+$nav-color-2 = convert(hexo-config('navbar.color.right') + hexo-config('navbar.color.transparency'))
+$nav-color-bg = linear-gradient(120deg, $nav-color-1 0%, $nav-color-2 100%)
+
+// ========================================================================================
+//                                       LIGHT MODE
+// ========================================================================================
+$background-color = #fff
+$background-color-transparent = rgba(255, 255, 255, 0.6)
+$background-color-transparent-80 = rgba(255, 255, 255, 0.8)
+$background-color-transparent-40 = rgba(255, 255, 255, 0.4)
+$background-color-transparent-15 = rgba(255, 255, 255, 0.15)
+$second-background-color = darken($background-color, 2%)
+$third-background-color = darken($background-color, 3%)
+$third-background-color-transparent = rgba(241, 241, 241, 0.6)
+$default-text-color = #373D3F
+$invert-text-color = #bebec6
+$first-text-color = darken($default-text-color, 10%)
+$second-text-color = darken($default-text-color, 5%)
+$third-text-color = lighten($default-text-color, 20%)
+$fourth-text-color = lighten($default-text-color, 90%)
+$border-color = rgba(0, 0, 0, 0.08)
+$selection-color = lighten($primary-color, 10%)
+$shadow-color-1 = rgba(0, 0, 0, 0.08)
+$shadow-color-2 = rgba(0, 0, 0, 0.05)
+$shadow-hover-color = rgba(0, 0, 0, 0.28)
+$scrollbar-color = #C1C1C1
+$scrollbar-color-hover = #A1A1A1
+$scroll-bar-bg-color = #FAFAFA
+$link-color = darken($default-text-color, 10%)
+$copyright-info-color = #CC0033
+$avatar-background-color = #0066CC
+$pjax-progress-bar-color = linear-gradient(45deg, #f10006, #ef5b00, #e59c01, #19ca05, #00cab5, #0264c8, #c303c3)
+$archive-timeline-last-child-color = linear-gradient(to bottom, rgba(232,232,232, 1) 60%, rgba(0,0,0, 0) 100%) 1 100%
+
+$note-blue-title-bg = #D6F7FB
+$note-red-title-bg = #FDE9E9
+$note-green-title-bg = #E9FDE9
+$note-yellow-title-bg = #FDF9E9
+$note-purple-title-bg = #F9E9FD
+$note-gray-title-bg = #F9F9F9
+$note-black-title-bg = #E9E9E9
+$note-cyan-title-bg = #E9FDF9
+$note-type-title-bg = #fdf3e9
+
+$home-banner-text-color = convert(hexo-config('home_banner.text_color.light'))
+$home-banner-icons-container-border-color = rgba(255, 255, 255, 0.35)
+$home-banner-icons-container-background-color = rgba(255, 255, 255, 0.3)
+
+
+// ========================================================================================
+//                                      DARK MODE
+// ========================================================================================
+$dark-primary-color = $primary-color
+$dark-background-color = #202124
+$dark-background-color-transparent = rgba(32, 33, 36, 0.4)
+$dark-background-color-transparent-80 = rgba(32, 33, 36, 0.8)
+$dark-background-color-transparent-40 = rgba(32, 33, 36, 0.4)
+$dark-background-color-transparent-15 = rgba(32, 33, 36, 0.15)
+$dark-second-background-color = lighten($dark-background-color, 2%)
+$dark-third-background-color = lighten($dark-background-color, 4.5%)
+$dark-third-background-color-transparent = rgba(32, 33, 36, 0.6)
+$dark-default-text-color = #bebec6
+$dark-invert-text-color = #373D3F
+$dark-first-text-color = lighten($dark-default-text-color, 30%)
+$dark-second-text-color = lighten($dark-default-text-color, 20%)
+$dark-third-text-color = darken($dark-default-text-color, 20%)
+$dark-fourth-text-color = darken($dark-default-text-color, 70%)
+$dark-border-color = rgba(255, 255, 255, 0.08)
+$dark-selection-color = $selection-color
+$dark-shadow-color-1 = rgba(255, 255, 255, 0.08)
+$dark-shadow-color-2 = rgba(255, 255, 255, 0.05)
+$dark-shadow-hover-color = rgba(69, 69, 69, 0.28)
+$dark-scrollbar-color = #898989
+$dark-scrollbar-color-hover = #A1A1A1;
+$dark-scroll-bar-bg-color = lighten($dark-background-color, 5%)
+$dark-link-color = lighten($dark-default-text-color, 10%)
+$dark-copyright-info-color = darken($copyright-info-color, 20%)
+$dark-avatar-background-color = darken($avatar-background-color, 10%)
+$dark-pjax-progress-bar-color = linear-gradient(45deg, #ea404a, #ea722f, #e9a71f, #67e559, #18ecec, #1b85f1, #ee1dee)
+$dark-archive-timeline-last-child-color = linear-gradient(to bottom, rgba(50,50,50,1) 60%, rgba(255,255,255, 0) 100%) 1 100%
+
+$dark-note-blue-title-bg = #1e3e46
+$dark-note-red-title-bg = #4e1e1e
+$dark-note-green-title-bg = #1e4e1e
+$dark-note-yellow-title-bg = #4e4e1e
+$dark-note-cyan-title-bg = #1e4e4e
+$dark-note-purple-title-bg = #4e1e4e
+$dark-note-gray-title-bg = #4e4e4e
+$dark-note-black-title-bg = #1e1e1e
+$dark-note-type-title-bg = #4e3a1e
+
+$home-banner-text-color-dark = convert(hexo-config('home_banner.text_color.dark'))
+$home-banner-icons-container-border-color-dark = rgba(197, 197, 197, 0.35)
+$home-banner-icons-container-background-color-dark = rgba(197, 197, 197, 0.3)
+
+// ========================================================================================
+//                                       NOTE COLORS
+// ========================================================================================
+
+$note-default-text-color = #A6A6A6
+$note-green-text-color = #006e53
+$note-red-text-color = #f85676
+

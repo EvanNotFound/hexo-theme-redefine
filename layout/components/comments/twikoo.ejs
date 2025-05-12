@@ -1,0 +1,50 @@
+<% if(theme.comment.system === 'twikoo' && theme.comment.config.twikoo.server_url) { %>
+    <div class="twikoo-container">
+        <script <%= theme.global.single_page === true && 'data-swup-reload-script' %>
+                src='https://cdnjs.cloudflare.com/ajax/libs/twikoo/<%- theme.comment.config.twikoo.version %>/twikoo.all.min.js'
+        ></script>
+        <div id="twikoo-comment"></div>
+        <script <%= theme.global.single_page === true && 'data-swup-reload-script' %>>
+            function loadTwikoo() {
+                twikoo.init({
+                    el: '#twikoo-comment',
+                    envId: '<%= theme.comment.config.twikoo.server_url %>',
+                });
+            }
+
+            if ('<%= theme.global.single_page %>') {
+                const loadTwikooTimeout = setTimeout(() => {
+                    loadTwikoo();
+                    clearTimeout(loadTwikooTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadTwikoo);
+            }
+        </script>
+    </div>
+<% } else if (theme.comment.system === 'twikoo' && theme.comment.config.twikoo.server_url && theme.comment.config.twikoo.region) { %>
+    <div class="twikoo-container">
+        <script <%= theme.global.single_page === true && 'data-swup-reload-script' %>
+                src='<%- theme.comment_version.twikoo %>'
+        ></script>
+        <div id="twikoo-comment"></div>
+        <script <%= theme.global.single_page === true && 'data-swup-reload-script' %>>
+            function loadTwikoo() {
+                twikoo.init({
+                    el: '#twikoo-comment',
+                    envId: '<%= theme.comment.config.twikoo.server_url %>',
+                    region: '<%= theme.comment.config.twikoo.region %>',
+                });
+            }
+
+            if ('<%= theme.global.single_page %>') {
+                const loadTwikooTimeout = setTimeout(() => {
+                    loadTwikoo();
+                    clearTimeout(loadTwikooTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadTwikoo);
+            }
+        </script>
+    </div>
+<% } %>

@@ -1,74 +1,26 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@require 'common/animated.styl'
+@require 'common/variables.styl'
 
-@import 'common/animated.styl'
-@import 'common/variables.styl'
-@import 'common/basic.styl'
-@import 'common/markdown.styl'
-@import 'common/redefine-theme.styl'
-@import 'common/codeblock/highlight.styl'
-@import 'common/codeblock/code-block.styl'
-@import 'common/codeblock/code-theme.styl'
-@import 'layout/page.styl'
-@import 'layout/_partials/local-search.styl'
-@import 'layout/_partials/toc.styl'
-@import 'layout/_partials/comments/comment.styl'
-@import 'layout/_partials/progress-bar.styl'
-@import 'layout/_partials/navbar.styl'
-@import 'layout/_partials/post-tools.styl'
-@import 'layout/_partials/side-tools.styl'
-@import 'layout/_partials/archive-list.styl'
-@import 'layout/_partials/footer.styl' //tailwind done
-@import 'layout/_partials/paginator.styl'
-@import 'layout/_partials/page-template.styl'
-@import 'layout/_partials/home-banner.styl'
-@import 'layout/_partials/image-viewer.styl'
-@import 'layout/category-list.styl'
-@import 'layout/_partials/article-meta-info.styl'
-@import 'layout/_partials/article-copyright-info.styl'
-@import 'layout/home-content.styl'
+@require 'common/basic.styl'
+@require 'common/markdown.styl'
+@require 'common/redefine-theme.styl'
+
+@require 'common/codeblock/code-theme.styl'
+@require 'common/codeblock/highlight.styl'
+@require 'common/codeblock/code-block.styl'
+
+@require 'layout/_partials/*'
+@require 'layout/_partials/comments/comment.styl'
+@require 'layout/_modules/*'
+
+@require 'layout/page.styl'
+@require 'layout/animations.styl'
+@require 'layout/category-list.styl'
+@require 'layout/home-content.styl'
+@require 'layout/archive-content.styl'
+@require 'layout/article-content.styl'
+@require 'layout/category-content.styl'
+@require 'layout/tag-content.styl'
 
 if (hexo-config('home.sidebar.enable') == true)
-  @import 'layout/home-sidebar.styl'
-
-@import 'layout/archive-content.styl'
-@import 'layout/article-content.styl'
-@import 'layout/category-content.styl'
-@import 'layout/tag-content.styl'
-@import 'layout/_partials/tagcloud.styl'
-@import 'layout/_partials/404.styl'
-@import 'layout/_modules/aplayer.styl'
-// modules
-@import 'layout/_modules/notes.styl'
-@import 'layout/_modules/folding.styl'
-@import 'layout/_modules/buttons.styl'
-@import 'layout/_modules/tabs.styl'
-
-.page-title-header
-  font-size 3.2rem
-  line-height 1
-  font-weight bold
-  color var(--second-text-color)
-  margin 6px 0 36px 0
-
-
-
-.redefine-box-shadow
-  box-shadow var(--redefine-box-shadow)
-
-.redefine-box-shadow-flat
-  box-shadow var(--redefine-box-shadow-flat)
-
-@media (min-width: 640px)
-  .redefine-box-shadow:hover
-    box-shadow var(--redefine-box-shadow-hover)
-
-  .redefine-box-shadow-flat:hover
-    box-shadow var(--redefine-box-shadow)
-
-.ellipsis
-  overflow hidden
-  text-overflow ellipsis
-  white-space nowrap
-  width 100%
+  @require 'layout/home-sidebar.styl'

@@ -3,7 +3,7 @@ $desktop-search-icon-font-size = 1.5rem
 $navbar-bar-line-height = 2.5px
 $logo-image-box-width = 34px
 
-@import '../../common/variables'
+@require '../../common/variables'
 
 .navbar-container
   font-family 'Chillax-Variable', sans-serif
@@ -49,22 +49,22 @@ $logo-image-box-width = 34px
       //  transform-origin bottom
 
       if (hexo-config('defaults.logo') && hexo-config('defaults.logo') != '')
-        .logo-image
-          width $logo-image-box-width
-          height $logo-image-box-width
-          margin-right 12px
-
-          +redefine-tablet()
-            width: $logo-image-box-width * 0.9
-            height: $logo-image-box-width * 0.9
-
-          +redefine-mobile()
-            width: $logo-image-box-width * 0.8
-            height: $logo-image-box-width * 0.8
-
-          img
-            border-radius 6px
-            width 100%
+        //.logo-image
+          //width $logo-image-box-width
+          //height $logo-image-box-width
+          //margin-right 12px
+          //
+          //+redefine-tablet()
+          //  width: $logo-image-box-width * 0.9
+          //  height: $logo-image-box-width * 0.9
+          //
+          //+redefine-mobile()
+          //  width: $logo-image-box-width * 0.8
+          //  height: $logo-image-box-width * 0.8
+          //
+          //img
+          //  border-radius 6px
+          //  width 100%
 
       .logo-title
         font-size $logo-title-font-size
@@ -308,3 +308,11 @@ $logo-image-box-width = 34px
 .icon-rotated {
   transform: rotate(90deg);
 }
+
+.transition-navbar
+  transition max-width 0.3s ease-out
+
+html.is-animating
+  .transition-navbar
+    max-width $navbar-width-pages !important
+    transition max-width 0.2s ease-out

@@ -1,0 +1,78 @@
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop"><%= date(articleObject.date, is_post() ? `${config.date_format} ${config.time_format}` : `${config.date_format}`).replace(" 00:00:00", "").replace(":00", "") %></span>
+        <span class="mobile"><%= date(articleObject.date, is_post() ? `${config.date_format} ${config.time_format}` : `${config.date_format}`).replace(" 00:00:00", "").replace(":00", "") %></span>
+        <span class="hover-info"><%= __("create_time") %></span>
+    </span>
+    <% if (articleObject?.updated && articleObject.updated !== articleObject.date) { %>
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop"><%= date(articleObject.updated, is_post() ? `${config.date_format} ${config.time_format}` : `${config.date_format}`).replace(" 00:00:00", "").replace(":00", "") %></span>
+            <span class="mobile"><%= date(articleObject.updated, is_post() ? `${config.date_format} ${config.time_format}` : `${config.date_format}`).replace(" 00:00:00", "").replace(":00", "") %></span>
+            <span class="hover-info"><%= __("update_time") %></span>
+        </span>
+    <% } %>
+
+    <% if (articleObject?.categories?.length) { %>
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                <% let previousParentId = null; %>
+                <% articleObject.categories.forEach((category, i) => { %>
+                    <% if (previousParentId !== category.parent) { %>
+                        <% if (previousParentId !== null) { %>
+                            <li>></li>
+                        <% } %>
+                        <li>
+                            <a href="<%- url_for(category.path) %>"><%= category.name %></a>&nbsp;
+                        </li>
+                    <% } else { %>
+                        <li>
+                            | <a href="<%- url_for(category.path) %>"><%= category.name %></a>&nbsp;
+                        </li>
+                    <% } %>
+                    <% previousParentId = category.parent; %>
+                <% }); %>
+            </ul>
+        </span>
+    <% } %>
+    <% if (articleObject?.tags?.length) { %>
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                <% articleObject.tags.forEach((tag, i) => { %>
+                    <li>
+                        <%= i === 0 ? '' : '| ' %><a href="<%- url_for(tag.path) %>"><%= tag.name %></a>&nbsp;
+                    </li>
+                <% }); %>
+            </ul>
+        </span>
+    <% } %>
+
+    <%
+    let temp_wordcount, temp_min2read = null;
+    try {
+        temp_wordcount = wordcount(page.content);
+        temp_min2read = min2read(page.content);
+    } catch (e) {
+        temp_wordcount = 0;
+        temp_min2read = 0;
+    }
+    %>
+    <% if(is_post() && theme.hasOwnProperty('articles') && theme.articles.word_count.enable && theme.articles.word_count.count && temp_wordcount){ %>
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span><%= temp_wordcount %> <%- __('wordcount') %></span>
+        </span>
+    <% } %>
+    <% if(is_post() && theme.hasOwnProperty('articles') && theme.articles.word_count.enable && theme.articles.word_count.min2read && temp_min2read){ %>
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span><%= temp_min2read %> <%- __('min2read') %></span>
+        </span>
+    <% } %>
+    <% if (is_post() && theme.global.website_counter.enable && theme.global.website_counter.post_pv) { %>
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    <% } %>
+</div>

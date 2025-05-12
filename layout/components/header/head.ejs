@@ -1,0 +1,158 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="<%= page.keywords || config.keywords || 'Hexo Theme Redefine' %>">
+    <% if (!theme.global.open_graph) { %>
+        <meta name="description" content="<%= page.description || config.description || 'Hexo Theme Redefine' %>">
+    <% }%>
+    <meta name="author" content="<%= theme.info.author || config.author || 'Redefine Team' %>">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <% if (theme.cdn.enable) { %>
+        <% const provider = theme.cdn.provider; %>
+        <% const cdnLinks = {
+            'jsdelivr': 'https://cdn.jsdelivr.net',
+            'unpkg': 'https://unpkg.com',
+            'aliyun': 'https://evan.beee.top',
+            'cdnjs': 'https://cdnjs.cloudflare.com',
+            'zstatic': 'https://s4.zstatic.net',
+            'npmmirror': 'https://registry.npmmirror.com',
+        }; %>
+        <% if (cdnLinks[provider]) { %>
+            <link rel="preconnect" href="<%= cdnLinks[provider] %>" crossorigin>
+        <% } %>
+    <% } %>
+    <!--- Seo Part-->
+    <%- generateMeta(theme, page) %>
+    <%- autoCanonical(config, page) %>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    <% checkDeprecation(
+      theme.global.open_graph === true,
+      'open_graph',
+      "Using 'open_graph: true' is deprecated. Please update to the new format:\nglobal:\n  open_graph:\n    enable: true\n    image: your_image_path\n    description: your_description"
+    ) %>
+    <% if (theme.global.open_graph?.enable || theme.global.open_graph === true) { %>
+        <% 
+        let ogImage = page.og_image || theme.global.open_graph?.image;
+        let ogDescription = page.og_description || theme.global.open_graph?.description || page.description || config.description;
+        let author = page.author || config.author || 'Redefine Team';
+        %>
+        <%- open_graph({
+            image: ogImage,
+            author: author,
+            description: ogDescription,
+            twitter_card: 'summary',
+            twitter_image: ogImage,
+        }) %>
+    <% } %>
+    <% if (theme.global.google_analytics.enable) { %>
+        <!-- Google tag (gtag.js) -->
+        <script src="https://www.googletagmanager.com/gtag/js?id=<%= theme.global.google_analytics.id %>"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '<%= theme.global.google_analytics.id %>');
+        </script>
+    <% } %>
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="<%= url_for(theme.defaults.favicon) %>" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= url_for(theme.defaults.favicon) %>">
+    <meta name="theme-color" content="<%= theme.colors.primary %>">
+    <%- favicon_tag(theme.defaults.favicon) %>
+    <!--- Page Info-->
+    <%
+    let title = page.title;
+    if (is_archive()) {
+        title = __('archive');
+        if (is_month()) {
+            title += ': ' + page.year + '/' + page.month;
+        } else if (is_year()) {
+            title += ': ' + page.year;
+        }
+    } else if (is_category()) {
+        title = __('category') + ': ' + page.category;
+    } else if (is_tag()) {
+        title = __('tag') + ': ' + page.tag;
+    } else {
+        title = __(page.title);
+    }
+    %>
+    <title>
+        <% if (title) { %>
+            <%= title %> | <%= theme.info.title || config.title || 'Redefine Theme' %>
+        <% } else { %>
+            <%= theme.info.title || config.title || 'Redefine Theme' %> - <%= theme.info.subtitle || config.subtitle || 'Redefine Your Hexo Journey.' %>
+        <% } %>
+    </title>
+
+    <%- renderCSS('fonts/Chillax/chillax.css') %>
+
+    <!--- Inject Part-->
+    <% if (theme.inject.enable == true) { %>
+        <% for (let i in theme.inject.head) { %>
+            <% if (theme.inject.head[i] !== null){ %>
+                <% if (theme.global.single_page == true) { %>
+                    <%- theme.inject.head[i].replace("<script", "<script data-swup-reload-script") %>
+                <% } else { %>
+                    <%- theme.inject.head[i] %>
+            <% } }%>
+    <% } }%>
+
+    <%- css('css/style') %>
+
+    <% if (theme.developer && theme.developer.enable) {%>
+        <%- css('css/build/tailwind.css') %>
+    <% } else {%>
+        <%- renderCSS('css/build/tailwind.css') %>
+    <% } %>
+
+    <%- renderCSS('fonts/GeistMono/geist-mono.css') %>
+    <%- renderCSS('fonts/Geist/geist.css') %>
+    <!--- Font Part-->
+    <% if (theme.home_banner.custom_font.enable) { %>
+        <link href="<%- theme.home_banner.custom_font.url %>" rel="stylesheet">
+    <% } %>
+    <% if (theme.articles.code_block.font.enable) { %>
+        <link href="<%- theme.articles.code_block.font.url %>" rel="stylesheet">
+    <% } %>
+    <% if (theme.global.fonts.chinese.enable) { %>
+        <link href="<%- theme.global.fonts.chinese.url %>" rel="stylesheet">
+    <% } %>
+    <% if (theme.global.fonts.english.enable) { %>
+        <link href="<%- theme.global.fonts.english.url %>" rel="stylesheet">
+    <% } %>
+    <% if (theme.global.fonts.title.enable) { %>
+        <link href="<%- theme.global.fonts.title.url %>" rel="stylesheet">
+    <% } %>
+    <% if (theme.global.preloader === true || theme.global.preloader.enable === true) { %>
+        <%- renderJS('libs/anime.min.js')%>
+    <% } %>
+
+    <%- export_config() %>
+    
+    <!--- Fontawesome Part-->
+    <%- renderCSS('fontawesome/fontawesome.min.css') %>
+    <%- renderCSS('fontawesome/brands.min.css') %>
+    <%- renderCSS('fontawesome/solid.min.css') %>
+    <%- renderCSS('fontawesome/regular.min.css') %>
+    <% if (theme.fontawesome.thin == true) { %>
+        <%- renderCSS('fontawesome/thin.min.css') %>
+    <% } %>
+    <% if (theme.fontawesome.light == true) { %>
+        <%- renderCSS('fontawesome/light.min.css') %>
+    <% } %>
+    <% if (theme.fontawesome.duotone == true) { %>
+        <%- renderCSS('fontawesome/duotone.min.css') %>
+    <% } %>
+    <% if (theme.fontawesome.sharp_solid == true) { %>
+        <%- renderCSS('fontawesome/sharp-solid.min.css') %>
+    <% } %>
+</head>
+

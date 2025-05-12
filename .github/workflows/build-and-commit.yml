@@ -1,0 +1,50 @@
+name: Build JS and CSS
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+    paths:
+      - 'source/js/**'
+      - 'source/css/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false # Prevent using GITHUB_TOKEN automatically
+          fetch-depth: 0 # Fetch all history for accurate file diffs
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x' # Specify your Node.js version
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Project
+        run: npm run build
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+      - name: Commit and Push Changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git add source/js/build source/css/build
+          # Check if there are any changes
+          if ! git diff --cached --quiet; then
+            git commit -m "ci: build and update source/build/js and source/build/css [skip ci]"
+            git push "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git" HEAD:${GITHUB_REF#refs/heads/}
+          else
+            echo "No changes to commit"
+          fi 

@@ -1,0 +1,51 @@
+<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		<% if (theme.plugins.feed.enable && config.feed) { %>
+		<li class="right-bottom-tools rss flex justify-center items-center">
+			<a class="flex justify-center items-center" href="<%= '/' + config.feed.path %>" target="_blank">
+				<i class="fa-regular fa-rss"></i>
+			</a>
+		</li>
+		<% } %>
+
+		<% if (theme.global.scroll_progress.percentage !== true) { %>
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="fa-regular fa-arrow-up"></i>
+		</li>
+		<% } %>
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		<% if (theme.global.scroll_progress.percentage === true) { %>
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		<% } %>
+		<% if (theme.plugins.aplayer.enable && theme.plugins.aplayer.type === "mini") { %>
+		<li class="right-bottom-tools tool-aplayer flex justify-center items-center">
+
+		</li>
+		<% } %>
+	</ul>
+</div>

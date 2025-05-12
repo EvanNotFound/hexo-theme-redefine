@@ -1,35 +1,35 @@
-@import '../variables.styl'
+@require '../variables.styl'
 
 if (hexo-config('articles.code_block.highlight_theme.light') == 'github') {
-  @import 'hljs-themes/light/github.styl'
+  @require 'hljs-themes/light/github.styl'
 } else if (hexo-config('articles.code_block.highlight_theme.light') == 'atom-one-light') {
-  @import 'hljs-themes/light/atom-one-light.styl'
+  @require 'hljs-themes/light/atom-one-light.styl'
 } else if (hexo-config('articles.code_block.highlight_theme.light') == 'default') {
-  @import 'hljs-themes/light/default.styl'
+  @require 'hljs-themes/light/default.styl'
 } else {
-  @import 'hljs-themes/light/github.styl'
+  @require 'hljs-themes/light/github.styl'
 }
 
 if (hexo-config('articles.code_block.highlight_theme.dark') == 'github-dark') {
-  @import 'hljs-themes/dark/github-dark.styl'
+  @require 'hljs-themes/dark/github-dark.styl'
 } else if (hexo-config('articles.code_block.highlight_theme.dark') == 'vs2015') {
-  @import 'hljs-themes/dark/vs2015.styl'
+  @require 'hljs-themes/dark/vs2015.styl'
 } else if (hexo-config('articles.code_block.highlight_theme.dark') == 'atom-one-dark') {
-  @import 'hljs-themes/dark/atom-one-dark.styl'
+  @require 'hljs-themes/dark/atom-one-dark.styl'
 } else if (hexo-config('articles.code_block.highlight_theme.dark') == 'a11y-dark') {
-  @import 'hljs-themes/dark/a11y-dark.styl'
+  @require 'hljs-themes/dark/a11y-dark.styl'
 } else if (hexo-config('articles.code_block.highlight_theme.dark') == 'agate') {
-  @import 'hljs-themes/dark/agate.styl'
+  @require 'hljs-themes/dark/agate.styl'
 } else if (hexo-config('articles.code_block.highlight_theme.dark') == 'monokai-sublime') {
-  @import 'hljs-themes/dark/monokai-sublime.styl'
+  @require 'hljs-themes/dark/monokai-sublime.styl'
 } else if (hexo-config('articles.code_block.highlight_theme.dark') == 'night-owl') {
-  @import 'hljs-themes/dark/night-owl.styl'
+  @require 'hljs-themes/dark/night-owl.styl'
 } else if (hexo-config('articles.code_block.highlight_theme.dark') == 'nord') {
-  @import 'hljs-themes/dark/nord.styl'
+  @require 'hljs-themes/dark/nord.styl'
 } else if (hexo-config('articles.code_block.highlight_theme.dark') == 'tokyo-night-dark') {
-  @import 'hljs-themes/dark/tokyo-night-dark.styl'
+  @require 'hljs-themes/dark/tokyo-night-dark.styl'
 } else {
-  @import 'hljs-themes/dark/github-dark.styl'
+  @require 'hljs-themes/dark/github-dark.styl'
 }
 
 $highlight-gutter-color = #6a737d

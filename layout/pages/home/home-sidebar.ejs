@@ -1,0 +1,78 @@
+<div class="home-sidebar-container">
+    <div class="sticky-container sticky">
+        <%
+            const hasSidebarLinks = theme.home.sidebar.links !== null;
+            const hasSidebarAnnouncement = theme.home.sidebar.announcement !== null;
+        %>
+        <% if (theme.home.sidebar.first_item === "info") { %>
+            <div class="sidebar-content">
+                <%- partial("components/sidebar/avatar") %>
+                <%- partial("components/sidebar/author") %>
+                <%- partial('components/sidebar/statistics')%>
+            </div>
+            <% if (hasSidebarLinks || hasSidebarAnnouncement) {%>
+                <div class="sidebar-links"  <% if (hasSidebarLinks || hasSidebarAnnouncement) { %> marginTop <% } %>>
+                    <div class="site-info">
+                        <div class="site-name"><%= theme.info.title || config.title %></div>
+                        <% if (hasSidebarAnnouncement && hasSidebarLinks) { %>
+                            <div class="announcement">
+                                <%- theme.home.sidebar.announcement %>
+                            </div>
+                        <% } %>
+                    </div>
+                    <% if (hasSidebarLinks) {%>
+                        <% for (let i in theme.home.sidebar.links) { %>
+                            <% if (theme.home.sidebar.links[i].path === 'none') {} else {%>
+                                <a class="links" href="<%= url_for(theme.home.sidebar.links[i].path) %>">
+                                    <% if (theme.home.sidebar.links[i].icon) { %>
+                                        <i class="<%- theme.home.sidebar.links[i].icon %> icon-space"></i>
+                                    <% } %>
+                                    <span class="link-name"><%= __(i) %></span>
+                                </a>
+                            <% } %>
+                        <% } %>
+                    <% } else {%>
+                        <div class="announcement-outside">
+                            <%- theme.home.sidebar.announcement %>
+                        </div>
+                    <% } %>
+                </div>
+            <% } %>
+        <% } else { %>
+            <% if (hasSidebarLinks || hasSidebarAnnouncement) {%>
+                <div class="sidebar-links">
+                    <div class="site-info">
+                        <div class="site-name"><%= theme.info.title || config.title %></div>
+                        <% if (hasSidebarAnnouncement && hasSidebarLinks) { %>
+                            <div class="announcement">
+                                <%- theme.home.sidebar.announcement %>
+                            </div>
+                        <% } %>
+                    </div>
+                    <% if (hasSidebarLinks) {%>
+                        <% for (let i in theme.home.sidebar.links) { %>
+                            <% if (theme.home.sidebar.links[i].path === 'none') {} else {%>
+                                <a class="links" href="<%= url_for(theme.home.sidebar.links[i].path) %>">
+                                    <% if (theme.home.sidebar.links[i].icon) { %>
+                                        <i class="<%- theme.home.sidebar.links[i].icon %> icon-space"></i>
+                                    <% } %>
+                                    <span class="link-name"><%= __(i) %></span>
+                                </a>
+                            <% } %>
+                        <% } %>
+                    <% } else {%>
+                        <div class="announcement-outside">
+                            <%- theme.home.sidebar.announcement %>
+                        </div>
+                    <% } %>
+                </div>
+            <% } %>
+            <div class="sidebar-content" <% if (hasSidebarLinks || hasSidebarAnnouncement) { %> marginTop <% } %>>
+                <%- partial("components/sidebar/avatar") %>
+                <%- partial("components/sidebar/author") %>
+                <%- partial('components/sidebar/statistics')%>
+            </div>
+        <% } %>
+
+    </div>
+</div>

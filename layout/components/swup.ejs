@@ -1,0 +1,27 @@
+<%- renderJS([
+    'libs/Swup.min.js',
+    'libs/SwupSlideTheme.min.js',
+    'libs/SwupScriptsPlugin.min.js',
+    'libs/SwupProgressPlugin.min.js',
+    'libs/SwupScrollPlugin.min.js',
+    'libs/SwupPreloadPlugin.min.js']
+) %>
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+

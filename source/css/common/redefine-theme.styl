@@ -43,3 +43,23 @@ redefine-container(isTransform, scaleX, scaleY, padding, marginBottomValue)
   +redefine-mobile()
     padding: padding - 8
     border-radius: $redefine-border-radius-large
+
+
+.redefine-box-shadow
+  box-shadow var(--redefine-box-shadow)
+
+.redefine-box-shadow-flat
+  box-shadow var(--redefine-box-shadow-flat)
+
+@media (min-width: 640px)
+  .redefine-box-shadow:hover
+    box-shadow var(--redefine-box-shadow-hover)
+
+  .redefine-box-shadow-flat:hover
+    box-shadow var(--redefine-box-shadow)
+
+.ellipsis
+  overflow hidden
+  text-overflow ellipsis
+  white-space nowrap
+  width 100%

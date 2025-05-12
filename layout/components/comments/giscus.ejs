@@ -1,0 +1,42 @@
+<% if (
+        theme.comment.system==='giscus' &&
+        theme.comment.config.giscus.repo &&
+        theme.comment.config.giscus.repo_id &&
+        theme.comment.config.giscus.category_id
+    ) { %>
+    <div id="giscus-container"></div>
+    <script <%= theme.global.single_page === true && 'data-swup-reload-script' %> defer>
+        async function loadGiscus() {
+            const giscusConfig = {
+                'src': 'https://giscus.app/client.js',
+                'data-repo': '<%= theme.comment.config.giscus.repo %>',
+                'data-repo-id': '<%= theme.comment.config.giscus.repo_id %>',
+                'data-category': '<%= theme.comment.config.giscus.category %>',
+                'data-category-id': '<%= theme.comment.config.giscus.category_id %>',
+                'data-mapping': '<%= theme.comment.config.giscus.mapping || 'pathname' %>',
+                'data-strict': '<%= theme.comment.config.giscus.strict || '0' %>',
+                'data-reactions-enabled': '<%= theme.comment.config.giscus.reactions_enabled || '1' %>',
+                'data-emit-metadata': '<%= theme.comment.config.giscus.emit_metadata || '1' %>',
+                'data-theme': 'preferred_color_scheme',
+                'data-lang': '<%= theme.comment.config.giscus.lang || 'en' %>',
+                'data-input-position': '<%= theme.comment.config.giscus.input_position || 'bottom' %>',
+                'data-loading': '<%= theme.comment.config.giscus.loading || 'lazy' %>',
+                'crossorigin': 'anonymous',
+                'async': true
+            }
+            const giscusScript = document.createElement('script');
+            for (const key in giscusConfig) {
+                giscusScript.setAttribute(key, giscusConfig[key]);
+            }
+            document.getElementById('giscus-container').appendChild(giscusScript);
+        }
+        if ('<%= theme.global.single_page %>') {
+            let loadGiscusTimeout = setTimeout(() => {
+                loadGiscus();
+                clearTimeout(loadGiscusTimeout);
+            }, 1000);
+        } else {
+            document.addEventListener('DOMContentLoaded', loadGiscus);
+        }
+    </script>
+<% } %>
