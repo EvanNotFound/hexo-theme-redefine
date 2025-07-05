@@ -6,9 +6,9 @@
   "scripts": {
     "npm:publish": "npm run build && npm publish",
     "build": "npm run build:css && npm run build:js",
-    "build:css": "tailwindcss build -i source/css/tailwind.source.css -o source/css/build/tailwind.css --minify",
+    "build:css": "npx @tailwindcss/cli -i source/css/tailwind.source.css -o source/css/build/tailwind.css --minify",
     "build:js": "node source/js/build.js",
-    "watch:css": "tailwindcss build -i source/css/tailwind.source.css -o source/css/build/tailwind.css --watch --minify",
+    "watch:css": "npx @tailwindcss/cli -i source/css/tailwind.source.css -o source/css/build/tailwind.css --watch --minify",
     "prepare": "husky",
     "release": "standard-version",
     "release:minor": "standard-version --release-as minor",
@@ -40,7 +40,7 @@
     "husky": "^9.1.6",
     "postcss": "^8.4.47",
     "standard-version": "^9.5.0",
-    "tailwindcss": "^3.4.14",
+    "tailwindcss": "^4.1.11",
     "terser": "^5.36.0"
   }
 }

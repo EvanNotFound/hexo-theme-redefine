@@ -29,14 +29,14 @@
 
 		<% if (theme.info.author || config.author) { %>
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
-			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+			<div class="avatar w-[46px] h-[46px] shrink-0 rounded-medium border border-border-color p-[1px]">
 				<%- image_tag((typeof page.avatar === "string" && (page.avatar)) || page.author?.avatar || theme.defaults.avatar) %>
 			</div>
 			<div class="info flex flex-col justify-between">
 				<div class="author flex items-center">
 					<span class="name text-default-text-color text-lg font-semibold"><%= (typeof page.author === "string" && (page.author)) || page.author?.name || theme.info.author || config.author %></span>
 					<% if (theme.hasOwnProperty('articles') && theme.articles.author_label.enable === true) { %>
-					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1"><%- getAuthorLabel(site.posts.length, theme.articles.author_label.auto, theme.articles.author_label.list) %></span>
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-xsall text-third-text-color border border-shadow-color-1"><%- getAuthorLabel(site.posts.length, theme.articles.author_label.auto, theme.articles.author_label.list) %></span>
 					<% } %>
 				</div>
 				<div class="meta-info">
