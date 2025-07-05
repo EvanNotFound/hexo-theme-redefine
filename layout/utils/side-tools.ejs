@@ -34,7 +34,7 @@
 
 	<ul class="visible-tools-list">
 		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
-			<i class="fa-regular fa-cog fa-spin"></i>
+			<i class="fa-regular fa-cog <% if (theme.global.side_tools && theme.global.side_tools.gear_rotation !== false) { %>fa-spin<% } %>"></i>
 		</li>
 		<% if (theme.global.scroll_progress.percentage === true) { %>
 		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">

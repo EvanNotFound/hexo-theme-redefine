@@ -191,6 +191,11 @@ export default function initUtils() {
     },
 
     toggleToolsList() {
+      // Auto expand tools list if configured
+      if (theme.global.side_tools && theme.global.side_tools.auto_expand) {
+        this.toolsList.classList.add("show");
+      }
+      
       this.toggleButton.addEventListener("click", () => {
         this.toolsList.classList.toggle("show");
       });
