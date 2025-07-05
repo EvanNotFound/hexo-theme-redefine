@@ -76,6 +76,12 @@
                                         <i class="<%= key %> fa-fw fa-lg"></i>
                                     </a>
                                 </span>
+                            <% } else if(key.startsWith('/') || key.startsWith('http')) { %>
+                                <span class="social-contact-item">
+                                    <a target="_blank" href="<%- theme.home_banner.social_links.links[key] %>">
+                                        <img src="<%- url_for(key) %>" alt="social-icon" class="w-5 h-5 object-contain">
+                                    </a>
+                                </span>
                             <% } else { %>
                                 <span class="social-contact-item <%= key %>">
                                     <a target="_blank" href="<%- theme.home_banner.social_links.links[key] %>">
@@ -103,6 +109,16 @@
                                     <span class="social-contact-item-qr cursor-pointer group">
                                         <a target="_blank">
                                             <i class="<%= key %> fa-fw fa-lg"></i>
+                                            <div class="social-qr-container absolute h-auto bg-background-color-transparent-40 border border-white/20 dark:border-gray-500/30 overflow-hidden rounded-2xl bottom-0 mb-14 right-0 invisible group-hover:visible opacity-0 group-hover:opacity-100 translate-y-0.5 group-hover:translate-y-0 transition-all">
+                                                <img class="social-contacts-qr w-64"
+                                                     src="<%- url_for(theme.home_banner.social_links.qrs[key]) %>"/>
+                                            </div>
+                                        </a>
+                                    </span>
+                                <% } else if(key.startsWith('/') || key.startsWith('http')) { %>
+                                    <span class="social-contact-item-qr cursor-pointer group">
+                                        <a target="_blank">
+                                            <img src="<%- url_for(key) %>" alt="social-icon" class="w-5 h-5 object-contain">
                                             <div class="social-qr-container absolute h-auto bg-background-color-transparent-40 border border-white/20 dark:border-gray-500/30 overflow-hidden rounded-2xl bottom-0 mb-14 right-0 invisible group-hover:visible opacity-0 group-hover:opacity-100 translate-y-0.5 group-hover:translate-y-0 transition-all">
                                                 <img class="social-contacts-qr w-64"
                                                      src="<%- url_for(theme.home_banner.social_links.qrs[key]) %>"/>
