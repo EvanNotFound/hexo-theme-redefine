@@ -90,6 +90,12 @@ global:
   preloader:
     enable: false
     custom_message: # Custom message. If empty, the site title will be displayed
+  # Side tools settings
+  side_tools:
+    # Whether to enable gear rotation animation for settings button
+    gear_rotation: true
+    # Whether to auto expand tools list on page load
+    auto_expand: false
   # Whether to enable open graph
   open_graph:
     enable: true
