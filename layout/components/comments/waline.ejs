@@ -7,20 +7,21 @@
         init({
           el: '#waline',
           serverURL: '<%= theme.comment.config.waline.serverUrl %>',
-          lang: '<%= theme.comment.config.waline.lang %>',
           dark: 'body[class~="dark-mode"]',
           reaction: <%- waline_reaction_config(theme.comment.config.waline.reaction) %>,
           requiredMeta: ['nick', 'mail'],
-          emoji: [<%- theme.comment.config.waline.emoji && theme.comment.config.waline.emoji.map(
-            (item) => `'${item}'`
-          ).join(','
-          ) %>],
-          <%- theme.comment.config.waline.recaptchaV3Key &&
-              `recaptchaV3Key: "${theme.comment.config.waline.recaptchaV3Key}",`;
-          %>
-          <%- theme.comment.config.waline.turnstileKey &&
-              `turnstileKey: "${theme.comment.config.waline.turnstileKey}",`;
-          %>
+          emoji: <%- waline_array_config(theme.comment.config.waline.emoji) %>,
+          <%- waline_config_options({
+            lang: theme.comment.config.waline.lang,
+            locale: theme.comment.config.waline.locale,
+            login: theme.comment.config.waline.login,
+            wordLimit: theme.comment.config.waline.wordLimit,
+            pageSize: theme.comment.config.waline.pageSize,
+            commentSorting: theme.comment.config.waline.commentSorting,
+            meta: theme.comment.config.waline.meta,
+            recaptchaV3Key: theme.comment.config.waline.recaptchaV3Key,
+            turnstileKey: theme.comment.config.waline.turnstileKey
+          }) %>
         });
       }
 

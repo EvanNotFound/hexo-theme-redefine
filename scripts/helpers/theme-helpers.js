@@ -235,3 +235,17 @@ hexo.extend.helper.register("checkDeprecation", function (condition, id, message
   }
   return false;
 });
+
+hexo.extend.helper.register("configOptions", function (obj, indent = '  ') {
+  if (!obj || typeof obj !== 'object') return '';
+  
+  return Object.entries(obj)
+    .filter(([key, value]) => value !== undefined && value !== null && value !== '')
+    .map(([key, value]) => {
+      if (typeof value === 'string') {
+        return `${indent}${key}: '${value}',`;
+      }
+      return `${indent}${key}: ${value},`;
+    })
+    .join('\n');
+});

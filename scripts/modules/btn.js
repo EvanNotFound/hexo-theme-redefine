@@ -1,53 +1,85 @@
 "use strict";
 
+/**
+ * Single Button module for Hexo theme Redefine
+ * Creates standalone button elements
+ */
+
+/**
+ * Creates a single button
+ * 
+ * @param {Array} args - Button arguments (class, text, url, icon)
+ * @returns {String} HTML for a single button
+ */
 function postBtn(args) {
-  if (/::/g.test(args)) {
-    args = args.join(" ").split("::");
+  // Parse arguments - support both '::' and ',' as separators
+  let parsedArgs;
+  const argsStr = args.join(" ");
+  
+  if (argsStr.includes("::")) {
+    parsedArgs = argsStr.split("::");
   } else {
-    args = args.join(" ").split(",");
+    parsedArgs = argsStr.split(",");
   }
+  
+  // Default values
   let cls = "";
   let text = "";
   let url = "";
   let icon = "";
-  if (args.length > 3) {
-    cls = args[0];
-    text = args[1];
-    url = args[2];
-    icon = args[3];
-  } else if (args.length > 2) {
-    if (args[2].indexOf(" fa-") > -1) {
-      // text, url, icon
-      text = args[0];
-      url = args[1];
-      icon = args[2];
-    } else {
-      cls = args[0];
-      text = args[1];
-      url = args[2];
-    }
-  } else if (args.length > 1) {
-    text = args[0];
-    url = args[1];
-  } else if (args.length > 0) {
-    text = args[0];
+  
+  // Parse arguments based on count
+  switch(parsedArgs.length) {
+    case 4: // class, text, url, icon
+      cls = parsedArgs[0];
+      text = parsedArgs[1];
+      url = parsedArgs[2];
+      icon = parsedArgs[3];
+      break;
+      
+    case 3:
+      // Check if third arg is an icon (contains fa-)
+      if (parsedArgs[2].includes("fa-")) {
+        // text, url, icon
+        text = parsedArgs[0];
+        url = parsedArgs[1];
+        icon = parsedArgs[2];
+      } else {
+        // class, text, url
+        cls = parsedArgs[0];
+        text = parsedArgs[1];
+        url = parsedArgs[2];
+      }
+      break;
+      
+    case 2: // text, url
+      text = parsedArgs[0];
+      url = parsedArgs[1];
+      break;
+      
+    case 1: // text only
+      text = parsedArgs[0];
+      break;
   }
-
+  
+  // Clean up values
   cls = cls.trim();
   icon = icon.trim();
   text = text.trim();
   url = url.trim();
-  if (url.length > 0) {
-    url = "href='" + url + "'";
+  
+  // Build attributes
+  const hrefAttr = url ? `href='${url}'` : '';
+  const classAttr = cls ? `${cls}` : '';
+  
+  // Build button HTML
+  if (icon) {
+    return `<a class="button ${classAttr}" ${hrefAttr} title='${text}'><i class='${icon}'></i> ${text}</a>`;
   }
-  if (cls.length > 0) {
-    cls = " " + cls;
-  }
-  if (icon.length > 0) {
-    return `<a class="button ${cls}" ${url} title='${text}'><i class='${icon}'></i> ${text}</a>`;
-  }
-  return `<a class="button ${cls}" ${url} title='${text}'>${text}</a>`;
+  
+  return `<a class="button ${classAttr}" ${hrefAttr} title='${text}'>${text}</a>`;
 }
 
+// Register Hexo tags
 hexo.extend.tag.register("btn", postBtn);
 hexo.extend.tag.register("button", postBtn);
