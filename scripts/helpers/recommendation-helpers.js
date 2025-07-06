@@ -358,9 +358,8 @@ function userInterface(recommendedArticles, cfg) {
 }
 
 function itemInterface(item) {
-  return `<a class="recommended-article-item" href="${
-    hexo.config.root + item.path
-  }" title="${item.title}" rel="bookmark">
+  const url = hexo.extend.helper.get('url_for').call(hexo, item.path);
+  return `<a class="recommended-article-item" href="${url}" title="${item.title}" rel="bookmark">
   <img src="${item.headimg}" alt="${item.title}" class="!max-w-none">
   <span class="title">${item.title}</span>
 </a>`;
