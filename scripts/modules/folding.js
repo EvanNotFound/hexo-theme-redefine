@@ -9,7 +9,7 @@ const postFolding = (args, content) => {
   const renderedContent = hexo.render.renderSync({
     text: content, 
     engine: 'markdown'
-  }).split('\n').join('');
+  });
   
   // Replace heading tags with paragraph tags that have heading classes
   const processedContent = renderedContent.replace(
@@ -25,7 +25,7 @@ const postFolding = (args, content) => {
   
   return `<details${styleAttr} data-header-exclude>
     <summary><i class="fa-solid fa-chevron-right"></i>${title} </summary>
-    <div class='content'>
+    <div class='content markdown-body'>
       ${processedContent}
     </div>
   </details>`;
