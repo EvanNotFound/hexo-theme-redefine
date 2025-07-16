@@ -55,7 +55,7 @@ function postNoteLarge(args, content) {
         engine: "markdown",
       })}
     </div>
-    <div class="notel-content">
+    <div class="notel-content markdown-body">
       ${hexo.render.renderSync({
         text: content,
         engine: "markdown",
