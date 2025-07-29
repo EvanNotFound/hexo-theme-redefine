@@ -22,17 +22,17 @@
       cursor pointer
       width 40%
 
-      +redefine-tablet()
-        width 80%
-
-      +redefine-mobile()
-        width 80%
-
       background-color var(--second-background-color)
       border-radius $redefine-border-radius-medium
       box-shadow var(--redefine-box-shadow-flat)
       overflow hidden
       transition all 0.2s ease
+
+      +redefine-tablet()
+        width 80%
+
+      +redefine-mobile()
+        width 80%
 
       &:hover
         background-color var(--background-color)

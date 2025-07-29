@@ -18,13 +18,13 @@ $tag-name-font-size = 3rem
     i
       color var(--second-text-color)
 
+    font-weight 600
+    padding-bottom 20px
+    margin-bottom $spacing-unit
+    border-bottom 1px solid var(--shadow-color-1)
+
     +redefine-tablet()
       font-size: $tag-name-font-size * 0.9
 
     +redefine-mobile()
       font-size: $tag-name-font-size * 0.8
-
-    font-weight 600
-    padding-bottom 20px
-    margin-bottom $spacing-unit
-    border-bottom 1px solid var(--shadow-color-1)
