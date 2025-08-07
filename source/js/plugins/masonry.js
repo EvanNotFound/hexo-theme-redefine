@@ -6,53 +6,20 @@ export function initMasonry() {
   loadingPlaceholder.style.display = "block";
   masonryContainer.style.display = "none";
 
-  var images = document.querySelectorAll(
-    "#masonry-container .masonry-item img",
-  );
-  var loadedCount = 0;
+  //init Masonry without wait since <img> already have its size
+  const masonry = new MiniMasonry({
+    container: masonryContainer,
+    baseWidth: window.innerWidth >= 768 ? 255 : 150,
+    gutterX: 10,
+    gutterY: 10,
+    surroundingGutter: false,
+  });
+  masonry.layout(); 
 
-  function onImageLoad() {
-    loadedCount++;
-    if (loadedCount === images.length) {
-      initializeMasonryLayout();
-    }
-  }
-
-  for (var i = 0; i < images.length; i++) {
-    var img = images[i];
-    if (img.complete) {
-      onImageLoad();
-    } else {
-      img.addEventListener("load", onImageLoad);
-    }
-  }
-
-  if (loadedCount === images.length) {
-    initializeMasonryLayout();
-  }
-  function initializeMasonryLayout() {
-    loadingPlaceholder.style.opacity = 0;
-    setTimeout(() => {
-      loadingPlaceholder.style.display = "none";
-      masonryContainer.style.display = "block";
-      var screenWidth = window.innerWidth;
-      var baseWidth;
-      if (screenWidth >= 768) {
-        baseWidth = 255;
-      } else {
-        baseWidth = 150;
-      }
-      var masonry = new MiniMasonry({
-        baseWidth: baseWidth,
-        container: masonryContainer,
-        gutterX: 10,
-        gutterY: 10,
-        surroundingGutter: false,
-      });
-      masonry.layout();
-      masonryContainer.style.opacity = 1;
-    }, 100);
-  }
+  loadingPlaceholder.style.display = "none";
+  loadingPlaceholder.style.opacity = 0;
+  masonryContainer.style.display = "block";
+  masonryContainer.style.opacity = 1;
 }
 
 if (data.masonry) {
@@ -62,3 +29,5 @@ if (data.masonry) {
 
   document.addEventListener("DOMContentLoaded", initMasonry);
 }
+
+
