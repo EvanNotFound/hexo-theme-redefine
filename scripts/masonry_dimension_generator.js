@@ -17,9 +17,15 @@ const path = require('path');
 
 // 注册一个 Hexo 生成器
 hexo.extend.generator.register('masonry_dimensions', async function() {
-  const themeConfig = this.theme.config;
+  const themeConfig = hexo.theme.config;
 
-  const cacheDir = path.join(this.theme_dir, 'cache');
+  // 如果masonry配置没东西的话，快速跳过
+  if (!themeConfig.masonry || !Array.isArray(themeConfig.masonry) || themeConfig.masonry.length === 0) {
+    hexo.log.debug('Masonry: No masonry configuration found, skipping dimension generation.');
+    return [];
+  }
+
+  const cacheDir = path.join(hexo.theme_dir, 'cache');
   const cachePath = path.join(cacheDir, '.masonry_cache.json');
   let cacheData = {};
   let usedCache = false; // 用于标记本次生成是否使用了缓存
