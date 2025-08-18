@@ -1,22 +1,42 @@
 /**
  * @file Hexo Generator: Masonry Dimensions
- * @description Automatically fetches dimensions for the masonry gallery images.
+ * @description Automatically fetches and caches dimensions for the masonry gallery images.
  * This script runs during the 'hexo g' or 'hexo s' process. It reads the image list
- * from the theme's config, fetches each image's metadata via network request,
- * and injects the width and height back into the theme's data in memory.
- * This allows the EJS template to render <img> tags with proper dimensions,
- * enabling lazy loading without layout shift in the masonry gallery.
+ * from the theme's config, fetches metadata for new images, reads from a local
+ * cache for existing images, and injects the width and height back into the
+ * theme's data in memory. This allows the EJS template to render <img> tags
+ * with proper dimensions, enabling lazy loading without layout shift.
+ * 
+ * - In development mode (`hexo server`/`s`): Reads from the file cache but does not write to it, preventing build loops.
  */
 
 const imageSize = require('image-size');
 const fetch = require('node-fetch');
+const fs = require('fs');
+const path = require('path');
 
 // 注册一个 Hexo 生成器
 hexo.extend.generator.register('masonry_dimensions', async function() {
-  //hexo.log.info("Starting masonry dimension generator...");
   const themeConfig = this.theme.config;
 
-  //hexo.log.info("Fetching masonry image dimensions, this may take a moment...");
+  const cacheDir = path.join(this.theme_dir, 'cache');
+  const cachePath = path.join(cacheDir, '.masonry_cache.json');
+  let cacheData = {};
+  let usedCache = false; // 用于标记本次生成是否使用了缓存
+
+  // 确保 cache 文件夹存在
+  if (!fs.existsSync(cacheDir)) {
+    fs.mkdirSync(cacheDir, { recursive: true });
+  }
+  if (fs.existsSync(cachePath)) {
+    try {
+      cacheData = JSON.parse(fs.readFileSync(cachePath));
+    } catch (e) {
+      hexo.log.warn("Masonry cache file is corrupted. Rebuilding from scratch.");
+      cacheData = {};
+    }
+  }
+
   // 使用 Promise.all 并行处理所有图片，提高效率
   const processedImages = await Promise.all(themeConfig.masonry.map(async (image) => {
     
@@ -26,35 +46,62 @@ hexo.extend.generator.register('masonry_dimensions', async function() {
       return image;
     }
 
-    // 如果图片URL不存在，也跳过
+    // 如果图片URL不存在，返回默认值
     if (!image.image) {
-      hexo.log.warn(`Masonry: Skipping, URL missing for '${image.title}'`)
-      return image;
+      hexo.log.warn(`Masonry: URL missing for '${image.title}'. Using fallback dimensions.`);
+      return { ...image, width: 500, height: 500 };
     }
 
+    if (cacheData[image.image] && cacheData[image.image].width && cacheData[image.image].height) {
+      hexo.log.debug(`Masonry:  -> Cache HIT for: '${image.title}'`);
+      usedCache = true; // 标记我们使用了缓存
+      // 将缓存的宽高合并到图片对象中
+      return { ...image, ...cacheData[image.image] };
+    }
+
+    hexo.log.debug(`Masonry:  -> Cache MISS. Fetching dimensions for: '${image.title}'`);
     try {
-      // 通过网络请求获取图片的前几个字节就足够了(不确定对本地存储的图片效果怎么样)
+      // 通过网络请求获取图片
+      // 注：对于本地图片，此方法可能需要调整。目前仅支持远程 URL
       const response = await fetch(image.image);
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`Masonry: HTTP error! status: ${response.status}`);
       }
       
       // 将响应转换为 Buffer
       const imageBuffer = await response.buffer();
-      
       // 使用 image-size 库从 Buffer 中解析尺寸
       const dimensions = imageSize.imageSize(imageBuffer);
-      //hexo.log.info(`  -> Fetched: ${image.image} [${dimensions.width}x${dimensions.height}]`);
-      
+      hexo.log.info(`Masonry:  -> Fetched: ${image.image} [${dimensions.width}x${dimensions.height}]`);//允许用户看到图片的fetch情况，方便把握进度
+
+      cacheData[image.image] = { width: dimensions.width, height: dimensions.height };
+
       // 返回一个包含原始信息和新增宽高的新对象
       return { ...image, width: dimensions.width, height: dimensions.height };
 
     } catch (e) {
-      hexo.log.warn(`Failed to fetch dimensions for ${image.image}. Using fallback. Error: ${e.message}`);
+      hexo.log.warn(`Masonry: Failed to fetch dimensions for ${image.image}. Using fallback. Error: ${e.message}`);
       // 如果获取失败，提供一个默认的方形宽高，避免布局崩溃
       return { ...image, width: 500, height: 500 };
     }
   }));
+
+  const userInputCmd = hexo.env.cmd;
+  const aliasMap = hexo.extend.console.alias;
+  const canonicalName = aliasMap[userInputCmd] || userInputCmd;
+  const isServerMode = canonicalName === 'server';
+  if (isServerMode) {
+    // 开发模式下，不更新缓存—— 否则文件缓存的更新会被检测到，导致不断触发网页重建
+    hexo.log.info(`Masonry: hexo server mode detected. File cache not updated.`);
+  } else {
+    // 生产模式下，更新文件缓存
+    fs.writeFileSync(cachePath, JSON.stringify(cacheData, null, 2));
+    hexo.log.info(`Masonry: File cache updated at .masonry_cache.json`);
+  }
+
+  if (usedCache) {
+    hexo.log.info("Masonry: Some image dimensions were read from cache. If you've updated images and the gallery layout seems incorrect, please run 'hexo gallery-cache clean' to clear the cache.");
+  }
 
   // 最后用处理过的新数组，覆盖掉内存中旧的主题配置
   this.theme.config.masonry = processedImages;
