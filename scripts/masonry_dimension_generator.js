@@ -11,7 +11,7 @@
  */
 
 const imageSize = require('image-size');
-const fetch = require('node-fetch');
+const fetch = require('node-fetch'); // TODO: Migrate to native fetch when Node.js v16 support is dropped.
 const fs = require('fs');
 const path = require('path');
 
@@ -68,18 +68,30 @@ hexo.extend.generator.register('masonry_dimensions', async function() {
     hexo.log.debug(`Masonry:  -> Cache MISS. Fetching dimensions for: '${image.title}'`);
     try {
       // 通过网络请求获取图片
-      // 注：对于本地图片，此方法可能需要调整。目前仅支持远程 URL
-      const response = await fetch(image.image);
-      if (!response.ok) {
-        throw new Error(`Masonry: HTTP error! status: ${response.status}`);
+      let dimensions;
+      if (image.image.startsWith('http')){
+        //从远程URL进行fetch
+        const response = await fetch(image.image);
+        if (!response.ok) {
+          throw new Error(`Masonry: HTTP error! status: ${response.status}`);
+        }
+        const imageBuffer = await response.buffer();
+        // 使用 image-size 库从 Buffer 中解析尺寸
+        dimensions = imageSize.imageSize(imageBuffer);
+        hexo.log.info(`Masonry:  -> Fetched: ${image.image} [${dimensions.width}x${dimensions.height}]`);//允许用户看到图片的fetch情况，方便把握进度
+      }
+      else{
+        //本地文件直接进行读取
+        //TODO: local path must be relative to source_dir currently
+        const imagePath = path.join(hexo.source_dir, image.image);
+        if (!fs.existsSync(imagePath)) {
+          throw new Error(`Local image not found at: ${imagePath}`);
+        }
+        const imageBuffer = fs.readFileSync(imagePath);
+        dimensions = imageSize.imageSize(imageBuffer);
+        hexo.log.info(`Masonry:  -> Reading local image: ${image.image} [${dimensions.width}x${dimensions.height}]`);
       }
       
-      // 将响应转换为 Buffer
-      const imageBuffer = await response.buffer();
-      // 使用 image-size 库从 Buffer 中解析尺寸
-      const dimensions = imageSize.imageSize(imageBuffer);
-      hexo.log.info(`Masonry:  -> Fetched: ${image.image} [${dimensions.width}x${dimensions.height}]`);//允许用户看到图片的fetch情况，方便把握进度
-
       cacheData[image.image] = { width: dimensions.width, height: dimensions.height };
 
       // 返回一个包含原始信息和新增宽高的新对象
