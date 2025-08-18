@@ -92,15 +92,15 @@ hexo.extend.generator.register('masonry_dimensions', async function() {
   const isServerMode = canonicalName === 'server';
   if (isServerMode) {
     // 开发模式下，不更新缓存—— 否则文件缓存的更新会被检测到，导致不断触发网页重建
-    hexo.log.info(`Masonry: hexo server mode detected. File cache not updated.`);
+    hexo.log.debug(`Masonry: hexo server mode detected. File cache not updated.`);
   } else {
     // 生产模式下，更新文件缓存
     fs.writeFileSync(cachePath, JSON.stringify(cacheData, null, 2));
-    hexo.log.info(`Masonry: File cache updated at .masonry_cache.json`);
+    hexo.log.debug(`Masonry: File cache updated at .masonry_cache.json`);
   }
 
   if (usedCache) {
-    hexo.log.info("Masonry: Some image dimensions were read from cache. If you've updated images and the gallery layout seems incorrect, please run 'hexo gallery-cache clean' to clear the cache.");
+    hexo.log.info("Masonry: Some image dimensions were read from cache. If you've updated images and the gallery layout seems incorrect, please run 'hexo masonry-cache clean' to clear the cache or you can modify .masonry_cache.json yourself.");
   }
 
   // 最后用处理过的新数组，覆盖掉内存中旧的主题配置
