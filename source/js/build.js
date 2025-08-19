@@ -96,12 +96,15 @@ async function minifyJS() {
   try {
     await ensureDirectoryExists(BUILD_DIR);
 
+    const toPosixPath = (p) => p.replace(/\\/g, '/');//explicitly convert to unix-style paths
     // Get lib files to copy
-    const libFiles = await glob(`${SOURCE_DIR}/libs/**/*.js`);
-    
+    const libFiles = await glob(toPosixPath(`${SOURCE_DIR}/libs/**/*.js`));
+
     // Get JS files to minify (excluding libs and other ignored patterns)
-    const files = await glob(`${SOURCE_DIR}/**/*.js`, {
-      ignore: IGNORE_PATTERNS,
+    const globPattern = toPosixPath(`${SOURCE_DIR}/**/*.js`);
+    const ignorePatterns = IGNORE_PATTERNS.map(toPosixPath);
+    const files = await glob(globPattern, {
+      ignore: ignorePatterns,
     });
 
     if (files.length === 0 && libFiles.length === 0) {
