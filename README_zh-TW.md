@@ -137,13 +137,13 @@ $ git pull
 
 🚀 立即加入我的 [GPT Plus Share](https://gpt.oknice.ca) GPT Plus 共享站，ChatGPT Plus 随心用。
 
-- ✅ 支持 OpenAI 最新所有模型，包括 `GPT-4o`, `o3` 系列模型，支持高级图片生成
+- ✅ 支持 OpenAI 最新所有模型，包括 `GPT-5`, `o3` 系列模型，支持高级图片生成
 - ✅ 后台大量官方正版账号号池，随心使用
 - ✅ 每月仅需低至 23.99 人民币，支持一天免费试用
 - ✅ 无需梯子，国内免翻访问！
 - ✅ 由 Evan 本人运营，售后保证，已稳定运行超过一年
 
-[![gpt-billboard](https://github.com/user-attachments/assets/f049fb37-0587-4af9-b59d-b1910d310549)](https://www.gptplus.ca/home)
+[![gpt-billboard](https://github.com/user-attachments/assets/e4b142ad-b48f-4ea1-828e-57a743f54d90)](https://www.gptplus.ca/home)
 
 
 ## 🌟 Star 記錄
