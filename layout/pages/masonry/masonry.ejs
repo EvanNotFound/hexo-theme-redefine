@@ -19,7 +19,13 @@ const images = theme.masonry;
 	<% images.forEach(function(image) { %>
 	<div class="masonry-item">
 		<div class="image-container">
-			<img src="<%- image.image %>" alt="<%- image.title %>">
+			<img 
+				class="lazyload"
+				data-src="<%- image.image %>"
+				width="<%- image.width %>" 
+				height="<%- image.height %>"
+				alt="<%- image.title %>"
+			>
 			<div class="image-title"><%- image.title %></div>
 			<div class="image-description"><%- image.description %></div>
 		</div>

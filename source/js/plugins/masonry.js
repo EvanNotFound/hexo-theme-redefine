@@ -3,62 +3,34 @@ export function initMasonry() {
   var masonryContainer = document.querySelector("#masonry-container");
   if (!loadingPlaceholder || !masonryContainer) return;
 
-  loadingPlaceholder.style.display = "block";
-  masonryContainer.style.display = "none";
+  loadingPlaceholder.style.display = "none";
+  loadingPlaceholder.style.opacity = 0;
+  masonryContainer.style.display = "block";
 
-  var images = document.querySelectorAll(
-    "#masonry-container .masonry-item img",
-  );
-  var loadedCount = 0;
+  //init Masonry without 'wait' since <img> already have its size
+  var masonry = new MiniMasonry({
+    baseWidth: window.innerWidth >= 768 ? 255 : 150,
+    container: masonryContainer,
+    gutterX: 10,
+    gutterY: 10,
+    surroundingGutter: false,
+  });
+  masonry.layout();
 
-  function onImageLoad() {
-    loadedCount++;
-    if (loadedCount === images.length) {
-      initializeMasonryLayout();
-    }
-  }
-
-  for (var i = 0; i < images.length; i++) {
-    var img = images[i];
-    if (img.complete) {
-      onImageLoad();
-    } else {
-      img.addEventListener("load", onImageLoad);
-    }
-  }
-
-  if (loadedCount === images.length) {
-    initializeMasonryLayout();
-  }
-  function initializeMasonryLayout() {
-    loadingPlaceholder.style.opacity = 0;
-    setTimeout(() => {
-      loadingPlaceholder.style.display = "none";
-      masonryContainer.style.display = "block";
-      var screenWidth = window.innerWidth;
-      var baseWidth;
-      if (screenWidth >= 768) {
-        baseWidth = 255;
-      } else {
-        baseWidth = 150;
-      }
-      var masonry = new MiniMasonry({
-        baseWidth: baseWidth,
-        container: masonryContainer,
-        gutterX: 10,
-        gutterY: 10,
-        surroundingGutter: false,
-      });
-      masonry.layout();
-      masonryContainer.style.opacity = 1;
-    }, 100);
-  }
+  masonryContainer.style.opacity = 1;
 }
+
 
 if (data.masonry) {
   try {
-    swup.hooks.on("page:view", initMasonry);
-  } catch (e) {}
+    swup.hooks.on("page:view", ()=>{
+      initMasonry();
+    });
+  } catch (e) {
+    console.log("❌ Masonry swup init failed: " + e);
+  }
 
   document.addEventListener("DOMContentLoaded", initMasonry);
 }
+
+

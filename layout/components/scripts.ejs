@@ -52,6 +52,7 @@
 
 <% if (theme.masonry || theme.photos || theme.gallery) { %>
     <%- renderJS('libs/minimasonry.min.js') %>
+    <%- renderJS('libs/lazysizes.min.js') %>
     <%- renderJS('plugins/masonry.js', {
         module: true
     }) %>
