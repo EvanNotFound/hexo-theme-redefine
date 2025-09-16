@@ -73,6 +73,12 @@ export const main = {
 
 export function initMain() {
   main.printThemeInfo();
+  if (!localStorage.getItem(main.localStorageKey)) {
+    const initialDark = theme.colors?.default_mode === 'dark';
+    main.styleStatus.isDark = initialDark;
+    main.setStyleStatus();
+  }
+  main.getStyleStatus();
   main.refresh();
 }
 
