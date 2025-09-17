@@ -42,8 +42,5 @@
     "standard-version": "^9.5.0",
     "tailwindcss": "^4.1.11",
     "terser": "^5.36.0"
-  },
-  "dependencies": {
-    "image-size": "^2.0.2"
   }
 }

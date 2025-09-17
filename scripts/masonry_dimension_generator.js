@@ -10,7 +10,7 @@
  * - In development mode (`hexo server`/`s`): Reads from the file cache but does not write to it, preventing build loops.
  */
 
-const imageSize = require('image-size');
+const imageSize = require('../source/js/libs/image-size/dist/index.cjs');
 const fs = require('fs');
 const path = require('path');
 
