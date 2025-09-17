@@ -44,7 +44,6 @@
     "terser": "^5.36.0"
   },
   "dependencies": {
-    "image-size": "^2.0.2",
-    "node-fetch": "^2.7.0"
+    "image-size": "^2.0.2"
   }
 }
