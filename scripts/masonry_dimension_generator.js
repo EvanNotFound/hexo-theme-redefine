@@ -82,7 +82,7 @@ hexo.extend.generator.register('masonry_dimensions', async function() {
       }
       else{
         //本地文件直接进行读取
-        //TODO: local path must be relative to source_dir currently
+        //local path must be relative to source_dir currently
         const imagePath = path.join(hexo.source_dir, image.image);
         if (!fs.existsSync(imagePath)) {
           throw new Error(`Local image not found at: ${imagePath}`);
