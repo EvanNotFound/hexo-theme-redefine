@@ -133,16 +133,43 @@ function parseJPEG(buffer){
     }
 
     let offset = 2;
-    let marker = buffer.readUInt16BE(offset);
-    while(!SOF_MARKERS.includes(marker)){
-      //if not the SOF marker, skip to the next marker; note: RST_m will not occur before frame header, so we do not check for
-      length = buffer.readUInt16BE(offset+2);
-      offset += length + 2;
-      marker = buffer.readUInt16BE(offset);
+    while(offset < buffer.length){
+      //find next marker
+      while(buffer[offset] !== 0xFF){
+        offset++;
+        if(offset >= buffer.length) return null;
+      }
+      //jump over fill bytes
+      while(buffer[offset] === 0xFF){
+        offset++;
+        if(offset >= buffer.length) return null;//for broken image
+      }
+
+      //now offset points to the second byte of marker
+      const markerByte = buffer[offset];
+      offset++;
+      if(markerByte === 0x00){
+        //not a marker, but a data
+        continue;
+      }
+      const marker = 0xFF00 | markerByte;
+
+      if(SOF_MARKERS.includes(marker)){
+        //find Frame header
+        //For frameheader: 2 for marker, 2 for length, 1 for precision, 2 for height, 2 for width
+        return { height: buffer.readUInt16BE(offset+3), width: buffer.readUInt16BE(offset+5), type: 'jpeg' };
+      }
+
+      //if not the SOF marker, skip to the next marker; 
+      if(marker === JPG_EOI || (marker >= 0xFFD0 && marker <= 0xFFD7)){
+        // note: RST_m(and SOI,EOI) doesn't have its length field, even though it won't occur before frame header; for safety, do not try to read length field
+        continue;
+      }
+      const length = buffer.readUInt16BE(offset);
+      offset += length;
     }
 
-    //For frameheader: 2 for marker, 2 for length, 1 for precision, 2 for height, 2 for width
-    return { height: buffer.readUInt16BE(offset+5), width: buffer.readUInt16BE(offset+7), type: 'jpeg' };
+    return null;
   }catch(e){
     console.error(e);
     return null;
