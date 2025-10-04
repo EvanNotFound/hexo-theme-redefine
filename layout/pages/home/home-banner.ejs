@@ -106,30 +106,30 @@
                         <% for (const key in qrs) { %>
                             <% if(qrs[key]) { %>
                                 <% if(key.includes("fa-")) { %>
-                                    <span class="social-contact-item-qr cursor-pointer group">
-                                        <a target="_blank">
+                                    <span class="social-contact-item-qr cursor-pointer group" data-qr-key="<%= key %>">
+                                        <a target="_blank" onclick="toggleQR('<%= key %>'); return false;">
                                             <i class="<%= key %> fa-fw fa-lg"></i>
-                                            <div class="social-qr-container absolute h-auto bg-background-color-transparent-40 border border-white/20 dark:border-gray-500/30 overflow-hidden rounded-2xl bottom-0 mb-14 right-0 invisible group-hover:visible opacity-0 group-hover:opacity-100 translate-y-0.5 group-hover:translate-y-0 transition-all">
+                                            <div class="social-qr-container absolute h-auto bg-background-color-transparent-40 border border-white/20 dark:border-gray-500/30 overflow-hidden rounded-2xl bottom-0 mb-14 right-0 invisible group-hover:visible opacity-0 group-hover:opacity-100 translate-y-0.5 group-hover:translate-y-0 transition-all" data-qr-state="hidden">
                                                 <img class="social-contacts-qr w-64"
                                                      src="<%- url_for(theme.home_banner.social_links.qrs[key]) %>"/>
                                             </div>
                                         </a>
                                     </span>
                                 <% } else if(key.startsWith('/') || key.startsWith('http')) { %>
-                                    <span class="social-contact-item-qr cursor-pointer group">
-                                        <a target="_blank">
+                                    <span class="social-contact-item-qr cursor-pointer group" data-qr-key="<%= key %>">
+                                        <a target="_blank" onclick="toggleQR('<%= key %>'); return false;">
                                             <img src="<%- url_for(key) %>" alt="social-icon" class="w-5 h-5 object-contain">
-                                            <div class="social-qr-container absolute h-auto bg-background-color-transparent-40 border border-white/20 dark:border-gray-500/30 overflow-hidden rounded-2xl bottom-0 mb-14 right-0 invisible group-hover:visible opacity-0 group-hover:opacity-100 translate-y-0.5 group-hover:translate-y-0 transition-all">
+                                            <div class="social-qr-container absolute h-auto bg-background-color-transparent-40 border border-white/20 dark:border-gray-500/30 overflow-hidden rounded-2xl bottom-0 mb-14 right-0 invisible group-hover:visible opacity-0 group-hover:opacity-100 translate-y-0.5 group-hover:translate-y-0 transition-all" data-qr-state="hidden">
                                                 <img class="social-contacts-qr w-64"
                                                      src="<%- url_for(theme.home_banner.social_links.qrs[key]) %>"/>
                                             </div>
                                         </a>
                                     </span>
                                 <% } else { %>
-                                    <span class="social-contact-item-qr <%= key %> cursor-pointer group">
-                                        <a target="_blank">
+                                    <span class="social-contact-item-qr <%= key %> cursor-pointer group" data-qr-key="<%= key %>">
+                                        <a target="_blank" onclick="toggleQR('<%= key %>'); return false;">
                                             <i class="fa-brands fa-fw fa-lg fa-<%= key %>"></i>
-                                            <div class="social-qr-container absolute h-auto bg-background-color-transparent-40 border border-white/20 dark:border-gray-500/30 overflow-hidden rounded-2xl bottom-0 mb-14 right-0 invisible group-hover:visible opacity-0 group-hover:opacity-100 translate-y-0.5 group-hover:translate-y-0 transition-all">
+                                            <div class="social-qr-container absolute h-auto bg-background-color-transparent-40 border border-white/20 dark:border-gray-500/30 overflow-hidden rounded-2xl bottom-0 mb-14 right-0 invisible group-hover:visible opacity-0 group-hover:opacity-100 translate-y-0.5 group-hover:translate-y-0 transition-all" data-qr-state="hidden">
                                                 <img class="social-contacts-qr w-64"
                                                      src="<%- url_for(theme.home_banner.social_links.qrs[key]) %>"/>
                                             </div>
@@ -149,5 +149,37 @@
             const target = document.querySelector('.main-content-container');
             target.scrollIntoView({ behavior: 'smooth'});
         }
+
+        const toggleQR = (key) => {
+            const qrElements = document.querySelectorAll(`[data-qr-key="${key}"]`);
+            qrElements.forEach(element => {
+                const qrContainer = element.querySelector('.social-qr-container');
+                const currentState = qrContainer.getAttribute('data-qr-state');
+
+                if (currentState === 'hidden') {
+                    // Show QR code
+                    qrContainer.classList.remove('invisible', 'opacity-0', 'translate-y-0.5');
+                    qrContainer.classList.add('visible', 'opacity-100', 'translate-y-0');
+                    qrContainer.setAttribute('data-qr-state', 'visible');
+                } else {
+                    // Hide QR code
+                    qrContainer.classList.remove('visible', 'opacity-100', 'translate-y-0');
+                    qrContainer.classList.add('invisible', 'opacity-0', 'translate-y-0.5');
+                    qrContainer.setAttribute('data-qr-state', 'hidden');
+                }
+            });
+        }
+
+        // Hide QR codes when clicking outside
+        document.addEventListener('click', (event) => {
+            const qrContainers = document.querySelectorAll('.social-qr-container[data-qr-state="visible"]');
+            qrContainers.forEach(container => {
+                if (!container.parentElement.contains(event.target)) {
+                    container.classList.remove('visible', 'opacity-100', 'translate-y-0');
+                    container.classList.add('invisible', 'opacity-0', 'translate-y-0.5');
+                    container.setAttribute('data-qr-state', 'hidden');
+                }
+            });
+        });
     </script>
 </div>
