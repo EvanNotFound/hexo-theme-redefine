@@ -25,6 +25,11 @@ comments: コメント
 top: トップ
 sticky: 屋根
 go-back-home: トップページに戻ります
+publications: 研究業績
+no_publications: まだ掲載された論文はありません。
+view_full_text: 全文を表示
+last_updated: 最終更新
+untitled: 無題
 
 # ----------------------------------------
 # 菜单翻译

@@ -28,6 +28,11 @@ archives: Archivos
 top: PRINCIPAL
 sticky: Fijado
 go-back-home: Volver al inicio
+publications: Publicaciones
+no_publications: Aún no hay publicaciones.
+view_full_text: Ver texto completo
+last_updated: Última actualización
+untitled: Sin título
 
 # ----------------------------------------
 # Traducción del menú

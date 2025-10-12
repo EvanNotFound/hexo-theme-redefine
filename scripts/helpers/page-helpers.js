@@ -76,6 +76,12 @@ const pageData = {
 		partial: "pages/masonry/masonry",
 		layout: "default",
 	},
+	publications: {
+		titles: ["publications", "论文", "论文成果", "科研成果"],
+		types: ["publications", "publication", "papers", "paper", "research"],
+		partial: "pages/publications/publications",
+		layout: "default",
+	},
 	bookmarks: {
 		titles: [],
 		types: ["bookmarks", "bookmark", "tools"],
