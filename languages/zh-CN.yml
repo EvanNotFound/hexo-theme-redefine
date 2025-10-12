@@ -25,6 +25,11 @@ comments: 评论
 top: 置顶
 sticky: 置顶
 go-back-home: 回到首页
+publications: 论文成果
+no_publications: 暂无论文成果
+view_full_text: 查看全文
+last_updated: 最近更新
+untitled: 未命名
 
 # ----------------------------------------
 # 菜单翻译

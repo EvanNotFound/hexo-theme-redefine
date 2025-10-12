@@ -32,6 +32,9 @@ hexo.on('generateBefore', function () {
         hexo.theme.config.bookmarks = data.bookmarks || data.tools;
       }
 
+      if (data.publications || data.publication || data.papers || data.paper) {
+        hexo.theme.config.publications = data.publications || data.publication || data.papers || data.pape;
+      }
     }
   }
 });

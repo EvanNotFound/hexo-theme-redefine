@@ -1,0 +1,85 @@
+<div class="publications-page-container py-8 sm:py-12">
+    <%  const resolveDoi=(value)=> {
+            if (!value) return { url: null, label: null };
+            const trimmed = String(value).trim();
+            const label = trimmed.replace(/^https?:\/\/(doi\.org\/)?/i, '').replace(/^doi:\s*/i, '');
+            const url = trimmed.startsWith('http') ? trimmed : `https://doi.org/${label}`;
+            return { url, label };
+        };
+
+        let publications = theme.publications.items
+
+        const emptyText = __('no_publications') || 'No publications available yet.';
+        const fullTextLabel = __('view_full_text') || 'View full text';
+        %>
+
+        <div class="max-w-4xl mx-auto flex flex-col gap-6">
+            <header class="flex flex-col gap-3 text-center sm:text-left">
+                <h1 class="text-[2.8rem] leading-tight font-bold text-second-text-color">
+                    <%= page.title || __('publications') %>
+                </h1>
+            </header>
+
+            <% if (!publications.length) { %>
+                <div class="rounded-2xl border border-dashed border-border-color bg-second-background-color/60 p-8 text-center text-third-text-color">
+                    <i class="fa-regular fa-books text-3xl mb-3 block"></i>
+                    <p>
+                        <%= emptyText %>
+                    </p>
+                </div>
+            <% } else { %>
+                <ol class="flex flex-col gap-6 list-decimal pl-6 sm:pl-8">
+                    <% publications.forEach((paper)=> {
+                        const displayTitle = paper.title || paper.name || __('untitled');
+                        const authors = Array.isArray(paper.authors) ? paper.authors.join(', ') : paper.authors;
+                        const journal = paper.journal || paper.conference || paper.venue;
+                        const { url: doiUrl, label: doiLabel } = resolveDoi(paper.doi || paper.DOI);
+                        const fullTextUrl = paper.url || paper.link;
+                        %>
+                        <li class="publication-item">
+                            <div class="rounded-2xl redefine-box-shadow-flat bg-second-background-color/70 border border-border-color/60 p-6 sm:p-8 flex flex-col gap-4">
+                                <div>
+                                    <h2
+                                        class="text-xl sm:text-2xl font-semibold text-second-text-color leading-snug">
+                                        <%= displayTitle %>
+                                    </h2>
+                                    <% if (authors) { %>
+                                        <p class="text-sm sm:text-base text-third-text-color mt-1">
+                                            <i class="fa-regular fa-user-pen mr-2 text-primary"></i>
+                                            <%= authors %>
+                                        </p>
+                                    <% } %>
+                                    <% if (journal) { %>
+                                        <p
+                                            class="text-sm sm:text-base text-primary mt-1 flex items-center gap-2">
+                                            <i class="fa-regular fa-newspaper"></i>
+                                            <%= journal %>
+                                        </p>
+                                    <% } %>
+                                </div>
+
+                                <div class="flex flex-wrap items-center gap-3 text-sm">
+                                    <% if (fullTextUrl) { %>
+                                        <a href="<%= fullTextUrl %>" target="_blank" rel="noopener"
+                                            class="inline-flex items-center gap-2 px-3 py-2 rounded-xl border border-border-color text-primary hover:bg-primary/10 transition-colors">
+                                            <i class="fa-regular fa-up-right-from-square"></i>
+                                            <span>
+                                                <%= fullTextLabel %>
+                                            </span>
+                                        </a>
+                                    <% } %>
+                                    <% if (doiUrl) { %>
+                                        <a href="<%= doiUrl %>" target="_blank" rel="noopener"
+                                            class="inline-flex items-center gap-2 px-3 py-2 rounded-xl border border-border-color text-primary hover:bg-primary/10 transition-colors">
+                                            <i class="fa-regular fa-fingerprint"></i>
+                                            <span>DOI: <%= doiLabel %></span>
+                                        </a>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </li>
+                    <% }); %>
+                </ol>
+            <% } %>
+        </div>
+</div>

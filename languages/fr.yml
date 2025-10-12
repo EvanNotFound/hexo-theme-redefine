@@ -28,6 +28,11 @@ archives: Archives
 top: TOP
 sticky: Sticky
 go-back-home: Retour à l'accueil
+publications: Publications
+no_publications: Pas encore de publications.
+view_full_text: Voir le texte complet
+last_updated: Dernière mise à jour
+untitled: Sans titre
 
 # ----------------------------------------
 # Traduction du menu
