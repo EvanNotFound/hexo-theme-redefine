@@ -59,6 +59,8 @@ export const ModeToggle = {
     document.documentElement.classList.remove("dark");
     document.body.classList.add("light-mode");
     document.documentElement.classList.add("light");
+    document.documentElement.style.colorScheme = "light";
+    document.documentElement.setAttribute("data-theme", "light");
     this.iconDom.className = "fa-regular fa-moon";
     main.styleStatus.isDark = false;
     main.setStyleStatus();
@@ -71,6 +73,8 @@ export const ModeToggle = {
     document.documentElement.classList.remove("light");
     document.body.classList.add("dark-mode");
     document.documentElement.classList.add("dark");
+    document.documentElement.style.colorScheme = "dark";
+    document.documentElement.setAttribute("data-theme", "dark");
     this.iconDom.className = "fa-regular fa-brightness";
     main.styleStatus.isDark = true;
     main.setStyleStatus();
