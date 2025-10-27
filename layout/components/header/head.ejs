@@ -31,9 +31,6 @@
                 const isDark = theme === DARK;
                 const root = document.documentElement;
                 
-                // Set data attribute for CSS variables
-                root.setAttribute("data-theme", theme);
-                
                 // Set classes for compatibility
                 root.classList.add(theme);
                 root.classList.remove(isDark ? LIGHT : DARK);
@@ -52,69 +49,26 @@
                 }
             });
             
-            // Set body classes once DOM is ready
-            if (document.readyState !== "loading") {
-                document.body.classList.add(theme + "-mode");
-            } else {
-                document.addEventListener("DOMContentLoaded", () => {
-                    document.body.classList.add(theme + "-mode");
-                    document.body.classList.remove((theme === DARK ? LIGHT : DARK) + "-mode");
+            // Set body classes ASAP (before DOMContentLoaded)
+            (function() {
+                const addBodyClass = () => {
+                    const b = document.body;
+                    if (!b) return false;
+                    b.classList.add(theme + "-mode");
+                    return true;
+                };
+
+                // Try immediately
+                if (addBodyClass()) return;
+
+                // Observe until body exists
+                const mo = new MutationObserver(() => {
+                    if (addBodyClass()) mo.disconnect();
                 });
-            }
+                mo.observe(document.documentElement, { childList: true, subtree: true });
+            })();
         })();
     </script>
-    
-    <!-- Critical CSS to prevent flash -->
-    <style>
-        :root[data-theme="dark"] {
-            --background-color: #202124;
-            --background-color-transparent: rgba(32, 33, 36, 0.6);
-            --second-background-color: #2d2e32;
-            --third-background-color: #34353a;
-            --third-background-color-transparent: rgba(32, 33, 36, 0.6);
-            --primary-color: #0066CC;
-            --first-text-color: #ffffff;
-            --second-text-color: #eeeeee;
-            --third-text-color: #bebec6;
-            --fourth-text-color: #999999;
-            --default-text-color: #bebec6;
-            --invert-text-color: #373D3F;
-            --border-color: rgba(255, 255, 255, 0.08);
-            --selection-color: #0066CC;
-            --shadow-color-1: rgba(255, 255, 255, 0.08);
-            --shadow-color-2: rgba(255, 255, 255, 0.05);
-        }
-        
-        :root[data-theme="light"] {
-            --background-color: #fff;
-            --background-color-transparent: rgba(255, 255, 255, 0.6);
-            --second-background-color: #f8f8f8;
-            --third-background-color: #f2f2f2;
-            --third-background-color-transparent: rgba(241, 241, 241, 0.6);
-            --primary-color: #0066CC;
-            --first-text-color: #16171a;
-            --second-text-color: #2f3037;
-            --third-text-color: #5e5e5e;
-            --fourth-text-color: #eeeeee;
-            --default-text-color: #373D3F;
-            --invert-text-color: #bebec6;
-            --border-color: rgba(0, 0, 0, 0.08);
-            --selection-color: #0066CC;
-            --shadow-color-1: rgba(0, 0, 0, 0.08);
-            --shadow-color-2: rgba(0, 0, 0, 0.05);
-        }
-        
-        body {
-            background-color: var(--background-color);
-            color: var(--default-text-color);
-        }
-        
-        /* Apply body classes as soon as DOM is ready */
-        :root[data-theme="dark"] body {
-            background-color: var(--background-color);
-            color: var(--default-text-color);
-        }
-    </style>
     
     <!-- preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
