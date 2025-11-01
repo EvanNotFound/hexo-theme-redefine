@@ -106,30 +106,30 @@
                         <% for (const key in qrs) { %>
                             <% if(qrs[key]) { %>
                                 <% if(key.includes("fa-")) { %>
-                                    <span class="social-contact-item-qr cursor-pointer group">
+                                    <span class="social-contact-item-qr cursor-pointer group qr-toggle-item">
                                         <a target="_blank">
-                                            <i class="<%= key %> fa-fw fa-lg"></i>
-                                            <div class="social-qr-container absolute h-auto bg-background-color-transparent-40 border border-white/20 dark:border-gray-500/30 overflow-hidden rounded-2xl bottom-0 mb-14 right-0 invisible group-hover:visible opacity-0 group-hover:opacity-100 translate-y-0.5 group-hover:translate-y-0 transition-all">
+                                            <i class="<%= key %> fa-fw fa-lg qr-trigger"></i>
+                                            <div class="social-qr-container absolute h-auto bg-background-color-transparent-40 border border-white/20 dark:border-gray-500/30 overflow-hidden rounded-2xl bottom-0 mb-14 right-0 invisible group-hover:visible group-active:visible opacity-0 group-hover:opacity-100 group-active:opacity-100 translate-y-0.5 group-hover:translate-y-0 group-active:translate-y-0 transition-all qr-popup">
                                                 <img class="social-contacts-qr w-64"
                                                      src="<%- url_for(theme.home_banner.social_links.qrs[key]) %>"/>
                                             </div>
                                         </a>
                                     </span>
                                 <% } else if(key.startsWith('/') || key.startsWith('http')) { %>
-                                    <span class="social-contact-item-qr cursor-pointer group">
+                                    <span class="social-contact-item-qr cursor-pointer group qr-toggle-item">
                                         <a target="_blank">
-                                            <img src="<%- url_for(key) %>" alt="social-icon" class="w-5 h-5 object-contain">
-                                            <div class="social-qr-container absolute h-auto bg-background-color-transparent-40 border border-white/20 dark:border-gray-500/30 overflow-hidden rounded-2xl bottom-0 mb-14 right-0 invisible group-hover:visible opacity-0 group-hover:opacity-100 translate-y-0.5 group-hover:translate-y-0 transition-all">
+                                            <img src="<%- url_for(key) %>" alt="social-icon" class="w-5 h-5 object-contain qr-trigger">
+                                            <div class="social-qr-container absolute h-auto bg-background-color-transparent-40 border border-white/20 dark:border-gray-500/30 overflow-hidden rounded-2xl bottom-0 mb-14 right-0 invisible group-hover:visible group-active:visible opacity-0 group-hover:opacity-100 group-active:opacity-100 translate-y-0.5 group-hover:translate-y-0 group-active:translate-y-0 transition-all qr-popup">
                                                 <img class="social-contacts-qr w-64"
                                                      src="<%- url_for(theme.home_banner.social_links.qrs[key]) %>"/>
                                             </div>
                                         </a>
                                     </span>
                                 <% } else { %>
-                                    <span class="social-contact-item-qr <%= key %> cursor-pointer group">
+                                    <span class="social-contact-item-qr <%= key %> cursor-pointer group qr-toggle-item">
                                         <a target="_blank">
-                                            <i class="fa-brands fa-fw fa-lg fa-<%= key %>"></i>
-                                            <div class="social-qr-container absolute h-auto bg-background-color-transparent-40 border border-white/20 dark:border-gray-500/30 overflow-hidden rounded-2xl bottom-0 mb-14 right-0 invisible group-hover:visible opacity-0 group-hover:opacity-100 translate-y-0.5 group-hover:translate-y-0 transition-all">
+                                            <i class="fa-brands fa-fw fa-lg fa-<%= key %> qr-trigger"></i>
+                                            <div class="social-qr-container absolute h-auto bg-background-color-transparent-40 border border-white/20 dark:border-gray-500/30 overflow-hidden rounded-2xl bottom-0 mb-14 right-0 invisible group-hover:visible group-active:visible opacity-0 group-hover:opacity-100 group-active:opacity-100 translate-y-0.5 group-hover:translate-y-0 group-active:translate-y-0 transition-all qr-popup">
                                                 <img class="social-contacts-qr w-64"
                                                      src="<%- url_for(theme.home_banner.social_links.qrs[key]) %>"/>
                                             </div>
@@ -149,5 +149,86 @@
             const target = document.querySelector('.main-content-container');
             target.scrollIntoView({ behavior: 'smooth'});
         }
+
+        // QR code mobile interaction handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const qrToggleItems = document.querySelectorAll('.qr-toggle-item');
+            let activeQrItem = null;
+
+            // Handle QR code toggle for mobile
+            qrToggleItems.forEach(item => {
+                const trigger = item.querySelector('.qr-trigger');
+                const popup = item.querySelector('.qr-popup');
+
+                // Add click event for mobile
+                trigger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Close any other open QR codes
+                    qrToggleItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('qr-active');
+                        }
+                    });
+
+                    // Toggle current QR code
+                    const isActive = item.classList.contains('qr-active');
+                    if (isActive) {
+                        item.classList.remove('qr-active');
+                        activeQrItem = null;
+                    } else {
+                        item.classList.add('qr-active');
+                        activeQrItem = item;
+                    }
+                });
+
+                // Remove focus styles on blur for mobile
+                trigger.addEventListener('blur', function() {
+                    // Small delay to allow for potential click events
+                    setTimeout(() => {
+                        if (activeQrItem !== item) {
+                            item.classList.remove('qr-active');
+                        }
+                    }, 100);
+                });
+            });
+
+            // Close QR codes when clicking outside
+            document.addEventListener('click', function(e) {
+                const isQrElement = e.target.closest('.qr-toggle-item');
+                if (!isQrElement && activeQrItem) {
+                    activeQrItem.classList.remove('qr-active');
+                    activeQrItem = null;
+                }
+            });
+        });
     </script>
+    <style>
+        /* Mobile-specific QR code styles */
+        .qr-toggle-item.qr-active .qr-popup {
+            visibility: visible !important;
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+        
+        /* Prevent button from staying in focus/hover state on mobile */
+        @media (hover: none) and (pointer: coarse) {
+            .qr-toggle-item:focus,
+            .qr-toggle-item:hover {
+                background-color: transparent;
+            }
+            
+            .qr-toggle-item .qr-trigger:focus,
+            .qr-toggle-item .qr-trigger:hover {
+                background-color: transparent;
+                color: inherit;
+            }
+            
+            /* Only show active state when explicitly toggled */
+            .qr-popup {
+                visibility: hidden !important;
+                opacity: 0 !important;
+            }
+        }
+    </style>
 </div>
