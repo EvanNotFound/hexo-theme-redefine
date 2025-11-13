@@ -2,6 +2,69 @@
 <html lang="<%= config.language %>">
 <%- partial('components/header/head') %>
 
+    <% if (is_home()) { %>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "<%- config.url %>/#website",
+          "url": "<%- config.url %>/",
+          "name": "<%- theme.info.title || config.title %>",
+          "description": "<%- theme.info.subtitle || config.subtitle %>",
+          "publisher": {
+            "@id": "<%- config.url %>/#organization"
+          },
+          "inLanguage": "<%- config.language %>"
+        },
+        {
+          "@type": "Organization",
+          "@id": "<%- config.url %>/#organization",
+          "name": "<%- theme.info.title || config.title %>",
+          "url": "<%- config.url %>/",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "<%- config.url %>/#logo",
+            "url": "<%- url_for(theme.defaults.logo) %>",
+            "contentUrl": "<%- url_for(theme.defaults.logo) %>",
+            "width": "120",
+            "height": "120"
+          },
+          "sameAs": [
+            <% if (theme.info.person_schema && theme.info.person_schema.social_links) { %>
+              <% for (let key in theme.info.person_schema.social_links) { %>
+                "<%- theme.info.person_schema.social_links[key] %>"<%= (Object.keys(theme.info.person_schema.social_links).indexOf(key) === Object.keys(theme.info.person_schema.social_links).length - 1) ? '' : ',' %>
+              <% } %>
+            <% } %>
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "<%- config.url %>/#person",
+          "name": "<%- theme.info.author || config.author %>",
+          "url": "<%- theme.info.person_schema.personal_url || config.url %>",
+          "image": {
+            "@type": "ImageObject",
+            "@id": "<%- config.url %>/#personlogo",
+            "url": "<%- url_for(theme.defaults.avatar) %>",
+            "contentUrl": "<%- url_for(theme.defaults.avatar) %>",
+            "width": "250",
+            "height": "250"
+          },
+          "sameAs": [
+            <% if (theme.info.person_schema && theme.info.person_schema.social_links) { %>
+              <% for (let key in theme.info.person_schema.social_links) { %>
+                "<%- theme.info.person_schema.social_links[key] %>"<%= (Object.keys(theme.info.person_schema.social_links).indexOf(key) === Object.keys(theme.info.person_schema.social_links).length - 1) ? '' : ',' %>
+              <% } %>
+            <% } %>
+          ]
+        }
+      ]
+    }
+    </script>
+    <% } %>
+
 <body>
 	<%- body %>
 	<%- partial('components/scripts') %>

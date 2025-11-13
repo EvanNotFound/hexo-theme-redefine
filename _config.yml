@@ -18,6 +18,11 @@ info:
   author: The Redefine Team
   # Site URL
   url: https://redefine.ohevan.com
+  person_schema:
+    personal_url: https://your-personal-url.com # 个人主页 URL，用于 Person Schema 的 url 和 sameAs 属性
+    social_links: # 社交媒体链接，用于 Person 和 Organization Schema 的 sameAs 属性
+      github: https://github.com/your-github
+      email: mailto:your-email@example.com
 # BASIC INFORMATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
