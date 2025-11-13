@@ -90,7 +90,7 @@
     <% } %>
     <!--- Seo Part-->
     <%- generateMeta(theme, page) %>
-    <%- autoCanonical(config, page) %>
+    <%# autoCanonical(config, page) %>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -218,5 +218,35 @@
     <% if (theme.fontawesome.sharp_solid == true) { %>
         <%- renderCSS('fontawesome/sharp-solid.min.css') %>
     <% } %>
-</head>
 
+    <% if (is_post()) { %>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "<%- url_for(page.path) %>"
+      },
+      "headline": "<%- page.title %>",
+      "image": [
+        "<%- url_for(page.og_image || theme.global.open_graph?.image || theme.defaults.logo) %>"
+      ],
+      "datePublished": "<%- date_xml(page.date) %>",
+      "dateModified": "<%- date_xml(page.updated || page.date) %>",
+      "author": {
+        "@type": "Person",
+        "name": "<%- theme.info.author || config.author %>"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "<%- theme.info.title || config.title %>",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "<%- url_for(theme.defaults.logo) %>"
+        }
+      },
+      "description": "<%- page.description || page.excerpt || strip_html(page.content).substring(0, 150) %>"
+    }
+    </script>
+    <% } %>
