@@ -11,13 +11,13 @@
 # Docs: https://redefine-docs.ohevan.com/basic/info
 info:
   # Site title
-  title: lczhuigz's Blog
+  title: Theme Redefine
   # Site subtitle
-  subtitle: 'Yolo'
+  subtitle: Redefine Your Hexo Journey.
   # Author name
-  author: lczhuigz
+  author: The Redefine Team
   # Site URL
-  url: https://www.lczhuigz.top/
+  url: https://redefine.ohevan.com
 # BASIC INFORMATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
@@ -25,11 +25,11 @@ info:
 # Docs: https://redefine-docs.ohevan.com/basic/defaults
 defaults:
   # Favicon
-  favicon: /images/fav-icon/fav-icon.jpg
+  favicon: /images/redefine-favicon.svg
   # Site logo
-  logo: /images/fav-icon/fav-icon.jpg
+  logo: 
   # Site avatar
-  avatar: /images/fav-icon/fav-icon.jpg
+  avatar: /images/redefine-avatar.svg
 # IMAGE CONFIGURATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
@@ -41,7 +41,7 @@ colors:
   # Secondary color (TBD)
   secondary:
   # Default theme mode initial value (will be overwritten by prefer-color-scheme)
-  default_mode: dark # light, dark
+  default_mode: light # light, dark
 # COLORS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
@@ -72,10 +72,10 @@ global:
   # Effects on mouse hover
   hover:
     shadow: true # shadow effect
-    scale: true # scale effect
+    scale: false # scale effect
   # Scroll progress
   scroll_progress:
-    bar: true # progress bar
+    bar: false # progress bar
     percentage: true # percentage
   # Website counter
   website_counter:
@@ -88,7 +88,7 @@ global:
   single_page: true
   # Whether to enable Preloader.
   preloader:
-    enable: true
+    enable: false
     custom_message: # Custom message. If empty, the site title will be displayed
   # Side tools settings
   side_tools:
@@ -131,15 +131,13 @@ home_banner:
   style: fixed # static or fixed
   # Home banner image
   image: 
-    light: /images/banner/banner-light.jpg # light mode
-    dark: /images/banner/banner-dark.jpg # dark mode
+    light: /images/wallhaven-wqery6-light.webp # light mode
+    dark: /images/wallhaven-wqery6-dark.webp # dark mode
   # Home banner title
-  
-  title: You Only Live Once
-
+  title: Theme Redefine
   # Home banner subtitle
   subtitle:
-    text: ["𝙔𝙤𝙪 𝙘𝙖𝙣'𝙩 𝙗𝙡𝙚𝙣𝙙 𝙞𝙣 𝙬𝙝𝙚𝙣 𝙮𝙤𝙪 𝙬𝙚𝙧𝙚 𝙗𝙤𝙧𝙣 𝙩𝙤 𝙨𝙩𝙖𝙣𝙙 𝙤𝙪𝙩.","人生中有太多感受后知后觉"] # subtitle text, array
+    text: [] # subtitle text, array
     hitokoto:  # 一言配置
       enable: false # Whether to enable hitokoto
       show_author: false # Whether to show author
@@ -152,8 +150,8 @@ home_banner:
     smart_backspace: true # Whether to smart backspace
   # Color of home banner text
   text_color: 
-    light: "#5F4B8B" # light mode
-    dark: "#A31F34" # dark mode
+    light: "#fff" # light mode
+    dark: "#d1d1b6" # dark mode
   # Specific style of the text
   text_style: 
     # Title font size
@@ -173,15 +171,16 @@ home_banner:
   # Home banner social links
   social_links:
     # Whether to enable
-    enable: true
+    enable: false
     # Social links style
     style: default # default, reverse, center
     # Social links
     links:
-      github: https://github.com/LCzhuigz # your GitHub URL
-      /images/Icon/gitee.png : https://gitee.com/lczhuigz
-      bilibili: https://space.bilibili.com/1351041864
-      email: lczhuigz@163.com # your email
+      github:  # your GitHub URL
+      instagram: # your Instagram URL
+      zhihu:  # your ZhiHu URL
+      twitter:  # your twitter URL
+      email:  # your email
       # ...... # you can add more
     # Social links with QRcode drawers
     qrs:
@@ -194,7 +193,7 @@ home_banner:
 # Docs: https://redefine-docs.ohevan.com/home/navbar
 navbar:
   # Auto hide navbar
-  auto_hide: true
+  auto_hide: false
   # Navbar background color
   color:
     left: "#f78736" #left side 
@@ -209,31 +208,30 @@ navbar:
     Home: 
       path: / 
       icon: fa-regular fa-house # can be empty
-    Archives: 
-      path: /archives 
-      icon: fa-regular fa-archive # can be empty
-    #Status: 
-      #path: https://status.ohevan.com/
-      #icon: fa-regular fa-chart-bar
-    About: 
-      icon: fa-regular fa-user
-      path : /about
-    #Github: https://github.com/LCzhuigz
-    #Blog: https://ohevan.com
-    #Friends: /friends
-    Links: 
-      icon: fa-regular fa-link
-      submenus:
-        相册: /masonry/ 
-        中科大源: https://mirrors.ustc.edu.cn/
-        清华源: https://mirrors.tuna.tsinghua.edu.cn/
-        南京大学源: https://mirrors.nju.edu.cn/
-        古文岛: https://www.gushiwen.cn/
+    # Archives: 
+    #   path: /archives 
+    #   icon: fa-regular fa-archive # can be empty
+    # Status: 
+    #   path: https://status.ohevan.com/
+    #   icon: fa-regular fa-chart-bar
+    # About: 
+    #   icon: fa-regular fa-user
+    #   submenus:
+    #     Me: /about
+    #     Github: https://github.com/EvanNotFound/hexo-theme-redefine
+    #     Blog: https://ohevan.com
+    #     Friends: /friends
+    # Links: 
+    #   icon: fa-regular fa-link
+    #   submenus:
+    #     Link1: /link1
+    #     Link2: /link2
+    #     Link3: /link3
     # ...... # you can add more
   # Navbar search (local search). Requires hexo-generator-searchdb (npm i hexo-generator-searchdb). See https://github.com/theme-next/hexo-generator-searchdb
   search:
     # Whether to enable
-    enable: true
+    enable: false
     # Preload search data when the page loads
     preload: true
 # NAVIGATION BAR <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
@@ -245,20 +243,20 @@ home:
   # Sidebar settings
   sidebar:
     enable: true # Whether to enable sidebar
-    position: right # Sidebar position. left, right
-    first_item: info # First item in sidebar. menu, info
-    announcement: 人生中有太多感受后知后觉 # Announcement text
+    position: left # Sidebar position. left, right
+    first_item: menu # First item in sidebar. menu, info
+    announcement: # Announcement text
     show_on_mobile: true # Whether to show sidebar navigation on mobile sheet menu
     links:
-      Essays: 
-        path: /essays 
-        icon: fa-regular fa-archive # can be empty
-      Tags: 
-        path: /tags 
-        icon: fa-regular fa-tags # can be empty
-      Categories: 
-        path: /categories 
-        icon: fa-regular fa-folder # can be empty
+      # Archives: 
+      #   path: /archives 
+      #   icon: fa-regular fa-archive # can be empty
+      # Tags: 
+      #   path: /tags 
+      #   icon: fa-regular fa-tags # can be empty
+      # Categories: 
+      #   path: /categories 
+      #   icon: fa-regular fa-folder # can be empty
       # ...... # you can add more
   # Article date format
   article_date_format: auto # auto, relative, YYYY-MM-DD, YYYY-MM-DD HH:mm:ss etc.
@@ -267,11 +265,11 @@ home:
   # Article categories visibility
   categories:
     enable: true  # Whether to enable
-    limit: 5 # Max number of categories to display
+    limit: 3 # Max number of categories to display
   # Article tags visibility
   tags:
     enable: true  # Whether to enable
-    limit: 5  # Max number of tags to display
+    limit: 3  # Max number of tags to display
 # HOME PAGE ARTICLE SETTINGS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
@@ -359,19 +357,19 @@ comment:
   config:
     # Waline comment system. See https://waline.js.org/
     waline:
-      serverUrl: https://waline.lczhuigz.top #https://example.example.com # Waline server URL. e.g. https://example.example.com
+      serverUrl: https://example.example.com # Waline server URL. e.g. https://example.example.com
       lang: zh-CN # Waline language. e.g. zh-CN, en-US. See https://waline.js.org/guide/client/i18n.html
-      emoji: [https://unpkg.com/@waline/emojis@1.2.0/qq] # Waline emojis, see https://waline.js.org/guide/features/emoji.html
+      emoji: [] # Waline emojis, see https://waline.js.org/guide/features/emoji.html
       recaptchaV3Key: # Google reCAPTCHA v3 key. See https://waline.js.org/reference/client/props.html#recaptchav3key
       turnstileKey: # Turnstile key. See https://waline.js.org/reference/client/props.html#turnstilekey
-      reaction: true # Waline reaction. See https://waline.js.org/reference/client/props.html#reaction
+      reaction: false # Waline reaction. See https://waline.js.org/reference/client/props.html#reaction
     # Gitalk comment system. See https://github.com/gitalk/gitalk
     gitalk:
-      clientID: #Ov23liBanJcTri50ER5g # GitHub Application Client ID
-      clientSecret: #f871e0b163b17bacb4e61d1b264a3cc28e991fda # GitHub Application Client Secret
-      repo: #lczhuigz.github.io # GitHub repository
-      owner: #LCzhuigz # GitHub repository owner
-      proxy: #https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token # GitHub repository proxy
+      clientID: # GitHub Application Client ID
+      clientSecret: # GitHub Application Client Secret
+      repo: # GitHub repository
+      owner: # GitHub repository owner
+      proxy: # GitHub repository proxy
     # Twikoo comment system. See https://twikoo.js.org/
     twikoo:
       version: 1.6.10 # Twikoo version, do not modify if you dont know what it is
@@ -401,16 +399,16 @@ footer:
   # Icon in footer, write fontawesome icon code here
   icon: '<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>'
   # The start time of the website, format: YYYY/MM/DD HH:mm:ss
-  start: 2025/08/23 11:45:14
+  start: 2022/8/17 11:45:14
   # Site statistics
   statistics: true # show site statistics or not (total articles, total words)
   # Footer message
-  customize: TH,I'll wait for you!
+  customize:
   # ICP record number. See https://beian.miit.gov.cn/
   icp:
-    enable: true # Whether to enable
-    number: 萌ICP备20250675号 # ICP record number
-    url: https://icp.gov.moe/ # ICP record url
+    enable: false # Whether to enable
+    number: # ICP record number
+    url: # ICP record url
 # FOOTER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
@@ -438,72 +436,23 @@ plugins:
     enable: false # Whether to enable
   # Aplayer. See https://github.com/DIYgod/APlayer
   aplayer:
-    enable: true # Whether to enable
+    enable: false # Whether to enable
     type: fixed # fixed, mini
     audios:
-      - name: 此生不换 # audio name
-        artist: 青鸟飞鱼 # audio artist
-        url: /audio/muisc/此生不换 - 青鸟飞鱼.mp3 # audio url
-        cover: https://imgessl.kugou.com/stdmusic/20250623/20250623043520681592.jpg # audio cover url
-        lrc: /audio/muisc/lyric/此生不换 - 青鸟飞鱼.lrc # audio cover lrc
-
-      - name: 其实 # audio name
-        artist: 薛之谦 # audio artist
-        url: /audio/muisc/其实 - 薛之谦.mp3 # audio url
-        cover: https://imgessl.kugou.com/stdmusic/20200407/20200407151818862082.jpg # audio cover url
-        lrc: /audio/muisc/lyric/其实 - 薛之谦.lrc # audio cover lrc
-
-      - name: 不让我的眼泪陪我过夜 # audio name
-        artist: 齐秦 # audio artist
-        url: /audio/muisc/不让我的眼泪陪我过夜 - 齐秦.mp3 # audio url
-        cover: https://imgessl.kugou.com/stdmusic/20250125/20250125121844903603.jpg # audio cover url
-        lrc: /audio/muisc/lyric/不让我的眼泪陪我过夜 - 齐秦.lrc # audio cover lrc
-
-      - name: 天亮以前说再见 # audio name
-        artist: 何野 # audio artist
-        url: /audio/muisc/天亮以前说再见 - 何野.mp3 # audio url
-        cover: https://imgessl.kugou.com/stdmusic/20241224/20241224170023879442.jpg # audio cover url
-        lrc: /audio/muisc/lyric/天亮以前说再见 - 何野.lrc # audio cover lrc
-
-      - name: 绿色 # audio name
-        artist: 陈雪凝 # audio artist
-        url: /audio/muisc/绿色 - 陈雪凝.mp3 # audio url
-        cover: http://p2.music.126.net/R4ZP3AJ9xV0vvw8LX7AbMA==/109951163860425334.jpg # audio cover url
-        lrc: /audio/muisc/lyric/绿色 - 陈雪凝.lrc # audio cover lrc
-      
-      - name: 借过 # audio name
-        artist: 印子月 # audio artist
-        url: /audio/muisc/借过 - 印子月.mp3 # audio url
-        cover: https://imgessl.kugou.com/stdmusic/20200909/20200909121550319223.jpg # audio cover url
-        lrc: /audio/muisc/lyric/借过 - 印子月.lrc # audio cover lrc
-
-      - name: 天使的翅膀 # audio name
-        artist: 徐誉滕 # audio artist
-        url: /audio/muisc/天使的翅膀 - 徐誉滕.mp3 # audio url
-        cover: http://imge.kugou.com/stdmusic/20250125/20250125121629940291.jpg # audio cover url
-        lrc: /audio/muisc/lyric/天使的翅膀 - 徐誉滕.lrc # audio cover lrc
-
-      - name: 姑娘我爱你 # audio name
-        artist: 索朗扎西 # audio artist
-        url: /audio/muisc/姑娘我爱你 - 索朗扎西.mp3 # audio url
-        cover: http://imge.kugou.com/stdmusic/20250101/20250101080837788644.jpg # audio cover url
-        lrc: /audio/muisc/lyric/姑娘我爱你 - 索朗扎西.lrc # audio cover lrc
-
-      - name: 离开我的依赖 # audio name
-        artist: 王艳薇 # audio artist
-        url: /audio/muisc/离开我的依赖 - 王艳薇.mp3 # audio url
-        cover: https://imgessl.kugou.com/stdmusic/20250725/20250725103502185296.jpg # audio cover url
-        lrc: /audio/muisc/lyric/离开我的依赖 - 王艳薇.lrc # audio cover lrc
-
-      - name: 失落沙洲 # audio name
-        artist: 徐佳莹 # audio artist
-        url: /audio/muisc/失落沙洲 - 徐佳莹.mp3 # audio url
-        cover: http://imge.kugou.com/stdmusic/20250125/20250125121832426351.jpg # audio cover url
-        lrc: /audio/muisc/lyric/失落沙洲 - 徐佳莹.lrc # audio cover lrc
+      - name: # audio name
+        artist: # audio artist
+        url: # audio url
+        cover: # audio cover url
+        lrc: # audio cover lrc
+#      - name: # audio name
+#        artist: # audio artist
+#        url: # audio url
+#        cover: # audio cover url
+#        lrc: # audio cover lrc
       # .... you can add more audios here
   # Mermaid JS. Requires hexo-filter-mermaid-diagrams (npm i hexo-filter-mermaid-diagrams). See https://mermaid.js.org/
   mermaid:
-    enable: true # enable mermaid or not
+    enable: false # enable mermaid or not
     version: "11.4.1" # default v11.4.1
 # PLUGINS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
@@ -522,9 +471,9 @@ page_templates:
 # Docs: https://redefine-docs.ohevan.com/cdn
 cdn:
   # Whether to enable CDN
-  enable: true
+  enable: false
   # CDN Provider
-  provider: aliyun # npmmirror, zstatic, cdnjs, jsdelivr, unpkg, custom
+  provider: npmmirror # npmmirror, zstatic, cdnjs, jsdelivr, unpkg, custom
   # Custom CDN URL
   # format example: https://cdn.custom.com/hexo-theme-redefine/${version}/source/${path}
   # The ${path} must leads to the root of the "source" folder of the theme
