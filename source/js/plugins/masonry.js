@@ -55,10 +55,31 @@ export function initMasonry() {
   }
 }
 
-if (data.masonry) {
-  try {
-    swup.hooks.on("page:view", initMasonry);
-  } catch (e) {}
-
-  document.addEventListener("DOMContentLoaded", initMasonry);
+export default function initMasonryPlugin() {
+  // 检查是否存在masonry容器
+  if (document.querySelector("#masonry-container")) {
+    initMasonry();
+  }
 }
+
+// 直接初始化masonry，不依赖main.refresh
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log('[Masonry] DOMContentLoaded: Initializing');
+    initMasonryPlugin();
+  });
+} else {
+  console.log('[Masonry] Document already loaded: Initializing');
+  initMasonryPlugin();
+}
+
+// 支持页面导航时重新初始化
+try {
+  swup.hooks.on("page:view", () => {
+    console.log('[Masonry] SWUP page:view: Initializing');
+    if (document.querySelector("#masonry-container")) {
+      initMasonry();
+    }
+  });
+} catch (e) {}
+

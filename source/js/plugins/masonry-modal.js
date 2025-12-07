@@ -1,48 +1,13 @@
-<%
-// Define an array of images to display in the masonry layout
-const images = theme.masonry;
-%>
-
-<h1 class="page-title-header">
-	<%- getPageTitle(page) %>
-</h1>
-
-<div class="loading-placeholder">
-	<div class="flex-grid generic-card">
-		<div class="card loading"></div>
-		<div class="card loading"></div>
-		<div class="card loading"></div>
-	</div>
-</div>
-
-<div id="masonry-container">
-	<% images.forEach(function(image) { %>
-	<div class="masonry-item"
-		 data-title="<%- image.title %>"
-		 data-description="<%- image.description %>"
-		 data-date="<%- image.date || 'None' %>"
-		 data-location="<%- image.location || 'None' %>">
-		<div class="image-container">
-			<img src="<%- image.image %>" alt="<%- image.title %>" data-no-viewer>
-			<div class="masonry-item-title"><%- image.title %></div>
-			<div class="masonry-item-description"><%- image.description %></div>
-		</div>
-	</div>
-	<% }); %>
-</div>
-
-<script data-swup-reload-script>
-(function() {
+export function initMasonryModal() {
+  console.log('[MasonryModal] initMasonryModal() called');
   function showMasonryModal(data) {
     const oldModal = document.getElementById("masonry-modal");
     if (oldModal) oldModal.remove();
 
-    // 格式化日期
     let displayDate = data.date;
     try {
       const dateObj = new Date(data.date);
       if (!isNaN(dateObj)) {
-        // 显示日期和时间（时:分:秒），兼容中文区域格式
         displayDate = dateObj.toLocaleString('zh-CN', {
           year: 'numeric',
           month: '2-digit',
@@ -69,11 +34,11 @@ const images = theme.masonry;
             <h2>${data.title}</h2>
             <div class="masonry-modal-meta">
               <div class="meta-item">
-                <span class="meta-label">time:</span>
+                <span class="meta-label">拍摄时间:</span>
                 <span class="meta-value">${displayDate}</span>
               </div>
               <div class="meta-item">
-                <span class="meta-label">location:</span>
+                <span class="meta-label">拍摄地点:</span>
                 <span class="meta-value">${data.location}</span>
               </div>
             </div>
@@ -86,8 +51,7 @@ const images = theme.masonry;
     `;
 
     document.body.appendChild(modal);
-    
-    // 获取图片元素用于缩放控制
+
     const modalImg = modal.querySelector(".masonry-modal-image img");
     let scale = 1;
     const minScale = 0.5;
@@ -97,8 +61,7 @@ const images = theme.masonry;
     let dragStartY = 0;
     let translateX = 0;
     let translateY = 0;
-    
-    // 缩放功能 - 鼠标滚轮
+
     const imageContainer = modal.querySelector(".masonry-modal-image");
     imageContainer.addEventListener("wheel", (e) => {
       e.preventDefault();
@@ -106,8 +69,7 @@ const images = theme.masonry;
       scale = Math.max(minScale, Math.min(maxScale, scale * delta));
       updateImageTransform();
     });
-    
-    // 拖动功能 - 鼠标
+
     imageContainer.addEventListener("mousedown", (e) => {
       if (scale > 1) {
         isDragging = true;
@@ -117,25 +79,24 @@ const images = theme.masonry;
         e.preventDefault();
       }
     });
-    
+
     document.addEventListener("mousemove", (e) => {
       if (isDragging) {
         const containerRect = imageContainer.getBoundingClientRect();
         const maxTranslateX = (containerRect.width * (scale - 1)) / 2;
         const maxTranslateY = (containerRect.height * (scale - 1)) / 2;
-        
+
         translateX = Math.max(-maxTranslateX, Math.min(maxTranslateX, e.clientX - dragStartX));
         translateY = Math.max(-maxTranslateY, Math.min(maxTranslateY, e.clientY - dragStartY));
         updateImageTransform();
       }
     });
-    
+
     document.addEventListener("mouseup", () => {
       isDragging = false;
       imageContainer.style.cursor = "grab";
     });
-    
-    // 触摸缩放 - 移动设备
+
     let lastDistance = 0;
     imageContainer.addEventListener("touchstart", (e) => {
       if (e.touches.length === 2) {
@@ -144,7 +105,7 @@ const images = theme.masonry;
         lastDistance = Math.sqrt(dx * dx + dy * dy);
       }
     });
-    
+
     imageContainer.addEventListener("touchmove", (e) => {
       if (e.touches.length === 2) {
         e.preventDefault();
@@ -157,29 +118,26 @@ const images = theme.masonry;
         updateImageTransform();
       }
     });
-    
+
     function updateImageTransform() {
-      // 当缩放为1时重置拖动
       if (scale === 1) {
         translateX = 0;
         translateY = 0;
       }
       modalImg.style.transform = `scale(${scale}) translate(${translateX / scale}px, ${translateY / scale}px)`;
     }
-    
-    // 重置缩放 - 双击
+
     imageContainer.addEventListener("dblclick", () => {
       scale = 1;
       translateX = 0;
       translateY = 0;
       updateImageTransform();
     });
-    
-    // 初始化光标样式
+
     imageContainer.style.cursor = "grab";
     imageContainer.style.overflow = "hidden";
     imageContainer.style.userSelect = "none";
-    
+
     modal.querySelector(".masonry-modal-close").addEventListener("click", () => {
       modal.remove();
     });
@@ -188,52 +146,60 @@ const images = theme.masonry;
         modal.remove();
       }
     });
-    
+
     setTimeout(() => {
       modal.classList.add("show");
     }, 10);
   }
 
   function initMasonryClickHandlers() {
-    // 清除所有 masonry-item 的 hasListener 标记，以便重新绑定（处理 swup 切换后的新 DOM）
-    document.querySelectorAll(".masonry-item").forEach((item) => {
-      // 移除旧的监听器（如果存在）
-      if (item.hasListener && item._masonryClickHandler) {
-        item.removeEventListener("click", item._masonryClickHandler, true);
-      }
-      item.hasListener = false;
-    });
-    
-    // 重新绑定所有 masonry-item 的点击事件
-    document.querySelectorAll(".masonry-item").forEach((item) => {
-      if (!item.hasListener) {
-        item.hasListener = true;
-        // 创建事件处理函数并保存引用，以便后续移除
-        item._masonryClickHandler = function (e) {
-          // 如果点击的是img，拦截imageViewer的处理
-          if (e.target.tagName === "IMG" || e.target.closest("img")) {
-            e.preventDefault();
-            e.stopImmediatePropagation(); // 阻止imageViewer的冒泡监听
-          }
-          
-          // 显示自己的modal
-          showMasonryModal({
-            title: this.dataset.title,
-            description: this.dataset.description,
-            date: this.dataset.date,
-            location: this.dataset.location,
-            image: this.querySelector("img").src
-          });
-        };
-        item.addEventListener("click", item._masonryClickHandler, true); // 捕获阶段，在冒泡之前执行
-      }
+    console.log('[MasonryModal] initMasonryClickHandlers() binding .masonry-item click handlers');
+    // 使用 requestAnimationFrame 确保 DOM 已经完全渲染
+    requestAnimationFrame(() => {
+      // 清除所有 masonry-item 的 hasListener 标记，以便重新绑定（处理 swup 切换后的新 DOM）
+      document.querySelectorAll(".masonry-item").forEach((item) => {
+        // 移除旧的监听器（如果存在）
+        if (item.hasListener && item._masonryClickHandler) {
+          item.removeEventListener("click", item._masonryClickHandler, true);
+        }
+        item.hasListener = false;
+      });
+      
+      // 重新绑定所有 masonry-item 的点击事件
+      document.querySelectorAll(".masonry-item").forEach((item) => {
+        if (!item.hasListener) {
+          item.hasListener = true;
+          // 创建事件处理函数并保存引用，以便后续移除
+          item._masonryClickHandler = function (e) {
+            if (e.target.tagName === "IMG" || e.target.closest("img")) {
+              e.preventDefault();
+              e.stopImmediatePropagation();
+            }
+
+            showMasonryModal({
+              title: this.dataset.title,
+              description: this.dataset.description,
+              date: this.dataset.date,
+              location: this.dataset.location,
+              image: this.querySelector("img").src,
+            });
+          };
+          item.addEventListener("click", item._masonryClickHandler, true);
+        }
+      });
     });
   }
-  
-  // 使用 requestAnimationFrame 确保 DOM 已经完全渲染
-  requestAnimationFrame(() => {
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMasonryClickHandlers);
+  } else {
     initMasonryClickHandlers();
-  });
-})();
-</script>
-</div>
+  }
+}
+
+export default function initMasonryModalPlugin() {
+  if (document.querySelector("#masonry-container")) {
+    initMasonryModal();
+  }
+}
+

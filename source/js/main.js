@@ -7,6 +7,8 @@ import initScrollTopBottom from "./tools/scrollTopBottom.js";
 import initLocalSearch from "./tools/localSearch.js";
 import initCopyCode from "./tools/codeBlock.js";
 import initBookmarkNav from "./layouts/bookmarkNav.js";
+import initMasonryPlugin from "./plugins/masonry.js";
+import initMasonryModalPlugin from "./plugins/masonry-modal.js";
 
 export const main = {
   themeInfo: {
@@ -45,10 +47,13 @@ export const main = {
     }
   },
   refresh: () => {
+    console.log('[MAIN] refresh() called');
     initUtils();
     initModeToggle();
     initScrollTopBottom();
     initBookmarkNav();
+    initMasonryPlugin();
+    initMasonryModalPlugin();
     
     if (
       theme.home_banner.subtitle.text.length !== 0 &&

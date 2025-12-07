@@ -1,0 +1,197 @@
+@require '../common/variables'
+
+// 瀑布流项目悬停效果
+.masonry-item
+  cursor pointer
+  transition transform 0.3s ease
+  position relative
+  overflow hidden
+  border-radius 8px
+  
+  &:hover
+    transform scale(1.05)
+    
+    .masonry-item-title,
+    .masonry-item-description
+      opacity 1
+
+// 图片悬停overlay
+.image-container
+  position relative
+  width 100%
+  height 100%
+  overflow hidden
+
+// 标题 - 左上角
+.masonry-item-title
+  position absolute
+  top 10px
+  left 10px
+  font-size 13px
+  font-weight bold
+  color rgba(31, 32, 32, 0.5)
+  z-index 100
+  padding 8px 12px
+  background rgba(165, 162, 159, 0.95)
+  border-radius 10px
+  max-width calc(100% - 40px)
+  line-height 1.4
+  word-break break-word
+  opacity 0
+  transition opacity 0.3s ease
+
+// 描述 - 右下角
+.masonry-item-description
+  position absolute
+  bottom 10px
+  right 10px
+  font-size 13px
+  color rgba(31, 32, 32, 0.5)
+  z-index 100
+  padding 8px 12px
+  background rgba(165, 162, 159, 0.95)
+  border-radius 10px
+  max-width calc(100% - 40px)
+  text-align right
+  line-height 1.4
+  word-break break-word
+  display -webkit-box
+  -webkit-line-clamp 2
+  -webkit-box-orient vertical
+  overflow hidden
+  opacity 0
+  transition opacity 0.3s ease
+
+// 模态框背景
+.masonry-modal
+  position fixed
+  top 0
+  left 0
+  right 0
+  bottom 0
+  background rgba(0, 0, 0, 0.5)
+  display flex
+  align-items center
+  justify-content center
+  z-index 9999
+  opacity 0
+  transition opacity 0.3s ease
+  
+  &.show
+    opacity 1
+
+// 模态框内容
+.masonry-modal-content
+  background var(--background-color)
+  border-radius 12px
+  max-width 1200px
+  width 95%
+  max-height 90vh
+  overflow-y auto
+  position relative
+  box-shadow 0 10px 40px rgba(0, 0, 0, 0.3)
+
+// 关闭按钮
+.masonry-modal-close
+  position absolute
+  top 15px
+  right 15px
+  background none
+  border none
+  font-size 28px
+  cursor pointer
+  color #999
+  z-index 10000
+  transition color 0.3s ease
+  
+  &:hover
+    color var(--text-color)
+
+// 模态框主体
+.masonry-modal-body
+  display flex
+  gap 30px
+  padding 30px
+  
+  +redefine-tablet()
+    padding 20px
+    gap 20px
+  
+  +redefine-mobile()
+    flex-direction column
+    padding 20px
+    gap 20px
+
+// 图片容器
+.masonry-modal-image
+  flex 1
+  min-width 400px
+  display flex
+  align-items center
+  justify-content center
+  overflow hidden
+  background var(--second-background-color)
+  border-radius 8px
+  position relative
+  
+  img
+    width 100%
+    height auto
+    border-radius 8px
+    display block
+    cursor grab
+    transition cursor 0.2s ease
+    transform-origin center
+    transform-box fill-box
+    
+    &:active
+      cursor grabbing
+
+// 信息容器
+.masonry-modal-info
+  flex 0 0 300px
+  display flex
+  flex-direction column
+  gap 20px
+  
+  +redefine-tablet()
+    flex 1
+    min-width auto
+  
+  h2
+    margin 0
+    font-size 24px
+    color var(--text-color)
+    font-weight bold
+
+// 元数据容器
+.masonry-modal-meta
+  display flex
+  flex-direction column
+  gap 12px
+
+// 元数据项
+.meta-item
+  display flex
+  align-items center
+  gap 10px
+  
+  .meta-label
+    font-weight bold
+    color var(--second-text-color)
+    min-width 80px
+  
+  .meta-value
+    color var(--text-color)
+
+// 描述文本
+.masonry-modal-description
+  flex 1
+  overflow-y auto
+  padding-right 10px
+  
+  p
+    margin 0
+    color var(--text-color)
+    line-height 1.6
+    word-break break-word
