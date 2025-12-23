@@ -33,7 +33,7 @@ hexo.on('generateBefore', function () {
       }
 
       if (data.publications || data.publication || data.papers || data.paper) {
-        hexo.theme.config.publications = data.publications || data.publication || data.papers || data.pape;
+        hexo.theme.config.publications = data.publications || data.publication || data.papers || data.paper;
       }
     }
   }
