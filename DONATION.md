@@ -45,7 +45,7 @@ Thank you!
 
 | 赞助时间 / Date |                       赞助人 / Sponsor                        | 赞助金额 / Amount | 赞助方式 / Method |                        网站 / Website                        |
 |:-----------:|:----------------------------------------------------------:|:-------------:|:----------------:|:----------------------------------------------------------:|
-|   Jan 12, 2025    |           [@1ronName](https://github.com/1ronName)           |     ¥8.88     | - |       [https://ironname.top](https://ironname.top)       |
+|   Jan 12, 2025    |           [@1ronName](https://github.com/1ronName)           |     ¥8.88     | 微信赞赏码 |       [https://ironname.top](https://ironname.top)       |
 |   Nov 27, 2023    |                            :-)                             |    ¥16.66     |   微信 |                             -                              |
 |   Nov 26, 2023    |                            **青                             |    ¥25.00     |   支付宝 |                             -                              |
 |   Oct 24, 2023    |                          Neptune.                          |    ¥14.99     |   微信赞赏码 |                             -                              |
