@@ -41,7 +41,7 @@ Thank you!
 
 ## 赞助名单 / Sponsorship List
 
-按时间先后排序 / Sorted by chronological order
+按时间倒序排序（最新优先）/ Sorted by reverse chronological order (latest first)
 
 | 赞助时间 / Date |                       赞助人 / Sponsor                        | 赞助金额 / Amount | 赞助方式 / Method |                        网站 / Website                        |
 |:-----------:|:----------------------------------------------------------:|:-------------:|:----------------:|:----------------------------------------------------------:|
