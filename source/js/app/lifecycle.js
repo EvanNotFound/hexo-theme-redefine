@@ -1,6 +1,7 @@
 const readyCallbacks = [];
 const pageViewCallbacks = [];
 const visitStartCallbacks = [];
+const beforeReplaceCallbacks = [];
 
 let readyFired = false;
 let swupBound = false;
@@ -36,6 +37,9 @@ const bindSwup = (swupInstance) => {
   });
   swupInstance.hooks.on("visit:start", (visit) => {
     runCallbacks(visitStartCallbacks, visit);
+  });
+  swupInstance.hooks.before("content:replace", (visit) => {
+    runCallbacks(beforeReplaceCallbacks, visit);
   });
 };
 
@@ -89,4 +93,12 @@ export const onVisitStart = (callback) => {
   }
 
   visitStartCallbacks.push(callback);
+};
+
+export const onBeforeContentReplace = (callback) => {
+  if (typeof callback !== "function") {
+    return;
+  }
+
+  beforeReplaceCallbacks.push(callback);
 };

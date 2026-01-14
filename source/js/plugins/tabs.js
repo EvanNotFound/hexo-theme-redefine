@@ -1,29 +1,34 @@
-function setTabs() {
-  let tabs = document.querySelectorAll(".tabs .nav-tabs");
-  if (!tabs) return;
+let handlerBound = false;
 
-  tabs.forEach((tab) => {
-    tab.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
+const handleTabClick = (event) => {
+  const link = event.target.closest(".tabs .nav-tabs a");
+  if (!link) {
+    return;
+  }
 
-        const parentTab = e.target.parentElement.parentElement.parentElement;
-        parentTab.querySelector(".nav-tabs .active").classList.remove("active");
-        e.target.parentElement.classList.add("active");
-        parentTab
-          .querySelector(".tab-content .active")
-          .classList.remove("active");
-        parentTab.querySelector(e.target.className).classList.add("active");
+  event.preventDefault();
+  event.stopPropagation();
 
-        return false;
-      });
-    });
-  });
+  const parentTab = link.closest(".tabs");
+  if (!parentTab) {
+    return;
+  }
+
+  parentTab.querySelector(".nav-tabs .active")?.classList.remove("active");
+  link.parentElement?.classList.add("active");
+  parentTab.querySelector(".tab-content .active")?.classList.remove("active");
+  parentTab.querySelector(link.className)?.classList.add("active");
+};
+
+export default function initTabs({ signal } = {}) {
+  if (handlerBound) {
+    return;
+  }
+
+  handlerBound = true;
+  if (signal) {
+    document.addEventListener("click", handleTabClick, { signal });
+  } else {
+    document.addEventListener("click", handleTabClick);
+  }
 }
-
-try {
-  swup.hooks.on("page:view", setTabs);
-} catch (e) {}
-
-document.addEventListener("DOMContentLoaded", setTabs);

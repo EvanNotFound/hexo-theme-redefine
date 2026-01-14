@@ -111,8 +111,10 @@ $usr-img-border-radius = $temp-usr-img-border-radius ? convert($temp-usr-img-bor
 // ========================================================================================
 //                                    MERMAID THEME
 // ========================================================================================
-$mermaid-theme = hexo-config('mermaid.theme.light')
-$dark-mermaid-theme = hexo-config('mermaid.theme.dark')
+$temp-mermaid-theme = hexo-config('plugins.mermaid.theme.light')
+$mermaid-theme = $temp-mermaid-theme ? $temp-mermaid-theme : hexo-config('mermaid.theme.light')
+$temp-dark-mermaid-theme = hexo-config('plugins.mermaid.theme.dark')
+$dark-mermaid-theme = $temp-dark-mermaid-theme ? $temp-dark-mermaid-theme : hexo-config('mermaid.theme.dark')
 
 
 
