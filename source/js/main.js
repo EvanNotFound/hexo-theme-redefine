@@ -7,6 +7,7 @@ import initScrollTopBottom from "./tools/scrollTopBottom.js";
 import initLocalSearch from "./tools/localSearch.js";
 import initCopyCode from "./tools/codeBlock.js";
 import initBookmarkNav from "./layouts/bookmarkNav.js";
+import { onPageView, onReady } from "./app/lifecycle.js";
 
 export const main = {
   themeInfo: {
@@ -50,10 +51,18 @@ export const main = {
     initScrollTopBottom();
     initBookmarkNav();
     
-    if (
-      theme.home_banner.subtitle.text.length !== 0 &&
-      location.pathname === config.root
-    ) {
+    const subtitleConfig = theme.home_banner.subtitle || {};
+    const subtitleText = subtitleConfig.text;
+    const subtitleEntries = Array.isArray(subtitleText)
+      ? subtitleText
+      : subtitleText
+        ? [subtitleText]
+        : [];
+    const shouldInitTyped =
+      subtitleEntries.length !== 0 ||
+      (subtitleConfig.hitokoto && subtitleConfig.hitokoto.enable);
+
+    if (shouldInitTyped && location.pathname === config.root) {
       initTyped("subtitle");
     }
 
@@ -73,13 +82,10 @@ export const main = {
 
 export function initMain() {
   main.printThemeInfo();
-  main.refresh();
 }
 
-document.addEventListener("DOMContentLoaded", initMain);
+onReady(initMain);
 
-try {
-  swup.hooks.on("page:view", () => {
-    main.refresh();
-  });
-} catch (e) {}
+onPageView(() => {
+  main.refresh();
+});

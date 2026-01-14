@@ -1,32 +1,9 @@
 <%- renderJS([
-    'tools/imageViewer.js',
-    'utils.js',
     'main.js',
-    'layouts/navbarShrink.js',
-    'tools/scrollTopBottom.js',
-    'tools/lightDarkSwitch.js',
     'layouts/categoryList.js'
 ],{
     module: true
 }) %>
-
-<% if (theme.navbar.search.enable) { %>
-    <%- renderJS('tools/localSearch.js', {
-        module: true
-    }) %>
-<% } %>
-
-<% if (theme.articles.code_block.copy) { %>
-    <%- renderJS('tools/codeBlock.js', {
-        module: true
-    }) %>
-<% } %>
-
-<% if (theme.articles.lazyload) { %>
-    <%- renderJS('layouts/lazyload.js', {
-        module: true
-    }) %>
-<% } %>
 
 <% if (theme.footer.runtime) { %>
     <%- renderJS('tools/runtime.js') %>
@@ -34,11 +11,15 @@
     <%- renderCSS('assets/odometer-theme-minimal.css') %>
 <% } %>
 
-<% if (theme.home_banner.subtitle.length !== 0) { %>
+<% const subtitleConfig = theme.home_banner.subtitle || {}; %>
+<% const subtitleText = subtitleConfig.text; %>
+<% const subtitleEntries = Array.isArray(subtitleText)
+    ? subtitleText
+    : subtitleText
+      ? [subtitleText]
+      : []; %>
+<% if (subtitleEntries.length !== 0 || (subtitleConfig.hitokoto && subtitleConfig.hitokoto.enable)) { %>
   <%- renderJS('libs/Typed.min.js') %>
-  <%- renderJS('plugins/typed.js', {
-      module: true
-  }) %>
 <% } %>
 
 <% if (theme.plugins.mermaid.enable) { %>
@@ -56,11 +37,6 @@
         module: true
     }) %>
 <% } %>
-
-<% if (theme.global.preloader === false || theme.global.preloader.enable === false) { %>
-    <%- renderJS('libs/anime.min.js')%>
-<% } %>
-
 
 <% if (theme.articles.toc.enable) { %>
     <%- renderJS([
@@ -83,8 +59,3 @@
     ]) %>
 <% } %>
 
-<% if (theme.bookmarks && theme.bookmarks.length !== 0) { %>
-    <%- renderJS('layouts/bookmarkNav.js', {
-        module: true
-    }) %>
-<% } %>

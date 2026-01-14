@@ -47,7 +47,14 @@
         >
             <%- theme.home_banner.title || theme.style.first_screen.description || config.description %>
             <%# theme.style.first_screen.description is deprecated %>
-            <% if (theme.home_banner.subtitle.length !== 0) { %>
+            <% const subtitleConfig = theme.home_banner.subtitle || {}; %>
+            <% const subtitleText = subtitleConfig.text; %>
+            <% const subtitleEntries = Array.isArray(subtitleText)
+                ? subtitleText
+                : subtitleText
+                    ? [subtitleText]
+                    : []; %>
+            <% if (subtitleEntries.length !== 0 || (subtitleConfig.hitokoto && subtitleConfig.hitokoto.enable)) { %>
                 <p><i id="subtitle"></i></p>
             <% } %>
         </div>
