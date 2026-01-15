@@ -3,32 +3,53 @@
     <script type="module" data-swup-reload-script>
       import { init } from '<%= url_for('js/libs/waline.js') %>';
 
-      function loadWaline() {
-        init({
-          el: '#waline',
-          serverURL: '<%= theme.comment.config.waline.serverUrl %>',
-          dark: 'body[class~="dark-mode"]',
-          reaction: <%- waline_reaction_config(theme.comment.config.waline.reaction) %>,
-          requiredMeta: ['nick', 'mail'],
-          emoji: <%- waline_array_config(theme.comment.config.waline.emoji) %>,
-          <%- waline_config_options({
-            lang: theme.comment.config.waline.lang,
-            locale: theme.comment.config.waline.locale,
-            login: theme.comment.config.waline.login,
-            wordLimit: theme.comment.config.waline.wordLimit,
-            pageSize: theme.comment.config.waline.pageSize,
-            commentSorting: theme.comment.config.waline.commentSorting,
-            meta: theme.comment.config.waline.meta,
-            recaptchaV3Key: theme.comment.config.waline.recaptchaV3Key,
-            turnstileKey: theme.comment.config.waline.turnstileKey
-          }) %>
-        });
-      }
+      (function() {
+        const startPath = location.pathname;
+        const startTime = Date.now();
+        const retryDelay = 200;
+        const retryLimit = 5000;
 
-      if (typeof swup !== 'undefined') {
-        loadWaline();
-      } else {
-        window.addEventListener('DOMContentLoaded', loadWaline);
-      }
+        const runWaline = () => {
+          if (location.pathname !== startPath) {
+            return;
+          }
+
+          const container = document.getElementById('waline');
+          if (!container) {
+            if (Date.now() - startTime < retryLimit) {
+              setTimeout(runWaline, retryDelay);
+            }
+            return;
+          }
+
+          if (window.redefineWalineInstance?.destroy) {
+            window.redefineWalineInstance.destroy();
+          }
+
+          container.innerHTML = '';
+          window.redefineWalineInstance = init({
+            el: '#waline',
+            serverURL: '<%= theme.comment.config.waline.serverUrl %>',
+            path: location.pathname,
+            dark: 'body[class~="dark-mode"]',
+            reaction: <%- waline_reaction_config(theme.comment.config.waline.reaction) %>,
+            requiredMeta: ['nick', 'mail'],
+            emoji: <%- waline_array_config(theme.comment.config.waline.emoji) %>,
+            <%- waline_config_options({
+              lang: theme.comment.config.waline.lang,
+              locale: theme.comment.config.waline.locale,
+              login: theme.comment.config.waline.login,
+              wordLimit: theme.comment.config.waline.wordLimit,
+              pageSize: theme.comment.config.waline.pageSize,
+              commentSorting: theme.comment.config.waline.commentSorting,
+              meta: theme.comment.config.waline.meta,
+              recaptchaV3Key: theme.comment.config.waline.recaptchaV3Key,
+              turnstileKey: theme.comment.config.waline.turnstileKey
+            }) %>
+          });
+        };
+
+        runWaline();
+      })();
     </script>
 <% } %>

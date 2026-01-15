@@ -2,6 +2,7 @@
 import initBookmarkNav from "./layouts/bookmarkNav.js";
 import initCategoryList from "./layouts/categoryList.js";
 import initEssays from "./layouts/essays.js";
+import initHomeBanner from "./layouts/homeBanner.js";
 import initLazyLoad from "./layouts/lazyload.js";
 import { initTOC } from "./layouts/toc.js";
 import { navbarShrink } from "./layouts/navbarShrink.js";
@@ -11,6 +12,7 @@ import initPangu from "./plugins/pangu.js";
 import initTabs from "./plugins/tabs.js";
 import initTyped from "./plugins/typed.js";
 import initCopyCode from "./tools/codeBlock.js";
+import initExpirationDate from "./tools/expirationDate.js";
 import initModeToggle from "./tools/lightDarkSwitch.js";
 import {
   initLocalSearchGlobals,
@@ -42,7 +44,9 @@ const safeRun = (label, callback) => {
   }
 };
 
+const pageRefreshEvent = "redefine:page:refresh";
 let globalsInitialized = false;
+let didInitRefreshEvent = false;
 
 const initGlobalsOnce = () => {
   if (globalsInitialized) {
@@ -73,6 +77,13 @@ const initGlobalsOnce = () => {
   safeRun("localSearch:globals", () => {
     initLocalSearchGlobals({ signal: appSignal });
   });
+
+  if (!didInitRefreshEvent) {
+    didInitRefreshEvent = true;
+    window.addEventListener(pageRefreshEvent, () => {
+      initPage();
+    });
+  }
 };
 
 const initPage = () => {
@@ -81,6 +92,12 @@ const initPage = () => {
 
   safeRun("utils:page", () => {
     initUtilsPage({ signal: pageSignal });
+  });
+  safeRun("homeBanner", () => {
+    initHomeBanner({ signal: pageSignal });
+  });
+  safeRun("expirationDate", () => {
+    initExpirationDate();
   });
   safeRun("modeToggle", () => {
     initModeToggle({ signal: pageSignal, appSignal });
@@ -194,8 +211,18 @@ export const main = {
   getStyleStatus,
   setStyleStatus,
   printThemeInfo: () => {
-    console.log(
-      `      ______ __  __  ______  __    __  ______                       \r\n     /\\__  _/\\ \\_\\ \\/\\  ___\\/\\ "-.\\/  \\/\\  ___\\                      \r\n     \\/_/\\ \\ \\  __ \\ \\  __\\ \\ \\-.\\ \\ \\  __\\                      \r\n        \\ \\_\\ \\_\\ \\_\\ \\_____\\ \\_\\ \\_\\ \\_____\\                    \r\n         \\/_/ \\/_/\\/_/\\/_____//\\/_/  \\/_/\\/_____//                    \r\n                                                               \r\n ______  ______  _____   ______  ______ __  __   __  ______    \r\n/\\  == \\/\\  ___\\/\\  __-.\\/\\  ___\\/\\  ___/\\ \\/\\ "-.\\ \\/\\  ___\\   \r\n\\ \\  __<\\ \\  __\\ \\ \\/\\ \\ \\  __\\ \\  __\\ \\ \\ \\-.  \\ \\  __\\   \r\n \\ \\_\\ \\_\\ \\_____\\ \\____-\\ \\_____\\ \\_\\  \\ \\_\\ \\_\\"\\_\\ \\_____\\ \r\n  \\/_/ /_/\\/_____//\\/____/ \\/_____//\\/_/   \\/_/\\/_/ \\/_/\\/_____//\r\n                                                               \r\n  Github: https://github.com/EvanNotFound/hexo-theme-redefine`,
+    console.log(`
+  +======================================================================================+
+  |                                                                                      |
+  |    _____ _   _ _____ __  __ _____   ____  _____ ____  _____ _____ ___ _   _ _____    |
+  |   |_   _| | | | ____|  \\/  | ____| |  _ \\| ____|  _ \\| ____|  ___|_ _| \\ | | ____|   |
+  |     | | | |_| |  _| | |\\/| |  _|   | |_) |  _| | | | |  _| | |_   | ||  \\| |  _|     |
+  |     | | |  _  | |___| |  | | |___  |  _ <| |___| |_| | |___|  _|  | || |\\  | |___    |
+  |     |_| |_| |_|_____|_|  |_|_____| |_| \\_\\_____|____/|_____|_|   |___|_| \\_|_____|   |
+  |                                                                                      |
+  |                  https://github.com/EvanNotFound/hexo-theme-redefine                 |
+  +======================================================================================+
+                  `,
     ); // console log message
   },
   refresh: () => {

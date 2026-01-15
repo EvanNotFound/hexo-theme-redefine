@@ -53,34 +53,10 @@
 		<% } %>
 
 		<% if (page?.expires && page?.expires !== "") {%>
-		<div class="article-expire mt-4 mx-2 sm:mx-6 md:mx-8 note p-4 rounded-lg red icon hidden" id="expiration-container">
+		<div class="article-expire mt-4 mx-2 sm:mx-6 md:mx-8 note p-4 rounded-lg red icon hidden" id="expiration-container" data-expires="<%= page?.expires %>" data-updated="<%= page?.updated %>">
 			<i class="expire-icon fa-solid fa-timer mr-0.5 text-red-600 dark:text-red-400"></i>
 			<span class="expire-label text-red-600 dark:text-red-400 " id="expiration-date"><%= __('expired', "some") %></span>
 		</div>
-
-		<script data-swup-reload-script>
-			function updateExpirationDate() {
-				try {
-					const expiredDate = new Date("<%= page?.expires %>");
-					const updatedDate = new Date("<%= page?.updated %>");
-					const now = new Date();
-					const expirationValue = document.getElementById("expiration-date");
-					const expirationContainer = document.getElementById("expiration-container");
-					let daysAgo = Math.floor((now - updatedDate) / (1000 * 60 * 60 * 24));
-					if (expiredDate < now) {
-						expirationContainer.classList.remove("hidden");
-						// console.log(daysAgo)
-						expirationValue.innerHTML = expirationValue.innerHTML.replace("some", daysAgo);
-					}
-				} catch (e) {}
-			}
-			document.addEventListener("DOMContentLoaded", function() {
-				updateExpirationDate();
-			});
-			try {
-				swup.hooks.on("page:view", updateExpirationDate)
-			} catch (e) {}
-		</script>
 		<% } %>
 
 

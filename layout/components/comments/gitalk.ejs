@@ -9,39 +9,50 @@
     <script <%= theme.global.single_page === true && 'data-swup-reload-script' %>
             src="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js"></script>
     <script <%= theme.global.single_page === true && 'data-swup-reload-script' %>>
+        (function() {
+            const startPath = location.pathname;
+            const startTime = Date.now();
+            const retryDelay = 200;
+            const retryLimit = 5000;
 
-        function loadGitalk() {
-            let __gitalk__pathname = decodeURI(location.pathname);
-            const __gitalk__pathnameLength = __gitalk__pathname.length;
-            const __gitalk__pathnameMaxLength = 50;
-            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
-                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
-            }
+            const runGitalk = () => {
+                if (location.pathname !== startPath) {
+                    return;
+                }
 
-            try {
-                Gitalk && new Gitalk({
-                    clientID: '<%= theme.comment.config.gitalk.clientID %>',
-                    clientSecret: '<%= theme.comment.config.gitalk.clientSecret %>',
-                    repo: '<%= theme.comment.config.gitalk.repo %>',
-                    owner: '<%= theme.comment.config.gitalk.owner %>',
-                    admin: ['<%= theme.comment.config.gitalk.owner %>'],
-                    id: __gitalk__pathname,
-                    language: '<%= config.language %>',
-                    proxy: '<%= theme.comment.config.gitalk.proxy || "https://github.com/login/oauth/access_token" %>'
-                }).render('gitalk-container');
+                const container = document.getElementById('gitalk-container');
+                if (!container || typeof Gitalk === 'undefined') {
+                    if (Date.now() - startTime < retryLimit) {
+                        setTimeout(runGitalk, retryDelay);
+                    }
+                    return;
+                }
 
-            } catch (e) {
-                window.Gitalk = null;
-            }
-        }
+                container.innerHTML = '';
 
-        if ('<%= theme.global.single_page %>') {
-            const loadGitalkTimeout = setTimeout(() => {
-                loadGitalk();
-                clearTimeout(loadGitalkTimeout);
-            }, 1000);
-        } else {
-            window.addEventListener('DOMContentLoaded', loadGitalk);
-        }
+                let pageKey = decodeURI(location.pathname);
+                const maxLength = 50;
+                if (pageKey.length > maxLength) {
+                    pageKey = pageKey.substring(0, maxLength - 3) + '...';
+                }
+
+                try {
+                    new Gitalk({
+                        clientID: '<%= theme.comment.config.gitalk.clientID %>',
+                        clientSecret: '<%= theme.comment.config.gitalk.clientSecret %>',
+                        repo: '<%= theme.comment.config.gitalk.repo %>',
+                        owner: '<%= theme.comment.config.gitalk.owner %>',
+                        admin: ['<%= theme.comment.config.gitalk.owner %>'],
+                        id: pageKey,
+                        language: '<%= config.language %>',
+                        proxy: '<%= theme.comment.config.gitalk.proxy || "https://github.com/login/oauth/access_token" %>'
+                    }).render(container);
+                } catch (e) {
+                    window.Gitalk = null;
+                }
+            };
+
+            runGitalk();
+        })();
     </script>
 <% } %>
