@@ -1,4 +1,4 @@
-let handlerBound = false;
+let didInit = false;
 
 const handleTabClick = (event) => {
   const link = event.target.closest(".tabs .nav-tabs a");
@@ -21,11 +21,11 @@ const handleTabClick = (event) => {
 };
 
 export default function initTabs({ signal } = {}) {
-  if (handlerBound) {
+  if (didInit) {
     return;
   }
 
-  handlerBound = true;
+  didInit = true;
   if (signal) {
     document.addEventListener("click", handleTabClick, { signal });
   } else {

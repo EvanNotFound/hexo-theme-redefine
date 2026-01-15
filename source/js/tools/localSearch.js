@@ -2,7 +2,7 @@ let isFetched = false;
 let cachedData = [];
 let cachedPath = null;
 let isXml = true;
-let globalsBound = false;
+let didInit = false;
 let warnedMissing = false;
 
 const resolveSearchPath = () => {
@@ -370,11 +370,11 @@ export const initLocalSearchGlobals = ({ signal } = {}) => {
     return;
   }
 
-  if (globalsBound) {
+  if (didInit) {
     return;
   }
 
-  globalsBound = true;
+  didInit = true;
   if (signal) {
     document.addEventListener("input", handleInput, { signal });
     document.addEventListener("click", handleClick, { signal });

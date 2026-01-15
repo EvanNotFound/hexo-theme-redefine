@@ -1,6 +1,6 @@
 let navItems = [];
 let sections = [];
-let scrollHandlerBound = false;
+let didInitScroll = false;
 
 const throttle = (func, limit) => {
   let inThrottle = false;
@@ -45,11 +45,11 @@ const setActiveNavItem = () => {
 };
 
 const registerScrollHandler = (signal) => {
-  if (scrollHandlerBound || !signal) {
+  if (didInitScroll || !signal) {
     return;
   }
 
-  scrollHandlerBound = true;
+  didInitScroll = true;
   window.addEventListener("scroll", throttle(setActiveNavItem, 100), { signal });
 };
 

@@ -1,4 +1,4 @@
-let handlerBound = false;
+let didInit = false;
 
 const toggleStyle = (element, style, firstValue, secondValue) => {
   element.style[style] =
@@ -64,11 +64,11 @@ const handleCategoryClick = (event) => {
 export default function initCategoryList({ signal } = {}) {
   resetChildStyles();
 
-  if (handlerBound) {
+  if (didInit) {
     return;
   }
 
-  handlerBound = true;
+  didInit = true;
   if (signal) {
     document.addEventListener("click", handleCategoryClick, { signal });
   } else {

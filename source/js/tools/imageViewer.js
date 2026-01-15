@@ -16,7 +16,7 @@ const imageSelector =
   ".markdown-body img, .masonry-item img, #shuoshuo-content img";
 
 let imageNodes = [];
-let globalHandlersBound = false;
+let didInitKeys = false;
 
 const applyTransform = () => {
   if (!viewerState.targetImg) {
@@ -93,11 +93,11 @@ const updateImageNodes = () => {
 };
 
 const registerGlobalHandlers = (signal) => {
-  if (globalHandlersBound) {
+  if (didInitKeys) {
     return;
   }
 
-  globalHandlersBound = true;
+  didInitKeys = true;
   if (signal) {
     document.addEventListener("keydown", handleArrowKeys, { signal });
   } else {

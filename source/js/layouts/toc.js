@@ -1,19 +1,19 @@
 import { initTocToggle } from "../tools/tocToggle.js";
 import { getStyleStatus } from "../state/styleStatus.js";
 
-let tocController = null;
-let scrollHandlerBound = false;
+let tocState = null;
+let didInitScroll = false;
 
 const registerScrollHandler = (signal) => {
-  if (scrollHandlerBound || !signal) {
+  if (didInitScroll || !signal) {
     return;
   }
 
-  scrollHandlerBound = true;
+  didInitScroll = true;
   window.addEventListener(
     "scroll",
     () => {
-      tocController?.updateActiveTOCLink();
+      tocState?.updateActiveTOCLink();
     },
     { signal },
   );
@@ -26,7 +26,7 @@ export function initTOC({ signal } = {}) {
 
   const tocContainer = document.querySelector(".toc-content-container");
   if (!tocContainer) {
-    tocController = null;
+    tocState = null;
     return null;
   }
 
@@ -39,7 +39,7 @@ export function initTOC({ signal } = {}) {
     document.querySelectorAll(".toc-marker").forEach((elem) => {
       elem.remove();
     });
-    tocController = null;
+    tocState = null;
     return null;
   }
 
@@ -129,6 +129,6 @@ export function initTOC({ signal } = {}) {
   utils.registerTOCScroll();
   utils.updateActiveTOCLink();
 
-  tocController = utils;
+  tocState = utils;
   return utils;
 }

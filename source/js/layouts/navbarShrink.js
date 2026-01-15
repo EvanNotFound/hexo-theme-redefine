@@ -3,7 +3,7 @@ const navbarState = {
   navbarHeight: 0,
 };
 
-let globalsBound = false;
+let didInit = false;
 
 const handleScroll = () => {
   if (navbarState.isNavigating) {
@@ -93,11 +93,11 @@ const handleDrawerToggle = (event) => {
 };
 
 const registerGlobalHandlers = (signal) => {
-  if (globalsBound) {
+  if (didInit) {
     return;
   }
 
-  globalsBound = true;
+  didInit = true;
   if (signal) {
     window.addEventListener("scroll", handleScroll, { signal });
     document.addEventListener(

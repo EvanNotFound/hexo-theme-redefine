@@ -5,7 +5,7 @@ import {
 } from "../state/styleStatus.js";
 
 const mermaidSelector = ".mermaid";
-let autoTriggerBound = false;
+let didInitAuto = false;
 
 const ensureOriginalData = () => {
   document.querySelectorAll(mermaidSelector).forEach((element) => {
@@ -133,11 +133,11 @@ export const ModeToggle = {
 
   initModeAutoTrigger(appSignal) {
     const isDarkMode = this.isDarkPrefersColorScheme();
-    if (!isDarkMode || autoTriggerBound) {
+    if (!isDarkMode || didInitAuto) {
       return;
     }
 
-    autoTriggerBound = true;
+    didInitAuto = true;
     const handler = (event) => {
       event.matches ? this.enableDarkMode() : this.enableLightMode();
     };

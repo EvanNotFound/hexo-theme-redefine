@@ -1,6 +1,6 @@
 import { updateStyleStatus } from "../state/styleStatus.js";
 
-let toggleHandlerBound = false;
+let didInit = false;
 
 const getTocElements = () => ({
   toggleBar: document.querySelector(".page-aside-toggle"),
@@ -55,8 +55,8 @@ const handleToggleClick = (event) => {
 };
 
 export function initTocToggle({ signal } = {}) {
-  if (!toggleHandlerBound && signal) {
-    toggleHandlerBound = true;
+  if (!didInit && signal) {
+    didInit = true;
     document.addEventListener("click", handleToggleClick, { signal });
   }
 

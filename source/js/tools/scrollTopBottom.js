@@ -1,4 +1,4 @@
-let handlerBound = false;
+let didInit = false;
 
 const backToTop = () => {
   window.scrollTo({
@@ -29,11 +29,11 @@ const handleClick = (event) => {
 };
 
 const initScrollTopBottom = ({ signal } = {}) => {
-  if (handlerBound) {
+  if (didInit) {
     return;
   }
 
-  handlerBound = true;
+  didInit = true;
   if (signal) {
     document.addEventListener("click", handleClick, { signal });
   } else {

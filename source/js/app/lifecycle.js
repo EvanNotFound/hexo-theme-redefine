@@ -4,7 +4,7 @@ const visitStartCallbacks = [];
 const beforeReplaceCallbacks = [];
 
 let readyFired = false;
-let swupBound = false;
+let didInitSwupHooks = false;
 
 const runCallbacks = (callbacks, payload) => {
   callbacks.forEach((callback) => {
@@ -26,12 +26,12 @@ const fireReady = () => {
   runCallbacks(pageViewCallbacks, { initial: true });
 };
 
-const bindSwup = (swupInstance) => {
-  if (swupBound || !swupInstance || !swupInstance.hooks) {
+const initSwupHooks = (swupInstance) => {
+  if (didInitSwupHooks || !swupInstance || !swupInstance.hooks) {
     return;
   }
 
-  swupBound = true;
+  didInitSwupHooks = true;
   swupInstance.hooks.on("page:view", (visit) => {
     runCallbacks(pageViewCallbacks, visit);
   });
@@ -45,7 +45,7 @@ const bindSwup = (swupInstance) => {
 
 const handleSwupReady = (event) => {
   const swupInstance = window.swup || event?.detail?.swup;
-  bindSwup(swupInstance);
+  initSwupHooks(swupInstance);
 };
 
 if (document.readyState === "loading") {
@@ -55,7 +55,7 @@ if (document.readyState === "loading") {
 }
 
 if (window.swup && window.swup.hooks) {
-  bindSwup(window.swup);
+  initSwupHooks(window.swup);
 } else {
   window.addEventListener("redefine:swup:ready", handleSwupReady, {
     once: true,
