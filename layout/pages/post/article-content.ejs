@@ -53,9 +53,11 @@
 		<% } %>
 
 		<% if (page?.expires && page?.expires !== "") {%>
-		<div class="article-expire mt-4 mx-2 sm:mx-6 md:mx-8 note p-4 rounded-lg red icon hidden" id="expiration-container" data-expires="<%= page?.expires %>" data-updated="<%= page?.updated %>">
-			<i class="expire-icon fa-solid fa-timer mr-0.5 text-red-600 dark:text-red-400"></i>
-			<span class="expire-label text-red-600 dark:text-red-400 " id="expiration-date"><%= __('expired', "some") %></span>
+		<div class="article-expire mt-4 mx-2 sm:mx-6 md:mx-8 callout callout--simple red shadow-redefine-flat rounded-small bg-[color:var(--callout-bg-color)] p-4 hidden" id="expiration-container" data-expires="<%= page?.expires %>" data-updated="<%= page?.updated %>">
+			<div class="callout__body flex items-center gap-2">
+				<i class="expire-icon callout__icon fa-solid fa-timer text-[color:var(--callout-primary-color)] text-base shrink-0"></i>
+				<span class="expire-label text-[color:var(--callout-primary-color)]" id="expiration-date"><%= __('expired', "some") %></span>
+			</div>
 		</div>
 		<% } %>
 

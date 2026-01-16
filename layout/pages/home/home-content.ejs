@@ -4,7 +4,7 @@
             <li class="home-article-item">
 
                 <% if (post.sticky) { %>
-                    <div class="absolute top-[12px] right-[12px] text-[0.7rem] text-third-text-color rounded-medium bg-background-color-transparent-15 py-[2px] px-[10px] border border-border-color z-1 hover:text-first-text-color cursor-default">
+                    <div class="absolute top-[12px] right-[12px] text-[0.7rem] text-third-text-color rounded-medium bg-background-color-transparent-15 backdrop-blur-sm py-[2px] px-[10px] border border-border-color z-3 hover:text-first-text-color cursor-default">
                         <i class="fa-regular fa-thumbtack mr-[3px] text-[0.65rem]"></i><%- __('sticky') %>
                     </div>
                 <% } %>

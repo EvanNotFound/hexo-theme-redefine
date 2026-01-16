@@ -1,165 +1,57 @@
-.note-large
-  box-shadow var(--redefine-box-shadow-flat)
-  border-radius $redefine-border-radius-small
-  margin-bottom 2rem
-
-  .notel-content
-    border-radius 0 0 5px 5px
-    padding 15px
-    background-color var(--background-color)
-    line-height 2rem
-
-  p
-    margin 0
-
-.note-large.gray, .note-large.default
-  --callout-primary-color #A6A6A6
-  --callout-bg-color #A6A6A640
-
-.note-large.green, .note-large.success
-  --callout-primary-color #00C58E
-  --callout-bg-color #00C58E40
-
-.note-large.yellow, .note-large.warning
-  --callout-primary-color #FFD43B
-  --callout-bg-color #FFD43B40
-
-.note-large.red, .note-large.danger
-  --callout-primary-color #F85676
-  --callout-bg-color #F8567640
-
-.note-large.purple, .note-large.primary
-  --callout-primary-color #A763FF
-  --callout-bg-color #A763FF40
-
-.note-large.orange
-  --callout-primary-color #FFA940
-  --callout-bg-color #FFA94040
-
-.note-large.blue, .note-large.info
-  --callout-primary-color #2FD6F0
-  --callout-bg-color #2FD6F040
-
-// ---------------------notes 笔记模块---------------------
-.note
-  box-shadow var(--redefine-box-shadow-flat)
-  background-color var(--background-color)
-
-  p
-    display inline-block
-    margin 0
-    max-width 100%
-
-.note-icon
-  font-size 1rem
-  padding-right 10px
-  display inline-block
-
-.icon-padding
-  padding-left 15px !important
-
-.note.default
+.callout
   --callout-primary-color #A6A6A6
   --callout-bg-color #A6A6A610
+  --callout-bg-color-strong #A6A6A640
 
-  .note.icon
-    color #A6A6A6
+.callout.default, .callout.gray
+  --callout-primary-color #A6A6A6
+  --callout-bg-color #A6A6A610
+  --callout-bg-color-strong #A6A6A640
 
-.note.success
+.callout.success
   --callout-primary-color #00C58E
   --callout-bg-color #00C58E10
+  --callout-bg-color-strong #00C58E40
 
-  .note.icon
-    color #00C58E
-
-.note.warning
+.callout.warning, .callout.yellow
   --callout-primary-color #FFD43B
   --callout-bg-color #FFD43B10
+  --callout-bg-color-strong #FFD43B40
 
-  .note.icon
-    color #FFD43B
-
-.note.danger
+.callout.danger, .callout.red
   --callout-primary-color #F85676
   --callout-bg-color #F8567610
+  --callout-bg-color-strong #F8567640
 
-  .note.icon
-    color #F85676
-
-.note.primary
+.callout.primary, .callout.purple, .callout.question
   --callout-primary-color #A763FF
   --callout-bg-color #A763FF10
+  --callout-bg-color-strong #A763FF40
 
-  .note.icon
-    color #A763FF
-
-.note.orange
+.callout.orange
   --callout-primary-color #FFA940
   --callout-bg-color #FFA94010
+  --callout-bg-color-strong #FFA94040
 
-  .note.icon
-    color #FFA940
-
-.note.info
+.callout.info, .callout.blue
   --callout-primary-color #2FD6F0
   --callout-bg-color #2FD6F010
+  --callout-bg-color-strong #2FD6F040
 
-  .note.icon
-    color #2FD6F0
-
-// ------------------customizable colors------------------
-.note.blue
-  --callout-primary-color #2FD6F0
-  --callout-bg-color #2FD6F010
-
-  .note.icon
-    color #2FD6F0
-
-.note.gray
-  --callout-primary-color #A6A6A6
-  --callout-bg-color #A6A6A610
-
-  .note.icon
-    color #A6A6A6
-
-.note.yellow
-  --callout-primary-color #FFD43B
-  --callout-bg-color #FFD43B10
-
-  .note.icon
-    color #FFD43B
-
-.note.red
-  --callout-primary-color #F85676
-  --callout-bg-color #F8567610
-
-  .note.icon
-    color #F85676
-
-.note.question, .note.purple
-  --callout-primary-color #A763FF
-  --callout-bg-color #A763FF10
-
-  .note.icon
-    color #A763FF
-
-.note.red
-  --callout-primary-color #ff0739
-  --callout-bg-color #ff073910
-
-  .note.icon
-    color #ff0739
-
-.note.pink
-  --callout-primary-color #e44b8d
-  --callout-bg-color #e44b8d10
-
-  .note.icon
-    color #e44b8d
-
-.note.green, .note.tip
+.callout.green, .callout.tip
   --callout-primary-color #47da55
   --callout-bg-color #47da5510
+  --callout-bg-color-strong #47da5540
 
-  .note.icon
-    color #47da55
+.callout.pink
+  --callout-primary-color #e44b8d
+  --callout-bg-color #e44b8d10
+  --callout-bg-color-strong #e44b8d40
+
+.callout--titled.green
+  --callout-primary-color #00C58E
+  --callout-bg-color #00C58E10
+  --callout-bg-color-strong #00C58E40
+
+.callout .markdown-body > *:last-child
+  margin-bottom 0
