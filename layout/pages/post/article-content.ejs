@@ -53,10 +53,11 @@
 		<% } %>
 
 		<% if (page?.expires && page?.expires !== "") {%>
-		<div class="article-expire mt-4 mx-2 sm:mx-6 md:mx-8 callout callout--simple red shadow-redefine-flat rounded-small bg-[color:var(--callout-bg-color)] p-4 hidden" id="expiration-container" data-expires="<%= page?.expires %>" data-updated="<%= page?.updated %>">
-			<div class="callout__body flex items-center gap-2">
-				<i class="expire-icon callout__icon fa-solid fa-timer text-[color:var(--callout-primary-color)] text-base shrink-0"></i>
-				<span class="expire-label text-[color:var(--callout-primary-color)]" id="expiration-date"><%= __('expired', "some") %></span>
+		<div class="article-expire mt-4 mx-2 sm:mx-6 md:mx-8 callout callout--simple red mb-4 rounded-small shadow-redefine-flat bg-(--callout-bg-color) p-3 pl-1 relative flex flex-row gap-2 items-center" id="expiration-container" data-expires="<%= page?.expires %>" data-updated="<%= page?.updated %>">
+			<div role="none" class="rounded-full self-stretch w-0.5 bg-(--callout-primary-color) shrink-0"></div>
+			<i class="expire-icon callout__icon fa-solid fa-timer text-(--callout-primary-color) text-base shrink-0"></i>
+			<div class="callout__content markdown-body flex-1 min-w-0">
+				<span class="expire-label text-(--callout-primary-color)" id="expiration-date"><%= __('expired', "some") %></span>
 			</div>
 		</div>
 		<% } %>
