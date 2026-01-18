@@ -1,49 +1,39 @@
-export function initMasonry() {
-  var loadingPlaceholder = document.querySelector(".loading-placeholder");
-  var masonryContainer = document.querySelector("#masonry-container");
-  if (!loadingPlaceholder || !masonryContainer) return;
+const initializedContainers = new WeakSet();
+
+export default function initMasonry({ signal } = {}) {
+  const loadingPlaceholder = document.querySelector(".loading-placeholder");
+  const masonryContainer = document.querySelector("#masonry-container");
+  if (!loadingPlaceholder || !masonryContainer) {
+    return;
+  }
+
+  if (initializedContainers.has(masonryContainer)) {
+    return;
+  }
+  initializedContainers.add(masonryContainer);
+
+  if (typeof MiniMasonry === "undefined") {
+    console.error("MiniMasonry is not available.");
+    return;
+  }
 
   loadingPlaceholder.style.display = "block";
   masonryContainer.style.display = "none";
 
-  var images = document.querySelectorAll(
+  const images = document.querySelectorAll(
     "#masonry-container .masonry-item img",
   );
-  var loadedCount = 0;
+  let loadedCount = 0;
 
-  function onImageLoad() {
-    loadedCount++;
-    if (loadedCount === images.length) {
-      initializeMasonryLayout();
-    }
-  }
-
-  for (var i = 0; i < images.length; i++) {
-    var img = images[i];
-    if (img.complete) {
-      onImageLoad();
-    } else {
-      img.addEventListener("load", onImageLoad);
-    }
-  }
-
-  if (loadedCount === images.length) {
-    initializeMasonryLayout();
-  }
-  function initializeMasonryLayout() {
+  const initializeMasonryLayout = () => {
     loadingPlaceholder.style.opacity = 0;
     setTimeout(() => {
       loadingPlaceholder.style.display = "none";
       masonryContainer.style.display = "block";
-      var screenWidth = window.innerWidth;
-      var baseWidth;
-      if (screenWidth >= 768) {
-        baseWidth = 255;
-      } else {
-        baseWidth = 150;
-      }
-      var masonry = new MiniMasonry({
-        baseWidth: baseWidth,
+      const screenWidth = window.innerWidth;
+      const baseWidth = screenWidth >= 768 ? 255 : 150;
+      const masonry = new MiniMasonry({
+        baseWidth,
         container: masonryContainer,
         gutterX: 10,
         gutterY: 10,
@@ -52,13 +42,28 @@ export function initMasonry() {
       masonry.layout();
       masonryContainer.style.opacity = 1;
     }, 100);
+  };
+
+  const onImageLoad = () => {
+    loadedCount += 1;
+    if (loadedCount === images.length) {
+      initializeMasonryLayout();
+    }
+  };
+
+  images.forEach((img) => {
+    if (img.complete) {
+      onImageLoad();
+      return;
+    }
+    if (signal) {
+      img.addEventListener("load", onImageLoad, { signal });
+    } else {
+      img.addEventListener("load", onImageLoad);
+    }
+  });
+
+  if (loadedCount === images.length) {
+    initializeMasonryLayout();
   }
-}
-
-if (data.masonry) {
-  try {
-    swup.hooks.on("page:view", initMasonry);
-  } catch (e) {}
-
-  document.addEventListener("DOMContentLoaded", initMasonry);
 }

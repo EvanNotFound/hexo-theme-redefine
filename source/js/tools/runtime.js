@@ -1,28 +1,46 @@
+let runtimeActive = false;
+
 const footerRuntime = () => {
+  if (!runtimeActive) {
+    return;
+  }
+
   const startTime = theme.footerStart;
-  window.setTimeout(footerRuntime, 1000); // passing function reference instead of string
+  if (!startTime) {
+    runtimeActive = false;
+    return;
+  }
 
-  const X = new Date(startTime);
-  const Y = new Date();
-  const T = Y.getTime() - X.getTime();
-  const M = 24 * 60 * 60 * 1000;
-  const a = T / M;
-  const A = Math.floor(a);
-  const b = (a - A) * 24;
-  const B = Math.floor(b);
-  const c = (b - B) * 60;
-  const C = Math.floor((b - B) * 60);
-  const D = Math.floor((c - C) * 60);
+  window.setTimeout(footerRuntime, 1000);
 
-  const runtime_days = document.getElementById("runtime_days");
-  const runtime_hours = document.getElementById("runtime_hours");
-  const runtime_minutes = document.getElementById("runtime_minutes");
-  const runtime_seconds = document.getElementById("runtime_seconds");
+  const startDate = new Date(startTime);
+  const nowDate = new Date();
+  const diff = nowDate.getTime() - startDate.getTime();
+  const dayMs = 24 * 60 * 60 * 1000;
+  const daysFloat = diff / dayMs;
+  const days = Math.floor(daysFloat);
+  const hoursFloat = (daysFloat - days) * 24;
+  const hours = Math.floor(hoursFloat);
+  const minutesFloat = (hoursFloat - hours) * 60;
+  const minutes = Math.floor(minutesFloat);
+  const seconds = Math.floor((minutesFloat - minutes) * 60);
 
-  if (runtime_days) runtime_days.innerHTML = A;
-  if (runtime_hours) runtime_hours.innerHTML = B;
-  if (runtime_minutes) runtime_minutes.innerHTML = C;
-  if (runtime_seconds) runtime_seconds.innerHTML = D;
+  const runtimeDays = document.getElementById("runtime_days");
+  const runtimeHours = document.getElementById("runtime_hours");
+  const runtimeMinutes = document.getElementById("runtime_minutes");
+  const runtimeSeconds = document.getElementById("runtime_seconds");
+
+  if (runtimeDays) runtimeDays.innerHTML = days;
+  if (runtimeHours) runtimeHours.innerHTML = hours;
+  if (runtimeMinutes) runtimeMinutes.innerHTML = minutes;
+  if (runtimeSeconds) runtimeSeconds.innerHTML = seconds;
 };
 
-window.addEventListener("DOMContentLoaded", footerRuntime);
+export default function initFooterRuntime() {
+  if (runtimeActive) {
+    return;
+  }
+
+  runtimeActive = true;
+  footerRuntime();
+}

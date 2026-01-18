@@ -2,6 +2,9 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@source "../layout/**/*.ejs";
+@source "../scripts/**/*.js";
+
 @theme {
   --spacing-unit: 38px;
 

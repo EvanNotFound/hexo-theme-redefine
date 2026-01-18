@@ -33,8 +33,60 @@ hexo.extend.helper.register("export_config", function () {
     navbar: this.theme.navbar,
     page_templates: this.theme.page_templates,
     home: this.theme.home,
+    footer: this.theme.footer,
 
-    footerStart: this.theme.footer.start,
+    footerStart: this.theme.footer?.start,
+  };
+
+  const normalizeSubtitle = (subtitle) => {
+    if (Array.isArray(subtitle)) {
+      return {
+        text: subtitle,
+      };
+    }
+
+    const normalized = {
+      ...(subtitle || {}),
+    };
+    const text = normalized.text;
+
+    if (Array.isArray(text)) {
+      normalized.text = text;
+    } else if (text) {
+      normalized.text = [text];
+    } else {
+      normalized.text = [];
+    }
+
+    return normalized;
+  };
+
+  const normalizeMermaidTheme = (plugins = {}) => {
+    const mermaidConfig = plugins.mermaid || {};
+    const themeConfig = mermaidConfig.theme || {};
+    const legacyTheme = this.theme?.mermaid?.style || {};
+
+    return {
+      light: themeConfig.light || legacyTheme.light || "default",
+      dark: themeConfig.dark || legacyTheme.dark || "dark",
+    };
+  };
+
+  theme_config.home_banner = {
+    ...(theme_config.home_banner || {}),
+    subtitle: normalizeSubtitle(theme_config.home_banner?.subtitle),
+  };
+
+  const mermaidTheme = normalizeMermaidTheme(theme_config.plugins || {});
+  theme_config.plugins = {
+    ...(theme_config.plugins || {}),
+    mermaid: {
+      ...(theme_config.plugins?.mermaid || {}),
+      theme: mermaidTheme,
+    },
+  };
+  theme_config.mermaid = {
+    style: mermaidTheme,
   };
 
   const languageDir = path.join(__dirname, "../languages");
