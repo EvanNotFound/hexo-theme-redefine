@@ -28,6 +28,9 @@ archives: Archivos
 top: PRINCIPAL
 sticky: Fijado
 go-back-home: Volver al inicio
+masonry_loading: Cargando fotos...
+image_viewer: Visor de imágenes
+close: Cerrar
 
 # ----------------------------------------
 # Traducción del menú

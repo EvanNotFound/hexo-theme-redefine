@@ -1,6 +1,8 @@
 const viewerState = {
   isBigImage: false,
   scale: 1,
+  fitScale: 1,
+  userZoomed: false,
   isMouseDown: false,
   dragged: false,
   currentImgIndex: 0,
@@ -15,6 +17,12 @@ const viewerState = {
 const imageSelector =
   ".markdown-body img, .masonry-item img, #shuoshuo-content img";
 
+const viewerControls = {
+  prevButton: null,
+  nextButton: null,
+  closeButton: null,
+};
+
 let imageNodes = [];
 let didInitKeys = false;
 
@@ -26,11 +34,57 @@ const applyTransform = () => {
   viewerState.targetImg.style.transform = `translate(${viewerState.translateX}px, ${viewerState.translateY}px) scale(${viewerState.scale})`;
 };
 
-const resetTransform = () => {
+const getFrameRect = () => {
+  if (!viewerState.maskDom) {
+    return null;
+  }
+
+  const frame = viewerState.maskDom.querySelector(".image-viewer-frame");
+  if (frame) {
+    return frame.getBoundingClientRect();
+  }
+
+  return viewerState.maskDom.getBoundingClientRect();
+};
+
+const fitToViewport = (options = {}) => {
+  if (!viewerState.targetImg) {
+    return;
+  }
+
+  const rect = getFrameRect();
+  if (!rect) {
+    return;
+  }
+
+  const marginFactor = options.marginFactor ?? 0.98;
+
   viewerState.scale = 1;
   viewerState.translateX = 0;
   viewerState.translateY = 0;
   applyTransform();
+
+  const imageRect = viewerState.targetImg.getBoundingClientRect();
+  if (!imageRect.width || !imageRect.height) {
+    return;
+  }
+
+  const heightLimit = window.innerHeight * marginFactor;
+  const widthLimit = window.innerWidth;
+  const scaleForHeight = heightLimit / imageRect.height;
+  const scaleForWidth = widthLimit / imageRect.width;
+  const fitScale = Math.min(1, scaleForHeight, scaleForWidth);
+
+  viewerState.fitScale = fitScale;
+  viewerState.scale = fitScale;
+  viewerState.translateX = 0;
+  viewerState.translateY = 0;
+  viewerState.userZoomed = false;
+  applyTransform();
+};
+
+const resetTransform = () => {
+  fitToViewport();
 };
 
 const showHandle = (isShow) => {
@@ -50,6 +104,78 @@ const closeViewer = () => {
   viewerState.isBigImage = false;
   showHandle(false);
   resetTransform();
+  viewerState.userZoomed = false;
+};
+
+const updateImageNodes = () => {
+  imageNodes = Array.from(document.querySelectorAll(imageSelector));
+};
+
+const canGoPrev = () => viewerState.currentImgIndex > 0;
+const canGoNext = () =>
+  viewerState.currentImgIndex < Math.max(imageNodes.length - 1, 0);
+
+const updateNavButtons = () => {
+  if (!viewerControls.prevButton || !viewerControls.nextButton) {
+    return;
+  }
+
+  viewerControls.prevButton.classList.toggle("is-disabled", !canGoPrev());
+  viewerControls.nextButton.classList.toggle("is-disabled", !canGoNext());
+};
+
+const updateViewerImage = (index) => {
+  const currentImg = imageNodes[index];
+  if (!currentImg || !viewerState.targetImg) {
+    return;
+  }
+
+  viewerState.currentImgIndex = index;
+
+  let newSrc = currentImg.src;
+  if (currentImg.hasAttribute("lazyload")) {
+    newSrc = currentImg.getAttribute("data-src") || newSrc;
+    if (newSrc) {
+      currentImg.src = newSrc;
+    }
+    currentImg.removeAttribute("lazyload");
+  }
+
+  if (newSrc) {
+    viewerState.targetImg.src = newSrc;
+  }
+  viewerState.targetImg.alt = currentImg.alt || "";
+
+  const handleImageLoad = () => {
+    viewerState.targetImg?.removeEventListener("load", handleImageLoad);
+    fitToViewport();
+  };
+
+  if (viewerState.targetImg.complete) {
+    fitToViewport();
+  } else {
+    viewerState.targetImg.addEventListener("load", handleImageLoad, {
+      once: true,
+    });
+  }
+  updateNavButtons();
+};
+
+
+const goPrev = () => {
+  if (!viewerState.isBigImage || !canGoPrev()) {
+    return;
+  }
+
+  updateViewerImage(viewerState.currentImgIndex - 1);
+};
+
+const goNext = () => {
+  if (!viewerState.isBigImage || !canGoNext()) {
+    return;
+  }
+
+  updateViewerImage(viewerState.currentImgIndex + 1);
 };
 
 const handleArrowKeys = (event) => {
@@ -58,38 +184,21 @@ const handleArrowKeys = (event) => {
   }
 
   if (event.key === "Escape") {
+    event.preventDefault();
     closeViewer();
     return;
   }
 
   if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
-    viewerState.currentImgIndex =
-      (viewerState.currentImgIndex - 1 + imageNodes.length) %
-      imageNodes.length;
-  } else if (event.key === "ArrowDown" || event.key === "ArrowRight") {
-    viewerState.currentImgIndex =
-      (viewerState.currentImgIndex + 1) % imageNodes.length;
-  } else {
+    event.preventDefault();
+    goPrev();
     return;
   }
 
-  const currentImg = imageNodes[viewerState.currentImgIndex];
-  if (!currentImg || !viewerState.targetImg) {
-    return;
+  if (event.key === "ArrowDown" || event.key === "ArrowRight") {
+    event.preventDefault();
+    goNext();
   }
-
-  let newSrc = currentImg.src;
-  if (currentImg.hasAttribute("lazyload")) {
-    newSrc = currentImg.getAttribute("data-src");
-    currentImg.src = newSrc;
-    currentImg.removeAttribute("lazyload");
-  }
-
-  viewerState.targetImg.src = newSrc;
-};
-
-const updateImageNodes = () => {
-  imageNodes = Array.from(document.querySelectorAll(imageSelector));
 };
 
 const registerGlobalHandlers = (signal) => {
@@ -126,10 +235,18 @@ export default function initImageViewer({ signal, appSignal } = {}) {
   viewerState.targetImg = targetImg;
   viewerState.dragged = false;
 
+  viewerControls.prevButton = maskDom.querySelector(".image-viewer-prev");
+  viewerControls.nextButton = maskDom.querySelector(".image-viewer-next");
+  viewerControls.closeButton = maskDom.querySelector(".image-viewer-close");
+
   updateImageNodes();
   registerGlobalHandlers(appSignal);
+  updateNavButtons();
 
   const zoomHandle = (event) => {
+    if (!event.ctrlKey) {
+      return;
+    }
     event.preventDefault();
     if (!viewerState.targetImg) {
       return;
@@ -141,9 +258,12 @@ export default function initImageViewer({ signal, appSignal } = {}) {
     const dx = offsetX - rect.width / 2;
     const dy = offsetY - rect.height / 2;
     const oldScale = viewerState.scale;
+    const minScale = Math.max(0.2, viewerState.fitScale * 0.8);
+    const maxScale = Math.min(8, viewerState.fitScale * 4);
 
     viewerState.scale += event.deltaY * -0.001;
-    viewerState.scale = Math.min(Math.max(0.8, viewerState.scale), 4);
+    viewerState.scale = Math.min(Math.max(minScale, viewerState.scale), maxScale);
+    viewerState.userZoomed = Math.abs(viewerState.scale - viewerState.fitScale) > 0.01;
 
     if (oldScale < viewerState.scale) {
       viewerState.translateX -= dx * (viewerState.scale - oldScale);
@@ -162,6 +282,7 @@ export default function initImageViewer({ signal, appSignal } = {}) {
     viewerState.lastMouseX = event.clientX;
     viewerState.lastMouseY = event.clientY;
     viewerState.targetImg.style.cursor = "grabbing";
+    viewerState.userZoomed = true;
   };
 
   let lastTime = 0;
@@ -193,6 +314,7 @@ export default function initImageViewer({ signal, appSignal } = {}) {
       event.stopPropagation();
     }
     viewerState.isMouseDown = false;
+    viewerState.dragged = false;
     viewerState.targetImg.style.cursor = "grab";
   };
 
@@ -204,25 +326,44 @@ export default function initImageViewer({ signal, appSignal } = {}) {
 
     updateImageNodes();
     const index = imageNodes.indexOf(img);
-    viewerState.currentImgIndex = index === -1 ? 0 : index;
     viewerState.isBigImage = true;
+    viewerState.dragged = false;
+    viewerState.userZoomed = false;
     showHandle(true);
-
-    let newSrc = img.src;
-    if (img.hasAttribute("lazyload")) {
-      newSrc = img.getAttribute("data-src");
-      img.src = newSrc;
-      img.removeAttribute("lazyload");
-    }
-
-    viewerState.targetImg.src = newSrc;
+    updateViewerImage(index === -1 ? 0 : index);
   };
 
-  const handleMaskClick = () => {
+  const handleMaskClick = (event) => {
+    if (event.target !== maskDom) {
+      return;
+    }
+
     if (!viewerState.dragged) {
       closeViewer();
     }
     viewerState.dragged = false;
+  };
+
+  const handlePrevClick = (event) => {
+    event.stopPropagation();
+    goPrev();
+  };
+
+  const handleNextClick = (event) => {
+    event.stopPropagation();
+    goNext();
+  };
+
+  const handleCloseClick = (event) => {
+    event.stopPropagation();
+    closeViewer();
+  };
+
+  const handleResize = () => {
+    if (!viewerState.isBigImage || viewerState.userZoomed) {
+      return;
+    }
+    fitToViewport();
   };
 
   if (signal) {
@@ -247,7 +388,17 @@ export default function initImageViewer({ signal, appSignal } = {}) {
       signal,
     });
     maskDom.addEventListener("click", handleMaskClick, { signal });
+    window.addEventListener("resize", handleResize, { signal });
     document.addEventListener("click", handleImageClick, { signal });
+    viewerControls.prevButton?.addEventListener("click", handlePrevClick, {
+      signal,
+    });
+    viewerControls.nextButton?.addEventListener("click", handleNextClick, {
+      signal,
+    });
+    viewerControls.closeButton?.addEventListener("click", handleCloseClick, {
+      signal,
+    });
   } else {
     targetImg.addEventListener("wheel", zoomHandle, { passive: false });
     targetImg.addEventListener("mousedown", dragStartHandle, { passive: false });
@@ -255,6 +406,11 @@ export default function initImageViewer({ signal, appSignal } = {}) {
     targetImg.addEventListener("mouseup", dragEndHandle, { passive: false });
     targetImg.addEventListener("mouseleave", dragEndHandle, { passive: false });
     maskDom.addEventListener("click", handleMaskClick);
+    window.addEventListener("resize", handleResize);
     document.addEventListener("click", handleImageClick);
+    viewerControls.prevButton?.addEventListener("click", handlePrevClick);
+    viewerControls.nextButton?.addEventListener("click", handleNextClick);
+    viewerControls.closeButton?.addEventListener("click", handleCloseClick);
   }
+
 }

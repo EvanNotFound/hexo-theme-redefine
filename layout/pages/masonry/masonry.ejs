@@ -1,28 +1,14 @@
-<%
-// Define an array of images to display in the masonry layout
-const images = theme.masonry;
-%>
+<% const masonryDataUrl = url_for("masonry/data.json"); %>
 
 <h1 class="page-title-header">
 	<%- getPageTitle(page) %>
 </h1>
 
-<div class="loading-placeholder">
-	<div class="flex-grid generic-card">
-		<div class="card loading"></div>
-		<div class="card loading"></div>
-		<div class="card loading"></div>
-	</div>
+<div id="masonry-container" data-masonry-data-url="<%- masonryDataUrl %>"></div>
+
+<div class="masonry-loadmore is-hidden" id="masonry-loadmore" aria-live="polite">
+	<span class="masonry-spinner" aria-hidden="true"></span>
+	<span class="masonry-loadmore-text"><%= __('masonry_loading') %></span>
 </div>
 
-<div id="masonry-container">
-	<% images.forEach(function(image) { %>
-	<div class="masonry-item">
-		<div class="image-container">
-			<img src="<%- image.image %>" alt="<%- image.title %>">
-			<div class="image-title"><%- image.title %></div>
-			<div class="image-description"><%- image.description %></div>
-		</div>
-	</div>
-	<% }); %>
-</div>
+<div id="masonry-sentinel" aria-hidden="true"></div>

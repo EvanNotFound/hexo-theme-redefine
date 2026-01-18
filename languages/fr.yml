@@ -28,6 +28,9 @@ archives: Archives
 top: TOP
 sticky: Sticky
 go-back-home: Retour à l'accueil
+masonry_loading: Chargement des photos...
+image_viewer: Visionneuse d’images
+close: Fermer
 
 # ----------------------------------------
 # Traduction du menu

@@ -1,3 +1,14 @@
-<div class="image-viewer-container">
-	<img src="">
+<div class="image-viewer-container" role="dialog" aria-modal="true" aria-label="<%= __('image_viewer') %>">
+	<button class="image-viewer-close" type="button" aria-label="<%= __('close') %>">
+		<i class="fa-solid fa-xmark"></i>
+	</button>
+	<button class="image-viewer-prev" type="button" aria-label="<%= __('prev') %>">
+		<i class="fa-solid fa-chevron-left"></i>
+	</button>
+	<div class="image-viewer-frame">
+		<img src="" alt="">
+	</div>
+	<button class="image-viewer-next" type="button" aria-label="<%= __('next') %>">
+		<i class="fa-solid fa-chevron-right"></i>
+	</button>
 </div>

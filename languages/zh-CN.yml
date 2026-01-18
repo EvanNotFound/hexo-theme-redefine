@@ -25,6 +25,9 @@ comments: 评论
 top: 置顶
 sticky: 置顶
 go-back-home: 回到首页
+masonry_loading: 照片加载中...
+image_viewer: 图片查看器
+close: 关闭
 
 # ----------------------------------------
 # 菜单翻译
