@@ -1,14 +1,15 @@
 <% const masonryDataUrl = url_for("masonry/data.json"); %>
+<div class="py-8 sm:py-0">
+	<h1 class="page-title-header">
+		<%- getPageTitle(page) %>
+	</h1>
 
-<h1 class="page-title-header">
-	<%- getPageTitle(page) %>
-</h1>
+	<div id="masonry-container" data-masonry-data-url="<%- masonryDataUrl %>"></div>
 
-<div id="masonry-container" data-masonry-data-url="<%- masonryDataUrl %>"></div>
+	<div class="masonry-loadmore is-hidden" id="masonry-loadmore" aria-live="polite">
+		<span class="masonry-spinner" aria-hidden="true"></span>
+		<span class="masonry-loadmore-text"><%= __('masonry_loading') %></span>
+	</div>
 
-<div class="masonry-loadmore is-hidden" id="masonry-loadmore" aria-live="polite">
-	<span class="masonry-spinner" aria-hidden="true"></span>
-	<span class="masonry-loadmore-text"><%= __('masonry_loading') %></span>
+	<div id="masonry-sentinel" aria-hidden="true"></div>
 </div>
-
-<div id="masonry-sentinel" aria-hidden="true"></div>
