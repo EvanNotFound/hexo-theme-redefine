@@ -468,9 +468,9 @@ page_templates:
   # Tags page style
   tags_style: blur # blur, cloud
   # Masonry page batch size
-  masonry_batch_size: 12
-  # Masonry page initial batch size
-  masonry_initial_batch_size: 24
+  masonry:
+    batch_size: 12
+    initial_batch_size: 24
 # PAGE TEMPLATES <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 

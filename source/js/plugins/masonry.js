@@ -63,13 +63,22 @@ export default function initMasonry({ signal } = {}) {
   const dataUrl =
     masonryContainer.dataset.masonryDataUrl || `${getRoot()}masonry/data.json`;
   const batchSizeConfig = Number.parseInt(
-    window.theme?.page_templates?.masonry_batch_size,
+    window.theme?.page_templates?.masonry?.batch_size,
     10,
   );
   const initialBatchConfig = Number.parseInt(
-    window.theme?.page_templates?.masonry_initial_batch_size,
+    window.theme?.page_templates?.masonry?.initial_batch_size,
     10,
   );
+
+  if (!Number.isFinite(batchSizeConfig)) {
+    console.warn("[redefine] page_templates.masonry.batch_size is missing.");
+  }
+  if (!Number.isFinite(initialBatchConfig)) {
+    console.warn(
+      "[redefine] page_templates.masonry.initial_batch_size is missing.",
+    );
+  }
 
   if (!dataUrl) {
     console.warn("Masonry data url is missing.");

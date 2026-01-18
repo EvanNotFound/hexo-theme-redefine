@@ -277,6 +277,10 @@ export default function initImageViewer({ signal, appSignal } = {}) {
   };
 
   const dragStartHandle = (event) => {
+    if (viewerState.scale <= viewerState.fitScale + 0.01) {
+      return;
+    }
+
     event.preventDefault();
     viewerState.isMouseDown = true;
     viewerState.lastMouseX = event.clientX;
@@ -285,28 +289,37 @@ export default function initImageViewer({ signal, appSignal } = {}) {
     viewerState.userZoomed = true;
   };
 
-  let lastTime = 0;
-  const throttle = 100;
+  let rafId = null;
 
   const dragHandle = (event) => {
     if (!viewerState.isMouseDown) {
       return;
     }
 
-    const currentTime = new Date().getTime();
-    if (currentTime - lastTime < throttle) {
+    if (viewerState.scale <= viewerState.fitScale + 0.01) {
       return;
     }
-    lastTime = currentTime;
 
-    const deltaX = event.clientX - viewerState.lastMouseX;
-    const deltaY = event.clientY - viewerState.lastMouseY;
-    viewerState.translateX += deltaX;
-    viewerState.translateY += deltaY;
-    viewerState.lastMouseX = event.clientX;
-    viewerState.lastMouseY = event.clientY;
-    applyTransform();
-    viewerState.dragged = true;
+    const nextX = event.clientX;
+    const nextY = event.clientY;
+
+    if (rafId !== null) {
+      viewerState.lastMouseX = nextX;
+      viewerState.lastMouseY = nextY;
+      return;
+    }
+
+    rafId = window.requestAnimationFrame(() => {
+      const deltaX = nextX - viewerState.lastMouseX;
+      const deltaY = nextY - viewerState.lastMouseY;
+      viewerState.translateX += deltaX;
+      viewerState.translateY += deltaY;
+      viewerState.lastMouseX = nextX;
+      viewerState.lastMouseY = nextY;
+      applyTransform();
+      viewerState.dragged = true;
+      rafId = null;
+    });
   };
 
   const dragEndHandle = (event) => {
@@ -315,6 +328,10 @@ export default function initImageViewer({ signal, appSignal } = {}) {
     }
     viewerState.isMouseDown = false;
     viewerState.dragged = false;
+    if (rafId !== null) {
+      window.cancelAnimationFrame(rafId);
+      rafId = null;
+    }
     viewerState.targetImg.style.cursor = "grab";
   };
 
