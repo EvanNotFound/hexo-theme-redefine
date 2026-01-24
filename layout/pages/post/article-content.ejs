@@ -29,7 +29,7 @@
 
 		<% if (theme.info.author || config.author) { %>
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
-			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+			<div class="avatar w-[46px] h-[46px] shrink-0 rounded-medium border border-border-color p-px">
 				<%- image_tag((typeof page.avatar === "string" && (page.avatar)) || page.author?.avatar || theme.defaults.avatar) %>
 			</div>
 			<div class="info flex flex-col justify-between">
