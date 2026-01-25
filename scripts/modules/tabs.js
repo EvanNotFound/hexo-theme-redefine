@@ -66,7 +66,12 @@ function buildTabNavAndContent(matches, tabName, tabActive) {
     const { content: contentWithAplayerTag, aplayerTag } = processAplayerTag(postContent);
     const { content: contentWithFancyboxTag, fancyboxTag } = processFancyboxTag(contentWithAplayerTag);
 
-    const renderedContent = hexo.render.renderSync({ text: contentWithFancyboxTag, engine: 'markdown' }).trim();
+    /*
+    use nunjucks to pre-render the content and clear spaces at the beginning and end of each line.
+    Although it may result in the inability to create code blocks by using the line indentation syntax of markdown.
+    */
+    const preRendered = hexo.render.renderSync({ text: contentWithFancyboxTag, engine: 'nunjucks' }).split('\n').map(line => line.trim()).join('\n');
+    const renderedContent = hexo.render.renderSync({ text: preRendered, engine: 'markdown' }).trim();
 
     const finalContent = renderedContent.replace(/\<pre\>\<code\>.*@aplayerTag@.*\<\/code><\/pre>/, aplayerTag)
                                         .replace(/.*@fancyboxTag@.*/, fancyboxTag);
