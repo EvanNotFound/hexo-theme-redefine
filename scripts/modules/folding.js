@@ -5,9 +5,15 @@ const postFolding = (args, content) => {
   const delimiter = args.join(' ').includes('::') ? '::' : ',';
   const [style, title = ''] = args.join(' ').split(delimiter).map(arg => arg.trim());
   
+  //fixed issue#572 by removing spaces at the begining and the end of each line.
+  const preRendered = hexo.render.renderSync({ 
+    text: content, 
+    engine: 'nunjucks' 
+  }).split('\n').map(line => line.trim()).join('\n');
+
   // Render markdown content
   const renderedContent = hexo.render.renderSync({
-    text: content, 
+    text: preRendered, 
     engine: 'markdown'
   });
   
