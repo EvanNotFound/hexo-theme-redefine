@@ -5,6 +5,11 @@ hexo.extend.generator.register("masonry-data", function () {
   const masonryData =
     data?.masonry || data?.gallery || data?.photos || hexo.theme.config.masonry;
 
+  const toPositiveInt = (value) => {
+    const parsed = Number.parseInt(value, 10);
+    return Number.isFinite(parsed) && parsed > 0 ? parsed : null;
+  };
+
   const items = Array.isArray(masonryData)
     ? masonryData
         .map((entry) => {
@@ -17,11 +22,20 @@ hexo.extend.generator.register("masonry-data", function () {
             return null;
           }
 
-          return {
+          const width = toPositiveInt(entry.width ?? entry.w);
+          const height = toPositiveInt(entry.height ?? entry.h);
+          const item = {
             image,
             title: entry.title || "",
             description: entry.description || "",
           };
+
+          if (width && height) {
+            item.width = width;
+            item.height = height;
+          }
+
+          return item;
         })
         .filter(Boolean)
     : [];

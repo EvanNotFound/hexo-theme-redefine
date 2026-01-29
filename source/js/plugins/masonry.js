@@ -8,7 +8,8 @@ const getRoot = () => {
   return root.endsWith("/") ? root : `${root}/`;
 };
 
-const getLoadingPlaceholderSrc = () => `${getRoot()}images/loading.svg`;
+const getBlankPlaceholderSrc = () =>
+  "data:image/gif;base64,R0lGODlhAQABAAAAACw=";
 
 const getBaseWidth = () => {
   const screenWidth = window.innerWidth;
@@ -135,19 +136,39 @@ export default function initMasonry({ signal } = {}) {
     const imageContainer = document.createElement("div");
     imageContainer.className = "image-container";
 
+    const width = Number.parseInt(item.width, 10);
+    const height = Number.parseInt(item.height, 10);
+    const hasStableSize =
+      Number.isFinite(width) && Number.isFinite(height) && width > 0 && height > 0;
+    if (hasStableSize) {
+      imageContainer.classList.add("has-ratio");
+      imageContainer.style.setProperty(
+        "--masonry-aspect-ratio",
+        `${width} / ${height}`,
+      );
+    }
+
     const img = document.createElement("img");
     img.className = "masonry-img is-loading";
     img.alt = item.title || "";
+    if (hasStableSize) {
+      img.width = width;
+      img.height = height;
+    }
+    img.decoding = "async";
+    img.loading = "lazy";
     img.setAttribute("lazyload", "");
     img.setAttribute("data-src", item.image);
-    img.src = getLoadingPlaceholderSrc();
+    img.src = getBlankPlaceholderSrc();
 
     const handleImageLoaded = () => {
       if (img.hasAttribute("lazyload")) {
         return;
       }
       img.classList.remove("is-loading");
-      scheduleLayout();
+      if (!hasStableSize) {
+        scheduleLayout();
+      }
     };
 
     if (signal) {
@@ -192,6 +213,10 @@ export default function initMasonry({ signal } = {}) {
   };
 
   const appendBatch = (count) => {
+    if (signal?.aborted || !masonryContainer.isConnected) {
+      return false;
+    }
+
     const batch = items.slice(cursor, cursor + count);
     if (batch.length === 0) {
       return false;
@@ -210,6 +235,10 @@ export default function initMasonry({ signal } = {}) {
 
   const loadNextBatch = () => {
     if (isLoading) {
+      return;
+    }
+
+    if (signal?.aborted || !masonryContainer.isConnected) {
       return;
     }
 
@@ -257,16 +286,17 @@ export default function initMasonry({ signal } = {}) {
   }
 
   const init = async () => {
-    toggleLoading(true);
     try {
-      const response = await fetch(dataUrl);
+      const response = await fetch(dataUrl, signal ? { signal } : undefined);
       if (!response.ok) {
         throw new Error(`Request failed with status ${response.status}`);
       }
       items = await response.json();
     } catch (error) {
+      if (signal?.aborted || error?.name === "AbortError") {
+        return;
+      }
       console.error("Failed to load masonry data:", error);
-      toggleLoading(false);
       if (sentinelDom) {
         sentinelDom.remove();
       }
@@ -274,15 +304,17 @@ export default function initMasonry({ signal } = {}) {
     }
 
     if (!Array.isArray(items) || items.length === 0) {
-      toggleLoading(false);
       if (sentinelDom) {
         sentinelDom.remove();
       }
       return;
     }
 
+    if (signal?.aborted || !masonryContainer.isConnected) {
+      return;
+    }
+
     appendBatch(initialBatch);
-    toggleLoading(false);
 
     if (cursor < items.length) {
       if (sentinelDom && sentinelObserver) {
