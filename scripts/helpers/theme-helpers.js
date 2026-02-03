@@ -102,10 +102,12 @@ hexo.extend.helper.register("renderJS", function (path, options = {}) {
   const _js = hexo.extend.helper.get("js").bind(hexo);
   const { module = false, async = false, swupReload = false } = options;
 
+  const isDeveloperMode = this.theme.developer?.enable === true;
+
   if (Array.isArray(path)) {
-    path = path.map((p) => "js/build/" + p);
+    path = path.map((p) => (isDeveloperMode ? "js/" : "js/build/") + p);
   } else {
-    path = "js/build/" + path;
+    path = (isDeveloperMode ? "js/" : "js/build/") + path;
   }
 
   const cdnProviders = {
