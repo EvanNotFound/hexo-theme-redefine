@@ -275,6 +275,11 @@ export default function initMasonry({ signal } = {}) {
     scheduleLayout();
   };
 
+  const removeMinHScreen = () => {
+    console.log("removeMinHScreen");
+    masonryContainer.classList.remove("min-h-screen!");
+  };
+
   if (signal) {
     window.addEventListener("resize", handleResize, { signal });
     signal.addEventListener("abort", () => {
@@ -315,6 +320,7 @@ export default function initMasonry({ signal } = {}) {
     }
 
     appendBatch(initialBatch);
+    removeMinHScreen();
 
     if (cursor < items.length) {
       if (sentinelDom && sentinelObserver) {
