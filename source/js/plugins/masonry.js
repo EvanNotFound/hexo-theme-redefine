@@ -161,6 +161,8 @@ export default function initMasonry({ signal } = {}) {
     img.setAttribute("data-src", item.image);
     img.src = getBlankPlaceholderSrc();
 
+    img.dataset.exif = item?.exif ? "true" : "false";
+
     const handleImageLoaded = () => {
       if (img.hasAttribute("lazyload")) {
         return;

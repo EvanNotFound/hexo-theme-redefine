@@ -23,6 +23,15 @@ const viewerControls = {
   closeButton: null,
 };
 
+const exifControls = {
+  toggleButton: null,
+  panel: null,
+  cardsContainer: null,
+  closeButton: null,
+  cardTemplate: null,
+  requestId: 0,
+};
+
 let imageNodes = [];
 let didInitKeys = false;
 
@@ -105,6 +114,7 @@ const closeViewer = () => {
   showHandle(false);
   resetTransform();
   viewerState.userZoomed = false;
+  resetExifUI();
 };
 
 const updateImageNodes = () => {
@@ -122,6 +132,254 @@ const updateNavButtons = () => {
 
   viewerControls.prevButton.classList.toggle("is-disabled", !canGoPrev());
   viewerControls.nextButton.classList.toggle("is-disabled", !canGoNext());
+};
+
+const hasExifFlag = (img) => img?.dataset?.exif === "true";
+
+const resolveExifImageUrl = (img) => {
+  if (!img) {
+    return null;
+  }
+
+  const dataSrc = img.getAttribute("data-src");
+  const src = dataSrc || img.currentSrc || img.src;
+  if (!src) {
+    return null;
+  }
+
+  try {
+    return new URL(src, window.location.href).toString();
+  } catch (error) {
+    return src;
+  }
+};
+
+const formatExifValue = (tag) => {
+  if (!tag) {
+    return null;
+  }
+
+  if (typeof tag === "object") {
+    if (tag.description != null) {
+      return String(tag.description).trim();
+    }
+    if (tag.value != null) {
+      if (Array.isArray(tag.value)) {
+        return tag.value.map((item) => String(item)).join(", ").trim();
+      }
+      return String(tag.value).trim();
+    }
+  }
+
+  if (typeof tag === "string") {
+    return tag.trim();
+  }
+
+  return String(tag).trim();
+};
+
+const buildExifCards = (tags) => {
+  if (!tags) {
+    return [];
+  }
+
+  const cards = [];
+  const make = formatExifValue(tags.Make);
+  const model = formatExifValue(tags.Model);
+  const camera = [make, model].filter(Boolean).join(" ");
+  if (camera) {
+    cards.push({ label: "Camera", value: camera });
+  }
+
+  const lens = formatExifValue(tags.LensModel);
+  if (lens) {
+    cards.push({ label: "Lens", value: lens });
+  }
+
+  const dateTaken =
+    formatExifValue(tags.DateTimeOriginal) || formatExifValue(tags.DateTime);
+  if (dateTaken) {
+    cards.push({ label: "Date Taken", value: dateTaken });
+  }
+
+  const focalLength = formatExifValue(tags.FocalLength);
+  if (focalLength) {
+    cards.push({ label: "Focal Length", value: focalLength });
+  }
+
+  const aperture = formatExifValue(tags.FNumber);
+  if (aperture) {
+    cards.push({ label: "Aperture", value: aperture });
+  }
+
+  const shutter = formatExifValue(tags.ExposureTime);
+  if (shutter) {
+    cards.push({ label: "Shutter", value: shutter });
+  }
+
+  const iso = formatExifValue(tags.ISO);
+  if (iso) {
+    cards.push({ label: "ISO", value: iso });
+  }
+
+  return cards;
+};
+
+const setExifPanelOpen = (isOpen) => {
+  if (!exifControls.panel || !exifControls.toggleButton) {
+    return;
+  }
+
+  exifControls.panel.classList.toggle("hidden", !isOpen);
+  exifControls.panel.setAttribute("aria-hidden", isOpen ? "false" : "true");
+  exifControls.toggleButton.setAttribute(
+    "aria-expanded",
+    isOpen ? "true" : "false",
+  );
+};
+
+const clearExifCards = () => {
+  if (!exifControls.cardsContainer) {
+    return;
+  }
+  exifControls.cardsContainer.innerHTML = "";
+};
+
+const createExifCard = (label, value) => {
+  const template = exifControls.cardTemplate;
+  const templateCard = template?.content?.firstElementChild;
+  if (templateCard) {
+    const card = templateCard.cloneNode(true);
+    const labelDom = card.querySelector(".image-viewer-exif-label");
+    const valueDom = card.querySelector(".image-viewer-exif-value");
+    if (labelDom) {
+      labelDom.textContent = label;
+    }
+    if (valueDom) {
+      valueDom.textContent = value;
+    }
+    return card;
+  }
+
+  const fallback = document.createElement("div");
+  fallback.className =
+    "rounded-lg border border-border-color bg-background-color-transparent-80 px-3 py-2 shadow-redefine-flat";
+  const labelDom = document.createElement("div");
+  labelDom.className =
+    "image-viewer-exif-label text-[0.65rem] uppercase tracking-wide text-third-text-color";
+  labelDom.textContent = label;
+  const valueDom = document.createElement("div");
+  valueDom.className = "image-viewer-exif-value text-sm text-first-text-color";
+  valueDom.textContent = value;
+  fallback.appendChild(labelDom);
+  fallback.appendChild(valueDom);
+  return fallback;
+};
+
+const renderExifCards = (cards) => {
+  if (!exifControls.cardsContainer) {
+    return;
+  }
+
+  clearExifCards();
+  const normalized = Array.isArray(cards)
+    ? cards
+        .map((card) => {
+          if (!card || typeof card !== "object") {
+            return null;
+          }
+          const label = String(card.label || "").trim();
+          const value = String(card.value || "").trim();
+          if (!label || !value) {
+            return null;
+          }
+          return { label, value };
+        })
+        .filter(Boolean)
+    : [];
+
+  const finalCards = normalized.length
+    ? normalized
+    : [{ label: "EXIF", value: "No EXIF available" }];
+
+  const fragment = document.createDocumentFragment();
+  finalCards.forEach((card) => {
+    fragment.appendChild(createExifCard(card.label, card.value));
+  });
+  exifControls.cardsContainer.appendChild(fragment);
+};
+
+const bumpExifRequestId = () => {
+  exifControls.requestId = (exifControls.requestId || 0) + 1;
+  return exifControls.requestId;
+};
+
+const renderExifMessage = (message) => {
+  renderExifCards([{ label: "EXIF", value: message }]);
+};
+
+const loadExifForImage = async (img) => {
+  const requestId = bumpExifRequestId();
+  renderExifMessage("Loading...");
+
+  const ExifReader = window.ExifReader;
+  if (!ExifReader || typeof ExifReader.load !== "function") {
+    if (exifControls.requestId !== requestId) {
+      return;
+    }
+    renderExifMessage("EXIF library not loaded");
+    return;
+  }
+
+  const url = resolveExifImageUrl(img);
+  if (!url) {
+    if (exifControls.requestId !== requestId) {
+      return;
+    }
+    renderExifMessage("Image source unavailable");
+    return;
+  }
+
+  try {
+    const tags = await ExifReader.load(url);
+    if (exifControls.requestId !== requestId) {
+      return;
+    }
+    const cards = buildExifCards(tags);
+    if (cards.length === 0) {
+      renderExifMessage("No EXIF available");
+      return;
+    }
+    renderExifCards(cards);
+  } catch (error) {
+    if (exifControls.requestId !== requestId) {
+      return;
+    }
+    renderExifMessage("EXIF unavailable (blocked by CORS or missing metadata)");
+  }
+};
+
+const updateExifUI = (img) => {
+  const hasExif = hasExifFlag(img);
+  bumpExifRequestId();
+
+  if (exifControls.toggleButton) {
+    exifControls.toggleButton.classList.toggle("hidden", !hasExif);
+    exifControls.toggleButton.disabled = !hasExif;
+  }
+
+  setExifPanelOpen(false);
+  clearExifCards();
+};
+
+const resetExifUI = () => {
+  bumpExifRequestId();
+  if (exifControls.toggleButton) {
+    exifControls.toggleButton.classList.add("hidden");
+    exifControls.toggleButton.setAttribute("aria-expanded", "false");
+  }
+  setExifPanelOpen(false);
+  clearExifCards();
 };
 
 const updateViewerImage = (index) => {
@@ -159,6 +417,7 @@ const updateViewerImage = (index) => {
     });
   }
   updateNavButtons();
+  updateExifUI(currentImg);
 };
 
 
@@ -239,9 +498,22 @@ export default function initImageViewer({ signal, appSignal } = {}) {
   viewerControls.nextButton = maskDom.querySelector(".image-viewer-next");
   viewerControls.closeButton = maskDom.querySelector(".image-viewer-close");
 
+  exifControls.toggleButton = maskDom.querySelector(".image-viewer-exif-toggle");
+  exifControls.panel = maskDom.querySelector(".image-viewer-exif-panel");
+  exifControls.cardsContainer = maskDom.querySelector(
+    ".image-viewer-exif-cards",
+  );
+  exifControls.closeButton = maskDom.querySelector(
+    ".image-viewer-exif-close",
+  );
+  exifControls.cardTemplate = maskDom.querySelector(
+    ".image-viewer-exif-card-template",
+  );
+
   updateImageNodes();
   registerGlobalHandlers(appSignal);
   updateNavButtons();
+  resetExifUI();
 
   const zoomHandle = (event) => {
     if (!event.ctrlKey) {
@@ -376,6 +648,31 @@ export default function initImageViewer({ signal, appSignal } = {}) {
     closeViewer();
   };
 
+  const handleExifToggle = (event) => {
+    event.stopPropagation();
+    if (!exifControls.panel) {
+      return;
+    }
+    const isOpen = !exifControls.panel.classList.contains("hidden");
+    if (isOpen) {
+      setExifPanelOpen(false);
+      return;
+    }
+
+    setExifPanelOpen(true);
+    const currentImg = imageNodes[viewerState.currentImgIndex];
+    if (!hasExifFlag(currentImg)) {
+      renderExifMessage("EXIF unavailable");
+      return;
+    }
+    loadExifForImage(currentImg);
+  };
+
+  const handleExifClose = (event) => {
+    event.stopPropagation();
+    setExifPanelOpen(false);
+  };
+
   const handleResize = () => {
     if (!viewerState.isBigImage || viewerState.userZoomed) {
       return;
@@ -416,6 +713,12 @@ export default function initImageViewer({ signal, appSignal } = {}) {
     viewerControls.closeButton?.addEventListener("click", handleCloseClick, {
       signal,
     });
+    exifControls.toggleButton?.addEventListener("click", handleExifToggle, {
+      signal,
+    });
+    exifControls.closeButton?.addEventListener("click", handleExifClose, {
+      signal,
+    });
   } else {
     targetImg.addEventListener("wheel", zoomHandle, { passive: false });
     targetImg.addEventListener("mousedown", dragStartHandle, { passive: false });
@@ -428,6 +731,8 @@ export default function initImageViewer({ signal, appSignal } = {}) {
     viewerControls.prevButton?.addEventListener("click", handlePrevClick);
     viewerControls.nextButton?.addEventListener("click", handleNextClick);
     viewerControls.closeButton?.addEventListener("click", handleCloseClick);
+    exifControls.toggleButton?.addEventListener("click", handleExifToggle);
+    exifControls.closeButton?.addEventListener("click", handleExifClose);
   }
 
 }

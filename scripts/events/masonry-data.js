@@ -28,6 +28,7 @@ hexo.extend.generator.register("masonry-data", function () {
             image,
             title: entry.title || "",
             description: entry.description || "",
+            exif: entry.exif === true,
           };
 
           if (width && height) {

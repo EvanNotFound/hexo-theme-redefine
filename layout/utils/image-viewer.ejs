@@ -8,6 +8,25 @@
 	<div class="image-viewer-frame">
 		<img src="" alt="">
 	</div>
+	<div class="image-viewer-exif-panel hidden absolute left-1/2 bottom-20 -translate-x-1/2 w-[min(92vw,420px)] max-h-[60vh] overflow-hidden rounded-2xl border border-border-color bg-background-color-transparent-80 p-4 text-left shadow-redefine-flat backdrop-blur-md" role="dialog" aria-label="EXIF" aria-hidden="true">
+		<div class="flex items-center justify-between mb-3">
+			<span class="text-sm font-semibold text-first-text-color">EXIF</span>
+			<button class="image-viewer-exif-close flex h-8 w-8 items-center justify-center rounded-full border border-border-color bg-background-color-transparent-80 text-first-text-color transition hover:bg-background-color-transparent-40" type="button" aria-label="Close EXIF">
+				<i class="fa-solid fa-xmark text-[0.65rem]"></i>
+			</button>
+		</div>
+		<div class="image-viewer-exif-cards grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto pr-1 scrollbar-hide"></div>
+		<template class="image-viewer-exif-card-template">
+			<div class="rounded-lg border border-border-color bg-background-color-transparent-80 px-3 py-2 shadow-redefine-flat">
+				<div class="image-viewer-exif-label text-[0.65rem] uppercase tracking-wide text-third-text-color"></div>
+				<div class="image-viewer-exif-value text-sm text-first-text-color"></div>
+			</div>
+		</template>
+	</div>
+	<button class="image-viewer-exif-toggle hidden absolute left-1/2 bottom-6 -translate-x-1/2 items-center gap-2 rounded-full border border-border-color bg-background-color-transparent-80 px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-wider text-first-text-color shadow-redefine-flat backdrop-blur-md transition hover:bg-background-color-transparent-40" type="button" aria-label="Toggle EXIF" aria-expanded="false">
+		<i class="fa-solid fa-circle-info text-[0.7rem]"></i>
+		<span>EXIF</span>
+	</button>
 	<button class="image-viewer-next" type="button" aria-label="<%= __('next') %>">
 		<i class="fa-solid fa-chevron-right"></i>
 	</button>
