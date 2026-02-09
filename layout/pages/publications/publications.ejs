@@ -2,12 +2,17 @@
     <%  const resolveDoi=(value)=> {
             if (!value) return { url: null, label: null };
             const trimmed = String(value).trim();
-            const label = trimmed.replace(/^https?:\/\/(doi\.org\/)?/i, '').replace(/^doi:\s*/i, '');
+            const label = trimmed
+                .replace(/^https?:\/\/(doi\.org\/)?/i, '')
+                .replace(/^doi\.org\//i, '')
+                .replace(/^doi:\s*/i, '');
             const url = trimmed.startsWith('http') ? trimmed : `https://doi.org/${label}`;
             return { url, label };
         };
 
-        let publications = theme.publications.items
+        const publications = (theme.publications && Array.isArray(theme.publications.items))
+            ? theme.publications.items
+            : [];
 
         const emptyText = __('no_publications') || 'No publications available yet.';
         const fullTextLabel = __('view_full_text') || 'View full text';
@@ -60,7 +65,7 @@
 
                                 <div class="flex flex-wrap items-center gap-3 text-sm">
                                     <% if (fullTextUrl) { %>
-                                        <a href="<%= fullTextUrl %>" target="_blank" rel="noopener"
+                                        <a href="<%= fullTextUrl %>" target="_blank" rel="noopener noreferrer"
                                             class="inline-flex items-center gap-2 px-3 py-2 rounded-xl border border-border-color text-primary hover:bg-primary/10 transition-colors">
                                             <i class="fa-regular fa-up-right-from-square"></i>
                                             <span>
@@ -69,7 +74,7 @@
                                         </a>
                                     <% } %>
                                     <% if (doiUrl) { %>
-                                        <a href="<%= doiUrl %>" target="_blank" rel="noopener"
+                                        <a href="<%= doiUrl %>" target="_blank" rel="noopener noreferrer"
                                             class="inline-flex items-center gap-2 px-3 py-2 rounded-xl border border-border-color text-primary hover:bg-primary/10 transition-colors">
                                             <i class="fa-regular fa-fingerprint"></i>
                                             <span>DOI: <%= doiLabel %></span>
