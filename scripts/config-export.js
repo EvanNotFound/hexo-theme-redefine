@@ -90,9 +90,12 @@ hexo.extend.helper.register("export_config", function () {
   };
 
   const languageDir = path.join(__dirname, "../languages");
+  const languageKey = Array.isArray(this.config.language)
+    ? this.config.language[0]
+    : this.config.language;
   let file = fs
     .readdirSync(languageDir)
-    .find((v) => v === `${this.config.language}.yml`);
+    .find((v) => v === `${languageKey}.yml`);
   file = languageDir + "/" + (file ? file : "en.yml");
   let languageContent = fs.readFileSync(file, "utf8");
   try {
@@ -113,6 +116,7 @@ hexo.extend.helper.register("export_config", function () {
     window.config = ${JSON.stringify(hexo_config)};
     window.theme = ${JSON.stringify(theme_config)};
     window.lang_ago = ${JSON.stringify(languageContent["ago"])};
+    window.i18n = ${JSON.stringify(languageContent)};
     window.data = ${JSON.stringify(data_config)};
   </script>`;
 });

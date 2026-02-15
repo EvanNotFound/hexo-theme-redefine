@@ -32,6 +32,32 @@ const exifControls = {
   requestId: 0,
 };
 
+const getI18nValue = (path) => {
+  if (!path) {
+    return null;
+  }
+  const segments = String(path).split(".").filter(Boolean);
+  let current = window.i18n;
+  for (const segment of segments) {
+    if (!current || typeof current !== "object") {
+      return null;
+    }
+    current = current[segment];
+  }
+  return current ?? null;
+};
+
+const t = (path, fallback = "") => {
+  const value = getI18nValue(path);
+  if (typeof value === "string") {
+    return value;
+  }
+  if (value != null) {
+    return String(value);
+  }
+  return fallback;
+};
+
 let imageNodes = [];
 let didInitKeys = false;
 
@@ -178,51 +204,194 @@ const formatExifValue = (tag) => {
   return String(tag).trim();
 };
 
-const buildExifCards = (tags) => {
+const getExifValueByKeys = (tags, keys = []) => {
+  if (!tags || !Array.isArray(keys)) {
+    return null;
+  }
+  for (const key of keys) {
+    const value = formatExifValue(tags[key]);
+    if (value) {
+      return value;
+    }
+  }
+  return null;
+};
+
+const parseRational = (value) => {
+  if (typeof value === "number") {
+    return Number.isFinite(value) ? value : null;
+  }
+  if (value && typeof value === "object") {
+    const numerator = value.numerator ?? value.num;
+    const denominator = value.denominator ?? value.den;
+    if (
+      Number.isFinite(numerator) &&
+      Number.isFinite(denominator) &&
+      denominator !== 0
+    ) {
+      return numerator / denominator;
+    }
+    if (Number.isFinite(value.value)) {
+      return value.value;
+    }
+  }
+  if (typeof value === "string") {
+    const parsed = Number.parseFloat(value);
+    return Number.isFinite(parsed) ? parsed : null;
+  }
+  return null;
+};
+
+const resolveTagRawValue = (tag) => {
+  if (!tag) {
+    return null;
+  }
+  if (typeof tag === "object" && "value" in tag) {
+    return tag.value;
+  }
+  return tag;
+};
+
+const formatGpsCoordinate = (tags, valueKey, refKey) => {
+  if (!tags) {
+    return null;
+  }
+  const rawTag = tags[valueKey];
+  if (!rawTag) {
+    return null;
+  }
+  const rawValue = resolveTagRawValue(rawTag);
+  const ref = formatExifValue(tags[refKey]);
+  let decimal = null;
+
+  if (Array.isArray(rawValue)) {
+    const parts = rawValue.map(parseRational).filter((part) => part != null);
+    if (parts.length >= 3) {
+      const [deg, min, sec] = parts;
+      decimal = deg + min / 60 + sec / 3600;
+    }
+  } else {
+    decimal = parseRational(rawValue);
+  }
+
+  if (decimal == null) {
+    const fallback = formatExifValue(rawTag);
+    if (!fallback) {
+      return null;
+    }
+    if (ref && !fallback.includes(ref)) {
+      return `${fallback} ${ref}`;
+    }
+    return fallback;
+  }
+
+  const normalizedRef = ref ? String(ref).trim().toUpperCase() : "";
+  const displayValue = Math.abs(decimal).toFixed(4);
+  if (normalizedRef) {
+    return `${displayValue} ${normalizedRef}`;
+  }
+  return decimal.toFixed(4);
+};
+
+const buildExifGroups = (tags) => {
   if (!tags) {
     return [];
   }
 
-  const cards = [];
-  const make = formatExifValue(tags.Make);
-  const model = formatExifValue(tags.Model);
-  const camera = [make, model].filter(Boolean).join(" ");
-  if (camera) {
-    cards.push({ label: "Camera", value: camera });
-  }
+  const groups = [];
+  const pushGroup = (title, icon, items) => {
+    const normalizedItems = (items || []).filter(Boolean);
+    if (normalizedItems.length === 0) {
+      return;
+    }
+    groups.push({ title, icon, items: normalizedItems });
+  };
 
-  const lens = formatExifValue(tags.LensModel);
-  if (lens) {
-    cards.push({ label: "Lens", value: lens });
-  }
+  const make = getExifValueByKeys(tags, ["Make"]);
+  const model = getExifValueByKeys(tags, ["Model"]);
+  const dateTaken = getExifValueByKeys(tags, ["DateTimeOriginal", "DateTime"]);
+  pushGroup(t("exif.cards.camera", "Camera"), "fa-solid fa-camera", [
+    make && { label: t("exif.fields.make", "Brand"), value: make },
+    model && { label: t("exif.fields.model", "Model"), value: model },
+    dateTaken && {
+      label: t("exif.fields.date_taken", "Date taken"),
+      value: dateTaken,
+    },
+  ]);
 
-  const dateTaken =
-    formatExifValue(tags.DateTimeOriginal) || formatExifValue(tags.DateTime);
-  if (dateTaken) {
-    cards.push({ label: "Date Taken", value: dateTaken });
-  }
+  const lensModel = getExifValueByKeys(tags, [
+    "LensModel",
+    "Lens",
+    "LensSpecification",
+  ]);
+  const focalLength = getExifValueByKeys(tags, [
+    "FocalLength",
+    "FocalLengthIn35mmFilm",
+  ]);
+  const focusMode = getExifValueByKeys(tags, [
+    "FocusMode",
+    "AFMode",
+    "AFAreaMode",
+    "FocusingMode",
+    "AutoFocus",
+    "FocusMethod",
+  ]);
+  pushGroup(t("exif.cards.lens", "Lens"), "fa-solid fa-eye", [
+    lensModel && { label: t("exif.fields.lens_model", "Lens"), value: lensModel },
+    focalLength && {
+      label: t("exif.fields.focal_length", "Focal length"),
+      value: focalLength,
+    },
+    focusMode && {
+      label: t("exif.fields.focus_mode", "Focus mode"),
+      value: focusMode,
+    },
+  ]);
 
-  const focalLength = formatExifValue(tags.FocalLength);
-  if (focalLength) {
-    cards.push({ label: "Focal Length", value: focalLength });
-  }
+  const shutter = getExifValueByKeys(tags, ["ExposureTime"]);
+  const aperture = getExifValueByKeys(tags, ["FNumber"]);
+  const iso = getExifValueByKeys(tags, ["ISO", "PhotographicSensitivity"]);
+  const exposureProgram = getExifValueByKeys(tags, ["ExposureProgram"]);
+  const exposureCompensation = getExifValueByKeys(tags, ["ExposureBiasValue"]);
+  const meteringMode = getExifValueByKeys(tags, ["MeteringMode"]);
+  pushGroup(t("exif.cards.exposure", "Exposure"), "fa-solid fa-sun", [
+    shutter && { label: t("exif.fields.shutter", "Shutter"), value: shutter },
+    aperture && { label: t("exif.fields.aperture", "Aperture"), value: aperture },
+    iso && { label: t("exif.fields.iso", "ISO"), value: iso },
+    exposureProgram && {
+      label: t("exif.fields.exposure_program", "Exposure program"),
+      value: exposureProgram,
+    },
+    exposureCompensation && {
+      label: t("exif.fields.exposure_compensation", "Exposure compensation"),
+      value: exposureCompensation,
+    },
+    meteringMode && {
+      label: t("exif.fields.metering_mode", "Metering mode"),
+      value: meteringMode,
+    },
+  ]);
 
-  const aperture = formatExifValue(tags.FNumber);
-  if (aperture) {
-    cards.push({ label: "Aperture", value: aperture });
-  }
+  const flash = getExifValueByKeys(tags, ["Flash"]);
+  const whiteBalance = getExifValueByKeys(tags, ["WhiteBalance"]);
+  const latitude = formatGpsCoordinate(tags, "GPSLatitude", "GPSLatitudeRef");
+  const longitude = formatGpsCoordinate(tags, "GPSLongitude", "GPSLongitudeRef");
+  const altitude = getExifValueByKeys(tags, ["GPSAltitude"]);
+  pushGroup(t("exif.cards.other", "Other"), "fa-solid fa-gear", [
+    flash && { label: t("exif.fields.flash", "Flash"), value: flash },
+    whiteBalance && {
+      label: t("exif.fields.white_balance", "White balance"),
+      value: whiteBalance,
+    },
+    latitude && { label: t("exif.fields.latitude", "Latitude"), value: latitude },
+    longitude && {
+      label: t("exif.fields.longitude", "Longitude"),
+      value: longitude,
+    },
+    altitude && { label: t("exif.fields.altitude", "Altitude"), value: altitude },
+  ]);
 
-  const shutter = formatExifValue(tags.ExposureTime);
-  if (shutter) {
-    cards.push({ label: "Shutter", value: shutter });
-  }
-
-  const iso = formatExifValue(tags.ISO);
-  if (iso) {
-    cards.push({ label: "ISO", value: iso });
-  }
-
-  return cards;
+  return groups;
 };
 
 const setExifPanelOpen = (isOpen) => {
@@ -245,66 +414,127 @@ const clearExifCards = () => {
   exifControls.cardsContainer.innerHTML = "";
 };
 
-const createExifCard = (label, value) => {
-  const template = exifControls.cardTemplate;
-  const templateCard = template?.content?.firstElementChild;
-  if (templateCard) {
-    const card = templateCard.cloneNode(true);
-    const labelDom = card.querySelector(".image-viewer-exif-label");
-    const valueDom = card.querySelector(".image-viewer-exif-value");
-    if (labelDom) {
-      labelDom.textContent = label;
-    }
-    if (valueDom) {
-      valueDom.textContent = value;
-    }
-    return card;
-  }
-
-  const fallback = document.createElement("div");
-  fallback.className =
-    "rounded-lg border border-border-color bg-background-color-transparent-80 px-3 py-2 shadow-redefine-flat";
+const createExifItem = (label, value) => {
+  const row = document.createElement("div");
+  row.className = "image-viewer-exif-item flex items-start justify-between gap-2";
   const labelDom = document.createElement("div");
   labelDom.className =
-    "image-viewer-exif-label text-[0.65rem] uppercase tracking-wide text-third-text-color";
+    "image-viewer-exif-item-label text-[0.65rem] uppercase tracking-wide shrink-0 text-third-text-color";
   labelDom.textContent = label;
   const valueDom = document.createElement("div");
-  valueDom.className = "image-viewer-exif-value text-sm text-first-text-color";
+  valueDom.className =
+    "image-viewer-exif-item-value text-[0.65rem] text-first-text-color text-right";
   valueDom.textContent = value;
-  fallback.appendChild(labelDom);
-  fallback.appendChild(valueDom);
-  return fallback;
+  row.appendChild(labelDom);
+  row.appendChild(valueDom);
+  return row;
 };
 
-const renderExifCards = (cards) => {
+const createExifCard = (group) => {
+  const template = exifControls.cardTemplate;
+  const templateCard = template?.content?.firstElementChild;
+  let card = templateCard ? templateCard.cloneNode(true) : null;
+  if (!card) {
+    card = document.createElement("div");
+    card.className =
+      "rounded-lg border border-border-color bg-background-color-transparent-80 px-3 py-2 shadow-redefine-flat";
+    const header = document.createElement("div");
+    header.className = "image-viewer-exif-card-header flex items-center gap-2 mb-1";
+    const iconDom = document.createElement("i");
+    iconDom.className =
+      "image-viewer-exif-card-icon fa-solid fa-circle-info text-xs text-third-text-color";
+    const titleDom = document.createElement("div");
+    titleDom.className =
+      "image-viewer-exif-card-title text-xs font-semibold text-first-text-color";
+    header.appendChild(iconDom);
+    header.appendChild(titleDom);
+    const itemsDom = document.createElement("div");
+    itemsDom.className = "image-viewer-exif-card-items flex flex-col gap-1";
+    card.appendChild(header);
+    card.appendChild(itemsDom);
+  }
+
+  const titleDom = card.querySelector(".image-viewer-exif-card-title");
+  const iconDom = card.querySelector(".image-viewer-exif-card-icon");
+  let itemsDom = card.querySelector(".image-viewer-exif-card-items");
+  if (!itemsDom) {
+    itemsDom = document.createElement("div");
+    itemsDom.className = "image-viewer-exif-card-items flex flex-col gap-1";
+    card.appendChild(itemsDom);
+  }
+
+  if (titleDom) {
+    titleDom.textContent = group.title;
+  }
+  if (iconDom) {
+    const iconClass = group.icon || "fa-solid fa-circle-info";
+    iconDom.className =
+      `image-viewer-exif-card-icon ${iconClass} text-xs text-third-text-color`;
+  }
+
+  itemsDom.innerHTML = "";
+  group.items.forEach((item) => {
+    itemsDom.appendChild(createExifItem(item.label, item.value));
+  });
+  return card;
+};
+
+const renderExifGroups = (groups) => {
   if (!exifControls.cardsContainer) {
     return;
   }
 
   clearExifCards();
-  const normalized = Array.isArray(cards)
-    ? cards
-        .map((card) => {
-          if (!card || typeof card !== "object") {
+  const normalized = Array.isArray(groups)
+    ? groups
+        .map((group) => {
+          if (!group || typeof group !== "object") {
             return null;
           }
-          const label = String(card.label || "").trim();
-          const value = String(card.value || "").trim();
-          if (!label || !value) {
+          const title = String(group.title || "").trim();
+          const icon = String(group.icon || "").trim();
+          const items = Array.isArray(group.items)
+            ? group.items
+                .map((item) => {
+                  if (!item || typeof item !== "object") {
+                    return null;
+                  }
+                  const label = String(item.label || "").trim();
+                  const value = String(item.value ?? "").trim();
+                  if (!label || !value) {
+                    return null;
+                  }
+                  return { label, value };
+                })
+                .filter(Boolean)
+            : [];
+          if (!title || items.length === 0) {
             return null;
           }
-          return { label, value };
+          return { title, icon, items };
         })
         .filter(Boolean)
     : [];
 
-  const finalCards = normalized.length
+  const fallbackTitle = t("exif.title", "EXIF");
+  const fallbackGroups = normalized.length
     ? normalized
-    : [{ label: "EXIF", value: "No EXIF available" }];
+    : [
+        {
+          title: fallbackTitle,
+          icon: "fa-solid fa-circle-info",
+          items: [
+            {
+              label: fallbackTitle,
+              value: t("exif.status.no_exif", "No EXIF available"),
+            },
+          ],
+        },
+      ];
 
   const fragment = document.createDocumentFragment();
-  finalCards.forEach((card) => {
-    fragment.appendChild(createExifCard(card.label, card.value));
+  fallbackGroups.forEach((group) => {
+    fragment.appendChild(createExifCard(group));
   });
   exifControls.cardsContainer.appendChild(fragment);
 };
@@ -315,19 +545,28 @@ const bumpExifRequestId = () => {
 };
 
 const renderExifMessage = (message) => {
-  renderExifCards([{ label: "EXIF", value: message }]);
+  const title = t("exif.title", "EXIF");
+  renderExifGroups([
+    {
+      title,
+      icon: "fa-solid fa-circle-info",
+      items: [{ label: title, value: message }],
+    },
+  ]);
 };
 
 const loadExifForImage = async (img) => {
   const requestId = bumpExifRequestId();
-  renderExifMessage("Loading...");
+  renderExifMessage(t("exif.status.loading", "Loading..."));
 
   const ExifReader = window.ExifReader;
   if (!ExifReader || typeof ExifReader.load !== "function") {
     if (exifControls.requestId !== requestId) {
       return;
     }
-    renderExifMessage("EXIF library not loaded");
+    renderExifMessage(
+      t("exif.status.library_missing", "EXIF library not loaded"),
+    );
     return;
   }
 
@@ -336,7 +575,9 @@ const loadExifForImage = async (img) => {
     if (exifControls.requestId !== requestId) {
       return;
     }
-    renderExifMessage("Image source unavailable");
+    renderExifMessage(
+      t("exif.status.image_source_missing", "Image source unavailable"),
+    );
     return;
   }
 
@@ -345,17 +586,22 @@ const loadExifForImage = async (img) => {
     if (exifControls.requestId !== requestId) {
       return;
     }
-    const cards = buildExifCards(tags);
-    if (cards.length === 0) {
-      renderExifMessage("No EXIF available");
+    const groups = buildExifGroups(tags);
+    if (groups.length === 0) {
+      renderExifMessage(t("exif.status.no_exif", "No EXIF available"));
       return;
     }
-    renderExifCards(cards);
+    renderExifGroups(groups);
   } catch (error) {
     if (exifControls.requestId !== requestId) {
       return;
     }
-    renderExifMessage("EXIF unavailable (blocked by CORS or missing metadata)");
+    renderExifMessage(
+      t(
+        "exif.status.unavailable",
+        "EXIF unavailable (blocked by CORS or missing metadata)",
+      ),
+    );
   }
 };
 
@@ -662,7 +908,7 @@ export default function initImageViewer({ signal, appSignal } = {}) {
     setExifPanelOpen(true);
     const currentImg = imageNodes[viewerState.currentImgIndex];
     if (!hasExifFlag(currentImg)) {
-      renderExifMessage("EXIF unavailable");
+      renderExifMessage(t("exif.status.flag_unavailable", "EXIF unavailable"));
       return;
     }
     loadExifForImage(currentImg);
