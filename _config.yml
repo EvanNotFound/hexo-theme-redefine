@@ -176,11 +176,11 @@ home_banner:
     style: default # default, reverse, center
     # Social links
     links:
-      github:  # your GitHub URL
       instagram: # your Instagram URL
-      zhihu:  # your ZhiHu URL
-      twitter:  # your twitter URL
-      email:  # your email
+      # github:  # your GitHub URL
+      # zhihu:  # your ZhiHu URL
+      # twitter:  # your twitter URL
+      # email:  # your email
       # ...... # you can add more
     # Social links with QRcode drawers
     qrs:
