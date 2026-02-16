@@ -475,6 +475,10 @@ page_templates:
   friends_column: 2
   # Tags page style
   tags_style: blur # blur, cloud
+  # Masonry page batch size
+  masonry:
+    batch_size: 12
+    initial_batch_size: 24
 # PAGE TEMPLATES <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 

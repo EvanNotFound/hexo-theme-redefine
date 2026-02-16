@@ -146,9 +146,7 @@ const initPage = () => {
   });
 
   safeRun("masonry", () => {
-    if (theme.masonry || theme.photos || theme.gallery || data?.masonry) {
-      initMasonry({ signal: pageSignal });
-    }
+    initMasonry({ signal: pageSignal });
   });
 
   safeRun("typed", () => {
