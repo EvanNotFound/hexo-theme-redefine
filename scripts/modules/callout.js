@@ -76,7 +76,8 @@ const renderMarkdownBlock = (text) =>
     .trim();
 
 const renderMarkdownInline = (text) => {
-  const rendered = renderMarkdownBlock(text);
+  const normalized = String(text ?? "").trimStart();
+  const rendered = renderMarkdownBlock(normalized);
   return rendered.replace(/^<p>([\s\S]*)<\/p>$/, "$1");
 };
 
@@ -139,35 +140,18 @@ const buildIconMarkup = (iconClass) => {
 const renderSimpleCallout = ({ type, iconClass, extraClasses }, content) => {
   const iconMarkup = buildIconMarkup(iconClass);
   const renderedContent = renderMarkdownBlock(content);
+  const iconPart = iconMarkup ? `${iconMarkup} ` : "";
 
-  return `
-  <div class="${cn("callout callout--simple", type, extraClasses, "mb-4 rounded-small shadow-redefine-flat bg-(--callout-bg-color) p-3 pl-1 relative flex flex-row gap-2 items-center")}">
-    <div role="none" class="rounded-full self-stretch w-0.5 bg-(--callout-primary-color) shrink-0"></div>  
-    ${iconMarkup}
-    <div class="${cn("callout__content markdown-body flex-1 min-w-0")}">
-      ${renderedContent}
-    </div>
-  </div>`;
+  return `<div class="${cn("callout callout--simple", type, extraClasses, "mb-4 rounded-small shadow-redefine-flat bg-(--callout-bg-color) p-3 pl-1 relative flex flex-row gap-2 items-center")}"><div role="none" class="rounded-full self-stretch w-0.5 bg-(--callout-primary-color) shrink-0 opacity-60"></div>${iconPart}<div class="${cn("callout__content markdown-body flex-1 min-w-0")}">${renderedContent}</div></div>`;
 };
 
 const renderTitledCallout = ({ type, iconClass, title, extraClasses }, content) => {
   const iconMarkup = buildIconMarkup(iconClass);
   const renderedTitle = renderMarkdownInline(title || DEFAULT_TITLE);
   const renderedContent = renderMarkdownBlock(content);
+  const titleInner = iconMarkup ? `${iconMarkup} ${renderedTitle}` : renderedTitle;
 
-  return `
-  <div class="${cn("callout callout--titled", type, extraClasses, "mb-4 rounded-small shadow-redefine-flat bg-(--callout-bg-color) p-3 pl-1 relative flex flex-row gap-2")}">
-    <div role="none" class="rounded-full self-stretch w-0.5 bg-(--callout-primary-color) shrink-0"></div>
-    <div class="flex flex-col gap-2">
-    <div class="callout__title flex items-center gap-2 font-semibold tracking-tight">
-      ${iconMarkup}
-      ${renderedTitle}
-    </div>
-    <div class="${cn("callout__content markdown-body flex-1 min-w-0")}">
-      ${renderedContent}
-    </div>
-    </div>
-  </div>`;
+  return `<div class="${cn("callout callout--titled", type, extraClasses, "mb-4 rounded-small shadow-redefine-flat bg-(--callout-bg-color) p-3 pl-1 relative flex flex-row gap-2")}"><div role="none" class="rounded-full self-stretch w-0.5 bg-(--callout-primary-color) shrink-0 opacity-60"></div><div class="flex flex-col gap-2"><div class="callout__title flex items-center gap-2 font-semibold tracking-tight">${titleInner}</div><div class="${cn("callout__content markdown-body flex-1 min-w-0")}">${renderedContent}</div></div></div>`;
 };
 
 const renderCallout = (parsed, content) => {
