@@ -7,6 +7,7 @@ const fs = require("fs");
 const path = require("path");
 const log = hexo.log;
 const { hbeTheme } = require("./lib/hbe.default.js");
+const { ensurePrefix } = require("../utils/log-prefix");
 
 const defaultConfig = {
   abstract:
@@ -124,7 +125,7 @@ hexo.extend.filter.register(
     data.content += `<link href="${hexo.config.root}css/hbe.style.css" rel="stylesheet" type="text/css"><script data-swup-reload-script type="module" src="${hexo.config.root}js/plugins/hbe.js"></script>
 <script data-swup-reload-script type="module">
 import {initHBE} from "${hexo.config.root}js/plugins/hbe.js";
-  console.log("hexo-blog-encrypt: loaded.");
+  log.info(ensurePrefix("hexo-blog-encrypt: loaded."));
     initHBE();
 </script>
 `;
@@ -154,9 +155,10 @@ hexo.extend.generator.register("hexo-blog-encrypt", () => [
 
 // log function
 function dlog(level, x) {
+  const message = ensurePrefix(x);
   switch (level) {
     case "warn":
-      log.warn(x);
+      log.warn(message);
       break;
 
     case "info":
@@ -165,7 +167,7 @@ function dlog(level, x) {
         return;
       }
 
-      log.info(x);
+      log.info(message);
   }
 }
 

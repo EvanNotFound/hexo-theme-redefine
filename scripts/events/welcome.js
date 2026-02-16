@@ -4,6 +4,7 @@
  */
 const { version } = require("../../package.json");
 const https = require("https");
+const { ensurePrefix } = require("../utils/log-prefix");
 
 hexo.on("ready", async () => {
   const timeout = 3000;
@@ -59,7 +60,7 @@ hexo.on("ready", async () => {
   try {
     await fetchRedefineInfo();
   } catch (error) {
-    hexo.log.warn(`Check latest version failed: ${error}`);
+    hexo.log.warn(ensurePrefix(`Check latest version failed: ${error}`));
     hexo.locals.set(`cdnTestStatus_cdnjs`, 404);
     hexo.locals.set(`cdnTestStatus_zstatic`, 404);
     hexo.locals.set(`cdnTestStatus_npmMirror`, 404);
@@ -106,34 +107,51 @@ function checkVersionAndCDNAvailability(data) {
   if (data.npmVersion > version) {
     hexo.log.warn(
       `\x1b[33m%s\x1b[0m`,
-      `Redefine v${version} is outdated, please update to v${data.npmVersion}!`,
+      ensurePrefix(
+        `v${version} is outdated, please update to v${data.npmVersion}!`,
+      ),
     );
   }
 
   if (data.npmMirrorCDN) {
     hexo.log.info(
       `\x1b[32m%s\x1b[0m`,
-      `CDN available: NPMMirror (Recommended)`,
+      ensurePrefix(`CDN available: NPMMirror (Recommended)`),
     );
     hexo.locals.set(`cdnTestStatus_npmMirror`, 200);
   } else {
-    hexo.log.warn(`\x1b[31m%s\x1b[0m`, `NPMMirror CDN is unavailable yet.`);
+    hexo.log.warn(
+      `\x1b[31m%s\x1b[0m`,
+      ensurePrefix(`NPMMirror CDN is unavailable yet.`),
+    );
     hexo.locals.set(`cdnTestStatus_npmMirror`, 404);
   }
 
   if (data.zstaticCDN) {
-    hexo.log.info(`\x1b[32m%s\x1b[0m`, `CDN available: ZStatic`);
+    hexo.log.info(
+      `\x1b[32m%s\x1b[0m`,
+      ensurePrefix(`CDN available: ZStatic`),
+    );
     hexo.locals.set(`cdnTestStatus_zstatic`, 200);
   } else {
-    hexo.log.warn(`\x1b[31m%s\x1b[0m`, `ZStatic CDN is unavailable yet.`);
+    hexo.log.warn(
+      `\x1b[31m%s\x1b[0m`,
+      ensurePrefix(`ZStatic CDN is unavailable yet.`),
+    );
     hexo.locals.set(`cdnTestStatus_zstatic`, 404);
   }
 
   if (data.cdnjsCDN) {
-    hexo.log.info(`\x1b[32m%s\x1b[0m`, `CDN available: CDNJS`);
+    hexo.log.info(
+      `\x1b[32m%s\x1b[0m`,
+      ensurePrefix(`CDN available: CDNJS`),
+    );
     hexo.locals.set(`cdnTestStatus_cdnjs`, 200);
   } else {
-    hexo.log.warn(`\x1b[31m%s\x1b[0m`, `CDNJS CDN is unavailable yet.`);
+    hexo.log.warn(
+      `\x1b[31m%s\x1b[0m`,
+      ensurePrefix(`CDNJS CDN is unavailable yet.`),
+    );
     hexo.locals.set(`cdnTestStatus_cdnjs`, 404);
   }
 }

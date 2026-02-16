@@ -176,16 +176,22 @@ home_banner:
     style: default # default, reverse, center
     # Social links
     links:
-      instagram: # your Instagram URL
-      # github:  # your GitHub URL
-      # zhihu:  # your ZhiHu URL
-      # twitter:  # your twitter URL
-      # email:  # your email
-      # ...... # you can add more
+      - icon: github # can also be "fa-brands fa-github"
+        url:
+      - icon: twitter
+        url:
+      - icon: email
+        url: you@example.com
+      - icon: telegram
+        url:
+      - icon: /images/custom-icon.svg
+        url:
     # Social links with QRcode drawers
     qrs:
-      weixin:  # your Wechat QRcode image URL
-      # ...... # you can add more
+      - icon: weixin
+        qr:
+      - icon: /images/custom-icon.svg
+        qr:
 # HOME BANNER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 

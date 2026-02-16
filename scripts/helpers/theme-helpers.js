@@ -3,6 +3,7 @@
 "use strict";
 
 const url = require("url");
+const { ensurePrefix } = require("../utils/log-prefix");
 const { version } = require("../../package.json");
 const themeVersion = version;
 
@@ -228,7 +229,7 @@ hexo.extend.helper.register("checkDeprecation", function (condition, id, message
     }
     
     if (!global.deprecationWarnings.has(id)) {
-      hexo.log.warn(`${message}`);
+      hexo.log.warn(ensurePrefix(`${message}`));
       global.deprecationWarnings.add(id);
     }
     return true;
