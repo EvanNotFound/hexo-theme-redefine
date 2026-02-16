@@ -53,6 +53,7 @@ export const ModeToggle = {
     updateStyleStatus({ isDark: false });
     this.mermaidInit(this.mermaidLightTheme);
     this.setGiscusTheme();
+    this.setUtterancesTheme();
   },
 
   enableDarkMode() {
@@ -66,6 +67,7 @@ export const ModeToggle = {
     updateStyleStatus({ isDark: true });
     this.mermaidInit(this.mermaidDarkTheme);
     this.setGiscusTheme();
+    this.setUtterancesTheme();
   },
 
   async setGiscusTheme(theme) {
@@ -93,6 +95,36 @@ export const ModeToggle = {
         },
       },
       "https://giscus.app",
+    );
+  },
+
+  async setUtterancesTheme(theme) {
+    const container = document.querySelector("#utterances-container");
+    if (!container) {
+      return;
+    }
+
+    const themeLight =
+      container.dataset.utterancesThemeLight || "github-light";
+    const themeDark =
+      container.dataset.utterancesThemeDark || "github-dark";
+    theme ??= styleStatus.isDark ? themeDark : themeLight;
+
+    const maxAttempts = 10;
+    let utterancesFrame = document.querySelector("iframe.utterances-frame");
+
+    for (let attempt = 0; attempt < maxAttempts && !utterancesFrame; attempt += 1) {
+      await new Promise((resolve) => setTimeout(resolve, 300));
+      utterancesFrame = document.querySelector("iframe.utterances-frame");
+    }
+
+    if (!utterancesFrame || !utterancesFrame.contentWindow) {
+      return;
+    }
+
+    utterancesFrame.contentWindow.postMessage(
+      { type: "set-theme", theme },
+      "https://utteranc.es",
     );
   },
 

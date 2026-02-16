@@ -1,0 +1,54 @@
+<% if(theme.comment.system === 'utterances' && theme.comment.config.utterances && theme.comment.config.utterances.repo) { %>
+    <% const utterancesConfig = theme.comment.config.utterances || {}; %>
+    <% const issueNumber = utterancesConfig.issue_number; %>
+    <% const issueTerm = utterancesConfig.issue_term || 'pathname'; %>
+    <% const themeLight = utterancesConfig.theme_light || 'github-light'; %>
+    <% const themeDark = utterancesConfig.theme_dark || 'github-dark'; %>
+    <div id="utterances-container"
+         data-utterances-theme-light="<%= themeLight %>"
+         data-utterances-theme-dark="<%= themeDark %>">
+    </div>
+    <script <%= theme.global.single_page === true && 'data-swup-reload-script' %>>
+        (function() {
+            const container = document.getElementById("utterances-container");
+            if (!container) {
+                return;
+            }
+
+            const repo = "<%= utterancesConfig.repo %>";
+            const issueNumber = "<%= issueNumber || '' %>";
+            const issueTerm = "<%= issueTerm %>";
+            const label = "<%= utterancesConfig.label || '' %>";
+
+            if (!repo || (!issueNumber && !issueTerm)) {
+                return;
+            }
+
+            container.innerHTML = "";
+
+            const themeLight = container.dataset.utterancesThemeLight || "github-light";
+            const themeDark = container.dataset.utterancesThemeDark || "github-dark";
+            const isDark = document.body.classList.contains("dark-mode");
+            const theme = isDark ? themeDark : themeLight;
+
+            const script = document.createElement("script");
+            script.src = "https://utteranc.es/client.js";
+            script.async = true;
+            script.crossOrigin = "anonymous";
+            script.setAttribute("repo", repo);
+
+            if (issueNumber) {
+                script.setAttribute("issue-number", issueNumber);
+            } else {
+                script.setAttribute("issue-term", issueTerm);
+            }
+
+            if (label) {
+                script.setAttribute("label", label);
+            }
+
+            script.setAttribute("theme", theme);
+            container.appendChild(script);
+        })();
+    </script>
+<% } %>
