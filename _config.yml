@@ -352,7 +352,7 @@ comment:
   # Whether to enable comment
   enable: true
   # Comment system
-  system: waline # waline, gitalk, twikoo, giscus
+  system: waline # waline, gitalk, twikoo, giscus, utterances
   # System configuration
   config:
     # Waline comment system. See https://waline.js.org/
@@ -388,6 +388,14 @@ comment:
       lang: en # Giscus language. e.g. en, zh-CN, zh-TW
       input_position: bottom # Place the comment box above/below the comments. e.g. top, bottom
       loading: lazy # Load the comments lazily
+    # Utterances comment system. See https://utteranc.es/
+    utterances:
+      repo: # GitHub repository name e.g. owner/repo (Issues must be enabled)
+      issue_term: pathname # pathname, url, title, og:title (recommended: pathname for single-page mode)
+      issue_number: # Use a specific issue number instead of issue_term
+      label: # Optional label for created issues
+      theme_light: github-light # Light theme
+      theme_dark: github-dark # Dark theme
 # COMMENT <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
