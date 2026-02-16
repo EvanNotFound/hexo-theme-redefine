@@ -2,8 +2,14 @@
 
 hexo.extend.generator.register("masonry-data", function () {
   const data = hexo.locals.get ? hexo.locals.get("data") : null;
+  const themeConfig = hexo.theme?.config || {};
   const masonryData =
-    data?.masonry || data?.gallery || data?.photos || hexo.theme.config.masonry;
+    data?.masonry ||
+    data?.gallery ||
+    data?.photos ||
+    themeConfig.masonry ||
+    themeConfig.gallery ||
+    themeConfig.photos;
 
   const toPositiveInt = (value) => {
     const parsed = Number.parseInt(value, 10);

@@ -803,11 +803,15 @@ export default function initImageViewer({ signal, appSignal } = {}) {
     viewerState.isMouseDown = true;
     viewerState.lastMouseX = event.clientX;
     viewerState.lastMouseY = event.clientY;
+    pendingX = event.clientX;
+    pendingY = event.clientY;
     viewerState.targetImg.style.cursor = "grabbing";
     viewerState.userZoomed = true;
   };
 
   let rafId = null;
+  let pendingX = null;
+  let pendingY = null;
 
   const dragHandle = (event) => {
     if (!viewerState.isMouseDown) {
@@ -818,22 +822,24 @@ export default function initImageViewer({ signal, appSignal } = {}) {
       return;
     }
 
-    const nextX = event.clientX;
-    const nextY = event.clientY;
+    pendingX = event.clientX;
+    pendingY = event.clientY;
 
     if (rafId !== null) {
-      viewerState.lastMouseX = nextX;
-      viewerState.lastMouseY = nextY;
       return;
     }
 
     rafId = window.requestAnimationFrame(() => {
-      const deltaX = nextX - viewerState.lastMouseX;
-      const deltaY = nextY - viewerState.lastMouseY;
+      if (pendingX == null || pendingY == null) {
+        rafId = null;
+        return;
+      }
+      const deltaX = pendingX - viewerState.lastMouseX;
+      const deltaY = pendingY - viewerState.lastMouseY;
       viewerState.translateX += deltaX;
       viewerState.translateY += deltaY;
-      viewerState.lastMouseX = nextX;
-      viewerState.lastMouseY = nextY;
+      viewerState.lastMouseX = pendingX;
+      viewerState.lastMouseY = pendingY;
       applyTransform();
       viewerState.dragged = true;
       rafId = null;
@@ -845,10 +851,16 @@ export default function initImageViewer({ signal, appSignal } = {}) {
       event.stopPropagation();
     }
     viewerState.isMouseDown = false;
-    viewerState.dragged = false;
     if (rafId !== null) {
       window.cancelAnimationFrame(rafId);
       rafId = null;
+    }
+    pendingX = null;
+    pendingY = null;
+    if (viewerState.dragged) {
+      window.setTimeout(() => {
+        viewerState.dragged = false;
+      }, 0);
     }
     viewerState.targetImg.style.cursor = "grab";
   };
@@ -869,14 +881,27 @@ export default function initImageViewer({ signal, appSignal } = {}) {
   };
 
   const handleMaskClick = (event) => {
-    if (event.target !== maskDom) {
+    if (viewerState.dragged) {
       return;
     }
 
-    if (!viewerState.dragged) {
+    const target = event.target;
+    if (
+      target.closest(
+        ".image-viewer-prev, .image-viewer-next, .image-viewer-close, .image-viewer-exif-panel, .image-viewer-exif-toggle",
+      )
+    ) {
+      return;
+    }
+
+    if (target.closest(".image-viewer-frame img")) {
+      return;
+    }
+
+    const frame = maskDom.querySelector(".image-viewer-frame");
+    if (target === maskDom || (frame && target === frame)) {
       closeViewer();
     }
-    viewerState.dragged = false;
   };
 
   const handlePrevClick = (event) => {

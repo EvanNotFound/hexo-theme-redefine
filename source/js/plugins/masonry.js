@@ -278,7 +278,6 @@ export default function initMasonry({ signal } = {}) {
   };
 
   const removeMinHScreen = () => {
-    console.log("removeMinHScreen");
     masonryContainer.classList.remove("min-h-screen!");
   };
 

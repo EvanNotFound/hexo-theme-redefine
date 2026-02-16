@@ -26,12 +26,13 @@
     <% } %>
 <% } %>
 
-<% if (theme.masonry || theme.photos || theme.gallery) { %>
-    <%- renderJS('libs/minimasonry.min.js') %>
+<% const pageData = getPageData(page); %>
+<% const isMasonryPage = pageData && pageData.partial === "pages/masonry/masonry"; %>
+<% if (theme.masonry || theme.photos || theme.gallery || isMasonryPage) { %>
+    <%- renderJS('libs/minimasonry.min.js', { swupReload: true }) %>
 <% } %>
 
 <%- renderJS('libs/moment-with-locales.min.js', { swupReload: true }) %>
 <% if (theme.articles.pangu_js) { %>
     <%- renderJS('libs/pangu.min.js') %>
 <% } %>
-
