@@ -6,6 +6,7 @@ const url = require("url");
 const fs = require("fs");
 const path = require("path");
 const yaml = require("js-yaml");
+const { ensurePrefix } = require("./utils/log-prefix");
 const { version } = require("../package.json");
 
 /**
@@ -101,7 +102,7 @@ hexo.extend.helper.register("export_config", function () {
   try {
     languageContent = yaml.load(languageContent);
   } catch (e) {
-    console.log(e);
+    hexo.log.warn(ensurePrefix(`Failed to parse language file: ${e}`));
   }
 
   let data_config = {

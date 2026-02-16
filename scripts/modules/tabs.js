@@ -6,6 +6,8 @@
 
 'use strict';
 
+const { ensurePrefix } = require('../utils/log-prefix');
+
 const TAB_BLOCK_REGEX = /<!--\s*tab (.*?)\s*-->\n([\w\W\s\S]*?)<!--\s*endtab\s*-->/g;
 const APLAYER_TAG_REGEX = /\<div.*class=\"aplayer aplayer-tag-marker\"(.|\n)*\<\/script\>/g;
 const FANCYBOX_TAG_REGEX = /\<div.*galleryFlag(.|\n)*\<\/span\>\<\/div\>\<\/div\>/g;
@@ -313,7 +315,7 @@ async function postTabs(args, content) {
   const [tabName, tabActive] = parseArgs(args);
   const activeTabIndex = Number(tabActive) || 0;
 
-  !tabName && hexo.log.warn('Tabs block must have unique name!');
+  !tabName && hexo.log.warn(ensurePrefix('Tabs block must have unique name!'));
 
   const matches = extractMatches(content);
   const { tabNav, tabContent } = await buildTabNavAndContent(matches, tabName, activeTabIndex, this);
