@@ -16,13 +16,13 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           persist-credentials: false # Prevent using GITHUB_TOKEN automatically
           fetch-depth: 0 # Fetch all history for accurate file diffs
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: '20.x' # Specify your Node.js version
 
