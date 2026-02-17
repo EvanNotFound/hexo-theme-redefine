@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: Preview
-      url: ${{ steps.deploy-to-vercel.outputs.preview-url }}
+      url: ${{ steps.deploy-to-vercel.outputs.PREVIEW_URL }}
     steps:
       - name: Checkout theme repository
         uses: actions/checkout@v6

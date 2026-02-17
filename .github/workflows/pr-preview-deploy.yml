@@ -8,10 +8,11 @@ on:
 permissions:
   actions: read
   contents: read
+  issues: write
   pull-requests: write
 
 concurrency:
-  group: pr-preview-deploy-${{ github.event.workflow_run.id }}
+  group: pr-preview-deploy-${{ github.event.workflow_run.pull_requests[0].number || github.event.workflow_run.id }}
   cancel-in-progress: true
 
 jobs:
@@ -70,12 +71,12 @@ jobs:
             redefine-preview-pr-${{ steps.pr.outputs.number }}.vercel.app
 
       - name: Comment Preview URL
-        if: ${{ steps.deploy-to-vercel.outputs.preview-url != '' }}
+        if: ${{ steps.deploy-to-vercel.outputs.PREVIEW_URL != '' }}
         uses: actions/github-script@v7
         with:
           script: |
             const prNumber = Number("${{ steps.pr.outputs.number }}")
-            const previewUrl = "${{ steps.deploy-to-vercel.outputs.preview-url }}"
+            const previewUrl = "${{ steps.deploy-to-vercel.outputs.PREVIEW_URL }}"
             const marker = "<!-- vercel-preview -->"
             const body = `${marker}\nPreview: ${previewUrl}`
             const { owner, repo } = context.repo

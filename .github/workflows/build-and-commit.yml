@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    if: "${{ github.actor != 'github-actions[bot]' && contains(github.event.head_commit.message, 'ci: build and update source/build/js and source/build/css') == false }}"
+    if: "${{ github.actor != 'github-actions[bot]' && contains(github.event.head_commit.message, 'ci: build and update source/js/build and source/css/build') == false }}"
     runs-on: ubuntu-latest
 
     steps:
@@ -44,7 +44,7 @@ jobs:
           git add source/js/build source/css/build
           # Check if there are any changes
           if ! git diff --cached --quiet; then
-            git commit -m "ci: build and update source/build/js and source/build/css [skip ci]"
+            git commit -m "ci: build and update source/js/build and source/css/build [skip ci]"
             git push "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git" HEAD:${GITHUB_REF#refs/heads/}
           else
             echo "No changes to commit"
