@@ -1,1 +1,17 @@
-npm run build
+#!/bin/sh
+
+if [ "${ALLOW_BUILD_ARTIFACTS}" = "1" ]; then
+  exit 0
+fi
+
+branch="$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "")"
+if [ "${branch}" = "main" ] || [ "${branch}" = "dev" ]; then
+  exit 0
+fi
+
+if git diff --cached --name-only --diff-filter=ACMR | grep -qE '^source/(js/build/|css/build/)'; then
+  echo "error: build artifacts are not allowed in PR commits."
+  echo "Remove staged files under source/js/build or source/css/build."
+  echo "If you are updating main/dev, re-run with ALLOW_BUILD_ARTIFACTS=1."
+  exit 1
+fi

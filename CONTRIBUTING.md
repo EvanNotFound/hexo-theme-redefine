@@ -34,11 +34,13 @@ We value your contributions and want to ensure they are appropriate for the proj
    footer: optimize style
    ```
 
-3. Follow the existing code style and conventions.
+3. Do not commit generated assets (`source/js/build/**`, `source/css/build/**`) in PRs. CI updates these on `dev`/`main` after merge. You can run `npm run build` locally for verification, but leave artifacts unstaged.
 
-4. Write clear and concise documentation for any changes you make.
+4. Follow the existing code style and conventions.
 
-5. Test your changes locally and ensure they do not break the existing functionality.
+5. Write clear and concise documentation for any changes you make.
+
+6. Test your changes locally and ensure they do not break the existing functionality.
 
 ## Code of Conduct
 

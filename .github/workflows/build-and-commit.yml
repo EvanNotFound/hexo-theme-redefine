@@ -11,6 +11,7 @@ on:
 
 jobs:
   build:
+    if: "${{ github.actor != 'github-actions[bot]' && contains(github.event.head_commit.message, 'ci: build and update source/build/js and source/build/css') == false }}"
     runs-on: ubuntu-latest
 
     steps:

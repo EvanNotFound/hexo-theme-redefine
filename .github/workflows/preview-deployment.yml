@@ -91,6 +91,12 @@ jobs:
         run: |
           mv theme hexo-site/themes/redefine
 
+      - name: Build theme assets
+        run: |
+          cd hexo-site/themes/redefine
+          npm install
+          npm run build
+
       - name: Install dependencies
         run: |
           cd hexo-site
