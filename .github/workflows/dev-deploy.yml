@@ -1,4 +1,4 @@
-name: Vercel Preview Deployment
+name: Dev Deploy
 
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
@@ -9,39 +9,22 @@ on:
   push:
     branches:
       - dev
-  pull_request_target:
-    branches:
-      - dev
-      - main
 
 jobs:
   preview-deployment:
     runs-on: ubuntu-latest
     environment:
-      name: ${{ github.event_name == 'pull_request_target' && 'PR Preview' || 'Preview' }}
+      name: Preview
       url: ${{ steps.deploy-to-vercel.outputs.preview-url }}
     steps:
-      - name: Determine checkout details
-        id: checkout-details
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const isPr = context.eventName === 'pull_request_target'
-            const ref = isPr ? context.payload.pull_request.head.ref : context.ref
-            const repo = isPr ? context.payload.pull_request.head.repo.full_name : context.repo.full_name
-            core.setOutput('ref', ref)
-            core.setOutput('repo', repo)
-
       - name: Checkout theme repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           path: 'theme'
-          ref: ${{ steps.checkout-details.outputs.ref }}
-          repository: ${{ steps.checkout-details.outputs.repo }}
 
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: '20.x' # Specify your required Node.js version
 
@@ -105,13 +88,13 @@ jobs:
       - name: Build Hexo
         run: |
           cd hexo-site
-          npm install
           npm uninstall hexo-theme-redefine
           npm run build
 
       - name: Change directory to hexo-site
         run: echo "HEXO_SITE_DIR=${{ github.workspace }}/hexo-site" >> $GITHUB_ENV
 
+        # Install Vercel CLI first to avoid bug with next step
       - name: Install Vercel CLI
         run: npm install -g vercel@22.0.1
 
