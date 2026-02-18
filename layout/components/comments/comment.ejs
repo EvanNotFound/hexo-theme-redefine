@@ -18,6 +18,10 @@
             <%- partial('components/comments/giscus') %>
         <% } else if (theme.comment.system === 'artalk') { %>
             <%- partial('components/comments/artalk') %>
+        
+        <% } else if (theme.comment.system === 'utterances') { %>
+            <%- partial('components/comments/utterances') %>
+        
         <% } %>
     <% } %>
 </div>

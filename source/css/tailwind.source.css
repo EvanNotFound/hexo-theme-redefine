@@ -1,6 +1,11 @@
+@layer theme, base, components, utilities;
+
 @import 'tailwindcss';
 
 @custom-variant dark (&:is(.dark *));
+
+@source "../layout/**/*.ejs";
+@source "../scripts/**/*.js";
 
 @theme {
   --spacing-unit: 38px;
@@ -224,6 +229,46 @@
         --chart-4: 280 65% 60%;
         --chart-5: 340 75% 55%;
     }
+}
+
+@layer base {
+  ul,
+  ol,
+  li {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--default-text-color);
+  }
+
+  a i,
+  a span {
+    color: var(--default-text-color);
+  }
+
+  a:hover,
+  a:active {
+    text-decoration: none;
+    color: var(--primary-color);
+  }
+
+  a:hover i,
+  a:hover span,
+  a:active i,
+  a:active span {
+    color: var(--primary-color);
+  }
+
+  button {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    background: transparent;
+  }
 }
 
 .scrollbar-hide {

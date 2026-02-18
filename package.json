@@ -13,7 +13,8 @@
     "release": "standard-version",
     "release:minor": "standard-version --release-as minor",
     "release:patch": "standard-version --release-as patch",
-    "release:major": "standard-version --release-as major"
+    "release:major": "standard-version --release-as major",
+    "preview": "node ../../redefine-local/.dev/preview-host.mjs"
   },
   "repository": {
     "type": "git",

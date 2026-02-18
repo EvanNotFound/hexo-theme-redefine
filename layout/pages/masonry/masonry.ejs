@@ -1,28 +1,25 @@
-<%
-// Define an array of images to display in the masonry layout
-const images = theme.masonry;
-%>
+<% const masonryDataUrl = url_for("masonry/data.json"); %>
+<% const masonryEntries =
+  (site && site.data && (site.data.masonry || site.data.gallery || site.data.photos)) ||
+  theme.masonry ||
+  theme.gallery ||
+  theme.photos; %>
+<% const hasExif = Array.isArray(masonryEntries)
+  && masonryEntries.some((entry) => entry && typeof entry === "object" && entry.exif === true); %>
+<div class="py-8 sm:py-0">
+	<h1 class="page-title-header">
+		<%- getPageTitle(page) %>
+	</h1>
 
-<h1 class="page-title-header">
-	<%- getPageTitle(page) %>
-</h1>
+	<div class="min-h-screen!" id="masonry-container" data-masonry-data-url="<%- masonryDataUrl %>"></div>
 
-<div class="loading-placeholder">
-	<div class="flex-grid generic-card">
-		<div class="card loading"></div>
-		<div class="card loading"></div>
-		<div class="card loading"></div>
+	<div class="masonry-loadmore is-hidden" id="masonry-loadmore" aria-live="polite">
+		<span class="masonry-spinner" aria-hidden="true"></span>
+		<span class="masonry-loadmore-text"><%= __('masonry_loading') %></span>
 	</div>
-</div>
 
-<div id="masonry-container">
-	<% images.forEach(function(image) { %>
-	<div class="masonry-item">
-		<div class="image-container">
-			<img src="<%- image.image %>" alt="<%- image.title %>">
-			<div class="image-title"><%- image.title %></div>
-			<div class="image-description"><%- image.description %></div>
-		</div>
-	</div>
-	<% }); %>
+	<div id="masonry-sentinel" aria-hidden="true"></div>
 </div>
+<% if (hasExif) { %>
+	<%- renderJS('libs/exif-reader.js', { swupReload: true }) %>
+<% } %>

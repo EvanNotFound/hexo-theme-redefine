@@ -1,4 +1,4 @@
-name: Vercel Production Deployment
+name: Prod Deploy
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
@@ -14,12 +14,12 @@ jobs:
     
     steps:
       - name: Checkout theme repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           path: 'theme' # Checkout the theme repository into a directory named 'theme'
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: '20.x' # Specify your required Node.js version
 

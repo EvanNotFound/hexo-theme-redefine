@@ -1,2 +1,2 @@
-function formatEssayDates(){const t=document.querySelectorAll(".essay-date");t&&t.forEach((function(t){const e=t.getAttribute("data-date"),a=config.language||"en",o=moment(e).locale(a).calendar();t.textContent=o}))}try{swup.hooks.on("page:view",formatEssayDates)}catch(t){console.error(t)}document.addEventListener("DOMContentLoaded",formatEssayDates);
+export default function initEssays(){const t=document.querySelectorAll(".essay-date");t.length&&t.forEach((t=>{const e=t.getAttribute("data-date"),n=config.language||"en",a=moment(e).locale(n).calendar();t.textContent=a}))}
 //# sourceMappingURL=essays.js.map
