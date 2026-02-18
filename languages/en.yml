@@ -29,7 +29,6 @@ top: TOP
 sticky: Sticky
 go-back-home: Go Back Home
 
-
 # ----------------------------------------
 # Menu Translation
 # ----------------------------------------
@@ -41,6 +40,7 @@ friends: Friends
 friend: Friend
 timeline: Timeline
 shuoshuo: Shuoshuo
+bookmark: Bookmark
 
 # ----------------------------------------
 # Website count
