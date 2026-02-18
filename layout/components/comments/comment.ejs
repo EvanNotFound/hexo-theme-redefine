@@ -16,7 +16,8 @@
         
         <% } else if (theme.comment.system === 'giscus') { %>
             <%- partial('components/comments/giscus') %>
-        
+        <% } else if (theme.comment.system === 'artalk') { %>
+            <%- partial('components/comments/artalk') %>
         <% } %>
     <% } %>
 </div>

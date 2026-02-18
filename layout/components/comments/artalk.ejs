@@ -1,0 +1,48 @@
+<% if (
+  theme.comment.system === 'artalk' &&
+  theme.comment.config.artalk &&
+  theme.comment.config.artalk.server &&
+  theme.comment.config.artalk.site
+) { %>
+  <div id="artalk-comment"></div>
+  <script <%= theme.global.single_page === true && 'data-swup-reload-script' %>>
+    function loadArtalk() {
+      // ensure CSS only once
+      if (!document.getElementById('artalk-css')) {
+        const link = document.createElement('link');
+        link.id = 'artalk-css';
+        link.rel = 'stylesheet';
+        link.href = 'https://cdn.jsdelivr.net/npm/artalk/dist/Artalk.css';
+        document.head.appendChild(link);
+      }
+
+      const doInit = () => {
+        if (!window.Artalk) return;
+        // destroy previous instance if exists (for PJAX/Swup)
+        try { window.__artalk_instance && window.__artalk_instance.destroy?.(); } catch (e) {}
+        window.__artalk_instance = Artalk.init({
+          el: '#artalk-comment',
+          server: '<%= theme.comment.config.artalk.server %>',
+          site: '<%- theme.comment.config.artalk.site %>'
+        });
+      };
+
+      if (!window.Artalk) {
+        const s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/artalk/dist/Artalk.js';
+        s.async = true;
+        s.onload = doInit;
+        document.body.appendChild(s);
+      } else {
+        doInit();
+      }
+    }
+
+    if ('<%= theme.global.single_page %>') {
+      const t = setTimeout(() => { loadArtalk(); clearTimeout(t); }, 1000);
+    } else {
+      document.addEventListener('DOMContentLoaded', loadArtalk);
+    }
+  </script>
+<% } %>
+
