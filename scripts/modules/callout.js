@@ -6,6 +6,8 @@ const {
   getNamedString,
   splitClassNames,
 } = require("../utils/tag-args");
+const { html } = require("../utils/html");
+const { warnOnce } = require("../deprecations/warn");
 
 const DEFAULT_TYPE = "default";
 const DEFAULT_TITLE = "Note";
@@ -179,9 +181,14 @@ const buildIconMarkup = (iconClass) => {
 const renderSimpleCallout = ({ type, iconClass, extraClasses }, content) => {
   const iconMarkup = buildIconMarkup(iconClass);
   const renderedContent = renderMarkdownBlock(content);
-  const iconPart = iconMarkup ? `${iconMarkup} ` : "";
 
-  return `<div class="${cn("callout callout--simple", type, extraClasses, "mb-4 rounded-small shadow-redefine-flat bg-(--callout-bg-color) p-3 pl-1 relative flex flex-row gap-2 items-center")}"><div role="none" class="rounded-full self-stretch w-0.5 bg-(--callout-primary-color) shrink-0 opacity-60"></div>${iconPart}<div class="${cn("callout__content markdown-body flex-1 min-w-0")}">${renderedContent}</div></div>`;
+  return html`
+    <div class="${cn("callout callout--simple", type, extraClasses, "mb-4 rounded-small shadow-redefine-flat bg-(--callout-bg-color) p-3 pl-1 relative flex flex-row gap-2 items-center")}">
+      <div role="none" class="rounded-full self-stretch w-0.5 bg-(--callout-primary-color) shrink-0 opacity-60"></div>
+      ${iconMarkup}
+      <div class="${cn("callout__content markdown-body flex-1 min-w-0")}">${renderedContent}</div>
+    </div>
+  `;
 };
 
 const renderTitledCallout = ({ type, iconClass, title, extraClasses }, content) => {
@@ -190,7 +197,15 @@ const renderTitledCallout = ({ type, iconClass, title, extraClasses }, content) 
   const renderedContent = renderMarkdownBlock(content);
   const titleInner = iconMarkup ? `${iconMarkup} ${renderedTitle}` : renderedTitle;
 
-  return `<div class="${cn("callout callout--titled", type, extraClasses, "mb-4 rounded-small shadow-redefine-flat bg-(--callout-bg-color) p-3 pl-1 relative flex flex-row gap-2")}"><div role="none" class="rounded-full self-stretch w-0.5 bg-(--callout-primary-color) shrink-0 opacity-60"></div><div class="flex flex-col gap-2"><div class="callout__title flex items-center gap-2 font-semibold tracking-tight">${titleInner}</div><div class="${cn("callout__content markdown-body flex-1 min-w-0")}">${renderedContent}</div></div></div>`;
+  return html`
+    <div class="${cn("callout callout--titled", type, extraClasses, "mb-4 rounded-small shadow-redefine-flat bg-(--callout-bg-color) p-3 pl-1 relative flex flex-row gap-2")}">
+      <div role="none" class="rounded-full self-stretch w-0.5 bg-(--callout-primary-color) shrink-0 opacity-60"></div>
+      <div class="flex flex-col gap-2">
+        <div class="callout__title flex items-center gap-2 font-semibold tracking-tight">${titleInner}</div>
+        <div class="${cn("callout__content markdown-body flex-1 min-w-0")}">${renderedContent}</div>
+      </div>
+    </div>
+  `;
 };
 
 const renderCallout = (parsed, content) => {
@@ -215,6 +230,19 @@ const postLegacyNote = (args, content) =>
 const postLegacyNoteLarge = (args, content) =>
   renderCallout(parseTitledArgs(args, LEGACY_TITLED_DEFAULT_TITLE), content);
 
+const warnLegacyNoteTag = (tagName, variant) => {
+  const legacyTag = `{% ${tagName} %}`;
+  const replacement = variant === "titled"
+    ? "{% callout type=\"...\" title=\"...\" %}"
+    : "{% callout type=\"...\" %}";
+
+  warnOnce({
+    hexo,
+    id: `tag.deprecation.legacy_note.${tagName}`,
+    message: `Tag deprecation: \`${legacyTag}\` is deprecated and will be removed in the next major release; use \`${replacement}\` instead.`,
+  });
+};
+
 hexo.extend.tag.register("callout", postCallout, { ends: true });
 
 const simpleTags = ["note", "notes", "subnote"];
@@ -228,9 +256,15 @@ const titledTags = [
 ];
 
 simpleTags.forEach((tag) => {
-  hexo.extend.tag.register(tag, postLegacyNote, { ends: true });
+  hexo.extend.tag.register(tag, (args, content) => {
+    warnLegacyNoteTag(tag, "simple");
+    return postLegacyNote(args, content);
+  }, { ends: true });
 });
 
 titledTags.forEach((tag) => {
-  hexo.extend.tag.register(tag, postLegacyNoteLarge, { ends: true });
+  hexo.extend.tag.register(tag, (args, content) => {
+    warnLegacyNoteTag(tag, "titled");
+    return postLegacyNoteLarge(args, content);
+  }, { ends: true });
 });

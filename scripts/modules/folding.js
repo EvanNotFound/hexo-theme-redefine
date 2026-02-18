@@ -7,7 +7,11 @@ async function postFolding(args, content) {
   const delimiter = rawArgs.includes('::') ? '::' : ',';
   const [style, title = ''] = rawArgs.split(delimiter).map((arg) => arg.trim());
 
-  const renderedContent = await renderMarkdownTagSafe(content, this);
+  const renderedContent = await renderMarkdownTagSafe({
+    hexo,
+    content,
+    postContext: this,
+  });
 
   const processedContent = renderedContent.replace(
     /<(h[1-6])>/g,

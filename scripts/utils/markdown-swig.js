@@ -225,8 +225,19 @@ function dedentHtmlLinesOutsideFences(text) {
   return output.join('\n');
 }
 
-async function renderMarkdownTagSafe(content, postContext, options = {}) {
-  const { trim = false } = options;
+async function renderMarkdownTagSafe({
+  hexo,
+  content,
+  postContext,
+  trim = false,
+}) {
+  const canRenderMarkdown = typeof hexo?.render?.renderSync === 'function';
+  const canRenderTag = typeof hexo?.extend?.tag?.render === 'function';
+
+  if (!canRenderMarkdown || !canRenderTag) {
+    throw new ReferenceError('renderMarkdownTagSafe requires a valid hexo instance');
+  }
+
   const placeholderPrefix = createPlaceholderPrefix();
   const { text: escaped, placeholders } = escapeTagBlocks(content, placeholderPrefix);
   const safeContent = dedentHtmlLinesOutsideFences(escaped);

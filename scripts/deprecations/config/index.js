@@ -1,6 +1,6 @@
 "use strict";
 
-const { warnOnce } = require("./warn");
+const { warnOnce } = require("../warn");
 const homeBannerSocialLinks = require("./rules/home-banner-social-links");
 
 const RULES = [homeBannerSocialLinks];

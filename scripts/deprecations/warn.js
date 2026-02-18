@@ -1,6 +1,6 @@
 "use strict";
 
-const { ensurePrefix } = require("../../utils/log-prefix");
+const { ensurePrefix } = require("../utils/log-prefix");
 
 const warned = new Set();
 

@@ -207,7 +207,12 @@ function isTabActive(activeTabIndex, tabIndex) {
 
 async function renderTabPaneContent(content, postContext) {
   const { content: stashedContent, restore } = stashSpecialBlocks(content);
-  const renderedContent = await renderMarkdownTagSafe(stashedContent, postContext, { trim: true });
+  const renderedContent = await renderMarkdownTagSafe({
+    hexo,
+    content: stashedContent,
+    postContext,
+    trim: true,
+  });
   return restore(renderedContent);
 }
 
