@@ -358,7 +358,7 @@ comment:
   # Whether to enable comment
   enable: true
   # Comment system
-  system: waline # waline, gitalk, twikoo, giscus, utterances
+  system: waline # waline, gitalk, twikoo, giscus, utterances, artalk
   # System configuration
   config:
     # Waline comment system. See https://waline.js.org/
@@ -394,6 +394,10 @@ comment:
       lang: en # Giscus language. e.g. en, zh-CN, zh-TW
       input_position: bottom # Place the comment box above/below the comments. e.g. top, bottom
       loading: lazy # Load the comments lazily
+    # Artalk comment system. See https://artalk.js.org/
+    artalk:
+      server: # Artalk server URL. e.g. https://artalk.example.com
+      site: # Site name shown in Artalk admin (should match server-side site config)
     # Utterances comment system. See https://utteranc.es/
     utterances:
       repo: # GitHub repository name e.g. owner/repo (Issues must be enabled)

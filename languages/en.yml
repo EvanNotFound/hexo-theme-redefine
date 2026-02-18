@@ -65,7 +65,6 @@ exif:
     unavailable: EXIF unavailable (blocked by CORS or missing metadata)
     flag_unavailable: EXIF unavailable
 
-
 # ----------------------------------------
 # Menu Translation
 # ----------------------------------------
@@ -77,6 +76,7 @@ friends: Friends
 friend: Friend
 timeline: Timeline
 shuoshuo: Shuoshuo
+bookmarks: Bookmarks
 
 # ----------------------------------------
 # Website count

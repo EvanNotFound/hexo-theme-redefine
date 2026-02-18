@@ -76,7 +76,7 @@ friend: 友情連結
 timeline: 時間軸
 shuoshuo: 說說
 changelog: 日誌
-status: 狀態
+bookmarks: 書籤
 
 # ----------------------------------------
 # 網站統計
@@ -87,6 +87,7 @@ site_pv: 閱覽
 read_more: 繼續閱讀...
 wordcount: 字數
 min2read: 分鐘
+status: 狀態
 
 # ----------------------------------------
 # 頁尾
