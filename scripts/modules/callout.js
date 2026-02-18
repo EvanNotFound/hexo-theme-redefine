@@ -1,5 +1,12 @@
 "use strict";
 
+const {
+  parseTagArgs,
+  hasNamedArgs,
+  getNamedString,
+  splitClassNames,
+} = require("../utils/tag-args");
+
 const DEFAULT_TYPE = "default";
 const DEFAULT_TITLE = "Note";
 const LEGACY_TITLED_DEFAULT_TITLE = "Warning";
@@ -129,6 +136,38 @@ const parseDelimitedArgs = (rawArgs, defaultTitle) => {
   };
 };
 
+const parseNamedArgs = (rawArgs) => {
+  const parsedArgs = parseTagArgs(rawArgs);
+  const supportsNamed = ["type", "title", "icon", "class", "classes", "variant"]
+    .some((key) => parsedArgs.named[key] != null);
+
+  if (!hasNamedArgs(parsedArgs) || !supportsNamed) {
+    return null;
+  }
+
+  const positionalParsed = parseSimpleArgs(parsedArgs.positional);
+  const namedType = getNamedString(parsedArgs.named, "type", "").trim();
+  const namedIcon = getNamedString(parsedArgs.named, "icon", "").trim();
+  const namedTitle = getNamedString(parsedArgs.named, "title", "").trim();
+  const variant = getNamedString(parsedArgs.named, "variant", "").trim();
+  const classNames = splitClassNames(getNamedString(parsedArgs.named, "class", ""));
+  const classesAlias = splitClassNames(getNamedString(parsedArgs.named, "classes", ""));
+
+  const normalizedVariant = variant === "titled" || namedTitle
+    ? "titled"
+    : variant === "simple"
+      ? "simple"
+      : positionalParsed.variant;
+
+  return {
+    variant: normalizedVariant,
+    type: namedType || positionalParsed.type,
+    iconClass: namedIcon || positionalParsed.iconClass,
+    title: namedTitle,
+    extraClasses: [...positionalParsed.extraClasses, ...classNames, ...classesAlias],
+  };
+};
+
 const buildIconMarkup = (iconClass) => {
   if (!iconClass) {
     return "";
@@ -164,9 +203,9 @@ const renderCallout = (parsed, content) => {
 
 const postCallout = (args, content) => {
   const rawArgs = args.join(" ").trim();
-  const parsed = rawArgs.includes("::")
+  const parsed = parseNamedArgs(rawArgs) || (rawArgs.includes("::")
     ? parseDelimitedArgs(rawArgs, DEFAULT_TITLE)
-    : parseSimpleArgs(args);
+    : parseSimpleArgs(args));
 
   return renderCallout(parsed, content);
 };
