@@ -6,7 +6,6 @@
 
 'use strict';
 
-const { ensurePrefix } = require('../utils/log-prefix');
 const { findFenceRanges, findFenceRangeAt, renderMarkdownTagSafe } = require('../utils/markdown-swig');
 const { parseTagArgs, hasNamedArgs, getNamedString, getNamedNumber } = require('../utils/tag-args');
 
@@ -17,6 +16,7 @@ const APLAYER_TAG_REGEX = /<div.*class="aplayer aplayer-tag-marker"(.|\n)*<\/scr
 const FANCYBOX_TAG_REGEX = /<div.*galleryFlag(.|\n)*<\/span><\/div><\/div>/g;
 
 let stashSeed = 0;
+let tabNameSeed = 0;
 
 function normalizeTabToken(value) {
   const normalized = String(value ?? '')
@@ -33,9 +33,11 @@ function normalizeTabToken(value) {
   return /^[a-z]/.test(normalized) ? normalized : `tab-${normalized}`;
 }
 
-function getFallbackTabName(postContext) {
+function createAutoTabName(postContext) {
+  tabNameSeed += 1;
   const sourcePath = postContext?.page?.path || postContext?.path || postContext?.source || '';
-  return sourcePath ? `tabs-${sourcePath}` : 'tabs';
+  const base = sourcePath ? normalizeTabToken(sourcePath) : 'tabs';
+  return `${base}-${tabNameSeed}`;
 }
 
 function parseTabsArgs(args) {
@@ -61,6 +63,23 @@ function parseTabsArgs(args) {
       tabName,
       activeTabIndex,
     };
+  }
+
+  if (!rawArgs) {
+    return {
+      tabName: '',
+      activeTabIndex: 0,
+    };
+  }
+
+  if (!rawArgs.includes('::') && !rawArgs.includes(',')) {
+    const activeOnly = Number(rawArgs);
+    if (Number.isFinite(activeOnly)) {
+      return {
+        tabName: '',
+        activeTabIndex: activeOnly,
+      };
+    }
   }
 
   const delimiter = rawArgs.includes('::') ? '::' : ',';
@@ -244,12 +263,7 @@ async function buildTabNavAndContent(tabBlocks, tabName, activeTabIndex, postCon
 
 async function postTabs(args, content) {
   const { tabName, activeTabIndex } = parseTabsArgs(args);
-  let resolvedTabName = tabName;
-
-  if (!resolvedTabName) {
-    hexo.log.warn(ensurePrefix('Tabs block must have unique name!'));
-    resolvedTabName = getFallbackTabName(this);
-  }
+  const resolvedTabName = tabName || createAutoTabName(this);
 
   const tabBlocks = parseTabBlocks(content);
   const { tabNav, tabContent } = await buildTabNavAndContent(tabBlocks, resolvedTabName, activeTabIndex, this);
