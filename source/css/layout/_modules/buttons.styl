@@ -1,41 +1,48 @@
 p a.button
-  margin-bottom 0 !important
-  padding 8px 12px !important
+  margin-bottom 0
+  padding 8px 12px
 
 a.button
-  background-color var(--second-background-color) !important
-  border-radius $redefine-border-radius-medium !important
+  background-color var(--second-background-color)
+  border-radius $redefine-border-radius-medium
   cursor pointer
   display inline-block
-  padding 12px 16px !important
+  padding 12px 16px
   text-align center
-  text-decoration none !important
-  redefine-container(
-    false,
-    0,
-    0,
-    0,
-    1rem
-  )
-  box-shadow var(--redefine-box-shadow-flat) !important
+  text-decoration none
+  box-shadow var(--redefine-box-shadow-flat)
   user-select none
   -moz-user-select none
   -webkit-user-select none
   -ms-user-select none
 
   &:hover, &:focus
-    box-shadow var(--redefine-box-shadow) !important
-    background-color var(--background-color) !important
+    box-shadow var(--redefine-box-shadow)
+    background-color var(--background-color)
 
   &:active
     transform scale(0.95)
     transition transform 0.1s ease
-    box-shadow var(--redefine-box-shadow-flat) !important
-    background-color var(--third-background-color) !important
+    box-shadow var(--redefine-box-shadow-flat)
+    background-color var(--third-background-color)
 
 a.center
   display block
   margin 1rem auto
+
+a.left
+  display block
+  width fit-content
+  margin 1rem auto 1rem 0
+
+a.right
+  display block
+  width fit-content
+  margin 1rem 0 1rem auto
+
+a.small
+  font-size 0.9rem
+  padding 8px 12px
 
 a.large
   font-size 1.2rem

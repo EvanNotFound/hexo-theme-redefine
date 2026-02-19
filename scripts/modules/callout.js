@@ -239,7 +239,7 @@ const warnLegacyNoteTag = (tagName, variant) => {
   warnOnce({
     hexo,
     id: `tag.deprecation.legacy_note.${tagName}`,
-    message: `Tag deprecation: \`${legacyTag}\` is deprecated and will be removed in the next major release; use \`${replacement}\` instead.`,
+    message: `Tag deprecation: \`${legacyTag}\` is deprecated and will be removed in the next major release; use \`${replacement}\` instead. Read documentation: https://redefine-docs.ohevan.com/zh/docs/modules/callout`,
   });
 };
 
