@@ -1,4 +1,4 @@
-const { applyConfigDeprecations } = require("./config/deprecations");
+const { applyConfigDeprecations } = require("./deprecations/config");
 
 const isPlainObject = (value) => {
   return value && typeof value === "object" && !Array.isArray(value);
