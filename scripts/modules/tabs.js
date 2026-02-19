@@ -19,11 +19,18 @@ const FANCYBOX_TAG_REGEX = /<div.*galleryFlag(.|\n)*<\/span><\/div><\/div>/g;
 let stashSeed = 0;
 
 function normalizeTabToken(value) {
-  return String(value ?? '')
+  const normalized = String(value ?? '')
     .toLowerCase()
     .trim()
-    .split(/\s+/)
-    .join('-');
+    .replace(/[^a-z0-9_-]+/g, '-')
+    .replace(/-{2,}/g, '-')
+    .replace(/^[-_]+|[-_]+$/g, '');
+
+  if (!normalized) {
+    return 'tab';
+  }
+
+  return /^[a-z]/.test(normalized) ? normalized : `tab-${normalized}`;
 }
 
 function getFallbackTabName(postContext) {

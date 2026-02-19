@@ -12,6 +12,10 @@ const handleTabClick = (event) => {
   const targetId = button.dataset.tab;
   if (!targetId) return;
 
+  const tabPanes = Array.from(parentTab.querySelectorAll(".tab-content .tab-pane"));
+  const targetPane = tabPanes.find((pane) => pane.id === targetId);
+  if (!targetPane) return;
+
   const tablist = button.closest("[role='tablist']");
   if (tablist) {
     tablist.querySelectorAll("button[role='tab']").forEach((tab) => {
@@ -25,13 +29,10 @@ const handleTabClick = (event) => {
   button.setAttribute("data-state", "active");
   button.setAttribute("tabindex", "0");
 
-  parentTab.querySelectorAll(".tab-content .tab-pane").forEach((pane) => {
+  tabPanes.forEach((pane) => {
     pane.setAttribute("data-state", "inactive");
     pane.hidden = true;
   });
-
-  const targetPane = parentTab.querySelector(`.tab-content #${targetId}`);
-  if (!targetPane) return;
 
   targetPane.setAttribute("data-state", "active");
   targetPane.hidden = false;
