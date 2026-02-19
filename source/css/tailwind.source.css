@@ -4,11 +4,8 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@source "../layout/**/*.ejs";
-@source "../scripts/**/*.js";
+@source "../../layout/**/*.ejs";
 @source "../../scripts/**/*.js";
-
-@source "../../../../redefine-local/source/_posts/theme-demo-with-banner.md";
 
 @theme {
   --spacing-unit: 38px;
