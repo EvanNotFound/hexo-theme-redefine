@@ -223,11 +223,10 @@ async function buildTabNavAndContent(tabBlocks, tabName, activeTabIndex, postCon
     const finalContent = await renderTabPaneContent(tabBlock.body, postContext);
     const active = tabBlock.index === resolvedActiveIndex;
     const buttonState = active ? 'active' : 'inactive';
-    const activeClass = active ? ' active' : '';
     const hiddenAttr = active ? '' : ' hidden';
 
     tabNav.push(`<button type="button" role="tab" aria-selected="${active}" data-state="${buttonState}" data-tab="${tabHref}" class="inline-flex items-center gap-2 whitespace-nowrap text-third-text-color border-b-2 border-transparent py-2 text-sm font-medium transition-colors hover:text-second-text-color data-[state=active]:border-primary data-[state=active]:text-primary" tabindex="${active ? '0' : '-1'}">${icon + caption}</button>`);
-    tabContent.push(`<div class="tab-pane${activeClass}" id="${tabHref}"${hiddenAttr}>${finalContent}</div>`);
+    tabContent.push(`<div class="tab-pane" data-state="${buttonState}" id="${tabHref}"${hiddenAttr}>${finalContent}</div>`);
   }
 
   return {

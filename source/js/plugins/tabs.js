@@ -26,14 +26,14 @@ const handleTabClick = (event) => {
   button.setAttribute("tabindex", "0");
 
   parentTab.querySelectorAll(".tab-content .tab-pane").forEach((pane) => {
-    pane.classList.remove("active");
+    pane.setAttribute("data-state", "inactive");
     pane.hidden = true;
   });
 
   const targetPane = parentTab.querySelector(`.tab-content #${targetId}`);
   if (!targetPane) return;
 
-  targetPane.classList.add("active");
+  targetPane.setAttribute("data-state", "active");
   targetPane.hidden = false;
 };
 
