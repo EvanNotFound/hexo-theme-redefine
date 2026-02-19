@@ -200,11 +200,6 @@ function stashSpecialBlocks(content) {
   };
 }
 
-function isTabActive(activeTabIndex, tabIndex) {
-  return (activeTabIndex > 0 && activeTabIndex === tabIndex)
-    || (activeTabIndex === 0 && tabIndex === 1);
-}
-
 async function renderTabPaneContent(content, postContext) {
   const { content: stashedContent, restore } = stashSpecialBlocks(content);
   const renderedContent = await renderMarkdownTagSafe({
@@ -219,15 +214,20 @@ async function renderTabPaneContent(content, postContext) {
 async function buildTabNavAndContent(tabBlocks, tabName, activeTabIndex, postContext) {
   const tabNav = [];
   const tabContent = [];
+  const hasExplicitActive = activeTabIndex > 0 && activeTabIndex <= tabBlocks.length;
+  const resolvedActiveIndex = hasExplicitActive ? activeTabIndex : 1;
 
   for (const tabBlock of tabBlocks) {
     const { caption, icon } = parseTabHeader(tabBlock.headerRaw);
     const tabHref = normalizeTabToken(`${tabName} ${tabBlock.index}`);
     const finalContent = await renderTabPaneContent(tabBlock.body, postContext);
-    const activeClass = isTabActive(activeTabIndex, tabBlock.index) ? ' active' : '';
+    const active = tabBlock.index === resolvedActiveIndex;
+    const buttonState = active ? 'active' : 'inactive';
+    const activeClass = active ? ' active' : '';
+    const hiddenAttr = active ? '' : ' hidden';
 
-    tabNav.push(`<li class="tab${activeClass}"><a class="#${tabHref}">${icon + caption}</a></li>`);
-    tabContent.push(`<div class="tab-pane${activeClass}" id="${tabHref}">${finalContent}</div>`);
+    tabNav.push(`<button type="button" role="tab" aria-selected="${active}" data-state="${buttonState}" data-tab="${tabHref}" class="inline-flex items-center gap-2 whitespace-nowrap text-third-text-color border-b-2 border-transparent py-2 text-sm font-medium transition-colors hover:text-second-text-color data-[state=active]:border-primary data-[state=active]:text-primary" tabindex="${active ? '0' : '-1'}">${icon + caption}</button>`);
+    tabContent.push(`<div class="tab-pane${activeClass}" id="${tabHref}"${hiddenAttr}>${finalContent}</div>`);
   }
 
   return {
@@ -248,9 +248,9 @@ async function postTabs(args, content) {
   const tabBlocks = parseTabBlocks(content);
   const { tabNav, tabContent } = await buildTabNavAndContent(tabBlocks, resolvedTabName, activeTabIndex, this);
 
-  const finalTabNav = `<ul class="nav-tabs">${tabNav}</ul>`;
-  const finalTabContent = `<div class="tab-content">${tabContent}</div>`;
-  return `<div class="tabs" id="tab-${normalizeTabToken(resolvedTabName)}">${finalTabNav + finalTabContent}</div>`;
+  const finalTabNav = `<div role="tablist" aria-orientation="horizontal" class="flex gap-3.5 overflow-x-auto px-4 not-markdown scrollbar-hide" tabindex="0">${tabNav}</div>`;
+  const finalTabContent = `<div class="tab-content p-4 bg-background-color/50 rounded-md shadow-[0_0_2px_0_var(--shadow-color-1)]">${tabContent}</div>`;
+  return `<div class="tabs relative my-4 bg-third-background-color border border-border-color rounded-md" id="tab-${normalizeTabToken(resolvedTabName)}">${finalTabNav + finalTabContent}</div>`;
 }
 
 hexo.extend.tag.register('tabs', postTabs, { ends: true, async: true });
