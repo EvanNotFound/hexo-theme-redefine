@@ -23,10 +23,11 @@ jobs:
           fetch-depth: 0
 
       - name: Check for committed build artifacts
+        if: ${{ !(github.base_ref == 'main' && github.head_ref == 'dev' && github.event.pull_request.head.repo.full_name == github.repository) }}
         run: |
           git fetch origin "${{ github.base_ref }}"
           if git diff --name-only "origin/${{ github.base_ref }}"...HEAD | grep -qE '^source/(js/build/|css/build/)'; then
-            echo "::error::Build artifacts are not allowed in PRs."
+            echo "::error::Build artifacts are not allowed in PRs (except same-repo dev -> main)."
             echo "Remove files under source/js/build or source/css/build from the commit."
             exit 1
           fi
