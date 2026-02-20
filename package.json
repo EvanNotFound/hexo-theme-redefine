@@ -1,6 +1,6 @@
 {
   "name": "hexo-theme-redefine",
-  "version": "2.8.5",
+  "version": "2.9.0",
   "private": false,
   "description": "Redefine your writing with Hexo Theme Redefine.",
   "scripts": {
@@ -10,10 +10,7 @@
     "build:js": "node source/js/build.js",
     "watch:css": "npx @tailwindcss/cli -i source/css/tailwind.source.css -o source/css/build/tailwind.css --watch --minify",
     "prepare": "husky",
-    "release": "standard-version",
-    "release:minor": "standard-version --release-as minor",
-    "release:patch": "standard-version --release-as patch",
-    "release:major": "standard-version --release-as major"
+    "preview": "node ../../redefine-local/.dev/preview-host.mjs"
   },
   "repository": {
     "type": "git",
@@ -39,7 +36,6 @@
     "glob-promise": "^6.0.7",
     "husky": "^9.1.6",
     "postcss": "^8.4.47",
-    "standard-version": "^9.5.0",
     "tailwindcss": "^4.1.11",
     "terser": "^5.36.0"
   }

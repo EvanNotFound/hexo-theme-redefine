@@ -3,6 +3,7 @@
 "use strict";
 
 const url = require("url");
+const { ensurePrefix } = require("../utils/log-prefix");
 const { version } = require("../../package.json");
 const themeVersion = version;
 
@@ -102,10 +103,12 @@ hexo.extend.helper.register("renderJS", function (path, options = {}) {
   const _js = hexo.extend.helper.get("js").bind(hexo);
   const { module = false, async = false, swupReload = false } = options;
 
+  const isDeveloperMode = this.theme.developer?.enable === true;
+
   if (Array.isArray(path)) {
-    path = path.map((p) => "js/build/" + p);
+    path = path.map((p) => (isDeveloperMode ? "js/" : "js/build/") + p);
   } else {
-    path = "js/build/" + path;
+    path = (isDeveloperMode ? "js/" : "js/build/") + path;
   }
 
   const cdnProviders = {
@@ -228,7 +231,7 @@ hexo.extend.helper.register("checkDeprecation", function (condition, id, message
     }
     
     if (!global.deprecationWarnings.has(id)) {
-      hexo.log.warn(`${message}`);
+      hexo.log.warn(ensurePrefix(`${message}`));
       global.deprecationWarnings.add(id);
     }
     return true;

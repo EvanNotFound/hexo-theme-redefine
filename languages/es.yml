@@ -28,6 +28,42 @@ archives: Archivos
 top: PRINCIPAL
 sticky: Fijado
 go-back-home: Volver al inicio
+masonry_loading: Cargando fotos...
+image_viewer: Visor de imágenes
+close: Cerrar
+
+exif:
+  title: EXIF
+  cards:
+    camera: Cámara
+    lens: Lente
+    exposure: Exposición
+    other: Otros
+  fields:
+    make: Marca
+    model: Modelo
+    date_taken: Fecha de toma
+    lens_model: Lente
+    focal_length: Distancia focal
+    focus_mode: Modo de enfoque
+    shutter: Obturación
+    aperture: Apertura
+    iso: ISO
+    exposure_program: Programa de exposición
+    exposure_compensation: Compensación de exposición
+    metering_mode: Modo de medición
+    flash: Flash
+    white_balance: Balance de blancos
+    latitude: Latitud
+    longitude: Longitud
+    altitude: Altitud
+  status:
+    loading: Cargando...
+    no_exif: Sin EXIF disponible
+    library_missing: La biblioteca EXIF no está cargada
+    image_source_missing: Fuente de imagen no disponible
+    unavailable: EXIF no disponible (bloqueado por CORS o sin metadatos)
+    flag_unavailable: EXIF no disponible
 
 # ----------------------------------------
 # Traducción del menú
@@ -40,6 +76,7 @@ friends: Amigos
 friend: Amigo
 timeline: Cronología
 shuoshuo: Shuoshuo
+bookmarks: Marcadores
 
 # ----------------------------------------
 # Contador del sitio

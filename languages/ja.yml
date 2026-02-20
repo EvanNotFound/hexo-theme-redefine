@@ -25,6 +25,42 @@ comments: コメント
 top: トップ
 sticky: 屋根
 go-back-home: トップページに戻ります
+masonry_loading: 写真を読み込み中...
+image_viewer: 画像ビューア
+close: 閉じる
+
+exif:
+  title: EXIF
+  cards:
+    camera: カメラ
+    lens: レンズ
+    exposure: 露出
+    other: その他
+  fields:
+    make: ブランド
+    model: 機種
+    date_taken: 撮影日時
+    lens_model: レンズ
+    focal_length: 焦点距離
+    focus_mode: フォーカスモード
+    shutter: シャッター
+    aperture: 絞り
+    iso: ISO
+    exposure_program: 露出プログラム
+    exposure_compensation: 露出補正
+    metering_mode: 測光モード
+    flash: フラッシュ
+    white_balance: ホワイトバランス
+    latitude: 緯度
+    longitude: 経度
+    altitude: 標高
+  status:
+    loading: 読み込み中...
+    no_exif: EXIF 情報がありません
+    library_missing: EXIF ライブラリが読み込まれていません
+    image_source_missing: 画像ソースを取得できません
+    unavailable: EXIF を取得できません（CORS またはメタデータ不足）
+    flag_unavailable: EXIF を取得できません
 
 # ----------------------------------------
 # 菜单翻译
@@ -38,6 +74,7 @@ friends: フレンドシップリンク
 friend: フレンドシップリンク
 タイムライン: 時間軸
 shuoshuo: 話す
+bookmarks: ブックマーク
 
 # ----------------------------------------
 # 网站统计

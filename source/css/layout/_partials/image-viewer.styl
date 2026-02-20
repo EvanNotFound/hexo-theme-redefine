@@ -24,14 +24,68 @@
 
     img
       cursor grab
-      transform scale(1)
       opacity 1
       padding 2px
       background var(--background-color)
 
+  .image-viewer-frame
+    display flex
+    align-items center
+    justify-content center
+    width 100%
+    height 100%
+    max-width 100%
+    max-height 100%
+
   img
     max-width 100%
     max-height 100%
-    transform scale(0.5)
     opacity 0
-    transition-t('transform, opacity', '0,0', '0.3,0.3', 'ease')
+    will-change transform
+    transition-t('opacity', '0', '0.25', 'ease')
+
+  .image-viewer-prev,
+  .image-viewer-next,
+  .image-viewer-close
+    position absolute
+    display flex
+    align-items center
+    justify-content center
+    width 44px
+    height 44px
+    border-radius $redefine-border-radius-full
+    border 1px solid var(--border-color)
+    background-color var(--background-color-transparent)
+    color var(--default-text-color)
+    backdrop-filter blur(10px)
+    -webkit-backdrop-filter blur(10px)
+    transition background-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease
+
+    i
+      font-size 1.1rem
+
+    &:hover
+      background-color var(--background-color-transparent-80)
+
+  .image-viewer-prev,
+  .image-viewer-next
+    top 50%
+    transform translateY(-50%)
+
+    &:hover
+      transform translateY(-50%) scale(1.05)
+
+  .image-viewer-prev
+    left 4%
+
+  .image-viewer-next
+    right 4%
+
+  .image-viewer-close
+    top 4%
+    right 4%
+
+  .image-viewer-prev.is-disabled,
+  .image-viewer-next.is-disabled
+    opacity 0.35
+    pointer-events none

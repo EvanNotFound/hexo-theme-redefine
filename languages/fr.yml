@@ -28,6 +28,42 @@ archives: Archives
 top: TOP
 sticky: Sticky
 go-back-home: Retour à l'accueil
+masonry_loading: Chargement des photos...
+image_viewer: Visionneuse d’images
+close: Fermer
+
+exif:
+  title: EXIF
+  cards:
+    camera: Appareil photo
+    lens: Objectif
+    exposure: Exposition
+    other: Autres
+  fields:
+    make: Marque
+    model: Modèle
+    date_taken: Date de prise de vue
+    lens_model: Objectif
+    focal_length: Focale
+    focus_mode: Mode de mise au point
+    shutter: Vitesse d'obturation
+    aperture: Ouverture
+    iso: ISO
+    exposure_program: Programme d'exposition
+    exposure_compensation: Compensation d'exposition
+    metering_mode: Mode de mesure
+    flash: Flash
+    white_balance: Balance des blancs
+    latitude: Latitude
+    longitude: Longitude
+    altitude: Altitude
+  status:
+    loading: Chargement...
+    no_exif: Aucune information EXIF
+    library_missing: Bibliothèque EXIF non chargée
+    image_source_missing: Source d'image indisponible
+    unavailable: EXIF indisponible (bloqué par CORS ou métadonnées manquantes)
+    flag_unavailable: EXIF indisponible
 
 # ----------------------------------------
 # Traduction du menu
@@ -40,6 +76,7 @@ friends: Amis
 friend: Ami
 timeline: Chronologie
 shuoshuo: Shuoshuo
+bookmarks: Signets
 
 # ----------------------------------------
 # Nombre de sites Web

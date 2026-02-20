@@ -1,6 +1,11 @@
+@layer theme, base, components, utilities;
+
 @import 'tailwindcss';
 
 @custom-variant dark (&:is(.dark *));
+
+@source "../../layout/**/*.ejs";
+@source "../../scripts/**/*.js";
 
 @theme {
   --spacing-unit: 38px;
@@ -20,6 +25,7 @@
   --z-index-8: 1008;
   --z-index-9: 1009;
 
+  /* Old deprecated radius variables */
   --radius-none: 0px;
   --radius-xsmall: 4px;
   --radius-small: 9px;
@@ -27,6 +33,13 @@
   --radius-large: 18px;
   --radius-xlarge: 24px;
   --radius-xxlarge: 48px;
+
+  --radius-xs: 4px;
+  --radius-sm: 9px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-2xl: 48px;
 
   --font-english: Geist Variable, sans-serif;
   --font-default: Geist Variable, system-ui, sans-serif;
@@ -224,6 +237,46 @@
         --chart-4: 280 65% 60%;
         --chart-5: 340 75% 55%;
     }
+}
+
+@layer base {
+  ul,
+  ol,
+  li {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--default-text-color);
+  }
+
+  a i,
+  a span {
+    color: var(--default-text-color);
+  }
+
+  a:hover,
+  a:active {
+    text-decoration: none;
+    color: var(--primary-color);
+  }
+
+  a:hover i,
+  a:hover span,
+  a:active i,
+  a:active span {
+    color: var(--primary-color);
+  }
+
+  button {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    background: transparent;
+  }
 }
 
 .scrollbar-hide {

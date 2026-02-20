@@ -11,9 +11,6 @@ details
         display none
 
 details[open] > summary
-    border-radius $redefine-border-radius-small $redefine-border-radius-small 0 0
-    border-bottom 1px solid transparent
-
     i.fa-chevron-right
         transform rotate(90deg)
         transition transform 0.2s ease
@@ -27,14 +24,9 @@ summary
         transition transform 0.2s ease
         margin-right 1rem
         float right
-        padding-top 6px
+        padding-top 3px
 
-    border solid 1px var(--shadow-color-1)
-    border-radius $redefine-border-radius-small
-    padding 15px
-    font-size 1.2rem
-    background-color var(--background-color)
-    line-height 2rem
+    padding 12px 16px
     cursor pointer
 
     &:hover
@@ -46,18 +38,13 @@ summary
         float left
 
 details div.content
-    border-radius 0 0 $redefine-border-radius-small $redefine-border-radius-small
-    border solid 1px var(--shadow-color-1)
     padding 1rem
-    margin-bottom 1rem
-    background-color var(--second-background-color)
-    animation fade 0.2s ease forwards
 
     &>:first-child
         margin-top 0
 
-::marker
-    // padding-left 100px
+    &>:last-child
+        margin-bottom 0
 
 details.yellow
     summary
@@ -81,45 +68,45 @@ details.green
     summary
         // border-left solid 4px #00FFA6
         &:hover
-            background-color #00FFA630
+            background-color #00FFA620
     
     &[open] > summary
-        background-color #00FFA630
+        background-color #00FFA620
 
 details.red
     summary
         // border-left solid 4px #FF0000
         &:hover
-            background-color #FF000030
+            background-color #FF000020
 
     &[open] > summary
-        background-color #FF000030
+        background-color #FF000020
 
 details.orange
     summary
         // border-left solid 4px #FFA930
         &:hover
-            background-color #FF983030
+            background-color #FF983020
 
     &[open] > summary
-        background-color #FF983030
+        background-color #FF983020
 
 details.pink
     summary
         // border-left solid 4px #FF00FF
         &:hover
-            background-color #FF00FF30
+            background-color #FF00FF20
 
     &[open] > summary
-        background-color #FF00FF30
+        background-color #FF00FF20
 
 details.cyan
     summary
         &:hover
-            background-color #00FFFF30
+            background-color #00FFFF20
     
     &[open] > summary
-        background-color #00FFFF30
+        background-color #00FFFF20
 
     
 
@@ -127,54 +114,43 @@ details.white
     summary
         // border-left solid 4px #FFFFFF
         &:hover
-            background-color #FFFFFF30
+            background-color #FFFFFF20
 
     &[open] > summary
-        background-color #FFFFFF30
+        background-color #FFFFFF20
     
 details.black
     summary
         // border-left solid 4px #000000
         &:hover
-            background-color #00000030
+            background-color #00000020
     
     &[open] > summary
-        background-color #00000030
+        background-color #00000020
 
 details.gray
     summary
         // border-left solid 4px #A6A6A6
         &:hover
-            background-color #A6A6A630
+            background-color #A6A6A620
 
     &[open] > summary
-        background-color #A6A6A630
+        background-color #A6A6A620
 
 details.purple
     summary
         // border-left solid 4px #A763FF
         &:hover
-            background-color #A763FF30
+            background-color #A763FF20
 
     &[open] > summary
-        background-color #A763FF30
+        background-color #A763FF20
 
 details
     summary
         // border-left solid 4px #A6A6A6
         &:hover
-            background-color #A6A6A630
+            background-color #A6A6A620
 
     &[open] > summary
-        background-color #A6A6A630
-
-@keyframes fade
-    from
-        opacity 0
-        visibility hidden
-        transform translateY(-10px)
-
-    to
-        opacity 1
-        visibility visible
-        transform translateY(0)
+        background-color #A6A6A620

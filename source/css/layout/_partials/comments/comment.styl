@@ -7,5 +7,8 @@ if (hexo-config('comment.enable') == true && hexo-config('comment.system') != ""
 
   } else if (hexo-config('comment.system') == "twikoo") {
     @require "./twikoo.styl"
+
+  } else if (hexo-config('comment.system') == "utterances") {
+    @require "./utterances.styl"
   }
 }

@@ -1,6 +1,3 @@
-import { main } from "../main.js";
-import { initTOC } from "../layouts/toc.js";
-
 export function initHBE() {
   const cryptoObj = window.crypto || window.msCrypto;
   const storage = window.localStorage;
@@ -236,9 +233,7 @@ export function initHBE() {
           }
         });
 
-        // // load Redefine Page components
-        main.refresh();
-        initTOC();
+        window.dispatchEvent(new CustomEvent("redefine:page:refresh"));
 
         // trigger event
         var event = new Event("hexo-blog-decrypt");

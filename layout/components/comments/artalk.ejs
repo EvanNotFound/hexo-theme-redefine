@@ -1,0 +1,86 @@
+<% if (
+  theme.comment.system === 'artalk' &&
+  theme.comment.config.artalk &&
+  theme.comment.config.artalk.server &&
+  theme.comment.config.artalk.site
+) { %>
+  <div id="artalk-comment"></div>
+  <script <%= theme.global.single_page === true && 'data-swup-reload-script' %>>
+    (function() {
+      const startPath = location.pathname;
+      const startTime = Date.now();
+      const retryDelay = 200;
+      const retryLimit = 5000;
+      const isSinglePage = <%= theme.global.single_page === true ? 'true' : 'false' %>;
+      const artalkServer = <%- JSON.stringify(theme.comment.config.artalk.server).replace(/</g, "\\u003c") %>;
+      const artalkSite = <%- JSON.stringify(theme.comment.config.artalk.site).replace(/</g, "\\u003c") %>;
+
+      const ensureCss = () => {
+        if (document.getElementById("artalk-css")) {
+          return;
+        }
+        const link = document.createElement("link");
+        link.id = "artalk-css";
+        link.rel = "stylesheet";
+        link.href = "https://cdn.jsdelivr.net/npm/artalk/dist/Artalk.css";
+        document.head.appendChild(link);
+      };
+
+      const ensureScript = () => {
+        if (document.getElementById("artalk-script")) {
+          return;
+        }
+        const script = document.createElement("script");
+        script.id = "artalk-script";
+        script.src = "https://cdn.jsdelivr.net/npm/artalk/dist/Artalk.js";
+        script.async = true;
+        document.body.appendChild(script);
+      };
+
+      const initArtalk = () => {
+        if (!window.Artalk) {
+          return false;
+        }
+        ensureCss();
+        try {
+          window.__artalk_instance && window.__artalk_instance.destroy?.();
+        } catch (e) {}
+        window.__artalk_instance = Artalk.init({
+          el: "#artalk-comment",
+          server: artalkServer,
+          site: artalkSite,
+        });
+        return true;
+      };
+
+      const runArtalk = () => {
+        if (location.pathname !== startPath) {
+          return;
+        }
+
+        const container = document.getElementById("artalk-comment");
+        if (!container) {
+          if (Date.now() - startTime < retryLimit) {
+            setTimeout(runArtalk, retryDelay);
+          }
+          return;
+        }
+
+        if (initArtalk()) {
+          return;
+        }
+
+        ensureScript();
+        if (Date.now() - startTime < retryLimit) {
+          setTimeout(runArtalk, retryDelay);
+        }
+      };
+
+      if (isSinglePage) {
+        const t = setTimeout(() => { runArtalk(); clearTimeout(t); }, 1000);
+      } else {
+        document.addEventListener("DOMContentLoaded", runArtalk);
+      }
+    })();
+  </script>
+<% } %>

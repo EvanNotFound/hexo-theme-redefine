@@ -1,0 +1,2 @@
+export default function initExpirationDate(){const e=document.getElementById("expiration-container"),t=document.getElementById("expiration-date");if(!e||!t)return;const n=e.dataset.expires,i=e.dataset.updated;if(!n||!i)return;const a=new Date(n),r=new Date(i);if(Number.isNaN(a.getTime())||Number.isNaN(r.getTime()))return;const d=new Date,o=Math.floor((d-r)/864e5);e.classList.add("hidden"),a<d&&(e.classList.remove("hidden"),t.innerHTML=t.innerHTML.replace("some",o))}
+//# sourceMappingURL=expirationDate.js.map

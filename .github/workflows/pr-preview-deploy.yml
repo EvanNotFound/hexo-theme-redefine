@@ -1,0 +1,105 @@
+name: PR Preview Deploy
+
+on:
+  workflow_run:
+    workflows: ["PR Preview Build"]
+    types: [completed]
+
+permissions:
+  actions: read
+  contents: read
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: pr-preview-deploy-${{ github.event.workflow_run.pull_requests[0].number || github.event.workflow_run.id }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'pull_request' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Resolve PR Info
+        id: pr
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const run = context.payload.workflow_run
+            const pr = run.pull_requests && run.pull_requests[0]
+            if (!pr) {
+              core.setFailed("No PR found for this workflow run.")
+              return
+            }
+            core.setOutput("number", pr.number)
+            core.setOutput("head_sha", pr.head.sha || run.head_sha)
+
+      - name: Download Prebuilt Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: vercel-prebuilt
+          path: vercel-prebuilt
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: ${{ github.event.workflow_run.id }}
+
+      - name: Extract Prebuilt Output
+        run: |
+          mkdir -p deploy
+          tar -xzf vercel-prebuilt/vercel-prebuilt.tgz -C deploy
+
+      # Install Vercel CLI first to avoid bug with next step
+      - name: Install Vercel CLI
+        run: npm install -g vercel@22.0.1
+
+
+      - name: Deploy to Vercel
+        id: deploy-to-vercel
+        uses: EvanNotFound/vercel-deployment-for-github-actions@v1.2.0
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          WORKING_DIRECTORY: deploy
+          VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE }}
+          PRODUCTION: false
+          PREBUILT: true
+          DEPLOY_PR_FROM_FORK: true
+          ALIAS_DOMAINS: |
+            redefine-preview-pr-${{ steps.pr.outputs.number }}.vercel.app
+
+      - name: Comment Preview URL
+        if: ${{ steps.deploy-to-vercel.outputs.PREVIEW_URL != '' }}
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = Number("${{ steps.pr.outputs.number }}")
+            const previewUrl = "${{ steps.deploy-to-vercel.outputs.PREVIEW_URL }}"
+            const marker = "<!-- vercel-preview -->"
+            const body = `${marker}\nPreview: ${previewUrl}`
+            const { owner, repo } = context.repo
+            const { data: comments } = await github.rest.issues.listComments({
+              owner,
+              repo,
+              issue_number: prNumber,
+            })
+            const existing = comments.find((comment) =>
+              comment.body && comment.body.includes(marker)
+            )
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner,
+                repo,
+                comment_id: existing.id,
+                body,
+              })
+            } else {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: prNumber,
+                body,
+              })
+            }

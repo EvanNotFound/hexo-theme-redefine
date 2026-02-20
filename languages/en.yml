@@ -28,7 +28,42 @@ archives: Archives
 top: TOP
 sticky: Sticky
 go-back-home: Go Back Home
+masonry_loading: Loading photos...
+image_viewer: Image viewer
+close: Close
 
+exif:
+  title: EXIF
+  cards:
+    camera: Camera
+    lens: Lens
+    exposure: Exposure
+    other: Other
+  fields:
+    make: Brand
+    model: Model
+    date_taken: Date taken
+    lens_model: Lens
+    focal_length: Focal length
+    focus_mode: Focus mode
+    shutter: Shutter
+    aperture: Aperture
+    iso: ISO
+    exposure_program: Exposure program
+    exposure_compensation: Exposure compensation
+    metering_mode: Metering mode
+    flash: Flash
+    white_balance: White balance
+    latitude: Latitude
+    longitude: Longitude
+    altitude: Altitude
+  status:
+    loading: Loading...
+    no_exif: No EXIF available
+    library_missing: EXIF library not loaded
+    image_source_missing: Image source unavailable
+    unavailable: EXIF unavailable (blocked by CORS or missing metadata)
+    flag_unavailable: EXIF unavailable
 
 # ----------------------------------------
 # Menu Translation
@@ -41,6 +76,7 @@ friends: Friends
 friend: Friend
 timeline: Timeline
 shuoshuo: Shuoshuo
+bookmarks: Bookmarks
 
 # ----------------------------------------
 # Website count

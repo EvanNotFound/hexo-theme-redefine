@@ -1,12 +1,11 @@
-// Function to format the dates
-function formatEssayDates() {
+export default function initEssays() {
   const dateElements = document.querySelectorAll(".essay-date");
 
-  if (!dateElements) {
+  if (!dateElements.length) {
     return;
   }
 
-  dateElements.forEach(function (element) {
+  dateElements.forEach((element) => {
     const rawDate = element.getAttribute("data-date");
     const locale = config.language || "en";
 
@@ -14,12 +13,3 @@ function formatEssayDates() {
     element.textContent = formattedDate;
   });
 }
-
-try {
-  swup.hooks.on("page:view", formatEssayDates);
-} catch (e) {
-  console.error(e);
-}
-
-// Initial call for the first page load
-document.addEventListener("DOMContentLoaded", formatEssayDates);

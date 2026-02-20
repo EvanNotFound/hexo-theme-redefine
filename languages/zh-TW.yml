@@ -25,6 +25,42 @@ comments: 留言
 top: 頂端
 sticky: 置頂
 go-back-home: 回到首頁
+masonry_loading: 照片載入中...
+image_viewer: 圖片檢視器
+close: 關閉
+
+exif:
+  title: EXIF
+  cards:
+    camera: 相機
+    lens: 鏡頭
+    exposure: 曝光
+    other: 其他
+  fields:
+    make: 品牌
+    model: 機型
+    date_taken: 拍攝時間
+    lens_model: 鏡頭
+    focal_length: 焦距
+    focus_mode: 對焦模式
+    shutter: 快門
+    aperture: 光圈
+    iso: 感光度
+    exposure_program: 曝光程序
+    exposure_compensation: 曝光補償
+    metering_mode: 測光模式
+    flash: 閃光燈
+    white_balance: 白平衡
+    latitude: 緯度
+    longitude: 經度
+    altitude: 海拔
+  status:
+    loading: 載入中...
+    no_exif: 無 EXIF 資訊
+    library_missing: EXIF 程式庫未載入
+    image_source_missing: 圖片位址不可用
+    unavailable: EXIF 不可用（可能被 CORS 阻擋或缺少中繼資料）
+    flag_unavailable: EXIF 不可用
 
 # ----------------------------------------
 # 選單翻譯
@@ -40,7 +76,7 @@ friend: 友情連結
 timeline: 時間軸
 shuoshuo: 說說
 changelog: 日誌
-status: 狀態
+bookmarks: 書籤
 
 # ----------------------------------------
 # 網站統計
@@ -51,6 +87,7 @@ site_pv: 閱覽
 read_more: 繼續閱讀...
 wordcount: 字數
 min2read: 分鐘
+status: 狀態
 
 # ----------------------------------------
 # 頁尾

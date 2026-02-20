@@ -29,7 +29,7 @@
 
 		<% if (theme.info.author || config.author) { %>
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
-			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+			<div class="avatar w-[46px] h-[46px] shrink-0 rounded-medium border border-border-color p-px">
 				<%- image_tag((typeof page.avatar === "string" && (page.avatar)) || page.author?.avatar || theme.defaults.avatar) %>
 			</div>
 			<div class="info flex flex-col justify-between">
@@ -53,34 +53,13 @@
 		<% } %>
 
 		<% if (page?.expires && page?.expires !== "") {%>
-		<div class="article-expire mt-4 mx-2 sm:mx-6 md:mx-8 note p-4 rounded-lg red icon hidden" id="expiration-container">
-			<i class="expire-icon fa-solid fa-timer mr-0.5 text-red-600 dark:text-red-400"></i>
-			<span class="expire-label text-red-600 dark:text-red-400 " id="expiration-date"><%= __('expired', "some") %></span>
+		<div class="article-expire hidden mt-4 mx-2 sm:mx-6 md:mx-8 callout callout--simple red mb-4 rounded-small shadow-redefine-flat bg-(--callout-bg-color) p-3 pl-1 relative flex flex-row gap-2 items-center" id="expiration-container" data-expires="<%= page?.expires %>" data-updated="<%= page?.updated %>">
+			<div role="none" class="rounded-full self-stretch w-0.5 bg-(--callout-primary-color) opacity-60 shrink-0"></div>
+			<i class="expire-icon callout__icon fa-solid fa-timer text-(--callout-primary-color) text-base shrink-0"></i>
+			<div class="callout__content markdown-body flex-1 min-w-0">
+				<span class="expire-label text-(--callout-primary-color)" id="expiration-date"><%= __('expired', "some") %></span>
+			</div>
 		</div>
-
-		<script data-swup-reload-script>
-			function updateExpirationDate() {
-				try {
-					const expiredDate = new Date("<%= page?.expires %>");
-					const updatedDate = new Date("<%= page?.updated %>");
-					const now = new Date();
-					const expirationValue = document.getElementById("expiration-date");
-					const expirationContainer = document.getElementById("expiration-container");
-					let daysAgo = Math.floor((now - updatedDate) / (1000 * 60 * 60 * 24));
-					if (expiredDate < now) {
-						expirationContainer.classList.remove("hidden");
-						// console.log(daysAgo)
-						expirationValue.innerHTML = expirationValue.innerHTML.replace("some", daysAgo);
-					}
-				} catch (e) {}
-			}
-			document.addEventListener("DOMContentLoaded", function() {
-				updateExpirationDate();
-			});
-			try {
-				swup.hooks.on("page:view", updateExpirationDate)
-			} catch (e) {}
-		</script>
 		<% } %>
 
 

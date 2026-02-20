@@ -5,21 +5,35 @@
         ></script>
         <div id="twikoo-comment"></div>
         <script <%= theme.global.single_page === true && 'data-swup-reload-script' %>>
-            function loadTwikoo() {
-                twikoo.init({
-                    el: '#twikoo-comment',
-                    envId: '<%= theme.comment.config.twikoo.server_url %>',
-                });
-            }
+            (function() {
+                const startPath = location.pathname;
+                const startTime = Date.now();
+                const retryDelay = 200;
+                const retryLimit = 5000;
 
-            if ('<%= theme.global.single_page %>') {
-                const loadTwikooTimeout = setTimeout(() => {
-                    loadTwikoo();
-                    clearTimeout(loadTwikooTimeout);
-                }, 1000);
-            } else {
-                window.addEventListener('DOMContentLoaded', loadTwikoo);
-            }
+                const runTwikoo = () => {
+                    if (location.pathname !== startPath) {
+                        return;
+                    }
+
+                    const container = document.getElementById('twikoo-comment');
+                    if (!container || typeof twikoo === 'undefined') {
+                        if (Date.now() - startTime < retryLimit) {
+                            setTimeout(runTwikoo, retryDelay);
+                        }
+                        return;
+                    }
+
+                    container.innerHTML = '';
+                    twikoo.init({
+                        el: '#twikoo-comment',
+                        envId: '<%= theme.comment.config.twikoo.server_url %>',
+                        path: location.pathname,
+                    });
+                };
+
+                runTwikoo();
+            })();
         </script>
     </div>
 <% } else if (theme.comment.system === 'twikoo' && theme.comment.config.twikoo.server_url && theme.comment.config.twikoo.region) { %>
@@ -29,22 +43,36 @@
         ></script>
         <div id="twikoo-comment"></div>
         <script <%= theme.global.single_page === true && 'data-swup-reload-script' %>>
-            function loadTwikoo() {
-                twikoo.init({
-                    el: '#twikoo-comment',
-                    envId: '<%= theme.comment.config.twikoo.server_url %>',
-                    region: '<%= theme.comment.config.twikoo.region %>',
-                });
-            }
+            (function() {
+                const startPath = location.pathname;
+                const startTime = Date.now();
+                const retryDelay = 200;
+                const retryLimit = 5000;
 
-            if ('<%= theme.global.single_page %>') {
-                const loadTwikooTimeout = setTimeout(() => {
-                    loadTwikoo();
-                    clearTimeout(loadTwikooTimeout);
-                }, 1000);
-            } else {
-                window.addEventListener('DOMContentLoaded', loadTwikoo);
-            }
+                const runTwikoo = () => {
+                    if (location.pathname !== startPath) {
+                        return;
+                    }
+
+                    const container = document.getElementById('twikoo-comment');
+                    if (!container || typeof twikoo === 'undefined') {
+                        if (Date.now() - startTime < retryLimit) {
+                            setTimeout(runTwikoo, retryDelay);
+                        }
+                        return;
+                    }
+
+                    container.innerHTML = '';
+                    twikoo.init({
+                        el: '#twikoo-comment',
+                        envId: '<%= theme.comment.config.twikoo.server_url %>',
+                        region: '<%= theme.comment.config.twikoo.region %>',
+                        path: location.pathname,
+                    });
+                };
+
+                runTwikoo();
+            })();
         </script>
     </div>
 <% } %>

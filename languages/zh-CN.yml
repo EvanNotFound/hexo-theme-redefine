@@ -25,6 +25,42 @@ comments: 评论
 top: 置顶
 sticky: 置顶
 go-back-home: 回到首页
+masonry_loading: 照片加载中...
+image_viewer: 图片查看器
+close: 关闭
+
+exif:
+  title: EXIF
+  cards:
+    camera: 相机
+    lens: 镜头
+    exposure: 曝光
+    other: 其他
+  fields:
+    make: 品牌
+    model: 机型
+    date_taken: 拍摄时间
+    lens_model: 镜头
+    focal_length: 焦距
+    focus_mode: 对焦模式
+    shutter: 快门
+    aperture: 光圈
+    iso: 感光度
+    exposure_program: 曝光程序
+    exposure_compensation: 曝光补偿
+    metering_mode: 测光模式
+    flash: 闪光灯
+    white_balance: 白平衡
+    latitude: 纬度
+    longitude: 经度
+    altitude: 海拔
+  status:
+    loading: 加载中...
+    no_exif: 无 EXIF 信息
+    library_missing: EXIF 库未加载
+    image_source_missing: 图片地址不可用
+    unavailable: EXIF 不可用（可能被 CORS 阻止或缺少元数据）
+    flag_unavailable: EXIF 不可用
 
 # ----------------------------------------
 # 菜单翻译
@@ -39,6 +75,7 @@ friends: 友情链接
 friend: 友情链接
 timeline: 时间轴
 shuoshuo: 说说
+bookmarks: 书签
 
 # ----------------------------------------
 # 网站统计
