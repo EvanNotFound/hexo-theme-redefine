@@ -143,7 +143,6 @@ This is the list of all the people who have donated to me: [Donation List](https
 - ✅ 高级语音对话 + 超高对话上限，随便问不心疼
 - ✅ 运营两年老站，售后有保障，Evan 亲自维护
 
-💡 现在加入，每月低至 23.9 元，一杯奶茶钱享受原价 140 多元的服务
 [![gpt-billboard](https://github.com/user-attachments/assets/e4b142ad-b48f-4ea1-828e-57a743f54d90)](https://www.gptplus.ca/home)
 
 👨‍💻 **AI 编程助手，让效率翻倍！Arc Codex 一站式编程平台**\
@@ -156,7 +155,6 @@ This is the list of all the people who have donated to me: [Donation List](https
 - ✅ 标准版首月仅 15.9 元，远低于官网价，同时使用优惠码 `REDEFINE`，续费享 **8折** 优惠！
 - ✅ Evan 运营保障，不满意包退，无后顾之忧
 
-🚀 告别额度焦虑，放心写代码
 [![arccodex-billboard](https://github.com/user-attachments/assets/6b1f49c9-9791-4466-8d1f-211b0c712633)](https://www.arccodex.com)
 
 
