@@ -134,7 +134,7 @@ If you like this theme, please give a star. You can also support me by [donating
 
 This is the list of all the people who have donated to me: [Donation List](https://github.com/EvanNotFound/hexo-theme-redefine/blob/dev/DONATION.md)
 
-🎉 **ChatGPT Plus 会员，每月仅需 23.9 元！省下官网 20 美元/月**
+🎉 **ChatGPT Plus 会员，每月仅需 23.9 元！省下官网 20 美元/月**\
 👉 [立即体验 GPT Plus 共享站](https://gpt.oknice.ca)
 
 - ✅ **官方正版账号池**，支持 GPT-5.2 / GPT-5.2 Pro 等最新模型，Sora 2 视频/图片生成
@@ -146,8 +146,8 @@ This is the list of all the people who have donated to me: [Donation List](https
 💡 现在加入，每月低至 23.9 元，一杯奶茶钱享受原价 140 多元的服务
 [![gpt-billboard](https://github.com/user-attachments/assets/e4b142ad-b48f-4ea1-828e-57a743f54d90)](https://www.gptplus.ca/home)
 
-👨‍💻 **AI 编程助手，让效率翻倍！Arc Codex 一站式编程平台**
-💰 注册即送 $5 美元额度，首月套餐仅 ¥15.9 起！
+👨‍💻 **AI 编程助手，让效率翻倍！Arc Codex 一站式编程平台**\
+💰 注册即送 $5 美元额度，首月套餐仅 ¥15.9 起！\
 👉 [立即体验 Arc Codex](https://www.arccodex.com)
 
 
