@@ -134,17 +134,30 @@ If you like this theme, please give a star. You can also support me by [donating
 
 This is the list of all the people who have donated to me: [Donation List](https://github.com/EvanNotFound/hexo-theme-redefine/blob/dev/DONATION.md)
 
-🎉 **想体验 OpenAI 的 ChatGPT Plus 会员？官网 20 美元每月太贵了？不用担心！**
+🎉 **ChatGPT Plus 会员，每月仅需 23.9 元！省下官网 20 美元/月**\
+👉 [立即体验 GPT Plus 共享站](https://gpt.oknice.ca)
 
-🚀 立即加入我的 [GPT Plus Share](https://gpt.oknice.ca) GPT Plus 共享站，ChatGPT Plus 随心用。
+- ✅ **官方正版账号池**，支持 GPT-5.2 / GPT-5.2 Pro 等最新模型，Sora 2 视频/图片生成
+- ✅ **国内直接访问**，无需梯子，即开即用
+- ✅ **免费试用一天**，满意再付款，零风险体验
+- ✅ 高级语音对话 + 超高对话上限，随便问不心疼
+- ✅ 运营两年老站，售后有保障，Evan 亲自维护
 
-- ✅ 支持 OpenAI 最新所有模型，包括 `GPT-5`, `o3` 系列模型，支持高级图片生成
-- ✅ 后台大量官方正版账号号池，随心使用
-- ✅ 每月仅需低至 23.99 人民币，支持一天免费试用
-- ✅ 无需梯子，国内免翻访问！
-- ✅ 由 Evan 本人运营，售后保证，已稳定运行超过一年
-
+💡 现在加入，每月低至 23.9 元，一杯奶茶钱享受原价 140 多元的服务
 [![gpt-billboard](https://github.com/user-attachments/assets/e4b142ad-b48f-4ea1-828e-57a743f54d90)](https://www.gptplus.ca/home)
+
+👨‍💻 **AI 编程助手，让效率翻倍！Arc Codex 一站式编程平台**\
+💰 注册即送 $5 美元额度，首月套餐仅 ¥15.9 起！\
+👉 [立即体验 Arc Codex](https://www.arccodex.com)
+
+
+- ✅ 支持 GPT-5.2-Codex 等最新编程模型，代码生成更精准
+- ✅ 每日 \$40 美元额度自动重置，月总额高达 \$1200，随便用不封顶
+- ✅ 标准版首月仅 15.9 元，远低于官网价，同时使用优惠码 `REDEFINE`，续费享 **8折** 优惠！
+- ✅ Evan 运营保障，不满意包退，无后顾之忧
+
+🚀 告别额度焦虑，放心写代码
+[![arccodex-billboard](https://github.com/user-attachments/assets/6b1f49c9-9791-4466-8d1f-211b0c712633)](https://www.arccodex.com)
 
 
 ## 🌟 Star History
