@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: Dev Preview
-      url: ${{ steps.deploy-to-vercel.outputs.PREVIEW_URL }}
+      url: https://redefine-preview.ohevan.com
     steps:
       - name: Checkout theme repository
         uses: actions/checkout@v6
@@ -112,6 +112,7 @@ jobs:
           GITHUB_DEPLOYMENT: false
           DEPLOY_PR_FROM_FORK: true
           ALIAS_DOMAINS: |
+            redefine-preview.ohevan.com
             redefine-preview.vercel.app
             redefine-preview-git-{SHA}.vercel.app
           PR_PREVIEW_DOMAIN: "redefine-preview-pr-{PR}.vercel.app"
