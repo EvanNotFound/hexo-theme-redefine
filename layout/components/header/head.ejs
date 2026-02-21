@@ -2,7 +2,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="<%= page.keywords || config.keywords || 'Hexo Theme Redefine' %>">
-    <% if (!theme.global.open_graph) { %>
+    <%
+      const openGraphConfig = theme.global?.open_graph;
+      const openGraphEnabled = openGraphConfig === true || openGraphConfig?.enable === true;
+    %>
+    <% if (!openGraphEnabled) { %>
         <meta name="description" content="<%= page.description || config.description || 'Hexo Theme Redefine' %>">
     <% }%>
     <meta name="author" content="<%= theme.info.author || config.author || 'Redefine Team' %>">
@@ -95,15 +99,10 @@
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-    <% checkDeprecation(
-      theme.global.open_graph === true,
-      'open_graph',
-      "Using 'open_graph: true' is deprecated. Please update to the new format:\nglobal:\n  open_graph:\n    enable: true\n    image: your_image_path\n    description: your_description"
-    ) %>
-    <% if (theme.global.open_graph?.enable || theme.global.open_graph === true) { %>
+    <% if (openGraphEnabled) { %>
         <% 
-        let ogImage = page.og_image || theme.global.open_graph?.image;
-        let ogDescription = page.og_description || theme.global.open_graph?.description || page.description || config.description;
+        let ogImage = page.og_image || openGraphConfig?.image;
+        let ogDescription = page.og_description || openGraphConfig?.description || page.description || config.description;
         let author = page.author || config.author || 'Redefine Team';
         %>
         <%- open_graph({
@@ -219,4 +218,3 @@
         <%- renderCSS('fontawesome/sharp-solid.min.css') %>
     <% } %>
 </head>
-
