@@ -14,7 +14,7 @@ jobs:
   preview-deployment:
     runs-on: ubuntu-latest
     environment:
-      name: Preview
+      name: Dev Preview
       url: ${{ steps.deploy-to-vercel.outputs.PREVIEW_URL }}
     steps:
       - name: Checkout theme repository
@@ -109,6 +109,7 @@ jobs:
           WORKING_DIRECTORY: ${{ env.HEXO_SITE_DIR }}
           VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE }}
           PRODUCTION: false
+          GITHUB_DEPLOYMENT: false
           DEPLOY_PR_FROM_FORK: true
           ALIAS_DOMAINS: |
             redefine-preview.vercel.app

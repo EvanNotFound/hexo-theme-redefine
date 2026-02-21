@@ -3,16 +3,7 @@ name: PR Preview Build
 on:
   pull_request:
     branches:
-      - main
       - dev
-    paths:
-      - "source/js/**"
-      - "source/css/**"
-      - "scripts/**"
-      - "languages/**"
-      - "package.json"
-      - "package-lock.json"
-      - "_config.yml"
 
 permissions:
   contents: read

@@ -19,6 +19,9 @@ jobs:
   deploy:
     if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'pull_request' }}
     runs-on: ubuntu-latest
+    environment:
+      name: PR Preview
+      url: ${{ steps.deploy-to-vercel.outputs.PREVIEW_URL }}
 
     steps:
       - name: Resolve PR Info
@@ -65,6 +68,7 @@ jobs:
           WORKING_DIRECTORY: deploy
           VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE }}
           PRODUCTION: false
+          GITHUB_DEPLOYMENT: false
           PREBUILT: true
           DEPLOY_PR_FROM_FORK: true
           ALIAS_DOMAINS: |
