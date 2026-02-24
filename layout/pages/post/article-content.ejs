@@ -67,6 +67,10 @@
 			<%- page.content %>
 		</div>
 
+		<% if (page.exif) { %>
+			<%- renderJS('libs/exif-reader.js', { swupReload: true }) %>
+		<% } %>
+
 		<% if (theme.articles.copyright.enable || theme.articles.copyright === true) { %>
 		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
 			<%- partial('pages/post/article-copyright') %>
