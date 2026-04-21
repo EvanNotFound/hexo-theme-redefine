@@ -46,7 +46,7 @@
 - [Theme Redefine 演示站点](https://redefine.ohevan.com)
 - [Redefine 用户墙](https://redefine.ohevan.com/showcase)
 
-如果你也在使用 Redefine，欢迎在前往 [Redefine 用户墙](https://redefine.ohevan.com/showcase) 添加你的博客链接。
+如果你也在使用 Redefine，欢迎在前往 [Redefine 用户墙](https://redefine.ohevan.com/showcase) 
 
 ## ⛰️ 部分功能
 
@@ -121,6 +121,8 @@ $ git pull
 如果你觉得主题还不错的话，欢迎给我 Github 点个 Star，谢谢。建议点个 Watch，以便及时获取主题更新。
 
 如果你在使用 [Typora](https://typora.io/) 编辑器写文章，欢迎查看我写的 [Typora Redefine 主题](https://github.com/EvanNotFound/typora-theme-redefine)，按照本 Hexo 主题样式编写，让你可以直接预览文章效果，更好排版。
+
+国内 AtomGit 托管链接：[atomgit.com/EvanNotFound/hexo-theme-redefine](https://atomgit.com/EvanNotFound/hexo-theme-redefine)
 
 ## 💗 赞助
 
