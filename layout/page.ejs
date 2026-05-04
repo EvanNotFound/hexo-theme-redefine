@@ -9,6 +9,10 @@
 	<% } else if (theme.home_banner.enable === true && is_home() && page.prev && theme.home_banner.style === "fixed") { %>
 	<%- partial('pages/home/home-background') %>
 	<% } %>
+	<% const _postPageBgEnabled = page.fixed_background !== undefined ? page.fixed_background === true : (theme.home_banner.enable === true && theme.home_banner.post_page && theme.home_banner.post_page.enable === true); %>
+	<% if (_postPageBgEnabled && (is_post() || is_page())) { %>
+	<%- partial('pages/home/home-background') %>
+	<% } %>
 
 	<div class="main-content-container flex flex-col justify-between min-h-dvh">
 		<div class="main-content-header">
