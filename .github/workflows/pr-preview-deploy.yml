@@ -12,7 +12,7 @@ permissions:
   pull-requests: write
 
 concurrency:
-  group: pr-preview-deploy-${{ github.event.workflow_run.pull_requests[0].number || github.event.workflow_run.id }}
+  group: pr-preview-deploy-${{ github.event.workflow_run.head_repository.full_name || github.repository }}-${{ github.event.workflow_run.head_branch || github.event.workflow_run.id }}
   cancel-in-progress: true
 
 jobs:
@@ -30,13 +30,55 @@ jobs:
         with:
           script: |
             const run = context.payload.workflow_run
-            const pr = run.pull_requests && run.pull_requests[0]
+            const { owner, repo } = context.repo
+            const workflowRunPr = run.pull_requests && run.pull_requests[0]
+            const runHeadSha = run.head_sha || (workflowRunPr && workflowRunPr.head && workflowRunPr.head.sha)
+            let pr = workflowRunPr || null
+
+            if (!pr && runHeadSha) {
+              try {
+                const { data: prsByCommit } = await github.rest.repos.listPullRequestsAssociatedWithCommit({
+                  owner,
+                  repo,
+                  commit_sha: runHeadSha,
+                  per_page: 100,
+                })
+                pr = prsByCommit.find((item) => item.head && item.head.sha === runHeadSha) || prsByCommit[0] || null
+              } catch (error) {
+                core.warning(`Failed to resolve PR by commit ${runHeadSha}: ${error.message}`)
+              }
+            }
+
             if (!pr) {
-              core.setFailed("No PR found for this workflow run.")
+              const headOwner = run.head_repository && run.head_repository.owner && run.head_repository.owner.login
+              const headBranch = run.head_branch
+              if (headOwner && headBranch) {
+                try {
+                  const prsByHead = await github.paginate(github.rest.pulls.list, {
+                    owner,
+                    repo,
+                    head: `${headOwner}:${headBranch}`,
+                    state: "all",
+                    per_page: 100,
+                  })
+                  pr = prsByHead.find((item) => item.head && item.head.sha === runHeadSha) || prsByHead[0] || null
+                } catch (error) {
+                  core.warning(
+                    `Failed to resolve PR by head ${headOwner}:${headBranch}: ${error.message}`,
+                  )
+                }
+              }
+            }
+
+            if (!pr) {
+              const runHeadRepo = run.head_repository && run.head_repository.full_name
+              core.setFailed(
+                `No PR found for workflow run ${run.id}. head_sha=${runHeadSha || "unknown"}, head_branch=${run.head_branch || "unknown"}, head_repository=${runHeadRepo || "unknown"}`,
+              )
               return
             }
-            core.setOutput("number", pr.number)
-            core.setOutput("head_sha", pr.head.sha || run.head_sha)
+            core.setOutput("number", String(pr.number))
+            core.setOutput("head_sha", (pr.head && pr.head.sha) || runHeadSha || "")
 
       - name: Download Prebuilt Artifact
         uses: actions/download-artifact@v4
@@ -54,7 +96,7 @@ jobs:
 
       # Install Vercel CLI first to avoid bug with next step
       - name: Install Vercel CLI
-        run: npm install -g vercel@22.0.1
+        run: npm install -g vercel@latest
 
 
       - name: Deploy to Vercel
