@@ -1,0 +1,46 @@
+<div class="archive-container shadow-none hover:shadow-none sm:shadow-redefine sm:hover:shadow-redefine-hover">
+  <div class="archive-list-container">
+
+    <%
+      var grouped = {};
+      site.data.timeline.forEach(function(item) {
+        var year = item.time.substring(0, 4);
+        if (!grouped[year]) grouped[year] = [];
+        grouped[year].push(item);
+      });
+      var years = Object.keys(grouped).sort(function(a, b) { return a - b; });
+    %>
+
+    <% years.forEach(function(year) { %>
+      <section class="archive-item mb-spacing-unit last:mb-0">
+        <div class="archive-item-header flex flex-row items-center mb-2">
+          <span class="archive-year font-semibold text-3xl mr-2"><%= year %></span>
+          <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color"><%= grouped[year].length %></span>
+        </div>
+
+        <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+          <% grouped[year].forEach(function(item, index) { %>
+            <% if (index > 0) { %>
+              </li>
+            <% } %>
+            <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is="<%= item.time.substring(5) %>">
+              <% if (item.link) { %>
+                <a href="<%= item.link %>" target="_blank" rel="noopener" class="inline-flex items-baseline w-fit">
+                <span class="article-title my-0.5 text-2xl"><%= item.title %></span>
+                <i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i>
+</a>
+              <% } else { %>
+                <span class="article-title my-0.5 text-2xl"><%= item.title %></span>
+              <% } %>
+              <% if (item.desc) { %>
+                <div class="text-sm text-gray-400 dark:text-gray-500 mt-1"><%= item.desc %></div>
+              <% } %>
+          <% }) %>
+          </li>
+        </ul>
+
+      </section>
+    <% }) %>
+
+  </div>
+</div>
