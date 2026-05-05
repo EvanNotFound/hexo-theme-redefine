@@ -196,6 +196,8 @@ home_banner:
   # Can be overridden per-post/page via front matter: fixed_background: true/false
   post_page:
     enable: false
+  # Transparency level of content panels when background is active (0–100, lower = more transparent)
+  transparency: 60
 # HOME BANNER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 

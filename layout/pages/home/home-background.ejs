@@ -1,4 +1,10 @@
+<% const _bgTransparency = theme.home_banner.transparency !== undefined ? theme.home_banner.transparency : 60; %>
+<% const _bgOpacity = Math.min(100, Math.max(0, _bgTransparency)) / 100; %>
+<% const _defaultModeDark = theme.colors && theme.colors.default_mode === 'dark'; %>
 <style>
+    :root { --bg-panel-color: rgba(<%= _defaultModeDark ? '32, 33, 36' : '255, 255, 255' %>, <%= _bgOpacity %>); }
+    .light { --bg-panel-color: rgba(255, 255, 255, <%= _bgOpacity %>); }
+    .dark { --bg-panel-color: rgba(32, 33, 36, <%= _bgOpacity %>); }
     .home-article-item,
     .sidebar-links,
     .sidebar-content,
@@ -7,7 +13,7 @@
     .sidebar-links .links:hover,
     .right-bottom-tools,
     footer.footer {
-        background-color: var(--background-color-transparent-80) !important;
+        background-color: var(--bg-panel-color) !important;
     }
     .right-bottom-tools:hover,
     a.page-number:hover,
@@ -29,7 +35,7 @@
     .post-tools-container,
     .archive-container,
     .page-template-container {
-        background-color: var(--background-color-transparent-80) !important;
+        background-color: var(--bg-panel-color) !important;
     }
 </style>
 
