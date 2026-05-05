@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Comment and close labeled issues
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const release = context.payload.release

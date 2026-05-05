@@ -26,7 +26,7 @@ jobs:
     steps:
       - name: Resolve PR Info
         id: pr
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const run = context.payload.workflow_run
@@ -118,7 +118,7 @@ jobs:
 
       - name: Comment Preview URL
         if: ${{ steps.deploy-to-vercel.outputs.PREVIEW_URL != '' }}
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const prNumber = Number("${{ steps.pr.outputs.number }}")
