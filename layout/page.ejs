@@ -10,7 +10,7 @@
 	<%- partial('pages/home/home-background') %>
 	<% } %>
 	<% const _postPageBgEnabled = page.fixed_background !== undefined ? page.fixed_background === true : (theme.home_banner.enable === true && theme.home_banner.post_page && theme.home_banner.post_page.enable === true); %>
-	<% if (_postPageBgEnabled && (is_post() || is_page())) { %>
+	<% if (_postPageBgEnabled && (is_post() || is_page() || is_archive() || is_tag() || is_category())) { %>
 	<%- partial('pages/home/home-background') %>
 	<% } %>
 
