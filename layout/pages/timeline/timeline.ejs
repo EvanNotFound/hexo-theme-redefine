@@ -2,13 +2,50 @@
   <div class="archive-list-container">
 
     <%
-      var grouped = {};
-      site.data.timeline.forEach(function(item) {
-        var year = item.time.substring(0, 4);
-        if (!grouped[year]) grouped[year] = [];
-        grouped[year].push(item);
+      const timelineItems = Array.isArray(site?.data?.timeline) ? site.data.timeline : [];
+      const formatTimelineDate = function(time) {
+        let dateText = "";
+
+        if (time instanceof Date) {
+          if (Number.isNaN(time.getTime())) return null;
+          dateText = time.toISOString().slice(0, 10);
+        } else if (typeof time === "string") {
+          dateText = time.trim();
+        }
+
+        const dateMatch = dateText.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+        if (!dateMatch) return null;
+
+        const year = Number(dateMatch[1]);
+        const month = Number(dateMatch[2]);
+        const day = Number(dateMatch[3]);
+        const date = new Date(Date.UTC(year, month - 1, day));
+        if (
+          date.getUTCFullYear() !== year ||
+          date.getUTCMonth() !== month - 1 ||
+          date.getUTCDate() !== day
+        ) return null;
+
+        return {
+          year: dateMatch[1],
+          dateLabel: `${dateMatch[2]}-${dateMatch[3]}`,
+        };
+      };
+      const grouped = {};
+
+      timelineItems.forEach(function(item) {
+        if (!item || typeof item !== "object") return;
+
+        const timelineDate = formatTimelineDate(item.time);
+        if (!timelineDate) return;
+
+        if (!grouped[timelineDate.year]) grouped[timelineDate.year] = [];
+        grouped[timelineDate.year].push({
+          ...item,
+          dateLabel: timelineDate.dateLabel,
+        });
       });
-      var years = Object.keys(grouped).sort(function(a, b) { return a - b; });
+      const years = Object.keys(grouped).sort(function(a, b) { return a - b; });
     %>
 
     <% years.forEach(function(year) { %>
@@ -19,24 +56,21 @@
         </div>
 
         <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
-          <% grouped[year].forEach(function(item, index) { %>
-            <% if (index > 0) { %>
-              </li>
-            <% } %>
-            <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is="<%= item.time.substring(5) %>">
+          <% grouped[year].forEach(function(item) { %>
+            <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is="<%= item.dateLabel %>">
               <% if (item.link) { %>
-                <a href="<%= item.link %>" target="_blank" rel="noopener" class="inline-flex items-baseline w-fit">
-                <span class="article-title my-0.5 text-2xl"><%= item.title %></span>
-                <i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i>
-</a>
+                <a href="<%= item.link %>" target="_blank" rel="noopener noreferrer" class="inline-flex items-baseline w-fit">
+                  <span class="article-title my-0.5 text-2xl"><%= item.title %></span>
+                  <i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i>
+                </a>
               <% } else { %>
                 <span class="article-title my-0.5 text-2xl"><%= item.title %></span>
               <% } %>
               <% if (item.desc) { %>
                 <div class="text-sm text-gray-400 dark:text-gray-500 mt-1"><%= item.desc %></div>
               <% } %>
+            </li>
           <% }) %>
-          </li>
         </ul>
 
       </section>

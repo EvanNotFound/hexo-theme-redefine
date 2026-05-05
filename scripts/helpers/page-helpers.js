@@ -28,12 +28,12 @@ const pageData = {
 		partial: "pages/post/article-content",
 		layout: "raw",
 	},
-        timeline: {
-                titles: ["timeline", "时间轴", "网站历史"],
-                types: ["timeline"],
-                partial: "pages/timeline/timeline",
-                layout: "raw",
-        },
+	timeline: {
+		titles: ["timeline", "时间轴", "网站历史"],
+		types: ["timeline"],
+		partial: "pages/timeline/timeline",
+		layout: "raw",
+	},
 	categories: {
 		titles: ["category", "categories"],
 		types: ["category", "categories"],
@@ -154,6 +154,5 @@ hexo.extend.helper.register("getPageTitle", function (page) {
 		type = pageData.type;
 	}
 
-	// const config = type ? pageData[type] : null;
 	return page.title || this.__(type) || "Untitled";
 });
