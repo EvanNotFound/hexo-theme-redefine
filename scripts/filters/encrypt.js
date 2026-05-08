@@ -125,7 +125,6 @@ hexo.extend.filter.register(
     data.content += `<link href="${hexo.config.root}css/hbe.style.css" rel="stylesheet" type="text/css"><script data-swup-reload-script type="module" src="${hexo.config.root}js/plugins/hbe.js"></script>
 <script data-swup-reload-script type="module">
 import {initHBE} from "${hexo.config.root}js/plugins/hbe.js";
-  log.info(ensurePrefix("hexo-blog-encrypt: loaded."));
     initHBE();
 </script>
 `;
