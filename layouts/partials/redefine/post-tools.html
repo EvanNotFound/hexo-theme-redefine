@@ -1,0 +1,9 @@
+{{- $r := site.Params.redefine -}}
+<ul class="post-tools-list">
+  {{ if and $r.articles.toc.enable (in .TableOfContents "<ul") }}
+    <li><a href="#TableOfContents" aria-label="{{ i18n "toc" }}"><i class="fa-solid fa-list-tree"></i></a></li>
+  {{ end }}
+  {{ if and $r.comment.enable (ne .Params.comment false) }}
+    <li><a href="#comment" aria-label="{{ i18n "comment" | default "Comment" }}"><i class="fa-solid fa-comment"></i></a></li>
+  {{ end }}
+</ul>

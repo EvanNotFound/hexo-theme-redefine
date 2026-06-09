@@ -158,20 +158,42 @@ const mergeIntoSlice = (start, end, index, searchText) => {
   };
 };
 
-const highlightKeyword = (text, slice) => {
-  let result = "";
+const appendHighlightedText = (target, text, slice) => {
   let prevEnd = slice.start;
   slice.hits.forEach((hit) => {
-    result += text.substring(prevEnd, hit.position);
+    target.appendChild(document.createTextNode(text.substring(prevEnd, hit.position)));
     const end = hit.position + hit.length;
-    result += `<b class="search-keyword">${text.substring(
-      hit.position,
-      end,
-    )}</b>`;
+    const keyword = document.createElement("b");
+    keyword.className = "search-keyword";
+    keyword.textContent = text.substring(hit.position, end);
+    target.appendChild(keyword);
     prevEnd = end;
   });
-  result += text.substring(prevEnd, slice.end);
-  return result;
+  target.appendChild(document.createTextNode(text.substring(prevEnd, slice.end)));
+};
+
+const createEmptyResult = (iconClass) => {
+  const empty = document.createElement("div");
+  empty.id = "no-result";
+  const icon = document.createElement("i");
+  icon.className = iconClass;
+  empty.appendChild(icon);
+  return empty;
+};
+
+const createResultAnchor = (url) => {
+  const anchor = document.createElement("a");
+  try {
+    const parsed = new URL(url, window.location.origin);
+    if (["http:", "https:"].includes(parsed.protocol) && parsed.origin === window.location.origin) {
+      anchor.href = parsed.pathname + parsed.search + parsed.hash;
+    } else {
+      anchor.href = "#";
+    }
+  } catch (error) {
+    anchor.href = "#";
+  }
+  return anchor;
 };
 
 const renderSearchResult = (searchInputDom) => {
@@ -222,7 +244,7 @@ const renderSearchResult = (searchInputDom) => {
         const slicesOfTitle = [];
         if (indexOfTitle.length !== 0) {
           const tmp = mergeIntoSlice(0, title.length, indexOfTitle, searchText);
-          searchTextCount += tmp.searchTextCountInSlice;
+          searchTextCount += tmp.searchTextCount;
           slicesOfTitle.push(tmp);
         }
 
@@ -242,7 +264,7 @@ const renderSearchResult = (searchInputDom) => {
             end = content.length;
           }
           const tmp = mergeIntoSlice(start, end, indexOfContent, searchText);
-          searchTextCount += tmp.searchTextCountInSlice;
+          searchTextCount += tmp.searchTextCount;
           slicesOfContent.push(tmp);
         }
 
@@ -265,27 +287,32 @@ const renderSearchResult = (searchInputDom) => {
           slicesOfContent = slicesOfContent.slice(0, upperBound);
         }
 
-        let resultItem = "";
+        const item = document.createElement("li");
 
         if (slicesOfTitle.length !== 0) {
-          resultItem += `<li><a href="${url}" class="search-result-title">${highlightKeyword(
-            title,
-            slicesOfTitle[0],
-          )}</a>`;
+          const titleAnchor = createResultAnchor(url);
+          titleAnchor.className = "search-result-title";
+          appendHighlightedText(titleAnchor, title, slicesOfTitle[0]);
+          item.appendChild(titleAnchor);
         } else {
-          resultItem += `<li><a href="${url}" class="search-result-title">${title}</a>`;
+          const titleAnchor = createResultAnchor(url);
+          titleAnchor.className = "search-result-title";
+          titleAnchor.textContent = title;
+          item.appendChild(titleAnchor);
         }
 
         slicesOfContent.forEach((slice) => {
-          resultItem += `<a href="${url}"><p class="search-result">${highlightKeyword(
-            content,
-            slice,
-          )}...</p></a>`;
+          const contentAnchor = createResultAnchor(url);
+          const paragraph = document.createElement("p");
+          paragraph.className = "search-result";
+          appendHighlightedText(paragraph, content, slice);
+          paragraph.appendChild(document.createTextNode("..."));
+          contentAnchor.appendChild(paragraph);
+          item.appendChild(contentAnchor);
         });
 
-        resultItem += "</li>";
         resultItems.push({
-          item: resultItem,
+          item,
           id: resultItems.length,
           hitCount,
           searchTextCount,
@@ -295,11 +322,11 @@ const renderSearchResult = (searchInputDom) => {
   }
 
   if (keywords.length === 1 && keywords[0] === "") {
-    resultContent.innerHTML =
-      '<div id="no-result"><i class="fa-solid fa-magnifying-glass fa-5x"></i></div>';
+    resultContent.replaceChildren(
+      createEmptyResult("fa-solid fa-magnifying-glass fa-5x"),
+    );
   } else if (resultItems.length === 0) {
-    resultContent.innerHTML =
-      '<div id="no-result"><i class="fa-solid fa-box-open fa-5x"></i></div>';
+    resultContent.replaceChildren(createEmptyResult("fa-solid fa-box-open fa-5x"));
   } else {
     resultItems.sort((resultLeft, resultRight) => {
       if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
@@ -309,12 +336,12 @@ const renderSearchResult = (searchInputDom) => {
       }
       return resultRight.id - resultLeft.id;
     });
-    let searchResultList = '<ul class="search-result-list">';
+    const searchResultList = document.createElement("ul");
+    searchResultList.className = "search-result-list";
     resultItems.forEach((result) => {
-      searchResultList += result.item;
+      searchResultList.appendChild(result.item);
     });
-    searchResultList += "</ul>";
-    resultContent.innerHTML = searchResultList;
+    resultContent.replaceChildren(searchResultList);
     window.pjax && window.pjax.refresh(resultContent);
   }
 };

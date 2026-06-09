@@ -6,10 +6,12 @@ const glob = require("glob-promise");
 const THEME_ROOT = path.join(__dirname, "../..");
 const SOURCE_DIR = path.join(THEME_ROOT, "source/js");
 const BUILD_DIR = path.join(THEME_ROOT, "source/js/build");
+const STATIC_BUILD_DIR = path.join(THEME_ROOT, "static/js/build");
+const toGlobPath = (value) => value.replace(/\\/g, "/");
 const IGNORE_PATTERNS = [
-  path.join(SOURCE_DIR, "libs/**"),
-  path.join(BUILD_DIR, "**"),
-  path.join(SOURCE_DIR, "build.js"),
+  `${toGlobPath(SOURCE_DIR)}/libs/**`,
+  `${toGlobPath(BUILD_DIR)}/**`,
+  `${toGlobPath(SOURCE_DIR)}/build.js`,
 ];
 
 const minifyOptions = {
@@ -61,7 +63,9 @@ async function processFile(file) {
     const code = await fs.readFile(file, "utf8");
     const relativePath = path.relative(SOURCE_DIR, file);
     const buildPath = path.join(BUILD_DIR, relativePath);
+    const staticBuildPath = path.join(STATIC_BUILD_DIR, relativePath);
     const buildDirPath = path.dirname(buildPath);
+    const staticBuildDirPath = path.dirname(staticBuildPath);
 
     // Update source map options for this specific file
     const fileSpecificOptions = {
@@ -76,13 +80,16 @@ async function processFile(file) {
     const minified = await minify(code, fileSpecificOptions);
 
     await ensureDirectoryExists(buildDirPath);
+    await ensureDirectoryExists(staticBuildDirPath);
 
     // Write minified code
     await fs.writeFile(buildPath, minified.code);
+    await fs.writeFile(staticBuildPath, minified.code);
 
     // Write source map if it exists
     if (minified.map) {
       await fs.writeFile(`${buildPath}.map`, minified.map);
+      await fs.writeFile(`${staticBuildPath}.map`, minified.map);
     }
 
     console.log(`✓ Minified ${file} -> ${buildPath}`);
@@ -95,12 +102,13 @@ async function processFile(file) {
 async function minifyJS() {
   try {
     await ensureDirectoryExists(BUILD_DIR);
+    await ensureDirectoryExists(STATIC_BUILD_DIR);
 
     // Get lib files to copy
-    const libFiles = await glob(`${SOURCE_DIR}/libs/**/*.js`);
+    const libFiles = await glob(`${toGlobPath(SOURCE_DIR)}/libs/**/*.js`);
     
     // Get JS files to minify (excluding libs and other ignored patterns)
-    const files = await glob(`${SOURCE_DIR}/**/*.js`, {
+    const files = await glob(`${toGlobPath(SOURCE_DIR)}/**/*.js`, {
       ignore: IGNORE_PATTERNS,
     });
 
@@ -115,7 +123,9 @@ async function minifyJS() {
     for (const file of libFiles) {
       const relativePath = path.relative(SOURCE_DIR, file);
       const buildPath = path.join(BUILD_DIR, relativePath);
+      const staticBuildPath = path.join(STATIC_BUILD_DIR, relativePath);
       await copyFile(file, buildPath);
+      await copyFile(file, staticBuildPath);
     }
 
     // Process remaining files in parallel with a concurrency limit

@@ -43,6 +43,30 @@ const ensureImageLoaded = (img) => {
   delete img.dataset.redefineLazyloadObserved;
 };
 
+const createTimeoutSignal = (signal, timeoutMs) => {
+  const controller = new AbortController();
+  let timeoutId = null;
+
+  const abort = () => controller.abort();
+  if (signal) {
+    if (signal.aborted) {
+      abort();
+    } else {
+      signal.addEventListener("abort", abort, { once: true });
+    }
+  }
+
+  timeoutId = window.setTimeout(abort, timeoutMs);
+
+  return {
+    signal: controller.signal,
+    cleanup() {
+      window.clearTimeout(timeoutId);
+      signal?.removeEventListener("abort", abort);
+    },
+  };
+};
+
 export default function initMasonry({ signal } = {}) {
   const masonryContainer = document.querySelector("#masonry-container");
   if (!masonryContainer) {
@@ -292,8 +316,9 @@ export default function initMasonry({ signal } = {}) {
   }
 
   const init = async () => {
+    const request = createTimeoutSignal(signal, 10000);
     try {
-      const response = await fetch(dataUrl, signal ? { signal } : undefined);
+      const response = await fetch(dataUrl, { signal: request.signal });
       if (!response.ok) {
         throw new Error(`Request failed with status ${response.status}`);
       }
@@ -307,6 +332,8 @@ export default function initMasonry({ signal } = {}) {
         sentinelDom.remove();
       }
       return;
+    } finally {
+      request.cleanup();
     }
 
     if (!Array.isArray(items) || items.length === 0) {

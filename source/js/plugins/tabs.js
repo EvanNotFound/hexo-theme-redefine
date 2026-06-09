@@ -44,6 +44,9 @@ export default function initTabs({ signal } = {}) {
 
   if (signal) {
     document.addEventListener("click", handleTabClick, { signal });
+    signal.addEventListener("abort", () => {
+      didInit = false;
+    }, { once: true });
   } else {
     document.addEventListener("click", handleTabClick);
   }

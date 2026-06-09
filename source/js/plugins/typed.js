@@ -59,7 +59,7 @@ const createTyped = (id, strings, options) => {
   instances.set(id, instance);
 };
 
-const subtitleConfig = theme?.home_banner?.subtitle || {};
+const subtitleConfig = window.theme?.home_banner?.subtitle || {};
 const hitokotoConfig = subtitleConfig.hitokoto || {};
 
 export const config = {
@@ -102,7 +102,10 @@ export default function initTyped(id) {
       return;
     }
 
-    fetch(usrHitokotoAPI)
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 10000);
+
+    fetch(usrHitokotoAPI, { signal: controller.signal })
       .then((response) => response.json())
       .then((data) => {
         if (initTokens.get(id) !== currentToken) {
@@ -123,7 +126,14 @@ export default function initTyped(id) {
         createTyped(id, [text], options);
       })
       .catch((error) => {
+        if (error?.name === "AbortError") {
+          console.warn("Timed out fetching hitokoto.");
+          return;
+        }
         console.error("Failed to fetch hitokoto:", error);
+      })
+      .finally(() => {
+        window.clearTimeout(timeout);
       });
 
     return;

@@ -1,0 +1,14 @@
+{{- $r := site.Params.redefine -}}
+<script id="hexo-configurations">
+  window.config = {{ dict "hostname" (urls.Parse site.BaseURL).Host "root" site.Home.RelPermalink "language" site.Language.Lang "path" "/index.json" | jsonify | safeJS }};
+  window.theme = {{ merge $r (dict "version" "0.1.0-hugo") | jsonify | safeJS }};
+  window.i18n = {{ dict
+    "search" (i18n "search")
+    "toc" (i18n "toc")
+    "read_more" (i18n "read_more")
+    "create_time" (i18n "create_time")
+    "update_time" (i18n "update_time")
+  | jsonify | safeJS }};
+  window.lang_ago = {};
+  window.data = {{ dict "masonry" false | jsonify | safeJS }};
+</script>

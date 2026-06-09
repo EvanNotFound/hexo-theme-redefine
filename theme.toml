@@ -1,0 +1,18 @@
+name = "Hugo Theme Redefine"
+license = "GPL-3.0"
+licenselink = "https://github.com/GT-610/hugo-theme-redefine/blob/main/LICENSE"
+description = "A Hugo port of Hexo Theme Redefine."
+homepage = "https://github.com/GT-610/hugo-theme-redefine"
+demosite = "https://redefine.ohevan.com"
+tags = ["blog", "responsive", "dark", "light"]
+features = ["responsive", "dark mode", "toc"]
+min_version = "0.146.0"
+
+[author]
+  name = "GT-610"
+  homepage = "https://github.com/GT-610"
+
+[original]
+  name = "Hexo Theme Redefine"
+  homepage = "https://redefine.ohevan.com"
+  repo = "https://github.com/EvanNotFound/hexo-theme-redefine"

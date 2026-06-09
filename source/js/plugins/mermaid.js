@@ -5,7 +5,7 @@ const mermaidSelector = ".mermaid";
 const ensureOriginalCode = () => {
   document.querySelectorAll(mermaidSelector).forEach((element) => {
     if (!element.getAttribute("data-original-code")) {
-      element.setAttribute("data-original-code", element.innerHTML);
+      element.setAttribute("data-original-code", element.textContent);
     }
   });
 };
@@ -15,7 +15,7 @@ const resetProcessed = () => {
     const originalCode = element.getAttribute("data-original-code");
     if (originalCode !== null) {
       element.removeAttribute("data-processed");
-      element.innerHTML = originalCode;
+      element.textContent = originalCode;
     }
   });
 };
@@ -38,6 +38,11 @@ export default function initMermaid() {
   resetProcessed();
 
   const mermaidTheme = getMermaidTheme();
-  mermaid.initialize({ theme: mermaidTheme });
-  mermaid.init({ theme: mermaidTheme }, document.querySelectorAll(mermaidSelector));
+  try {
+    mermaid.initialize({ theme: mermaidTheme });
+    mermaid.init({ theme: mermaidTheme }, document.querySelectorAll(mermaidSelector));
+  } catch (error) {
+    console.error("Failed to initialize Mermaid:", error);
+    resetProcessed();
+  }
 }

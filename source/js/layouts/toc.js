@@ -5,24 +5,23 @@ let tocState = null;
 let didInitScroll = false;
 
 const registerScrollHandler = (signal) => {
-  if (didInitScroll || !signal) {
+  if (didInitScroll) {
     return;
   }
 
   didInitScroll = true;
+  const options = signal ? { signal } : undefined;
   window.addEventListener(
     "scroll",
     () => {
       tocState?.updateActiveTOCLink();
     },
-    { signal },
+    options,
   );
 };
 
 export function initTOC({ signal } = {}) {
-  if (signal) {
-    registerScrollHandler(signal);
-  }
+  registerScrollHandler(signal);
 
   const tocContainer = document.querySelector(".toc-content-container");
   if (!tocContainer) {
@@ -64,10 +63,14 @@ export function initTOC({ signal } = {}) {
 
     registerTOCScroll() {
       utils.sections = [...utils.navLinks].map((element) => {
-        const target = document.getElementById(
-          decodeURI(element.getAttribute("href")).replace("#", ""),
-        );
-        return target;
+        const href = element.getAttribute("href") || "";
+        try {
+          const id = decodeURI(href).replace("#", "");
+          return document.getElementById(id);
+        } catch (error) {
+          console.warn("Invalid TOC link URI:", href, error);
+          return null;
+        }
       });
     },
 
@@ -115,8 +118,9 @@ export function initTOC({ signal } = {}) {
 
       const initOpenKey = "init_open";
 
-      if (theme.articles.toc.hasOwnProperty(initOpenKey)) {
-        theme.articles.toc[initOpenKey]
+      const tocConfig = window.theme?.articles?.toc;
+      if (tocConfig && Object.prototype.hasOwnProperty.call(tocConfig, initOpenKey)) {
+        tocConfig[initOpenKey]
           ? openHandle()
           : tocToggle.pageAsideHandleOfTOC(false);
       } else {

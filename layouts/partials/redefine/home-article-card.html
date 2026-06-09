@@ -1,0 +1,36 @@
+{{- $p := .page -}}
+{{- $root := .root -}}
+{{- $r := site.Params.redefine -}}
+{{- $thumb := $p.Params.thumbnail | default $p.Params.cover | default $p.Params.banner -}}
+<li class="home-article-item{{ if and $thumb (ne $p.Params.thumbnail false) }} has-thumbnail{{ end }}">
+  {{ if $p.Params.sticky }}
+    <div class="home-article-sticky-label"><i class="fa-solid fa-thumbtack"></i>{{ i18n "sticky" }}</div>
+  {{ end }}
+  {{ if and $thumb (ne $p.Params.thumbnail false) }}
+    <a class="home-article-thumbnail" href="{{ $p.RelPermalink }}">
+      <img src="{{ $thumb | relURL }}" alt="{{ $p.Title }}">
+    </a>
+  {{ end }}
+  <div class="home-article-card-body">
+    <h2 class="home-article-title"><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h2>
+    <div class="home-article-content markdown-body">
+      {{ with $p.Summary }}{{ . | plainify | truncate ($r.home.excerpt_length | default 200) }}{{ end }}
+    </div>
+    <div class="home-article-meta-info-container">
+      <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendar-days"></i> <time datetime="{{ $p.Date.Format "2006-01-02" }}">{{ $p.Date.Format "2006-01-02" }}</time></span>
+        {{ with $p.GetTerms "categories" }}
+          <span class="home-article-category"><i class="fa-solid fa-folder"></i>
+            {{ range $i, $term := first ($r.home.categories.limit | default 3) . }}{{ if $i }} | {{ end }}<a href="{{ $term.RelPermalink }}">{{ $term.LinkTitle }}</a>{{ end }}
+          </span>
+        {{ end }}
+        {{ with $p.GetTerms "tags" }}
+          <span class="home-article-tag"><i class="fa-solid fa-tags"></i>
+            {{ range $i, $term := first ($r.home.tags.limit | default 3) . }}{{ if $i }} | {{ end }}<a href="{{ $term.RelPermalink }}">{{ $term.LinkTitle }}</a>{{ end }}
+          </span>
+        {{ end }}
+      </div>
+      <a class="read-more" href="{{ $p.RelPermalink }}">{{ i18n "read_more" }} <i class="fa-solid fa-angle-right"></i></a>
+    </div>
+  </div>
+</li>

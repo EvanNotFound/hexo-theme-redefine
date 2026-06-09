@@ -1,0 +1,2 @@
+!function(){if(void 0===window.APlayer||!window.theme?.plugins?.aplayer)return;const e=document.getElementById("aplayer");if(!e)return;const n=[],r="fixed"===theme.plugins.aplayer.type,i="mini"===theme.plugins.aplayer.type;for(const e of theme.plugins.aplayer.audios||[]){const r={name:e.name,artist:e.artist,url:e.url,cover:e.cover,lrc:e.lrc,theme:e.theme};n.push(r)}if(i)new APlayer({container:e,mini:!0,audio:n});else if(r){new APlayer({container:e,fixed:!0,lrcType:3,audio:n});document.querySelector(".aplayer-icon-lrc")?.click()}}();
+//# sourceMappingURL=aplayer.js.map

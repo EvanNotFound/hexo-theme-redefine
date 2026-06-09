@@ -1,0 +1,4 @@
+/.hugo_build.lock
+/.hugo_server*.log
+/public/
+/resources/

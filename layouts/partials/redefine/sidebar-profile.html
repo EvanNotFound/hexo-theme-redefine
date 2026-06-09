@@ -1,0 +1,27 @@
+{{- $r := site.Params.redefine -}}
+{{- $tagsPage := site.GetPage "taxonomyTerm" "tags" -}}
+{{- $categoriesPage := site.GetPage "taxonomyTerm" "categories" -}}
+{{- $postsPage := site.GetPage "section" "posts" -}}
+{{- $postsCount := len (where site.RegularPages "Section" "posts") -}}
+{{- with $postsPage }}{{ $postsCount = len .RegularPages }}{{ end -}}
+<div class="sidebar-content has-margin-top">
+  <div class="avatar"><img src="{{ $r.defaults.avatar | relURL }}" alt="{{ $r.info.author }}"></div>
+  <div class="author">
+    <div class="name">{{ $r.info.author | default site.Params.author }}</div>
+    <div class="label">{{ $r.info.subtitle }}</div>
+  </div>
+  <div class="statistics">
+    <a class="item tag-count-item" href="{{ with $tagsPage }}{{ .RelPermalink }}{{ else }}{{ "tags/" | relLangURL }}{{ end }}">
+      <div class="number">{{ len site.Taxonomies.tags }}</div>
+      <div class="label">{{ i18n "tags" | default "Tags" }}</div>
+    </a>
+    <a class="item tag-count-item" href="{{ with $categoriesPage }}{{ .RelPermalink }}{{ else }}{{ "categories/" | relLangURL }}{{ end }}">
+      <div class="number">{{ len site.Taxonomies.categories }}</div>
+      <div class="label">{{ i18n "categories" | default "Categories" }}</div>
+    </a>
+    <a class="item tag-count-item" href="{{ with $postsPage }}{{ .RelPermalink }}{{ else }}{{ "posts/" | relLangURL }}{{ end }}">
+      <div class="number">{{ $postsCount }}</div>
+      <div class="label">{{ i18n "posts" | default "Posts" }}</div>
+    </a>
+  </div>
+</div>

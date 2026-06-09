@@ -1,0 +1,17 @@
+[goldmark]
+  [goldmark.renderer]
+    # Allows trusted author-controlled HTML in Markdown, matching Redefine's
+    # advanced content layouts. Set unsafe = false in your site config when
+    # rendering untrusted/user-generated Markdown, or sanitize that input first.
+    unsafe = true
+  [goldmark.parser]
+    wrapStandAloneImageWithinParagraph = false
+    [goldmark.parser.attribute]
+      block = true
+
+[highlight]
+  noClasses = false
+
+[tableOfContents]
+  startLevel = 2
+  endLevel = 4

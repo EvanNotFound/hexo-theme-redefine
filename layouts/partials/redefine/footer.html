@@ -1,0 +1,44 @@
+{{- $r := site.Params.redefine -}}
+<footer class="footer">
+  <div class="info-container">
+    {{ with $r.footer.customize }}<div class="customize-info">{{ . | safeHTML }}</div>{{ end }}
+    <div class="copyright-line">
+      &copy;
+      {{ with $r.footer.start }}{{ (time.AsTime .).Format "2006" }} - {{ end }}{{ now.Format "2006" }}
+      &nbsp;&nbsp;{{ $r.footer.icon | safeHTML }}&nbsp;&nbsp;<a href="{{ site.Home.RelPermalink }}">{{ $r.info.author | default site.Params.author }}</a>
+    </div>
+    {{ if $r.footer.statistics }}
+      <p class="post-count">{{ i18n "site_posts" (len site.RegularPages) }}</p>
+    {{ end }}
+    {{ if $r.global.website_counter.enable }}
+      <div class="website-counter">
+        <script src="{{ $r.global.website_counter.url | default "https://vercount.one/js" }}"></script>
+        {{ if $r.global.website_counter.site_uv }}
+          <span id="busuanzi_container_site_uv">
+            <span>{{ i18n "site_uv" | default "Visitors" }}</span>
+            <span id="busuanzi_value_site_uv"></span>
+          </span>
+        {{ end }}
+        {{ if $r.global.website_counter.site_pv }}
+          <span id="busuanzi_container_site_pv">
+            <span>{{ i18n "site_pv" | default "Views" }}</span>
+            <span id="busuanzi_value_site_pv"></span>
+          </span>
+        {{ end }}
+      </div>
+    {{ end }}
+    <div class="powered-line">
+      <span>{{ i18n "powered_by" "Hugo" }}</span>
+      <span>{{ i18n "theme" }} <a target="_blank" rel="noreferrer" href="https://github.com/GT-610/hugo-theme-redefine">Redefine Hugo</a></span>
+    </div>
+    {{ if $r.footer.icp.enable }}
+      <div class="icp-info"><a target="_blank" rel="nofollow" href="{{ $r.footer.icp.url | default "https://beian.miit.gov.cn" }}">{{ $r.footer.icp.number }}</a></div>
+    {{ end }}
+    {{ if $r.footer.runtime }}
+      <div class="runtime" data-start="{{ $r.footer.start }}">
+        {{ i18n "runtime" }} <span id="runtime_days">0</span> {{ i18n "days" }} <span id="runtime_hours">0</span> {{ i18n "hours" }} <span id="runtime_minutes">0</span> {{ i18n "minutes" }} <span id="runtime_seconds">0</span> {{ i18n "seconds" }}
+      </div>
+    {{ end }}
+    {{ if $r.inject.enable }}{{ range $r.inject.footer }}{{ . | safeHTML }}{{ end }}{{ end }}
+  </div>
+</footer>

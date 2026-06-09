@@ -1,0 +1,12 @@
+{{- $r := site.Params.redefine -}}
+<aside class="home-sidebar-container">
+  <div class="sticky-container">
+    {{ if eq ($r.home.sidebar.first_item | default "menu") "info" }}
+      {{ partial "redefine/sidebar-profile.html" . }}
+      {{ partial "redefine/sidebar-links.html" . }}
+    {{ else }}
+      {{ partial "redefine/sidebar-links.html" . }}
+      {{ partial "redefine/sidebar-profile.html" . }}
+    {{ end }}
+  </div>
+</aside>

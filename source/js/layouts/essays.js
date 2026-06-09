@@ -1,4 +1,8 @@
 export default function initEssays() {
+  if (typeof window.moment === "undefined" || typeof window.config === "undefined") {
+    return;
+  }
+
   const dateElements = document.querySelectorAll(".essay-date");
 
   if (!dateElements.length) {
@@ -7,9 +11,9 @@ export default function initEssays() {
 
   dateElements.forEach((element) => {
     const rawDate = element.getAttribute("data-date");
-    const locale = config.language || "en";
+    const locale = window.config.language || "en";
 
-    const formattedDate = moment(rawDate).locale(locale).calendar();
+    const formattedDate = window.moment(rawDate).locale(locale).calendar();
     element.textContent = formattedDate;
   });
 }

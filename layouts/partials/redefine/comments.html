@@ -1,0 +1,276 @@
+{{- $r := site.Params.redefine -}}
+{{- if and $r.comment.enable $r.comment.system -}}
+<div class="comments-container mt-10 w-full">
+  <div id="comment-anchor" class="w-full h-2.5"></div>
+  <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+    {{ i18n "comments" | default "Comments" }}
+  </div>
+
+  {{- if eq $r.comment.system "giscus" -}}
+    {{- with $r.comment.config.giscus -}}
+      {{- if and .repo .repo_id .category_id -}}
+        <div id="giscus-container"></div>
+        <script defer>
+          (function() {
+            const containerId = "giscus-container";
+            const mapping = "{{ .mapping | default "pathname" }}";
+            const lang = "{{ .lang | default "en" }}";
+            const inputPosition = "{{ .input_position | default "bottom" }}";
+            const reactionsEnabled = "{{ .reactions_enabled | default "1" }}" === "1";
+            const emitMetadata = "{{ .emit_metadata | default "1" }}" === "1";
+            const strict = "{{ .strict | default "0" }}" === "1";
+            const loading = "{{ .loading | default "lazy" }}";
+
+            const getTerm = () => {
+              if (mapping === "pathname") return location.pathname;
+              if (mapping === "url") return location.href;
+              if (mapping === "title") return document.title;
+              if (mapping === "og:title") {
+                const ogTitle = document.querySelector("meta[property='og:title']");
+                return ogTitle?.content || document.title;
+              }
+              return "";
+            };
+
+            const sendUpdate = () => {
+              const iframe = document.querySelector("iframe.giscus-frame");
+              if (!iframe) return;
+
+              const setConfig = {
+                theme: "preferred_color_scheme",
+                lang,
+                inputPosition,
+                reactionsEnabled,
+                emitMetadata,
+                strict,
+              };
+
+              if (mapping !== "number") {
+                const term = getTerm();
+                if (term) setConfig.term = term;
+              }
+
+              iframe.contentWindow.postMessage(
+                { giscus: { setConfig } },
+                "https://giscus.app"
+              );
+            };
+
+            const loadGiscus = () => {
+              const container = document.getElementById(containerId);
+              if (!container) return;
+
+              const iframe = container.querySelector("iframe.giscus-frame");
+              if (iframe) {
+                sendUpdate();
+                return;
+              }
+
+              if (container.dataset.giscusInit === "true") return;
+
+              const giscusConfig = {
+                src: "https://giscus.app/client.js",
+                "data-repo": "{{ .repo }}",
+                "data-repo-id": "{{ .repo_id }}",
+                "data-category": "{{ .category | default "" }}",
+                "data-category-id": "{{ .category_id }}",
+                "data-mapping": mapping,
+                "data-strict": "{{ .strict | default "0" }}",
+                "data-reactions-enabled": "{{ .reactions_enabled | default "1" }}",
+                "data-emit-metadata": "{{ .emit_metadata | default "1" }}",
+                "data-theme": "preferred_color_scheme",
+                "data-lang": lang,
+                "data-input-position": inputPosition,
+                "data-loading": loading,
+                crossorigin: "anonymous",
+                async: true,
+              };
+
+              const giscusScript = document.createElement("script");
+              for (const key in giscusConfig) {
+                giscusScript.setAttribute(key, giscusConfig[key]);
+              }
+              container.appendChild(giscusScript);
+              container.dataset.giscusInit = "true";
+            };
+
+            const runGiscus = () => {
+              const container = document.getElementById(containerId);
+              if (!container) return;
+
+              if (container.querySelector("iframe.giscus-frame")) {
+                sendUpdate();
+                return;
+              }
+
+              loadGiscus();
+            };
+
+            runGiscus();
+          })();
+        </script>
+      {{- end -}}
+    {{- end -}}
+
+  {{- else if eq $r.comment.system "utterances" -}}
+    {{- with $r.comment.config.utterances -}}
+      {{- if .repo -}}
+        <div id="utterances-container"
+             data-utterances-theme-light="{{ .theme_light | default "github-light" }}"
+             data-utterances-theme-dark="{{ .theme_dark | default "github-dark" }}">
+        </div>
+        <script>
+          (function() {
+            const container = document.getElementById("utterances-container");
+            if (!container) return;
+
+            const repo = "{{ .repo }}";
+            const issueNumber = "{{ .issue_number | default "" }}";
+            const issueTerm = "{{ .issue_term | default "pathname" }}";
+            const label = "{{ .label | default "" }}";
+
+            if (!repo || (!issueNumber && !issueTerm)) return;
+
+            container.innerHTML = "";
+
+            const themeLight = container.dataset.utterancesThemeLight || "github-light";
+            const themeDark = container.dataset.utterancesThemeDark || "github-dark";
+            const isDark = document.documentElement.classList.contains("dark");
+            const theme = isDark ? themeDark : themeLight;
+
+            const script = document.createElement("script");
+            script.src = "https://utteranc.es/client.js";
+            script.async = true;
+            script.crossOrigin = "anonymous";
+            script.setAttribute("repo", repo);
+
+            if (issueNumber) {
+              script.setAttribute("issue-number", issueNumber);
+            } else {
+              script.setAttribute("issue-term", issueTerm);
+            }
+
+            if (label) script.setAttribute("label", label);
+
+            script.setAttribute("theme", theme);
+            container.appendChild(script);
+          })();
+        </script>
+      {{- end -}}
+    {{- end -}}
+
+  {{- else if eq $r.comment.system "twikoo" -}}
+    {{- with $r.comment.config.twikoo -}}
+      {{- if .server_url -}}
+        <div class="twikoo-container">
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/twikoo/{{ .version | default "1.6.40" }}/twikoo.all.min.js"></script>
+          <div id="twikoo-comment"></div>
+          <script>
+            (function() {
+              const startPath = location.pathname;
+              const startTime = Date.now();
+              const retryDelay = 200;
+              const retryLimit = 5000;
+
+              const runTwikoo = () => {
+                if (location.pathname !== startPath) return;
+
+                const container = document.getElementById("twikoo-comment");
+                if (!container || typeof twikoo === "undefined") {
+                  if (Date.now() - startTime < retryLimit) {
+                    setTimeout(runTwikoo, retryDelay);
+                  }
+                  return;
+                }
+
+                container.innerHTML = "";
+                twikoo.init({
+                  el: "#twikoo-comment",
+                  envId: "{{ .server_url }}",
+                  region: "{{ .region | default "" }}",
+                  path: location.pathname,
+                });
+              };
+
+              runTwikoo();
+            })();
+          </script>
+        </div>
+      {{- end -}}
+    {{- end -}}
+
+  {{- else if eq $r.comment.system "waline" -}}
+    {{- with $r.comment.config.waline -}}
+      {{- if .server_url -}}
+        <div class="waline-container">
+          <link rel="stylesheet" href="https://unpkg.com/@waline/client@{{ .version | default "3" }}/dist/waline.css" />
+          <div id="waline-comment"></div>
+          <script type="module">
+            import { init } from "https://unpkg.com/@waline/client@{{ .version | default "3" }}/dist/waline.js";
+            init({
+              el: "#waline-comment",
+              serverURL: "{{ .server_url }}",
+              path: location.pathname,
+              dark: "html.dark",
+              locale: {
+                placeholder: "{{ .placeholder | default "Welcome to comment" }}",
+              },
+            });
+          </script>
+        </div>
+      {{- end -}}
+    {{- end -}}
+
+  {{- else if eq $r.comment.system "gitalk" -}}
+    {{- with $r.comment.config.gitalk -}}
+      {{- if and .client_id .client_secret .repo .owner -}}
+        {{- /* Gitalk requires clientSecret in browser-side JS. Treat it as public:
+              prefer Giscus/utterances for new sites, or use a server-side proxy
+              and least-privilege OAuth app if the secret must remain private. */ -}}
+        <div class="gitalk-container">
+          <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+          <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+          <div id="gitalk-comment"></div>
+          <script>
+            (function() {
+              const gitalk = new Gitalk({
+                clientID: "{{ .client_id }}",
+                clientSecret: "{{ .client_secret }}",
+                repo: "{{ .repo }}",
+                owner: "{{ .owner }}",
+                admin: ["{{ .owner }}"],
+                id: location.pathname,
+                distractionFreeMode: false,
+              });
+              gitalk.render("gitalk-comment");
+            })();
+          </script>
+        </div>
+      {{- end -}}
+    {{- end -}}
+
+  {{- else if eq $r.comment.system "artalk" -}}
+    {{- with $r.comment.config.artalk -}}
+      {{- if .server_url -}}
+        <div class="artalk-container">
+          <link rel="stylesheet" href="https://unpkg.com/artalk@{{ .version | default "2" }}/dist/Artalk.css" />
+          <script src="https://unpkg.com/artalk@{{ .version | default "2" }}/dist/Artalk.js"></script>
+          <div id="artalk-comment"></div>
+          <script>
+            (function() {
+              new Artalk({
+                el: "#artalk-comment",
+                server: "{{ .server_url }}",
+                site: "{{ .site | default site.Title }}",
+                pageKey: location.pathname,
+                darkMode: document.documentElement.classList.contains("dark"),
+              });
+            })();
+          </script>
+        </div>
+      {{- end -}}
+    {{- end -}}
+
+  {{- end -}}
+</div>
+{{- end -}}

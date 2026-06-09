@@ -1,0 +1,56 @@
+{{- $r := site.Params.redefine -}}
+<header class="navbar-container">
+  <div class="navbar-content {{ if and .IsHome $r.home_banner.enable }}has-home-banner{{ end }}">
+    <div class="left">
+      {{ with $r.defaults.logo }}
+        <a class="logo-image" href="{{ site.Home.RelPermalink }}"><img src="{{ . | relURL }}" alt="{{ $r.info.title | default site.Title }}"></a>
+      {{ end }}
+      <a class="logo-title" href="{{ site.Home.RelPermalink }}">
+        {{ if .IsHome }}<h1>{{ $r.info.title | default site.Title }}</h1>{{ else }}{{ $r.info.title | default site.Title }}{{ end }}
+      </a>
+    </div>
+    <div class="right">
+      <nav class="desktop" aria-label="Main navigation">
+        <ul class="navbar-list">
+          {{ range site.Menus.main }}
+            <li class="navbar-item">
+              <a class="{{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}active{{ end }} {{ if .Children }}has-dropdown{{ end }}" href="{{ .URL | relLangURL }}">
+                {{ with .Pre }}<i class="{{ . }} fa-fw"></i>{{ end }}
+                {{ .Name | upper }}
+                {{ if .Children }}<i class="fa-solid fa-chevron-down fa-fw"></i>{{ end }}
+              </a>
+              {{ if .Children }}
+                <ul class="sub-menu">
+                  {{ range .Children }}
+                    <li><a href="{{ .URL | relLangURL }}">{{ .Name | upper }}</a></li>
+                  {{ end }}
+                </ul>
+              {{ end }}
+            </li>
+          {{ end }}
+          {{ if $r.navbar.search.enable }}
+            <li class="navbar-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i></li>
+          {{ end }}
+        </ul>
+      </nav>
+      <div class="mobile">
+        {{ if $r.navbar.search.enable }}<button class="icon-item search search-popup-trigger" type="button" aria-label="{{ i18n "search" }}"><i class="fa-solid fa-magnifying-glass"></i></button>{{ end }}
+        <button class="icon-item navbar-bar" type="button" aria-label="Menu"><span class="navbar-bar-middle"></span></button>
+      </div>
+    </div>
+  </div>
+  <nav class="navbar-drawer" aria-label="Mobile navigation">
+    <ul class="drawer-navbar-list">
+      {{ range site.Menus.main }}
+        <li class="drawer-navbar-item">
+          <a href="{{ .URL | relLangURL }}">
+            <span>{{ .Name | upper }}</span>
+            {{ with .Pre }}<i class="{{ . }} fa-fw"></i>{{ end }}
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+    {{ partial "redefine/sidebar-statistics.html" . }}
+  </nav>
+  <div class="window-mask"></div>
+</header>

@@ -1,0 +1,40 @@
+{{- $r := site.Params.redefine -}}
+<!doctype html>
+<html lang="{{ site.Language.Lang | default "en" }}" class="{{ $r.colors.default_mode | default "light" }}">
+  {{ partial "redefine/head.html" . }}
+  <body>
+    {{ partial "redefine/progress-bar.html" . }}
+    {{ if $r.global.preloader.enable }}{{ partial "redefine/preloader.html" . }}{{ end }}
+    <main class="page-container" id="swup">
+      {{ if and .IsHome $r.home_banner.enable }}
+        {{ partial "redefine/home-banner.html" . }}
+      {{ end }}
+      <div class="main-content-container">
+        <div class="main-content-header">
+          {{ partial "redefine/navbar.html" . }}
+        </div>
+        <div class="main-content-body">
+          {{ if and .IsHome $r.home.sidebar.enable (eq ($r.home.sidebar.position | default "left") "left") }}
+            {{ partial "redefine/home-sidebar.html" . }}
+          {{ end }}
+          <div class="main-content {{ if and .IsPage $r.articles.toc.enable }}has-toc{{ end }}">
+            {{ block "main" . }}{{ end }}
+          </div>
+          {{ if and .IsHome $r.home.sidebar.enable (eq $r.home.sidebar.position "right") }}
+            {{ partial "redefine/home-sidebar.html" . }}
+          {{ end }}
+        </div>
+        <div class="main-content-footer">
+          {{ partial "redefine/footer.html" . }}
+        </div>
+      </div>
+      {{ if .IsPage }}
+        <div class="post-tools">{{ partial "redefine/post-tools.html" . }}</div>
+      {{ end }}
+      <div class="right-side-tools-container">{{ partial "redefine/side-tools.html" . }}</div>
+      {{ partial "redefine/image-viewer.html" . }}
+      {{ if $r.navbar.search.enable }}{{ partial "redefine/local-search.html" . }}{{ end }}
+    </main>
+    {{ partial "redefine/scripts.html" . }}
+  </body>
+</html>

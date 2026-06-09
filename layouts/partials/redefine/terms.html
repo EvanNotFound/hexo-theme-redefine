@@ -1,0 +1,8 @@
+<section class="taxonomy-container redefine-card">
+  <h1 class="page-title-header">{{ .Title }}</h1>
+  <ul class="tag-list" data-show-value="true">
+    {{ range .Data.Terms.Alphabetical }}
+      <li><a data-weight="{{ .Count }}" href="{{ .Page.RelPermalink }}"><i class="fa-solid fa-hashtag"></i>{{ .Page.LinkTitle }} <span>{{ .Count }}</span></a></li>
+    {{ end }}
+  </ul>
+</section>

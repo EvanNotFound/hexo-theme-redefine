@@ -1,0 +1,64 @@
+search:
+  other: "搜索..."
+toc:
+  other: "目录"
+prev_posts:
+  other: "上一篇"
+next_posts:
+  other: "下一篇"
+read_more:
+  other: "阅读全文"
+sticky:
+  other: "置顶"
+archive:
+  other: "归档"
+archives:
+  other: "归档"
+category:
+  other: "分类"
+categories:
+  other: "分类"
+tag:
+  other: "标签"
+tags:
+  other: "标签"
+create_time:
+  other: "创建"
+update_time:
+  other: "更新"
+wordcount:
+  other: "字"
+min2read:
+  other: "分钟"
+site_posts:
+  other: "共 {{ . }} 篇文章"
+site_wordcount:
+  other: "共 {{ . }} 字"
+powered_by:
+  other: "由 {{ . }} 强力驱动"
+theme:
+  other: "主题"
+runtime:
+  other: "博客已运行"
+days:
+  other: "天"
+hours:
+  other: "时"
+minutes:
+  other: "分"
+seconds:
+  other: "秒"
+copyright_title:
+  other: "标题"
+copyright_author:
+  other: "作者"
+copyright_link:
+  other: "链接"
+copyright_create_time:
+  other: "创建时间"
+copyright_update_time:
+  other: "更新时间"
+copyright_license_title:
+  other: "许可协议"
+copyright_license_content:
+  other: "本文采用 {{ . }} 许可协议。"

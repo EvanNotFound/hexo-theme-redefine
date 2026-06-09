@@ -1,0 +1,11 @@
+{{- $r := site.Params.redefine -}}
+{{- $pages := where site.RegularPages "Type" "in" (site.Params.mainSections | default (slice "posts")) -}}
+{{- $paginator := .Paginate $pages -}}
+<section class="home-content-container">
+  <ul class="home-article-list">
+    {{ range $paginator.Pages }}
+      {{ partial "redefine/home-article-card.html" (dict "page" . "root" $) }}
+    {{ end }}
+  </ul>
+  {{ partial "redefine/paginator.html" . }}
+</section>

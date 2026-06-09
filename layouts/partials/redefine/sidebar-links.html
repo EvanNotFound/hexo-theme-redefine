@@ -1,0 +1,13 @@
+{{- $r := site.Params.redefine -}}
+<div class="sidebar-links has-margin-top">
+  <div class="site-info">
+    <div class="site-name">{{ $r.info.title | default site.Title }}</div>
+    {{ with $r.home.sidebar.announcement }}<div class="announcement">{{ . | markdownify }}</div>{{ end }}
+  </div>
+  {{ range site.Menus.main }}
+    <a class="links" href="{{ .URL | relLangURL }}">
+      {{ with .Pre }}<i class="{{ . }} icon-space"></i>{{ end }}
+      <span class="link-name">{{ .Name }}</span>
+    </a>
+  {{ end }}
+</div>

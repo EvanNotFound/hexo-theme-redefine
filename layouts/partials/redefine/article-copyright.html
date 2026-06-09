@@ -1,0 +1,16 @@
+{{- $r := site.Params.redefine -}}
+{{- $license := .Params.license | default $r.articles.copyright.default -}}
+<section class="post-copyright-info">
+  <div class="article-copyright-info-container">
+    <ul>
+      <li><strong>{{ i18n "copyright_title" }}:</strong> {{ .Title }}</li>
+      <li><strong>{{ i18n "copyright_author" }}:</strong> {{ .Params.author | default $r.info.author | default site.Params.author }}</li>
+      <li><strong>{{ i18n "copyright_create_time" }}:</strong> {{ .Date.Format "2006-01-02 15:04" }}</li>
+      {{ if and .Lastmod (ne (.Lastmod.Format "2006-01-02 15:04") (.Date.Format "2006-01-02 15:04")) }}
+        <li><strong>{{ i18n "copyright_update_time" }}:</strong> {{ .Lastmod.Format "2006-01-02 15:04" }}</li>
+      {{ end }}
+      <li><strong>{{ i18n "copyright_link" }}:</strong> <a href="{{ .Permalink }}">{{ .Permalink }}</a></li>
+      <li><strong>{{ i18n "copyright_license_title" }}:</strong> {{ i18n "copyright_license_content" $license }}</li>
+    </ul>
+  </div>
+</section>

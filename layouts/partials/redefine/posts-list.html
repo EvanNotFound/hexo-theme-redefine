@@ -1,0 +1,15 @@
+{{- $groups := .GroupByDate "2006" -}}
+<div class="archive-list-container">
+  {{ range $groups }}
+    <section class="archive-item">
+      <header class="archive-item-header"><span class="archive-year">{{ .Key }}</span><span class="archive-year-post-count">{{ len .Pages }}</span></header>
+      <ul class="article-list">
+        {{ range .Pages.ByDate.Reverse }}
+          <li class="article-item" data-date="{{ .Date.Format "01-02" }}">
+            <a href="{{ .RelPermalink }}"><span class="article-date">{{ .Date.Format "01-02" }}</span><span class="article-title">{{ .Title }}</span></a>
+          </li>
+        {{ end }}
+      </ul>
+    </section>
+  {{ end }}
+</div>

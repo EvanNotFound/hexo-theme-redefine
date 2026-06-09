@@ -1,0 +1,23 @@
+{{- $r := site.Params.redefine -}}
+<div class="side-tools-container">
+  <ul class="hidden-tools-list">
+    <li><button class="right-bottom-tools tool-font-adjust-plus" type="button" aria-label="Font up"><i class="fa-solid fa-magnifying-glass-plus"></i></button></li>
+    <li><button class="right-bottom-tools tool-font-adjust-minus" type="button" aria-label="Font down"><i class="fa-solid fa-magnifying-glass-minus"></i></button></li>
+    <li><button class="right-bottom-tools tool-dark-light-toggle" type="button" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button></li>
+    {{ if $r.plugins.feed.enable }}
+      {{ with site.Home.OutputFormats.Get "RSS" }}
+        <li><a class="right-bottom-tools rss" href="{{ .RelPermalink }}" target="_blank" rel="noreferrer" aria-label="RSS"><i class="fa-solid fa-rss" aria-hidden="true"></i></a></li>
+      {{ end }}
+    {{ end }}
+    {{ if not $r.global.scroll_progress.percentage }}
+      <li><button class="right-bottom-tools tool-scroll-to-top" type="button" aria-label="Top"><i class="fa-solid fa-arrow-up"></i></button></li>
+    {{ end }}
+    <li><button class="right-bottom-tools tool-scroll-to-bottom" type="button" aria-label="Bottom"><i class="fa-solid fa-arrow-down"></i></button></li>
+  </ul>
+  <ul class="visible-tools-list">
+    <li><button class="right-bottom-tools toggle-tools-list" type="button" aria-label="Tools"><i class="fa-solid fa-gear {{ if $r.global.side_tools.gear_rotation }}fa-spin{{ end }}"></i></button></li>
+    {{ if $r.global.scroll_progress.percentage }}
+      <li><button class="right-bottom-tools tool-scroll-to-top percentage" type="button" aria-label="Top"><i class="arrow-up fas fa-arrow-up"></i><span class="percent"></span></button></li>
+    {{ end }}
+  </ul>
+</div>

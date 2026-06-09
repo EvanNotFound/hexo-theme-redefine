@@ -1,0 +1,50 @@
+{{- $r := site.Params.redefine -}}
+{{- $subtitle := $r.home_banner.subtitle.text | default slice -}}
+{{ if eq ($r.home_banner.style | default "fixed") "fixed" }}
+  <div class="home-banner-background fixed">
+    <img src="{{ $r.home_banner.image.light | relURL }}" alt="home-banner-background" class="light-banner">
+    <img src="{{ $r.home_banner.image.dark | relURL }}" alt="home-banner-background" class="dark-banner">
+  </div>
+{{ end }}
+<section class="home-banner-container">
+  {{ if ne ($r.home_banner.style | default "fixed") "fixed" }}
+    <div class="home-banner-background">
+      <img src="{{ $r.home_banner.image.light | relURL }}" alt="home-banner-background" class="light-banner">
+      <img src="{{ $r.home_banner.image.dark | relURL }}" alt="home-banner-background" class="dark-banner">
+    </div>
+  {{ end }}
+  <div class="content">
+    <div class="description" {{ if $r.home_banner.custom_font.enable }}style="font-family: '{{ $r.home_banner.custom_font.family }}', sans-serif"{{ end }}>
+      <div class="home-banner-title">{{ $r.home_banner.title | default $r.info.title | default site.Title }}</div>
+      {{ if gt (len $subtitle) 0 }}
+        <p><i id="subtitle">{{ index $subtitle 0 }}</i></p>
+      {{ end }}
+    </div>
+    {{ if $r.home_banner.social_links.enable }}
+      <div class="home-banner-actions">
+        <button class="scroll-down" type="button" aria-label="Scroll to content">
+          <i class="fa-solid fa-arrow-down fa-fw"></i>
+        </button>
+        <div class="social-contacts">
+          {{ range $r.home_banner.social_links.links }}
+            {{ if .url }}
+              {{ $icon := .icon | default .name }}
+              {{ $href := .url }}
+              {{ if eq $icon "email" }}{{ $href = printf "mailto:%s" .url }}{{ end }}
+              <a href="{{ $href }}" {{ if ne $icon "email" }}target="_blank" rel="noreferrer"{{ end }} aria-label="{{ $icon }}">
+                {{ if or (hasPrefix $icon "/") (hasPrefix $icon "http") }}
+                  <img src="{{ $icon | relURL }}" alt="">
+                {{ else if eq $icon "email" }}
+                  <i class="fa-solid fa-at fa-fw"></i>
+                {{ else }}
+                  {{- /* Social link names without an explicit fa-* prefix are treated as brand icons. */ -}}
+                  <i class="{{ cond (in $icon "fa-") $icon (printf "fa-brands fa-%s" $icon) }} fa-fw"></i>
+                {{ end }}
+              </a>
+            {{ end }}
+          {{ end }}
+        </div>
+      </div>
+    {{ end }}
+  </div>
+</section>

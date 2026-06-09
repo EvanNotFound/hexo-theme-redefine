@@ -45,12 +45,13 @@ const setActiveNavItem = () => {
 };
 
 const registerScrollHandler = (signal) => {
-  if (didInitScroll || !signal) {
+  if (didInitScroll) {
     return;
   }
 
   didInitScroll = true;
-  window.addEventListener("scroll", throttle(setActiveNavItem, 100), { signal });
+  const options = signal ? { signal } : undefined;
+  window.addEventListener("scroll", throttle(setActiveNavItem, 100), options);
 };
 
 export default function initBookmarkNav({ signal } = {}) {

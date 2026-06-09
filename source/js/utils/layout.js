@@ -67,6 +67,12 @@ const getHowLongAgo = (timestamp) => {
   return "";
 };
 
+const parseDateTimestamp = (dateValue) => {
+  const date = new Date(dateValue || "");
+  const timestamp = date.getTime();
+  return Number.isNaN(timestamp) ? null : timestamp;
+};
+
 export const relativeTimeInHome = () => {
   const post = document.querySelectorAll(
     ".home-article-meta-info .home-article-date",
@@ -76,7 +82,10 @@ export const relativeTimeInHome = () => {
     post &&
       post.forEach((v) => {
         const nowDate = Date.now();
-        const postDate = new Date(v.dataset.date.split(" GMT")[0]).getTime();
+        const postDate = parseDateTimestamp(v.dataset.date);
+        if (postDate === null) {
+          return;
+        }
         v.innerHTML = getHowLongAgo(
           Math.floor((nowDate - postDate) / 1000),
         );
@@ -85,7 +94,10 @@ export const relativeTimeInHome = () => {
     post &&
       post.forEach((v) => {
         const nowDate = Date.now();
-        const postDate = new Date(v.dataset.date.split(" GMT")[0]).getTime();
+        const postDate = parseDateTimestamp(v.dataset.date);
+        if (postDate === null) {
+          return;
+        }
         const finalDays = Math.floor(
           (nowDate - postDate) / (60 * 60 * 24 * 1000),
         );

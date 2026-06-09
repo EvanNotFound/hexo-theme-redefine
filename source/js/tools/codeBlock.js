@@ -30,16 +30,30 @@ const initCopyCode = () => {
     copyButton.addEventListener("click", () => {
       const codeLines = [...container.querySelectorAll(".code .line")];
       const code = codeLines.map((line) => line.innerText).join("\n");
+      const icon = copyButton.querySelector("i");
+      const restoreIcon = () => {
+        if (icon) {
+          icon.className = "fa-regular fa-copy";
+        }
+      };
 
       if (navigator.clipboard?.writeText) {
-        navigator.clipboard.writeText(code);
+        navigator.clipboard
+          .writeText(code)
+          .then(() => {
+            if (icon) {
+              icon.className = "fa-regular fa-check";
+            }
+            setTimeout(restoreIcon, 1000);
+          })
+          .catch((error) => {
+            restoreIcon();
+            console.warn("Failed to copy code:", error);
+          });
+      } else {
+        restoreIcon();
+        console.warn("Clipboard API is not available.");
       }
-
-      copyButton.querySelector("i").className = "fa-regular fa-check";
-
-      setTimeout(() => {
-        copyButton.querySelector("i").className = "fa-regular fa-copy";
-      }, 1000);
     });
 
     foldButton.addEventListener("click", () => {

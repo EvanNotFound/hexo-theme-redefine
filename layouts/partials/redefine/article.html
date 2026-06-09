@@ -1,0 +1,59 @@
+{{- $r := site.Params.redefine -}}
+{{- $cover := .Params.cover | default .Params.banner | default .Params.thumbnail -}}
+{{- $showToc := and $r.articles.toc.enable (in .TableOfContents "<ul") -}}
+<article class="post-page-container {{ if $showToc }}show-toc{{ end }}">
+  <div class="article-content-container">
+    <header class="article-title">
+      {{ if and $cover (ne .Params.thumbnail false) }}
+        <div class="article-cover-wrap">
+          <img src="{{ $cover | relURL }}" alt="{{ .Title }}" class="article-cover">
+          <div class="article-title-cover-wrap">
+            <h1 class="article-title-cover">{{ .Title }}</h1>
+          </div>
+        </div>
+      {{ else }}
+        <h1 class="article-title-regular {{ if eq $r.articles.style.title_alignment "center" }}center{{ end }}">{{ .Title }}</h1>
+      {{ end }}
+    </header>
+    <div class="article-header">
+      <div class="avatar"><img src="{{ .Params.avatar | default $r.defaults.avatar | relURL }}" alt="{{ .Params.author | default $r.info.author }}"></div>
+      <div class="info">
+        <div class="author">
+          <span class="name">{{ .Params.author | default $r.info.author | default site.Params.author }}</span>
+          {{ if $r.articles.author_label.enable }}<span class="author-label">Lv{{ add (div (len site.RegularPages) 8) 1 }}</span>{{ end }}
+        </div>
+        {{ partial "redefine/article-meta.html" . }}
+      </div>
+    </div>
+    {{ with .Params.expires }}
+      <div class="article-expire callout" id="expiration-container" data-expires="{{ . }}" data-updated="{{ $.Lastmod }}">Expired content notice</div>
+    {{ end }}
+    <div class="article-content markdown-body">
+      {{ .Content }}
+    </div>
+    {{ if $r.articles.copyright.enable }}
+      {{ partial "redefine/article-copyright.html" . }}
+    {{ end }}
+    {{ with .GetTerms "tags" }}
+      <ul class="post-tags-box">
+        {{ range . }}<li><a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a></li>{{ end }}
+      </ul>
+    {{ end }}
+    {{ if or .PrevInSection .NextInSection }}
+      <nav class="article-nav">
+        {{ with .PrevInSection }}
+          <a class="article-prev" rel="prev" href="{{ .RelPermalink }}"><i class="fa-solid fa-chevron-left"></i><span>{{ .Title }}</span><em>{{ i18n "prev_posts" }}</em></a>
+        {{ end }}
+        {{ with .NextInSection }}
+          <a class="article-next" rel="next" href="{{ .RelPermalink }}"><span>{{ .Title }}</span><em>{{ i18n "next_posts" }}</em><i class="fa-solid fa-chevron-right"></i></a>
+        {{ end }}
+      </nav>
+    {{ end }}
+    {{ if and $r.comment.enable (ne .Params.comment false) }}
+      <div class="comment-container">{{ partial "redefine/comments.html" . }}</div>
+    {{ end }}
+  </div>
+  {{ if $showToc }}
+    <aside class="toc-content-container">{{ partial "redefine/toc.html" . }}</aside>
+  {{ end }}
+</article>

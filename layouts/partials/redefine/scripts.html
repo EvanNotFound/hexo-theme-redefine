@@ -1,0 +1,14 @@
+{{- $r := site.Params.redefine -}}
+{{ if $r.footer.runtime }}
+  <script src="{{ "js/build/libs/odometer.min.js" | relURL }}"></script>
+  <link rel="stylesheet" href="{{ "assets/odometer-theme-minimal.css" | relURL }}">
+{{ end }}
+{{ if $r.home_banner.subtitle.text }}
+  <script src="{{ "js/build/libs/Typed.min.js" | relURL }}"></script>
+{{ end }}
+{{ if $r.plugins.mermaid.enable }}
+  <script src="{{ "js/build/libs/mermaid.min.js" | relURL }}"></script>
+{{ end }}
+<script type="module" src="{{ "js/build/main.js" | relURL }}"></script>
+{{ $js := resources.Get "js/redefine-hugo.js" | resources.Minify | resources.Fingerprint "sha256" }}
+<script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>

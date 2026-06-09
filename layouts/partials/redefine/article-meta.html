@@ -1,0 +1,26 @@
+{{- $r := site.Params.redefine -}}
+<div class="article-meta-info">
+  <span class="article-meta-item"><i class="fa-solid fa-pen-fancy"></i> <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time><span class="hover-info">{{ i18n "create_time" }}</span></span>
+  {{ if and .Lastmod (ne (.Lastmod.Format "2006-01-02") (.Date.Format "2006-01-02")) }}
+    <span class="article-meta-item"><i class="fa-solid fa-wrench"></i> <time datetime="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Lastmod.Format "2006-01-02" }}</time><span class="hover-info">{{ i18n "update_time" }}</span></span>
+  {{ end }}
+  {{ with .GetTerms "categories" }}
+    <span class="article-meta-item article-categories"><i class="fa-solid fa-folder"></i>
+      {{ range $i, $term := . }}{{ if $i }} | {{ end }}<a href="{{ $term.RelPermalink }}">{{ $term.LinkTitle }}</a>{{ end }}
+    </span>
+  {{ end }}
+  {{ with .GetTerms "tags" }}
+    <span class="article-meta-item article-tags"><i class="fa-solid fa-tags"></i>
+      {{ range $i, $term := . }}{{ if $i }} | {{ end }}<a href="{{ $term.RelPermalink }}">{{ $term.LinkTitle }}</a>{{ end }}
+    </span>
+  {{ end }}
+  {{ if and $r.articles.word_count.enable $r.articles.word_count.count }}
+    <span class="article-meta-item"><i class="fa-solid fa-keyboard"></i> {{ .WordCount }} {{ i18n "wordcount" }}</span>
+  {{ end }}
+  {{ if and $r.articles.word_count.enable $r.articles.word_count.min2read }}
+    <span class="article-meta-item"><i class="fa-solid fa-clock"></i> {{ .ReadingTime }} {{ i18n "min2read" }}</span>
+  {{ end }}
+  {{ if and $r.global.website_counter.enable $r.global.website_counter.post_pv }}
+    <span class="article-meta-item"><i class="fa-solid fa-eye"></i> <span id="busuanzi_value_page_pv"></span></span>
+  {{ end }}
+</div>

@@ -11,6 +11,10 @@ export function initHBE() {
   const knownPrefix = "<hbe-prefix></hbe-prefix>";
 
   const mainElement = document.getElementById("hexo-blog-encrypt");
+  if (!mainElement || !cryptoObj?.subtle || !storage) {
+    return;
+  }
+
   const wrongPassMessage = mainElement.dataset["wpm"];
   const wrongHashMessage = mainElement.dataset["whm"];
   const dataElement = mainElement.getElementsByTagName("script")["hbeData"];
@@ -210,6 +214,11 @@ export function initHBE() {
           throw "Decode successfully but not start with KnownPrefix.";
         }
 
+        const verified = await verifyContent(hmacKey, decoded);
+        if (!verified) {
+          return false;
+        }
+
         const hideButton = document.createElement("button");
         hideButton.textContent = "Encrypt again";
         hideButton.type = "button";
@@ -239,7 +248,7 @@ export function initHBE() {
         var event = new Event("hexo-blog-decrypt");
         window.dispatchEvent(event);
 
-        return await verifyContent(hmacKey, decoded);
+        return true;
       })
       .catch((e) => {
         alert(wrongPassMessage);

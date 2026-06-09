@@ -1,0 +1,15 @@
+baseURL = "https://example.org/"
+locale = "en"
+title = "Redefine Hugo Example"
+theme = "hugo-theme-redefine"
+defaultContentLanguage = "en"
+
+[pagination]
+  pagerSize = 6
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]

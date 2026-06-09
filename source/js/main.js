@@ -111,7 +111,7 @@ const initPage = () => {
 
   safeRun("footerRuntime", () => {
     if (theme.footer?.runtime) {
-      initFooterRuntime();
+      initFooterRuntime({ signal: pageSignal });
     }
   });
 

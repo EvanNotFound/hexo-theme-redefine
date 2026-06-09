@@ -1,4 +1,5 @@
 let runtimeActive = false;
+let runtimeTimer = null;
 
 const footerRuntime = () => {
   if (!runtimeActive) {
@@ -11,7 +12,7 @@ const footerRuntime = () => {
     return;
   }
 
-  window.setTimeout(footerRuntime, 1000);
+  runtimeTimer = window.setTimeout(footerRuntime, 1000);
 
   const startDate = new Date(startTime);
   const nowDate = new Date();
@@ -36,11 +37,20 @@ const footerRuntime = () => {
   if (runtimeSeconds) runtimeSeconds.innerHTML = seconds;
 };
 
-export default function initFooterRuntime() {
+export default function initFooterRuntime({ signal } = {}) {
   if (runtimeActive) {
     return;
   }
 
   runtimeActive = true;
+  if (signal) {
+    signal.addEventListener("abort", () => {
+      runtimeActive = false;
+      if (runtimeTimer !== null) {
+        window.clearTimeout(runtimeTimer);
+        runtimeTimer = null;
+      }
+    }, { once: true });
+  }
   footerRuntime();
 }

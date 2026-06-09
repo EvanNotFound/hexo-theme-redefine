@@ -1,9 +1,18 @@
 (function() {
+  if (typeof window.APlayer === "undefined" || !window.theme?.plugins?.aplayer) {
+    return;
+  }
+
+  const container = document.getElementById("aplayer");
+  if (!container) {
+    return;
+  }
+
   const audioList = [];
   const isFixed = theme.plugins.aplayer.type === "fixed";
   const isMini = theme.plugins.aplayer.type === "mini";
 
-  for (const audio of theme.plugins.aplayer.audios) {
+  for (const audio of theme.plugins.aplayer.audios || []) {
     const audioObj = {
       name: audio.name,
       artist: audio.artist,
@@ -17,17 +26,17 @@
 
   if (isMini) {
     new APlayer({
-      container: document.getElementById("aplayer"),
+      container,
       mini: true,
       audio: audioList,
     });
   } else if (isFixed) {
     const player = new APlayer({
-      container: document.getElementById("aplayer"),
+      container,
       fixed: true,
       lrcType: 3,
       audio: audioList,
     });
-    document.querySelector(".aplayer-icon-lrc").click();
+    document.querySelector(".aplayer-icon-lrc")?.click();
   }
 })();

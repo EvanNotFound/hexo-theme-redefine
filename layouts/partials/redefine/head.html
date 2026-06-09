@@ -1,0 +1,56 @@
+{{- $r := site.Params.redefine -}}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{- $title := cond .IsHome (printf "%s - %s" ($r.info.title | default site.Title) ($r.info.subtitle | default site.Params.description)) (printf "%s | %s" .Title ($r.info.title | default site.Title)) -}}
+  <title>{{ $title }}</title>
+  <meta name="author" content="{{ $r.info.author | default site.Params.author }}">
+  {{ with .Params.description | default site.Params.description | default $r.global.open_graph.description }}
+    <meta name="description" content="{{ . | plainify }}">
+  {{ end }}
+  {{ with .Params.keywords | default site.Params.keywords }}
+    <meta name="keywords" content="{{ delimit . "," }}">
+  {{ end }}
+  <link rel="canonical" href="{{ .Permalink }}">
+  {{ if $r.global.open_graph.enable }}
+    {{ template "_internal/opengraph.html" . }}
+    {{ template "_internal/twitter_cards.html" . }}
+  {{ end }}
+  <meta name="theme-color" content="{{ $r.colors.primary | default "#A31F34" }}">
+  <link rel="icon" href="{{ $r.defaults.favicon | relURL }}">
+  <link rel="apple-touch-icon" href="{{ $r.defaults.favicon | relURL }}">
+  <script>
+    (function() {
+      const key = "REDEFINE-THEME-STATUS";
+      const dark = "dark";
+      const light = "light";
+      function selected() {
+        try {
+          const saved = localStorage.getItem(key);
+          if (saved) return JSON.parse(saved).isDark ? dark : light;
+        } catch (e) {}
+        return matchMedia("(prefers-color-scheme: dark)").matches ? dark : "{{ $r.colors.default_mode | default "light" }}";
+      }
+      const mode = selected();
+      document.documentElement.classList.remove(mode === dark ? light : dark);
+      document.documentElement.classList.add(mode);
+      document.documentElement.style.colorScheme = mode;
+    })();
+  </script>
+  {{ partial "redefine/style-vars.html" . }}
+  <link rel="stylesheet" href="{{ "fonts/Chillax/chillax.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "fonts/Geist/geist.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "fonts/GeistMono/geist-mono.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "fontawesome/fontawesome.min.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "fontawesome/brands.min.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "fontawesome/solid.min.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "fontawesome/regular.min.css" | relURL }}">
+  {{ if $r.fontawesome.light }}<link rel="stylesheet" href="{{ "fontawesome/light.min.css" | relURL }}">{{ end }}
+  {{ if $r.fontawesome.thin }}<link rel="stylesheet" href="{{ "fontawesome/thin.min.css" | relURL }}">{{ end }}
+  {{ if $r.fontawesome.duotone }}<link rel="stylesheet" href="{{ "fontawesome/duotone.min.css" | relURL }}">{{ end }}
+  {{ if $r.fontawesome.sharp_solid }}<link rel="stylesheet" href="{{ "fontawesome/sharp-solid.min.css" | relURL }}">{{ end }}
+  {{ $css := resources.Get "css/redefine.css" | resources.Minify | resources.Fingerprint "sha256" }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  {{ if $r.inject.enable }}{{ range $r.inject.head }}{{ . | safeHTML }}{{ end }}{{ end }}
+  {{ partial "redefine/export-config.html" . }}
+</head>

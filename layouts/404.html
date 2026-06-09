@@ -1,0 +1,7 @@
+{{ define "main" }}
+  <section class="notfound-container redefine-card">
+    <h1>404</h1>
+    <p>{{ i18n "go-back-home" | default "Page not found" }}</p>
+    <a class="btn" href="{{ site.Home.RelPermalink }}">{{ i18n "home" | default "Home" }}</a>
+  </section>
+{{ end }}

@@ -1,0 +1,30 @@
+description = "A local Hugo preview for Theme Redefine."
+mainSections = ["posts"]
+
+[redefine.info]
+  title = "Theme Redefine"
+  subtitle = "Redefine Your Hugo Journey."
+  author = "The Redefine Team"
+  url = "https://example.org"
+
+[redefine.home_banner.subtitle]
+  text = ["A Hugo port with the Redefine look.", "Built from the visual skeleton first."]
+
+[redefine.home_banner.social_links]
+  enable = true
+  style = "center"
+  [[redefine.home_banner.social_links.links]]
+    icon = "github"
+    url = "https://github.com/GT-610/hugo-theme-redefine"
+  [[redefine.home_banner.social_links.links]]
+    icon = "email"
+    url = "mailto:you@example.com"
+
+[redefine.navbar.search]
+  enable = true
+
+[redefine.global.website_counter]
+  enable = false
+
+[redefine.comment]
+  enable = false

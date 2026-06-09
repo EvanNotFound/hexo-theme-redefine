@@ -1,0 +1,15 @@
+{{- $index := slice -}}
+{{- range site.RegularPages -}}
+  {{- if not .Params.excludeFromSearch -}}
+    {{- $index = $index | append (dict
+      "title" .Title
+      "summary" (.Summary | plainify | htmlUnescape)
+      "content" (.Plain | htmlUnescape)
+      "permalink" .RelPermalink
+      "date" (.Date | time.Format ":date_long")
+      "tags" (.Params.tags | default slice)
+      "categories" (.Params.categories | default slice)
+    ) -}}
+  {{- end -}}
+{{- end -}}
+{{- $index | jsonify -}}

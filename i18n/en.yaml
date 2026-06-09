@@ -1,0 +1,64 @@
+search:
+  other: "Search..."
+toc:
+  other: "On this page"
+prev_posts:
+  other: "Prev posts"
+next_posts:
+  other: "Next posts"
+read_more:
+  other: "Read more"
+sticky:
+  other: "Sticky"
+archive:
+  other: "Archive"
+archives:
+  other: "Archives"
+category:
+  other: "Category"
+categories:
+  other: "Categories"
+tag:
+  other: "Tag"
+tags:
+  other: "Tags"
+create_time:
+  other: "Created"
+update_time:
+  other: "Updated"
+wordcount:
+  other: "Words"
+min2read:
+  other: "Mins"
+site_posts:
+  other: "{{ . }} posts in total"
+site_wordcount:
+  other: "{{ . }} words in total"
+powered_by:
+  other: "POWERED BY {{ . }}"
+theme:
+  other: "THEME"
+runtime:
+  other: "Blog up for"
+days:
+  other: "days"
+hours:
+  other: "hours"
+minutes:
+  other: "minutes"
+seconds:
+  other: "seconds"
+copyright_title:
+  other: "Title"
+copyright_author:
+  other: "Author"
+copyright_link:
+  other: "Link"
+copyright_create_time:
+  other: "Created at"
+copyright_update_time:
+  other: "Updated at"
+copyright_license_title:
+  other: "License"
+copyright_license_content:
+  other: "This work is licensed under {{ . }}."

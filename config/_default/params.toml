@@ -1,0 +1,228 @@
+[redefine.info]
+  title = "Theme Redefine"
+  subtitle = "Redefine Your Hugo Journey."
+  author = "The Redefine Team"
+  url = "https://example.org"
+
+[redefine.defaults]
+  favicon = "/images/redefine-favicon.svg"
+  logo = "/images/redefine-logo.svg"
+  avatar = "/images/redefine-avatar.svg"
+
+[redefine.colors]
+  primary = "#A31F34"
+  default_mode = "light"
+
+[redefine.global]
+  content_max_width = "1000px"
+  sidebar_width = "210px"
+  single_page = false
+
+  [redefine.global.hover]
+    shadow = true
+    scale = false
+
+  [redefine.global.scroll_progress]
+    bar = false
+    percentage = true
+
+  [redefine.global.website_counter]
+    enable = false
+    url = "https://cn.vercount.one/js"
+    site_pv = true
+    site_uv = true
+    post_pv = true
+
+  [redefine.global.preloader]
+    enable = false
+    custom_message = ""
+
+  [redefine.global.side_tools]
+    gear_rotation = true
+    auto_expand = false
+
+  [redefine.global.open_graph]
+    enable = true
+    image = "/images/redefine-og.webp"
+    description = "Hugo Theme Redefine."
+
+  [redefine.global.google_analytics]
+    enable = false
+    id = ""
+
+[redefine.fontawesome]
+  thin = false
+  light = false
+  duotone = false
+  sharp_solid = false
+
+[redefine.home_banner]
+  enable = true
+  style = "fixed"
+  title = "Theme Redefine"
+
+  [redefine.home_banner.image]
+    light = "/images/wallhaven-wqery6-light.webp"
+    dark = "/images/wallhaven-wqery6-dark.webp"
+
+  [redefine.home_banner.subtitle]
+    text = ["A simple, fast and pure theme."]
+    typing_speed = 100
+    backing_speed = 80
+    starting_delay = 500
+    backing_delay = 1500
+    loop = true
+    smart_backspace = true
+    [redefine.home_banner.subtitle.hitokoto]
+      enable = false
+      show_author = false
+      api = "https://v1.hitokoto.cn"
+
+  [redefine.home_banner.text_color]
+    light = "#fff"
+    dark = "#d1d1b6"
+
+  [redefine.home_banner.text_style]
+    title_size = "2.8rem"
+    subtitle_size = "1.5rem"
+    line_height = "1.2"
+
+  [redefine.home_banner.custom_font]
+    enable = false
+    family = ""
+    url = ""
+
+  [redefine.home_banner.social_links]
+    enable = true
+    style = "default"
+    [[redefine.home_banner.social_links.links]]
+      icon = "github"
+      url = "https://github.com/GT-610/hugo-theme-redefine"
+    [[redefine.home_banner.social_links.links]]
+      icon = "npm"
+      url = "https://www.npmjs.com/package/hexo-theme-redefine"
+    [[redefine.home_banner.social_links.links]]
+      icon = "email"
+      url = "mailto:you@example.com"
+    qrs = []
+
+[redefine.navbar]
+  auto_hide = false
+  [redefine.navbar.color]
+    left = "#f78736"
+    right = "#367df7"
+    transparency = 35
+  [redefine.navbar.width]
+    home = "1200px"
+    pages = "1000px"
+  [redefine.navbar.search]
+    enable = false
+    preload = true
+
+[redefine.home]
+  article_date_format = "auto"
+  excerpt_length = 200
+  [redefine.home.sidebar]
+    enable = true
+    position = "left"
+    first_item = "menu"
+    announcement = ""
+    show_on_mobile = true
+  [redefine.home.categories]
+    enable = true
+    limit = 3
+  [redefine.home.tags]
+    enable = true
+    limit = 3
+
+[redefine.articles]
+  lazyload = true
+  pangu_js = false
+  [redefine.articles.style]
+    font_size = "16px"
+    line_height = 1.5
+    image_border_radius = "14px"
+    image_alignment = "center"
+    image_caption = false
+    link_icon = true
+    delete_mask = false
+    title_alignment = "left"
+  [redefine.articles.word_count]
+    enable = true
+    count = true
+    min2read = true
+  [redefine.articles.author_label]
+    enable = true
+    auto = false
+    list = []
+  [redefine.articles.code_block]
+    copy = true
+    style = "mac"
+    [redefine.articles.code_block.highlight_theme]
+      light = "github"
+      dark = "vs2015"
+    [redefine.articles.code_block.font]
+      enable = false
+      family = ""
+      url = ""
+  [redefine.articles.toc]
+    enable = true
+    max_depth = 3
+    number = false
+    expand = true
+    init_open = true
+  [redefine.articles.copyright]
+    enable = true
+    default = "cc_by_nc_sa"
+  [redefine.articles.recommendation]
+    enable = false
+
+[redefine.comment]
+  enable = false
+  system = ""
+
+[redefine.footer]
+  runtime = true
+  icon = '<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>'
+  start = "2022-08-17T11:45:14"
+  statistics = true
+  customize = ""
+  [redefine.footer.icp]
+    enable = false
+    number = ""
+    url = ""
+
+[redefine.inject]
+  enable = false
+  head = []
+  footer = []
+
+[redefine.plugins.feed]
+  enable = false
+
+[redefine.plugins.aplayer]
+  enable = false
+  type = "fixed"
+  audios = []
+
+[redefine.plugins.mermaid]
+  enable = false
+  version = "11.4.1"
+  [redefine.plugins.mermaid.theme]
+    light = "default"
+    dark = "dark"
+
+[redefine.page_templates]
+  friends_column = 2
+  tags_style = "blur"
+  [redefine.page_templates.masonry]
+    batch_size = 12
+    initial_batch_size = 24
+
+[redefine.cdn]
+  enable = false
+  provider = "npmmirror"
+  custom_url = ""
+
+[redefine.developer]
+  enable = false

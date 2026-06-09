@@ -35,7 +35,7 @@ export const initToolsListToggle = (ctx, signal) => {
     return;
   }
 
-  if (theme.global.side_tools && theme.global.side_tools.auto_expand) {
+  if (window.theme?.global?.side_tools?.auto_expand) {
     ctx.toolsList.classList.add("show");
   }
 

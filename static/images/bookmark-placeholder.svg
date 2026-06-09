@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1024px" height="1024px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="bookmark-placeholder" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#F3F4F6" x="0" y="0" width="1024" height="1024"></rect>
+        <g id="bookmark" transform="translate(360, 316)" stroke="#27272A" stroke-linecap="round" stroke-linejoin="round" stroke-width="43.4444444">
+            <path d="M304,391 L152,304.111111 L0,391 L0,43.4444444 C0,19.4507403 19.4436337,0 43.4285714,0 L260.571429,0 C284.556366,0 304,19.4507403 304,43.4444444 L304,391 Z" id="Path"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,10 @@
+{{- $tagsPage := site.GetPage "taxonomyTerm" "tags" -}}
+{{- $categoriesPage := site.GetPage "taxonomyTerm" "categories" -}}
+{{- $postsPage := site.GetPage "section" "posts" -}}
+{{- $postsCount := len (where site.RegularPages "Section" "posts") -}}
+{{- with $postsPage }}{{ $postsCount = len .RegularPages }}{{ end -}}
+<div class="sidebar-statistics">
+  <a class="item" href="{{ with $tagsPage }}{{ .RelPermalink }}{{ else }}{{ "tags/" | relLangURL }}{{ end }}"><strong>{{ len site.Taxonomies.tags }}</strong><span>{{ i18n "tags" | default "Tags" }}</span></a>
+  <a class="item" href="{{ with $categoriesPage }}{{ .RelPermalink }}{{ else }}{{ "categories/" | relLangURL }}{{ end }}"><strong>{{ len site.Taxonomies.categories }}</strong><span>{{ i18n "categories" | default "Categories" }}</span></a>
+  <a class="item" href="{{ with $postsPage }}{{ .RelPermalink }}{{ else }}{{ "posts/" | relLangURL }}{{ end }}"><strong>{{ $postsCount }}</strong><span>{{ i18n "posts" | default "Posts" }}</span></a>
+</div>
