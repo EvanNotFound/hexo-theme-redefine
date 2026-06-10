@@ -35,15 +35,15 @@
       </nav>
       <div class="mobile">
         {{ if $r.navbar.search.enable }}<button class="icon-item search search-popup-trigger" type="button" aria-label="{{ i18n "search" }}"><i class="fa-solid fa-magnifying-glass"></i></button>{{ end }}
-        <button class="icon-item navbar-bar" type="button" aria-label="Menu"><span class="navbar-bar-middle"></span></button>
+        <button class="icon-item navbar-bar" type="button" aria-label="Menu" aria-controls="navbar-drawer" aria-expanded="false"><span class="navbar-bar-middle"></span></button>
       </div>
     </div>
   </div>
-  <nav class="navbar-drawer" aria-label="Mobile navigation">
+  <nav class="navbar-drawer" id="navbar-drawer" aria-label="Mobile navigation">
     <ul class="drawer-navbar-list">
       {{ range site.Menus.main }}
         <li class="drawer-navbar-item">
-          <a href="{{ .URL | relLangURL }}">
+          <a class="{{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}active{{ end }}" href="{{ .URL | relLangURL }}">
             <span>{{ .Name | upper }}</span>
             {{ with .Pre }}<i class="{{ . }} fa-fw"></i>{{ end }}
           </a>
