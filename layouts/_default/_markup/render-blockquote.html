@@ -1,0 +1,3 @@
+<blockquote{{ range $k, $v := .Attributes }} {{ $k }}="{{ $v }}"{{ end }}>
+  {{- .Text | safeHTML -}}
+</blockquote>

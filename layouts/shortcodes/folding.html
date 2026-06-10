@@ -1,0 +1,18 @@
+{{- $title := "Details" -}}
+{{- $class := "" -}}
+{{- $open := false -}}
+{{- if .IsNamedParams -}}
+  {{- $title = .Get "title" | default (.Get "summary") | default $title -}}
+  {{- $class = .Get "class" | default (.Get "style") | default "" -}}
+  {{- $openValue := .Get "open" | default false -}}
+  {{- $open = or (eq $openValue true) (eq $openValue "true") (eq $openValue "1") (eq $openValue "yes") -}}
+{{- else -}}
+  {{- if ge (len .Params) 1 }}{{ with .Get 0 }}{{ $class = . }}{{ end }}{{ end -}}
+  {{- if ge (len .Params) 2 }}{{ with .Get 1 }}{{ $title = . }}{{ end }}{{ end -}}
+{{- end -}}
+<details class="relative my-4 border border-border-color bg-second-background-color rounded-md {{ $class }}"{{ if $open }} open{{ end }} data-header-exclude>
+  <summary class="px-4 py-2 rounded-md shadow-[0_0_2px_0_var(--shadow-color-1)] cursor-pointer not-markdown"><i class="fa-solid fa-chevron-right"></i>{{ $title }}</summary>
+  <div class="content p-4">
+    {{- .InnerDeindent | strings.TrimSpace | .Page.RenderString -}}
+  </div>
+</details>

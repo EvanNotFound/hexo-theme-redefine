@@ -1,0 +1,37 @@
+{{- .Store.Set "tabs" slice -}}
+{{- .Store.Set "tab-index" 0 -}}
+{{- $noop := .Inner -}}
+{{- $tabs := .Store.Get "tabs" | default slice -}}
+{{- $active := 1 -}}
+{{- if .IsNamedParams -}}
+  {{- with .Get "active" }}{{ $active = int . }}{{ end -}}
+{{- else -}}
+  {{- if ge (len .Params) 1 }}{{ with .Get 0 }}{{ $active = int . }}{{ end }}{{ end -}}
+{{- end -}}
+{{- if lt $active 1 }}{{ $active = 1 }}{{ end -}}
+{{- $name := "" -}}
+{{- if .IsNamedParams }}{{ with .Get "name" }}{{ $name = . }}{{ end }}{{ end -}}
+{{- $base := printf "tabs-%d-%s" .Ordinal $name | anchorize -}}
+<div class="tabs relative my-4 bg-second-background-color border border-border-color rounded-md" id="{{ $base }}">
+  <div role="tablist" aria-orientation="horizontal" class="flex gap-3.5 overflow-x-auto px-4 not-markdown scrollbar-hide" tabindex="0">
+    {{- range $index, $tab := $tabs -}}
+      {{- $number := add $index 1 -}}
+      {{- $id := printf "%s-%d" $base $number -}}
+      {{- $isActive := eq $number $active -}}
+      <button type="button" role="tab" aria-selected="{{ $isActive }}" data-state="{{ cond $isActive "active" "inactive" }}" data-tab="{{ $id }}" class="inline-flex items-center gap-2 whitespace-nowrap text-third-text-color border-b-2 border-transparent py-2 text-sm font-medium transition-colors hover:text-second-text-color data-[state=active]:border-primary data-[state=active]:text-primary" tabindex="{{ cond $isActive "0" "-1" }}">
+        {{- with index $tab "icon" }}<i class="{{ . }}" aria-hidden="true"></i>{{ end -}}
+        {{- index $tab "title" -}}
+      </button>
+    {{- end -}}
+  </div>
+  <div class="tab-content p-4 bg-background-color/70 rounded-md shadow-[0_0_2px_0_var(--shadow-color-1)]">
+    {{- range $index, $tab := $tabs -}}
+      {{- $number := add $index 1 -}}
+      {{- $id := printf "%s-%d" $base $number -}}
+      {{- $isActive := eq $number $active -}}
+      <div class="tab-pane" data-state="{{ cond $isActive "active" "inactive" }}" id="{{ $id }}"{{ if not $isActive }} hidden{{ end }}>
+        {{- index $tab "content" | safeHTML -}}
+      </div>
+    {{- end -}}
+  </div>
+</div>

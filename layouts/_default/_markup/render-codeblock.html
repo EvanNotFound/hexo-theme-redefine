@@ -1,0 +1,6 @@
+{{- $lang := .Type | default "text" -}}
+{{- $title := .Attributes.title | default "" -}}
+<div class="code-container" data-rel="{{ $lang }}">
+  {{- with $title }}<figcaption>{{ . }}</figcaption>{{ end -}}
+  {{- transform.Highlight .Inner $lang .Options -}}
+</div>

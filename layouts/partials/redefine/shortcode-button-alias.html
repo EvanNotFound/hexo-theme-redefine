@@ -1,0 +1,16 @@
+{{- $text := "" -}}
+{{- $url := "" -}}
+{{- $icon := "" -}}
+{{- if .IsNamedParams -}}
+  {{- $text = .Get "text" | default (.Get "label") | default "" -}}
+  {{- $url = .Get "url" | default (.Get "href") | default "" -}}
+  {{- $icon = .Get "icon" | default "" -}}
+{{- else -}}
+  {{- if ge (len .Params) 1 }}{{ $text = .Get 0 | default "" }}{{ end -}}
+  {{- if ge (len .Params) 2 }}{{ $url = .Get 1 | default "" }}{{ end -}}
+  {{- if ge (len .Params) 3 }}{{ $icon = .Get 2 | default "" }}{{ end -}}
+{{- end -}}
+<a class="button not-markdown"{{ with $url }} href="{{ . | safeURL }}"{{ end }} title="{{ $text }}">
+  {{- with $icon }}<i class="{{ . }}" aria-hidden="true"></i> {{ end -}}
+  {{- $text -}}
+</a>

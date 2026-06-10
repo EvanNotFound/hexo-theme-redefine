@@ -1,0 +1,13 @@
+{{- $type := "default" -}}
+{{- $title := "" -}}
+{{- if .IsNamedParams -}}
+  {{- $type = .Get "type" | default $type -}}
+  {{- $title = .Get "title" | default "" -}}
+{{- else -}}
+  {{- if ge (len .Params) 1 }}{{ with .Get 0 }}{{ $type = . }}{{ end }}{{ end -}}
+{{- end -}}
+{{- $content := .InnerDeindent | strings.TrimSpace | .Page.RenderString -}}
+<div class="callout callout--simple {{ $type }} mb-4 rounded-small shadow-redefine-flat bg-(--callout-bg-color) p-3 pl-1 relative flex flex-row gap-2 items-center">
+  <div role="none" class="rounded-full self-stretch w-0.5 bg-(--callout-primary-color) shrink-0 opacity-60"></div>
+  <div class="callout__content markdown-body flex-1 min-w-0">{{ if $title }}<strong>{{ $title }}</strong>{{ end }}{{ $content | safeHTML }}</div>
+</div>

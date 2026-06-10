@@ -1,0 +1,5 @@
+{{- $anchor := .Anchor | anchorize -}}
+<h{{ .Level }} id="{{ $anchor }}">
+  {{- .Text | safeHTML -}}
+  <a class="headerlink not-markdown" href="#{{ $anchor }}" aria-label="Anchor link for {{ .PlainText }}"></a>
+</h{{ .Level }}>

@@ -1,0 +1,30 @@
+{{- $type := "default" -}}
+{{- $title := "" -}}
+{{- $icon := "" -}}
+{{- $variant := "simple" -}}
+{{- if .IsNamedParams -}}
+  {{- $type = .Get "type" | default $type -}}
+  {{- $title = .Get "title" | default "" -}}
+  {{- $icon = .Get "icon" | default "" -}}
+  {{- $variant = .Get "variant" | default (cond (ne $title "") "titled" "simple") -}}
+{{- else -}}
+  {{- if ge (len .Params) 1 }}{{ with .Get 0 }}{{ $type = . }}{{ end }}{{ end -}}
+  {{- if ge (len .Params) 2 }}{{ with .Get 1 }}{{ $title = . }}{{ $variant = "titled" }}{{ end }}{{ end -}}
+  {{- if ge (len .Params) 3 }}{{ with .Get 2 }}{{ $icon = . }}{{ end }}{{ end -}}
+{{- end -}}
+{{- $content := .InnerDeindent | strings.TrimSpace | .Page.RenderString -}}
+{{- if eq $variant "titled" -}}
+  <div class="callout callout--titled {{ $type }} mb-4 rounded-small shadow-redefine-flat bg-(--callout-bg-color) p-3 pl-1 relative flex flex-row gap-2">
+    <div role="none" class="rounded-full self-stretch w-0.5 bg-(--callout-primary-color) shrink-0 opacity-60"></div>
+    <div class="flex flex-col gap-2">
+      <div class="callout__title flex items-center gap-2 font-semibold tracking-tight">{{ with $icon }}<i class="callout__icon {{ . }} leading-none text-(--callout-primary-color) text-sm shrink-0" aria-hidden="true"></i>{{ end }}{{ $title | default "Note" }}</div>
+      <div class="callout__content markdown-body flex-1 min-w-0">{{ $content | safeHTML }}</div>
+    </div>
+  </div>
+{{- else -}}
+  <div class="callout callout--simple {{ $type }} mb-4 rounded-small shadow-redefine-flat bg-(--callout-bg-color) p-3 pl-1 relative flex flex-row gap-2 items-center">
+    <div role="none" class="rounded-full self-stretch w-0.5 bg-(--callout-primary-color) shrink-0 opacity-60"></div>
+    {{- with $icon }}<i class="callout__icon {{ . }} leading-none text-(--callout-primary-color) text-sm shrink-0" aria-hidden="true"></i>{{ end -}}
+    <div class="callout__content markdown-body flex-1 min-w-0">{{ $content | safeHTML }}</div>
+  </div>
+{{- end -}}

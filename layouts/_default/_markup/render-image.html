@@ -1,0 +1,39 @@
+{{- $destination := .Destination -}}
+{{- $url := urls.Parse $destination -}}
+{{- $isRemote := or $url.IsAbs (eq $url.Scheme "data") -}}
+{{- $resource := "" -}}
+{{- if not $isRemote -}}
+  {{- $resource = or ($.Page.Resources.GetMatch $destination) (resources.Get $destination) -}}
+{{- end -}}
+{{- $src := $destination -}}
+{{- $width := "" -}}
+{{- $height := "" -}}
+{{- with $resource -}}
+  {{- $src = .RelPermalink -}}
+  {{- if ne .MediaType.SubType "svg" -}}
+    {{- $width = .Width -}}
+    {{- $height = .Height -}}
+  {{- end -}}
+{{- end -}}
+{{- $lazy := $.Page.Site.Params.redefine.articles.lazyload | default true -}}
+{{- $alt := .Text | plainify -}}
+{{- $caption := .Title -}}
+{{- define "redefine-render-image" -}}
+  <img
+    src="{{ cond .lazy ("images/loading.svg" | relURL) (.src | safeURL) }}"
+    {{ if .lazy }}lazyload data-src="{{ .src | safeURL }}" loading="lazy"{{ else }}loading="lazy"{{ end }}
+    decoding="async"
+    alt="{{ .alt }}"
+    {{ with .width }}width="{{ . }}"{{ end }}
+    {{ with .height }}height="{{ . }}"{{ end }}
+    {{ with .title }}title="{{ . }}"{{ end }}>
+{{- end -}}
+{{- $image := dict "src" $src "lazy" $lazy "alt" $alt "width" $width "height" $height "title" .Title -}}
+{{- if $caption -}}
+  <figure class="redefine-image">
+    {{- template "redefine-render-image" $image -}}
+    <figcaption>{{ $caption | markdownify }}</figcaption>
+  </figure>
+{{- else -}}
+  {{- template "redefine-render-image" $image -}}
+{{- end -}}

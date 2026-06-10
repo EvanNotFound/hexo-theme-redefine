@@ -1,0 +1,29 @@
+{{- $text := "" -}}
+{{- $url := "" -}}
+{{- $icon := "" -}}
+{{- $image := "" -}}
+{{- $size := "" -}}
+{{- $align := "" -}}
+{{- $target := "" -}}
+{{- $rel := "" -}}
+{{- if .IsNamedParams -}}
+  {{- $text = .Get "text" | default (.Get "label") | default "" -}}
+  {{- $url = .Get "url" | default (.Get "href") | default "" -}}
+  {{- $icon = .Get "icon" | default "" -}}
+  {{- $image = .Get "image" | default (.Get "img") | default "" -}}
+  {{- $size = .Get "size" | default "" -}}
+  {{- $align = .Get "align" | default "" -}}
+  {{- $target = .Get "target" | default "" -}}
+  {{- $rel = .Get "rel" | default "" -}}
+{{- else -}}
+  {{- if ge (len .Params) 1 }}{{ with .Get 0 }}{{ $text = . }}{{ end }}{{ end -}}
+  {{- if ge (len .Params) 2 }}{{ with .Get 1 }}{{ $url = . }}{{ end }}{{ end -}}
+  {{- if ge (len .Params) 3 }}{{ with .Get 2 }}{{ $icon = . }}{{ end }}{{ end -}}
+{{- end -}}
+{{- $sizeClass := cond (or (eq $size "sm") (eq $size "small")) "small" (cond (or (eq $size "lg") (eq $size "large")) "large" "") -}}
+{{- $alignClass := cond (in (slice "left" "center" "right") $align) $align "" -}}
+{{- $classes := delimit (slice "button" "not-markdown" $sizeClass $alignClass) " " -}}
+<a class="{{ $classes }}"{{ with $url }} href="{{ . | safeURL }}"{{ end }} title="{{ $text }}"{{ with $target }} target="{{ . }}"{{ end }}{{ with $rel }} rel="{{ . }}"{{ else }}{{ if eq $target "_blank" }} rel="noopener noreferrer"{{ end }}{{ end }}>
+  {{- if $image }}<img src="{{ $image | safeURL }}" alt="{{ $text }}" loading="lazy"> {{ else if $icon }}<i class="{{ $icon }}" aria-hidden="true"></i> {{ end -}}
+  {{- $text -}}
+</a>

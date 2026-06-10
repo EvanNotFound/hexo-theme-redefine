@@ -122,9 +122,7 @@ const initPage = () => {
   });
 
   safeRun("tabs", () => {
-    if (theme.articles?.toc?.enable) {
-      initTabs({ signal: appSignal });
-    }
+    initTabs({ signal: appSignal });
   });
 
   safeRun("essays", () => {

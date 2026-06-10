@@ -4,32 +4,43 @@ const wrapElement = (element, wrapper) => {
 };
 
 const initCopyCode = () => {
-  document.querySelectorAll("figure.highlight").forEach((element) => {
-    if (element.dataset.codeBlockReady || element.parentElement?.classList.contains("highlight-container")) {
+  document.querySelectorAll(".code-container, figure.highlight").forEach((element) => {
+    if (element.dataset.codeBlockReady) {
       return;
     }
 
-    element.dataset.codeBlockReady = "true";
+    const container = element.classList.contains("code-container")
+      ? element
+      : document.createElement("div");
 
-    const container = document.createElement("div");
-    container.classList.add("highlight-container");
-    wrapElement(element, container);
+    if (container !== element) {
+      container.classList.add("code-container");
+      wrapElement(element, container);
+    }
 
-    container.insertAdjacentHTML(
-      "beforeend",
-      '<div class="copy-button"><i class="fa-regular fa-copy"></i></div>',
-    );
-    container.insertAdjacentHTML(
-      "beforeend",
-      '<div class="fold-button"><i class="fa-solid fa-chevron-down"></i></div>',
-    );
+    container.dataset.codeBlockReady = "true";
+
+    if (!container.querySelector(".copy-button")) {
+      container.insertAdjacentHTML(
+        "beforeend",
+        '<div class="copy-button"><i class="fa-regular fa-copy"></i></div>',
+      );
+    }
+    if (!container.querySelector(".fold-button")) {
+      container.insertAdjacentHTML(
+        "beforeend",
+        '<div class="fold-button"><i class="fa-solid fa-chevron-down"></i></div>',
+      );
+    }
 
     const copyButton = container.querySelector(".copy-button");
     const foldButton = container.querySelector(".fold-button");
 
     copyButton.addEventListener("click", () => {
       const codeLines = [...container.querySelectorAll(".code .line")];
-      const code = codeLines.map((line) => line.innerText).join("\n");
+      const code = codeLines.length
+        ? codeLines.map((line) => line.innerText).join("\n")
+        : (container.querySelector("pre code")?.innerText || "");
       const icon = copyButton.querySelector("i");
       const restoreIcon = () => {
         if (icon) {

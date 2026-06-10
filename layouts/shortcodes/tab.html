@@ -1,0 +1,13 @@
+{{- $title := "" -}}
+{{- $icon := "" -}}
+{{- if .IsNamedParams -}}
+  {{- $title = .Get "title" | default (.Get "caption") | default "" -}}
+  {{- $icon = .Get "icon" | default "" -}}
+{{- else -}}
+  {{- if ge (len .Params) 1 }}{{ $title = .Get 0 | default "" }}{{ end -}}
+  {{- if ge (len .Params) 2 }}{{ with .Get 1 }}{{ $icon = . }}{{ end }}{{ end -}}
+{{- end -}}
+{{- $content := .InnerDeindent | strings.TrimSpace | .Page.RenderString -}}
+{{- $tabs := .Parent.Store.Get "tabs" | default slice -}}
+{{- .Parent.Store.Set "tabs" ($tabs | append (dict "title" $title "icon" $icon "content" $content)) -}}
+{{- .Parent.Store.Set "tab-index" (add (.Parent.Store.Get "tab-index" | default 0) 1) -}}

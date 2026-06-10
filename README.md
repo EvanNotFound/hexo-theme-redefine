@@ -6,6 +6,25 @@
 
 <a href="https://redefine.ohevan.com"><img align="center" src="https://github.com/EvanNotFound/hexo-theme-redefine/assets/68590232/f2ff10f6-a740-4120-ba04-1b2a518fb019"  alt="Redefine"></a>
 
+# Hugo Theme Redefine Port
+
+This repository is being ported from Hexo Theme Redefine to Hugo. The current Hugo work lives under Hugo-native layouts, params, render hooks, and shortcodes while preserving the Redefine visual language.
+
+Minimal Hugo setup:
+
+```toml
+theme = "hugo-theme-redefine"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+```
+
+Theme configuration is under `params.redefine`. See `exampleSite` for the current supported Hugo configuration and content examples.
+
+Current Hugo content features include article/list layouts, taxonomy pages, local search JSON, Markdown render hooks, and the core `tabs`, `tab`, `folding`, `callout`, `note`, `button`, and `btn` shortcodes.
+
+The upstream Hexo README content is kept below as migration reference while the Hugo documentation is being written.
+
 
 
 # hexo-theme-redefine

@@ -5,6 +5,7 @@
       "title" .Title
       "summary" (.Summary | plainify | htmlUnescape)
       "content" (.Plain | htmlUnescape)
+      "url" .RelPermalink
       "permalink" .RelPermalink
       "date" (.Date | time.Format ":date_long")
       "tags" (.Params.tags | default slice)
