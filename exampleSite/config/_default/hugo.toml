@@ -13,3 +13,9 @@ defaultContentLanguage = "en"
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
+
+[outputFormats.MasonryData]
+  mediaType = "application/json"
+  baseName = "data"
+  isPlainText = true
+  notAlternative = true

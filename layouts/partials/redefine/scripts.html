@@ -9,6 +9,12 @@
 {{ if $r.plugins.mermaid.enable }}
   <script src="{{ "js/build/libs/mermaid.min.js" | relURL }}"></script>
 {{ end }}
+{{ if eq .Section "masonry" }}
+  <script src="{{ "js/build/libs/minimasonry.min.js" | relURL }}"></script>
+{{ end }}
+{{ if eq .Section "essays" }}
+  <script src="{{ "js/build/libs/moment-with-locales.min.js" | relURL }}"></script>
+{{ end }}
 <script type="module" src="{{ "js/build/main.js" | relURL }}"></script>
 {{ $js := resources.Get "js/redefine-hugo.js" | resources.Minify | resources.Fingerprint "sha256" }}
 <script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>

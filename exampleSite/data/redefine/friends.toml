@@ -1,0 +1,33 @@
+[[groups]]
+name = "Theme Authors"
+has_thumbnail = true
+
+  [[groups.links]]
+  name = "Redefine"
+  description = "The original Redefine theme identity."
+  url = "https://redefine.ohevan.com"
+  avatar = "/images/redefine-avatar.svg"
+  thumbnail = "/images/wallhaven-wqery6-light.webp"
+
+  [[groups.links]]
+  name = "Hugo"
+  description = "The static site generator used by this port."
+  url = "https://gohugo.io"
+  avatar = "/images/redefine-logo.svg"
+  thumbnail = "/images/wallhaven-wqery6-dark.webp"
+
+[[groups]]
+name = "Community"
+has_thumbnail = false
+
+  [[groups.links]]
+  name = "GitHub"
+  description = "Source hosting and collaboration."
+  url = "https://github.com"
+  avatar = "/images/redefine-logo.svg"
+
+  [[groups.links]]
+  name = "Font Awesome"
+  description = "Icon library used by Redefine."
+  url = "https://fontawesome.com"
+  avatar = "/images/redefine-favicon.svg"

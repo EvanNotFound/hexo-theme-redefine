@@ -183,7 +183,10 @@ const initPage = () => {
   });
 
   safeRun("bookmarkNav", () => {
-    if (theme.bookmarks && theme.bookmarks.length !== 0) {
+    if (
+      document.querySelector(".bookmark-nav-item") ||
+      (theme.bookmarks && theme.bookmarks.length !== 0)
+    ) {
       initBookmarkNav({ signal: appSignal });
     }
   });

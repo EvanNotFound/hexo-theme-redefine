@@ -1,4 +1,7 @@
 {{- $r := site.Params.redefine -}}
+{{- $postsPage := site.GetPage "section" "posts" -}}
+{{- $postsCount := len (where site.RegularPages "Section" "posts") -}}
+{{- with $postsPage }}{{ $postsCount = len .RegularPages }}{{ end -}}
 <footer class="footer">
   <div class="info-container">
     {{ with $r.footer.customize }}<div class="customize-info">{{ . | safeHTML }}</div>{{ end }}
@@ -8,7 +11,7 @@
       &nbsp;&nbsp;{{ $r.footer.icon | safeHTML }}&nbsp;&nbsp;<a href="{{ site.Home.RelPermalink }}">{{ $r.info.author | default site.Params.author }}</a>
     </div>
     {{ if $r.footer.statistics }}
-      <p class="post-count">{{ i18n "site_posts" (len site.RegularPages) }}</p>
+      <p class="post-count">{{ i18n "site_posts" $postsCount }}</p>
     {{ end }}
     {{ if $r.global.website_counter.enable }}
       <div class="website-counter">

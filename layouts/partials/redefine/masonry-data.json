@@ -1,0 +1,2 @@
+{{- $items := hugo.Data.redefine.masonry.items | default hugo.Data.redefine.masonry | default slice -}}
+{{- $items | jsonify -}}

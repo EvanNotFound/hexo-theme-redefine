@@ -1,0 +1,13 @@
+{{ define "main" }}
+  <section class="page-template-container masonry-page">
+    <div class="page-template-content">
+      {{ partial "redefine/feature-page-title.html" . }}
+      <div class="min-h-screen" id="masonry-container" data-masonry-data-url="{{ "masonry/data.json" | relURL }}"></div>
+      <div class="masonry-loadmore is-hidden" id="masonry-loadmore" aria-live="polite">
+        <span class="masonry-spinner" aria-hidden="true"></span>
+        <span class="masonry-loadmore-text">{{ i18n "masonry_loading" | default "Loading" }}</span>
+      </div>
+      <div id="masonry-sentinel" aria-hidden="true"></div>
+    </div>
+  </section>
+{{ end }}

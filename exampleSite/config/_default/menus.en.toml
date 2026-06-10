@@ -21,3 +21,27 @@
   pageRef = "/categories"
   pre = "fa-solid fa-folder"
   weight = 40
+
+[[main]]
+  name = "Friends"
+  pageRef = "/friends"
+  pre = "fa-solid fa-user-group"
+  weight = 50
+
+[[main]]
+  name = "Bookmarks"
+  pageRef = "/bookmarks"
+  pre = "fa-solid fa-bookmark"
+  weight = 60
+
+[[main]]
+  name = "Masonry"
+  pageRef = "/masonry"
+  pre = "fa-solid fa-images"
+  weight = 70
+
+[[main]]
+  name = "Essays"
+  pageRef = "/essays"
+  pre = "fa-solid fa-feather"
+  weight = 80

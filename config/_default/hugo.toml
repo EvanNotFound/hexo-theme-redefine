@@ -13,6 +13,12 @@ summaryLength = 30
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 
+[outputFormats.MasonryData]
+  mediaType = "application/json"
+  baseName = "data"
+  isPlainText = true
+  notAlternative = true
+
 [sitemap]
   changefreq = "daily"
   filename = "sitemap.xml"

@@ -1,0 +1,40 @@
+{{ define "main" }}
+  {{- $groups := hugo.Data.redefine.friends.groups | default slice -}}
+  <section class="page-template-container friends-link-container">
+    <div class="page-template-content">
+      {{ partial "redefine/feature-page-title.html" . }}
+      {{ range $groups }}
+        <section class="feature-group">
+          <h2 class="feature-group-title">{{ .name | default .category }}</h2>
+          <ul class="friends-grid {{ if .has_thumbnail }}has-thumbnail{{ end }}">
+            {{ range .links }}
+              {{- $friend := . -}}
+              <li class="friend-card">
+                <a href="{{ .url | default .link | safeURL }}" target="_blank" rel="noopener noreferrer">
+                  {{ with .thumbnail }}
+                    <div class="friend-thumbnail"><img src="{{ . | safeURL }}" alt=""></div>
+                  {{ end }}
+                  <div class="friend-card-body">
+                    <div class="friend-avatar">
+                      {{ with .avatar }}
+                        <img src="{{ . | safeURL }}" alt="{{ $friend.name }}">
+                      {{ else }}
+                        <i class="fa-solid fa-user-group" aria-hidden="true"></i>
+                      {{ end }}
+                    </div>
+                    <div class="friend-info">
+                      <div class="friend-name">{{ .name }}</div>
+                      <div class="friend-description">{{ .description }}</div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            {{ end }}
+          </ul>
+        </section>
+      {{ else }}
+        <p class="feature-empty">{{ i18n "no_content" | default "No content yet." }}</p>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}

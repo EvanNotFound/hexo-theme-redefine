@@ -1,0 +1,47 @@
+{{ define "main" }}
+  {{- $groups := hugo.Data.redefine.bookmarks.groups | default slice -}}
+  <section class="page-template-container bookmarks-page">
+    <div class="page-template-content">
+      {{ partial "redefine/feature-page-title.html" . }}
+      <div class="bookmarks-layout">
+        <aside class="bookmarks-nav" aria-label="{{ .Title }}">
+          {{ range $groups }}
+            {{- $id := .name | default .category | anchorize -}}
+            <a href="#{{ $id }}" class="bookmark-nav-item" data-category="{{ $id }}">
+              <i class="{{ .icon | default "fa-regular fa-bookmark" }}" aria-hidden="true"></i>
+              <span>{{ .name | default .category }}</span>
+            </a>
+          {{ end }}
+        </aside>
+        <div class="bookmarks-content">
+          {{ range $groups }}
+            {{- $id := .name | default .category | anchorize -}}
+            <section id="{{ $id }}" class="bookmark-section">
+              <h2 class="feature-group-title">{{ .name | default .category }}</h2>
+              <div class="bookmark-grid">
+                {{ range .items }}
+                  <a class="bookmark-card" href="{{ .url | default .link | safeURL }}" target="_blank" rel="noopener noreferrer">
+                    <span class="bookmark-icon">
+                      {{ with .image }}
+                        <img src="{{ . | safeURL }}" alt="">
+                      {{ else }}
+                        <i class="{{ .icon | default "fa-regular fa-bookmark" }}" aria-hidden="true"></i>
+                      {{ end }}
+                    </span>
+                    <span class="bookmark-info">
+                      <span class="bookmark-title">{{ .name | default .title }}</span>
+                      <span class="bookmark-description">{{ .description }}</span>
+                    </span>
+                    <i class="bookmark-arrow fa-regular fa-arrow-right" aria-hidden="true"></i>
+                  </a>
+                {{ end }}
+              </div>
+            </section>
+          {{ else }}
+            <p class="feature-empty">{{ i18n "no_content" | default "No content yet." }}</p>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </section>
+{{ end }}

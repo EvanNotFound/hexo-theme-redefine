@@ -1,0 +1,27 @@
+{{ define "main" }}
+  {{- $pages := .Pages.ByDate.Reverse -}}
+  <section class="page-template-container essays-page">
+    <div class="page-template-content">
+      {{ partial "redefine/feature-page-title.html" . }}
+      <ul class="essays-list" id="shuoshuo-content">
+        {{ range $pages }}
+          <li class="essay-item">
+            <div class="essay-avatar">
+              <img src="{{ .Params.avatar | default site.Params.redefine.defaults.avatar | relURL }}" alt="">
+            </div>
+            <article class="essay-card">
+              <time class="essay-date" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}" data-date="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+                {{ .Date | time.Format ":date_medium" }}
+              </time>
+              <div class="essay-content markdown-body">
+                {{ .Content }}
+              </div>
+            </article>
+          </li>
+        {{ else }}
+          <li class="feature-empty">{{ i18n "no_content" | default "No content yet." }}</li>
+        {{ end }}
+      </ul>
+    </div>
+  </section>
+{{ end }}

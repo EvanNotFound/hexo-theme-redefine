@@ -4315,6 +4315,327 @@ html.is-animating .scroll-progress-bar {
   transition: opacity 0.2s ease-out;
 }
 
+/* Feature pages */
+.page-template-intro {
+  margin-bottom: 1.5rem;
+  color: var(--default-text-color);
+}
+
+.feature-group {
+  margin: 1rem 0 2rem;
+}
+
+.feature-group-title {
+  color: var(--second-text-color);
+  font-size: 1.5rem;
+  font-weight: 650;
+  margin: 0 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.feature-empty {
+  color: var(--third-text-color);
+  margin: 1rem 0;
+}
+
+.friends-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.friends-grid.has-thumbnail {
+  gap: 1.1rem;
+}
+
+.friend-card a,
+.bookmark-card {
+  color: inherit;
+  text-decoration: none;
+}
+
+.friend-card {
+  min-width: 0;
+  transition: transform 0.15s ease;
+}
+
+.friend-card:active {
+  transform: scale(0.98);
+}
+
+.friend-card > a {
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-large);
+  background: var(--second-background-color);
+  box-shadow: var(--redefine-box-shadow-flat);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.friend-card > a:hover,
+.friend-card > a:focus {
+  box-shadow: var(--redefine-box-shadow);
+  transform: translateY(-2px);
+}
+
+.friend-thumbnail {
+  height: 10rem;
+  overflow: hidden;
+  background: var(--third-background-color);
+}
+
+.friend-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.friend-card-body {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.friend-avatar {
+  width: 4rem;
+  height: 4rem;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  overflow: hidden;
+  color: var(--third-text-color);
+  background: var(--third-background-color);
+}
+
+.friend-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.friend-info {
+  min-width: 0;
+  padding-right: 0.75rem;
+}
+
+.friend-name,
+.bookmark-title {
+  color: var(--second-text-color);
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.friend-description,
+.bookmark-description {
+  color: var(--third-text-color);
+  font-size: 0.92rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bookmarks-layout {
+  display: grid;
+  grid-template-columns: 12rem minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.bookmarks-nav {
+  position: sticky;
+  top: var(--navbar-height);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bookmark-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-medium);
+  color: var(--default-text-color);
+  text-decoration: none;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.bookmark-nav-item:hover,
+.bookmark-nav-item:focus,
+.bookmark-nav-item.bg-second-background-color {
+  color: var(--primary-color);
+  border-color: var(--border-color);
+  background: var(--second-background-color);
+}
+
+.bookmark-section {
+  margin-bottom: 2.5rem;
+  scroll-margin-top: calc(var(--navbar-height) + 1rem);
+}
+
+.bookmark-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.bookmark-card {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: var(--radius-large);
+  box-shadow: var(--redefine-box-shadow-flat);
+  background: var(--background-color);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.bookmark-card:hover,
+.bookmark-card:focus {
+  box-shadow: var(--redefine-box-shadow);
+  transform: translateY(-2px);
+}
+
+.bookmark-icon {
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: var(--radius-medium);
+  color: var(--third-text-color);
+  background: var(--second-background-color);
+}
+
+.bookmark-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bookmark-info {
+  min-width: 0;
+}
+
+.bookmark-arrow {
+  color: var(--third-text-color);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.bookmark-card:hover .bookmark-arrow,
+.bookmark-card:focus .bookmark-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.essays-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.essay-item {
+  display: grid;
+  grid-template-columns: 3.2rem minmax(0, 1fr);
+  gap: 1rem;
+  position: relative;
+}
+
+.essay-avatar {
+  width: 2.8rem;
+  height: 2.8rem;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-medium);
+  padding: 1px;
+}
+
+.essay-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: calc(var(--radius-medium) - 2px);
+}
+
+.essay-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  border-radius: 0 var(--radius-large) var(--radius-large) var(--radius-large);
+  box-shadow: var(--redefine-box-shadow-flat);
+  background: var(--background-color);
+}
+
+.essay-card::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 0.9rem;
+  width: 9px;
+  height: 9px;
+  transform: rotate(-45deg);
+  border-left: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
+  background: var(--second-background-color);
+}
+
+.essay-date {
+  display: block;
+  padding: 0.45rem 1rem;
+  color: var(--third-text-color);
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--second-background-color);
+}
+
+.essay-content {
+  padding: 0.9rem 1rem;
+}
+
+@media (max-width: 768px) {
+  .bookmarks-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .bookmarks-nav {
+    position: static;
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 0.4rem;
+  }
+
+  .bookmark-nav-item {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 640px) {
+  .friends-grid,
+  .bookmark-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .friend-thumbnail {
+    height: 8rem;
+  }
+}
+
 figure.image-caption img { margin-bottom: 0; }
 figure.image-caption figcaption {
   margin-top: 5px;

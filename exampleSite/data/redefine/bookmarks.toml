@@ -1,0 +1,31 @@
+[[groups]]
+name = "Documentation"
+icon = "fa-regular fa-book-open"
+
+  [[groups.items]]
+  name = "Hugo Docs"
+  description = "Official Hugo documentation."
+  url = "https://gohugo.io/documentation/"
+  image = "/images/redefine-logo.svg"
+
+  [[groups.items]]
+  name = "Redefine Demo"
+  description = "Reference site for the original Hexo theme."
+  url = "https://redefine.ohevan.com"
+  image = "/images/redefine-avatar.svg"
+
+[[groups]]
+name = "Design"
+icon = "fa-regular fa-palette"
+
+  [[groups.items]]
+  name = "Open Graph"
+  description = "Preview image and social metadata reference."
+  url = "https://ogp.me/"
+  image = "/images/redefine-og.webp"
+
+  [[groups.items]]
+  name = "Font Awesome"
+  description = "Icon names used in menu and cards."
+  url = "https://fontawesome.com/search"
+  image = "/images/redefine-favicon.svg"

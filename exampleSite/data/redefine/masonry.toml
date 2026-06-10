@@ -1,0 +1,31 @@
+[[items]]
+image = "/images/wallhaven-wqery6-light.webp"
+title = "Light Banner"
+description = "Default light home banner."
+width = 1920
+height = 1080
+exif = false
+
+[[items]]
+image = "/images/wallhaven-wqery6-dark.webp"
+title = "Dark Banner"
+description = "Default dark home banner."
+width = 1920
+height = 1080
+exif = false
+
+[[items]]
+image = "/images/redefine-og.webp"
+title = "Open Graph"
+description = "Redefine preview image."
+width = 1200
+height = 630
+exif = false
+
+[[items]]
+image = "/images/redefine-logo.webp"
+title = "Logo"
+description = "Theme Redefine logo asset."
+width = 512
+height = 512
+exif = false
