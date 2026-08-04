@@ -49,7 +49,7 @@ jobs:
         run: echo "HEXO_SITE_DIR=${{ github.workspace }}/hexo-site" >> $GITHUB_ENV
 
       - name: Install Vercel CLI
-        run: npm install -g vercel@22.0.1
+        run: npm install -g vercel@latest
 
       - name: Deploy to Vercel Action
         uses: EvanNotFound/vercel-deployment-for-github-actions@v1.1.0

@@ -96,7 +96,7 @@ jobs:
 
         # Install Vercel CLI first to avoid bug with next step
       - name: Install Vercel CLI
-        run: npm install -g vercel@22.0.1
+        run: npm install -g vercel@latest
 
       - name: Deploy to Vercel Action
         id: deploy-to-vercel
