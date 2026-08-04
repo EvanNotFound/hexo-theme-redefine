@@ -113,6 +113,10 @@ function checkVersionAndCDNAvailability(data) {
     );
   }
 
+  if (!hexo.theme.config.cdn?.enable) {
+    return;
+  }
+
   if (data.npmMirrorCDN) {
     hexo.log.info(
       `\x1b[32m%s\x1b[0m`,
