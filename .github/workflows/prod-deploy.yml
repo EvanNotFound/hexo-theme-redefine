@@ -52,7 +52,7 @@ jobs:
         run: npm install -g vercel@latest
 
       - name: Deploy to Vercel Action
-        uses: EvanNotFound/vercel-deployment-for-github-actions@v1.1.0
+        uses: EvanNotFound/vercel-deployment-for-github-actions@v1.2.1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
