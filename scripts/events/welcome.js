@@ -106,22 +106,26 @@ function logFailedInfo() {
 function checkVersionAndCDNAvailability(data) {
   if (data.npmVersion > version) {
     hexo.log.warn(
-      `\x1b[33m%s\x1b[0m`,
+      `\\x1b[33m%s\\x1b[0m`,
       ensurePrefix(
         `v${version} is outdated, please update to v${data.npmVersion}!`,
       ),
     );
   }
 
+  if (!hexo.theme.config.cdn?.enable) {
+    return;
+  }
+
   if (data.npmMirrorCDN) {
     hexo.log.info(
-      `\x1b[32m%s\x1b[0m`,
+      `\\x1b[32m%s\\x1b[0m`,
       ensurePrefix(`CDN available: NPMMirror (Recommended)`),
     );
     hexo.locals.set(`cdnTestStatus_npmMirror`, 200);
   } else {
     hexo.log.warn(
-      `\x1b[31m%s\x1b[0m`,
+      `\\x1b[31m%s\\x1b[0m`,
       ensurePrefix(`NPMMirror CDN is unavailable yet.`),
     );
     hexo.locals.set(`cdnTestStatus_npmMirror`, 404);
@@ -129,13 +133,13 @@ function checkVersionAndCDNAvailability(data) {
 
   if (data.zstaticCDN) {
     hexo.log.info(
-      `\x1b[32m%s\x1b[0m`,
+      `\\x1b[32m%s\\x1b[0m`,
       ensurePrefix(`CDN available: ZStatic`),
     );
     hexo.locals.set(`cdnTestStatus_zstatic`, 200);
   } else {
     hexo.log.warn(
-      `\x1b[31m%s\x1b[0m`,
+      `\\x1b[31m%s\\x1b[0m`,
       ensurePrefix(`ZStatic CDN is unavailable yet.`),
     );
     hexo.locals.set(`cdnTestStatus_zstatic`, 404);
@@ -143,13 +147,13 @@ function checkVersionAndCDNAvailability(data) {
 
   if (data.cdnjsCDN) {
     hexo.log.info(
-      `\x1b[32m%s\x1b[0m`,
+      `\\x1b[32m%s\\x1b[0m`,
       ensurePrefix(`CDN available: CDNJS`),
     );
     hexo.locals.set(`cdnTestStatus_cdnjs`, 200);
   } else {
     hexo.log.warn(
-      `\x1b[31m%s\x1b[0m`,
+      `\\x1b[31m%s\\x1b[0m`,
       ensurePrefix(`CDNJS CDN is unavailable yet.`),
     );
     hexo.locals.set(`cdnTestStatus_cdnjs`, 404);
