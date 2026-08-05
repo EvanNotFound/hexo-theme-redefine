@@ -60,6 +60,9 @@ jobs:
       - name: Build Theme Assets
         run: pnpm run build
 
+      - name: Clean Demo Site
+        run: pnpm clean
+
       - name: Link Local Theme
         run: node dev/link-theme.mjs
 

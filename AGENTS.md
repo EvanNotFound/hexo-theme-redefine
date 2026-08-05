@@ -17,6 +17,7 @@ This file is for automated coding agents working in this repo.
 - Build all assets: `pnpm run build` (runs CSS + JS builds).
 - Build CSS only: `pnpm run build:css` (Tailwind CLI).
 - Build JS only: `pnpm run build:js` (minifies into `source/js/build`).
+- Clean the demo site's Hexo state: `pnpm clean`.
 - Watch CSS: `pnpm run watch:css`.
 - Develop against the local demo site: `pnpm dev`.
 - Pre-commit hook blocks committing build outputs on non-`main`/`dev` branches (see `.husky/pre-commit`).
@@ -63,7 +64,7 @@ This file is for automated coding agents working in this repo.
 
 ## Demo Site
 - The local Hexo site lives in `dev/site/` and is a private pnpm workspace package.
-- `dev/dev.mjs` mounts the current theme into the demo site, runs Hexo, and watches CSS changes.
+- `dev/dev.mjs` cleans Hexo state, mounts the current theme, runs Hexo, and watches CSS changes.
 - Branch-specific validation posts and demo pages belong under `dev/site`.
 - Native dependencies required by the demo site are explicitly allowed in `pnpm-workspace.yaml`.
 

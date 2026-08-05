@@ -131,6 +131,9 @@ Start the local demo site with the current theme worktree:
 pnpm dev
 ```
 
+This removes Hexo's cached database and generated `public` directory before
+starting. To reset the demo site without starting the server, run `pnpm clean`.
+
 Demo posts and pages belong under `dev/site` and can be committed with the
 theme branch that needs them. The demo site is excluded from the published npm
 package. npm remains supported for installing the published theme; pnpm is the

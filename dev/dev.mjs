@@ -1,6 +1,7 @@
 import path from "path";
 import { spawn } from "child_process";
 import { fileURLToPath } from "url";
+import { cleanSite } from "./clean.mjs";
 import { linkTheme } from "./link-theme.mjs";
 
 const SCRIPT_PATH = fileURLToPath(import.meta.url);
@@ -31,6 +32,7 @@ const start = (command, args, cwd) => {
 };
 
 const main = () => {
+  cleanSite();
   linkTheme();
   const hexo = start(HEXO_PATH, ["server", ...process.argv.slice(2)], SITE_ROOT);
   const css = start("pnpm", ["run", "watch:css"], THEME_ROOT);

@@ -9,6 +9,7 @@
     "build": "tailwindcss -i source/css/tailwind.source.css -o source/css/build/tailwind.css --minify && node source/js/build.js",
     "build:css": "tailwindcss -i source/css/tailwind.source.css -o source/css/build/tailwind.css --minify",
     "build:js": "node source/js/build.js",
+    "clean": "node dev/clean.mjs",
     "watch:css": "tailwindcss -i source/css/tailwind.source.css -o source/css/build/tailwind.css --watch --minify",
     "prepare": "husky",
     "dev": "node dev/dev.mjs",
