@@ -23,28 +23,30 @@ Redefine 的 JavaScript 分为两类：
 
 ### 浏览器端 JS（运行时）
 
-源代码位于：
+从仓库根目录开始，源代码位于：
 
-- `themes/redefine/source/js/**`
+- `source/js/**`
+
+`pnpm dev` 会生成本地链接目录 `dev/site/themes/redefine/`，请勿通过该生成目录修改文件。
 
 请勿手动修改：
 
-- `themes/redefine/source/js/build/**`（构建输出目录）
+- `source/js/build/**`（构建输出目录）
 
 常见目录说明：
 
-- `themes/redefine/source/js/main.js`：主入口文件，建议在此接入新功能
-- `themes/redefine/source/js/layouts/`：页面布局相关功能（如目录、导航、首页横幅）
-- `themes/redefine/source/js/tools/`：工具类功能（搜索、图片查看器等）
-- `themes/redefine/source/js/plugins/`：可选插件集成（mermaid、typed 等）
+- `source/js/main.js`：主入口文件，建议在此接入新功能
+- `source/js/layouts/`：页面布局相关功能（如目录、导航、首页横幅）
+- `source/js/tools/`：工具类功能（搜索、图片查看器等）
+- `source/js/plugins/`：可选插件集成（mermaid、typed 等）
 
 ### Hexo 生成阶段 JS（Node 端）
 
 源代码位于：
 
-- `themes/redefine/scripts/**`
+- `scripts/**`
 
-例如：`themes/redefine/scripts/config-export.js` 用于将主题配置导出到浏览器端全局变量
+例如：`scripts/config-export.js` 用于将主题配置导出到浏览器端全局变量
 
 ## 浏览器端可用的全局变量
 
@@ -102,7 +104,7 @@ Redefine 的 JavaScript 分为两类：
 
 推荐做法：
 
-- 将 JavaScript 代码写在 `themes/redefine/source/js/**` 目录下
+- 将 JavaScript 代码写在 `source/js/**` 目录下
 - 在 `main.js` 的页面初始化部分调用
 
 仅在以下情况考虑使用模板内脚本：

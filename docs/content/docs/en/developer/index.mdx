@@ -1,55 +1,74 @@
 ---
 title: Guide to Theme Development
-description: This theme utilizes [Tailwind CSS](https://tailwindcss.com/) as its CSS framework. If you're looking to personalize the theme and incorporate Tailwind CSS, dive into the documentation on this page.
+description: Set up the Redefine workspace, run the local demo site, and customize the theme source.
 ---
 
 ## Getting Ready for Development
 
 <div className="fd-steps [&_h3]:fd-step">
 
-    ### Enabling Theme Development Mode
+### Work from the repository root
 
-    To get started, set the `developer.enable` option to `true` within the theme's configuration file `_config.redefine.yml`. This file can be found in the root directory of your Hexo installation.
+Open the theme repository in your editor and run the commands below from its root directory. The repository uses pnpm `10.29.3` and Node.js 20.x.
 
-    ```yaml
-    # DEVELOPER MODE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
-    developer:
-    # Activate developer mode (for those modifying the theme's source code; not for regular users)
-    enable: true
-    # DEVELOPER MODE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
-    ```
+### Install dependencies
 
-    ### Installing Tailwind CSS
+```bash
+pnpm install --frozen-lockfile
+```
 
-    Begin by navigating to the theme directory and executing the following command:
+This installs dependencies for the theme, the local Hexo demo site in `dev/site`, and the docs workspace.
 
-    ```bash
-    npm install
-    ```
+### Enable theme development mode
 
-    ### Live Compilation of Tailwind CSS
+For a Hexo site using the theme source, set `developer.enable` to `true` in its `_config.redefine.yml` file. The local demo site already enables this option in `dev/site/_config.redefine.yml`.
 
-    In your terminal, execute:
+```yaml
+developer:
+  enable: true
+```
 
-    ```bash
-    npm run watch:css
-    ```
+### Start the local demo site
 
-    This will enable real-time compilation of Tailwind CSS, and the compiled CSS file will reside in `source/build/css/styles.css`.
+```bash
+pnpm dev
+```
+
+This resets the demo site's generated state, links the current theme source into `dev/site/themes/redefine`, starts Hexo at `http://127.0.0.1:4000`, and watches Tailwind CSS. It does not rebuild browser JavaScript automatically.
 
 </div>
 
-## Customizing Your Theme
+## Build and Reset
 
-### Tailoring Tailwind CSS
+Run these commands from the repository root:
 
-If you're eager to tweak the theme's styles using Tailwind CSS:
+```bash
+pnpm clean
+pnpm run build
+pnpm run build:css
+pnpm run build:js
+pnpm run watch:css
+```
 
-- For customizing the Tailwind CSS configuration, make changes to the `tailwind.config.js` file located in the theme folder.
-- To create personalized global styles with Tailwind CSS, modify the `source/css/style.styl` file in the theme folder.
+- `pnpm clean` removes the demo site's generated `db.json` and `public/` directory.
+- `pnpm run build` builds CSS and minifies browser JavaScript.
+- `pnpm run build:css` builds `source/css/build/tailwind.css`.
+- `pnpm run build:js` writes minified JavaScript and source maps under `source/js/build/`.
+- `pnpm run watch:css` watches and rebuilds Tailwind CSS without starting Hexo.
 
-For an in-depth understanding of Tailwind CSS, consult the [official Tailwind CSS documentation](https://tailwindcss.com/docs).
+Do not edit generated files directly. Theme build output lives in `source/css/build/` and `source/js/build/`; edit the source files instead.
 
-### Crafting Unique Theme Styles
+## Project Layout
 
-If you prefer not to use Tailwind CSS and instead wish to fashion your own theme styles, delve into the respective `.styl` style files found in the `source/css/` directory within the theme folder. Then, seamlessly integrate the CSS class you've devised into your `ejs` files.
+- `source/css/tailwind.source.css`: Tailwind CSS entry file.
+- `source/css/`: Stylus and other theme styles.
+- `source/js/`: Browser-side JavaScript source.
+- `scripts/`: Hexo generation-time Node scripts.
+- `layout/`: Hexo templates.
+- `dev/site/`: Local demo-site configuration, posts, pages, and fixtures.
+
+## Customizing the Theme
+
+Edit `source/css/tailwind.source.css` for Tailwind utilities and theme CSS. For non-Tailwind styles, update the relevant files under `source/css/` and use the resulting classes in templates under `layout/`.
+
+For more information, see the [official Tailwind CSS documentation](https://tailwindcss.com/docs).

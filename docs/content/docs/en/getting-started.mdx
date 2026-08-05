@@ -12,17 +12,17 @@ icon: IconBolt
 
     ### Install the theme
 
-    Run the following command in the Hexo root directory to install the theme. There are two ways to do it:
+    Run one of the following commands in the Hexo root directory to install the theme from the npm registry:
 
-    <Tabs items={['npm', 'git']}>
+    <Tabs items={['npm', 'pnpm']}>
         <Tab value="npm">
             ```bash filename="Terminal"
             npm install hexo-theme-redefine@latest
             ```
         </Tab>
-        <Tab value="git">
+        <Tab value="pnpm">
             ```bash filename="Terminal"
-            git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redefine
+            pnpm add hexo-theme-redefine@latest
             ```
         </Tab>
     </Tabs>
@@ -84,15 +84,15 @@ icon: IconBolt
 
     Run the same commands as installation in the Hexo root directory to update the theme:
 
-    <Tabs items={['npm', 'git']}>
+    <Tabs items={['npm', 'pnpm']}>
         <Tab value="npm">
             ```bash filename="Terminal"
             npm install hexo-theme-redefine@latest
             ```
         </Tab>
-        <Tab value="git">
+        <Tab value="pnpm">
             ```bash filename="Terminal"
-            git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redefine
+            pnpm update hexo-theme-redefine --latest
             ```
         </Tab>
     </Tabs>
@@ -105,7 +105,7 @@ icon: IconBolt
 
     For example, here are the instructions for comparing files in VS Code for two different installation methods:
 
-    <Tabs items={['npm', 'git']}>
+    <Tabs items={['npm', 'pnpm']}>
         <Tab value="npm">
             In VS Code, hold down the `Ctrl` (Windows) or `Command` (macOS) key,
 
@@ -115,12 +115,12 @@ icon: IconBolt
 
             Click the `Compare Selected` button to see the comparison result of the two files, and then proceed with the migration. Please strictly follow the indentation of the old configuration file during the migration.
         </Tab>
-        <Tab value="git">
+        <Tab value="pnpm">
             In VS Code, hold down the `Ctrl` (Windows) or `Command` (macOS) key,
 
             select the old configuration file (`_config.redefine.yml`),
 
-            then select the new configuration file (`themes/redefine/_config.yml`).
+            then select the new configuration file (`node_modules/hexo-theme-redefine/_config.yml`).
 
             Click the `Compare Selected` button to see the comparison result of the two files, and then proceed with the migration. Please strictly follow the indentation of the old configuration file during the migration.
         </Tab>

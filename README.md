@@ -71,18 +71,14 @@ If you are also using Redefine, please go to [Redefine Theme Showcase](https://r
 
 ## ☁️ Installation
 
-The easiest way to install Theme Redefine is by using **npm** (after your hexo version has been up to `5.0`+)
+Install Theme Redefine from the npm registry with **npm** or **pnpm** (after your Hexo version has been updated to `5.0`+):
 
 ```sh
 $ cd your-hexo-site
+# npm
 $ npm install hexo-theme-redefine@latest
-```
-
-Another method is by **git clone**
-
-```sh
-$ cd your-hexo-site
-$ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redefine
+# pnpm
+$ pnpm add hexo-theme-redefine@latest
 ```
 
 After the installation, go to the `_config.yml` of your hexo site and set
@@ -93,17 +89,13 @@ theme: redefine
 
 ## ⏫ Update
 
-To update hexo-theme-redefine, you can run the same **npm** command
+To update hexo-theme-redefine, run one of these commands in your Hexo site:
 
 ```sh
+# npm
 $ npm install hexo-theme-redefine@latest
-```
-
-If you installed the theme by **git clone**, you can update the theme by running the following command
-
-```sh
-$ cd themes/redefine
-$ git pull
+# pnpm
+$ pnpm update hexo-theme-redefine --latest
 ```
 
 
@@ -113,33 +105,6 @@ $ git pull
 Please read [Redefine Docs](https://redefine-docs.ohevan.com/) when installing
 
 It's very easy to understand.
-
-## 🛠️ Theme Development
-
-Open the theme repository itself in your editor. Zed worktrees are independent
-theme checkouts, and each checkout contains the local demo site under `dev/site`.
-
-Install all local dependencies with pnpm:
-
-```sh
-pnpm install --frozen-lockfile
-```
-
-Start the local demo site with the current theme worktree:
-
-```sh
-pnpm dev
-```
-
-This removes Hexo's cached database and generated `public` directory before
-starting. To reset the demo site without starting the server, run `pnpm clean`.
-
-Demo posts and pages belong under `dev/site` and can be committed with the
-theme branch that needs them. The demo site is excluded from the published npm
-package. npm remains supported for installing the published theme; pnpm is the
-repository development and CI package manager.
-
-
 
 ## ☕ Support
 
@@ -197,4 +162,4 @@ This is the list of all the people who have donated to me: [Donation List](https
 
 ## 💻 Development
 
-If you want to contribute to this project, you can clone the `dev` branch and check out the [Development Docs](https://redefine-docs.ohevan.com/developer) to get started.
+For theme development, see the [Development Docs](https://redefine-docs.ohevan.com/developer).

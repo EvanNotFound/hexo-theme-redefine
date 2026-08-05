@@ -1,15 +1,15 @@
 ## 1. Update public installation guidance
 
-- [ ] 1.1 Replace Git installation and update options with npm and pnpm registry commands in all three README files.
-- [ ] 1.2 Update English and Chinese Quick Start and migration pages to use npm/pnpm tabs and remove end-user Git paths.
+- [x] 1.1 Replace Git installation and update options with npm and pnpm registry commands in all three README files.
+- [x] 1.2 Update English and Chinese Quick Start and migration pages to use npm/pnpm tabs and remove end-user Git paths.
 
 ## 2. Refresh contributor documentation
 
-- [ ] 2.1 Rewrite the English and Chinese developer landing pages for repository-root pnpm setup, `dev/site`, reset/build commands, and generated assets.
-- [ ] 2.2 Update the English and Chinese JavaScript guides to use repository-relative source paths and explain generated local theme links.
-- [ ] 2.3 Check changed English and Chinese pages for matching commands, paths, workflow steps, and technical literals.
+- [x] 2.1 Rewrite the English and Chinese developer landing pages for repository-root pnpm setup, `dev/site`, reset/build commands, and generated assets.
+- [x] 2.2 Update the English and Chinese JavaScript guides to use repository-relative source paths and explain generated local theme links.
+- [x] 2.3 Check changed English and Chinese pages for matching commands, paths, workflow steps, and technical literals.
 
 ## 3. Verify the documentation change
 
-- [ ] 3.1 Run the docs lint and typecheck commands.
-- [ ] 3.2 Search the repository documentation for obsolete end-user Git installation or update instructions and inspect the final diff.
+- [x] 3.1 Run the docs lint and typecheck commands.
+- [x] 3.2 Search the repository documentation for obsolete end-user Git installation or update instructions and inspect the final diff.

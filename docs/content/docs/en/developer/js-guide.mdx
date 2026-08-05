@@ -23,28 +23,30 @@ Redefine has two kinds of JavaScript:
 
 ### Browser JS (runtime in the browser)
 
-Source files live in:
+From the repository root, source files live in:
 
-- `themes/redefine/source/js/**`
+- `source/js/**`
+
+`pnpm dev` creates `dev/site/themes/redefine/` as local link state. Do not edit files through that generated directory.
 
 Do not edit:
 
-- `themes/redefine/source/js/build/**` (generated output)
+- `source/js/build/**` (generated output)
 
 Common folders:
 
-- `themes/redefine/source/js/main.js`: main entry, best place to hook your feature.
-- `themes/redefine/source/js/layouts/`: page/layout features (TOC, navbar, home banner).
-- `themes/redefine/source/js/tools/`: small tools (search, image viewer).
-- `themes/redefine/source/js/plugins/`: optional integrations (mermaid, typed).
+- `source/js/main.js`: main entry, best place to hook your feature.
+- `source/js/layouts/`: page/layout features (TOC, navbar, home banner).
+- `source/js/tools/`: small tools (search, image viewer).
+- `source/js/plugins/`: optional integrations (mermaid, typed).
 
 ### Hexo Scripts (build time, Node)
 
 Source files live in:
 
-- `themes/redefine/scripts/**`
+- `scripts/**`
 
-Example: `themes/redefine/scripts/config-export.js` exports theme config into browser globals.
+Example: `scripts/config-export.js` exports theme config into browser globals.
 
 ## Browser Globals
 
@@ -102,7 +104,7 @@ Rule: page init should assume the DOM was replaced.
 
 Preferred approach:
 
-- Put JS in `themes/redefine/source/js/**`
+- Put JS in `source/js/**`
 - Call it from `main.js` page init
 
 Only use inline scripts when:

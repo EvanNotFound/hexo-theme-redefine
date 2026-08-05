@@ -69,18 +69,14 @@
 
 ## ☁️ 安装
 
-如果你的 Hexo 版本在 `5.0` 及以上，推荐通过 `npm` 安装
+如果你的 Hexo 版本在 `5.0` 及以上，可以通过 npm 软件包仓库使用 `npm` 或 `pnpm` 安装。
 
 ```sh
 $ cd your-hexo-site
+# npm
 $ npm install hexo-theme-redefine@latest
-```
-
-或者使用 git 克隆
-
-```sh
-$ cd your-hexo-site
-$ git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redefine
+# pnpm
+$ pnpm add hexo-theme-redefine@latest
 ```
 
 安装完成后，在 Hexo 配置文件 `_config.yml` 中将 `theme` 设置为 `Redefine`。
@@ -92,19 +88,13 @@ theme: redefine
 
 ## ⏫ 更新
 
-Theme Redefine 经常发布新版本，你可以通过如下命令更新 Theme Redefine。
-
-通过 `npm` 安装最新版本：
+Theme Redefine 经常发布新版本，你可以在 Hexo 站点目录中运行以下命令更新：
 
 ```sh
+# npm
 $ npm install hexo-theme-redefine@latest
-```
-
-通过 `git` 更新到最新的 `main` 分支：
-
-```sh
-$ cd themes/redefine
-$ git pull
+# pnpm
+$ pnpm update hexo-theme-redefine --latest
 ```
 
 
@@ -167,6 +157,4 @@ $ git pull
 
 ## 💻 主题开发
 
-如果你想参与主题开发，请 `clone` 本项目的 `dev` 分支，然后在 `dev` 分支上进行开发。
-
-同时，请查看 [Redefine 主题开发文档](https://redefine-docs.ohevan.com/developer)。
+如果你想参与主题开发，请查看 [Redefine 主题开发文档](https://redefine-docs.ohevan.com/developer)。

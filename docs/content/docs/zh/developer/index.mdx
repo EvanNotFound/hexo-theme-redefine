@@ -1,55 +1,74 @@
 ---
 title: 主题开发指南
-description: 本主题使用了 [Tailwind CSS](https://tailwindcss.com/) 作为 CSS 框架，如果你想要自定义主题并且使用 Tailwind CSS，请参考本页文档。
+description: 介绍如何准备 Redefine 开发环境、运行本地演示站，以及修改主题源代码。
 ---
 
 ## 开发准备
 
 <div className="fd-steps [&_h3]:fd-step">
 
+### 在仓库根目录开发
+
+请在编辑器中打开主题仓库，并从仓库根目录执行下面的命令。仓库使用 pnpm `10.29.3` 和 Node.js 20.x。
+
+### 安装依赖
+
+```bash
+pnpm install --frozen-lockfile
+```
+
+该命令会安装主题、本地 Hexo 演示站 `dev/site` 和文档工作区所需的依赖。
+
 ### 启用主题开发模式
 
-请在 Hexo 根目录的主题配置文件 `_config.redefine.yml` 中的 `developer.enable` 选项设置为 `true`。
+如果要在 Hexo 站点中使用主题源代码，请在站点的 `_config.redefine.yml` 中将 `developer.enable` 设置为 `true`。本地演示站已经在 `dev/site/_config.redefine.yml` 中启用了此选项。
 
 ```yaml
-# DEVELOPER MODE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 developer:
-  # Whether to enable developer mode (only for developers who want to modify the theme source code, not for ordinary users)
   enable: true
-# DEVELOPER MODE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 ```
 
-### 安装 Tailwind CSS
-
-请先 `cd` 到主题目录，然后执行以下命令：
+### 启动本地演示站
 
 ```bash
-npm install
+pnpm dev
 ```
 
-### 实时编译 Tailwind CSS
-
-终端执行
-
-```bash
-npm run watch:css
-```
-
-即可实时编译 Tailwind CSS，编译后的 CSS 文件位于 `source/build/css/styles.css`。
+该命令会清理演示站生成的状态，将当前主题源代码链接到 `dev/site/themes/redefine`，在 `http://127.0.0.1:4000` 启动 Hexo，并实时编译 Tailwind CSS。它不会自动重新构建浏览器端 JavaScript。
 
 </div>
 
+## 构建与清理
+
+请在仓库根目录执行以下命令：
+
+```bash
+pnpm clean
+pnpm run build
+pnpm run build:css
+pnpm run build:js
+pnpm run watch:css
+```
+
+- `pnpm clean` 删除演示站生成的 `db.json` 和 `public/` 目录。
+- `pnpm run build` 构建 CSS 并压缩浏览器端 JavaScript。
+- `pnpm run build:css` 生成 `source/css/build/tailwind.css`。
+- `pnpm run build:js` 在 `source/js/build/` 下生成压缩后的 JavaScript 和 source map。
+- `pnpm run watch:css` 只监听并重新构建 Tailwind CSS，不会启动 Hexo。
+
+请勿直接修改构建输出。主题构建输出位于 `source/css/build/` 和 `source/js/build/`，应当修改对应的源文件。
+
+## 项目结构
+
+- `source/css/tailwind.source.css`：Tailwind CSS 入口文件。
+- `source/css/`：Stylus 和其他主题样式。
+- `source/js/`：浏览器端 JavaScript 源代码。
+- `scripts/`：Hexo 生成阶段使用的 Node 脚本。
+- `layout/`：Hexo 模板。
+- `dev/site/`：本地演示站的配置、文章、页面和测试内容。
+
 ## 自定义主题
 
-### 自定义 Tailwind CSS
-
-如果你想使用 Tailwind CSS 编辑主题样式：
-
-- 自定义 Tailwind CSS 配置，请修改主题文件夹下的 `tailwind.config.js` 文件。
-- 自定义 Tailwind CSS 全局样式，请修改主题文件夹下的 `source/css/style.styl` 文件。
+如果要使用 Tailwind CSS 修改样式，请编辑 `source/css/tailwind.source.css`。如果要编写非 Tailwind 样式，请修改 `source/css/` 下对应的文件，并在 `layout/` 中使用生成的 class。
 
 详细的 Tailwind CSS 文档请参考 [Tailwind CSS 官方文档](https://tailwindcss.com/docs)。
-
-### 自定义主题样式
-
-如果你不想使用 Tailwind CSS，而是想要自定义主题样式，请修改主题文件夹下的 `source/css/` 目录中的对应样式文件 `.styl`，并在 `ejs` 文件中引入你创建的 CSS class。
