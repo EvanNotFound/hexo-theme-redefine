@@ -34,7 +34,7 @@ We value your contributions and want to ensure they are appropriate for the proj
    footer: optimize style
    ```
 
-3. Do not commit generated assets (`source/js/build/**`, `source/css/build/**`) in PRs. CI updates these on `dev`/`main` after merge. You can run `npm run build` locally for verification, but leave artifacts unstaged.
+3. Do not commit generated assets (`source/js/build/**`, `source/css/build/**`) in PRs. CI updates these on `dev`/`main` after merge. You can run `pnpm run build` locally for verification, but leave artifacts unstaged.
 
 4. Follow the existing code style and conventions.
 

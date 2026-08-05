@@ -26,6 +26,11 @@ jobs:
         with:
           node-version: '20.x' # Specify your required Node.js version
 
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.29.3
+
       - name: Clone Hexo site repository
         run: git clone https://github.com/EvanNotFound/redefine-demo.git hexo-site
 
@@ -36,20 +41,20 @@ jobs:
       - name: Install dependencies
         run: |
           cd hexo-site
-          npm install
+          pnpm install --no-frozen-lockfile
 
       - name: Build Hexo
         run: |
           cd hexo-site
-          npm install
-          npm uninstall hexo-theme-redefine
-          npm run build
+          pnpm install --no-frozen-lockfile
+          pnpm remove hexo-theme-redefine
+          pnpm run build
 
       - name: Change directory to hexo-site
         run: echo "HEXO_SITE_DIR=${{ github.workspace }}/hexo-site" >> $GITHUB_ENV
 
       - name: Install Vercel CLI
-        run: npm install -g vercel@latest
+        run: pnpm add --global vercel@latest
 
       - name: Deploy to Vercel Action
         uses: EvanNotFound/vercel-deployment-for-github-actions@v1.2.2

@@ -24,6 +24,16 @@ jobs:
       url: ${{ steps.deploy-to-vercel.outputs.PREVIEW_URL }}
 
     steps:
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '20.x'
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.29.3
+
       - name: Resolve PR Info
         id: pr
         uses: actions/github-script@v9
@@ -96,7 +106,7 @@ jobs:
 
       # Install Vercel CLI first to avoid bug with next step
       - name: Install Vercel CLI
-        run: npm install -g vercel@latest
+        run: pnpm add --global vercel@latest
 
 
       - name: Deploy to Vercel

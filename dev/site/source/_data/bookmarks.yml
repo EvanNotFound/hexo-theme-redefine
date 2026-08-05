@@ -1,0 +1,99 @@
+- category: Newsletters
+  icon: fa-newspaper
+  items:
+    - name: Medium
+      link: https://medium.com/
+      description: A platform for writers and readers to share ideas and perspectives. Features both free and premium content with a strong tech and startup focus.
+      image: https://static-00.iconduck.com/assets.00/logo-medium-icon-2048x2048-asg2886j.png
+
+    - name: Substack
+      link: https://substack.com/
+      description: Popular newsletter platform that lets writers monetize their content through paid subscriptions. Great for independent journalists and creators.
+      image: https://substack.com/img/substack.png
+
+    - name: Ghost
+      link: https://ghost.org/
+      description: Open-source publishing platform designed for professional publishers, bloggers, and newsletter creators. Offers both hosted and self-hosted options.
+      image: https://ghost.org/images/logos/ghost-logo-orb.png
+
+    - name: Mailchimp
+      link: https://mailchimp.com/
+      description: All-in-one marketing platform with powerful newsletter features. Perfect for businesses looking to grow their email subscriber base.
+      image: https://logos-world.net/wp-content/uploads/2021/02/Mailchimp-Logo.png
+
+- category: Chat AI
+  icon: fa-robot
+  items:
+    - name: ChatGPT
+      link: https://chat.openai.com/
+      description: An AI language model that can assist with a variety of tasks, including writing, brainstorming, and answering questions.
+      image: https://1000logos.net/wp-content/uploads/2023/02/ChatGPT-Logo.png
+
+    - name: Claude
+      link: https://www.anthropic.com/
+      description: An AI language model that can assist with a variety of tasks, including writing, brainstorming, and answering questions.
+      image: https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/claude-ai-icon.png
+
+    - name: Gemini
+      link: https://gemini.google.com/app
+      description: Google's AI language model that can assist with a variety of tasks, including writing, brainstorming, and answering questions.
+      image: https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/f4a855188450701.65b6d6903dc33.png
+
+    - name: Grok
+      link: https://grok.com/
+      description: Grok is an AI-powered search engine that can assist with a variety of tasks, including writing, brainstorming, and answering questions.
+      image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJjg0KtwpcP31-sXeMCxksMx3gGsbEb3WSkg&s
+
+- category: Pentesting
+  icon: fa-shield-halved
+  items:
+    - name: Metasploit
+      link: https://www.metasploit.com/
+      description: Metasploit is an open-source framework for developing and executing exploit code against a remote target machine.
+      image: https://banner2.cleanpng.com/20180524/egt/avqse6kzc.webp
+
+    - name: Nmap
+      link: https://nmap.org/
+      description: Nmap is a free and open-source network scanner designed to discover hosts and services on a computer network, thus creating a "map" of the network.
+      image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4vbkndf2gRS3v-7lormlTG_irfzTUQHd6-g&s
+
+    - name: Wireshark
+      link: https://www.wireshark.org/
+      description: Wireshark is a free and open-source network protocol analyzer. It is used for network troubleshooting, analysis, and protocol development.
+      image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX-7rej1WvQ1sMXV-KtZQp1m0tIUs6jxXJiA&s
+
+    - name: SQLMap
+      link: https://sqlmap.org/
+      description: SQLMap is an open-source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws and taking over database servers.
+      image: https://upload.wikimedia.org/wikipedia/commons/4/4f/Sqlmap_logo.png
+
+- category: PaaS
+  icon: fa-cloud
+  items:
+    - name: Vercel
+      link: https://vercel.com/
+      description: Vercel is a platform for deploying and scaling web applications. It provides a seamless development experience with features like automatic HTTPS, global CDN, and serverless functions.
+      image: https://cdn.sanity.io/images/34ent8ly/production/223a29eb0698fb7fbc6d158a6f7e698d155e025f-824x824.png
+
+    - name: Cloudflare
+      link: https://www.cloudflare.com/
+      description: Cloudflare is a cloud computing company that offers a range of services, including web security, content delivery, and analytics.
+      image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTwLqLYQIJOcDVjey4Dy7q9K0FMioQUHyX5A&s
+
+    - name: Netlify
+      link: https://www.netlify.com/
+      description: Netlify is a cloud computing company that offers a range of services, including web security, content delivery, and analytics.
+      image: https://logosandtypes.com/wp-content/uploads/2023/03/Netlify.png
+
+- category: CMS
+  icon: fa-pen-to-square
+  items:
+    - name: WordPress
+      link: https://wordpress.org/
+      description: WordPress is a free and open-source content management system (CMS) based on PHP and MySQL.
+      image: https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/WordPress_blue_logo.svg/1024px-WordPress_blue_logo.svg.png
+
+    - name: Ghost
+      link: https://ghost.org/
+      description: Ghost is an open-source publishing platform designed for professional publishers, bloggers, and newsletter creators. Offers both hosted and self-hosted options.
+      image: https://ghost.org/images/logos/ghost-logo-orb.png

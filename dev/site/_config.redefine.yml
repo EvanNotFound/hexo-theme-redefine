@@ -1,0 +1,467 @@
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# THEME REDEFINE CONFIGURATION FILE
+# BY EVANNOTFOUND
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+
+# BASIC INFORMATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+info:
+  # Site title
+  title: Theme Redefine
+  # Author name
+  author: The Redefine Team
+  # Site URL
+  url: https://redefine.ohevan.com/
+  subtitle: Redefine Your Hexo Journey.
+# BASIC INFORMATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+
+# IMAGE CONFIGURATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+defaults:
+  # Favicon
+  favicon: /images/redefine-favicon.svg
+  # Site logo
+  logo: /images/redefine-favicon.svg
+  # Site avatar
+  avatar: /images/redefine-avatar.svg
+# IMAGE CONFIGURATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+
+# COLORS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+colors:
+  #Primary color
+  primary: "#A31F34"
+  # Secondary color (beta)
+  secondary:
+  # Default theme mode
+  default_mode: light # light, dark
+# COLORS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+
+# SITE CUSTOMIZATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+global:
+  # Custom fonts
+  fonts:
+    # Chinese fonts
+    chinese:
+      enable: false # Whether to enable custom chinese font
+      family: "ZCOOL XiaoWei"
+      url: https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap # Font URL to CSS file
+    # English fonts
+    english:
+      enable: false # Whether to enable custom chinese font
+      family: # Font family
+      url: # Font URL to CSS file
+    # Custom title fonts (navbar, sidebar)
+    title:
+      enable: false # Whether to enable custom title fonts
+      family: "New Amsterdam" # Font family
+      url: https://fonts.googleapis.com/css2?family=New+Amsterdam&display=swap # Font URL to CSS file
+  # Content max width
+  content_max_width: 1000px
+  # Sidebar width
+  sidebar_width: 210px
+  # Effects on mouse hover
+  hover:
+    shadow: true # shadow effect
+    scale: true # scale effect
+  # Scroll progress
+  scroll_progress:
+    bar: true # progress bar
+    percentage: true # percentage
+  # Website counter
+  website_counter:
+    url: https://cn.vercount.one/js
+    enable: true # enable website counter or not
+    site_pv: true # site page view
+    site_uv: true # site unique visitor
+    post_pv: true # post page view
+  # Whether to enable single page experience (using swup). See https://swup.js.org/. similar to pjax
+  single_page: true
+  # Whether to enable Preloader.
+  preloader:
+    enable: false
+    custom_message: Welcome to Theme Redefine
+  # Side tools settings
+  side_tools:
+    # Whether to enable gear rotation animation for settings button
+    gear_rotation: true
+    # Whether to auto expand tools list on page load
+    auto_expand: false
+  # Whether to enable open graph
+  open_graph:
+    enable: true
+    image: /images/redefine-og.webp  # default og:image
+    description: Hexo Theme Redefine, Redefine Your Hexo Journey.
+  # Google Analytics
+  google_analytics:
+    enable: true # Whether to enable Google Analytics
+    id: G-M7SVFT9PBP # Google Analytics ID
+# SITE CUSTOMIZATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+
+# HOME BANNER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+home_banner:
+  # Whether to enable home banner
+  enable: true
+  # style of home banner
+  style: fixed # static or fixed
+  # Home banner image
+  image:
+    light: /images/wallhaven-wqery6-light.webp # light mode
+    dark: /images/wallhaven-wqery6-dark.webp # dark mode
+  # Home banner title
+  title: Theme Redefine
+  # Home banner subtitle
+  subtitle:
+    text: ["Redefine Your Hexo Journey", "Clean, Fast, and Elegant"] # subtitle text, array
+    hitokoto: # 一言配置
+      enable: false # Whether to enable hitokoto
+      api: https://v1.hitokoto.cn/?c=k # API URL, can add types, see https://developer.hitokoto.cn/sentence/#%E5%8F%A5%E5%AD%90%E7%B1%BB%E5%9E%8B-%E5%8F%82%E6%95%B0
+      show_author: false
+    typing_speed: 100 # Typing speed (letter per ms)
+    backing_speed: 80 # Backing speed (letter per ms)
+    starting_delay: 500 # Start delay (ms)
+    backing_delay: 1500 # Backing delay (ms)
+    loop: true # Whether to loop
+    smart_backspace: true # Whether to smart backspace
+  # Color of home banner text
+  text_color:
+    light: "#fff" # light mode
+    dark: "#d1d1b6" # dark mode
+  # Specific style of the text
+  text_style:
+    # Title font size
+    title_size: 2.8rem
+    # Subtitle font size
+    subtitle_size: 1.5rem
+    # Line height between title and subtitle
+    line_height: 1.2
+  # Home banner custom font
+  custom_font:
+    # Whether to enable custom font
+    enable: false
+    # Font family
+    family:
+    # URL to font CSS file
+    url:
+  # Home banner social links
+  social_links:
+    # Whether to enable
+    enable: true
+    # Social links style
+    style: default # default, reverse, center
+    # Social links
+    links:
+      - icon: github
+        url: https://github.com/EvanNotFound/hexo-theme-redefine # your GitHub URL
+      - icon: instagram
+        url: https://instagram.com # your Instagram URL
+      - icon: zhihu
+        url: https://zhihu.com # your ZhiHu URL
+      - icon: twitter
+        url: https://twitter.com # your twitter URL
+      - icon: email
+        url: mailto:contact@example.com # your email
+    qrs:
+      weixin: https://assets.ohevan.com/img/c277d881b77355c0a45f768fdb8a4934.webp # your Wechat QRcode image URL
+# HOME BANNER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+
+# NAVIGATION BAR >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+navbar:
+  # Auto hide navbar
+  auto_hide: false
+  # Navbar background color
+  color:
+    left: "#f78736" #left side
+    right: "#367df7" #right side
+    transparency: 58 #percent (10-99)
+  # Navbar width (usually no need to modify)
+  width:
+    home: 1200px #home page
+    pages: 1000px #other pages (px)
+  # Navbar links
+  links:
+    Home:
+      path: /
+      icon: fa-regular fa-house # can be empty
+    Archives:
+      path: /archives
+      icon: fa-regular fa-archive # can be empty
+    Categories:
+      path: /categories
+      icon: fa-regular fa-folder
+    Tags:
+      path: /tags
+      icon: fa-regular fa-tags
+    About:
+      icon: fa-regular fa-user
+      submenus:
+        Me: /about
+        GitHub: https://github.com/EvanNotFound/hexo-theme-redefine
+        Friends: /links
+    More:
+      icon: fa-regular fa-ellipsis
+      submenus:
+        Masonry: /masonry
+        Music: /music
+        Bookmarks: /bookmarks
+  # Navbar search (local search). Requires hexo-generator-searchdb (npm i hexo-generator-searchdb). See https://github.com/theme-next/hexo-generator-searchdb
+  search:
+    # Whether to enable
+    enable: true
+    # Preload search data when the page loads
+    preload: true
+# NAVIGATION BAR <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+
+# HOME PAGE ARTICLE SETTINGS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+home:
+  # Sidebar settings
+  sidebar:
+    enable: true # Whether to enable sidebar
+    position: right # Sidebar position. left, right
+    first_item: menu # First item in sidebar. menu, info
+    announcement: Welcome to Theme Redefine! # Announcement text
+    show_on_mobile: false # Whether to show sidebar navigation on mobile sheet menu
+    links:
+      Archives:
+        path: /archives
+        icon: fa-regular fa-archive
+      Tags:
+        path: /tags
+        icon: fa-regular fa-tags
+      Categories:
+        path: /categories
+        icon: fa-regular fa-folder
+      Github:
+        icon: fa-brands fa-github
+        path: https://github.com/EvanNotFound/hexo-theme-redefine
+  # Article date format
+  article_date_format: auto # auto, relative, YYYY-MM-DD, YYYY-MM-DD HH:mm:ss etc.
+  # Article excerpt length
+  excerpt_length: 200
+  # Article categories visibility
+  categories:
+    enable: true # Whether to enable
+    limit: 3 # Max number of categories to display
+  # Article tags visibility
+  tags:
+    enable: true # Whether to enable
+    limit: 3 # Max number of tags to display
+# HOME PAGE ARTICLE SETTINGS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+
+# ARTICLE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+articles:
+  # Set the styles of the article
+  style:
+    font_size: 16px # Font size
+    line_height: 1.5 # Line height
+    image_border_radius: 14px # image border radius
+    image_alignment: center # image alignment. left, center
+    link_icon: true # Whether to display link icon
+    image_caption: false # Whether to display image caption
+    headings_top_spacing: # Top spacing for headings from h1-h6
+      h1: 3.2rem
+      h2: 2.4rem
+      h3: 1.9rem
+      h4: 1.6rem
+      h5: 1.4rem
+      h6: 1.3rem
+    delete_mask: false
+    title_alignment: left
+  # Word count. Requires hexo-wordcount (npm install hexo-wordcount). See https://github.com/willin/hexo-wordcount
+  word_count:
+    enable: true # Whether to enable
+    count: true # Whether to display word count
+    min2read: true # Whether to display reading time
+  # Author label
+  author_label:
+    enable: true # Whether to enable
+    auto: false # Whether to automatically add author label, e.g. Lv1, Lv2, Lv3...
+    list: ["MVP"]
+  # Code block settings
+  code_block:
+    copy: true # Whether to enable code block copy button
+    style: mac # mac | simple
+    highlight_theme: # Color scheme for highlightjs code highlighting. For preview, see https://highlightjs.org/examples
+      light: github # light mode theme, support: github, atom-one-light, default
+      dark: atom-one-dark # dark mode theme, support: github-dark, monokai-sublime, vs2015, night-owl, atom-one-dark, nord, tokyo-night-dark, a11y-dark, agate
+    font: # Custom font
+      enable: false # Whether to enable
+      family: "Courier" # Font family
+      url: "https://fonts.googleapis.com/css2?family=Courier:wght@400;500;600;700&display=swap" # Font URL to CSS file
+  # Table of contents settings
+  toc:
+    enable: true # Whether to enable TOC
+    max_depth: 3 # TOC depth
+    number: true # Whether to add number to TOC automatically
+    expand: true # Whether to expand TOC
+    init_open: true # Open toc by default
+  # Whether to enable copyright notice
+  copyright:
+    enable: true # Whether to enable
+    default: cc_by # Default license
+  # Whether to enable lazyload for images
+  lazyload: true
+  # Pangu.js (space between Chinese and English). See https://github.com/vinta/pangu.js
+  pangu_js: true
+  # Article recommendation. Requires nodejieba (npm install nodejieba). Transplanted from hexo-theme-volantis.
+  recommendation:
+    # Whether to enable article recommendation
+    enable: true
+    # Article recommendation title
+    title: 推荐阅读
+    # Article recommendation title icon
+    icon: fa-solid fa-bookmark
+    # Max number of articles to display
+    limit: 3
+    # Placeholder image
+    placeholder: /images/wallhaven-wqery6-light.webp
+    # Skip directory
+    skip_dirs:
+      - wiki/
+    mobile_limit: 2
+# ARTICLE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+
+# COMMENT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+comment:
+  # Whether to enable comment
+  enable: true
+  # Comment system
+  system: utterances # waline, gitalk, twikoo, giscus, utterances
+  # System configuration
+  config:
+    # Waline comment system. See https://waline.js.org/
+    waline:
+      serverUrl: https://redefine-waline.ohevan.com # Waline server URL. e.g. https://example.example.com
+      lang: zh-CN # Waline language. e.g. zh-CN, en-US. See https://waline.js.org/guide/client/i18n.html
+      emoji: [] # Waline emojis, see https://waline.js.org/guide/features/emoji.html
+      recaptchaV3Key: # Google reCAPTCHA v3 key. See https://waline.js.org/reference/client/props.html#recaptchav3key
+      turnstileKey: # Turnstile key. See https://waline.js.org/reference/client/props.html#turnstilekey
+      reaction: true # Waline reaction. See https://waline.js.org/reference/client/props.html#reaction
+    # Gitalk comment system. See https://github.com/gitalk/gitalk
+    gitalk:
+      clientID: # GitHub Application Client ID
+      clientSecret: # GitHub Application Client Secret
+      repo: # GitHub repository
+      owner: # GitHub repository owner
+    # Twikoo comment system. See https://twikoo.js.org/
+    twikoo:
+      version: 1.6.10 # Twikoo version, do not modify if you dont know what it is
+      server_url: https://twikoo.example.com # Twikoo server URL. e.g. https://example.example.com
+      region: # Twikoo region. can be empty
+    # Giscus comment system. See https://giscus.app/
+    giscus:
+      repo: # Github repository name
+      repo_id: # Github repository id
+      category: # Github discussion category
+      category_id: # Github discussion category id
+      mapping: pathname
+      strict: 0
+      reactions_enabled: 1
+      emit_metadata: 0
+      lang: en
+      input_position: bottom
+      loading: lazy
+    # Utterances comment system. See https://utteranc.es/
+    utterances:
+      repo: EvanNotFound/giscus-comments # GitHub repository name e.g. owner/repo (Issues must be enabled)
+      issue_term: pathname # pathname, url, title, og:title (recommended: pathname for single-page mode)
+      issue_number: # Use a specific issue number instead of issue_term (optional)
+      label: # Optional label for created issues
+      theme_light: github-light # Light theme
+      theme_dark: github-dark # Dark theme
+# COMMENT <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+
+# PAGE TEMPLATES >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+page_templates:
+  # Friend Links page column number
+  friends_column: 3
+  # Tags page style
+  tags_style: blur # blur, cloud
+  # Masonry page batch size
+  masonry:
+    batch_size: 12
+    initial_batch_size: 24
+# PAGE TEMPLATES <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+
+# PLUGINS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+plugins:
+  # RSS feed. Requires hexo-generator-feed (npm i hexo-generator-feed). See https://github.com/hexojs/hexo-generator-feed
+  feed:
+    enable: false # Whether to enable
+  # Aplayer (fixed). See https://github.com/DIYgod/APlayer
+  aplayer:
+    enable: true # Whether to enable
+    type: fixed
+    audios:
+      - name: Stay # audio name
+        artist: Justin Bieber # audio artist
+        url: https://files.catbox.moe/un1wm3.mp3 # audio url
+        cover: https://files.catbox.moe/2k6km1.png # audio cover
+      - name: Something Just Like This
+        artist: Coldplay
+        url: https://evan.beee.top/music/Something%20Just%20Like%20This%20-%20The%20Chainsmokers%E3%80%81Coldplay.mp3
+        cover: https://evan.beee.top/music/covers/Something_Just_Like_This.png
+  # Mermaid JS. Requires hexo-filter-mermaid-diagrams (npm i hexo-filter-mermaid-diagrams). See https://mermaid.js.org/
+  mermaid:
+    enable: true # enable mermaid or not
+    version: "9.3.0" # default v9.3.0
+# PLUGINS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+
+# CDN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+cdn:
+  # Whether to enable CDN
+  enable: false
+  # CDN Provider
+  provider: npmmirror # npmmirror, zstatic, cdnjs, jsdelivr, unpkg, custom
+  # Custom CDN URL
+  # format example: https://cdn.custom.com/hexo-theme-redefine/${version}/source/${path}
+  # The ${path} must be in the source folder of the theme
+  custom_url:
+# CDN <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+
+# FOOTER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+footer:
+  # Show website running time
+  runtime: true # show website running time or not
+  # Icon in footer, write fontawesome icon code here
+  icon: '<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>'
+  # The start time of the website, format: YYYY/MM/DD HH:mm:ss
+  start: 2022/8/17 11:45:14
+  # Site statistics
+  statistics: true # show site statistics or not (total articles, total words)
+  # Footer message
+  customize:
+  # ICP record number. See https://beian.miit.gov.cn/
+  icp:
+    enable: false # Whether to enable
+    number: # ICP record number
+    url: # ICP record url
+# FOOTER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+
+# FONTAWESOME >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+fontawesome: # Pro v6.2.1
+  # Thin version
+  thin: true
+  # Light version
+  light: true
+  # Duotone version
+  duotone: true
+  # Sharp Solid version
+  sharp_solid: true
+# FONTAWESOME <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+
+# INJECT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+inject:
+  # Whether to enable inject
+  enable: false
+  # Inject custom head html code
+  head:
+    -
+
+  # Inject custom footer html code
+  footer:
+    -
+# INJECT <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+
+# DEVELOPER MODE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+developer:
+  # Whether to enable developer mode (only for developers who want to modify the theme source code, not for ordinary users)
+  enable: true
+# DEVELOPER MODE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end

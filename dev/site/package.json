@@ -1,0 +1,31 @@
+{
+  "name": "redefine-preview-site",
+  "version": "0.0.0",
+  "private": true,
+  "hexo": {
+    "version": "7.3.0"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.15",
+    "fs": "^0.0.1-security",
+    "hexo": "^7.0.0",
+    "hexo-filter-mathjax": "^0.9.0",
+    "hexo-filter-mermaid-diagrams": "^1.0.5",
+    "hexo-generator-archive": "^1.0.0",
+    "hexo-generator-category": "^1.0.0",
+    "hexo-generator-feed": "^3.0.0",
+    "hexo-generator-index": "^2.0.0",
+    "hexo-generator-searchdb": "^1.4.1",
+    "hexo-generator-tag": "^1.0.0",
+    "hexo-renderer-ejs": "^2.0.0",
+    "hexo-renderer-marked": "^6.2.0",
+    "hexo-renderer-pug": "^3.0.0",
+    "hexo-renderer-stylus": "^2.0.1",
+    "hexo-server": "^2.0.0",
+    "hexo-theme-keep": "^3.4.8",
+    "hexo-wordcount": "^6.0.1",
+    "js-yaml": "^4.1.0",
+    "nodejieba": "^3.5.2",
+    "postcss-cli": "^10.1.0"
+  }
+}

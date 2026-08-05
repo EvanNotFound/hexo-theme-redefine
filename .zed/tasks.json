@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Redefine worktree setup",
+    "command": "pnpm",
+    "args": ["install", "--frozen-lockfile", "--prefer-offline"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "hooks": ["create_worktree"],
+    "reveal": "no_focus",
+    "hide": "on_success",
+    "save": "none"
+  },
+  {
+    "label": "Redefine preview",
+    "command": "pnpm",
+    "args": ["run", "preview"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "use_new_terminal": true,
+    "reveal": "always",
+    "save": "all"
+  },
+  {
+    "label": "Redefine preview generate",
+    "command": "pnpm",
+    "args": ["run", "preview:generate"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "reveal": "always",
+    "save": "all"
+  }
+]

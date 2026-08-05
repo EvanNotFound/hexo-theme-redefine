@@ -19,27 +19,21 @@ jobs:
     steps:
       - name: Checkout Theme Repository
         uses: actions/checkout@v6
-        with:
-          path: theme
 
       - name: Set up Node.js
         uses: actions/setup-node@v6
         with:
           node-version: "20.x"
 
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.29.3
+
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
           python-version: "3.x"
-
-      - name: Clone Hexo Site Repository
-        run: git clone https://github.com/EvanNotFound/redefine-demo.git hexo-site
-
-      - name: Move Theme into Hexo Site
-        run: |
-          mkdir -p hexo-site/themes
-          rm -rf hexo-site/themes/redefine
-          mv theme hexo-site/themes/redefine
 
       - name: Enable Developer Mode and Disable CDN
         run: |
@@ -49,7 +43,7 @@ jobs:
           import yaml
           from pathlib import Path
 
-          config_path = Path("hexo-site/_config.redefine.yml")
+          config_path = Path("dev/site/_config.redefine.yml")
           data = yaml.safe_load(config_path.read_text()) or {}
           data.setdefault("developer", {})
           data["developer"]["enable"] = True
@@ -60,42 +54,23 @@ jobs:
           )
           PY
 
-      - name: Install Theme Dependencies
-        working-directory: hexo-site/themes/redefine
-        run: |
-          if [ -f package-lock.json ]; then
-            npm ci
-          else
-            npm install
-          fi
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Build Theme Assets
-        working-directory: hexo-site/themes/redefine
-        run: npm run build
-
-      - name: Install Hexo Dependencies
-        working-directory: hexo-site
-        run: |
-          if [ -f package-lock.json ]; then
-            npm ci
-          else
-            npm install
-          fi
+        run: pnpm run build
 
       - name: Build Hexo Site
-        working-directory: hexo-site
-        run: |
-          npm uninstall hexo-theme-redefine
-          npm run build
+        run: pnpm run preview:generate -- --output-dir dev/site/public
 
       - name: Prepare Vercel Prebuilt Output
         run: |
-          mkdir -p hexo-site/.vercel/output/static
-          printf '{"version":3}' > hexo-site/.vercel/output/config.json
-          cp -R hexo-site/public/. hexo-site/.vercel/output/static/
+          mkdir -p dev/site/.vercel/output/static
+          printf '{"version":3}' > dev/site/.vercel/output/config.json
+          cp -R dev/site/public/. dev/site/.vercel/output/static/
 
       - name: Package Vercel Prebuilt Output
-        run: tar -C hexo-site -czf vercel-prebuilt.tgz .vercel/output
+        run: tar -C dev/site -czf vercel-prebuilt.tgz .vercel/output
 
       - name: Upload Vercel Prebuilt Artifact
         uses: actions/upload-artifact@v4

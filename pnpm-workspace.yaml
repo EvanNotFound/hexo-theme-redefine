@@ -1,0 +1,7 @@
+packages:
+  - "dev/site"
+
+onlyBuiltDependencies:
+  - "@parcel/watcher"
+  - hexo-util
+  - nodejieba

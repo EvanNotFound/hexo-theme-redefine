@@ -2,15 +2,18 @@
   "name": "hexo-theme-redefine",
   "version": "2.9.0",
   "private": false,
+  "packageManager": "pnpm@10.29.3",
   "description": "Redefine your writing with Hexo Theme Redefine.",
   "scripts": {
     "npm:publish": "npm run build && npm publish",
-    "build": "npm run build:css && npm run build:js",
-    "build:css": "npx @tailwindcss/cli -i source/css/tailwind.source.css -o source/css/build/tailwind.css --minify",
+    "build": "tailwindcss -i source/css/tailwind.source.css -o source/css/build/tailwind.css --minify && node source/js/build.js",
+    "build:css": "tailwindcss -i source/css/tailwind.source.css -o source/css/build/tailwind.css --minify",
     "build:js": "node source/js/build.js",
-    "watch:css": "npx @tailwindcss/cli -i source/css/tailwind.source.css -o source/css/build/tailwind.css --watch --minify",
+    "watch:css": "tailwindcss -i source/css/tailwind.source.css -o source/css/build/tailwind.css --watch --minify",
     "prepare": "husky",
-    "preview": "node ../../redefine-local/.dev/preview-host.mjs"
+    "preview": "node dev/preview.mjs",
+    "preview:generate": "node dev/preview.mjs --generate",
+    "dev:setup": "pnpm install --frozen-lockfile --prefer-offline"
   },
   "repository": {
     "type": "git",
@@ -32,6 +35,7 @@
   },
   "homepage": "https://redefine.ohevan.com",
   "devDependencies": {
+    "@tailwindcss/cli": "^4.1.11",
     "eslint": "^8.47.0",
     "glob-promise": "^6.0.7",
     "husky": "^9.1.6",

@@ -24,11 +24,13 @@ jobs:
           node-version: '20.x'
           registry-url: https://registry.npmjs.org/
 
-      - name: Ensure npm >= 11.5.1
-        run: npm install -g npm@latest
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.29.3
 
-      - run: npm ci
+      - run: pnpm install --frozen-lockfile
 
-      - run: npm run build
+      - run: pnpm run build
 
       - run: npm publish

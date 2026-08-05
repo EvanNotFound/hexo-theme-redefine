@@ -1,0 +1,76 @@
+- links_category: 超级
+  has_thumbnail: true
+  list:
+    - name: AlexWei的部落阁
+      link: http://alexwei.top/
+      description: 屑人&卷王Alexwei的博客，有时候会蚌埠住
+      avatar: https://evan.beee.top/wp-content/uploads/2022/02/Screen-Shot-2022-02-13-at-8.39.06-PM.png
+      thumbnail: https://evan.beee.top/img/2023/06/21/841d60b342c7e5f2c05ca25d5d85cd62.png
+
+- links_category: Normal
+  has_thumbnail: false
+  list:
+    - name: AlexWei的部落阁
+      link: http://alexwei.top/
+      description: 屑人&卷王Alexwei的博客，有时候会蚌埠住
+      avatar: https://evan.beee.top/wp-content/uploads/2022/02/Screen-Shot-2022-02-13-at-8.39.06-PM.png
+
+    - name: B's Blog
+      link: https://personal.bsblog.cn
+      description: 荣誉之于生死，救赎之于荣誉
+      avatar: https://evan.beee.top/wp-content/uploads/2022/04/B-150x150-1.webp
+
+    - name: Minecreeper的小站
+      link: https://minecreeper.top/
+      description: Minecreeper的小站，自己的后院，大家的茶馆
+      avatar: https://evan.beee.top/wp-content/uploads/2022/02/279231644986081_.pic_.jpg
+
+    - name: MoyiTech的小站
+      link: https://www.9998k.cn/
+      description: 物联网开源硬件技术分享交流，记录学习过程中的点点滴滴，分享互联网精神！
+      avatar: https://evan.beee.top/wp-content/uploads/2022/04/g.jpeg
+
+    - name: solstice23’s Blog
+      link: https://solstice23.top
+      description: Debug the world.
+      avatar: https://solstice23.top/friendlink_image/avatar/
+
+    - name: tlanyan 的博客
+      link: https://itlanyan.com/
+      description: 十里平湖霜满天，寸寸青丝愁华年
+      avatar: https://evan.beee.top/wp-content/uploads/2022/04/IMG_3234-768x1024-1.webp
+
+    - name: 喵喵的灿烂星空
+      link: https://starrycat.me
+      description: 我喜欢看星星 记录&成长
+      avatar: https://starrycat.me/wp-content/uploads/2018/09/catspawlinks.jpg
+
+    - name: 干净T松鼠的博客
+      link: https://wenlei.club
+      description: 欢迎来到我的博客ヾ(≧▽≦*)o!
+      avatar: https://cravatar.cn/avatar/c6b2d6e7673fe701be2bd935b0235bbd
+
+    - name: 扶木成枫
+      link: https://fmcf.cc
+      description: 他戴着花冠，踏于风雪，探寻迷途的救赎，绽放生命的曙光
+      avatar: https://q1.qlogo.cn/g?b=qq&nk=2357307393&s=640
+
+    - name: 故北-simple
+      link: https://www.beee.top/
+      description: 给我提供cdn加速域名的酷安大佬，这是他的博客
+      avatar: https://evan.beee.top/wp-content/uploads/2022/02/1645849822-Screen-Shot-2022-02-26-at-12.28.20-PM.png
+
+    - name: 高&冰
+      link: https://gaoice.top/
+      description: 我知我新，未知的世界那么惊艳
+      avatar: https://evan.beee.top/wp-content/uploads/2022/05/c147625181cf6d04aa1af6c10c906693.png
+
+    - name: 彩虹小屋
+      link: https://blog.moieo.top
+      description: 素白清韵，简静安然
+      avatar: https://blog.moieo.top/favicon.ico
+#
+#    - name: 云萧的咕咕屋
+#      link: https://blogs.crrashh.cn
+#      description: 可能有好东西哦 φ(*￣0￣)
+#      avatar: https://crrashh.cn/img/avatars/crrashh1542.jpg

@@ -27,6 +27,10 @@ yarn.lock
 
 # misc
 /.sass-cache
+/dev/site/db.json
+/dev/site/public
+/dev/site/.source
+/dev/site/node_modules
 /connect.lock
 /coverage
 /libpeerconnection.log

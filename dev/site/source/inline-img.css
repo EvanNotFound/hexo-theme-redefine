@@ -1,0 +1,5 @@
+/* write an inline image css to display multiple images in the same line*/
+
+.inline-img {
+  display: inline-block !important;
+}
