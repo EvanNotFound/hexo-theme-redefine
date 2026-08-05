@@ -18,7 +18,7 @@ This file is for automated coding agents working in this repo.
 - Build CSS only: `pnpm run build:css` (Tailwind CLI).
 - Build JS only: `pnpm run build:js` (minifies into `source/js/build`).
 - Watch CSS: `pnpm run watch:css`.
-- Preview the current worktree: `pnpm run preview`.
+- Develop against the current worktree: `pnpm dev`.
 - Generate the preview fixture: `pnpm run preview:generate`.
 - Pre-commit hook blocks committing build outputs on non-`main`/`dev` branches (see `.husky/pre-commit`).
 - Lint: no npm script or config present; add one if needed.

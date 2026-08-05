@@ -129,7 +129,7 @@ pnpm install --frozen-lockfile
 Start Hexo with the current theme worktree:
 
 ```sh
-pnpm run preview
+pnpm dev
 ```
 
 Generate the fixture without starting a server:

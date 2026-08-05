@@ -70,7 +70,7 @@ const parseArgs = (argv) => {
     }
     if (arg === "--help" || arg === "-h") {
       console.log(
-        "Usage: pnpm run preview [--port PORT] [--no-build] [--no-css-watch]",
+        "Usage: pnpm dev [--port PORT] [--no-build] [--no-css-watch]",
       );
       console.log("       pnpm run preview:generate [--output-dir PATH]");
       process.exit(0);
