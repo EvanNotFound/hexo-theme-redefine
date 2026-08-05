@@ -113,8 +113,7 @@ const normalizeNamedValue = (value) => {
   return normalized.slice(1, -1).replace(/\\(.)/g, "$1");
 };
 
-const getRawNamedValue = (rawArgs, key) => {
-  const namedArgs = findNamedArgs(rawArgs);
+const getRawNamedValue = (rawArgs, namedArgs, key) => {
   const current = namedArgs
     .filter((namedArg) => namedArg.key === key)
     .pop();
@@ -131,8 +130,9 @@ const getRawNamedValue = (rawArgs, key) => {
   return normalizeNamedValue(rawArgs.slice(current.valueStart, end));
 };
 
-const getCalloutNamedValue = (rawArgs, named, key) =>
-  getRawNamedValue(rawArgs, key) || getNamedString(named, key, "").trim();
+const getCalloutNamedValue = (rawArgs, rawNamedArgs, named, key) =>
+  getRawNamedValue(rawArgs, rawNamedArgs, key)
+    || getNamedString(named, key, "").trim();
 
 const tokenize = (value) =>
   value
@@ -241,24 +241,23 @@ const parseDelimitedArgs = (rawArgs, defaultTitle) => {
 
 const parseNamedArgs = (rawArgs) => {
   const parsedArgs = parseTagArgs(rawArgs);
-  const supportsNamed = ["type", "title", "icon", "class", "classes", "variant"]
-    .some((key) => parsedArgs.named[key] != null);
+  const supportsNamed = Object.keys(parsedArgs.named)
+    .some((key) => CALLOUT_NAMED_KEYS.has(key));
 
   if (!hasNamedArgs(parsedArgs) || !supportsNamed) {
     return null;
   }
 
+  const rawNamedArgs = findNamedArgs(rawArgs);
+  const getNamedValue = (key) =>
+    getCalloutNamedValue(rawArgs, rawNamedArgs, parsedArgs.named, key);
   const positionalParsed = parseSimpleArgs(parsedArgs.positional);
-  const namedType = getCalloutNamedValue(rawArgs, parsedArgs.named, "type");
-  const namedIcon = getCalloutNamedValue(rawArgs, parsedArgs.named, "icon");
-  const namedTitle = getCalloutNamedValue(rawArgs, parsedArgs.named, "title");
-  const variant = getCalloutNamedValue(rawArgs, parsedArgs.named, "variant");
-  const classNames = splitClassNames(
-    getCalloutNamedValue(rawArgs, parsedArgs.named, "class"),
-  );
-  const classesAlias = splitClassNames(
-    getCalloutNamedValue(rawArgs, parsedArgs.named, "classes"),
-  );
+  const namedType = getNamedValue("type");
+  const namedIcon = getNamedValue("icon");
+  const namedTitle = getNamedValue("title");
+  const variant = getNamedValue("variant");
+  const classNames = splitClassNames(getNamedValue("class"));
+  const classesAlias = splitClassNames(getNamedValue("classes"));
 
   const normalizedVariant = variant === "titled" || namedTitle
     ? "titled"
