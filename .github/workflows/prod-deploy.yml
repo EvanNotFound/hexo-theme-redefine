@@ -27,7 +27,7 @@ jobs:
           node-version: '20.x' # Specify your required Node.js version
 
       - name: Set up pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
         with:
           version: 10.29.3
 
@@ -41,12 +41,14 @@ jobs:
       - name: Install dependencies
         run: |
           cd hexo-site
-          pnpm install --no-frozen-lockfile
+          pnpm \
+            --config.only-built-dependencies=hexo-util \
+            --config.only-built-dependencies=nodejieba \
+            install --no-frozen-lockfile
 
       - name: Build Hexo
         run: |
           cd hexo-site
-          pnpm install --no-frozen-lockfile
           pnpm remove hexo-theme-redefine
           pnpm run build
 

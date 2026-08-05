@@ -29,7 +29,7 @@ jobs:
           node-version: '20.x' # Specify your required Node.js version
 
       - name: Set up pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
         with:
           version: 10.29.3
 
@@ -37,7 +37,7 @@ jobs:
         run: git clone https://github.com/EvanNotFound/redefine-demo.git hexo-site
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.x'  # Ensure compatibility with Python 3.x
 
@@ -88,7 +88,10 @@ jobs:
       - name: Install dependencies
         run: |
           cd hexo-site
-          pnpm install --no-frozen-lockfile
+          pnpm \
+            --config.only-built-dependencies=hexo-util \
+            --config.only-built-dependencies=nodejieba \
+            install --no-frozen-lockfile
 
       - name: Build Hexo
         run: |
