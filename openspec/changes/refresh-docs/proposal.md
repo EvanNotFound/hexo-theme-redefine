@@ -14,7 +14,7 @@ The repository has moved to a pnpm monorepo with a local Hexo demo site and a si
 
 ### New Capabilities
 
-- `documentation-installation-and-development`: Provide accurate package-registry installation, migration, and contributor development guidance for the current release and repository workflow.
+- `docs-guidance`: Provide accurate package-registry installation, migration, and contributor development guidance for the current release and repository workflow.
 
 ### Modified Capabilities
 

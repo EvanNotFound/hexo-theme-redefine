@@ -9,6 +9,12 @@ schema: spec-driven
 #     We use conventional commits
 #     Domain: e-commerce platform
 
+context: |
+  Keep OpenSpec change and capability names short, specific, and human-readable.
+  Use lowercase kebab-case, usually two to four meaningful words. Describe the
+  user-facing outcome; avoid long sentences, ticket IDs, dates, and
+  implementation details.
+
 # Per-artifact rules (optional)
 # Add custom rules for specific artifacts.
 # Example:
