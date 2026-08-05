@@ -1,0 +1,160 @@
+---
+title: JavaScript Development Guide
+description: How Redefine runs JavaScript in Swup single-page mode and the best practices for organizing theme scripts.
+---
+
+## Runtime Model (Swup Single-Page Mode)
+
+Redefine supports Swup single-page mode via `theme.global.single_page: true`. When enabled:
+
+- Clicking internal links does not reload the page.
+- Swup replaces HTML inside the container (Redefine uses `#swup`).
+- Because there is no full reload, `DOMContentLoaded` runs only once.
+- After each navigation, your JS must run again in the Swup lifecycle.
+
+Redefine handles this with a single entry that coordinates:
+
+- Global init: run once for the entire session.
+- Page init: run after each Swup navigation.
+
+## Where to Put JavaScript
+
+Redefine has two kinds of JavaScript:
+
+### Browser JS (runtime in the browser)
+
+Source files live in:
+
+- `themes/redefine/source/js/**`
+
+Do not edit:
+
+- `themes/redefine/source/js/build/**` (generated output)
+
+Common folders:
+
+- `themes/redefine/source/js/main.js`: main entry, best place to hook your feature.
+- `themes/redefine/source/js/layouts/`: page/layout features (TOC, navbar, home banner).
+- `themes/redefine/source/js/tools/`: small tools (search, image viewer).
+- `themes/redefine/source/js/plugins/`: optional integrations (mermaid, typed).
+
+### Hexo Scripts (build time, Node)
+
+Source files live in:
+
+- `themes/redefine/scripts/**`
+
+Example: `themes/redefine/scripts/config-export.js` exports theme config into browser globals.
+
+## Browser Globals
+
+Redefine exports config with `export_config()`:
+
+- `window.config`
+- `window.theme`
+- `window.lang_ago`
+- `window.data`
+
+So browser modules can read:
+
+- `config.root`, `config.path`, etc.
+- `theme.xxx` (theme config)
+
+Best practice: always guard optional branches, e.g. `theme.navbar?.search?.enable`.
+
+## Swup Effect on JS (Simple Rule)
+
+In Swup mode:
+
+- The DOM is replaced, but JS memory stays.
+- Rebinding listeners on every view can create duplicates.
+- If you only bind on `DOMContentLoaded`, it runs only once.
+
+So decide first:
+
+- Is this a global feature (attach once)
+- Or a page feature (run every view)
+
+## The Two Init Types in Redefine
+
+### Global init (run once)
+
+Use this for:
+
+- `document.addEventListener('click', ...)` with delegation
+- `window.addEventListener('scroll', ...)`
+- keyboard handlers
+- Swup-independent listeners
+
+Rule: global init must be safe if called multiple times (or only run once).
+
+### Page init (run after each Swup view)
+
+Use this for:
+
+- DOM queries in the current page
+- scanning and enhancing content (TOC, code blocks, images)
+- attaching listeners to elements inside `#swup`
+
+Rule: page init should assume the DOM was replaced.
+
+## Avoid Inline `<script>` in EJS Templates
+
+Preferred approach:
+
+- Put JS in `themes/redefine/source/js/**`
+- Call it from `main.js` page init
+
+Only use inline scripts when:
+
+- The feature is tiny and template-specific
+- A third-party tool requires it
+
+If inline scripts must re-run in Swup mode:
+
+- Add `data-swup-reload-script`
+- Avoid top-level `const`/`let` declarations
+  - Wrap in an IIFE: `(function(){ ... })();`
+- Add a small retry loop if the script depends on containers or external libs
+
+## SwupScriptsPlugin in This Theme
+
+Redefine uses SwupScriptsPlugin in opt-in mode:
+
+- Only scripts tagged with `data-swup-reload-script` are re-run.
+
+This is useful for comment systems, but it can also cause:
+
+- redeclare errors from top-level `const`/`let`
+- race conditions if the script runs before the DOM exists
+
+Best practice:
+
+- keep reloadable inline scripts small and self-contained
+- or move the logic into `main.js`
+
+## Recommended Patterns
+
+- Page feature: put in a module, call from `main.js` page init.
+- Click binding: use event delegation (`document` + `closest()`).
+- Heavy features: clean up timers/observers/instances before Swup replaces the DOM.
+
+## Swup Hooks to Know
+
+- `visit:start`: navigation begins
+- `content:replace`: container DOM is being replaced
+- `page:view`: new content is visible (page init should run here)
+
+## Swup Official Docs (for citation)
+
+- Hooks list and usage: https://swup.js.org/hooks/
+- Lifecycle diagram: https://swup.js.org/lifecycle/#lifecycle-diagram
+- Reloading JavaScript in Swup: https://swup.js.org/getting-started/reloading-javascript/
+- Scripts Plugin (opt-in): https://swup.js.org/plugins/scripts-plugin/
+
+## Glossary
+
+- global init: attach long-lived listeners once (click/scroll/key).
+- page init: run after every Swup navigation to handle new DOM.
+- `data-swup-reload-script`: mark scripts to be re-run by Swup Scripts Plugin.
+- event delegation: one click listener on `document`, use `closest()` to match targets.

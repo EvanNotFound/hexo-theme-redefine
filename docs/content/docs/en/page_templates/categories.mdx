@@ -1,0 +1,45 @@
+---
+title: Categories
+---
+
+## Effects
+
+![Screenshot 2023-03-24 at 4.46.32 PM](https://evan.beee.top/img/2023/06/26/88475b8866d348a13b7816e14666dde2.png)
+
+## Configuration
+
+
+<div className="fd-steps [&_h3]:fd-step">
+
+### Create a Categories Page
+
+Execute the following command in the Hexo root directory:
+
+```bash
+hexo new page categories
+```
+
+Then, open the Markdown file of this page ( `source/categories/index.md` ), edit the Front Matter, add `template: categories`, and you can create a Categories page.
+
+```markdown filename="source/categories/index.md" {4}
+---
+title: Categories (Your custom title)
+date: 2023/5/14 11:45:14
+template: categories
+---
+```
+
+### Add Categories Page to the Navigation Bar
+
+Add the Categories page to the `navbar.links` navigation bar configuration item in the Redefine theme configuration file `_config.redefine.yml`.
+
+```yaml filename="_config.redefine.yml" {3-5}
+navbar:
+  links:
+    Categories: # Customize the name
+        icon: fa-solid fa-folder # Icon
+        path: /categories/ # Link
+```
+
+(It can also be placed in a sub-menu)
+</div>

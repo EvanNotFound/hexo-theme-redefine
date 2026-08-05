@@ -1,0 +1,68 @@
+---
+title: 标签
+---
+
+## 效果
+
+`blur` 样式：
+
+![Screenshot 2023-03-24 at 4.36.53 PM](https://evan.beee.top/img/2023/03/24/23c212da579f8cacec7b3641592d3d19.png)
+
+`cloud` 样式：
+
+![Screenshot 2023-03-24 at 4.38.47 PM](https://evan.beee.top/img/2023/03/24/08ceb9bf68754b23a010cfbbccf060d9.png)
+
+## 配置
+
+
+<div className="fd-steps [&_h3]:fd-step">
+
+### 创建标签页面
+
+在 Hexo 根目录执行以下命令：
+
+```bash
+hexo new page tags
+```
+
+然后，打开这个页面的 Markdown 文件（`source/tags/index.md`），编辑 Front Matter，添加 `template: tags`，即可。
+
+```markdown filename="source/tags/index.md" {4}
+---
+title: 标签（你自定义的标题）
+date: 2023/5/14 11:45:14
+template: tags
+---
+```
+
+### 导航栏添加标签页面
+
+在 Redefine 主题配置文件 `_config.redefine.yml` 的 `navbar.links` 导航栏配置项里面添加标签页面。
+
+```yaml filename="_config.redefine.yml" {3-5}
+navbar:
+    links:
+        Tags: #取名随意
+            icon: fa-solid fa-tags #图标
+            path: /tags/ #链接
+```
+
+（放在二级菜单也可以）
+
+### 修改标题（可选）
+
+Tags 标签页默认根据 `title: tags` 来匹配。
+
+如果需要自定义页面的标题，需要在 Front Matter 里面添加 `type: tags`，即可自定义页面标题。
+
+</div>
+
+## 更改样式
+
+在 Redefine 主题配置文件 `_config.redefine.yml` 的 `page_templates` 配置项里面更改 `tags_style`。
+
+**配置项名称：`page_templates.tags_style`**
+
+|  类型  |     可选值      | 默认值 |
+| :----: | :-------------: | :----: |
+| 字符串 | `blur`、`cloud` | `blur` |

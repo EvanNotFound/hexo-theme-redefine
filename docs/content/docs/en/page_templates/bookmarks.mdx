@@ -1,0 +1,99 @@
+---
+title: Bookmarks Page
+description: Available in Redefine v2.8.0 and later
+---
+
+import Image from "next/image";
+
+The bookmarks page lets you create a beautiful collection of your favorite links and tools, organized by category. Here's what it looks like:
+
+<Image
+  src="https://assets.ohevan.com/img/00c70e5f9d2b975f5d132841f6d41583.webp"
+  alt="Bookmarks page preview"
+  width={5088}
+  height={3328}
+  className="my-2"
+  style={{
+    maxHeight: "500px",
+    objectFit: "contain",
+  }}
+/>
+
+## Setting Up Your Bookmarks Page
+
+<div className="fd-steps [&_h3]:fd-step">
+
+### 1. Create the Page
+
+First, create a new bookmarks page by running this command in your Hexo project root:
+
+```bash
+hexo new page bookmarks
+```
+
+Then add the `template: bookmarks` line to the page's front matter:
+
+```markdown filename="source/bookmarks/index.md"
+---
+title: My Bookmarks
+date: 2023/5/14 11:45:14
+template: bookmarks
+---
+```
+
+### 2. Add to Navigation
+
+Add the bookmarks page to your navigation bar in `_config.redefine.yml`:
+
+```yaml filename="_config.redefine.yml"
+navbar:
+  links:
+    Bookmarks:
+      icon: fa-solid fa-bookmark
+      path: /bookmarks/
+```
+
+You can also add it to a submenu if you prefer!
+
+### 3. Set Up Your Bookmarks
+
+1. Create a `_data` folder in your `source` directory (if you don't have one already)
+2. Create a new file called `bookmarks.yml` inside the `_data` folder
+3. Add your bookmarks using this format:
+
+```yaml filename="source/_data/bookmarks.yml"
+- category: Category Name
+  icon: fa-folder # Category icon, using FontAwesome icons
+  items:
+    - name: Bookmark Name
+      link: bookmark-url # Changed from 'url' to 'link'
+      description: Bookmark description
+      image: icon-url # Changed from 'icon' to 'image', used for website icon
+
+- category: Tools
+  icon: fa-tools # Tools category icon
+  items:
+    - name: ChatGPT
+      link: https://chat.openai.com # Bookmark URL
+      description: OpenAI's AI chat assistant
+      image: https://chat.openai.com/favicon.ico # Website icon URL
+    - name: Claude
+      link: https://www.anthropic.com/
+      description: Anthropic's AI chat assistant
+      image: https://www.anthropic.com/favicon.ico
+```
+
+</div>
+
+## Customizing the Layout
+
+Want to change how many columns your bookmarks display in? You can set it to either 2 or 3 columns:
+
+```yaml filename="_config.redefine.yml"
+page_templates:
+  bookmarks_column: 3 # Choose either 2 or 3
+```
+
+|  Type  | Optional Values | Default Value |
+| :----: | :-------------: | :-----------: |
+| Number |    `2 \| 3`     |       3       |

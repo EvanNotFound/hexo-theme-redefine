@@ -1,0 +1,62 @@
+---
+title: Mathjax Mathematical Formulas
+description: You can use the hexo-filter-mathjax plugin to write mathematical formulas using LaTeX syntax in your articles.
+---
+
+You can use the **[hexo-filter-mathjax](https://github.com/next-theme/hexo-filter-mathjax/)** plugin to write mathematical formulas using LaTeX syntax in your articles.
+
+## Result
+
+![image](https://evan.beee.top/img/2023/03/25/2c9d1ae06a8b34a145f0e3a745322412.png)
+
+## Configuration
+
+<div className="fd-steps [&_h3]:fd-step">
+
+### Install the Plugin
+
+Install the **hexo-filter-mathjax** plugin in the root directory of your Hexo project by executing the following command:
+
+```shell
+npm install hexo-filter-mathjax
+```
+
+### Modify the Configuration File
+
+Add the following configuration at the bottom of the Hexo configuration file `_config.yml`:
+
+```yaml filename="_config.yml"
+mathjax:
+  tags: none # or 'ams' or 'all'
+  single_dollars: true # enable single dollar signs as in-line math delimiters
+  cjk_width: 0.9 # relative CJK char width
+  normal_width: 0.6 # relative normal (monospace) width
+  append_css: true # add CSS to every page
+  every_page: false # if true, every page will be rendered by mathjax regardless the `mathjax` setting in Front-matter of each article
+```
+
+### Use in Articles
+
+Add the `mathjax: true` attribute to the article page. You can now write formulas on that page.
+
+Example:
+
+```markdown {6}
+---
+title: MathJax Test
+date: 2020-09-12 16:02:07
+tags: MathJax
+categories: MathJax
+mathjax: true
+---
+
+$$
+i\hbar\frac{\partial}{\partial t}\psi=-\frac{\hbar^2}{2m}\nabla^2\psi+V\psi
+$$
+```
+
+</div>
+
+## More
+
+For a hands-on experience, please visit the [Redefine Demo Site](https://redefine.ohevan.com/2022/10/02/theme-demo/)

@@ -1,0 +1,47 @@
+---
+title: 文章页头图
+description: Redefine 主题支持在文章添加封面头图
+---
+
+Redefine 主题支持在文章添加封面头图
+
+## 效果
+
+![Screenshot 2023-02-02 at 9.11.50 PM](https://evan.beee.top/img/2023/02/02/a7ac50af7d5234f6b55acfbb07d1d365.png)
+
+## 使用方法
+
+
+在文章的 [Front Matter](https://hexo.io/docs/front-matter.html) 中添加
+
+```markdown
+---
+cover: "图片链接"
+---
+```
+
+或者
+
+```markdown
+---
+banner: "图片链接"
+---
+```
+
+比如：
+
+```markdown
+---
+title: 主题样式 Demo
+date: 2022-12-30 19:07:05
+cover: "https://evan.beee.top/img/2023/01/21/5966cf4d2f2c05aecad54e233d9562ff.png"
+---
+```
+
+<Callout type="info" emoji="ℹ️">
+
+如果你设置了 [首页缩略图 thumbnail](https://redefine-docs.ohevan.com/article_customize/thumbnail) ，文章封面也会自动选择为 `thumbnail` 链接，当然，`banner` 和 `cover` 的优先级最高。
+
+如果你不想设置文章封面却想保留首页头图，请把 `cover` 或者 `banner` 设置成 `false`
+
+</Callout>

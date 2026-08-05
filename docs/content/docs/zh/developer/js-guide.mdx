@@ -1,0 +1,160 @@
+---
+title: JS 开发指南
+description: 介绍 Redefine 在 Swup 单页模式下的 JavaScript 运行机制，以及编写与组织主题脚本的最佳实践。
+---
+
+## 运行机制（Swup 单页模式）
+
+Redefine 支持 Swup 单页模式，通过配置 `theme.global.single_page: true` 开启。启用后：
+
+- 点击站内链接不再触发整页刷新
+- Swup 仅替换特定容器内的 HTML（Redefine 使用 `#swup` 作为容器）
+- 由于页面不刷新：`DOMContentLoaded` 事件仅在首次访问时触发一次
+- 后续每次页面切换，你的 JavaScript 都需要在 Swup 生命周期内重新执行
+
+Redefine 采用主入口统一调度机制：
+
+- **全局初始化**：整个会话生命周期只执行一次
+- **页面初始化**：每次 Swup 页面切换后都会执行
+
+## JS 文件应该放在哪里？
+
+Redefine 的 JavaScript 分为两类：
+
+### 浏览器端 JS（运行时）
+
+源代码位于：
+
+- `themes/redefine/source/js/**`
+
+请勿手动修改：
+
+- `themes/redefine/source/js/build/**`（构建输出目录）
+
+常见目录说明：
+
+- `themes/redefine/source/js/main.js`：主入口文件，建议在此接入新功能
+- `themes/redefine/source/js/layouts/`：页面布局相关功能（如目录、导航、首页横幅）
+- `themes/redefine/source/js/tools/`：工具类功能（搜索、图片查看器等）
+- `themes/redefine/source/js/plugins/`：可选插件集成（mermaid、typed 等）
+
+### Hexo 生成阶段 JS（Node 端）
+
+源代码位于：
+
+- `themes/redefine/scripts/**`
+
+例如：`themes/redefine/scripts/config-export.js` 用于将主题配置导出到浏览器端全局变量
+
+## 浏览器端可用的全局变量
+
+主题通过 `export_config()` 导出以下全局变量：
+
+- `window.config`
+- `window.theme`
+- `window.lang_ago`
+- `window.data`
+
+因此在浏览器端模块中可直接读取：
+
+- `config.root`、`config.path` 等配置
+- `theme.xxx`（主题配置项）
+
+建议读取配置时做好空值判断，例如：`theme.navbar?.search?.enable`
+
+## Swup 对 JS 的影响（简化规则）
+
+在 Swup 模式下：
+
+- DOM 会被替换，但 JavaScript 内存状态不会自动清理
+- 每次页面切换后重复绑定事件会导致重复执行
+- 仅在 `DOMContentLoaded` 中绑定的逻辑只在首次加载生效
+
+因此需要明确区分：
+
+- **全局功能**：只需绑定一次
+- **页面功能**：每次切换都需要重新执行
+
+## Redefine 的两类初始化
+
+### 全局初始化（仅执行一次）
+
+适用于：
+
+- `document.addEventListener('click', ...)` 这类事件代理
+- `window.addEventListener('scroll', ...)` 滚动监听
+- 键盘事件监听
+- 不依赖特定页面 DOM 的长期监听器
+
+要求：全局初始化必须能安全重复调用（或确保只调用一次）
+
+### 页面初始化（每次切换后执行）
+
+适用于：
+
+- 查询当前页面特定 DOM 元素
+- 对页面内容进行"扫描与增强"（如生成目录、高亮代码块、处理图片）
+- 给 `#swup` 容器内的元素添加事件监听
+
+要求：每次执行时都假设 DOM 是新加载的
+
+## 尽量避免在 EJS 模板内写 `<script>`
+
+推荐做法：
+
+- 将 JavaScript 代码写在 `themes/redefine/source/js/**` 目录下
+- 在 `main.js` 的页面初始化部分调用
+
+仅在以下情况考虑使用模板内脚本：
+
+- 功能非常小且与模板紧密绑定
+- 第三方工具明确要求内联脚本
+
+如果必须在 Swup 模式下重复执行内联脚本：
+
+- 为脚本添加 `data-swup-reload-script` 属性
+- 避免在顶层使用 `const`/`let` 声明变量
+  - 使用 IIFE 包裹：`(function(){ ... })();`
+- 如果依赖特定容器或外部库，建议添加简单重试机制（最多 5 秒）
+
+## SwupScriptsPlugin 在本主题中的作用
+
+Redefine 使用 SwupScriptsPlugin 的 opt-in 模式：
+
+- 只有带有 `data-swup-reload-script` 属性的脚本才会在页面切换时重新执行
+
+该插件适用于评论系统等场景，但可能带来以下问题：
+
+- 顶层 `const`/`let` 重复声明错误
+- 脚本执行时机过早，依赖的容器可能尚未出现
+
+建议：
+
+- 保持内联脚本小巧且自包含
+- 或将逻辑迁移到 `main.js` 中统一管理
+
+## 推荐写法
+
+- **页面功能**：封装为模块，在 `main.js` 的页面初始化中调用
+- **点击事件绑定**：尽量使用事件代理（`document` + `closest()`）
+- **复杂功能**：如果涉及定时器、观察者或第三方实例，在 Swup 替换 DOM 前进行清理
+
+## Swup 关键生命周期钩子
+
+- `visit:start`：开始切换页面
+- `content:replace`：正在替换容器 DOM（旧 DOM 被移除）
+- `page:view`：新页面已完全可见（适合执行页面初始化）
+
+## Swup 官方文档参考
+
+- 钩子列表与用法：https://swup.js.org/hooks/
+- 生命周期图示：https://swup.js.org/lifecycle/#lifecycle-diagram
+- Swup 下重新执行 JS：https://swup.js.org/getting-started/reloading-javascript/
+- Scripts 插件：https://swup.js.org/plugins/scripts-plugin/
+
+## 术语表
+
+- **全局初始化**：只需绑定一次的长期监听（如 click/scroll/key 事件）
+- **页面初始化**：每次 Swup 页面切换后执行，处理新 DOM
+- **data-swup-reload-script**：标记需要被 Swup 重新执行的脚本
+- **事件代理**：在 `document` 上统一绑定事件，通过 `closest()` 匹配目标元素

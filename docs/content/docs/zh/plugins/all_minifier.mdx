@@ -1,0 +1,33 @@
+---
+title: 资源压缩
+description: Redefine 主题代码中，HTML、CSS、JavaScript、图片等代码文件都是没有打包压缩的。
+---
+
+Redefine 主题代码中，HTML、CSS、JavaScript、图片等代码文件都是没有打包压缩的。
+
+如果你想要将这些文件打包压缩，可以使用插件 [hexo-all-minifier](https://github.com/chenzhutian/hexo-all-minifier) 来解决，能有效减少网站的加载时间。
+
+[hexo-all-minifier](https://github.com/chenzhutian/hexo-all-minifier) 集成了 `html-minifier`、`clean-css`、`uglify` 和 `imagemin`，配置简单方便。
+
+## 配置
+
+
+<div className="fd-steps [&_h3]:fd-step">
+### 安装插件
+
+在 Hexo 项目根目录下安装 **hexo-all-minifier**，执行以下命令：
+
+```shell
+npm install hexo-all-minifier
+```
+
+### 修改配置文件
+
+在 Hexo 站点配置文件 `_config.yml` 文件中，添加以下配置项：
+
+```yaml filename="_config.yml"
+all_minifier: true
+```
+
+</div>
+如果你使用插件时遇到了问题或者想进行更详细的设置，请查看插件的[文档](https://github.com/chenzhutian/hexo-all-minifier/blob/master/README.md)。

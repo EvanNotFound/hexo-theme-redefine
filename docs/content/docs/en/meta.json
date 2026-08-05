@@ -1,0 +1,28 @@
+{
+  "pages": [
+    "index",
+    "getting-started",
+    "---Configuration---",
+    "basic",
+    "home",
+    "posts",
+    "footer",
+    "---Usage---",
+    "page_templates",
+    "modules",
+    "plugins",
+    "shuoshuo",
+    "article_customize",
+    "inject",
+    "cdn",
+    "tips",
+    "language",
+    "---More---",
+    "thanks",
+    "developer",
+    "migrate",
+    "[Blog](https://ohevan.com)",
+    "[Demo Site](https://redefine.ohevan.com/)"
+  ],
+  "title": "Hexo Theme Redefine Docs"
+}

@@ -1,0 +1,154 @@
+---
+title: 友情链接
+---
+
+## 效果
+
+![](https://evan.beee.top/img/2023/06/22/1b0338cab5f96121a062383c8090a958.png)
+
+## 配置教程
+
+
+<div className="fd-steps [&_h3]:fd-step">
+
+    ### 创建友链页面
+
+    在你的 Hexo 项目根目录下执行如下命令创建一个新的页面，比如说这边创建了一个名为 `links` 的页面。
+
+    ```shell
+    $ hexo new page links
+    ```
+
+    然后，打开这个页面的 Markdown 文件（`source/links/index.md`），编辑 Front Matter，添加 `template: links`，即可。
+
+    比如
+
+    ```markdown filename="source/links/index.md" {4}
+    ---
+    title: 友情链接（你自定义的标题）
+    date: 2020-05-13 14:16:07
+    template: links
+    ---
+    ```
+
+    ### 修改配置文件
+
+    在 Redefine 主题配置文件 `_config.redefine.yml` 的 `navbar.links` 导航栏配置项里面添加这个页面 `links`（根据你创建的页面名称），这边我创建的页面名称是 `links`，添加的页面标题是 `Friends`。
+
+    ```yaml filename="_config.redefine.yml" {3-5}
+    navbar:
+        links:
+            Friends: #取名随意
+                icon: fa-solid fa-link #图标
+                path: /links/
+    ```
+
+    （放在二级菜单也可以）
+
+    ### 创建友链存放文件
+
+    在你的 Hexo 项目的 `source` 文件夹里增加 `_data` 文件夹。
+
+    如果已经有了 `_data` 文件夹，则忽略这一步。
+
+    在 `_data` 文件夹里新建 `links.yml` 文件。
+
+    在 `links.yml` 文件里按如下格式增加你的友链。
+
+    格式：
+
+    ```yaml filename="source/_data/links.yml"
+    - links_category: 分类名
+      has_thumbnail: 是否有预览图（true/false)
+      list:
+          - name: 名字
+            link: 链接
+            description: 描述
+            avatar: 头像
+            thumbnail: 预览图（has_thumbnail 为 true 时才需要）
+
+    ```
+
+    示例：
+
+    ```yaml filename="source/_data/links.yml"
+    - links_category: Elites
+      has_thumbnail: true
+      list:
+          - name: EvanNotFound's Blog
+            link: https://ohevan.com
+            description: 用香港记者的速度更新文章
+            avatar: https://evan.beee.top/avatar.png
+            thumbnail: https://img1.imgtp.com/2023/06/19/Jegvz84P.png # has_thumbnail 为 true 时才需要
+
+    - links_category: Normal
+      has_thumbnail: false
+      list:
+          - name: Example Site
+            link: https://example.com
+            description: Example Site Description
+            avatar: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+          - name: Example Site 2
+            link: https://example.com
+            description: Example Site Description
+            avatar: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+
+    ```
+
+</div>
+
+注意：
+
+如果你创建完，发现这个页面 Front Matter 是这个格式：
+
+```markdown filename="source/links/index.md"
+---
+title:
+  "[object Object]": null
+date:
+  "[object Object]": null
+---
+```
+
+那么请打开 hexo 根目录下的 `scoffalds/page.md`
+
+把：
+
+```markdown filename="scaffolds/page.md"
+---
+title: { { title } }
+date: { { date } }
+---
+```
+
+改为：
+
+```markdown filename="scaffolds/page.md"
+---
+title: { { title } }
+date: { { date } }
+---
+```
+
+然后再删除刚刚创建的 links 页面，重新执行命令
+
+```bash
+$ hexo new page links
+```
+
+即可。
+
+## 更改友链列数
+
+在 Redefine 主题配置文件 `_config.redefine.yml` 的 `page_templates` 配置项里面修改 `friends_column`。
+
+**配置项名称：`page_templates.friends_column`**
+
+```yaml filename="_config.redefine.yml"
+page_templates:
+  friends_column: 3
+```
+
+| 类型 |  可选值  | 默认值 |
+| :--: | :------: | :----: |
+| 数字 | `2 \| 3` |   3    |

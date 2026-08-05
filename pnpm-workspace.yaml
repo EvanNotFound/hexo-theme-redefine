@@ -1,7 +1,11 @@
 packages:
   - "dev/site"
+  - "docs"
 
 onlyBuiltDependencies:
   - "@parcel/watcher"
+  - esbuild
   - hexo-util
   - nodejieba
+  - sharp
+  - unrs-resolver

@@ -1,0 +1,145 @@
+---
+title: Tabs 分栏模块
+description: 在一篇文章中展示多个可切换的内容分栏。
+---
+
+Tabs 模块可以把内容分成多个分栏，读者点击标签即可切换查看。
+
+## 效果
+
+![Tabs 示例 1](https://assets.ohevan.com/img/f529cdd10dc3b0dce0c79386ea9e65a8.png)
+
+![Tabs 示例 2](https://assets.ohevan.com/img/415a75a191aa404891a8340b89f40112.png)
+
+![Tabs 示例 3](https://assets.ohevan.com/img/be2adfc0bd60a5e2bad088b2c8d8c286.png)
+
+## 基本写法
+
+```markdown
+{% tabs %}
+
+<!-- tab 分栏一 -->
+
+分栏一内容
+
+<!-- tab 分栏二 -->
+
+分栏二内容
+
+{% endtabs %}
+```
+
+`<!-- endtab -->` 不是必需项。
+
+## Tabs 参数
+
+- `name` / `id`：可选；省略时主题会自动生成 tabs id。
+- `active`：默认激活的分栏索引（从 `1` 开始）。缺省或非法值会回退到第一个分栏。
+
+```markdown
+{% tabs active=2 %}
+...
+{% endtabs %}
+```
+
+旧的位置参数写法仍兼容：
+
+```markdown
+{% tabs feature-tabs::2 %}
+{% tabs feature-tabs,2 %}
+```
+
+## 分栏头部写法
+
+**简单写法：**
+
+```markdown
+<!-- tab 概览 -->
+```
+
+**命名参数写法：**
+
+```markdown
+<!-- tab title="概览" icon="<i class='fa-solid fa-book'></i>" -->
+```
+
+其中 `caption="..."` 也可作为 `title` 的别名。
+
+## 完整示例
+
+````markdown
+{% tabs %}
+
+<!-- tab First Tab-->
+
+**This is Tab 1.**
+
+Lorem ipsum dolor sit amet, _consectetur_ adipiscing elit.  
+Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
+
+{% note success %}
+成功提示：这是第一个标签页中的一个 note 组件演示。
+{% endnote %}
+
+- 清单项一
+- 清单项二 `inline code`
+- 清单项三
+
+> 引用内容：Tabs 支持嵌套写作组件和 Markdown。
+
+---
+
+```js
+// 示例代码块
+console.log("Hello from Tab 1");
+```
+
+<!-- tab Second Tab-->
+
+**This is Tab 2.**
+
+> “Lorem ipsum dolor sit amet, consectetur adipiscing elit.”
+
+{% folding blue::点击展开更多内容 %}
+隐藏内容演示：Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+{% endfolding %}
+
+| 列1    | 列2   |
+| ------ | ----- |
+| 内容 A | Lorem |
+| 内容 B | Ipsum |
+
+```
+$ pnpm run build
+```
+
+{% notel warning 注意 %}
+这里有一个 warning note 组件，带图标。
+{% endnotel %}
+
+<!-- tab Third Tab -->
+
+**This is Tab 3.**
+
+1. 有序列表项一
+2. 有序列表项二
+3. 有序列表项三
+
+{% note info %}
+Tab 3 可以包含更多内容，比如图片、链接等。
+{% endnote %}
+
+![一张图片演示](https://picsum.photos/320/120)
+
+[跳转到 Redefine Docs](https://redefine-docs.ohevan.com)
+
+---
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+
+{% endtabs %}
+````
+
+## 更多
+
+实际体验欢迎前往 [Redefine 演示站点](https://redefine.ohevan.com/2022/10/02/theme-demo/)。

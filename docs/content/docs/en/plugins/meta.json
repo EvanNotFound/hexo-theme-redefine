@@ -1,0 +1,10 @@
+{
+  "title": "Plugins",
+  "pages": [
+    "aplayer",
+    "mermaid",
+    "all_minifier",
+    "mathjax",
+    "encrypt"
+  ]
+}

@@ -1,0 +1,36 @@
+---
+title: Encrypt 文章加密
+description: 本主题内置 `hexo-blog-encrypt` 插件，可以对文章进行加密，加密后的文章只有输入正确的密码才能查看。
+---
+
+本主题内置 `hexo-blog-encrypt` 插件，可以对文章进行加密，加密后的文章只有输入正确的密码才能查看。
+
+如果你用 `npm` 安装了 `hexo-blog-encrypt` 插件，请执行
+
+```bash
+npm uninstall hexo-blog-encrypt
+```
+
+卸载插件，否则会导致主题内置的插件无法正常使用。
+
+## 快速使用
+
+在文章的 `Front-matter` 中添加 `password` 字段，值为密码。
+
+```yaml
+---
+title: 文章标题
+date: 2020-01-01 00:00:00
+password: hello
+---
+```
+
+## 高级用法
+
+由于本插件是基于 `hexo-blog-encrypt` 插件开发的，所以你可以使用 `hexo-blog-encrypt` 插件的除了主题以外的所有功能。
+
+详情请查看插件文档：[hexo-blog-encrypt](https://github.com/D0n9X1n/hexo-blog-encrypt/)
+
+## 效果
+
+![](https://evan.beee.top/img/6d81a7677d9cc90ce9fde5a3125bcd8f-07592.png)

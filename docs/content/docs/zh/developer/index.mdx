@@ -1,0 +1,55 @@
+---
+title: 主题开发指南
+description: 本主题使用了 [Tailwind CSS](https://tailwindcss.com/) 作为 CSS 框架，如果你想要自定义主题并且使用 Tailwind CSS，请参考本页文档。
+---
+
+## 开发准备
+
+<div className="fd-steps [&_h3]:fd-step">
+
+### 启用主题开发模式
+
+请在 Hexo 根目录的主题配置文件 `_config.redefine.yml` 中的 `developer.enable` 选项设置为 `true`。
+
+```yaml
+# DEVELOPER MODE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+developer:
+  # Whether to enable developer mode (only for developers who want to modify the theme source code, not for ordinary users)
+  enable: true
+# DEVELOPER MODE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+```
+
+### 安装 Tailwind CSS
+
+请先 `cd` 到主题目录，然后执行以下命令：
+
+```bash
+npm install
+```
+
+### 实时编译 Tailwind CSS
+
+终端执行
+
+```bash
+npm run watch:css
+```
+
+即可实时编译 Tailwind CSS，编译后的 CSS 文件位于 `source/build/css/styles.css`。
+
+</div>
+
+## 自定义主题
+
+### 自定义 Tailwind CSS
+
+如果你想使用 Tailwind CSS 编辑主题样式：
+
+- 自定义 Tailwind CSS 配置，请修改主题文件夹下的 `tailwind.config.js` 文件。
+- 自定义 Tailwind CSS 全局样式，请修改主题文件夹下的 `source/css/style.styl` 文件。
+
+详细的 Tailwind CSS 文档请参考 [Tailwind CSS 官方文档](https://tailwindcss.com/docs)。
+
+### 自定义主题样式
+
+如果你不想使用 Tailwind CSS，而是想要自定义主题样式，请修改主题文件夹下的 `source/css/` 目录中的对应样式文件 `.styl`，并在 `ejs` 文件中引入你创建的 CSS class。

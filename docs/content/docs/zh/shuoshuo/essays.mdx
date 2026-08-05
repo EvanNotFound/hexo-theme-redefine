@@ -1,0 +1,82 @@
+---
+title: 本地部署方式
+description: 本方式是参考 [即刻短文静态部署版](https://blog.zhheo.com/p/557c9e72.html) 写的，由 Evan Luo 对 Redefine 主题进行适配。
+---
+
+本方式是参考 [即刻短文静态部署版](https://blog.zhheo.com/p/557c9e72.html) 写的，由 Evan Luo 对 Redefine 主题进行适配。
+
+实现逻辑是把说说内容写在本地的 `yml` 文件里面，然后生成博客的时候生成说说。
+
+## 效果
+
+![Screenshot 2023-03-09 at 3.20.35 PM](https://evan.beee.top/img/2023/03/09/75b146ba614c9cbc81c1ecf1b7e19ef3.png)
+
+Demo 链接：https://redefine.ohevan.com/essays
+
+## 配置
+
+
+<div className="fd-steps [&_h3]:fd-step">
+
+### 创建说说页面
+
+页面名字可以选择 `shuoshuo` 或 `essays` 或 `essay`
+
+在 Hexo 博客根目录执行命令
+
+```shell
+$ hexo new page essays
+```
+
+到此一个名为 `essays` 的页面就创建完成了
+
+### 编辑页面名称
+
+打开 `/source/esssays/index.md` 文件（根据你所创建的页面名字选择），把 `front-matter` 里面的 `title` 属性改成中文的 `说说` 或者 `Essays` 。
+
+由于页面模版默认是根据页面名称匹配的，所以如果你要更改页面名称为其他名字，请在 `front-matter` 里面加入 `type: shuoshuo`
+
+比如
+
+```markdown
+---
+title: 测试页面
+type: shuoshuo
+date: 2023-03-08 10:38:34
+---
+```
+
+### 创建说说存放文件
+
+在博客根目录下的`source` 目录下面创建文件夹 `_data`（如果之前没有创建过）
+
+然后在 `_data` 目录下面创建文件 `essays.yml`
+
+在里面按照此格式写你的说说内容
+
+```yaml
+- content: 第一条说说内容
+  date: 2019-01-01 10:00:00 #说说日期
+
+- content: 第二条说说内容
+  date: 2019-01-02 10:00:00
+```
+
+然后访问此页面就可以看见你的说说内容了。
+
+</div>
+
+## 写作提示
+
+说说支持 Markdown 写法。
+
+如果需要换行，请按照以下写法
+
+```yaml
+- content: |
+      说说测试，这是第四个，换行测试
+      说说测试，这是第四个，换行测试
+      说说测试，这是第四个，换行测试
+      说说测试，这是第四个，换行测试
+  date: 2019-01-04 10:00:00
+```

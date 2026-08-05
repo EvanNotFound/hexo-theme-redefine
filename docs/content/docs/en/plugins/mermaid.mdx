@@ -1,0 +1,44 @@
+---
+title: Mermaid JS Flowchart
+---
+
+```yaml
+plugins:
+	...
+  mermaid: # Mermaid JS
+    enable: false # enable mermaid or not
+    version: "9.3.0" # default v9.3.0
+```
+
+To use Mermaid JS for drawing diagrams in Hexo, you need to install the `hexo-filter-mermaid-diagrams` npm module. You can install it by running the following command in the Hexo root directory:
+
+```bash
+npm install hexo-filter-mermaid-diagrams
+```
+
+Once installed,
+
+- The `plugins.mermaid.enable` field is used to control whether Mermaid JS is enabled.
+- The `plugins.mermaid.version` field is used to control the version of Mermaid JS.
+
+For example, to use Mermaid JS to draw diagrams in an article, simply use the following Markdown syntax in the article:
+
+````markdown
+```mermaid
+  graph TD;
+      A-->B;
+      A-->C;
+      B-->D;
+      C-->D;
+```
+````
+
+![Screenshot 2023-01-16 at 7.40.51 PM](https://evan.beee.top/img/2023/01/16/f3ff06b2553ae3f214c5c4421fa94c93.png)
+
+The `graph` type can be `graph`, `digraph`, `flowchart`, `gantt`, `sequenceDiagram`, `classDiagram`, or `stateDiagram`.
+
+For more syntax, please refer to the Mermaid JS official website: https://mermaid.js.org/.
+
+## More
+
+For a hands-on experience, please visit the [Redefine Demo Site](https://redefine.ohevan.com/2023/01/16/mermaidjs-demo/).

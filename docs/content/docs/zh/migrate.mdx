@@ -1,0 +1,58 @@
+---
+title: 从 v1 迁移
+description: 如果你使用的是 v1.x.x 版本的 Redefine 主题，建议尽快升级到 v2.x.x 版本。
+---
+
+如果你使用的是 v1.x.x 版本的 Redefine 主题，建议尽快升级到 v2.x.x 版本。
+
+v1 版本已经不再维护，而且 v2 版本对代码进行了重构，不再兼容 v1 版本的配置文件。
+
+所以需要你根据下面的步骤，将 v1 版本的配置文件迁移到 v2 版本。
+
+如果还需要阅读 v1 版本的文档，可以访问 [v1 版本的文档](https://redefine-docs-v1.ohevan.com/)。
+
+## 迁移步骤
+
+
+<div className="fd-steps [&_h3]:fd-step">
+
+    ### 更新主题
+
+    <Tabs items={['npm', 'git']}>
+        <Tab value="npm">
+            执行以下命令更新主题：
+
+            ```bash filename="终端"
+            npm install hexo-theme-redefine@latest
+            ```
+        </Tab>
+        <Tab value="git">
+            首先删除 `themes/redefine` 文件夹，然后执行以下命令更新主题：
+
+            ```bash filename="终端"
+            git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redefine
+            ```
+        </Tab>
+    </Tabs>
+
+    ### 备份 v1 配置文件
+
+    在更新主题之后，把你的原先 v1 版本的配置文件 `_config.redefine.yml` 重命名为 `_config.redefine.v1.yml`
+
+    ### 创建 v2 配置文件
+
+    在站点根目录**新建** `_config.redefine.yml` 文件，然后[此处](https://github.com/EvanNotFound/hexo-theme-redefine/blob/main/_config.yml)的配置文件**复制进去**。
+
+    ### 迁移配置项
+
+    在 v2 版本的配置文件中，对配置项进行了重构，所以请对照着 v1 版本的配置文件，将配置项迁移过来。
+
+    如果迁移比较困难，欢迎重新阅读 [v2 版本的文档](/getting-started)，将配置项重新配置一遍。
+
+    ### 删除 v1 配置文件（可选）
+
+    在**迁移完成并测试站点未发现问题后**，删除站点根目录下的 `_config.redefine.v1.yml` 文件。
+
+</div>
+
+对迁移造成的麻烦，我深表歉意。如有任何问题，欢迎在 [GitHub](https://github.com/EvanNotFound/hexo-theme-redefine) 上提 issue，或者邮件联系我 [contact@ohevan.com](mailto:contact@ohevan.com)

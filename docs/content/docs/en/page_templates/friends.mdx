@@ -1,0 +1,153 @@
+---
+title: Friendly Links
+---
+
+## Effect
+
+![](https://evan.beee.top/img/2023/06/22/1b0338cab5f96121a062383c8090a958.png)
+
+## Configuration Tutorial
+
+<div className="fd-steps [&_h3]:fd-step">
+
+### Create a Links Page
+
+Execute the following command in the root directory of your Hexo project to create a links page.
+
+```shell
+$ hexo new page links
+```
+
+Then, open the Markdown file of this page ( `source/links/index.md` ), edit the Front Matter, add `template: links`, and you can create a Links page.
+
+```markdown filename="source/links/index.md" {4}
+---
+title: Links (Your custom title)
+date: 2020-05-13 14:16:07
+template: links
+---
+```
+
+### Modify the Configuration File
+
+Add the Links page to the `navbar.links` navigation bar configuration item in the Redefine theme configuration file `_config.redefine.yml`.
+
+```yaml filename="_config.redefine.yml" {3-5}
+navbar:
+  links:
+    Friends: # Customize the name
+        icon: fa-solid fa-link # Icon
+        path: /links/
+```
+
+(It can also be placed in the secondary menu)
+
+### Create a Links Storage File
+
+Add a `_data` folder in the `source` folder of your Hexo project.
+
+If you already have a `_data` folder, ignore this step.
+
+Create a `links.yml` file in the `_data` folder.
+
+Add your links in the `links.yml` file in the following format.
+
+Format:
+
+```yaml filename="source/_data/links.yml"
+
+- links_category: 分类名
+  has_thumbnail: 是否有预览图（true/false)
+  list: 
+  - name: 名字
+    link: 链接
+    description: 描述
+    avatar: 头像
+    thumbnail: 预览图（has_thumbnail 为 true 时才需要）
+
+```
+
+Example:
+
+```yaml filename="source/_data/links.yml"
+
+- links_category: Elites
+  has_thumbnail: true
+  list: 
+    - name: EvanNotFound's Blog
+      link: https://ohevan.com
+      description: 用香港记者的速度更新文章
+      avatar: https://evan.beee.top/avatar.png
+      thumbnail: https://img1.imgtp.com/2023/06/19/Jegvz84P.png # has_thumbnail 为 true 时才需要
+
+- links_category: Normal
+  has_thumbnail: false
+  list: 
+    - name: Example Site
+      link: https://example.com
+      description: Example Site Description
+      avatar: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+    - name: Example Site 2
+      link: https://example.com
+      description: Example Site Description
+      avatar: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+
+```
+
+</div>
+
+Note:
+
+If after creating it, you find that the Front Matter of this page is in this format:
+
+```markdown filename="source/links/index.md"
+---
+title:
+  '[object Object]': null
+date:
+  '[object Object]': null
+---
+```
+
+Then please open the `scaffolds/page.md` file in the Hexo root directory.
+
+Change:
+
+```markdown filename="scaffolds/page.md"
+---
+title: { { title } }
+date: { { date } }
+---
+```
+
+to:
+
+```markdown filename="scaffolds/page.md"
+---
+title: {{ title }}
+date: {{ date }}
+---
+```
+
+Then delete the links page you just created and execute the command again:
+
+```bash
+$ hexo new page links
+```
+
+to recreate it.
+
+## Change the Number of Links Columns
+
+Modify `friends_column` in the `page_templates` configuration item of the Redefine theme configuration file `_config.redefine.yml`.
+
+**Configuration item name: `page_templates.friends_column`**
+
+```yaml filename="_config.redefine.yml"
+page_templates:
+  friends_column: 3
+```
+
+| Type | Optional Values | Default Value |
+| :---: | :---: | :---: |
+| Number | `2 \| 3` | 3 |

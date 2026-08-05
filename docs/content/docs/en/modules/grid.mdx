@@ -1,0 +1,60 @@
+---
+title: Grid Module
+description: Arrange multiple content blocks in columns, especially buttons.
+---
+
+The grid module is a lightweight layout container. It is commonly used with the button module, but it also works with other blocks.
+
+## Basic syntax
+
+```markdown
+{% grid %}
+...content...
+{% endgrid %}
+```
+
+By default, grid uses 2 columns with a `16px` gap.
+
+## Arguments
+
+You can use named or positional arguments.
+
+**Named arguments (recommended):**
+
+```markdown
+{% grid cols=3 gap=1rem class="my-grid" %}
+...content...
+{% endgrid %}
+```
+
+- `cols` / `columns`: column count (minimum is `2`)
+- `gap`: spacing between items (`16`, `16px`, `1rem`, etc.)
+- `class` / `classes`: extra class names on the grid wrapper
+
+**Positional arguments:**
+
+```markdown
+{% grid 3 20 custom-grid %}
+...content...
+{% endgrid %}
+```
+
+Order: `[cols] [gap] [extra-classes...]`.
+
+## Example with buttons
+
+```markdown
+{% grid cols=2 gap=16 %}
+{% button text="Documentation" url="https://redefine-docs.ohevan.com" icon="fa-solid fa-book" align="left" %}
+{% button text="Demo" url="https://redefine.ohevan.com" icon="fa-solid fa-flask" align="right" %}
+{% endgrid %}
+```
+
+## Legacy tags (deprecated)
+
+- `{% btns %}` and `{% buttons %}` are deprecated. Use `{% grid %}`.
+- `{% cell %}` is deprecated. Use `{% button %}` inside `{% grid %}`.
+
+## More
+
+For a live experience, please visit the [Redefine Demo Site](https://redefine.ohevan.com/2022/10/02/theme-demo/).

@@ -1,0 +1,60 @@
+---
+title: Grid 网格模块
+description: 用于将多个内容块按列布局，常用于按钮分组展示。
+---
+
+Grid 是一个轻量的布局容器，最常见的用法是和按钮模块搭配，也可以放其他内容块。
+
+## 基本语法
+
+```markdown
+{% grid %}
+...内容...
+{% endgrid %}
+```
+
+默认情况下，Grid 使用 2 列，间距为 `16px`。
+
+## 参数
+
+支持命名参数和位置参数。
+
+**命名参数（推荐）：**
+
+```markdown
+{% grid cols=3 gap=1rem class="my-grid" %}
+...内容...
+{% endgrid %}
+```
+
+- `cols` / `columns`：列数（最小为 `2`）
+- `gap`：子项间距（`16`、`16px`、`1rem` 等）
+- `class` / `classes`：添加到外层容器的额外类名
+
+**位置参数：**
+
+```markdown
+{% grid 3 20 custom-grid %}
+...内容...
+{% endgrid %}
+```
+
+顺序为 `[cols] [gap] [extra-classes...]`。
+
+## 按钮示例
+
+```markdown
+{% grid cols=2 gap=16 %}
+{% button text="文档" url="https://redefine-docs.ohevan.com" icon="fa-solid fa-book" align="left" %}
+{% button text="演示" url="https://redefine.ohevan.com" icon="fa-solid fa-flask" align="right" %}
+{% endgrid %}
+```
+
+## 旧标签兼容（已废弃）
+
+- `{% btns %}` 和 `{% buttons %}` 已废弃，请改用 `{% grid %}`。
+- `{% cell %}` 已废弃，请在 `{% grid %}` 中使用 `{% button %}`。
+
+## 更多
+
+实际体验欢迎前往 [Redefine 演示站点](https://redefine.ohevan.com/2022/10/02/theme-demo/)。

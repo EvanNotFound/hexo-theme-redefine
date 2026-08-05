@@ -1,0 +1,61 @@
+---
+title: Buttons Module
+description: Add inline or standalone buttons with icon or image support.
+---
+
+## Demo
+
+![Buttons demo](https://evan.beee.top/img/2023/01/26/ff18cf0630939a7212dcf926384e0626.png)
+
+## Recommended syntax
+
+Use the `button` tag for new content:
+
+```markdown
+{% button text="Get started" url="https://redefine-docs.ohevan.com" icon="fa-solid fa-download" %}
+```
+
+## Arguments
+
+- `text` / `label`: button text
+- `url` / `href`: link URL
+- `icon`: icon class (for example `fa-solid fa-house`)
+- `image` / `img`: image URL/path used instead of icon
+- `size`: `sm`, `md`, `lg`
+- `align`: `inline`, `left`, `center`, `right`
+- `title`: custom tooltip title
+- `target`, `rel`: link target/rel attributes
+
+When `target="_blank"` is set and `rel` is omitted, `rel="noopener noreferrer"` is added automatically.
+
+## Examples
+
+```markdown
+Inline button: {% button text="Docs" url="/" %}
+
+{% button text="Example" url="https://www.ohevan.com" icon="fa-solid fa-play-circle" size="md" %}
+
+{% button text="Download" url="https://redefine-docs.ohevan.com" icon="fa-solid fa-download" size="lg" align="center" %}
+
+{% button text="Open in new tab" url="https://redefine.ohevan.com" target="_blank" %}
+```
+
+## Legacy syntax (deprecated)
+
+- `{% btn %}` still works, but it is deprecated. Use `{% button %}`.
+- `{% cell %}` is deprecated. Use `{% button %}`.
+
+## Multi-button layouts
+
+For grouped button layouts, use the [Grid module](/modules/grid).
+
+```markdown
+{% grid cols=2 gap=16 %}
+{% button text="Docs" url="https://redefine-docs.ohevan.com" %}
+{% button text="Demo" url="https://redefine.ohevan.com" %}
+{% endgrid %}
+```
+
+## More
+
+For a live experience, please visit the [Redefine Demo Site](https://redefine.ohevan.com/2022/10/02/theme-demo/).

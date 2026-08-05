@@ -1,0 +1,82 @@
+---
+title: Local Deployment Method
+description: This method is written with reference to the [Instant Short Text Static Deployment Version](https://blog.zhheo.com/p/557c9e72.html) by Evan Luo, adapted for the Redefine theme.
+---
+
+This method is written with reference to the [Instant Short Text Static Deployment Version](https://blog.zhheo.com/p/557c9e72.html) by Evan Luo, adapted for the Redefine theme.
+
+The implementation logic is to write the content of the short text in a local `yml` file, and then generate the short text when generating the blog.
+
+## Effect
+
+![Screenshot 2023-03-09 at 3.20.35 PM](https://evan.beee.top/img/2023/03/09/75b146ba614c9cbc81c1ecf1b7e19ef3.png)
+
+Demo link: https://redefine.ohevan.com/essays
+
+## Configuration
+
+
+<div className="fd-steps [&_h3]:fd-step">
+
+### Create a Short Text Page
+
+You can choose the page name as `shuoshuo` or `essays` or `essay`.
+
+Execute the following command in the root directory of your Hexo blog:
+
+```shell
+$ hexo new page essays
+```
+
+At this point, a page named `essays` is created.
+
+### Edit the Page Name
+
+Open the `/source/esssays/index.md` file (based on the page name you created), and change the `title` attribute in the `front-matter` to `说说` or `Essays` in Chinese.
+
+Since the page template is matched based on the page name by default, if you want to change the page name to another name, please add `type: shuoshuo` in the `front-matter`.
+
+For example:
+
+```markdown
+---
+title: 测试页面
+type: shuoshuo
+date: 2023-03-08 10:38:34
+---
+```
+
+### Create a Short Text Storage File
+
+Create a folder `_data` under the root directory of your blog (if not created before).
+
+Then, create a file `essays.yml` under the `_data` directory.
+
+Write your short text content in the following format:
+
+```yaml
+- content: 第一条说说内容
+  date: 2019-01-01 10:00:00 #说说日期
+
+- content: 第二条说说内容
+  date: 2019-01-02 10:00:00
+```
+
+Then, you can visit this page to see your short text content.
+
+</div>
+
+## Writing Tips
+
+Short texts support Markdown syntax.
+
+If you need to insert line breaks, please use the following format:
+
+```yaml
+- content: |
+      说说测试，这是第四个，换行测试
+      说说测试，这是第四个，换行测试
+      说说测试，这是第四个，换行测试
+      说说测试，这是第四个，换行测试
+  date: 2019-01-04 10:00:00
+```

@@ -1,0 +1,44 @@
+---
+title: Mermaid JS 流程图
+---
+
+```yaml
+plugins:
+	...
+  mermaid: # Mermaid JS
+    enable: false # enable mermaid or not
+    version: "9.3.0" # default v9.3.0
+```
+
+为了在 Hexo 中使用 Mermaid JS 画图，你需要安装 `hexo-filter-mermaid-diagrams` npm 模块。你可以在 Hexo 根目录下运行以下命令来安装：
+
+```bash
+npm install hexo-filter-mermaid-diagrams
+```
+
+安装好以后
+
+-   `plugins.mermaid.enable` 字段用于控制 Mermaid JS 是否启用。
+-   `plugins.mermaid.version` 字段用于控制 Mermaid JS 的版本。
+
+例如，在文章中使用 Mermaid JS 画图，只需要在文章中使用以下 Markdown 语法即可：
+
+````markdown
+```mermaid
+  graph TD;
+      A-->B;
+      A-->C;
+      B-->D;
+      C-->D;
+```
+````
+
+![Screenshot 2023-01-16 at 7.40.51 PM](https://evan.beee.top/img/2023/01/16/f3ff06b2553ae3f214c5c4421fa94c93.png)
+
+其中，graph 类型可以是 `graph`、`digraph`、`flowchart`、`gantt`、`sequenceDiagram`、`classDiagram` 和 `stateDiagram`。
+
+更多语法可以参考 Mermaid JS 官网：https://mermaid.js.org/ 。
+
+## 更多
+
+实际体验欢迎前往 [Redefine 演示站点](https://redefine.ohevan.com/2023/01/16/mermaidjs-demo/)

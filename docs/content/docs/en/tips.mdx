@@ -1,0 +1,62 @@
+---
+title: Writing Guide
+description: Here are some writing guidelines and considerations recommended for the theme.
+---
+
+Here are some writing guidelines and considerations recommended for the theme.
+
+## Headings
+
+Please **do not** add `# Heading` at the beginning of the Markdown article.
+
+Only include your title in the `title:` attribute of the `front-matter` section in the Markdown file.
+
+```markdown {2}
+---
+title: 主题样式 Demo
+date: 2022-10-02 19:07:05
+tags: 
+    - "Demo"
+    - "Hexo"
+    - "Hexo Theme"
+    - "Hexo Theme Redefine"
+thumbnail: https://evan.beee.top/img/redefine-1-final.webp
+sticky: 999
+---
+```
+
+Otherwise, it will result in the following situation:
+
+![Screenshot 2023-02-19 at 9.27.01 AM](https://evan.beee.top/img/2023/02/19/2084ddb92a9e9f6b5d8f08d3f6b5f8f5.png)
+
+## Image Files
+
+Please **do not place your images in the theme's `source` folder** as they will be overwritten when updating the theme.
+
+Instead, place your images in the `source/images` folder (or `source/img` folder with a custom folder name) within your Hexo blog's root directory.
+
+When referencing images in your article, use relative paths.
+
+```markdown
+
+比如你放在 `source/images` 文件夹中的 `test.png` 图片，你可以这样引用
+
+![Test](/images/test.png)
+
+或者放在 `source/img` 文件夹中的 `test.png` 图片，你可以这样引用
+
+![Test](/img/test.png)
+
+以此类推
+
+```
+
+## Typora Theme for Corresponding Theme
+
+If you are using the Typora editor, I have created a Typora theme based on the Redefine article style.
+
+You can download and use it from [here](https://github.com/EvanNotFound/typora-theme-redefine).
+
+Screenshot:
+
+![](https://user-images.githubusercontent.com/68590232/226210971-c2d1a086-d69c-4e03-ae59-c25dcf681fc3.png)

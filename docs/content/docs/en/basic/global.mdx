@@ -1,0 +1,217 @@
+---
+title: Global Function Settings (global)
+description: Set up some global functionalities for the entire site.
+---
+
+Set up some global functionalities for the entire site.
+
+## Custom Fonts
+
+### Chinese Font Switch
+
+**Configuration Item: `global.chinese.enable`**
+
+| Type | Possible Values | Default Value |
+| :---: | :---: | :---: |
+| Boolean | `true \| false` | `false` |
+
+### Chinese Font Family
+
+**Configuration Item: `global.chinese.family`**
+
+| Type | Example |
+| :---: | :---: |
+| String | `Noto Sans SC` |
+
+### Chinese Font Link
+
+**Configuration Item: `global.chinese.url`**
+
+| Type | Note | Example |
+| :---: | :---: | :---: |
+| String | Font style file address (CSS) | `https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap` |
+
+### English Font Switch
+
+**Configuration Item: `global.english.enable`**
+
+| Type | Possible Values | Default Value |
+| :---: | :---: | :---: |
+| Boolean | `true \| false` | `false` |
+
+### English Font Family
+
+**Configuration Item: `global.english.family`**
+
+| Type | Example |
+| :---: | :---: |
+| String | `Farsan` |
+
+### English Font Link
+
+**Configuration Item: `global.english.url`**
+
+| Type | Note | Example |
+| :---: | :---: | :---: |
+| String | Font style file address (CSS) | `https://fonts.googleapis.com/css2?family=Farsan&display=swap` |
+
+## Maximum Content Width
+
+**Configuration Item: `global.content_max_width`**
+
+| Type | Note | Possible Values | Default Value |
+| :---: | :---: | :---: | :---: |
+| String | Do not change unless necessary | `*px` | `1000px` |
+
+![Screenshot 2023-04-25 at 8.54.39 PM](https://evan.beee.top/img/2023/04/25/ed869ac94c0d19f932a5d8ea3147454c.png)
+
+## Sidebar Width
+
+**Configuration Item: `global.sidebar_width`**
+
+| Type | Note | Possible Values | Default Value |
+| :---: | :---: | :---: | :---: |
+| String | Do not change unless necessary | `*px` | `210px` |
+
+## Hover Effects
+
+Effects when hovering over various modules such as article cards, article lists, and feature cards.
+
+### Shadow
+
+**Configuration Item: `global.hover.shadow`**
+
+| Type | Possible Values | Default Value |
+| :---: | :---: | :---: |
+| Boolean | `true \| false` | `true` |
+
+### Scale
+
+**Configuration Item: `global.hover.scale`**
+
+| Type | Possible Values | Default Value |
+| :---: | :---: | :---: |
+| Boolean | `true \| false` | `false` |
+
+## Reading Progress
+
+### Top Progress Bar
+
+**Configuration Item: `global.scroll_progress.bar`**
+
+| Type | Possible Values | Default Value |
+| :---: | :---: | :---: |
+| Boolean | `true \| false` | `false` |
+
+![image-20230321220020055](https://evan.beee.top/img/2023/03/21/14879ceb5870b3329265df4c65c3bb27.png)
+
+### Toolbar Percentage
+
+**Configuration Item: `global.scroll_progress.percentage`**
+
+| Type | Possible Values | Default Value |
+| :---: | :---: | :---: |
+| Boolean | `true \| false` | `true` |
+
+![image-20230321215758624](https://evan.beee.top/img/2023/03/21/5363ff8c63f69f61cbf2ce595147a760.png)
+
+## Website Statistics
+
+**Configuration Item: `global.website_counter`**
+
+- `url` Counter API URL, default is `https://cn.vercount.one/js`.
+- `enable` Whether to enable, fill in `true` or `false`, default is `true`.
+- `site_pv` Whether to display the total website visits, fill in `true` or `false`, default is `true`.
+- `site_uv` Whether to display the total website visitors, fill in `true` or `false`, default is `true`.
+- `post_pv` Whether to display the total post visits, fill in `true` or `false`, default is `true`.
+
+## Single Page Experience
+
+**Configuration Item: `global.single_page`**
+
+Using swup.js library to bring SPA experience to the website, it is recommended to enable it.
+
+| Type | Available Values | Default Value |
+| :---: | :---: | :---: |
+| Boolean | `true \| false` | `true` |
+
+Due to the browser not refreshing, if you want the custom script in the article to load, please add the `data-swup-reload-script` attribute to your `script` tag, for example:
+
+```html
+<script data-swup-reload-script type="text/javascript">
+  // Your script
+</script>
+```
+
+## Open Graph
+
+For more information, please refer to the [Open Graph protocol](https://ogp.me/). It can effectively enhance the sharing effect on social media. It is recommended to enable.
+
+**Configuration Item: `global.open_graph`**
+
+| Type | Available Values | Default Value |
+| :---: | :---: | :---: |
+| Boolean | `true \| false` | `true` |
+
+## Full-Screen Loading Animation
+
+### Toggle
+
+**Configuration Item: `global.preloader.enable`**
+
+| Type    | Options           | Default |
+| :-----: | :---------------: | :-----: |
+| Boolean | `true \| false` | `false` |
+
+### Custom Content
+
+**Configuration Item: `global.preloader.custom_message`**
+
+| Type     | Note                               | Default |
+| :------: | :--------------------------------: | :-----: |
+| String   | Defaults to site name if not set   | None    |
+
+
+## Side Tools
+
+### Gear Icon Rotation
+
+**Configuration Item: `global.side_tools.gear_rotation`**
+
+| Type | Possible Values | Default Value |
+| :---: | :---: | :---: |
+| Boolean | `true \| false` | `true` |
+
+Controls whether the gear icon in the right-bottom tools rotates continuously.
+
+### Auto Expand Tools List
+
+**Configuration Item: `global.side_tools.auto_expand`**
+
+| Type | Possible Values | Default Value |
+| :---: | :---: | :---: |
+| Boolean | `true \| false` | `false` |
+
+Controls whether the side tools list automatically expands when the page loads. By default, users need to click the gear button to reveal the tools list.
+
+## Google Analytics
+
+Google Analytics, for more information, please refer to [Google Analytics](https://analytics.google.com/).
+
+### Switch
+
+**Configuration Item: `global.google_analytics.enable`**
+
+| Type | Available Values | Default Value |
+| :---: | :---: | :---: |
+| Boolean | `true \| false` | `false` |
+
+### Measurement ID
+
+**Configuration Item: `global.google_analytics.id`**
+
+Fill in the `Measurement ID`, which can be obtained from [Google Analytics](https://analytics.google.com/).
+
+| Type | Example |
+| :---: | :---: |
+| String | `G-M7SVFT9AFC` |

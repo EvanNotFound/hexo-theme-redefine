@@ -1,0 +1,27 @@
+{
+  "pages": [
+    "index",
+    "getting-started",
+    "---配置---",
+    "basic",
+    "home",
+    "posts",
+    "footer",
+    "---使用---",
+    "page_templates",
+    "modules",
+    "plugins",
+    "shuoshuo",
+    "article_customize",
+    "inject",
+    "cdn",
+    "tips",
+    "language",
+    "---更多---",
+    "thanks",
+    "developer",
+    "migrate",
+    "[联系作者](mailto:contact@ohevan.com)"
+  ],
+  "title": "Hexo Redefine 主题文档"
+}

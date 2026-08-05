@@ -1,0 +1,94 @@
+---
+title: 瀑布流相册页面
+---
+
+import Image from "next/image";
+
+<Image
+  src="https://evan.beee.top/img/2023/05/14/d5328473c414a7dce7990f70e8b1ec41.png"
+  alt="Masonry"
+  width={3248}
+  height={1958}
+  className="my-2"
+  style={{
+    maxHeight: "500px",
+    objectFit: "contain",
+  }}
+/>
+
+## 配置教程
+
+Redefine v2.1.4 版本开始支持瀑布流相册页面，使用方法如下：
+
+<div className="fd-steps [&_h3]:fd-step">
+
+### 创建相册页面
+
+在你的 Hexo 项目根目录下执行如下命令即可创建 相册 / 照片墙 页面，名字可以按照你自己的喜好来命名，这边我创建了一个名为 `masonry` 的页面。
+
+```shell
+$ hexo new page masonry
+```
+
+然后，打开这个页面的 Markdown 文件（`source/masonry/index.md`），编辑 Front Matter，添加 `template: masonry`，即可。
+
+以下是一个正确的配置示例参考：
+
+```markdown filename="masonry/index.md" {4}
+---
+title: 相册
+date: 2023/5/14 11:45:14
+template: masonry
+---
+```
+
+### 修改配置文件
+
+在 Redefine 主题配置文件 `_config.redefine.yml` 的 `navbar.links` 导航栏配置项里面添加相册页面。
+
+```yaml filename="_config.redefine.yml" {3-5}
+navbar:
+  links:
+    相册: #取名随意
+      icon: fa-solid fa-image #图标
+      path: /masonry/
+```
+
+（放在二级菜单也可以）
+
+### 创建相册存放文件
+
+在你的 Hexo 项目的 `source` 文件夹里增加 `_data` 文件夹（如果已有则跳过）
+
+在 `_data` 文件夹下新增 `masonry.yml` 文件。
+
+在 `masonry.yml` 文件里面按照如下格式配置相册信息：
+
+从 Redefine `v2.9.0` 版本开始，建议在 `masonry.yml` 为每张图片填写 `width` 和 `height`（图片原始像素尺寸），用于提前预留布局空间，减少页面加载时的布局偏移（CLS）。
+
+在 `masonry.yml` 中可选配置 `exif: true`（默认 `false`），开启后在图片查看器中展示图片的 EXIF 信息。EXIF 会从图片文件中自动解析，无需手动填写。若图片为远程地址，请确保该图片 URL 支持 CORS（响应头 `Access-Control-Allow-Origin` 允许当前站点或 `*`），否则浏览器无法读取元数据，EXIF 将无法显示。
+
+```yaml filename="source/_data/masonry.yml"
+- image: 图片 URL
+  width: 1920
+  height: 1080
+  exif: true
+  title: 图片标题
+  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod
+
+- image: https://picsum.photos/id/848/2000/1333
+  width: 2000
+  height: 1333
+  title: Lorem ipsum
+  description: Lorem ipsum dolor sit amet
+```
+
+EXIF 预览：
+
+![EXIF 预览](https://assets.ohevan.com/img/23575a0c28c984a988b5496bda91cdac.png)
+
+### 创建完成
+
+现在就可以访问你创建的页面查看效果了。
+
+</div>

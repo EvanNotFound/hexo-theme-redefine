@@ -1,0 +1,35 @@
+---
+title: CDN Acceleration
+description: Content Delivery Network (CDN) is a distributed system that stores content on servers closest to the users, thereby improving the speed and performance of accessing websites. CDN forwards user requests to the nearest server instead of the website's origin server. This reduces the load on the origin server and improves the speed of accessing the website for users.
+---
+
+Content Delivery Network (CDN) is a distributed system that stores content on servers closest to the users, thereby improving the speed and performance of accessing websites. CDN forwards user requests to the nearest server instead of the website's origin server. This reduces the load on the origin server and improves the speed of accessing the website for users.
+
+This theme supports CDN acceleration, and you can enable CDN acceleration in the theme settings. If your site is already fast, it is not recommended to enable CDN acceleration.
+
+The supported services are: `aliyun`, `jsdelivr`, `unpkg`.
+
+## Configuration
+
+Open the theme configuration file `_config.redefine.yml` and find the `cdn` configuration item. Set `enable` to `true` and set `provider` to the CDN service provider you want to use.
+
+```yaml filename="_config.redefine.yml"
+cdn:
+  # Whether to enable CDN
+  enable: false
+  # CDN Provider
+  provider: unpkg # elemecdn, jsdelivr, unpkg, aliyun, custom
+  custom_url: 
+```
+
+### Custom Provider
+
+If you want to use a custom CDN service provider, you can set `provider` to `custom` and set `custom_url` to your CDN address.
+
+The format of `custom_url` is: `https://cdn.custom.com/hexo-theme-redefine/${version}/source/${path}`, where `${version}` will be replaced with the theme version number, and `${path}` will be replaced with the path to the theme resources.
+
+Please note that `${path}` should be specified within the `source` directory of the theme files, otherwise it will not be replaced correctly.
+
+## Special Note
+
+`aliyun` is my self-funded Alibaba Cloud OSS, which costs me about 20 yuan per month. If you use this source and have the ability, please consider [donating](https://donate.ohevan.com) some funds. Alibaba Cloud OSS is quite expensive, and even a small donation can help sustain it for longer. Thank you!

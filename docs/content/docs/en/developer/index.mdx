@@ -1,0 +1,55 @@
+---
+title: Guide to Theme Development
+description: This theme utilizes [Tailwind CSS](https://tailwindcss.com/) as its CSS framework. If you're looking to personalize the theme and incorporate Tailwind CSS, dive into the documentation on this page.
+---
+
+## Getting Ready for Development
+
+<div className="fd-steps [&_h3]:fd-step">
+
+    ### Enabling Theme Development Mode
+
+    To get started, set the `developer.enable` option to `true` within the theme's configuration file `_config.redefine.yml`. This file can be found in the root directory of your Hexo installation.
+
+    ```yaml
+    # DEVELOPER MODE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+    developer:
+    # Activate developer mode (for those modifying the theme's source code; not for regular users)
+    enable: true
+    # DEVELOPER MODE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+    ```
+
+    ### Installing Tailwind CSS
+
+    Begin by navigating to the theme directory and executing the following command:
+
+    ```bash
+    npm install
+    ```
+
+    ### Live Compilation of Tailwind CSS
+
+    In your terminal, execute:
+
+    ```bash
+    npm run watch:css
+    ```
+
+    This will enable real-time compilation of Tailwind CSS, and the compiled CSS file will reside in `source/build/css/styles.css`.
+
+</div>
+
+## Customizing Your Theme
+
+### Tailoring Tailwind CSS
+
+If you're eager to tweak the theme's styles using Tailwind CSS:
+
+- For customizing the Tailwind CSS configuration, make changes to the `tailwind.config.js` file located in the theme folder.
+- To create personalized global styles with Tailwind CSS, modify the `source/css/style.styl` file in the theme folder.
+
+For an in-depth understanding of Tailwind CSS, consult the [official Tailwind CSS documentation](https://tailwindcss.com/docs).
+
+### Crafting Unique Theme Styles
+
+If you prefer not to use Tailwind CSS and instead wish to fashion your own theme styles, delve into the respective `.styl` style files found in the `source/css/` directory within the theme folder. Then, seamlessly integrate the CSS class you've devised into your `ejs` files.

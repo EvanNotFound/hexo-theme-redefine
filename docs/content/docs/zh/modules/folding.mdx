@@ -1,0 +1,64 @@
+---
+title: Folding 折叠模块
+description: 将较长内容折叠展示，按需展开阅读。
+---
+
+可以在折叠块中嵌套文字、Markdown，或其他模块标签。
+
+## 效果
+
+![折叠示例](https://assets.ohevan.com/img/42539f5ab32c6760e55a4bd0a7d366a2.png)
+
+## 推荐写法
+
+推荐使用命名参数，可读性更好：
+
+```markdown
+{% folding title="点击展开" class="blue" open=true %}
+需要展示的内容
+{% endfolding %}
+```
+
+### 命名参数
+
+- `title`：折叠标题
+- `class` / `classes` / `style`：添加到 `<details>` 外层的额外类名
+- `open`：默认展开（支持 `1`、`true`、`yes`、`on`）
+
+## 旧写法（仍兼容）
+
+旧的 `颜色::标题` 写法仍可用：
+
+```markdown
+{% folding blue::点击展开 %}
+需要展示的内容
+{% endfolding %}
+```
+
+## 示例
+
+```markdown
+{% folding title="Folding 测试：点击查看更多" class="green" %}
+
+这里可以放普通文字，也可以嵌套其他模块。
+
+{% callout type="danger" %}
+danger 提示块标签
+{% endcallout %}
+
+{% callout type="info" %}
+info 提示块标签
+{% endcallout %}
+
+{% endfolding %}
+```
+
+## 常用样式类名
+
+```markdown
+yellow, blue, green, red, orange, pink, cyan, white, black, gray, purple
+```
+
+## 更多
+
+实际体验欢迎前往 [Redefine 演示站点](https://redefine.ohevan.com/2022/10/02/theme-demo/)。

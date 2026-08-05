@@ -1,0 +1,64 @@
+---
+title: Folding Module
+description: Collapse long content blocks and reveal them on demand.
+---
+
+You can nest text, markdown, and other module tags in a folding block.
+
+## Demo
+
+![Folding demo](https://assets.ohevan.com/img/42539f5ab32c6760e55a4bd0a7d366a2.png)
+
+## Recommended syntax
+
+Use named arguments for better readability:
+
+```markdown
+{% folding title="Click to expand" class="blue" open=true %}
+Content goes here.
+{% endfolding %}
+```
+
+### Named arguments
+
+- `title`: summary text
+- `class` / `classes` / `style`: extra classes on the `<details>` wrapper
+- `open`: default open state (`1`, `true`, `yes`, `on`)
+
+## Legacy syntax (compatible)
+
+The legacy style is still supported:
+
+```markdown
+{% folding blue::Click to expand %}
+Content goes here.
+{% endfolding %}
+```
+
+## Example
+
+```markdown
+{% folding title="Folding test: click to view more" class="green" %}
+
+This block supports nested modules.
+
+{% callout type="danger" %}
+Exercise caution when revealing this section.
+{% endcallout %}
+
+{% callout type="info" %}
+You can also place helpful tips inside folding content.
+{% endcallout %}
+
+{% endfolding %}
+```
+
+## Common style classes
+
+```markdown
+yellow, blue, green, red, orange, pink, cyan, white, black, gray, purple
+```
+
+## More
+
+For a live experience, please visit the [Redefine Demo Site](https://redefine.ohevan.com/2022/10/02/theme-demo/).

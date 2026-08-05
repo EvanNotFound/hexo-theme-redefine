@@ -1,0 +1,78 @@
+---
+title: Callout 提示模块
+description: 从 v2.9.0 开始，callout 取代旧 note 系列标签。
+---
+
+<Callout type="info">
+  从 v2.9.0 开始，callout 模块取代旧的 note 系列标签。旧标签仍可渲染，
+  但已废弃，不建议在新内容中继续使用。
+</Callout>
+
+## 效果
+
+**无标题提示块**
+
+![Callout without title](https://assets.ohevan.com/img/377cb5236d589c9881334bf322e7cdf2.png)
+
+**带标题提示块**
+
+![Callout with title](https://assets.ohevan.com/img/5246c650f8492bc8a687e4115a2f62bc.png)
+
+## 基本语法
+
+```markdown
+{% callout [type] [fa-style] [fa-icon] [extra-classes...] %}
+内容写这里。
+{% endcallout %}
+```
+
+带标题写法（旧写法仍兼容）：
+
+```markdown
+{% callout [type] [fa-style] [fa-icon] [extra-classes...]::这里是标题 %}
+内容写这里。
+{% endcallout %}
+```
+
+## 命名参数
+
+`callout` 现支持命名参数：
+
+- `type`
+- `title`
+- `icon`
+- `variant`（`simple` 或 `titled`）
+- `class` / `classes`
+
+```markdown
+{% callout type="warning" icon="fa-solid fa-triangle-exclamation" %}
+上线前请再次检查。
+{% endcallout %}
+
+{% callout type="info" title="提示" class="custom-class" %}
+命名参数让配置更清晰。
+{% endcallout %}
+```
+
+当传入 `title` 时会自动渲染为带标题样式，也可通过 `variant="titled"` 强制指定。
+
+## 旧标签兼容（已废弃）
+
+旧标签仍会渲染，但现在会在 Hexo 日志中输出废弃警告。
+
+- 简单型：`note`、`notes`、`subnote`
+- 标题型：`noteL`、`notel`、`notelarge`、`notel-large`、`notes-large`、`subwarning`
+
+```markdown
+{% note warning fa-solid fa-bolt %}
+旧的 note 语法仍然可用，但建议改用 `callout`。
+{% endnote %}
+
+{% notel danger fa-solid fa-triangle-exclamation 警告 %}
+旧的 notel 语法仍然可用，但建议改用 `callout`。
+{% endnotel %}
+```
+
+## 更多
+
+实际体验欢迎前往 [Redefine 演示站点](https://redefine.ohevan.com/2022/10/02/theme-demo/)。

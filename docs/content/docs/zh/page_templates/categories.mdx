@@ -1,0 +1,56 @@
+---
+title: 分类
+---
+
+import Image from "next/image";
+
+<Image
+  src="https://evan.beee.top/img/2023/06/26/88475b8866d348a13b7816e14666dde2.png"
+  alt="Screenshot 2023-03-24 at 4.46.32 PM"
+  width={2662}
+  height={1246}
+  className="my-2"
+  style={{
+    maxHeight: "500px",
+    objectFit: "contain",
+  }}
+/>
+
+## 配置
+
+
+<div className="fd-steps [&_h3]:fd-step">
+
+    ### 创建分类页面
+
+    在 Hexo 根目录执行以下命令：
+
+    ```bash
+    hexo new page categories
+    ```
+
+    然后，打开这个页面的 Markdown 文件（`source/categories/index.md`），编辑 Front Matter，添加 `template: categories`，即可。
+
+    ```markdown filename="source/categories/index.md" {4}
+    ---
+    title: 分类（你自定义的标题）
+    date: 2023/5/14 11:45:14
+    template: categories
+    ---
+    ``` 
+
+    ### 导航栏添加分类页面
+
+    在 Redefine 主题配置文件 `_config.redefine.yml` 的 `navbar.links` 导航栏配置项里面添加分类页面。
+
+    ```yaml filename="_config.redefine.yml" {3-5}
+    navbar:
+        links:
+            Categories: #取名随意
+                icon: fa-solid fa-folder #图标
+                path: /categories/ #链接
+    ```
+
+    （放在二级菜单也可以）
+
+</div>

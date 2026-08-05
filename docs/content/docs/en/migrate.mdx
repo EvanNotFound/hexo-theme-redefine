@@ -1,0 +1,60 @@
+---
+title: Migration from v1
+description: If you are using version v1.x.x of the Redefine theme, it is recommended to upgrade to version v2.x.x as soon as possible.
+---
+
+If you are using version v1.x.x of the Redefine theme, it is recommended to upgrade to version v2.x.x as soon as possible.
+
+The v1 version is no longer maintained, and the v2 version has undergone code refactoring and is no longer compatible with the configuration files of v1 version.
+
+Therefore, you need to follow the steps below to migrate the v1 version configuration files to v2 version.
+
+If you still need to read the documentation for the v1 version, you can visit the [v1 version documentation](https://redefine-docs-v1.ohevan.com/).
+
+## Migration Steps
+
+
+<div className="fd-steps [&_h3]:fd-step">
+
+### Update the theme
+
+<Tabs items={["npm", "git"]}>
+  <Tab value="npm">
+    Execute the following command to update the theme:
+
+    ```bash filename="Terminal"
+    npm install hexo-theme-redefine@latest
+    ```
+
+  </Tab>
+  <Tab value="git">
+    First, delete the `themes/redefine` folder, and then execute the following command to update the theme:
+
+    ```bash filename="Terminal"
+    git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redefine
+    ```
+
+  </Tab>
+</Tabs>
+
+### Backup v1 configuration file
+
+After updating the theme, rename your original v1 version configuration file `_config.redefine.yml` to `_config.redefine.v1.yml`.
+
+### Create v2 configuration file
+
+In the root directory of your site, **create** a `_config.redefine.yml` file, and then **copy** the configuration file from [here](https://github.com/EvanNotFound/hexo-theme-redefine/blob/main/_config.yml) into it.
+
+### Migrate configuration options
+
+In the v2 version configuration file, the configuration options have been refactored, so please refer to the v1 version configuration file and migrate the configuration options accordingly.
+
+If the migration is difficult, feel free to re-read the [v2 version documentation](/getting-started) and reconfigure the configuration options.
+
+### Delete v1 configuration file (optional)
+
+After **completing the migration and testing the site without any issues**, delete the `_config.redefine.v1.yml` file in the root directory of your site.
+
+</div>
+
+I apologize for any inconvenience caused by the migration. If you have any questions, please feel free to raise an issue on [GitHub](https://github.com/EvanNotFound/hexo-theme-redefine) or contact me via email at [contact@ohevan.com](mailto:contact@ohevan.com).

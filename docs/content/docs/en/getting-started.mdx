@@ -1,0 +1,129 @@
+---
+title: Quick Start
+description: Get started with the Redefine theme.
+icon: IconBolt
+---
+
+<Callout type="info">Hexo version needs to be greater than 5.0.0</Callout>
+
+## Installation
+
+<div className="fd-steps [&_h3]:fd-step">
+
+    ### Install the theme
+
+    Run the following command in the Hexo root directory to install the theme. There are two ways to do it:
+
+    <Tabs items={['npm', 'git']}>
+        <Tab value="npm">
+            ```bash filename="Terminal"
+            npm install hexo-theme-redefine@latest
+            ```
+        </Tab>
+        <Tab value="git">
+            ```bash filename="Terminal"
+            git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redefine
+            ```
+        </Tab>
+    </Tabs>
+
+    ### Enable the theme
+
+    In the `_config.yml` file located in the Hexo root directory, modify the value of the `theme` field to `redefine`.
+
+    ```yaml filename="_config.yml"
+    theme: redefine
+    ```
+
+    ### Create a theme configuration file
+
+    Create a file named `_config.redefine.yml` in the Hexo root directory.
+
+    Copy all the content from [here](https://github.com/EvanNotFound/hexo-theme-redefine/blob/main/_config.yml) into the file.
+
+    This file will automatically override the theme's configuration options. The purpose of creating this file is to ensure that your configuration is not lost when you update the theme.
+
+    ### VOILA!
+
+    Now you can start Hexo and see the results.
+
+    Next, please read the configuration notes first and continue configuring the theme.
+
+    ### Configuration Notes
+
+    #### 1. Reading the documentation
+
+    In the following configurations, `xxx.yyy` represents the configuration item `yyy` under `xxx` in the `_config.redefine.yml` file.
+
+    For example, `info.title` refers to the `title` configuration item under `info`.
+
+    ```yaml filename="_config.redefine.yml"
+    info:
+        title: Redefine
+    ```
+
+    #### 2. YAML Syntax
+
+    The configuration file `_config.redefine.yml` uses YAML syntax. If you are not familiar with YAML syntax, please read about it [here](https://learnxinyminutes.com/docs/yaml/) first.
+
+    YAML syntax is based on indentation to denote levels, so please pay attention to indentation.
+
+    Please maintain the original indentation and avoid adding extra spaces before configuration items.
+
+    #### 3. Configure the theme
+
+    All modifications should be made in the `_config.redefine.yml` file. It is not recommended to directly modify the theme files because your changes will be overwritten when the theme is updated.
+
+</div>
+
+## Update
+
+<div className="fd-steps [&_h3]:fd-step">
+
+    ### Update the theme
+
+    Run the same commands as installation in the Hexo root directory to update the theme:
+
+    <Tabs items={['npm', 'git']}>
+        <Tab value="npm">
+            ```bash filename="Terminal"
+            npm install hexo-theme-redefine@latest
+            ```
+        </Tab>
+        <Tab value="git">
+            ```bash filename="Terminal"
+            git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redefine
+            ```
+        </Tab>
+    </Tabs>
+
+    ### Migrate configuration
+
+    Sometimes, after updating the theme, your configuration file may have new configuration items, or some configuration items may have been removed, or the names of configuration items may have changed. In such cases, you need to synchronize these configurations with your configuration file.
+
+    You can use the `File Compare` feature of editors like VS Code to compare the old and new configuration files, and then add the new configuration items to your configuration file.
+
+    For example, here are the instructions for comparing files in VS Code for two different installation methods:
+
+    <Tabs items={['npm', 'git']}>
+        <Tab value="npm">
+            In VS Code, hold down the `Ctrl` (Windows) or `Command` (macOS) key,
+
+            select the old configuration file (`_config.redefine.yml`),
+
+            then select the new configuration file (`node_modules/hexo-theme-redefine/_config.yml`).
+
+            Click the `Compare Selected` button to see the comparison result of the two files, and then proceed with the migration. Please strictly follow the indentation of the old configuration file during the migration.
+        </Tab>
+        <Tab value="git">
+            In VS Code, hold down the `Ctrl` (Windows) or `Command` (macOS) key,
+
+            select the old configuration file (`_config.redefine.yml`),
+
+            then select the new configuration file (`themes/redefine/_config.yml`).
+
+            Click the `Compare Selected` button to see the comparison result of the two files, and then proceed with the migration. Please strictly follow the indentation of the old configuration file during the migration.
+        </Tab>
+    </Tabs>
+
+</div>

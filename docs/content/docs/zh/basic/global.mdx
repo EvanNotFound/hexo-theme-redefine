@@ -1,0 +1,216 @@
+---
+title: 全局功能设置 (global)
+description: 设置全站的一些功能。
+---
+
+设置全站的一些功能。
+
+## 自定义字体
+
+### 中文字体开关
+
+**配置项名称：`global.chinese.enable`**
+
+|  类型  |     可选值      | 默认值  |
+| :----: | :-------------: | :-----: |
+| 布尔值 | `true \| false` | `false` |
+
+### 中文字体名称
+
+**配置项名称：`global.chinese.family`**
+
+|  类型  |      示例      |
+| :----: | :------------: |
+| 字符串 | `Noto Sans SC` |
+
+### 中文字体链接
+
+**配置项名称：`global.chinese.url`**
+
+|  类型  |          备注           |                                         示例                                          |
+| :----: | :---------------------: | :-----------------------------------------------------------------------------------: |
+| 字符串 | 字体样式文件地址（CSS） | `https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap` |
+
+### 英文字体开关
+
+**配置项名称：`global.english.enable`**
+
+|  类型  |     可选值      | 默认值  |
+| :----: | :-------------: | :-----: |
+| 布尔值 | `true \| false` | `false` |
+
+### 英文字体名称
+
+**配置项名称：`global.english.family`**
+
+|  类型  |   示例   |
+| :----: | :------: |
+| 字符串 | `Farsan` |
+
+### 英文字体链接
+
+**配置项名称：`global.english.url`**
+
+|  类型  |          备注           |                              示例                              |
+| :----: | :---------------------: | :------------------------------------------------------------: |
+| 字符串 | 字体样式文件地址（CSS） | `https://fonts.googleapis.com/css2?family=Farsan&display=swap` |
+
+## 文章最大宽度
+
+**配置项名称：`global.content_max_width`**
+
+|  类型  |          备注          | 可选值 |  默认值  |
+| :----: | :--------------------: | :----: | :------: |
+| 字符串 | 如无特别需要请不要更改 | `*px`  | `1000px` |
+
+![Screenshot 2023-04-25 at 8.54.39 PM](https://evan.beee.top/img/2023/04/25/ed869ac94c0d19f932a5d8ea3147454c.png)
+
+## 边栏宽度
+
+**配置项名称：`global.sidebar_width`**
+
+|  类型  |          备注          | 可选值 | 默认值  |
+| :----: | :--------------------: | :----: | :-----: |
+| 字符串 | 如无特别需要请不要更改 | `*px`  | `210px` |
+
+## 悬停效果
+
+鼠标悬停在各种模块（文章卡片，文章列表，功能卡片等）时的效果。
+
+### 阴影
+
+**配置项名称：`global.hover.shadow`**
+
+|  类型  |     可选值      | 默认值 |
+| :----: | :-------------: | :----: |
+| 布尔值 | `true \| false` | `true` |
+
+### 缩放
+
+**配置项名称：`global.hover.scale`**
+
+|  类型  |     可选值      | 默认值  |
+| :----: | :-------------: | :-----: |
+| 布尔值 | `true \| false` | `false` |
+
+## 阅读进度
+
+### 顶部进度条
+
+**配置项名称：`global.scroll_progress.bar`**
+
+|  类型  |     可选值      | 默认值  |
+| :----: | :-------------: | :-----: |
+| 布尔值 | `true \| false` | `false` |
+
+![image-20230321220020055](https://evan.beee.top/img/2023/03/21/14879ceb5870b3329265df4c65c3bb27.png)
+
+### 工具栏百分比
+
+**配置项名称：`global.scroll_progress.percentage`**
+
+|  类型  |     可选值      | 默认值 |
+| :----: | :-------------: | :----: |
+| 布尔值 | `true \| false` | `true` |
+
+![image-20230321215758624](https://evan.beee.top/img/2023/03/21/5363ff8c63f69f61cbf2ce595147a760.png)
+
+## 网站统计
+
+**配置项名称：`global.website_counter`**
+
+-   `url` 统计 API 地址, 默认为 `https://cn.vercount.one/js`.
+-   `enable` 是否启用，填写 `true` 或 `false`，默认为 `true`。
+-   `site_pv` 是否显示网站总访问量，填写 `true` 或 `false`，默认为 `true`。
+-   `site_uv` 是否显示网站总访客数，填写 `true` 或 `false`，默认为 `true`。
+-   `post_pv` 是否显示文章总访问量，填写 `true` 或 `false`，默认为 `true`。
+
+## 单页应用体验
+
+**配置项名称：`global.single_page`**
+
+使用 Swup 库实现单页应用体验，类似 Pjax 但是比 Pjax 使用更方便，推荐开启。其他详细信息请参考 [Swup](https://swup.js.org/)。
+
+|  类型  |     可选值      | 默认值 |
+| :----: | :-------------: | :----: |
+| 布尔值 | `true \| false` | `true` |
+
+由于浏览器不会刷新，所以在 markdown 文件里面加入了自定义 javascript 的话，请在你的 `script` 标签中加入 `data-swup-reload-script` 属性，例如：
+
+```html
+<script data-swup-reload-script type="text/javascript">
+	// 你的脚本
+</script>
+```
+
+## Open Graph
+
+详细信息请参考 [Open Graph protocol](https://ogp.me/)。能有效提升分享到社交媒体的效果，建议开启。
+
+**配置项名称：`global.open_graph`**
+
+|  类型  |     可选值      | 默认值 |
+| :----: | :-------------: | :----: |
+| 布尔值 | `true \| false` | `true` |
+
+## 首页全屏加载动画
+
+### 开关
+
+**配置项名称：`global.preloader.enable`**
+
+|  类型  |     可选值      | 默认值  |
+| :----: | :-------------: | :-----: |
+| 布尔值 | `true \| false` | `false` |
+
+### 自定义内容
+
+**配置项名称：`global.preloader.custom_message`**
+
+|  类型  |        备注        | 默认值 |
+| :----: | :----------------: | :----: |
+| 字符串 | 不填则使用网站名称 |   无   |
+
+## 侧边工具栏
+
+### 齿轮图标旋转
+
+**配置项名称：`global.side_tools.gear_rotation`**
+
+|  类型  |     可选值      | 默认值 |
+| :----: | :-------------: | :----: |
+| 布尔值 | `true \| false` | `true` |
+
+控制右下角工具栏中的齿轮图标是否持续旋转。
+
+### 自动展开工具列表
+
+**配置项名称：`global.side_tools.auto_expand`**
+
+|  类型  |     可选值      | 默认值  |
+| :----: | :-------------: | :-----: |
+| 布尔值 | `true \| false` | `false` |
+
+控制侧边工具列表是否在页面加载时自动展开。默认情况下，用户需要点击齿轮按钮才能显示工具列表。
+
+## Google Analytics
+
+谷歌统计，详细信息请参考 [Google Analytics](https://analytics.google.com/)。
+
+### 开关
+
+**配置项名称：`global.google_analytics.enable`**
+
+|  类型  |     可选值      | 默认值  |
+| :----: | :-------------: | :-----: |
+| 布尔值 | `true \| false` | `false` |
+
+### Measurement ID
+
+**配置项名称：`global.google_analytics.id`**
+
+填写 `Measurement ID`，可以从 [Google Analytics](https://analytics.google.com/) 中获取。
+
+|  类型  |      示例      |
+| :----: | :------------: |
+| 字符串 | `G-M7SVFT9AFC` |

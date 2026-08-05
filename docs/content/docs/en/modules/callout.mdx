@@ -1,0 +1,79 @@
+---
+title: Callout Module
+description: Callouts replace the old note tags starting from v2.9.0.
+---
+
+<Callout type="info">
+  Starting with v2.9.0, the callout module replaces the previous note-family
+  tags. Legacy tags are still rendered for compatibility, but they are
+  deprecated.
+</Callout>
+
+## Demo
+
+**Callout without title**
+
+![Callout without title](https://assets.ohevan.com/img/377cb5236d589c9881334bf322e7cdf2.png)
+
+**Callout with title**
+
+![Callout with title](https://assets.ohevan.com/img/5246c650f8492bc8a687e4115a2f62bc.png)
+
+## Basic syntax
+
+```markdown
+{% callout [type] [fa-style] [fa-icon] [extra-classes...] %}
+Content goes here.
+{% endcallout %}
+```
+
+Titled form (legacy-compatible):
+
+```markdown
+{% callout [type] [fa-style] [fa-icon] [extra-classes...]::Title goes here %}
+Content goes here.
+{% endcallout %}
+```
+
+## Named arguments
+
+`callout` now supports named arguments:
+
+- `type`
+- `title`
+- `icon`
+- `variant` (`simple` or `titled`)
+- `class` / `classes`
+
+```markdown
+{% callout type="warning" icon="fa-solid fa-triangle-exclamation" %}
+Please double-check before deployment.
+{% endcallout %}
+
+{% callout type="info" title="Heads up" class="custom-class" %}
+Named arguments make callouts easier to read and maintain.
+{% endcallout %}
+```
+
+If `title` is provided, the callout is rendered as titled. You can also force it with `variant="titled"`.
+
+## Legacy tags (deprecated)
+
+Legacy tags still render, but now emit deprecation warnings in Hexo logs.
+
+- Simple: `note`, `notes`, `subnote`
+- Titled: `noteL`, `notel`, `notelarge`, `notel-large`, `notes-large`, `subwarning`
+
+```markdown
+{% note warning fa-solid fa-bolt %}
+Legacy note still works, but prefer `callout`.
+{% endnote %}
+
+{% notel danger fa-solid fa-triangle-exclamation Warning %}
+Legacy titled note still works, but prefer `callout`.
+{% endnotel %}
+```
+
+## More
+
+For actual experience, please visit the [Redefine Demo Site](https://redefine.ohevan.com/2022/10/02/theme-demo/).

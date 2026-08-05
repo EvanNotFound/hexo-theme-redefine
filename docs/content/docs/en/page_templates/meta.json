@@ -1,0 +1,10 @@
+{
+  "title": "Page Templates",
+  "pages": [
+    "friends",
+    "tags",
+    "categories",
+    "masonry",
+    "bookmarks"
+  ]
+}

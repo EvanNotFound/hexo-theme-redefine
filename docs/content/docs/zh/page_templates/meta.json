@@ -1,0 +1,10 @@
+{
+  "title": "页面模板",
+  "pages": [
+    "friends",
+    "tags",
+    "categories",
+    "masonry",
+    "bookmarks"
+  ]
+}

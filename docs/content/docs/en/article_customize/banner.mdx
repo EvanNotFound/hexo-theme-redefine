@@ -1,0 +1,46 @@
+---
+title: Article Header Image
+description: Redefine theme supports adding a cover image to the article.
+---
+
+Redefine theme supports adding a cover image to the article.
+
+## Effect
+
+![Screenshot 2023-02-02 at 9.11.50 PM](https://evan.beee.top/img/2023/02/02/a7ac50af7d5234f6b55acfbb07d1d365.png)
+
+## Usage
+
+Add the following to the [Front Matter](https://hexo.io/docs/front-matter.html) of the article:
+
+```markdown
+---
+cover: "图片链接"
+---
+```
+
+or
+
+```markdown
+---
+banner: "图片链接"
+---
+```
+
+For example:
+
+```markdown
+---
+title: 主题样式 Demo
+date: 2022-12-30 19:07:05
+cover: "https://evan.beee.top/img/2023/01/21/5966cf4d2f2c05aecad54e233d9562ff.png"
+---
+```
+
+<Callout type="info" emoji="ℹ️">
+
+If you have set a [thumbnail for the homepage](https://redefine-docs.ohevan.com/docs/advanced/home-contents/thumbnail), the article cover will automatically be selected as the `thumbnail` link. However, the `banner` and `cover` have the highest priority.
+
+If you do not want to set an article cover but want to keep the homepage thumbnail, set `cover` or `banner` to `false`.
+
+</Callout>

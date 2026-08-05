@@ -1,0 +1,8 @@
+{
+  "title": "Home",
+  "pages": [
+    "home_banner",
+    "navbar",
+    "home/index"
+  ]
+}

@@ -1,0 +1,62 @@
+---
+title: 写作指南
+description: 这里会列举一些主题推荐的写作指南和注意事项
+---
+
+这里会列举一些主题推荐的写作指南和注意事项
+
+## 标题
+
+请不要在 Markdown 文章开头加上 `# 标题`
+
+请**仅在** Markdown 文件的 `front-matter` 中的 `title: ` 属性中写上你的标题
+
+```markdown {2}
+---
+title: 主题样式 Demo
+date: 2022-10-02 19:07:05
+tags:
+    - "Demo"
+    - "Hexo"
+    - "Hexo Theme"
+    - "Hexo Theme Redefine"
+thumbnail: https://evan.beee.top/img/redefine-1-final.webp
+sticky: 999
+---
+```
+
+**否则**，会出现这种情况
+
+![Screenshot 2023-02-19 at 9.27.01 AM](https://evan.beee.top/img/2023/02/19/2084ddb92a9e9f6b5d8f08d3f6b5f8f5.png)
+
+## 图片文件
+
+请**不要把你的图片放在主题的 `source` 文件夹中**，更新主题的时候会被覆盖掉
+
+请把你的图片放在你的 Hexo 博客根目录下面的的 `source/images` 文件夹中（或者 `source/img` 文件夹中，可以自定义文件夹名）
+
+然后在文章中引用图片的时候，使用相对路径
+
+```markdown
+
+比如你放在 `source/images` 文件夹中的 `test.png` 图片，你可以这样引用
+
+![Test](/images/test.png)
+
+或者放在 `source/img` 文件夹中的 `test.png` 图片，你可以这样引用
+
+![Test](/img/test.png)
+
+以此类推
+
+```
+
+## Typora 对应主题
+
+如果你使用的是 Typora 编辑器，我根据 Redefine 的文章样式，制作了一个 Typora 主题。
+
+你可以在 [这里](https://github.com/EvanNotFound/typora-theme-redefine) 下载，并使用。
+
+截图如下
+
+![](https://user-images.githubusercontent.com/68590232/226210971-c2d1a086-d69c-4e03-ae59-c25dcf681fc3.png)

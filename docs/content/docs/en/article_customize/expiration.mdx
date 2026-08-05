@@ -1,0 +1,21 @@
+---
+title: Article Expiration Reminder
+---
+
+## Configuration
+
+If you want to add expiration reminders to your theme's articles, you can add an `expires` field in the Front-matter of the article. The format should be `YYYY-MM-DD HH:MM:SS`, for example:
+
+```yaml
+---
+title: Article Title
+date: 2023-01-01 12:00:00
+expires: 2023-08-31 23:59:59
+---
+```
+
+This way, when users access this article, if the current time has already exceeded the time specified in the `expires` field, a red expiration reminder will be displayed below the article title.
+
+## Effect
+
+![Expiry Reminder Example](https://evan.beee.top/img/0a67ec995c22c10147f1961ac41a0d43-30b2f.png)

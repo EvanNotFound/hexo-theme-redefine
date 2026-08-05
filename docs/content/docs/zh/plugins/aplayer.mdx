@@ -1,0 +1,63 @@
+---
+title: APlayer 音乐播放器
+description: 一个 HTML 音乐播放器，可以实现博客全站音乐播放，具体效果见下
+---
+
+一个 HTML 音乐播放器，可以实现博客全站音乐播放，具体效果见下
+
+```yaml
+plugins:
+    aplayer: # APlayer (fixed version)
+        enable: false
+        type: fixed # fixed, mini
+        audios:
+            - name: # audio name
+              artist: # audio artist
+              url: # audio url
+              cover: # audio cover url
+            - name:
+              artist:
+              url:
+              cover:
+```
+
+## 效果
+
+`fixed` 模式
+![Screenshot 2023-03-01 at 8.33.51 PM](https://evan.beee.top/img/2023/03/01/bfba84ee6ee020b9923a94fa9a14a2b7.png)
+
+`mini` 模式
+![mini](https://evan.beee.top/img/2023/04/07/9d58c198410eec3a18896b1af9cb8863.png)
+
+## 配置
+
+-   `enable` 是否启用
+-   `type` 播放器类型，`fixed` 固定，`mini` 迷你
+-   `audios` 是音乐源
+    -   `name` 音乐名字
+    -   `artist` 歌手
+    -   `url` 音乐源的 `url`。可以是相对链接，也可以是 web 链接
+    -   `cover` 音乐的封面图片。请填写链接。可以是相对链接，也可以是 web 链接
+
+## 示例配置
+
+```yaml
+plugins:
+    aplayer: # APlayer
+        enable: true
+        audios:
+            - name: Imagine # audio name
+              artist: John Lennon # audio artist
+              url: https://evan.beee.top/music/Imagine%20-%20John%20Lennon.mp3 # audio url
+              cover: https://evan.beee.top/music/covers/Lennon_Imagine_Sleeve_1975.jpg # audio cover
+            - name: Something Just Like This
+              artist: Coldplay
+              url: https://evan.beee.top/music/Something%20Just%20Like%20This%20-%20The%20Chainsmokers%E3%80%81Coldplay.mp3
+              cover: https://evan.beee.top/music/covers/Something_Just_Like_This.png
+```
+
+## 更多
+
+实际体验欢迎前往 [Redefine 演示站点](https://redefine.ohevan.com/2022/10/02/theme-demo/)
+
+插件迁移自：https://github.com/DIYgod/APlayer

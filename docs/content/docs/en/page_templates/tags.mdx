@@ -1,0 +1,63 @@
+---
+title: Tags
+---
+
+## Effects
+
+`blur` style:
+
+![Screenshot 2023-03-24 at 4.36.53 PM](https://evan.beee.top/img/2023/03/24/23c212da579f8cacec7b3641592d3d19.png)
+
+`cloud` style:
+
+![Screenshot 2023-03-24 at 4.38.47 PM](https://evan.beee.top/img/2023/03/24/08ceb9bf68754b23a010cfbbccf060d9.png)
+
+## Configuration
+
+
+
+<div className="fd-steps [&_h3]:fd-step">
+
+### Create Tags Page
+
+Execute the following command in the Hexo root directory to create a Tags page.
+
+```bash
+hexo new page tags
+```
+
+Then, open the Markdown file of this page ( `source/tags/index.md` ), edit the Front Matter, add `template: tags`, and you can create a Tags page.
+
+```markdown filename="source/tags/index.md" {4}
+---
+title: Tags (Your custom title)
+date: 2023/5/14 11:45:14
+template: tags
+---
+```
+
+### Add Tags Page to Navigation Bar
+
+Enable `tags` in the `navbar` configuration option of the Redefine theme configuration file `_config.redefine.yml`.
+
+```yaml filename="_config.redefine.yml" {3-5}
+navbar:
+  tags:
+    Tags: #取名随意
+        icon: fa-solid fa-tags #图标
+        path: /tags/ #链接
+```
+
+(It can also be placed in a sub-menu)
+
+</div>
+
+## Change Style
+
+Modify `tags_style` in the `page_templates` configuration option of the Redefine theme configuration file `_config.redefine.yml`.
+
+**Configuration Option Name: `page_templates.tags_style`**
+
+| Type | Possible Values | Default Value |
+| :---: | :---: | :---: |
+| String | `blur`, `cloud` | `blur` |

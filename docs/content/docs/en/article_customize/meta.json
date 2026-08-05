@@ -1,0 +1,10 @@
+{
+  "title": "Article Customize",
+  "pages": [
+    "sticky",
+    "thumbnail",
+    "excerpt",
+    "banner",
+    "expiration"
+  ]
+}

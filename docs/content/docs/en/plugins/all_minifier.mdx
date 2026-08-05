@@ -1,0 +1,32 @@
+---
+title: Resource Compression
+description: In the theme code, HTML, CSS, JavaScript, and image files are not packaged and compressed.
+---
+
+In the theme code, HTML, CSS, JavaScript, and image files are not packaged and compressed.
+
+If you want to package and compress these files, you can use the plugin [hexo-all-minifier](https://github.com/chenzhutian/hexo-all-minifier) to solve this issue, which can effectively reduce the website's loading time.
+
+[hexo-all-minifier](https://github.com/chenzhutian/hexo-all-minifier) integrates `html-minifier`, `clean-css`, `uglify`, and `imagemin`, and it is easy to configure.
+
+## Configuration
+
+<div className="fd-steps [&_h3]:fd-step">
+### Install the Plugin
+
+In the root directory of your Hexo project, install **hexo-all-minifier** by executing the following command:
+
+```shell
+npm install hexo-all-minifier
+```
+
+### Modify the Configuration File
+
+In the Hexo site configuration file `_config.yml`, add the following configuration item:
+
+```yaml filename="_config.yml"
+all_minifier: true
+```
+
+</div>
+If you encounter any issues or want to perform more detailed settings when using the plugin, please refer to the plugin's [documentation](https://github.com/chenzhutian/hexo-all-minifier/blob/master/README.md).

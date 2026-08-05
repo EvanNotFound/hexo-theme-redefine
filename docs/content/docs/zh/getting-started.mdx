@@ -1,0 +1,132 @@
+---
+title: 快速开始
+description: 开始使用 Redefine 主题。
+icon: IconBolt
+---
+
+
+
+<Callout type="info">Hexo 版本需要大于 5.0.0</Callout>
+
+## 安装
+
+<div className="fd-steps [&_h3]:fd-step">
+
+    ### 安装主题
+
+    在 Hexo 根目录执行以下命令安装主题，有两种方式：
+
+
+    <Tabs items={['npm', 'git']}>
+        <Tab value="npm">
+            ```bash filename="终端"
+            npm install hexo-theme-redefine@latest
+            ```
+        </Tab>
+        <Tab value="git">
+            ```bash filename="终端"
+            git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redefine
+            ```
+        </Tab>
+    </Tabs>
+
+    ### 启用主题
+
+    在 Hexo 根目录的 `_config.yml` 文件中，将 `theme` 值修改为 `redefine`。
+
+    ```yaml filename="_config.yml"
+    theme: redefine
+    ```
+
+    ### 创建主题配置文件
+
+    在 Hexo 根目录下创建 `_config.redefine.yml` 文件。
+
+    并将[此处](https://github.com/EvanNotFound/hexo-theme-redefine/blob/main/_config.yml)的所有内容复制进去。
+
+    本文件会自动覆盖主题的配置项，创建本文件的目的是为了方便你在升级主题时，不会丢失你的配置。
+
+    ### VOILA!
+
+    现在你可以启动 Hexo，看看效果了。
+
+    接下来请先阅读配置注意事项，然后继续配置主题。
+
+    ### 注意事项
+
+    #### 1. 文档阅读说明
+
+    在接下来的配置中，`xxx.yyy` 表示你需要在 `_config.redefine.yml` 文件中的 `xxx` 下的 `yyy` 配置项中进行配置。
+
+    例如，`info.title` 指的是 `info` 下的 `title` 配置项。
+
+    ```yaml filename="_config.redefine.yml"
+    info:
+        title: Redefine
+    ```
+
+    #### 2. YAML 语法
+
+    配置文件 `_config.redefine.yml` 使用 YAML 语法，如果你不熟悉 YAML 语法，请先阅读[此处](https://learnxinyminutes.com/docs/yaml/)。
+
+    YAML 语法是按照缩进来区分层级的，所以请注意缩进。
+
+    请保持原本的缩进，注意在配置项之前不要乱加空格。
+
+    #### 3. 配置主题
+
+    所有改动都请在 `_config.redefine.yml` 文件中进行，不建议直接修改主题文件，因为更新主题时会覆盖你的改动。
+
+</div>
+
+## 更新
+
+<div className="fd-steps [&_h3]:fd-step">
+
+    ### 更新主题
+
+    在 Hexo 根目录执行和安装时同样的命令更新主题：
+
+    <Tabs items={['npm', 'git']}>
+        <Tab value="npm">
+            ```bash filename="终端"
+            npm install hexo-theme-redefine@latest
+            ```
+        </Tab>
+        <Tab value="git">
+            ```bash filename="终端"
+            git clone https://github.com/EvanNotFound/hexo-theme-redefine.git themes/redefine
+            ```
+        </Tab>
+    </Tabs>
+
+    ### 迁移配置
+
+    有时候，更新完主题后，你的配置文件会有一些新的配置项，或者删除了一些配置项，或者对配置项名称进行了改动，这时候你需要将这些配置同步到你的配置文件中。
+
+    可以使用 VS Code 等编辑器的 `文件比对` 功能，将新旧配置文件进行对比，然后将新的配置项添加到你的配置文件中。
+
+    例如，以下分别是两个不同安装方法的 VS Code 文件对比教程：
+
+    <Tabs items={['npm', 'git']}>
+        <Tab value="npm">
+            在 VS Code 中，按住 `Ctrl`(windows) 或者 `Command`(macos) 键，
+
+            选中旧配置文件(`_config.redefine.yml`)，
+
+            再选中新配置文件(`node_modules/hexo-theme-redefine/_config.yml`)。
+
+            然后点击 `比较选中的文件` 或者 `Compare Selected` 按钮，即可看到两个文件的对比结果，然后再进行迁移，缩进请严格按照旧配置文件的缩进来进行迁移。
+        </Tab>
+        <Tab value="git">
+            在 VS Code 中，按住 `Ctrl`(windows) 或者 `Command`(macos) 键，
+
+            选中旧配置文件(`_config.redefine.yml`)，
+
+            再选中新配置文件(`themes/redefine/_config.yml`)。
+
+            然后点击 `比较选中的文件` 或者 `Compare Selected` 按钮，即可看到两个文件的对比结果，然后再进行迁移，缩进请严格按照旧配置文件的缩进来进行迁移。
+        </Tab>
+    </Tabs>
+
+</div>

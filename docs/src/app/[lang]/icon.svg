@@ -1,0 +1,16 @@
+<svg viewBox="0 0 400 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <path d="M228.187683,0 C321.420151,0 397,76.1115925 397,170 C397,263.888407 321.420151,340 228.187683,340 L228.187,232.132 L228.635583,232.129528 C262.560076,231.575624 289.891496,203.708962 289.891496,169.413793 C289.891496,134.96795 262.31939,107.007225 228.188067,106.692341 L0,106.689655 L0,0 Z" id="path-1" />
+    </defs>
+    <g id="logo-no-spacing" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Logo">
+            <polygon id="左下角" fill="#A31F34" points="-1.98816658e-14 247 157 400 0 400" />
+            <polygon id="梯形" fill="#C9C8C7" points="-1.83880688e-14 5.37764278e-15 400 400 255.976676 400 -1.83880688e-14 145.177295" />
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1" />
+            </mask>
+            <use id="Combined-Shape" fill="#C9C8C7" xlink:href="#path-1" />
+            <polygon id="阴影" fill="#8A8B8C" mask="url(#mask-2)" points="0 0 146.355685 5.37764278e-15 400 248.711646 400 400" />
+        </g>
+    </g>
+</svg>

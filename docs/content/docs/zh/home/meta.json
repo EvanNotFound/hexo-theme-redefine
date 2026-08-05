@@ -1,0 +1,8 @@
+{
+  "title": "首页",
+  "pages": [
+    "home_banner",
+    "navbar",
+    "home/index"
+  ]
+}

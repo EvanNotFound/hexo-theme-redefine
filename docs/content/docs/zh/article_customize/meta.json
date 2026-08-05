@@ -1,0 +1,10 @@
+{
+  "title": "文章自定义",
+  "pages": [
+    "sticky",
+    "thumbnail",
+    "excerpt",
+    "banner",
+    "expiration"
+  ]
+}

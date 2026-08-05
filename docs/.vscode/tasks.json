@@ -1,0 +1,19 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Translate to English",
+            "type": "shell",
+            "command": "node",
+            "args": [
+                "--experimental-specifier-resolution=node",
+                "--loader",
+                "ts-node/esm",
+                "/Users/evanluo/Documents/Code/markdown-gpt-translator/index.ts",
+                "\"${file}\""
+            ],
+            "presentation": {"echo": true, "reveal": "always", "focus": false, "panel": "shared", "showReuseMessage": false, "clear": true},
+        },
+        // More tasks here, if you need them.
+    ]
+}

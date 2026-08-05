@@ -1,0 +1,86 @@
+---
+title: Artitalk Method
+description: This method is to deploy a shoutbox using [Artitalk](https://artitalk.js.org/).
+---
+
+This method is to deploy a shoutbox using [Artitalk](https://artitalk.js.org/).
+
+## Effect
+
+![](https://evan.beee.top/img/2023/03/09/cfe187fd37e1c5e45ee219b54692161b.png)
+
+Actual link: https://ncwzdlsd.top/shuoshuo/
+
+## Configuration
+
+First, go to the official website of Artitalk and follow the process in the "[Quick Start](https://artitalk.js.org/doc.html#🚀-Getting-Started)" section to store Artitalk's data on LeanCloud.
+
+Please note that the international version of LeanCloud is no longer accessible in mainland China. Therefore, Chinese users should use the domestic version of LeanCloud. However, the overall process remains the same, and you only need to include the `serverURL` information in the configuration page.
+
+Once the LeanCloud configuration is complete, you can add Artitalk to your own blog.
+
+Use the `hexo new page` command to create a new page. For example, if you name it "shuoshuo", enter the following command:
+
+```shell
+hexo new page shuoshuo
+```
+
+A new folder named "shuoshuo" will be automatically created in the `source` folder of your blog's root directory.
+
+Open the `index.md` file inside the newly created `shuoshuo` folder and make the following configurations:
+
+1. Modify the `front-matter` section.
+
+   :::caution
+
+   If you previously used the local deployment method and created an `essays.yml` file in the `/source/_data/` directory, please delete or rename that file to something else. Otherwise, Artitalk will not work.
+
+   :::
+
+   ```markdown
+   ---
+   title: Shoutbox
+   ---
+   ```
+
+2. Next, configure the remaining options according to the [official documentation](https://artitalk.js.org/doc.html#%F0%9F%8C%BC-Getting-Started).
+
+   Pay attention to the `serverURL` here. Normally, LeanCloud's `serverURL` requires domain registration. However, since many blog authors may not have a registered domain, there is an alternative solution: use `https://avoscloud.com` as the `serverURL`.
+
+   To improve access speed, the example code below places the Artitalk JavaScript file on my (ncwzdlsd's) Tencent Cloud Object Storage (COS). You can also follow the configuration in the official documentation and use `unpkg`.
+
+   Example code:
+
+   ```markdown
+   <!-- Include Artitalk -->
+   <script async data-pjax type="text/javascript" src="https://photo-1314795557.cos.ap-beijing.myqcloud.com/artitalk.js"></script>
+   <!-- Container for the shoutbox -->
+   <div id="artitalk_main"></div>
+   <script async data-pjax>
+   new Artitalk({
+       appId: '', // Your LeanCloud appId
+       appKey: '', // Your LeanCloud appKey
+       serverURL: 'https://avoscloud.com',
+       pageSize: 50, // Number of comments per page
+       shuoPla: '', // Text to display in the comment box, can be left empty
+       motion: 0, // Switch for loading animation: 0 (off), 1 (on)
+       atComment: 0, // Switch for comment function: 0 (off), 1 (on)
+       bgImg: '', // Background image for the comment box, can be left empty
+       color1: '#ffffff', // Custom colors, multiple ways to define
+       color2: '#ffffff',
+       color3: '#3b9a9c',
+   })
+   </script>
+   ```
+
+   After configuring it this way, you will have a shoutbox page that can be dynamically edited. If configured as shown above, the effect will be as follows:
+
+   ![](https://evan.beee.top/img/2023/03/09/cfe187fd37e1c5e45ee219b54692161b.png)
+
+For more settings, you can search on your own or refer to the official documentation.
+
+Please note that after deploying the shoutbox using Artitalk, the access speed of the shoutbox page may be relatively slow. If you require faster access speed, please use the local deployment method.
+
+Author: [ncwzdlsd](https://ncwzdlsd.top/)
+
+Modified: Evan Luo

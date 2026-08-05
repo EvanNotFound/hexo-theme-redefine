@@ -1,0 +1,382 @@
+---
+title: 文章样式 (articles)
+---
+
+### 正文字体大小
+
+**配置项名称：`articles.style.font_size`**
+
+| 类型 | 备注 | 可选值 | 默认值 |
+| :---: | :---: | :---: | :---: |
+| 字符串 | 如无特别需要不建议更改 | "*px" | `"16px"` |
+
+### 正文行高
+
+**配置项名称：`articles.style.line_height`**
+
+| 类型 | 备注 | 可选值 | 默认值 |
+| :---: | :---: | :---: | :---: |
+| 数字 | 如无特别需要不建议更改 | 1-5 | `1.5` |
+
+### 图片圆角大小
+
+**配置项名称：`articles.style.image_border_radius`**
+
+| 类型 | 可选值 | 默认值 |
+| :---: | :---: | :---: | 
+| 字符串 | "*px" | `"14px"` |
+
+### 图片对齐
+
+**配置项名称：`articles.style.image_alignment`**
+
+| 类型 | 可选值 | 默认值 |
+| :---: | :---: | :---: |
+| 字符串 | `left \| center` | `center` |
+
+### 图片描述
+
+开启后，图片下方会按照 `alt` 属性的内容显示图片描述。
+
+**配置项名称：`articles.style.image_caption`**
+
+| 类型 | 可选值 | 默认值 |
+| :---: | :---: | :---: |
+| 布尔值 | `true \| false` | `true` |
+
+### 链接图标
+
+是否在文章中的链接后面显示图标。
+
+![Screenshot 2023-04-16 at 12.13.52 PM](https://evan.beee.top/img/2023/04/16/f28839147aa7d7dbc2820d29928b35ac.png)
+
+**配置项名称：`articles.style.link_icon`**
+
+| 类型 | 可选值 | 默认值 |
+| :---: | :---: | :---: |
+| 布尔值 | `true \| false` | `true` |
+
+### 黑幕遮罩
+
+是否启用黑幕遮罩效果。启用后，**删除线标签**将附带黑幕遮罩效果。
+- 鼠标未悬停时：
+
+ ![delete-mask](https://pic.qiusyan.top/img/delete-mask-1.png)
+- 鼠标悬停时：
+
+ ![delete-mask](https://pic.qiusyan.top/img/delete-mask-2.png)
+
+**配置项名称：`articles.style.delete_mask`**
+
+| 类型 | 可选值 | 默认值 |
+| :---: | :---: | :---: |
+| 布尔值 | `true \| false` | `false` |
+
+## 字数统计
+
+需要安装 `hexo-wordcount` 插件。
+
+请执行以下命令安装：
+
+```bash
+npm install hexo-wordcount
+```
+
+### 开关
+
+**配置项名称：`articles.word_count.enable`**
+
+| 类型 | 可选值 | 默认值 |
+| :---: | :---: | :---: |
+| 布尔值 | `true \| false` | `true` |
+
+### 字数
+
+**配置项名称：`articles.word_count.count`**
+
+![image-20230322185551093](https://evan.beee.top/img/2023/03/22/8f5b1c081d2a665231a0b16ec40f8ffe.png)
+
+是否开启字数统计。
+
+| 类型 | 可选值 | 默认值 |
+| :---: | :---: | :---: |
+| 布尔值 | `true \| false` | `true` |
+
+### 阅读时间
+
+**配置项名称：`articles.word_count.min2read`**
+
+![image-20230322185517876](https://evan.beee.top/img/2023/03/22/873fec6e25e22bc13eed5e7fc2df596c.png)
+
+是否开启阅读时间统计。
+
+| 类型 | 可选值 | 默认值 |
+| :---: | :---: | :---: |
+| 布尔值 | `true \| false` | `true` |
+
+## 作者标签
+
+![image-20230322185748775](https://evan.beee.top/img/2023/03/22/adaf4941c45388320b61c008c7037462.png)
+
+### 开关
+
+**配置项名称：`articles.author_label.enable`**
+
+| 类型 | 可选值 | 默认值 |
+| :---: | :---: | :---: |
+| 布尔值 | `true \| false` | `true` |
+
+### 自动标签
+
+**配置项名称：`articles.author_label.auto`**
+
+自动打上 Lv1、Lv2、Lv3 等标签。
+
+| 类型 | 可选值 | 默认值 |
+| :---: | :---: | :---: |
+| 布尔值 | `true \| false` | `false` |
+
+### 自定义标签
+
+**配置项名称：`articles.author_label.list`**
+
+自定义标签列表。
+
+| 类型 | 备注 | 示例 |
+| :---: | :---: | :---: |
+| 数组 | 请用英文逗号分隔 | `["Lv1", "Lv2", "Lv3"]` |
+
+## 代码块
+
+### 复制按钮
+
+**配置项名称：`articles.code_block.copy`**
+
+是否开启代码块复制按钮。
+
+| 类型 | 可选值 | 默认值 |
+| :---: | :---: | :---: |
+| 布尔值 | `true \| false` | `true` |
+
+### 自定义主题
+
+自定义代码高亮主题，预览可前往 [highlightjs 官网演示](https://highlightjs.org/examples)，目前支持：
+ - 亮色主题：github, atom-one-light, default
+ - 暗色主题：github-dark, monokai-sublime, vs2015, night-owl, atom-one-dark, nord, tokyo-night-dark, a11y-dark, agate
+
+##### 亮色
+**配置项名称：`articles.code_blockhighlight_theme.light`**
+
+| 类型 | 可选值 | 默认值 |
+| :---: | :---: | :---: |
+| 字符串 | `github \| atom-one-light \| default` | `github` |
+
+##### 暗色
+**配置项名称：`articles.code_blockhighlight_theme.dark`**
+
+| 类型 | 可选值 | 默认值 |
+| :---: | :---: | :---: |
+| 字符串 | `github-dark \| monokai-sublime \| vs2015 \| night-owl \| atom-one-dark \| nord \| tokyo-night-dark \| a11y-dark \| agate` | `vs2015` |
+
+### 样式
+
+**配置项名称：`articles.code_block.style`**
+
+
+| 类型 | 可选值 | 默认值 |
+| :---: | :---: | :---: |
+| 字符串 | `mac \| simple` | `mac` |
+
+`mac` 样式：
+
+![image-20230322190223745](https://evan.beee.top/img/2023/03/22/7a7bc8dac0e1078b3230a26abc46692b.png)
+
+`simple` 样式：
+
+![image-20230322190426252](https://evan.beee.top/img/2023/03/22/b3a4319779dcaa8dcafb60beb05b6b3b.png)
+
+### 字体
+
+**配置项名称：`articles.code_block.font`**
+
+- `enable`：是否开启自定义字体。
+- `family`：字体名称。
+- `url`：到字体 CSS 样式文件的 URL，比如 Google Fonts 的 `https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap`。
+
+## 目录
+
+### 开关
+
+**配置项名称：`articles.toc.enable`**
+
+是否开启目录。
+
+| 类型 | 可选值 | 默认值 |
+| :---: | :---: | :---: |
+| 布尔值 | `true \| false` | `true` |
+
+![image-20230322190540233](https://evan.beee.top/img/2023/03/22/da4eabf904b77e84b3d1b4f71c79b882.png)
+
+
+### 最大深度
+
+**配置项名称：`articles.toc.max_depth`**
+
+设置目录最大深度。
+
+| 类型 | 可选值 | 默认值 |
+| :---: | :---: | :---: |
+| 数字 | `1-6` | `3` |
+
+### 编号
+
+**配置项名称：`articles.toc.number`**
+
+是否开启目录编号。
+
+![image-20230322191503471](https://evan.beee.top/img/2023/03/22/b6e2525b3d429eaa11920dfd7611cf29.png)
+
+### 全部展开
+
+**配置项名称：`articles.toc.expand`**
+
+是否全部展开。
+
+| 类型 | 可选值 | 默认值 |
+| :---: | :---: | :---: |
+| 布尔值 | `true \| false` | `true` |
+
+
+### 默认打开 TOC
+
+**配置项名称：`articles.toc.init_open`**
+
+是否默认打开 TOC。
+
+| 类型 | 可选值 | 默认值 |
+| :---: | :---: | :---: |
+| 布尔值 | `true \| false` | `true` |
+
+## 文章版权
+
+### 开关
+
+**配置项名称：`articles.copyright.enable`**
+
+是否在文章末尾展示文章版权信息。
+
+| 类型 | 可选值 | 默认值 |
+| :---: | :---: | :---: |
+| 布尔值 | `true \| false` | `true` |
+
+![](https://evan.beee.top/img/ec8db53b9bb72e8889dd9773ed19f22b-fb3d5.png)
+
+### 默认版权信息
+
+**配置项名称：`articles.copyright.default`**
+
+可选值：
+
+- `all_rights_reserved`：保留所有权利。
+- `cc_by_nc_sa`：署名-非商业性使用-相同方式共享，详情请见 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)。
+- `cc_by_nc`：署名-非商业性使用，详情请见 [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/deed.zh)。
+- `cc_by_nd`：署名-禁止演绎，详情请见 [CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/deed.zh)。
+- `cc_by_sa`：署名-相同方式共享，详情请见 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.zh)。
+- `cc_by`：署名，详情请见 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.zh)。
+- `public_domain`：公有领域，详情请见 [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/deed.zh)。
+
+<Callout type={"info"} >
+    **自定义版权信息**
+
+    如需自定义文章使用的版权信息，请在文章的 Front-matter 中添加 `license` 字段，比如：
+
+    ```yaml
+    ---
+    title: Hello World
+    date: 2021-03-22 19:20:00
+    license: all_rights_reserved
+    ---
+    ```
+
+    可选值请参考上面的说明。
+
+    请注意，如果你的文章 Front-matter 中有 `license` 字段，那么这个字段的值会覆盖 `default` 的值。
+
+    如果以上选项不能满足你的需求，你可以在主题配置文件中使用 `copyright` 自定义说明信息，比如：
+
+    ```yaml
+    ---
+    title: Hello World
+    date: 2021-03-22 19:20:00
+    copyright: 本文是瞎写的，你如果要用的话，后果自负。
+    ---
+    ```
+</Callout>
+
+<Callout type={"warning"} emoji={"⚠️"}>
+    请注意，`copyright` 项比 `license` 优先级更高。所以如果你两个都写了，只有 `copyright` 会生效
+</Callout>
+
+## 懒加载
+
+**配置项名称：`articles.lazyload`**
+
+是否开启图片懒加载，在图片多的博客尤其有效，能够加快页面加载速度。
+
+| 类型 | 可选值 | 默认值 |
+| :---: | :---: | :---: |
+| 布尔值 | `true \| false` | `true` |
+
+
+## 文章推荐
+
+自动根据文章关键词，推荐相关文章。
+
+需要安装 `nodejieba` 模块。迁移自 `hexo-theme-volantis`。
+
+请执行以下命令安装：
+
+```bash
+npm install nodejieba@latest
+```
+
+### 开关
+
+**配置项名称：`articles.recommendation.enable`**
+
+是否开启推荐文章。
+
+| 类型 | 可选值 | 默认值 |
+| :---: | :---: | :---: |
+| 布尔值 | `true \| false` | `false` |
+
+### 标题
+
+**配置项名称：`articles.recommendation.title`**
+
+推荐文章这个区块的标题。
+
+| 类型 | 备注 | 默认值 |
+| :---: | :---: | :---: |
+| 字符串 | 无 | `推荐文章` |
+
+
+### 推荐数量
+
+**配置项名称：`articles.recommendation.limit` 和 `articles.recommendation.mobile_limit`**
+
+`limit` 指的是在电脑端推荐文章的数量，`mobile_limit` 指的是在手机端的推荐文章数量。
+
+| 类型 | 可选值 | 默认值 |
+| :---: | :---: | :---: |
+| 数字 | `1-10` | `3` |
+
+### 排除目录
+
+**配置项名称：`articles.recommendation.skip_dirs`**
+
+推荐文章时，排除的目录。
+
+| 类型 | 备注 | 示例 |
+| :---: | :---: | :---: |
+| 数组 | 请用英文逗号分隔 | `["/docs/", "/private/"]` |

@@ -1,0 +1,155 @@
+---
+title: 导航栏 (navbar)
+---
+
+import Image from "next/image";
+
+**配置项名称：`navbar.auto_hide`**
+
+是否在滚动页面时自动隐藏导航栏。
+
+|  类型  |     可选值      | 默认值  |
+| :----: | :-------------: | :-----: |
+| 布尔值 | `true \| false` | `false` |
+
+## 背景色
+
+颜色渐变效果
+
+### 左侧
+
+**配置项名称：`navbar.color.left`**
+
+|  类型  |     备注      |   示例    |
+| :----: | :-----------: | :-------: |
+| 字符串 | 填写 Hex 色值 | `#f78736` |
+
+### 右侧
+
+**配置项名称：`navbar.color.right`**
+
+|  类型  |     备注      |   示例    |
+| :----: | :-----------: | :-------: |
+| 字符串 | 填写 Hex 色值 | `#367df7` |
+
+### 透明度
+
+**配置项名称：`navbar.color.transparency`**
+
+| 类型 | 可选值  | 默认值 |
+| :--: | :-----: | :----: |
+| 数字 | `10-99` |  `35`  |
+
+## 链接列表
+
+**配置项名称：`navbar.links`**
+
+### 一般菜单
+
+效果：
+
+<Image
+  src="https://evan.beee.top/img/2023/03/22/04a83f6c05b00f40c1e1085cf17dd04b.png"
+  alt="image-20230322181757906"
+  width={2944}
+  height={152}
+  className="my-2"
+  style={{
+    maxHeight: "500px",
+    objectFit: "contain",
+  }}
+/>
+
+写法：
+
+```yaml filename="_config.redefine.yml"
+navbar:
+  links:
+    Home: # 一级菜单栏名称
+      path: / # 网址，可以为相对路径或者绝对路径
+      icon: fa-regular fa-house # Fontawesome图标名称（可选）
+```
+
+如果要实现在导航栏点击菜单时跳转到第三方网站，只需把 `path` 的值填写为第三方网站的 URL 即可。
+
+例如：在头部导航栏配置跳转到 Google 网站的菜单
+
+```yaml filename="_config.redefine.yml" {3-5}
+navbar:
+  links:
+    Google: # 一级菜单栏名称
+      path: https://www.google.com/ # 网址，可以为相对路径或者绝对路径
+      icon: fa-brands fa-google # Fontawesome图标名称（可选）
+```
+
+### 下拉菜单写法
+
+效果：
+
+<Image
+  src="https://evan.beee.top/img/2023/03/22/9f2bd701f601ffa075c6dc2c5158866a.png"
+  alt="Screenshot 2023-03-22 at 6.18.29 PM"
+  width={2380}
+  height={440}
+  className="my-2"
+  style={{
+    maxHeight: "500px",
+    objectFit: "contain",
+  }}
+/>
+
+写法：
+
+```yaml filename="_config.redefine.yml" {3-7}
+navbar:
+  links:
+    About: # 一级菜单栏名称
+      icon: fa-regular fa-user # Fontawesome图标名称（可选）
+      submenus: # 二级菜单栏
+        Me: /about # 二级菜单栏名称：网址
+        Github: https://github.com/EvanNotFound/hexo-theme-redefine
+```
+
+### 图标配置
+
+请前往 [Font Awesome](https://fontawesome.com/search) 搜索图标，然后复制图标名称。
+
+<Image
+  src="https://evan.beee.top/img/2023/03/22/0b7c26aeee2f1cb9bc6b3e475bfdfccc.png"
+  alt="image-20230322182114718"
+  width={2508}
+  height={1592}
+  className="my-2"
+  style={{
+    maxHeight: "500px",
+    objectFit: "contain",
+  }}
+/>
+
+最后写在 `icon` 里面即可。
+
+## 搜索
+
+需要安装 `hexo-generator-searchdb` 插件。
+
+请执行以下命令安装：
+
+```bash
+npm install hexo-generator-searchdb --save
+```
+
+### 开关
+
+**配置项名称：`search.enable`**
+
+|  类型  |     可选值      | 默认值  |
+| :----: | :-------------: | :-----: |
+| 布尔值 | `true \| false` | `false` |
+
+### 预加载
+
+**配置项名称：`search.preload`**
+
+|  类型  |     可选值      | 默认值 |
+| :----: | :-------------: | :----: |
+| 布尔值 | `true \| false` | `true` |
