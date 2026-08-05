@@ -35,7 +35,7 @@ const destroyInstance = (id) => {
   }
 };
 
-const createTyped = (id, strings, options) => {
+const createTyped = (id, strings, options, callbacks = {}) => {
   if (typeof window.Typed === "undefined") {
     return;
   }
@@ -54,6 +54,7 @@ const createTyped = (id, strings, options) => {
     backDelay: options.backDelay,
     loop: options.loop,
     startDelay: options.startDelay,
+    ...callbacks,
   });
 
   instances.set(id, instance);
@@ -61,6 +62,39 @@ const createTyped = (id, strings, options) => {
 
 const subtitleConfig = theme?.home_banner?.subtitle || {};
 const hitokotoConfig = subtitleConfig.hitokoto || {};
+
+const getHitokotoText = (data) => {
+  const quote = typeof data?.hitokoto === "string" ? data.hitokoto : "";
+  if (!quote) {
+    return "";
+  }
+
+  const author =
+    typeof data?.from_who === "string" && hitokotoConfig.show_author
+      ? data.from_who
+      : "";
+  return author ? `${quote}——${author}` : quote;
+};
+
+const fetchHitokoto = (api) =>
+  fetch(api)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(
+          `Hitokoto request failed with status ${response.status}`,
+        );
+      }
+
+      return response.json();
+    })
+    .then(getHitokotoText)
+    .then((text) => {
+      if (!text) {
+        throw new Error("Hitokoto response did not contain a quote");
+      }
+
+      return text;
+    });
 
 export const config = {
   usrTypeSpeed: subtitleConfig.typing_speed,
@@ -102,25 +136,55 @@ export default function initTyped(id) {
       return;
     }
 
-    fetch(usrHitokotoAPI)
-      .then((response) => response.json())
-      .then((data) => {
+    fetchHitokoto(usrHitokotoAPI)
+      .then((text) => {
         if (initTokens.get(id) !== currentToken) {
           return;
         }
 
-        const quote = typeof data?.hitokoto === "string" ? data.hitokoto : "";
-        if (!quote) {
+        const shouldRefreshOnLoop = Boolean(
+          hitokotoConfig.refresh_on_loop && options.loop,
+        );
+
+        if (!shouldRefreshOnLoop) {
+          createTyped(id, [text], options);
           return;
         }
 
-        const author =
-          typeof data?.from_who === "string" && hitokotoConfig.show_author
-            ? data.from_who
-            : "";
-        const text = author ? `${quote}——${author}` : quote;
+        let currentText = text;
+        let nextText = null;
+        let refreshRequest = null;
 
-        createTyped(id, [text], options);
+        const prefetchNextText = () => {
+          if (refreshRequest || nextText) {
+            return;
+          }
+
+          refreshRequest = fetchHitokoto(usrHitokotoAPI)
+            .then((nextQuote) => {
+              if (initTokens.get(id) === currentToken) {
+                nextText = nextQuote;
+              }
+            })
+            .catch((error) => {
+              console.error("Failed to refresh hitokoto:", error);
+            })
+            .finally(() => {
+              refreshRequest = null;
+            });
+        };
+
+        createTyped(id, [currentText], options, {
+          onStringTyped: prefetchNextText,
+          onLastStringBackspaced: (instance) => {
+            if (nextText) {
+              currentText = nextText;
+              nextText = null;
+            }
+
+            instance.strings[0] = currentText;
+          },
+        });
       })
       .catch((error) => {
         console.error("Failed to fetch hitokoto:", error);
