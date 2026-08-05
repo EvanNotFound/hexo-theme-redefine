@@ -117,8 +117,7 @@ It's very easy to understand.
 ## 🛠️ Theme Development
 
 Open the theme repository itself in your editor. Zed worktrees are independent
-theme checkouts, and each checkout contains the Hexo preview fixture under
-`dev/site`.
+theme checkouts, and each checkout contains the local demo site under `dev/site`.
 
 Install all local dependencies with pnpm:
 
@@ -126,22 +125,16 @@ Install all local dependencies with pnpm:
 pnpm install --frozen-lockfile
 ```
 
-Start Hexo with the current theme worktree:
+Start the local demo site with the current theme worktree:
 
 ```sh
 pnpm dev
 ```
 
-Generate the fixture without starting a server:
-
-```sh
-pnpm run preview:generate
-```
-
-Issue-specific posts and demo pages belong under `dev/site` and can be
-committed with the theme branch that needs them. The fixture is excluded from
-the published npm package. npm remains supported for installing the published
-theme; pnpm is the repository development and CI package manager.
+Demo posts and pages belong under `dev/site` and can be committed with the
+theme branch that needs them. The demo site is excluded from the published npm
+package. npm remains supported for installing the published theme; pnpm is the
+repository development and CI package manager.
 
 
 

@@ -1,5 +1,5 @@
 {
-  "name": "redefine-preview-site",
+  "name": "redefine-demo-site",
   "version": "0.0.0",
   "private": true,
   "hexo": {
@@ -22,7 +22,6 @@
     "hexo-renderer-pug": "^3.0.0",
     "hexo-renderer-stylus": "^2.0.1",
     "hexo-server": "^2.0.0",
-    "hexo-theme-keep": "^3.4.8",
     "hexo-wordcount": "^6.0.1",
     "js-yaml": "^4.1.0",
     "nodejieba": "^3.5.2",

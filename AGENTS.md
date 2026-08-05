@@ -18,8 +18,7 @@ This file is for automated coding agents working in this repo.
 - Build CSS only: `pnpm run build:css` (Tailwind CLI).
 - Build JS only: `pnpm run build:js` (minifies into `source/js/build`).
 - Watch CSS: `pnpm run watch:css`.
-- Develop against the current worktree: `pnpm dev`.
-- Generate the preview fixture: `pnpm run preview:generate`.
+- Develop against the local demo site: `pnpm dev`.
 - Pre-commit hook blocks committing build outputs on non-`main`/`dev` branches (see `.husky/pre-commit`).
 - Lint: no npm script or config present; add one if needed.
 - Tests: no test runner configured.
@@ -62,11 +61,11 @@ This file is for automated coding agents working in this repo.
 - Class naming: favor existing kebab-case classes and theme-specific names.
 - Tailwind source lives in `source/css/tailwind.source.css`; never edit the generated file.
 
-## Preview Fixture
+## Demo Site
 - The local Hexo site lives in `dev/site/` and is a private pnpm workspace package.
-- `dev/preview.mjs` runs Hexo against the current theme worktree through an isolated temporary runtime.
+- `dev/dev.mjs` mounts the current theme into the demo site, runs Hexo, and watches CSS changes.
 - Branch-specific validation posts and demo pages belong under `dev/site`.
-- Native dependencies required by the fixture are explicitly allowed in `pnpm-workspace.yaml`.
+- Native dependencies required by the demo site are explicitly allowed in `pnpm-workspace.yaml`.
 
 ## Configuration/Data Flow
 - `_config.yml` is the theme config; new options should be exported in `scripts/config-export.js`.

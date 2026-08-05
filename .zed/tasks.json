@@ -17,13 +17,5 @@
     "use_new_terminal": true,
     "reveal": "always",
     "save": "all"
-  },
-  {
-    "label": "Redefine preview generate",
-    "command": "pnpm",
-    "args": ["run", "preview:generate"],
-    "cwd": "$ZED_WORKTREE_ROOT",
-    "reveal": "always",
-    "save": "all"
   }
 ]

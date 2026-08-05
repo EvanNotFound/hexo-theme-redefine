@@ -29,6 +29,7 @@ yarn.lock
 /.sass-cache
 /dev/site/db.json
 /dev/site/public
+/dev/site/themes
 /dev/site/.source
 /dev/site/node_modules
 /connect.lock

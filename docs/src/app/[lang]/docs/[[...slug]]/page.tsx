@@ -27,7 +27,7 @@ export default async function Page({
   const MDX = page.data.body;
   const gitConfig = {
     user: "EvanNotFound",
-    repo: "redefine-docs-v2",
+    repo: "hexo-theme-redefine",
     branch: "main",
   };
 
@@ -64,7 +64,7 @@ export default async function Page({
           {lastModifiedTime && <PageLastUpdate date={lastModifiedTime} />}
         </div>
         <a
-          href={`https://github.com/${gitConfig.user}/${gitConfig.repo}/blob/${gitConfig.branch}/content/docs/${page.path}`}
+          href={`https://github.com/${gitConfig.user}/${gitConfig.repo}/blob/${gitConfig.branch}/docs/content/docs/${page.path}`}
           rel="noreferrer noopener"
           target="_blank"
           className="w-fit flex flex-row items-center gap-1 text-sm text-fd-muted-foreground transition-colors hover:text-fd-accent-foreground"

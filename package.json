@@ -11,8 +11,7 @@
     "build:js": "node source/js/build.js",
     "watch:css": "tailwindcss -i source/css/tailwind.source.css -o source/css/build/tailwind.css --watch --minify",
     "prepare": "husky",
-    "dev": "node dev/preview.mjs --no-build",
-    "preview:generate": "node dev/preview.mjs --generate",
+    "dev": "node dev/dev.mjs",
     "dev:setup": "pnpm install --frozen-lockfile --prefer-offline"
   },
   "repository": {

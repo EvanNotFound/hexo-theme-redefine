@@ -60,8 +60,11 @@ jobs:
       - name: Build Theme Assets
         run: pnpm run build
 
+      - name: Link Local Theme
+        run: node dev/link-theme.mjs
+
       - name: Build Hexo Site
-        run: pnpm run preview:generate -- --output-dir dev/site/public
+        run: pnpm --dir dev/site exec hexo generate
 
       - name: Prepare Vercel Prebuilt Output
         run: |
