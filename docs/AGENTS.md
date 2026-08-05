@@ -1,19 +1,24 @@
 # AGENTS.md
 
-This repository is a Next.js 16 + Fumadocs docs site.
-Use these notes when making changes in this repo.
+This directory is the private `redefine-docs` workspace package in the
+monorepo. It is a Next.js 16 + Fumadocs docs site. The root `AGENTS.md`
+describes workspace boundaries and shared workflows; use these notes for
+docs-package implementation details.
 
 ## Project overview
 
 - App router in `src/app` with route handlers and pages.
 - Docs content lives in `content/docs/{zh,en}` as MDX.
 - Fumadocs generates `.source` content during postinstall or typecheck.
-- Styling uses Tailwind CSS with Prettier Tailwind plugin.
+- Styling uses Tailwind CSS imported by `src/app/[lang]/global.css`, with the
+  Prettier Tailwind plugin.
 - TypeScript is strict; prefer typed APIs.
 
 ## Commands
 
-- Install deps (preferred): `pnpm install`
+- Install deps from the repository root: `pnpm install --frozen-lockfile`
+- When working from this directory, use `pnpm install` only when the lockfile
+  is intentionally being updated.
 - Dev server: `pnpm dev` (Next.js dev)
 - Production build: `pnpm build`
 - Start prod server: `pnpm start`
@@ -97,7 +102,7 @@ Use these notes when making changes in this repo.
 
 ### I18n
 
-- Languages are `zh` and `en`; default is `zh`.
+- Languages are `zh` and `en`; default is `en`.
 - Keep content parity between `content/docs/zh` and `content/docs/en`.
 - Use `i18n` config in `src/lib/i18n.ts`.
 
@@ -112,7 +117,8 @@ Use these notes when making changes in this repo.
 - `src/app` holds Next.js routes, layouts, and pages.
 - `src/components` contains UI and layout components.
 - `content/docs` holds documentation in MDX.
-- `styles` and Tailwind config are in repo root (Tailwind via PostCSS).
+- Global styles are in `src/app/[lang]/global.css` and Tailwind is wired
+  through `postcss.config.mjs`.
 
 ## Linting rules
 
@@ -122,7 +128,8 @@ Use these notes when making changes in this repo.
 
 ## Dependency notes
 
-- Package manager is likely pnpm (`pnpm-lock.yaml` present).
+- The workspace package manager is pnpm (`pnpm-lock.yaml` is at the repository
+  root).
 - Use `pnpm` for installs unless maintainer requests npm/yarn.
 - React 19 + Next 16; follow app router patterns.
 
@@ -131,11 +138,12 @@ Use these notes when making changes in this repo.
 - `fumadocs-mdx` runs on `postinstall` and in `types:check`.
 - Generated MDX output is used by the app; keep content valid.
 
-## Cursor/Copilot rules
+## Agent rules
 
-- Copilot path-specific instructions: `.github/instructions/docs-bilingual.instructions.md`.
-- Copilot custom agent profile: `.github/agents/docs-maintainer.agent.md`.
-- If new rules are added, update this file accordingly.
+- The repository-level docs-focused OpenCode agent is
+  `../.opencode/agents/docs-maintainer.md`.
+- Use it for documentation tasks that require bilingual parity or coordinated locale updates.
+- If new rules are added, update this file and the OpenCode agent accordingly.
 
 ## How to add new docs
 
@@ -156,6 +164,9 @@ Use these notes when making changes in this repo.
 - Run `pnpm lint` and `pnpm types:check` for code changes.
 - Run `pnpm dev` to verify page rendering and MDX output.
 - For MDX changes, verify both `zh` and `en` versions.
+- From the repository root, the equivalent commands are
+  `pnpm --dir docs lint`, `pnpm --dir docs types:check`, and
+  `pnpm --dir docs dev`.
 
 ## Change hygiene
 
@@ -166,8 +177,7 @@ Use these notes when making changes in this repo.
 ## Quick links
 
 - Docs site: https://redefine-docs.ohevan.com
-- Theme repo: https://github.com/evannotfound/hexo-theme-redefine
-- Docs repo: https://github.com/EvanNotFound/redefine-docs-v2
+- Theme repository: https://github.com/evannotfound/hexo-theme-redefine
 
 ## Notes for agents
 
