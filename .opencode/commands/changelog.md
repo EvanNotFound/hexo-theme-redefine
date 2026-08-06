@@ -39,8 +39,8 @@ Output contract:
   - `### 新增` / `### Features`
   - `### 修复` / `### Fixes`
   - `### 优化` / `### Improvements`
-  - `### Breaking Changes` / `### Breaking Changes` (yeah you read it right)
-  - `### 更新方法` / `### Update Instructions`
+  - `### Breaking Changes` / `### Breaking Changes` (yeah you read it right, two versions should both be in english)
+  - `### 更新方法` / `### How to update`
 - Keep every section non-empty. Put all entries in `* ` Markdown bullets and
   leave a blank line between headings and bullets.
 - Use one bullet for each distinct user-visible or operator-visible change.
@@ -80,8 +80,17 @@ those changes:
 
 ### 更新方法
 
-* **NPM**：`npm install hexo-theme-redefine@latest`
-* **迁移**：本版本无需迁移配置文件。
+执行
+
+```
+# pnpm
+pnpm install hexo-theme-redefine@latest
+
+# npm
+npm install hexo-theme-redefine@latest
+```
+
+本版本无需迁移配置文件
 
 ---
 
@@ -97,8 +106,15 @@ those changes:
 * **CDN logging**: Prevent CDN availability logs and status updates when CDN is disabled. (Issue #123)
 
 
-### Update Instructions
+### How to update
 
-* **NPM**: `npm install hexo-theme-redefine@latest`
-* **Migration**: This version does not require configuration migration.
+```
+# pnpm
+pnpm install hexo-theme-redefine@latest
+
+# npm
+npm install hexo-theme-redefine@latest
+```
+
+This version does not require configuration migration.
 ```
