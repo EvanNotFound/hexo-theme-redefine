@@ -18,6 +18,7 @@ Before writing:
   target tag. The target release may not exist yet.
 - Inspect the commits and real diffs from the previous release to the target. If
   the target tag does not exist, treat the current checkout as the target.
+- Inspect relevant PRs and issues that is resolved by the target release, keep them in context as you will need them in the generated summary.
 - Read relevant theme source, `_config.yml`, configuration deprecations,
   language files, documentation, and pull request descriptions when needed to
   understand user-visible behavior and migration requirements.
@@ -50,8 +51,9 @@ Output contract:
   `Support`, or `Keep`.
 - Keep bullets concise and skimmable. Omit implementation details, raw commit
   prefixes, hashes, generated-by notices, contributor roll calls, and vague
-  filler. Include issue numbers or contributor handles only when they add useful
-  release context.
+  filler.
+- For chinese related points, omit the period symbol `。` at the end of the bullet point
+- If a certain bullet change is related to a specific issue or PR, include the issue number or PR number at the end of the bullet point. It should be in the format of `(Issue #<issue_number>)` or `(PR #<pr_number>)`. If it is contributed not by `evannotfound` or `evnluo`, include a mention at the end of the bullet point directly. e.g. `@username`
 - Include npm/Git update commands, the Redefine update documentation link, CDN
   synchronization guidance, or configuration-migration instructions only when
   the inspected release makes them relevant. When included, put the guidance
@@ -67,9 +69,14 @@ those changes:
 ```markdown
 ## 更新日志
 
-### 新增 / 重大更新
+### 新增
 
-* **Callout 模块**：新增 `{% callout %}` 标签并保持旧标签兼容。
+* **Callout 模块**：新增 `{% callout %}` 标签并保持旧标签兼容
+
+### 修复
+
+* **文章页移动端**：修复封面图与正文容器的圆角显示，保持小屏外观一致 (PR #666) @username
+* **CDN 日志**：关闭 CDN 时不再输出可用性检查日志与状态更新 (Issue #123)
 
 ### 更新方法
 
@@ -80,9 +87,15 @@ those changes:
 
 ## Release Notes
 
-### New Features / Major Updates
+### Features
 
 * **Callout module**: Add the `{% callout %}` tag while keeping legacy tags compatible.
+
+### Fixes
+
+* **Mobile article layout**: Fix rounded corners for post covers and containers on small screens.  (PR #666) @username
+* **CDN logging**: Prevent CDN availability logs and status updates when CDN is disabled. (Issue #123)
+
 
 ### Update Instructions
 
