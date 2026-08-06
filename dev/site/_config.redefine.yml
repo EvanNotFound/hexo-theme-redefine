@@ -84,8 +84,14 @@ global:
   single_page: true
   # Whether to enable Preloader.
   preloader:
-    enable: false  # Changed from true
-    custom_message:  # Add this line
+    enable: false
+    custom_message: # Custom message. If empty, the site title will be displayed
+  # Side tools settings
+  side_tools:
+    # Whether to enable gear rotation animation for settings button
+    gear_rotation: true
+    # Whether to auto expand tools list on page load
+    auto_expand: false
   # Whether to enable open graph
   open_graph:
     enable: true
@@ -128,6 +134,8 @@ home_banner:
     text: ['Redefine your writing.','A simple, fast and pure theme.'] # subtitle text, array
     hitokoto:  # 一言配置
       enable: false # Whether to enable hitokoto
+      show_author: false # Whether to show author
+      refresh_on_loop: false # Whether to fetch a new quote on each loop
       api: https://v1.hitokoto.cn # API URL, can add types, see https://developer.hitokoto.cn/sentence/#%E5%8F%A5%E5%AD%90%E7%B1%BB%E5%9E%8B-%E5%8F%82%E6%95%B0
     typing_speed: 100 # Typing speed (ms)
     backing_speed: 80 # Backing speed (ms)
@@ -159,6 +167,8 @@ home_banner:
   social_links:
     # Whether to enable
     enable: true
+    # Social links style
+    style: default # default, reverse, center
     # Social links
     links:
       - icon: github
@@ -171,7 +181,7 @@ home_banner:
     # Social links with QRcode drawers
     qrs:
       - icon: weixin
-        url: # your Wechat QRcode image URL
+        qr: # your Wechat QRcode image URL
       # ...... # you can add more
 # HOME BANNER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
@@ -185,6 +195,10 @@ navbar:
     left: "#f78736" #left side
     right: "#367df7"  #right side
     transparency: 35 #percent (10-99)
+  # Navbar width (usually no need to modify)
+  width:
+    home: 1200px #home page
+    pages: 1000px #other pages
   # Navbar links
   links:
     Home:
@@ -242,6 +256,7 @@ home:
     position: left # Sidebar position. left, right
     first_item: menu # First item in sidebar. menu, info
     announcement: Redefine your writing. # Announcement text
+    show_on_mobile: true # Whether to show sidebar navigation on mobile sheet menu
     links:
       Archives:
         path: /archives
@@ -288,6 +303,7 @@ articles:
     image_caption: false # Whether to display image caption
     link_icon: true # Whether to display link icon
     title_alignment: left # Title alignment. left, center
+    delete_mask: false # Add mask effect to <del> tags, hiding content by default and revealing on hover
     headings_top_spacing: # Top spacing for headings from h1-h6
       h1: 3.2rem
       h2: 2.4rem
@@ -354,7 +370,7 @@ comment:
   # Whether to enable comment
   enable: true
   # Comment system
-  system: waline # waline, gitalk, twikoo, giscus
+  system: waline # waline, gitalk, twikoo, giscus, utterances, artalk
   # System configuration
   config:
     # Waline comment system. See https://waline.js.org/
@@ -364,6 +380,7 @@ comment:
       emoji: [ ] # Waline emojis, see https://waline.js.org/guide/features/emoji.html
       recaptchaV3Key: # Google reCAPTCHA v3 key. See https://waline.js.org/reference/client/props.html#recaptchav3key
       turnstileKey: # Turnstile key. See https://waline.js.org/reference/client/props.html#turnstilekey
+      reaction: false # Waline reaction. See https://waline.js.org/reference/client/props.html#reaction
     # Gitalk comment system. See https://github.com/gitalk/gitalk
     gitalk:
       clientID: # GitHub Application Client ID
@@ -389,6 +406,18 @@ comment:
       lang: en # Giscus language. e.g. en, zh-CN, zh-TW
       input_position: bottom # Place the comment box above/below the comments. e.g. top, bottom
       loading: lazy # Load the comments lazily
+    # Artalk comment system. See https://artalk.js.org/
+    artalk:
+      server: # Artalk server URL. e.g. https://artalk.example.com
+      site: # Site name shown in Artalk admin (should match server-side site config)
+    # Utterances comment system. See https://utteranc.es/
+    utterances:
+      repo: # GitHub repository name e.g. owner/repo (Issues must be enabled)
+      issue_term: pathname # pathname, url, title, og:title (recommended: pathname for single-page mode)
+      issue_number: # Use a specific issue number instead of issue_term
+      label: # Optional label for created issues
+      theme_light: github-light # Light theme
+      theme_dark: github-dark # Dark theme
 
 # COMMENT <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
@@ -401,6 +430,8 @@ footer:
   icon: '<i class="fa-solid fa-code-pull-request"></i>'
   # The start time of the website, format: YYYY/MM/DD HH:mm:ss
   start: 2022/8/17 11:45:14
+  # Site statistics
+  statistics: true # show site statistics or not (total articles, total words)
   # Footer message
   customize:
   # ICP record number. See https://beian.miit.gov.cn/
@@ -459,7 +490,10 @@ plugins:
   # Mermaid JS. Requires hexo-filter-mermaid-diagrams (npm i hexo-filter-mermaid-diagrams). See https://mermaid.js.org/
   mermaid:
     enable: true # enable mermaid or not
-    version: "9.3.0" # default v9.3.0
+    version: "11.4.1" # default v11.4.1
+    theme:
+      light: "default"
+      dark: "dark"
 # PLUGINS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 

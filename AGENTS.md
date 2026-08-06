@@ -9,6 +9,9 @@ package-specific command says otherwise.
 - Root theme: `_config.yml`, `languages/`, `layout/`, `scripts/`, and `source/`.
 - Demo fixtures and site configuration: `dev/site/`. Never edit the generated
   link at `dev/site/themes/redefine/`.
+- When `_config.yml` or another theme configuration default changes, update the
+  corresponding values in `dev/site/_config.redefine.yml` in the same change.
+  Keep any intentional demo-only overrides explicit.
 - Documentation content: `docs/content/docs/{zh,en}/`; documentation app code:
   `docs/src/`. Follow `docs/AGENTS.md` for all `docs/**` work.
 - Keep changes in the owning package. For cross-package behavior, run each

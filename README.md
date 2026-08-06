@@ -140,9 +140,9 @@ This is the list of all the people who have donated to me: [Donation List](https
 👉 [立即体验 Arc Codex](https://www.arccodex.com)
 
 
-- ✅ 支持 GPT-5.3-codex 等最新编程模型，代码生成更精准
+- ✅ 支持 GPT-5.6 等最新编程模型，代码生成更精准
 - ✅ 每日 \$40 美元额度自动重置，月总额高达 \$1200，随便用不封顶
-- ✅ 标准版首月仅 15.9 元，远低于官网价，同时使用优惠码 `REDEFINE`，续费享 **8折** 优惠！
+- ✅ 标准版首月仅 79.9 元，远低于官网价，同时使用优惠码 `REDEFINE`，续费享 **8折** 优惠！
 - ✅ Evan 运营保障，不满意包退，无后顾之忧
 
 [![arccodex-billboard](https://github.com/user-attachments/assets/6b1f49c9-9791-4466-8d1f-211b0c712633)](https://www.arccodex.com)
