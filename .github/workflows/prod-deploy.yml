@@ -16,55 +16,40 @@ jobs:
       url: https://redefine.ohevan.com
 
     steps:
-      - name: Checkout theme repository
+      - name: Checkout repository
         uses: actions/checkout@v6
-        with:
-          path: 'theme' # Checkout the theme repository into a directory named 'theme'
 
       - name: Set up pnpm and Node.js
         uses: pnpm/setup@v2
         with:
           runtime: node@24
-          package-json-file: theme/package.json
           cache: true
-          cache-dependency-path: theme/pnpm-lock.yaml
+          cache-dependency-path: pnpm-lock.yaml
           install: false
 
-      - name: Clone Hexo site repository
-        run: git clone https://github.com/EvanNotFound/redefine-demo.git hexo-site
-
-      - name: Move theme into Hexo site
-        run: |
-          mv theme hexo-site/themes/redefine
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Build theme assets
-        run: |
-          cd hexo-site/themes/redefine
-          pnpm install --frozen-lockfile
-          pnpm run build
+        run: pnpm run build
 
-      - name: Install dependencies
-        run: |
-          cd hexo-site
-          pnpm \
-            install --no-frozen-lockfile --config.strict-dep-builds=false
-          pnpm approve-builds \
-            hexo-util \
-            nodejieba \
-            '!gifsicle' \
-            '!jpegtran-bin' \
-            '!mozjpeg' \
-            '!optipng-bin' \
-            '!pngquant-bin'
+      - name: Configure Production Mode
+        run: node dev/configure-site-mode.mjs production
 
-      - name: Build Hexo
-        run: |
-          cd hexo-site
-          pnpm remove hexo-theme-redefine
-          pnpm run build
+      - name: Clean Demo Site
+        run: pnpm clean
 
-      - name: Change directory to hexo-site
-        run: echo "HEXO_SITE_DIR=${{ github.workspace }}/hexo-site" >> $GITHUB_ENV
+      - name: Link Local Theme
+        run: node dev/link-theme.mjs
+
+      - name: Build Hexo Site
+        run: pnpm --dir dev/site exec hexo generate
+
+      - name: Prepare Vercel Prebuilt Output
+        run: |
+          mkdir -p dev/site/.vercel/output/static
+          printf '{"version":3}' > dev/site/.vercel/output/config.json
+          cp -R dev/site/public/. dev/site/.vercel/output/static/
 
       - name: Install Vercel CLI
         run: pnpm add --global vercel@latest
@@ -76,9 +61,10 @@ jobs:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-          WORKING_DIRECTORY: ${{ env.HEXO_SITE_DIR }}
+          WORKING_DIRECTORY: ${{ github.workspace }}/dev/site
           VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE }}
           PRODUCTION: true
           GITHUB_DEPLOYMENT: false
+          PREBUILT: true
           DEPLOY_PR_FROM_FORK: true
           PR_PREVIEW_DOMAIN: "redefine-preview-pr-{PR}.vercel.app"

@@ -4,21 +4,19 @@
 
 # Site
 title: Theme Redefine
-subtitle:
-description:
-keywords:
+subtitle: Redefine Theme Demo Site
+description: This is Hexo Theme Redefine official demo site. You can see the theme in action here.
+keywords: "Hexo, Theme, Redefine, Demo, Site, hexo-theme-redefine, hexo-theme, simple, pure"
 author: EvanNotFound
-language: zh-CN
-timezone: America/Toronto
+language: en
+timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://127.0.0.1:4000
-permalink: :title/
+url: https://redefine.ohevan.com
+root: /
+permalink: :year/:month/:day/:title/
 permalink_defaults:
-pretty_urls:
-  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
-  trailing_html: true # Set to false to remove trailing '.html' from permalinks
 
 # Directory
 source_dir: source
@@ -37,7 +35,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: true
+post_asset_folder: false
 relative_link: false
 future: true
 highlight:
@@ -51,7 +49,7 @@ highlight:
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
-  path: ""
+  path: ''
   per_page: 10
   order_by: -date
 
@@ -64,7 +62,7 @@ tag_map:
 ## Hexo uses Moment.js to parse and display date
 ## You can customize the date format as defined in
 ## http://momentjs.com/docs/#/displaying/format/
-date_format: DD-MM-YYYY
+date_format: YYYY-MM-DD
 time_format: HH:mm:ss
 
 # Pagination
@@ -81,55 +79,3 @@ theme: redefine
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type:
-
-# hexo-tag-cloud
-tag_cloud:
-  textFont: Trebuchet MS, Helvetica
-  textColor: "#333"
-  textHeight: 25
-  outlineColor: "#E2E1D1"
-  maxSpeed: 0.1
-
-mathjax:
-  tags: none # or 'ams' or 'all'
-  single_dollars: true # enable single dollar signs as in-line math delimiters
-  cjk_width: 0.9 # relative CJK char width
-  normal_width: 0.6 # relative normal (monospace) width
-  append_css: true # add CSS to every page
-  every_page: true # if true, every page will be rendered by mathjax regardless of the `mathjax` setting in Front-matter of each article
-
-category_generator:
-  per_page: 0
-  order_by: -date
-
-marked:
-  prependRoot: true
-  postAsset: true
-
-markdown:
-  preset: 'default'
-  render:
-    html: true
-    xhtmlOut: false
-    langPrefix: 'language-'
-    breaks: true
-    linkify: true
-    typographer: true
-    quotes: '“”‘’'
-  enable_rules:
-  disable_rules:
-  plugins:
-  anchors:
-    level: 2
-    collisionSuffix: ''
-    permalink: false
-    permalinkClass: 'header-anchor'
-    permalinkSide: 'left'
-    permalinkSymbol: '¶'
-    case: 0
-    separator: '-'
-  images:
-    lazyload: false
-    prepend_root: false
-    post_asset: false
-  inline: false  # https://markdown-it.github.io/markdown-it/#MarkdownIt.renderInline

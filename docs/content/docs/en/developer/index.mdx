@@ -42,6 +42,18 @@ output.
 
 </div>
 
+## Demo Site And Deployment Modes
+
+`dev/site/` is the canonical Redefine demo site for local development, PR
+previews, branch previews, and the production demo. Keep demo posts, pages, and
+site configuration there; the generated `dev/site/themes/redefine/` link and
+`dev/site/public/` output are local or CI state.
+
+Local `pnpm dev` keeps theme developer mode enabled and uses checked-out theme
+assets. CI disables developer mode before generating every deployed site. PR
+and branch previews use checked-out assets with CDN disabled, while the
+production demo preserves the configured versioned CDN behavior.
+
 ## Build and Reset
 
 Run these commands from the repository root:

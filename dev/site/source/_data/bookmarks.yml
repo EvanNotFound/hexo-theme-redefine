@@ -1,99 +1,138 @@
 - category: Newsletters
   icon: fa-newspaper
   items:
-    - name: Medium
+    - description:
+        A platform for writers and readers to share ideas and perspectives.
+        Features both free and premium content with a strong tech and startup focus.
+      image: https://assets.ohevan.com/img/f295c6582b2d3764ca56e38a74618b4a.png
       link: https://medium.com/
-      description: A platform for writers and readers to share ideas and perspectives. Features both free and premium content with a strong tech and startup focus.
-      image: https://static-00.iconduck.com/assets.00/logo-medium-icon-2048x2048-asg2886j.png
-
-    - name: Substack
+      name: Medium
+    - description:
+        Popular newsletter platform that lets writers monetize their content
+        through paid subscriptions. Great for independent journalists and creators.
+      image: https://assets.ohevan.com/img/dfcc31215ace60952d571ad5574d441a.png
       link: https://substack.com/
-      description: Popular newsletter platform that lets writers monetize their content through paid subscriptions. Great for independent journalists and creators.
-      image: https://substack.com/img/substack.png
-
-    - name: Ghost
+      name: Substack
+    - description:
+        Open-source publishing platform designed for professional publishers,
+        bloggers, and newsletter creators. Offers both hosted and self-hosted options.
+      image: https://assets.ohevan.com/img/5e445fdbfbe609f5e31000ff51b298b4.png
       link: https://ghost.org/
-      description: Open-source publishing platform designed for professional publishers, bloggers, and newsletter creators. Offers both hosted and self-hosted options.
-      image: https://ghost.org/images/logos/ghost-logo-orb.png
-
-    - name: Mailchimp
+      name: Ghost
+    - description:
+        All-in-one marketing platform with powerful newsletter features.
+        Perfect for businesses looking to grow their email subscriber base.
+      image: https://assets.ohevan.com/img/753340f798ca5a4eb8b2d72ad9d7620c.png
       link: https://mailchimp.com/
-      description: All-in-one marketing platform with powerful newsletter features. Perfect for businesses looking to grow their email subscriber base.
-      image: https://logos-world.net/wp-content/uploads/2021/02/Mailchimp-Logo.png
-
+      name: Mailchimp
+- category: Evan's Stuff
+  icon: fa-newspaper
+  items:
+    - description: Evan's blog about programming, electronics, and other stuff.
+      image: https://assets.ohevan.com/img/66c5ac7e5c933742ad8977807146025b.png
+      link: https://ohevan.com
+      name: Evan's Blog
+    - description: Evan's GitHub repository.
+      image: https://assets.ohevan.com/img/4765a6ec1eed834a948291c44d34c9a0.jpeg?resize=1234%2C701
+      link: https://github.com/evannotfound
+      name: Evan's GitHub
+    - description: Evan's portfolio website.
+      link: https://evannotfound.com
+      name: Evan's Portfolio
+    - description: A pool of shared ChatGPT Plus accounts.
+      image: https://assets.ohevan.com/img/b6b13aa43b541c7a8331d76978a2f9a0.png
+      link: https://gpt.oknice.ca
+      name: ChatGPT Plus 共享号池
 - category: Chat AI
   icon: fa-robot
   items:
-    - name: ChatGPT
+    - description:
+        An AI language model that can assist with a variety of tasks, including
+        writing, brainstorming, and answering questions.
+      image: https://assets.ohevan.com/img/b6b13aa43b541c7a8331d76978a2f9a0.png
       link: https://chat.openai.com/
-      description: An AI language model that can assist with a variety of tasks, including writing, brainstorming, and answering questions.
-      image: https://1000logos.net/wp-content/uploads/2023/02/ChatGPT-Logo.png
-
-    - name: Claude
+      name: ChatGPT
+    - description:
+        An AI language model that can assist with a variety of tasks, including
+        writing, brainstorming, and answering questions.
+      image: https://assets.ohevan.com/img/7c204ad49a9699461116ed92e20e9a3c.png
       link: https://www.anthropic.com/
-      description: An AI language model that can assist with a variety of tasks, including writing, brainstorming, and answering questions.
-      image: https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/claude-ai-icon.png
-
-    - name: Gemini
+      name: Claude
+    - description:
+        Google's AI language model that can assist with a variety of tasks,
+        including writing, brainstorming, and answering questions.
+      image: https://assets.ohevan.com/img/e9ec153676355307aa703869c83ad3d7.webp
       link: https://gemini.google.com/app
-      description: Google's AI language model that can assist with a variety of tasks, including writing, brainstorming, and answering questions.
-      image: https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/f4a855188450701.65b6d6903dc33.png
-
-    - name: Grok
-      link: https://grok.com/
-      description: Grok is an AI-powered search engine that can assist with a variety of tasks, including writing, brainstorming, and answering questions.
+      name: Gemini
+    - description:
+        Grok is an AI-powered search engine that can assist with a variety
+        of tasks, including writing, brainstorming, and answering questions.
       image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJjg0KtwpcP31-sXeMCxksMx3gGsbEb3WSkg&s
-
+      link: https://grok.com/
+      name: Grok
 - category: Pentesting
   icon: fa-shield-halved
   items:
-    - name: Metasploit
+    - description:
+        Metasploit is an open-source framework for developing and executing
+        exploit code against a remote target machine.
+      image: https://assets.ohevan.com/img/e66ca37078307d1d1c1ae6af87b14d18.webp
       link: https://www.metasploit.com/
-      description: Metasploit is an open-source framework for developing and executing exploit code against a remote target machine.
-      image: https://banner2.cleanpng.com/20180524/egt/avqse6kzc.webp
-
-    - name: Nmap
+      name: Metasploit
+    - description:
+        Nmap is a free and open-source network scanner designed to discover
+        hosts and services on a computer network, thus creating a "map" of the network.
+      image: https://assets.ohevan.com/img/7b43ef3b226a95410677c8775875849c.jpeg
       link: https://nmap.org/
-      description: Nmap is a free and open-source network scanner designed to discover hosts and services on a computer network, thus creating a "map" of the network.
-      image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4vbkndf2gRS3v-7lormlTG_irfzTUQHd6-g&s
-
-    - name: Wireshark
+      name: Nmap
+    - description:
+        Wireshark is a free and open-source network protocol analyzer. It
+        is used for network troubleshooting, analysis, and protocol development.
+      image: https://assets.ohevan.com/img/fbcc9873fdf87779b92910bb0d4eb4bc.png
       link: https://www.wireshark.org/
-      description: Wireshark is a free and open-source network protocol analyzer. It is used for network troubleshooting, analysis, and protocol development.
-      image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX-7rej1WvQ1sMXV-KtZQp1m0tIUs6jxXJiA&s
-
-    - name: SQLMap
+      name: Wireshark
+    - description:
+        SQLMap is an open-source penetration testing tool that automates
+        the process of detecting and exploiting SQL injection flaws and taking over
+        database servers.
+      image: https://assets.ohevan.com/img/5a58eab6936d7a0d5bd1d299c0bebcf1.png
       link: https://sqlmap.org/
-      description: SQLMap is an open-source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws and taking over database servers.
-      image: https://upload.wikimedia.org/wikipedia/commons/4/4f/Sqlmap_logo.png
-
+      name: SQLMap
 - category: PaaS
   icon: fa-cloud
   items:
-    - name: Vercel
+    - description:
+        Vercel is a platform for deploying and scaling web applications.
+        It provides a seamless development experience with features like automatic HTTPS,
+        global CDN, and serverless functions.
+      image: https://assets.ohevan.com/img/aad702a57baaa7dbd17e896342f5f0a0.png
       link: https://vercel.com/
-      description: Vercel is a platform for deploying and scaling web applications. It provides a seamless development experience with features like automatic HTTPS, global CDN, and serverless functions.
-      image: https://cdn.sanity.io/images/34ent8ly/production/223a29eb0698fb7fbc6d158a6f7e698d155e025f-824x824.png
-
-    - name: Cloudflare
-      link: https://www.cloudflare.com/
-      description: Cloudflare is a cloud computing company that offers a range of services, including web security, content delivery, and analytics.
+      name: Vercel
+    - description:
+        Cloudflare is a cloud computing company that offers a range of services,
+        including web security, content delivery, and analytics.
       image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTwLqLYQIJOcDVjey4Dy7q9K0FMioQUHyX5A&s
-
-    - name: Netlify
+      link: https://www.cloudflare.com/
+      name: Cloudflare
+    - description:
+        Netlify is a cloud computing company that offers a range of services,
+        including web security, content delivery, and analytics.
+      image: https://assets.ohevan.com/img/7a2b00fb6bbc3333d1927425ab1a7859.png
       link: https://www.netlify.com/
-      description: Netlify is a cloud computing company that offers a range of services, including web security, content delivery, and analytics.
-      image: https://logosandtypes.com/wp-content/uploads/2023/03/Netlify.png
-
+      name: Netlify
 - category: CMS
   icon: fa-pen-to-square
   items:
-    - name: WordPress
+    - description:
+        WordPress is a free and open-source content management system (CMS)
+        based on PHP and MySQL.
+      image: https://assets.ohevan.com/img/4d5d99579df60af4135982bc05560b35.png
       link: https://wordpress.org/
-      description: WordPress is a free and open-source content management system (CMS) based on PHP and MySQL.
-      image: https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/WordPress_blue_logo.svg/1024px-WordPress_blue_logo.svg.png
-
-    - name: Ghost
+      name: WordPress
+    - description:
+        Ghost is an open-source publishing platform designed for professional
+        publishers, bloggers, and newsletter creators. Offers both hosted and self-hosted
+        options.
+      image: https://assets.ohevan.com/img/5e445fdbfbe609f5e31000ff51b298b4.png
       link: https://ghost.org/
-      description: Ghost is an open-source publishing platform designed for professional publishers, bloggers, and newsletter creators. Offers both hosted and self-hosted options.
-      image: https://ghost.org/images/logos/ghost-logo-orb.png
+      name: Ghost

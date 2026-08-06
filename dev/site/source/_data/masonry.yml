@@ -1,132 +1,83 @@
 - image: https://picsum.photos/id/12/2500/1800
-  width: 2500
-  height: 1800
   title: Lorem ipsum
   description: Lorem ipsum dolor sit amet
 
 - image: https://picsum.photos/id/20/3670/2462
-  width: 3670
-  height: 2462
   title: Lorem ipsum
   description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod
 
 - image: https://picsum.photos/id/193/2240/3968
-  width: 2240
-  height: 3968
   title: Lorem ipsum
   description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies
 
 - image: https://picsum.photos/id/194/1200/1600
-  width: 1200
-  height: 1600
   title: Lorem ipsum
   description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod
 
 - image: https://picsum.photos/id/29/3264/2176
-  width: 3264
-  height: 2176
   title: Lorem ipsum
   description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 - image: https://picsum.photos/id/187/4000/2667
-  width: 4000
-  height: 2667
   title: Lorem ipsum
   description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 - image: https://picsum.photos/id/190/2048/1365
-  width: 2048
-  height: 1365
   title: Lorem ipsum
   description: Lorem ipsum dolor sit amet
 
 - image: https://picsum.photos/id/191/4928/3264
-  width: 4928
-  height: 3264
   title: Lorem ipsum
   description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies
 
 - image: https://picsum.photos/id/192/3264/4928
-  width: 3264
-  height: 4928
   title: Lorem ipsum
   description: Lorem ipsum dolor sit amet
 
 - image: https://picsum.photos/id/299/1232/2770
-  width: 1232
-  height: 2770
   title: Lorem ipsum
   description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 - image: https://picsum.photos/id/300/2000/3000
-  width: 2000
-  height: 3000
   title: Lorem ipsum
   description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 - image: https://picsum.photos/id/360/1920/1280
-  width: 1920
-  height: 1280
   title: Lorem ipsum
   description: Lorem ipsum dolor sit amet,
 
 - image: https://picsum.photos/id/421/1500/1000
-  width: 1500
-  height: 1000
   title: Lorem ipsum
   description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod,
 
 - image: https://picsum.photos/id/482/2400/1600
-  width: 2400
-  height: 1600
   title: Lorem ipsum
   description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies, lacus eros condimentum augue, eu rut
 
 - image: https://picsum.photos/id/543/1280/720
-  width: 1280
-  height: 720
   title: Lorem ipsum
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies, lacus eros condimentum augue, eu rut
+  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 - image: https://picsum.photos/id/604/2400/2400
-  width: 2400
-  height: 2400
   title: Lorem ipsum
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies, lacus eros condimentum augue, eu rut
+  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 - image: https://picsum.photos/id/665/1800/1200
-  width: 1800
-  height: 1200
   title: Lorem ipsum
   description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies, lacus eros condimentum augue, eu rut
 
 - image: https://picsum.photos/id/726/2400/1800
-  width: 2400
-  height: 1800
   title: Lorem ipsum
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies, lacus eros condimentum augue, eu rut
+  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 - image: https://picsum.photos/id/787/1920/1080
-  width: 1920
-  height: 1080
   title: Lorem ipsum
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies, lacus eros condimentum augue, eu rut
+  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 - image: https://picsum.photos/id/848/2000/1333
-  width: 2000
-  height: 1333
   title: Lorem ipsum
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies, lacus eros condimentum augue, eu rut
+  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 - image: https://picsum.photos/id/909/1200/800
-  width: 1200
-  height: 800
   title: Lorem ipsum
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies, lacus eros condimentum augue, eu rut
-
-- image: https://files.catbox.moe/d8u49q.jpeg
-  width: 1200
-  height: 800
-  title: My dog
-  description: Taken on a camping trip
-  exif: true
+  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies
