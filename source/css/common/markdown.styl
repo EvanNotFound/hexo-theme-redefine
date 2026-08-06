@@ -233,7 +233,7 @@
     border 0
     border-top 2px solid var(--rd-border)
 
-  pre:not(.not-markdown)
+  & > pre:not(.not-markdown)
     max-width 100%
     overflow-x auto
     overflow-y hidden
@@ -250,7 +250,8 @@
     & > table:not(.not-markdown)
       margin 0
 
-  table:not(.not-markdown)
+  & > table:not(.not-markdown),
+  .table-container > table:not(.not-markdown)
     border-spacing 0
     border-collapse collapse
     width 100%
