@@ -20,6 +20,22 @@ title: Article Style (articles)
 | :----: | :----------------------------------------: | :-------------: | :-----------: |
 | Number | Not recommended to change unless necessary |       1-5       |     `1.5`     |
 
+### Heading Spacing
+
+**Configuration Option: `articles.style.heading_spacing`**
+
+Controls the top spacing of Markdown headings while preserving a consistent
+descending rhythm from `h1` through `h6`.
+
+| Type | Possible Values | Default Value |
+| :---: | :---: | :---: |
+| String | `compact \| default \| spacious` | `default` |
+
+Existing sites may continue to provide the legacy
+`articles.style.headings_top_spacing.h1` through `.h6` values. A legacy value
+overrides the selected preset for its heading level; unspecified levels use the
+preset.
+
 ### Image Border Radius
 
 **Configuration Option: `articles.style.image_border_radius`**

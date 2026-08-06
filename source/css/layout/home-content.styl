@@ -36,13 +36,18 @@
   .home-article-list
     .home-article-item
       position relative
-      redefine-container(
-        true,
-        1.015,
-        1.015,
-        0px,
-        38px
-      )
+      padding 0
+      border 1px solid var(--rd-border)
+      border-radius $redefine-border-radius-large
+      box-sizing border-box
+      background var(--background-color)
+      margin-bottom 38px
+
+      +redefine-tablet()
+        margin-bottom 30.4px
+
+      +redefine-mobile()
+        margin-bottom 22.8px
 
       .home-article-thumbnail img
           width 100%
@@ -104,7 +109,7 @@
           border none
           flex 1
           height 1px
-          background var(--border-color)
+          background var(--rd-border)
           margin 0 10px
 
         a

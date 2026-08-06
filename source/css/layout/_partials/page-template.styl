@@ -6,29 +6,25 @@ $friend-link-item-border-radius = 9px
 @require '../../common/variables'
 
 .page-template-container
-  redefine-container(
-    false,
-    0,
-    0,
-    30px,
-    30px
-  )
+  padding 30px
+  border 1px solid var(--rd-border)
+  border-radius $redefine-border-radius-large
+  box-sizing border-box
+  background var(--background-color)
+  margin-bottom 30px
+
+  +redefine-tablet()
+    padding 26px
+    margin-bottom 24px
 
   +redefine-mobile()
     padding 1.2rem 0.2rem
-    box-shadow none
+    border none
+    margin-bottom 18px
 
-    &:hover
-      box-shadow none
 
   .page-template-content
     color var(--default-text-color)
-
-    h1, h2, h3, h4, h5, h6
-      &:first-child
-        margin 6px 0 36px 0
-        border-bottom none
-        line-height 1
 
   #shuoshuo-content
     img:hover
@@ -47,12 +43,12 @@ $friend-link-item-border-radius = 9px
 
     &:hover
       img
-        box-shadow var(--redefine-box-shadow)
+        border-color var(--rd-border)
 
     img
       width 100%
       border-radius $redefine-border-radius-medium
-      box-shadow var(--redefine-box-shadow-flat)
+      border 1px solid var(--rd-border)
       cursor zoom-in
 
   img[lazyload]
@@ -64,7 +60,7 @@ $friend-link-item-border-radius = 9px
 .masonry-img
   width 100%
   height auto
-  transition box-shadow 0.3s ease-in-out, opacity 0.35s ease
+  transition border-color 0.3s ease-in-out, opacity 0.35s ease
   overflow hidden
 
   &.is-loading
@@ -98,7 +94,7 @@ $friend-link-item-border-radius = 9px
 .masonry-spinner
   width 18px
   height 18px
-  border 2px solid var(--border-color)
+  border 2px solid var(--rd-border)
   border-top-color var(--primary-color)
   border-radius $redefine-border-radius-full
   animation masonry-spin 0.8s linear infinite
@@ -167,8 +163,8 @@ figure.image-caption
 .image-container img
   width 100%
   height auto
-  transition box-shadow 0.3s ease-in-out, filter 0.4s ease, opacity 0.4s ease, transform 0.4s ease
+  transition border-color 0.3s ease-in-out, filter 0.4s ease, opacity 0.4s ease, transform 0.4s ease
   overflow hidden
 
 .image-container:hover img
-  box-shadow var(--redefine-box-shadow-hover)
+  border-color var(--rd-border)

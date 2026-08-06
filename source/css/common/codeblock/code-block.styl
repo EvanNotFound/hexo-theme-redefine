@@ -56,7 +56,7 @@ if (hexo-config('articles.code_block.style') == 'mac')
   .code-container
     background var(--third-background-color)
     border-radius $redefine-border-radius-large
-    box-shadow var(--redefine-box-shadow-flat)
+    border 1px solid var(--rd-border)
     padding-top 40px
     margin-top 10px
     margin-bottom 1.2rem
@@ -115,12 +115,12 @@ else
   .code-container
     background var(--highlight-background)
     border-radius $redefine-border-radius-large
+    border 1px solid var(--rd-border)
     padding-top 40px
     padding-left 5px
     margin-top 10px
     margin-bottom 1.2rem
     position relative
-    box-shadow var(--redefine-box-shadow-flat)
 
     figcaption
       font-weight bold

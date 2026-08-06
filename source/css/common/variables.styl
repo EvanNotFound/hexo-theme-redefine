@@ -32,18 +32,45 @@ $navbar-width-pages = $navbar-width-pages-data ? convert($navbar-width-pages-dat
 //                                         TITLES
 // ========================================================================================
 
+$heading-spacing-preset = hexo-config('articles.style.heading_spacing')
+
+if ($heading-spacing-preset != 'compact' && $heading-spacing-preset != 'spacious')
+  $heading-spacing-preset = 'default'
+
+if $heading-spacing-preset == 'compact'
+  $h1-heading-margin-top-default = 2.4rem
+  $h2-heading-margin-top-default = 1.8rem
+  $h3-heading-margin-top-default = 1.5rem
+  $h4-heading-margin-top-default = 1.25rem
+  $h5-heading-margin-top-default = 1.05rem
+  $h6-heading-margin-top-default = 0.95rem
+else if $heading-spacing-preset == 'spacious'
+  $h1-heading-margin-top-default = 4rem
+  $h2-heading-margin-top-default = 3rem
+  $h3-heading-margin-top-default = 2.4rem
+  $h4-heading-margin-top-default = 2rem
+  $h5-heading-margin-top-default = 1.75rem
+  $h6-heading-margin-top-default = 1.5rem
+else
+  $h1-heading-margin-top-default = 3.2rem
+  $h2-heading-margin-top-default = 2.4rem
+  $h3-heading-margin-top-default = 1.9rem
+  $h4-heading-margin-top-default = 1.6rem
+  $h5-heading-margin-top-default = 1.4rem
+  $h6-heading-margin-top-default = 1.3rem
+
 $h1-heading-margin-top-data = hexo-config('articles.style.headings_top_spacing.h1')
-$h1-heading-margin-top = $h1-heading-margin-top-data ? convert($h1-heading-margin-top-data) : 3.2rem
+$h1-heading-margin-top = $h1-heading-margin-top-data ? convert($h1-heading-margin-top-data) : $h1-heading-margin-top-default
 $h2-heading-margin-top-data = hexo-config('articles.style.headings_top_spacing.h2')
-$h2-heading-margin-top = $h2-heading-margin-top-data ? convert($h2-heading-margin-top-data) : 2.4rem
+$h2-heading-margin-top = $h2-heading-margin-top-data ? convert($h2-heading-margin-top-data) : $h2-heading-margin-top-default
 $h3-heading-margin-top-data = hexo-config('articles.style.headings_top_spacing.h3')
-$h3-heading-margin-top = $h3-heading-margin-top-data ? convert($h3-heading-margin-top-data) : 1.9rem
+$h3-heading-margin-top = $h3-heading-margin-top-data ? convert($h3-heading-margin-top-data) : $h3-heading-margin-top-default
 $h4-heading-margin-top-data = hexo-config('articles.style.headings_top_spacing.h4')
-$h4-heading-margin-top = $h4-heading-margin-top-data ? convert($h4-heading-margin-top-data) : 1.6rem
+$h4-heading-margin-top = $h4-heading-margin-top-data ? convert($h4-heading-margin-top-data) : $h4-heading-margin-top-default
 $h5-heading-margin-top-data = hexo-config('articles.style.headings_top_spacing.h5')
-$h5-heading-margin-top = $h5-heading-margin-top-data ? convert($h5-heading-margin-top-data) : 1.4rem
+$h5-heading-margin-top = $h5-heading-margin-top-data ? convert($h5-heading-margin-top-data) : $h5-heading-margin-top-default
 $h6-heading-margin-top-data = hexo-config('articles.style.headings_top_spacing.h6')
-$h6-heading-margin-top = $h6-heading-margin-top-data ? convert($h6-heading-margin-top-data) : 1.3rem
+$h6-heading-margin-top = $h6-heading-margin-top-data ? convert($h6-heading-margin-top-data) : $h6-heading-margin-top-default
 
 
 // ========================================================================================
@@ -143,5 +170,4 @@ $temp-default-line-height = hexo-config('articles.style.line_height')
 $default-article-font-size = $temp-default-article-font-size ? convert($temp-default-article-font-size) : 16px
 $default-line-height = $temp-default-line-height ? $temp-default-line-height : 1.5
 $default-font-weight = 400
-
 

@@ -17,11 +17,6 @@ $logo-image-box-width = 34px
   -webkit-backdrop-filter blur(10px)
   backdrop-filter blur(10px)
   padding-top $scroll-progress-bar-height
-  hover-style(
-    false,
-    0,
-    0
-  )
 
   .navbar-content
     position relative
@@ -201,13 +196,12 @@ $logo-image-box-width = 34px
           // visibility visible
           max-height 500px
           transition-t('all', '0', '0.2', 'ease')
-          redefine-container(
-            false,
-            0,
-            0,
-            10px,
-            5px
-          )
+          padding 10px
+          border 1px solid var(--rd-border)
+          border-radius $redefine-border-radius-large
+          box-sizing border-box
+          background var(--background-color)
+          margin-bottom 5px
 
       .mobile
         display flex

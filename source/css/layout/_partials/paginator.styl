@@ -38,20 +38,12 @@
     white-space nowrap
     border-radius $redefine-border-radius-small
     padding 8px 16px
+    border 1px solid var(--rd-border)
     background var(--background-color)
-    hover-style(
-      true,
-      1.06,
-      1.06
-    )
 
     &:hover
       color var(--background-color)
       background var(--primary-color)
-
-    &:active
-      transform scale(0.95)
-      transition transform 0.1s ease
 
   span.current
     color var(--background-color)

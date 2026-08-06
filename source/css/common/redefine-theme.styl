@@ -6,58 +6,6 @@ redefine-mobile()
   @media (max-width $media-max-width-mobile)
     {block}
 
-hover-style(isTransform, scaleX, scaleY)
-  box-shadow var(--redefine-box-shadow)
-
-  if (isTransform)
-    transition-t('transform', '0', '0.2', 'linear')
-
-  &:hover
-    if (hexo-config('global.hover.scale') && isTransform)
-      transform scaleX(scaleX) scaleY(scaleX)
-
-    if (hexo-config('global.hover.shadow'))
-      box-shadow var(--redefine-box-shadow-hover)
-
-redefine-container(isTransform, scaleX, scaleY, padding, marginBottomValue)
-  padding padding
-  border-radius $redefine-border-radius-large
-  box-sizing border-box
-  background var(--background-color)
-
-  if (marginBottomValue != 0)
-    margin-bottom marginBottomValue
-
-    +redefine-tablet()
-      margin-bottom: marginBottomValue * 0.8
-
-    +redefine-mobile()
-      margin-bottom: marginBottomValue * 0.6
-
-  hover-style(isTransform, scaleX, scaleY)
-
-  +redefine-tablet()
-    padding: padding - 4
-    border-radius: $redefine-border-radius-large
-
-  +redefine-mobile()
-    padding: padding - 8
-    border-radius: $redefine-border-radius-large
-
-
-.redefine-box-shadow
-  box-shadow var(--redefine-box-shadow)
-
-.redefine-box-shadow-flat
-  box-shadow var(--redefine-box-shadow-flat)
-
-@media (min-width: 640px)
-  .redefine-box-shadow:hover
-    box-shadow var(--redefine-box-shadow-hover)
-
-  .redefine-box-shadow-flat:hover
-    box-shadow var(--redefine-box-shadow)
-
 .ellipsis
   overflow hidden
   text-overflow ellipsis

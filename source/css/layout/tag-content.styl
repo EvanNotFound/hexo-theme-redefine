@@ -3,13 +3,20 @@
 $tag-name-font-size = 3rem
 
 .tag-container
-  redefine-container(
-    false,
-    0,
-    0,
-    30px,
-    30px
-  )
+  padding 30px
+  border 1px solid var(--rd-border)
+  border-radius $redefine-border-radius-large
+  box-sizing border-box
+  background var(--background-color)
+  margin-bottom 30px
+
+  +redefine-tablet()
+    padding 26px
+    margin-bottom 24px
+
+  +redefine-mobile()
+    padding 22px
+    margin-bottom 18px
 
   .tag-name
     color var(--second-text-color)
@@ -21,7 +28,7 @@ $tag-name-font-size = 3rem
     font-weight 600
     padding-bottom 20px
     margin-bottom $spacing-unit
-    border-bottom 1px solid var(--shadow-color-1)
+    border-bottom 1px solid var(--rd-border)
 
     +redefine-tablet()
       font-size: $tag-name-font-size * 0.9

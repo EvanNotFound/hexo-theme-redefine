@@ -14,6 +14,8 @@ $post-tool-button-width = 42px
       align-items center
       justify-content center
       margin-bottom $li-margin-bottom
+      border 1px solid var(--rd-border)
+      box-shadow var(--rd-shadow)
       background var(--background-color)
       color var(--default-text-color)
 
@@ -29,12 +31,6 @@ $post-tool-button-width = 42px
 
       &:last-child
         margin-bottom 0
-
-      hover-style(
-        true,
-        1.06,
-        1.06
-      )
 
       &.page-aside-toggle
         display none

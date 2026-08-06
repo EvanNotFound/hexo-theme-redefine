@@ -48,7 +48,7 @@ html, body
 
   &::-webkit-scrollbar-track
     background-color var(--scroll-bar-bg-color)
-    border 1px solid var(--shadow-color-1)
+    border 1px solid var(--rd-border)
 
   &::-webkit-scrollbar-thumb:hover
     background var(--scrollbar-color-hover)
@@ -94,35 +94,20 @@ img
   padding 8px 16px
   background-color var(--second-background-color) !important
   border-radius $redefine-border-radius-medium !important
+  border 1px solid var(--rd-border)
   padding 12px 16px !important
+  box-sizing border-box
+  margin-bottom 1rem
   text-decoration none !important
-  redefine-container(
-    false,
-    0,
-    0,
-    0,
-    1rem
-  )
-  box-shadow var(--redefine-box-shadow-flat) !important
   user-select none
   -moz-user-select none
   -webkit-user-select none
   -ms-user-select none
-  hover-style(
-    true,
-    1.06,
-    1.06
-  )
-
   &:hover, &:focus
     color var(--primary-color)
     background-color var(--background-color) !important
-    box-shadow var(--redefine-box-shadow) !important
 
   &:active
-    box-shadow var(--redefine-box-shadow-flat) !important
-    transform scale(0.95)
-    transition transform 0.1s ease
     background-color var(--third-background-color) !important
 
 // ======================================================================
@@ -130,5 +115,3 @@ img
 // ======================================================================
 .clear
   clear both
-
-

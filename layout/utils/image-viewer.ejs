@@ -8,7 +8,7 @@
 	<div class="image-viewer-frame">
 		<img src="" alt="">
 	</div>
-	<div class="image-viewer-exif-panel hidden absolute left-1/2 bottom-20 -translate-x-1/2 w-[min(92vw,420px)] max-h-[60vh] overflow-hidden rounded-2xl bg-background-color-transparent-80 p-4 text-left shadow-redefine-flat backdrop-blur-md" role="dialog" aria-label="<%= __('exif.title') %>" aria-hidden="true">
+	<div class="image-viewer-exif-panel hidden absolute left-1/2 bottom-20 -translate-x-1/2 w-[min(92vw,420px)] max-h-[60vh] overflow-hidden rounded-2xl bg-background-color-transparent-80 p-4 text-left shadow-rd backdrop-blur-md" role="dialog" aria-label="<%= __('exif.title') %>" aria-hidden="true">
 		<div class="flex items-center justify-between mb-3">
 			<span class="text-sm font-semibold text-first-text-color"><%= __('exif.title') %></span>
 			<button class="image-viewer-exif-close flex h-8 w-8 items-center justify-center rounded-full bg-background-color-transparent-80 text-first-text-color transition hover:bg-background-color-transparent-40" type="button" aria-label="<%= __('close') %>">
@@ -26,7 +26,7 @@
 			</div>
 		</template>
 	</div>
-	<button class="image-viewer-exif-toggle flex items-center gap-2 hidden absolute left-1/2 bottom-6 -translate-x-1/2 rounded-full border border-border-color bg-background-color-transparent-80 px-4 py-2 text-first-text-color backdrop-blur-md transition hover:bg-background-color-transparent-40" type="button" aria-label="<%= __('exif.title') %>" aria-expanded="false">
+	<button class="image-viewer-exif-toggle flex items-center gap-2 hidden absolute left-1/2 bottom-6 -translate-x-1/2 rounded-full border border-rd-border bg-background-color-transparent-80 px-4 py-2 text-first-text-color backdrop-blur-md transition hover:bg-background-color-transparent-40" type="button" aria-label="<%= __('exif.title') %>" aria-expanded="false">
 		<i class="fa-solid fa-circle-info text-xs"></i>
 		<span class="text-xs font-semibold uppercase tracking-wider"><%= __('exif.title') %></span>
 	</button>

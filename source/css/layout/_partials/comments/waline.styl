@@ -23,7 +23,6 @@
     --waline-info-font-size 0.625em
     --waline-border none
     --waline-avatar-radius 28%
-    // --redefine-box-shadow var(--redefine-box-shadow-flat) !important
 
 [data-waline]
     font-size var(--waline-font-size)
@@ -226,10 +225,7 @@
     border var(--waline-border)
     border-radius 0.75em
     background var(--background-color)
-    box-shadow var(--redefine-box-shadow-flat)
-
-    &:hover
-        box-shadow var(--redefine-box-shadow-flat-hover)
+    border 1px solid var(--rd-border)
 
 .wl-header
     display flex
@@ -394,7 +390,7 @@
     border var(--waline-border)
     border-radius 6px
     background var(--background-color)
-    box-shadow var(--redefine-box-shadow-flat)
+    border 1px solid var(--rd-border)
     opacity 0
     visibility hidden
     transition transform 0.2s ease-out, opacity 0.2s ease-out
@@ -502,7 +498,7 @@
     border var(--waline-border)
     border-radius 6px
     background var(--background-color)
-    box-shadow var(--redefine-box-shadow-flat)
+    border 1px solid var(--rd-border)
     opacity 0
     visibility hidden
     transition transform 0.2s ease-out, opacity 0.2s ease-out
@@ -560,7 +556,7 @@
     width var(--avatar-size)
     height var(--avatar-size)
     border-radius var(--waline-avatar-radius)
-    box-shadow var(--redefine-box-shadow-flat)
+    border 1px solid var(--rd-border)
 
 .wl-cards .wl-user .verified-icon
     position absolute
@@ -568,7 +564,7 @@
     inset-inline-start calc((var(--avatar-size) * 3 / 4))
     border-radius 50%
     background var(--background-color)
-    box-shadow var(--redefine-box-shadow-flat)
+    border 1px solid var(--rd-border)
 
 .wl-card-item
     position relative

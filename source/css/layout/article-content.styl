@@ -62,17 +62,22 @@ $gap = 30px
   .article-content-container
     width 100%
     transition width 0.2s ease
-    redefine-container(
-      false,
-      0,
-      0,
-      0,
-      30px
-    )
+    padding 0
+    border 1px solid var(--rd-border)
+    border-radius $redefine-border-radius-large
+    box-sizing border-box
+    background var(--background-color)
+    margin-bottom 30px
+
+    +redefine-tablet()
+      margin-bottom 24px
+
+    +redefine-mobile()
+      border none
+      margin-bottom 18px
 
     +redefine-mobile()
       padding 1.2rem 0.2rem
-      box-shadow none !important
       max-width 100vw
 
     .article-header .avatar img
@@ -92,11 +97,8 @@ $gap = 30px
       margin-top $spacing-unit
       padding-bottom 10px
       word-wrap break-word
-      border-bottom 1px solid var(--border-color)
+      border-bottom 1px solid var(--rd-border)
       color var(--default-text-color)
-
-      &>:first-child
-        margin-top 0 !important
 
     .article-prev, .article-next
 
@@ -173,14 +175,11 @@ $gap = 30px
           -ms-overflow-style none
 
         .recommended-article-item
-          redefine-container(
-            false,
-            0,
-            0,
-            10px,
-            0
-          )
-          box-shadow var(--redefine-box-shadow-flat)
+          padding 10px
+          border 1px solid var(--rd-border)
+          border-radius $redefine-border-radius-large
+          box-sizing border-box
+          background var(--background-color)
           padding 12px !important
           display flex
           flex-wrap wrap
@@ -232,18 +231,12 @@ $gap = 30px
     float right
     padding 10px
     box-sizing border-box
-    box-shadow none !important
     transition opacity 0.3s ease-out 0.3s
     scrollbar-width none
     -ms-overflow-style none
     
     &::-webkit-scrollbar
       display none
-    hover-style(
-      false,
-      0,
-      0
-    )
     transition-t('display', '0', '0.3', 'ease-out')
 
     +redefine-tablet()

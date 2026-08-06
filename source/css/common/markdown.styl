@@ -1,26 +1,20 @@
 .markdown-body
   font-family $english-font-family, $chinese-font-family, sans-serif
   font-size $default-article-font-size
+  color var(--default-text-color)
+  overflow-wrap break-word
 
-  blockquote:not(.not-markdown)
-    p, ul, ol
-      padding 5px 5px 5px 10px
+  & > :first-child
+    margin-top 0 !important
 
-    box-sizing border-box
-    margin 20px 0
-    color var(--default-text-color)
-    background var(--third-background-color)
-    padding 0 1rem 0 0.5rem
-    border-radius 0 $redefine-border-radius-medium $redefine-border-radius-medium 0
-    position relative
-    border-left 5px solid var(--default-text-color)
+  & > :last-child
+    margin-bottom 0 !important
 
   p:not(.not-markdown)
     line-height $default-line-height
     color var(--default-text-color)
     font-weight 400
-    margin-bottom 1rem
-    margin-top 0
+    margin 0 0 1rem
 
   a:not(.not-markdown)
     position relative
@@ -28,17 +22,16 @@
     text-decoration underline
     overflow-wrap break-word
     cursor pointer
-    // border-bottom 1px solid var(--third-text-color)
     box-sizing border-box
     padding-bottom 2px
     text-underline-offset 2px
     text-decoration-color var(--fourth-text-color)
-    transition: text-decoration-color 0.2s ease
+    transition text-decoration-color 0.2s ease
 
     &.link
       padding-right 0.1em
 
-    .fas, .far, fab
+    .fas, .far, .fab
       margin 0 2px 0 6px
       position relative
       color var(--third-text-color)
@@ -55,71 +48,79 @@
       .link-icon
         transform translate(0.1em, -0.1em)
 
-      &::after
-        background var(--primary-color)
-        text-decoration underline
-
-  strong:not(.not-markdown)
+  strong:not(.not-markdown), em:not(.not-markdown)
     color var(--default-text-color)
 
-  hr:not(.not-markdown)
-    margin 2rem 0
-    border 0
-    border-top 2px solid var(--shadow-color-1)
-
-  em:not(.not-markdown)
+  blockquote:not(.not-markdown)
+    box-sizing border-box
+    margin 1.25rem 0
+    padding 0.75rem 1rem 0.75rem 0.5rem
     color var(--default-text-color)
+    background var(--third-background-color)
+    border-radius 0 $redefine-border-radius-medium $redefine-border-radius-medium 0
+    position relative
+    border-left 5px solid var(--default-text-color)
 
-  ul:not(.not-markdown) > li, ol:not(.not-markdown) > li
-    margin-left 20px
+    & > :first-child
+      margin-top 0 !important
+
+    & > :last-child
+      margin-bottom 0 !important
+
+  ul:not(.not-markdown), ol:not(.not-markdown)
+    margin 0 0 1.2rem
+    padding-left 1.5rem
     line-height 2rem
 
-  ul:not(.not-markdown)
-    margin-bottom 1.2rem
+    ul, ol
+      margin-top 0.5rem
+      margin-bottom 0
 
-    li
-      list-style disc
+  ul:not(.not-markdown) > li:not(.not-markdown)
+    color var(--default-text-color)
+    line-height 2rem
+    list-style disc
 
-      ul
-        li
-          list-style circle
+  ol:not(.not-markdown) > li:not(.not-markdown)
+    color var(--default-text-color)
+    line-height 2rem
+    list-style decimal
 
-          ul
-            li
-              list-style square
+  ul:not(.not-markdown) ul > li:not(.not-markdown)
+    list-style circle
 
-  ol:not(.not-markdown)
-    margin-bottom 1.2rem
+  ul:not(.not-markdown) ul ul > li:not(.not-markdown)
+    list-style square
 
-    li
-      list-style decimal
+  ol:not(.not-markdown) ul > li:not(.not-markdown)
+    list-style disc
 
-      ul
-        li
-          list-style disc
+  ol:not(.not-markdown) ul ul > li:not(.not-markdown)
+    list-style circle
 
-        ul
-          li
-            list-style circle
+  ol:not(.not-markdown) ol > li:not(.not-markdown)
+    list-style upper-alpha
 
-      ol
-        li
-          list-style upper-alpha
-
-          ol
-            li
-              list-style upper-roman
+  ol:not(.not-markdown) ol ol > li:not(.not-markdown)
+    list-style upper-roman
 
   li:not(.not-markdown)
     color var(--default-text-color)
+
+    & > p:not(.not-markdown)
+      margin-bottom 0.75rem
+
+    & > :last-child
+      margin-bottom 0
 
   h1:not(.not-markdown), h2:not(.not-markdown), h3:not(.not-markdown), h4:not(.not-markdown), h5:not(.not-markdown), h6:not(.not-markdown), .h1:not(.not-markdown), .h2:not(.not-markdown), .h3:not(.not-markdown), .h4:not(.not-markdown), .h5:not(.not-markdown), .h6:not(.not-markdown)
     font-family $english-font-family, $chinese-font-family, sans-serif
     color var(--second-text-color)
     line-height $default-line-height
+    font-weight 600
 
     +redefine-tablet()
-      line-height: $default-line-height * 0.96
+      line-height $default-line-height * 0.96
 
   h1:not(.not-markdown), .h1:not(.not-markdown)
     font-size 2.25rem
@@ -132,6 +133,7 @@
 
     +redefine-tablet()
       font-size 1.75rem
+      margin-top $h1-heading-margin-top * 0.75
       line-height 1.2
 
   h2:not(.not-markdown), .h2:not(.not-markdown)
@@ -146,6 +148,7 @@
 
     +redefine-tablet()
       font-size 1.5rem
+      margin-top $h2-heading-margin-top * 0.75
       line-height 1.1
 
   h3:not(.not-markdown), .h3:not(.not-markdown)
@@ -158,6 +161,7 @@
 
     +redefine-tablet()
       font-size 1.375rem
+      margin-top $h3-heading-margin-top * 0.75
       line-height 1.2
 
   h4:not(.not-markdown), .h4:not(.not-markdown)
@@ -169,6 +173,7 @@
 
     +redefine-tablet()
       font-size 1.25rem
+      margin-top $h4-heading-margin-top * 0.75
       line-height 1.3
 
   h5:not(.not-markdown), .h5:not(.not-markdown)
@@ -180,6 +185,7 @@
 
     +redefine-tablet()
       font-size 1.0625rem
+      margin-top $h5-heading-margin-top * 0.75
       line-height 1.2
 
   h6:not(.not-markdown), .h6:not(.not-markdown)
@@ -191,52 +197,71 @@
 
     +redefine-tablet()
       font-size 1rem
+      margin-top $h6-heading-margin-top * 0.75
       line-height 1.1
 
-  img:not(.not-markdown)
+  img:not(.not-markdown), video:not(.not-markdown), audio:not(.not-markdown), iframe:not(.not-markdown)
     box-sizing border-box
-    border-radius $usr-img-border-radius
     max-width 100%
-    cursor zoom-in
     display block
+    margin 1rem 0
+
+  img:not(.not-markdown)
+    border-radius $usr-img-border-radius
+    cursor zoom-in
     transition-t('padding, margin', '0, 0', '0.2, 0.2', 'linear, linear')
 
     if (hexo-config('articles.style.image_alignment') == 'center')
-      margin 1rem auto 1rem
-    else
-      margin 1rem 0 1rem
+      margin 1rem auto
 
-  del.mask:not(.not-markdown)
-    text-decoration none !important
-    transition .2s cubic-bezier(.25, .46, .45, .94) color, .2s cubic-bezier(.25, .46, .45, .94) background
+  figure:not(.not-markdown)
+    margin 1rem 0
 
-    * 
-      transition .35s cubic-bezier(.25, .46, .45, .94) opacity
+    & > img:not(.not-markdown)
+      margin-top 0
+      margin-bottom 0
 
-    &:not(:hover)
-      color transparent !important
-      background #000 !important
+    figcaption
+      margin-top 0.35rem
+      color var(--third-text-color)
+      font-size 0.9rem
+      line-height $default-line-height
+      text-align center
 
-      * 
-        opacity 0 !important
+  hr:not(.not-markdown)
+    margin 2rem 0
+    border 0
+    border-top 2px solid var(--rd-border)
 
-      &, *
-        border none !important
+  pre:not(.not-markdown)
+    max-width 100%
+    overflow-x auto
+    overflow-y hidden
+    margin 1.25rem 0
 
-  & > table:not(.not-markdown),
-  .tab-pane > table:not(.not-markdown)
+  p:not(.not-markdown) code:not(.not-markdown), li:not(.not-markdown) code:not(.not-markdown), td:not(.not-markdown) code:not(.not-markdown), th:not(.not-markdown) code:not(.not-markdown)
+    overflow-wrap anywhere
+
+  .table-container
+    max-width 100%
+    overflow-x auto
+    margin 1rem 0 1.2rem
+
+    & > table:not(.not-markdown)
+      margin 0
+
+  table:not(.not-markdown)
     border-spacing 0
     border-collapse collapse
     width 100%
-    overflow auto
-    margin-bottom 1.2rem
-    margin-top 1rem
-    box-shadow var(--redefine-box-shadow-flat)
+    max-width 100%
+    margin 1rem 0 1.2rem
+    border 1px solid var(--rd-border)
     border-radius $redefine-border-radius-medium
 
     thead
       th
-        border-bottom 1px solid var(--shadow-color-1)
+        border-bottom 1px solid var(--rd-border)
         background-color var(--third-background-color) !important
 
         &:first-child
@@ -246,26 +271,22 @@
           border-top-right-radius $redefine-border-radius-medium
 
     tbody
-      tr
-        &:last-child
-          td
-            &:first-child
-              border-bottom-left-radius $redefine-border-radius-medium
+      tr:last-child
+        td:first-child
+          border-bottom-left-radius $redefine-border-radius-medium
 
-            &:last-child
-              border-bottom-right-radius $redefine-border-radius-medium
+        td:last-child
+          border-bottom-right-radius $redefine-border-radius-medium
 
     td, th
       padding 8px 16px
-      // border 1px solid var(--border-color)
-      border-left 1px solid var(--shadow-color-1)
+      border-left 1px solid var(--rd-border)
 
       &:first-child
         border-left none
 
     tr
       background-color var(--background-color)
-      // border 1px solid var(--fourth-text-color)
 
     tr:nth-child(2n)
       background-color var(--second-background-color)
@@ -295,7 +316,7 @@
       transition all 0.2s ease
 
     svg
-      display inline-block /* Allow content to be centered properly */
+      display inline-block
 
   mjx-container[display="true"]:not(.not-markdown)
     display block
@@ -304,8 +325,9 @@
     overflow-x auto
     text-align center
     white-space nowrap
-    scrollbar-width: thin  // For Firefox, if needed
+    scrollbar-width thin
     padding-bottom 8px
+    margin 1rem 0
 
     &:hover::-webkit-scrollbar-thumb
       border 3px solid rgba(183, 183, 183, 0.3)
@@ -327,3 +349,20 @@
 
     svg
       display inline-block
+
+  del.mask:not(.not-markdown)
+    text-decoration none !important
+    transition .2s cubic-bezier(.25, .46, .45, .94) color, .2s cubic-bezier(.25, .46, .45, .94) background
+
+    *
+      transition .35s cubic-bezier(.25, .46, .45, .94) opacity
+
+    &:not(:hover)
+      color transparent !important
+      background #000 !important
+
+      *
+        opacity 0 !important
+
+      &, *
+        border none !important

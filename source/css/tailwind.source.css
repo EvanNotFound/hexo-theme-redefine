@@ -74,11 +74,8 @@
   --color-fourth-text-color: var(--fourth-text-color);
   --color-default-text-color: var(--default-text-color);
   --color-invert-text-color: var(--invert-text-color);
-  --color-border-color: var(--border-color);
+  --color-rd-border: var(--rd-border);
   --color-selection-color: var(--selection-color);
-  --color-shadow-color-1: var(--shadow-color-1);
-  --color-shadow-color-2: var(--shadow-color-2);
-  --color-shadow-hover-color: var(--shadow-hover-color);
   --color-scrollbar-color: var(--scrollbar-color);
   --color-scrollbar-color-hover: var(--scrollbar-color-hover);
   --color-scroll-bar-bg-color: var(--scroll-bar-bg-color);
@@ -130,19 +127,7 @@
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
 
-  --shadow-redefine:
-    0px 6px 24px 0px var(--shadow-color-2),
-    0px 0px 0px 1px var(--shadow-color-1);
-  --shadow-redefine-hover:
-    0px 6px 24px 0px var(--shadow-color-2),
-    0px 0px 0px 1px var(--shadow-color-1),
-    0px 0px 0px 1px inset var(--shadow-color-1);
-  --shadow-redefine-flat:
-    0px 1px 4px 0px var(--shadow-color-2), 0px 0px 0px 1px var(--shadow-color-1);
-  --shadow-redefine-flat-hover:
-    0px 1px 4px 0px var(--shadow-color-2),
-    0px 0px 0px 1px var(--shadow-color-1),
-    0px 0px 0px 1px inset var(--shadow-color-1);
+  --shadow-rd: var(--rd-shadow);
 }
 
 /*

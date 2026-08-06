@@ -1,14 +1,14 @@
 transition-g()
-  transition-property color, background, box-shadow, border-color
-  transition-delay 0s, 0s, 0s, 0s
-  transition-duration 0.2s, 0.2s, 0.2s, 0.2s
-  transition-timing-function ease, ease, ease, ease
+  transition-property color, background, border-color
+  transition-delay 0s, 0s, 0s
+  transition-duration 0.2s, 0.2s, 0.2s
+  transition-timing-function ease, ease, ease
 
 transition-t(property, delay, duration, function)
-  $temp-property = 'color, background, box-shadow, border-color'
-  $temp-delay = '0s, 0s, 0s, 0s'
-  $temp-duration = '0.2s, 0.2s, 0.2s, 0.2s'
-  $temp-function = 'ease, ease, ease, ease'
+  $temp-property = 'color, background, border-color'
+  $temp-delay = '0s, 0s, 0s'
+  $temp-duration = '0.2s, 0.2s, 0.2s'
+  $temp-function = 'ease, ease, ease'
 
   for p in convert(property)
     $temp-property += ',' + p

@@ -18,6 +18,19 @@ title: 文章样式 (articles)
 | :---: | :---: | :---: | :---: |
 | 数字 | 如无特别需要不建议更改 | 1-5 | `1.5` |
 
+### 标题间距
+
+**配置项名称：`articles.style.heading_spacing`**
+
+控制 Markdown 标题的顶部间距，同时保持 `h1` 到 `h6` 逐级递减的间距层次。
+
+| 类型 | 可选值 | 默认值 |
+| :---: | :---: | :---: |
+| 字符串 | `compact \| default \| spacious` | `default` |
+
+已有站点仍可使用旧的
+`articles.style.headings_top_spacing.h1` 到 `.h6` 配置。旧配置会覆盖对应标题级别的预设值，未配置的级别则使用所选预设。
+
 ### 图片圆角大小
 
 **配置项名称：`articles.style.image_border_radius`**

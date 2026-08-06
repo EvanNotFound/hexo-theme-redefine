@@ -100,7 +100,7 @@
 
                     <li class="<%= drawerNavbarItemClass %> text-base my-1.5 flex flex-col w-full">
                         <% if (hasSubmenus) {%>
-                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full <%= isActive ? 'active' : '' %>"
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-rd-border hover:border-primary w-full <%= isActive ? 'active' : '' %>"
                              navbar-data-toggle="submenu-<%= i %>"
                         >
                             <span>
@@ -111,7 +111,7 @@
                             <% } %>
                         </div>
                         <% } else { %>
-                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full <%= isActive ? 'active' : '' %>"
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-rd-border hover:border-primary w-full <%= isActive ? 'active' : '' %>"
                            href="<%= linkPath %>"
                         >
                             <span>
@@ -143,7 +143,7 @@
                         continue;
                     } %>
                     <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
-                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-rd-border hover:border-primary w-full active"
                            href="<%= url_for(theme.home.sidebar.links[i].path) %>"
                         >
                             <span><%= __(i) %></span>
@@ -160,4 +160,3 @@
     <div class="window-mask"></div>
 
 </header>
-

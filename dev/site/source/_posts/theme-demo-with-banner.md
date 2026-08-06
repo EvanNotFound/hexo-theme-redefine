@@ -375,7 +375,7 @@ if input("this is a ") == "codeblock"
 这是一个测试段落hello你好world中文English混合paragraph测试没有spaces之间的文字testing测试pangu.js的functionality以及它的效果how它会处理这种情况when中英文混合的时候。
 
 ## HTML Tab 测试
-<div class="tabs relative my-4 bg-third-background-color border border-border-color rounded-md" id="tab-first-unique-name">
+<div class="tabs relative my-4 bg-third-background-color border border-rd-border rounded-md" id="tab-first-unique-name">
   <div role="tablist" aria-orientation="horizontal" class="flex gap-3.5 overflow-x-auto px-4 not-markdown scrollbar-hide" tabindex="0">
     <button type="button" role="tab" aria-selected="true" data-state="active" data-tab="first-unique-name-1" class="inline-flex items-center gap-2 whitespace-nowrap text-third-text-color border-b-2 border-transparent py-2 text-sm font-medium transition-colors hover:text-second-text-color data-[state=active]:border-primary data-[state=active]:text-primary" tabindex="0">
       First Tab
@@ -387,7 +387,7 @@ if input("this is a ") == "codeblock"
       Third Tab
     </button>
   </div>
-  <div class="tab-content p-4 bg-background-color/70 rounded-md shadow-[0_0_2px_0_var(--shadow-color-1)]">
+  <div class="tab-content p-4 bg-background-color/70 rounded-md border border-rd-border">
     <div class="tab-pane active" id="first-unique-name-1">
       <p><strong>This is Tab 1.</strong></p>
       <div class="code-container" data-rel="Plaintext">

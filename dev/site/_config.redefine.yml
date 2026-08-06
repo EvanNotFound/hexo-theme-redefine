@@ -65,10 +65,6 @@ global:
   content_max_width: 1000px
   # Sidebar width
   sidebar_width: 210px
-  # Effects on mouse hover
-  hover:
-    shadow: true # shadow effect
-    scale: false # scale effect
   # Scroll progress
   scroll_progress:
     bar: false # progress bar
@@ -304,13 +300,7 @@ articles:
     link_icon: true # Whether to display link icon
     title_alignment: left # Title alignment. left, center
     delete_mask: false # Add mask effect to <del> tags, hiding content by default and revealing on hover
-    headings_top_spacing: # Top spacing for headings from h1-h6
-      h1: 3.2rem
-      h2: 2.4rem
-      h3: 1.9rem
-      h4: 1.6rem
-      h5: 1.4rem
-      h6: 1.3rem
+    heading_spacing: default # Heading top spacing preset. compact, default, spacious
   # Word count. Requires hexo-wordcount (npm install hexo-wordcount). See https://github.com/willin/hexo-wordcount
   word_count:
     enable: true # Whether to enable

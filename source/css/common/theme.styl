@@ -18,11 +18,8 @@ root-color(mode) {
   --fourth-text-color mode == 'light' ? $fourth-text-color : $dark-fourth-text-color
   --default-text-color mode == 'light' ? $default-text-color : $dark-default-text-color
   --invert-text-color mode == 'light' ? $invert-text-color : $dark-invert-text-color
-  --border-color mode == 'light' ? $border-color : $dark-border-color
+  --rd-border mode == 'light' ? $rd-border-color : $dark-rd-border-color
   --selection-color mode == 'light' ? $selection-color : $dark-selection-color
-  --shadow-color-1 mode == 'light' ? $shadow-color-1 : $dark-shadow-color-1
-  --shadow-color-2 mode == 'light' ? $shadow-color-2 : $dark-shadow-color-2
-  --shadow-hover-color mode == 'light' ? $shadow-hover-color : $dark-shadow-hover-color
   --scrollbar-color mode == 'light' ? $scrollbar-color : $dark-scrollbar-color
   --scrollbar-color-hover mode == 'light' ? $scrollbar-color-hover : $dark-scrollbar-color-hover
   --scroll-bar-bg-color mode == 'light' ? $scroll-bar-bg-color : $dark-scroll-bar-bg-color
@@ -46,10 +43,7 @@ root-color(mode) {
   --home-banner-icons-container-border-color mode == 'light' ? $home-banner-icons-container-border-color : $home-banner-icons-container-border-color-dark
   --home-banner-icons-container-background-color mode == 'light' ? $home-banner-icons-container-background-color : $home-banner-icons-container-background-color-dark
 
-  --redefine-box-shadow : var(--shadow-color-2) 0px 6px 24px 0px, var(--shadow-color-1) 0px 0px 0px 1px
-  --redefine-box-shadow-hover : var(--shadow-color-2) 0px 6px 24px 0px, var(--shadow-color-1) 0px 0px 0px 1px, var(--shadow-color-1) 0px 0px 0px 1px inset
-  --redefine-box-shadow-flat : var(--shadow-color-2) 0px 1px 4px 0px, var(--shadow-color-1) 0px 0px 0px 1px
-  --redefine-box-shadow-flat-hover : var(--shadow-color-2) 0px 1px 4px 0px, var(--shadow-color-1) 0px 0px 0px 1px, var(--shadow-color-1) 0px 0px 0px 1px inset
+  --rd-shadow mode == 'light' ? $rd-shadow : $dark-rd-shadow
 
   --mermaid-theme : mode == 'light' ? $mermaid-theme : $dark-mermaid-theme
 

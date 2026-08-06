@@ -8,22 +8,18 @@ a.button
   cursor pointer
   display inline-block
   padding 12px 16px
+  border 1px solid var(--rd-border)
   text-align center
   text-decoration none
-  box-shadow var(--redefine-box-shadow-flat)
   user-select none
   -moz-user-select none
   -webkit-user-select none
   -ms-user-select none
 
   &:hover, &:focus
-    box-shadow var(--redefine-box-shadow)
     background-color var(--background-color)
 
   &:active
-    transform scale(0.95)
-    transition transform 0.1s ease
-    box-shadow var(--redefine-box-shadow-flat)
     background-color var(--third-background-color)
 
 a.center

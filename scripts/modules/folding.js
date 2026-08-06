@@ -82,9 +82,9 @@ async function postFolding(args, content) {
   const openAttr = parsed.open ? ' open' : '';
 
   return html`
-    <details class="relative my-4 border border-border-color bg-second-background-color rounded-md ${customClassAttr}"${openAttr} data-header-exclude>
-      <summary class="px-4 py-2 rounded-md shadow-[0_0_2px_0_var(--shadow-color-1)] cursor-pointer not-markdown"><i class="fa-solid fa-chevron-right"></i>${parsed.title} </summary>
-      <div class="content p-4 ">
+    <details class="relative my-4 border border-rd-border bg-second-background-color rounded-md ${customClassAttr}"${openAttr} data-header-exclude>
+    <summary class="px-4 py-2 rounded-md border border-rd-border cursor-pointer not-markdown"><i class="fa-solid fa-chevron-right"></i>${parsed.title} </summary>
+      <div class="content markdown-body p-4 ">
         ${processedContent}
       </div>
     </details>

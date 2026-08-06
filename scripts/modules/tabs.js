@@ -252,7 +252,7 @@ async function buildTabNavAndContent(tabBlocks, tabName, activeTabIndex, postCon
     const hiddenAttr = active ? '' : ' hidden';
 
     tabNav.push(`<button type="button" role="tab" aria-selected="${active}" data-state="${buttonState}" data-tab="${tabHref}" class="inline-flex items-center gap-2 whitespace-nowrap text-third-text-color border-b-2 border-transparent py-2 text-sm font-medium transition-colors hover:text-second-text-color data-[state=active]:border-primary data-[state=active]:text-primary" tabindex="${active ? '0' : '-1'}">${icon + caption}</button>`);
-    tabContent.push(`<div class="tab-pane" data-state="${buttonState}" id="${tabHref}"${hiddenAttr}>${finalContent}</div>`);
+     tabContent.push(`<div class="tab-pane markdown-body" data-state="${buttonState}" id="${tabHref}"${hiddenAttr}>${finalContent}</div>`);
   }
 
   return {
@@ -269,8 +269,8 @@ async function postTabs(args, content) {
   const { tabNav, tabContent } = await buildTabNavAndContent(tabBlocks, resolvedTabName, activeTabIndex, this);
 
   const finalTabNav = `<div role="tablist" aria-orientation="horizontal" class="flex gap-3.5 overflow-x-auto px-4 not-markdown scrollbar-hide" tabindex="0">${tabNav}</div>`;
-  const finalTabContent = `<div class="tab-content p-4 bg-background-color/70 rounded-md shadow-[0_0_2px_0_var(--shadow-color-1)]">${tabContent}</div>`;
-  return `<div class="tabs relative my-4 bg-second-background-color border border-border-color rounded-md" id="tab-${normalizeTabToken(resolvedTabName)}">${finalTabNav + finalTabContent}</div>`;
+  const finalTabContent = `<div class="tab-content p-4 bg-background-color/70 rounded-md border border-rd-border">${tabContent}</div>`;
+  return `<div class="tabs relative my-4 bg-second-background-color border border-rd-border rounded-md" id="tab-${normalizeTabToken(resolvedTabName)}">${finalTabNav + finalTabContent}</div>`;
 }
 
 hexo.extend.tag.register('tabs', postTabs, { ends: true, async: true });

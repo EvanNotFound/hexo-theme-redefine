@@ -16,13 +16,11 @@
     top $navbar-height
 
   .sidebar-content
-    redefine-container(
-      false,
-      1.02,
-      1.02,
-      20px,
-      0
-    )
+    padding 20px
+    border 1px solid var(--rd-border)
+    border-radius $redefine-border-radius-large
+    box-sizing border-box
+    background var(--background-color)
 
     &[marginTop]
       margin-top: $spacing-unit * 0.6
@@ -31,12 +29,8 @@
         width 80px
         height 80px
         border-radius $redefine-border-radius-large
-        box-shadow var(--redefine-box-shadow-flat)
-        border 1px solid var(--border-color)
+        border 1px solid var(--rd-border)
         padding 1px
-
-        &:hover
-          box-shadow var(--redefine-box-shadow)
 
     .author
 
@@ -53,13 +47,11 @@
 
   .sidebar-links
     overflow hidden
-    redefine-container(
-      false,
-      1.02,
-      1.02,
-      15px,
-      0
-    )
+    padding 15px
+    border 1px solid var(--rd-border)
+    border-radius $redefine-border-radius-large
+    box-sizing border-box
+    background var(--background-color)
 
     &[marginTop]
       margin-top: $spacing-unit * 0.6
@@ -69,7 +61,7 @@
       margin -15px -15px 10px -15px
       border-radius $redefine-border-radius-large-top
       padding 15px
-      border-bottom 1px solid var(--border-color)
+       border-bottom 1px solid var(--rd-border)
 
       .site-name
         font-size 1.2rem
