@@ -269,7 +269,7 @@ async function postTabs(args, content) {
   const { tabNav, tabContent } = await buildTabNavAndContent(tabBlocks, resolvedTabName, activeTabIndex, this);
 
   const finalTabNav = `<div role="tablist" aria-orientation="horizontal" class="flex gap-3.5 overflow-x-auto px-4 not-markdown scrollbar-hide" tabindex="0">${tabNav}</div>`;
-  const finalTabContent = `<div class="tab-content p-4 bg-background-color/70 rounded-md">${tabContent}</div>`;
+  const finalTabContent = `<div class="tab-content p-4 bg-background-color/70 rounded-md shadow-[0_2px_8px_-4px_rgba(0,0,0,0.2)]">${tabContent}</div>`;
   return `<div class="tabs relative my-4 bg-second-background-color border border-rd-border rounded-md" id="tab-${normalizeTabToken(resolvedTabName)}">${finalTabNav + finalTabContent}</div>`;
 }
 

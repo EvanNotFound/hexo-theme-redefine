@@ -387,7 +387,7 @@ if input("this is a ") == "codeblock"
       Third Tab
     </button>
   </div>
-  <div class="tab-content p-4 bg-background-color/70 rounded-md border border-rd-border">
+  <div class="tab-content p-4 bg-background-color/70 rounded-md shadow-[0_2px_8px_-4px_rgba(0,0,0,0.2)]">
     <div class="tab-pane active" id="first-unique-name-1">
       <p><strong>This is Tab 1.</strong></p>
       <div class="code-container" data-rel="Plaintext">
