@@ -27,11 +27,14 @@ From the repository root, source files live in:
 
 - `source/js/**`
 
-`pnpm dev` creates `dev/site/themes/redefine/` as local link state. Do not edit files through that generated directory.
+`pnpm dev` builds browser JavaScript once and creates `dev/site/themes/redefine/`
+as local link state. Do not edit files through that generated directory.
 
 Do not edit:
 
-- `source/js/build/**` (generated output)
+- `source/js/build/**` (generated, ignored output)
+
+Checked-in runtime assets live under `source/assets/**`.
 
 Common folders:
 

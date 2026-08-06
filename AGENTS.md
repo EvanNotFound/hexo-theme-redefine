@@ -48,9 +48,9 @@ pnpm dev
 - `pnpm run build:js` writes minified files and source maps under
   `source/js/build/`.
 - `pnpm clean` removes the demo site's `db.json` and `public/` directory.
-- `pnpm dev` resets the demo site, links the current theme, starts Hexo at
-  `http://127.0.0.1:4000`, and starts the root CSS watcher. It does not watch
-  or rebuild browser JavaScript.
+- `pnpm dev` builds browser JavaScript once, resets the demo site, links the
+  current theme, starts Hexo at `http://127.0.0.1:4000`, and starts the root CSS
+  watcher. It does not watch browser JavaScript.
 - `pnpm run watch:css` runs the root CSS watcher without starting Hexo.
 - `pnpm dev:setup` installs dependencies with the offline preference used by
   the worktree setup.
@@ -95,6 +95,7 @@ The canonical theme preview is the root command:
 
 ```text
 pnpm dev
+  ├─ build browser JavaScript once
   ├─ reset dev/site/db.json and dev/site/public/
   ├─ link root theme entries into dev/site/themes/redefine/
   ├─ run Hexo server in dev/site on port 4000
@@ -125,9 +126,9 @@ Do not edit generated files directly:
   `dev/site/themes/`.
 
 Run the source build when it is useful for verification, but do not include
-root theme build output in ordinary PR commits. The pre-commit hook and PR CI
-reject those files; the build workflow regenerates and commits them on
-`main` and `dev`.
+root theme build output in ordinary PR commits. PR CI rejects those files, and
+release workflows regenerate the output when publishing packages or CDN
+assets.
 
 ## Root Theme Conventions
 

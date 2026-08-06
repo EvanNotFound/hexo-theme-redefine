@@ -1,2 +1,0 @@
-export default function initEssays(){const t=document.querySelectorAll(".essay-date");t.length&&t.forEach(t=>{const e=t.getAttribute("data-date"),n=config.language||"en",a=moment(e).locale(n).calendar();t.textContent=a})}
-//# sourceMappingURL=essays.js.map

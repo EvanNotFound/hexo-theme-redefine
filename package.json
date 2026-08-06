@@ -2,8 +2,15 @@
   "name": "hexo-theme-redefine",
   "version": "2.9.0",
   "private": false,
-  "packageManager": "pnpm@10.29.3",
+  "packageManager": "pnpm@11.20.0+sha512.9a6f330a95b66446ea088faf1521405a8a01f07fde7124cc9958dfed52d4bb436737e65b08f85f37b46fcba375092558ac51262b816844b22f63406ed166bfee",
   "description": "Redefine your writing with Hexo Theme Redefine.",
+  "files": [
+    "_config.yml",
+    "languages",
+    "layout",
+    "scripts",
+    "source"
+  ],
   "scripts": {
     "npm:publish": "npm run build && npm publish",
     "build": "tailwindcss -i source/css/tailwind.source.css -o source/css/build/tailwind.css --minify && node source/js/build.js",
@@ -11,8 +18,7 @@
     "build:js": "node source/js/build.js",
     "clean": "node dev/clean.mjs",
     "watch:css": "tailwindcss -i source/css/tailwind.source.css -o source/css/build/tailwind.css --watch --minify",
-    "prepare": "husky",
-    "dev": "node dev/dev.mjs",
+    "dev": "pnpm run build:js && node dev/dev.mjs",
     "dev:setup": "pnpm install --frozen-lockfile --prefer-offline"
   },
   "repository": {
@@ -35,12 +41,11 @@
   },
   "homepage": "https://redefine.ohevan.com",
   "devDependencies": {
-    "@tailwindcss/cli": "^4.1.11",
-    "eslint": "^8.47.0",
+    "@tailwindcss/cli": "^4.3.3",
+    "eslint": "^8.57.1",
     "glob-promise": "^6.0.7",
-    "husky": "^9.1.6",
-    "postcss": "^8.4.47",
-    "tailwindcss": "^4.1.11",
-    "terser": "^5.36.0"
+    "postcss": "^8.5.26",
+    "tailwindcss": "^4.3.3",
+    "terser": "^5.49.2"
   }
 }

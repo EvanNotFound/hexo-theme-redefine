@@ -27,11 +27,13 @@ Redefine 的 JavaScript 分为两类：
 
 - `source/js/**`
 
-`pnpm dev` 会生成本地链接目录 `dev/site/themes/redefine/`，请勿通过该生成目录修改文件。
+`pnpm dev` 会先构建一次浏览器端 JavaScript，并生成本地链接目录 `dev/site/themes/redefine/`，请勿通过该生成目录修改文件。
 
 请勿手动修改：
 
-- `source/js/build/**`（构建输出目录）
+- `source/js/build/**`（生成且被忽略的构建输出目录）
+
+提交到仓库的运行时资源位于 `source/assets/**`。
 
 常见目录说明：
 

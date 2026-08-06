@@ -30,8 +30,6 @@ jobs:
 
       - name: Set up pnpm
         uses: pnpm/action-setup@v6
-        with:
-          version: 10.29.3
 
       - name: Clone Hexo site repository
         run: git clone https://github.com/EvanNotFound/redefine-demo.git hexo-site

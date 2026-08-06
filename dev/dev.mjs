@@ -24,7 +24,7 @@ const shutdown = (exitCode = 0) => {
 const start = (command, args, cwd) => {
   const child = spawn(command, args, {
     cwd,
-    env: { ...process.env, HUSKY: "0", NODE_ENV: "development" },
+    env: { ...process.env, NODE_ENV: "development" },
     stdio: "inherit",
   });
   children.push(child);

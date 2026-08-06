@@ -2,6 +2,17 @@ packages:
   - "dev/site"
   - "docs"
 
+allowBuilds:
+  '@parcel/watcher': true
+  esbuild: true
+  hexo-util: true
+  nodejieba: true
+  sharp: true
+  unrs-resolver: true
+
+minimumReleaseAgeExclude:
+  - postcss@8.5.26
+
 onlyBuiltDependencies:
   - "@parcel/watcher"
   - esbuild

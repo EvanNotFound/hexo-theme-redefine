@@ -31,8 +31,8 @@ To start contributing to hexo-theme-redefine, please follow these steps:
 
 Use `pnpm dev` from the repository root to preview theme changes at
 `http://127.0.0.1:4000`. This resets generated Hexo state, links the current
-theme into the demo site, starts Hexo, and watches root CSS. Browser-JS
-changes require `pnpm run build:js` because the preview does not watch JS.
+theme into the demo site, builds browser JavaScript once, starts Hexo, and
+watches root CSS. The preview does not continuously watch browser JS.
 
 For docs work, use the package scripts from `docs/` or their root equivalents:
 
@@ -67,7 +67,7 @@ We value your contributions and want to ensure they are appropriate for the proj
    footer: optimize style
    ```
 
-3. Do not commit generated assets (`source/js/build/**`, `source/css/build/**`) in ordinary PRs. The pre-commit hook and PR checks reject them. You can run `pnpm run build` locally for verification, but leave the artifacts unstaged; CI updates them on `dev`/`main`.
+3. Do not commit generated assets (`source/js/build/**`, `source/css/build/**`) in ordinary PRs. PR CI rejects them. You can run `pnpm run build` locally for verification; the output is generated locally or by release CI and is not committed to `dev` or `main`.
 
 4. Follow the existing code style and conventions.
 

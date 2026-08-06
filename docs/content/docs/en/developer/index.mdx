@@ -34,7 +34,10 @@ developer:
 pnpm dev
 ```
 
-This resets the demo site's generated state, links the current theme source into `dev/site/themes/redefine`, starts Hexo at `http://127.0.0.1:4000`, and watches Tailwind CSS. It does not rebuild browser JavaScript automatically.
+This builds browser JavaScript once, resets the demo site's generated state,
+links the current theme source into `dev/site/themes/redefine`, starts Hexo at
+`http://127.0.0.1:4000`, and watches Tailwind CSS. It does not continuously
+watch browser JavaScript.
 
 </div>
 
@@ -53,15 +56,19 @@ pnpm run watch:css
 - `pnpm clean` removes the demo site's generated `db.json` and `public/` directory.
 - `pnpm run build` builds CSS and minifies browser JavaScript.
 - `pnpm run build:css` builds `source/css/build/tailwind.css`.
-- `pnpm run build:js` writes minified JavaScript and source maps under `source/js/build/`.
+- `pnpm run build:js` writes generated minified JavaScript and source maps under `source/js/build/`.
 - `pnpm run watch:css` watches and rebuilds Tailwind CSS without starting Hexo.
 
-Do not edit generated files directly. Theme build output lives in `source/css/build/` and `source/js/build/`; edit the source files instead.
+Do not edit generated files directly. Theme build output lives in
+`source/css/build/` and `source/js/build/`; these paths are generated locally or
+in CI and are not committed. Edit the source files instead. Runtime assets under
+`source/assets/` remain checked in.
 
 ## Project Layout
 
 - `source/css/tailwind.source.css`: Tailwind CSS entry file.
 - `source/css/`: Stylus and other theme styles.
+- `source/assets/`: Checked-in runtime assets.
 - `source/js/`: Browser-side JavaScript source.
 - `scripts/`: Hexo generation-time Node scripts.
 - `layout/`: Hexo templates.
