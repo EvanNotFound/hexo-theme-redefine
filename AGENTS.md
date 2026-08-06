@@ -1,216 +1,81 @@
 # AGENTS.md
 
-This repository is a pnpm monorepo for Hexo Theme Redefine, its local Hexo
-demo site, and its Next.js documentation site. Work from the repository root
-unless a package-specific command says otherwise.
+This pnpm monorepo contains the published Hexo theme, a private Hexo demo, and
+a private Next.js documentation site. Work from the repository root unless a
+package-specific command says otherwise.
 
-## Start Here
+## Scope and ownership
 
-- Read this file for workspace boundaries, shared workflows, and root theme
-  conventions.
-- For work under `docs/**`, also follow `docs/AGENTS.md`. The nearest guidance
-  file takes precedence for package-specific details.
-- Keep a change focused on the package that owns it. Update another package
-  only when the behavior or workflow genuinely crosses that boundary.
-- Use pnpm and the versions declared by the repository: pnpm `11.20.0` and
-  Node.js 24.x for development and CI.
+- Root theme: `_config.yml`, `languages/`, `layout/`, `scripts/`, and `source/`.
+- Demo fixtures and site configuration: `dev/site/`. Never edit the generated
+  link at `dev/site/themes/redefine/`.
+- Documentation content: `docs/content/docs/{zh,en}/`; documentation app code:
+  `docs/src/`. Follow `docs/AGENTS.md` for all `docs/**` work.
+- Keep changes in the owning package. For cross-package behavior, run each
+  affected package's checks.
+- Use pnpm `11.20.0` and Node.js 24.x. Change dependencies in the owning
+  `package.json`; let pnpm update the root `pnpm-lock.yaml`.
 
-## Repository Map
+## Documentation is part of the change
 
-| Path                                                          | Package or responsibility                       | Main contents                                                     |
-| ------------------------------------------------------------- | ----------------------------------------------- | ----------------------------------------------------------------- |
-| `source/`, `scripts/`, `layout/`, `languages/`, `_config.yml` | Root theme package, `hexo-theme-redefine`       | Theme runtime, Hexo integration, styles, configuration            |
-| `dev/site/`                                                   | Private workspace package, `redefine-demo-site` | Hexo configuration, demo pages, posts, and validation fixtures    |
-| `dev/dev.mjs`                                                 | Local development orchestration                 | Cleans and links the demo site, starts Hexo, and watches root CSS |
-| `dev/clean.mjs`                                               | Demo-site cleanup                               | Removes generated Hexo state                                      |
-| `dev/link-theme.mjs`                                          | Local theme mounting                            | Links the current root theme into `dev/site/themes/redefine`      |
-| `docs/`                                                       | Private workspace package, `redefine-docs`      | Next.js 16, Fumadocs, TypeScript UI, and bilingual MDX content    |
+- When adding a configuration option, adding a user-visible feature, or
+  changing/removing existing behavior, update the relevant documentation in
+  the same change whenever users or contributors need to know about it. Do not
+  leave documentation as an assumed follow-up.
+- User docs are bilingual under `docs/content/docs/{zh,en}/`. Keep the two
+  locales aligned and treat `zh` as canonical unless the task explicitly limits
+  locale scope. Update the matching `meta.json` when adding or moving pages.
+- Update developer docs when commands, package boundaries, build output, or
+  contributor workflows change. Update this file and nested `AGENTS.md` files
+  when agent guidance changes.
 
-The workspace packages are declared in `pnpm-workspace.yaml`. The root
-package is the published theme; `dev/site` and `docs` are excluded from the
-published npm package.
+## Commands and verification
 
-## Commands
-
-Run these from the repository root:
-
-```sh
-pnpm install --frozen-lockfile
-pnpm run build
-pnpm run build:css
-pnpm run build:js
-pnpm release:notes -- v2.10.0
-pnpm release:notes:check
-pnpm clean
-pnpm dev
-```
-
-- `pnpm run build` builds Tailwind CSS and bundles/minifies browser JavaScript.
-- `pnpm run build:css` writes `source/css/build/tailwind.css`.
-- `pnpm run build:js` writes the bundled application, lazy chunks, standalone
-  plugin outputs, copied vendor files, and source maps under `source/js/build/`.
-- `pnpm release:notes -- v2.10.0` generates a local release-note preview for a
-  target tag through OpenCode; it does not publish or create a GitHub Release.
-- `pnpm release:notes:check` validates the generated `release-notes.md`.
-- `pnpm clean` removes the demo site's `db.json` and `public/` directory.
-- `pnpm dev` serves source browser modules, resets the demo site, links the
-  current theme, starts Hexo at `http://127.0.0.1:4000`, and starts the root CSS
-  watcher. It does not require or watch production JavaScript output.
-- `pnpm run watch:css` runs the root CSS watcher without starting Hexo.
-- `pnpm dev:setup` installs dependencies with the offline preference used by
-  the worktree setup.
-
-Run docs commands from the root with `--dir docs`, or change into `docs/`:
-
-```sh
-pnpm --dir docs dev
-pnpm --dir docs lint
-pnpm --dir docs types:check
-pnpm --dir docs build
-pnpm --dir docs start
-```
-
-The docs package has no automated test runner or single-test command. The
-root theme package also has no test runner or lint script. Use the focused
-build, lint, typecheck, preview, or Hexo generation command for the package
-you changed.
-
-## Choose the Right Package
-
-Before editing, classify the task:
-
-- Theme behavior, templates, styles, browser code, Hexo helpers, theme
-  configuration, or language strings belongs in the root package.
-- Demo-only posts, pages, fixtures, or Hexo settings belong in `dev/site/`.
-  Do not edit the linked `dev/site/themes/redefine/` copy.
-- Documentation prose belongs in `docs/content/docs/{zh,en}/`. Update both
-  locales unless the task explicitly allows one locale, and keep `zh` as the
-  canonical source.
-- Documentation UI, routing, search, layouts, or components belongs in
-  `docs/src/`.
-- Workspace dependency changes belong in the package's `package.json` and
-  the root `pnpm-lock.yaml`; do not edit the lockfile by hand.
-
-For a cross-package change, describe the relationship in the change and run
-the verification commands for every affected package.
-
-## Local Preview Workflow
-
-The canonical theme preview is the root command:
-
-```text
-pnpm dev
-  ├─ build browser JavaScript once
-  ├─ reset dev/site/db.json and dev/site/public/
-  ├─ link root theme entries into dev/site/themes/redefine/
-  ├─ run Hexo server in dev/site on port 4000
-  └─ watch root Tailwind CSS
-```
-
-`dev/site/source/` is committed validation content and may be changed when a
-theme change needs a reproducible demo. The linked theme directory,
-`db.json`, and `public/` are generated local state.
-
-For a one-off generated preview without keeping a server running:
-
-```sh
-pnpm run build
-pnpm clean
-node dev/link-theme.mjs
-pnpm --dir dev/site exec hexo generate
-```
-
-To preview release notes locally, configure the same OpenAI-compatible provider
-variables used by release CI and run the command from the repository root:
-
-```sh
-RELEASE_LLM_URL=... RELEASE_LLM_KEY=... pnpm release:notes -- v2.10.0
-pnpm release:notes:check
-```
-
-The target tag may be hypothetical. Review `release-notes.md` before pushing a
-matching version tag. Version bumps and tag creation remain manual; a pushed
-matching tag runs release CI, which builds the source-only theme and creates the
-GitHub Release. A provider or notes-format failure falls back to GitHub's
-automatic release notes.
-
-## Generated Files
-
-Do not edit generated files directly:
-
-- Root theme build output: `source/css/build/` and `source/js/build/`.
-- Docs Fumadocs output: `docs/.source/`.
-- Docs Next.js output: `docs/.next/`, `docs/out/`, and `docs/next-env.d.ts`.
-- Demo-site state: `dev/site/db.json`, `dev/site/public/`, and
-  `dev/site/themes/`.
-- Local release-note preview: `release-notes.md`.
-
-Run the source build when it is useful for verification, but do not include
-root theme build output in ordinary PR commits. PR CI rejects those files, and
-release workflows regenerate the output when publishing packages or CDN
-assets.
-
-## Root Theme Conventions
-
-### Browser JavaScript
-
-- Source lives under `source/js/**` and uses ES modules.
-- Use 2-space indentation, semicolons, double quotes, and trailing commas in
-  multiline objects, arrays, and parameters.
-- Prefer `const`; use `let` only when reassignment is needed.
-- Use `camelCase` for functions and variables, `PascalCase` for classes, and
-  `UPPER_SNAKE_CASE` for constants.
-- Keep initialization in `init*`, `on*`, or explicit lifecycle functions.
-- Guard missing DOM nodes with early returns and keep config access null-safe.
-- Use abort or cleanup patterns for event listeners when the surrounding code
-  supports them.
-
-### Hexo and Node code
-
-- Files under `scripts/**` use CommonJS and start with `"use strict";`.
-- Use `hexo.extend.*` APIs and avoid direct DOM access.
-- Keep helpers small and mostly pure. Use `try/catch` for unsafe parsing or
-  external data and log non-fatal failures with `console.warn` or
-  `console.error`.
-
-### Styling and configuration
-
-- Tailwind source is `source/css/tailwind.source.css`; do not edit its build
+- Install: `pnpm install --frozen-lockfile`.
+- Theme source or configuration: `pnpm run build`. There is no root test or
+  lint script; use `pnpm run build:css` or `pnpm run build:js` only for a
+  narrower affected area.
+- Interactive theme preview: `pnpm dev` serves Hexo at
+  `http://127.0.0.1:4000`, resets and links the demo site, and watches CSS.
+  It serves source browser modules and does not watch production JavaScript
   output.
-- Stylus files use `//` comments, `$`-prefixed hyphenated variables, and the
+- One-off demo generation: run `pnpm run build`, `pnpm clean`,
+  `node dev/link-theme.mjs`, then `pnpm --dir dev/site exec hexo generate`.
+- Demo-only change: use the one-off generation above or `pnpm dev`.
+- Docs code or MDX: run `pnpm --dir docs lint` and
+  `pnpm --dir docs types:check`. The docs package has no test runner or
+  single-test command.
+
+## Theme implementation
+
+- Browser JavaScript under `source/js/**` uses ES modules. Hexo integration
+  under `scripts/**` uses CommonJS, starts with `"use strict";`, and registers
+  through `hexo.extend.*` APIs.
+- Tailwind input is `source/css/tailwind.source.css`. Stylus code uses the
   existing `redefine-tablet()` and `redefine-mobile()` mixins.
-- Add theme defaults to `_config.yml`. If client code needs the value, update
-  `scripts/config-export.js` and consume it with a default in JavaScript.
+- Add theme defaults to `_config.yml`. If browser code needs a value, also
+  export it through `scripts/config-export.js` and consume it with a default.
 - Add user-facing theme strings to the relevant files under `languages/`.
 
-## Verification and Change Hygiene
+## Generated files
 
-- Theme source or config change: run `pnpm run build`; use `pnpm dev` for
-  browser-facing behavior.
-- Demo-site change: run `pnpm clean`, link the theme, and use
-  `pnpm --dir dev/site exec hexo generate` or `pnpm dev`.
-- Docs code change: run `pnpm --dir docs lint` and
-  `pnpm --dir docs types:check`.
-- Docs MDX change: verify both locale files and their matching `meta.json`
-  navigation when pages move or are added.
-- Keep diffs focused, preserve existing file headers, and do not add a new
-  dependency or abstraction unless the task requires it.
-- Never expose secrets from `_config.yml` or environment files. Treat external
-  URLs and configuration values as untrusted input.
+Do not edit generated output directly:
 
-## Contribution Rules
+- Theme builds: `source/css/build/`, `source/js/build/`.
+- Demo state: `dev/site/db.json`, `dev/site/public/`, `dev/site/themes/`.
+- Docs output: `docs/.source/`, `docs/.next/`, `docs/out/`,
+  `docs/next-env.d.ts`.
+- Release-note preview: `release-notes.md`.
 
-- Pull requests target the `dev` branch.
-- Use commit messages in the form `[section]: [brief info]`, for example
-  `footer: optimize style`.
-- Do not commit generated theme assets in ordinary PRs. Test local builds, but
-  leave generated output unstaged unless working on the workflow that updates
-  `main` or `dev`.
-- Keep this file and the nested package guidance current when the workspace or
-  development commands change.
+Build outputs may be generated for verification, but ordinary PRs must not
+commit `source/css/build/` or `source/js/build/`; CI rejects them.
 
-## Quick Links
+## Release and contribution
 
-- User docs: https://redefine-docs.ohevan.com/
-- Developer docs: https://redefine-docs.ohevan.com/developer
-- Theme homepage: https://redefine.ohevan.com/
+- Pull requests target `dev`. Commit messages use `[section]: [brief info]`,
+  for example `footer: optimize style`.
+- Preview release notes with
+  `RELEASE_LLM_URL=... RELEASE_LLM_KEY=... pnpm release:notes -- v2.10.0`, then
+  run `pnpm release:notes:check`. This does not publish a release.
+- Release tags are `vX.Y.Z` and must match `package.json`; pushing one runs the
+  release workflow. Version bumps and tag creation are manual.
