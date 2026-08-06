@@ -21,13 +21,14 @@ jobs:
         with:
           path: 'theme' # Checkout the theme repository into a directory named 'theme'
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
+      - name: Set up pnpm and Node.js
+        uses: pnpm/setup@v2
         with:
-          node-version: '22.x'
-
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v6
+          runtime: node@24
+          package-json-file: theme/package.json
+          cache: true
+          cache-dependency-path: theme/pnpm-lock.yaml
+          install: false
 
       - name: Clone Hexo site repository
         run: git clone https://github.com/EvanNotFound/redefine-demo.git hexo-site

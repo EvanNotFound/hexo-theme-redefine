@@ -19,6 +19,8 @@ they are consumed.
 - Make npm packaging explicitly include the built `source/` tree.
 - Build browser JavaScript once when `pnpm dev` starts so a fresh source-only
   checkout remains usable.
+- Migrate all pnpm GitHub Actions workflows to `pnpm/setup@v2`, use Node.js 24,
+  and resolve the pnpm version from the root package metadata.
 - Update contributor and bilingual developer guidance to describe the
   source-only artifact workflow.
 
@@ -45,5 +47,6 @@ they are consumed.
 - npm package contents and Aliyun release uploads.
 - English and Chinese developer documentation, plus repository contribution
   guidance.
+- GitHub Actions runtime setup and dependency installation behavior.
 - The external cdnjs metadata PR must be merged before a release that relies on
   cdnjs serving the built CSS and source maps.

@@ -14,16 +14,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v6
 
-      - name: Setup Node
-        uses: actions/setup-node@v6
+      - name: Set up pnpm and Node.js
+        uses: pnpm/setup@v2
         with:
-          node-version: '22.x'
-
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v6
-
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+          runtime: node@24
+          cache: true
 
       - name: Build Theme Assets
         run: pnpm run build

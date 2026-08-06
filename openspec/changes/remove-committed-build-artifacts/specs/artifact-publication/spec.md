@@ -81,3 +81,37 @@ starting the local Hexo demo and CSS watcher.
 - **THEN** the command generates the browser JavaScript output first
 - **AND** the Hexo demo starts with the existing local source paths available
 - **AND** the CSS watcher continues to handle CSS development output
+
+### Requirement: GitHub Actions use package-managed pnpm setup
+
+All GitHub Actions workflows that use pnpm MUST use `pnpm/setup@v2` with
+`runtime: node@24`, and MUST resolve the pnpm version from the repository's
+`packageManager` metadata rather than pinning a pnpm version in workflow YAML.
+Root-based build and publication workflows MUST use the setup action's automatic
+dependency installation and pnpm store cache. Workflows that use a different
+checkout path or only deploy a prebuilt artifact MUST provide the package metadata
+needed by the action and explicitly control installation for their working
+directory.
+
+#### Scenario: Root workflow setup
+
+- **WHEN** a root-based build or publication workflow checks out the repository
+  and runs `pnpm/setup@v2`
+- **THEN** the workflow provides Node.js 24 and the pnpm version declared in
+  `package.json`
+- **AND** the action installs the workspace dependencies and enables the pnpm
+  store cache
+
+#### Scenario: Theme checkout workflow setup
+
+- **WHEN** a deploy workflow checks out the theme into `theme/`
+- **THEN** pnpm setup reads `theme/package.json` and `theme/pnpm-lock.yaml`
+- **AND** dependency installation remains deferred until the theme is moved into
+  the Hexo site
+
+#### Scenario: Prebuilt preview deployment setup
+
+- **WHEN** the PR preview deployment workflow runs after a successful build
+- **THEN** it checks out the workflow run's source at its head SHA before setup
+- **AND** pnpm setup does not install project dependencies because the workflow
+  deploys a prebuilt artifact

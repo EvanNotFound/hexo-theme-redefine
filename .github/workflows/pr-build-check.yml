@@ -33,16 +33,11 @@ jobs:
             exit 1
           fi
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v6
+      - name: Set up pnpm and Node.js
+        uses: pnpm/setup@v2
         with:
-          node-version: '20.x'
-
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v6
-
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+          runtime: node@24
+          cache: true
 
       - name: Build Project
         run: pnpm run build

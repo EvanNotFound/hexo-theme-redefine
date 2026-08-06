@@ -91,9 +91,27 @@ source inputs and are already covered by the cdnjs asset map.
   → **Mitigation:** Build immediately before upload and fail the workflow on a
   non-zero build result.
 - **[Trade-off]** Release workflows perform independent builds rather than
-  sharing one uploaded artifact.
-  → **Mitigation:** Pin Node, pnpm, dependencies, and the source revision; keep
-  the workflows simple and aligned.
+   sharing one uploaded artifact.
+   → **Mitigation:** Pin Node, pnpm, dependencies, and the source revision; keep
+   the workflows simple and aligned.
+
+### Use pnpm/setup for GitHub Actions
+
+All workflows that use pnpm use `pnpm/setup@v2` rather than separate Node.js and
+pnpm setup actions. The action reads the pnpm version from `packageManager` in
+`package.json` and installs Node.js 24 through `runtime: node@24`.
+
+Root-based build and publication workflows use the action's automatic dependency
+installation and pnpm store cache. The deploy workflows that check out the theme
+under `theme/` provide `package-json-file: theme/package.json` and the matching
+lockfile path, but defer installation until the theme has been moved into the
+Hexo site. The artifact-only PR deploy checks out the workflow run's source at
+its head SHA, uses `install: false`, and only uses pnpm to install the Vercel
+CLI. The npm publication workflow configures the npm registry separately because
+`pnpm/setup` does not expose `actions/setup-node`'s `registry-url` input.
+
+No `devEngines.runtime` field is added because all workflows are standardized on
+Node.js 24 through the setup action.
 
 ## Migration Plan
 

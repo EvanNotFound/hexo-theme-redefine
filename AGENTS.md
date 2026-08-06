@@ -12,8 +12,8 @@ unless a package-specific command says otherwise.
   file takes precedence for package-specific details.
 - Keep a change focused on the package that owns it. Update another package
   only when the behavior or workflow genuinely crosses that boundary.
-- Use pnpm and the versions declared by the repository: pnpm `10.29.3` and
-  Node.js 20.x for development and CI.
+- Use pnpm and the versions declared by the repository: pnpm `11.20.0` and
+  Node.js 24.x for development and CI.
 
 ## Repository Map
 

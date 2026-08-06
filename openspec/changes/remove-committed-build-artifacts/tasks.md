@@ -18,3 +18,12 @@
 
 - [x] 4.1 Run the root build from the source-only tree, inspect the npm dry-run package contents for built CSS, JavaScript, and maps, and run the affected docs lint/type checks.
 - [x] 4.2 Verify the final workflow and Git diff contain no artifact-commit path, no Husky setup, and no accidental deletion of `source/assets/`; confirm cdnjs PR #2185 is available before the next CDN-backed release.
+
+## 5. Migrate GitHub Actions to pnpm/setup
+
+- [x] 5.1 Update all pnpm workflows to use `pnpm/setup@v2` with Node.js 24 and
+  package-manager autodetection, preserving root installs, theme-path installs,
+  artifact-only deployment, cache behavior, and npm registry configuration.
+- [x] 5.2 Update the proposal, design, artifact-publication and docs-guidance
+  specifications, repository guidance, localized developer documentation, and
+  task record with the finalized pnpm/setup workflow contract.

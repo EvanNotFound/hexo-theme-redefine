@@ -24,13 +24,17 @@ jobs:
       url: ${{ steps.deploy-to-vercel.outputs.PREVIEW_URL }}
 
     steps:
-      - name: Set up Node.js
-        uses: actions/setup-node@v6
+      - name: Checkout workflow source
+        uses: actions/checkout@v6
         with:
-          node-version: '22.x'
+          repository: ${{ github.event.workflow_run.head_repository.full_name }}
+          ref: ${{ github.event.workflow_run.head_sha }}
 
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v6
+      - name: Set up pnpm and Node.js
+        uses: pnpm/setup@v2
+        with:
+          runtime: node@24
+          install: false
 
       - name: Resolve PR Info
         id: pr
