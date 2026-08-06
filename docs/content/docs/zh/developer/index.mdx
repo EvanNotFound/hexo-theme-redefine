@@ -58,6 +58,17 @@ pnpm run watch:css
 
 请勿直接修改构建输出。主题构建输出位于 `source/css/build/` 和 `source/js/build/`，由本地开发或 CI 生成且不会提交到 Git，应当修改对应的源文件。`source/assets/` 下的运行时资源仍然会提交到仓库。
 
+## 预览发布说明
+
+版本号更新和 Git 标签创建仍由维护者手动完成。在推送匹配版本的标签前，可以使用下列命令生成并检查双语发布说明：
+
+```bash
+RELEASE_LLM_URL=... RELEASE_LLM_KEY=... pnpm release:notes -- v2.10.0
+pnpm release:notes:check
+```
+
+目标标签可以暂时不存在。命令只会在仓库根目录生成被 Git 忽略的 `release-notes.md`，不会发布 NPM 或 CDN 资源，也不会创建 GitHub Release。确认内容后再推送匹配的版本标签；CI 会先构建主题，再创建 GitHub Release。如果 OpenCode 不可用或生成内容未通过检查，CI 会改用 GitHub 自动生成的说明。
+
 ## 项目结构
 
 - `source/css/tailwind.source.css`：Tailwind CSS 入口文件。
