@@ -122,9 +122,14 @@ hexo.extend.filter.register(
       .replace(/{{hbeWrongPassMessage}}/g, config.wrong_pass_message)
       .replace(/{{hbeWrongHashMessage}}/g, config.wrong_hash_message)
       .replace(/{{hbeMessage}}/g, config.message);
-    data.content += `<link href="${hexo.config.root}css/hbe.style.css" rel="stylesheet" type="text/css"><script data-swup-reload-script type="module" src="${hexo.config.root}js/plugins/hbe.js"></script>
+    const hbeAssetPath =
+      hexo.config.theme_config?.developer?.enable === true
+        ? "js/plugins/hbe.js"
+        : "js/build/plugins/hbe.js";
+
+    data.content += `<link href="${hexo.config.root}css/hbe.style.css" rel="stylesheet" type="text/css"><script data-swup-reload-script type="module" src="${hexo.config.root}${hbeAssetPath}"></script>
 <script data-swup-reload-script type="module">
-import {initHBE} from "${hexo.config.root}js/plugins/hbe.js";
+import {initHBE} from "${hexo.config.root}${hbeAssetPath}";
     initHBE();
 </script>
 `;
@@ -146,9 +151,17 @@ hexo.extend.generator.register("hexo-blog-encrypt", () => [
   {
     data: () =>
       fs.createReadStream(
-        path.resolve(__dirname, "../../source/js/plugins/hbe.js"),
+        path.resolve(
+          __dirname,
+          hexo.config.theme_config?.developer?.enable === true
+            ? "../../source/js/plugins/hbe.js"
+            : "../../source/js/build/plugins/hbe.js",
+        ),
       ),
-    path: "js/plugins/hbe.js",
+    path:
+      hexo.config.theme_config?.developer?.enable === true
+        ? "js/plugins/hbe.js"
+        : "js/build/plugins/hbe.js",
   },
 ]);
 

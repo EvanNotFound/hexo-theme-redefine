@@ -80,6 +80,10 @@ this is a very long table
 
 ## 🔔 提示块样式测试
 
+{% callout type="info" title="提 示" class="custom-class" %}
+命名参数让配置更清晰。
+{% endcallout %}
+
 ### 基础提示块
 {% note %}
 默认 提示块标签

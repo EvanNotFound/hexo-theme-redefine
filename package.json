@@ -13,14 +13,14 @@
   ],
   "scripts": {
     "npm:publish": "npm run build && npm publish",
-    "build": "tailwindcss -i source/css/tailwind.source.css -o source/css/build/tailwind.css --minify && node source/js/build.js",
+    "build": "node dev/build.mjs",
     "build:css": "tailwindcss -i source/css/tailwind.source.css -o source/css/build/tailwind.css --minify",
     "build:js": "node source/js/build.js",
     "clean": "node dev/clean.mjs",
     "release:notes": "npx --yes opencode-ai@1.18.6 run --pure --command changelog",
     "release:notes:check": "node scripts/release-notes.js",
     "watch:css": "tailwindcss -i source/css/tailwind.source.css -o source/css/build/tailwind.css --watch --minify",
-    "dev": "pnpm run build:js && node dev/dev.mjs",
+    "dev": "node dev/dev.mjs",
     "dev:setup": "pnpm install --frozen-lockfile --prefer-offline"
   },
   "repository": {
@@ -44,10 +44,9 @@
   "homepage": "https://redefine.ohevan.com",
   "devDependencies": {
     "@tailwindcss/cli": "^4.3.3",
+    "esbuild": "^0.28.1",
     "eslint": "^8.57.1",
-    "glob-promise": "^6.0.7",
     "postcss": "^8.5.26",
-    "tailwindcss": "^4.3.3",
-    "terser": "^5.49.2"
+    "tailwindcss": "^4.3.3"
   }
 }

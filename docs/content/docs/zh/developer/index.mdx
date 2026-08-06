@@ -34,7 +34,7 @@ developer:
 pnpm dev
 ```
 
-该命令会先构建一次浏览器端 JavaScript，清理演示站生成的状态，将当前主题源代码链接到 `dev/site/themes/redefine`，在 `http://127.0.0.1:4000` 启动 Hexo，并实时编译 Tailwind CSS。它不会持续监听浏览器端 JavaScript。
+该命令会直接使用浏览器端 JavaScript 源模块，清理演示站生成的状态，将当前主题源代码链接到 `dev/site/themes/redefine`，在 `http://127.0.0.1:4000` 启动 Hexo，并实时编译 Tailwind CSS。它不要求生成或持续监听生产环境的 JavaScript 构建输出。
 
 </div>
 
@@ -51,12 +51,13 @@ pnpm run watch:css
 ```
 
 - `pnpm clean` 删除演示站生成的 `db.json` 和 `public/` 目录。
-- `pnpm run build` 构建 CSS 并压缩浏览器端 JavaScript。
+- `pnpm run build` 统一执行 Tailwind CSS 和浏览器端 JavaScript 构建。
 - `pnpm run build:css` 生成 `source/css/build/tailwind.css`。
-- `pnpm run build:js` 在 `source/js/build/` 下生成压缩后的 JavaScript 和 source map；这些文件属于生成输出。
+- `pnpm run build:js` 在 `source/js/build/` 下生成应用 bundle、按需加载的功能 chunk、独立插件脚本、复制的 vendor JavaScript 和 source map。
 - `pnpm run watch:css` 只监听并重新构建 Tailwind CSS，不会启动 Hexo。
 
 请勿直接修改构建输出。主题构建输出位于 `source/css/build/` 和 `source/js/build/`，由本地开发或 CI 生成且不会提交到 Git，应当修改对应的源文件。`source/assets/` 下的运行时资源仍然会提交到仓库。
+当开发模式关闭时，Hexo 还会压缩依赖站点配置的 Stylus 样式；开发模式会保留可读的 Stylus 输出。
 
 ## 预览发布说明
 

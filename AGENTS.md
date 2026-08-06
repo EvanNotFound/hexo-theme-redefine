@@ -45,17 +45,17 @@ pnpm clean
 pnpm dev
 ```
 
-- `pnpm run build` builds Tailwind CSS and minifies browser JavaScript.
+- `pnpm run build` builds Tailwind CSS and bundles/minifies browser JavaScript.
 - `pnpm run build:css` writes `source/css/build/tailwind.css`.
-- `pnpm run build:js` writes minified files and source maps under
-  `source/js/build/`.
+- `pnpm run build:js` writes the bundled application, lazy chunks, standalone
+  plugin outputs, copied vendor files, and source maps under `source/js/build/`.
 - `pnpm release:notes -- v2.10.0` generates a local release-note preview for a
   target tag through OpenCode; it does not publish or create a GitHub Release.
 - `pnpm release:notes:check` validates the generated `release-notes.md`.
 - `pnpm clean` removes the demo site's `db.json` and `public/` directory.
-- `pnpm dev` builds browser JavaScript once, resets the demo site, links the
+- `pnpm dev` serves source browser modules, resets the demo site, links the
   current theme, starts Hexo at `http://127.0.0.1:4000`, and starts the root CSS
-  watcher. It does not watch browser JavaScript.
+  watcher. It does not require or watch production JavaScript output.
 - `pnpm run watch:css` runs the root CSS watcher without starting Hexo.
 - `pnpm dev:setup` installs dependencies with the offline preference used by
   the worktree setup.

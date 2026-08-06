@@ -1,26 +1,15 @@
 /* main function */
-import initBookmarkNav from "./layouts/bookmarkNav.js";
 import initCategoryList from "./layouts/categoryList.js";
-import initEssays from "./layouts/essays.js";
 import initHomeBanner from "./layouts/homeBanner.js";
 import initLazyLoad from "./layouts/lazyload.js";
 import { initTOC } from "./layouts/toc.js";
 import { navbarShrink } from "./layouts/navbarShrink.js";
-import initMasonry from "./plugins/masonry.js";
-import initMermaid from "./plugins/mermaid.js";
-import initPangu from "./plugins/pangu.js";
 import initTabs from "./plugins/tabs.js";
-import initTyped from "./plugins/typed.js";
 import initCopyCode from "./tools/codeBlock.js";
 import initExpirationDate from "./tools/expirationDate.js";
 import initModeToggle from "./tools/lightDarkSwitch.js";
-import {
-  initLocalSearchGlobals,
-  initLocalSearchPage,
-} from "./tools/localSearch.js";
 import initFooterRuntime from "./tools/runtime.js";
 import initScrollTopBottom from "./tools/scrollTopBottom.js";
-import initImageViewer from "./tools/imageViewer.js";
 import { initTocToggle } from "./tools/tocToggle.js";
 import { initUtilsGlobals, initUtilsPage } from "./utils.js";
 import {
@@ -42,6 +31,29 @@ const safeRun = (label, callback) => {
   } catch (error) {
     console.error(`[redefine] ${label} failed:`, error);
   }
+};
+
+const safeRunAsync = (label, callback) => {
+  Promise.resolve()
+    .then(callback)
+    .catch((error) => {
+      console.error(`[redefine] ${label} failed:`, error);
+    });
+};
+
+const lazyRun = (label, signal, load, callback) => {
+  if (signal?.aborted) {
+    return;
+  }
+
+  safeRunAsync(label, async () => {
+    const module = await load();
+    if (signal?.aborted) {
+      return;
+    }
+
+    callback(module);
+  });
 };
 
 const pageRefreshEvent = "redefine:page:refresh";
@@ -74,9 +86,16 @@ const initGlobalsOnce = () => {
   safeRun("categoryList:globals", () => {
     initCategoryList({ signal: appSignal });
   });
-  safeRun("localSearch:globals", () => {
-    initLocalSearchGlobals({ signal: appSignal });
-  });
+  if (theme.navbar?.search?.enable === true) {
+    lazyRun(
+      "localSearch:globals",
+      appSignal,
+      () => import("./tools/localSearch.js"),
+      ({ initLocalSearchGlobals }) => {
+        initLocalSearchGlobals({ signal: appSignal });
+      },
+    );
+  }
 
   if (!didInitRefreshEvent) {
     didInitRefreshEvent = true;
@@ -102,9 +121,19 @@ const initPage = () => {
   safeRun("modeToggle", () => {
     initModeToggle({ signal: pageSignal, appSignal });
   });
-  safeRun("imageViewer", () => {
-    initImageViewer({ signal: pageSignal, appSignal });
-  });
+  const hasViewableImages = document.querySelector(
+    ".markdown-body img, .masonry-item img, #shuoshuo-content img",
+  );
+  if (hasViewableImages || document.querySelector("#masonry-container")) {
+    lazyRun(
+      "imageViewer",
+      pageSignal,
+      () => import("./tools/imageViewer.js"),
+      ({ default: initImageViewer }) => {
+        initImageViewer({ signal: pageSignal, appSignal });
+      },
+    );
+  }
 
   navbarShrink.setNavigating(false);
   navbarShrink.refresh();
@@ -127,50 +156,85 @@ const initPage = () => {
     }
   });
 
-  safeRun("essays", () => {
-    if (typeof moment !== "undefined") {
-      initEssays();
-    }
-  });
+  if (document.querySelector(".essay-date") && typeof moment !== "undefined") {
+    lazyRun(
+      "essays",
+      pageSignal,
+      () => import("./layouts/essays.js"),
+      ({ default: initEssays }) => {
+        initEssays();
+      },
+    );
+  }
 
-  safeRun("pangu", () => {
-    if (theme.articles?.pangu_js) {
-      initPangu();
-    }
-  });
+  if (theme.articles?.pangu_js && document.querySelector(".markdown-body")) {
+    lazyRun(
+      "pangu",
+      pageSignal,
+      () => import("./plugins/pangu.js"),
+      ({ default: initPangu }) => {
+        initPangu();
+      },
+    );
+  }
 
-  safeRun("mermaid", () => {
-    if (theme.plugins?.mermaid?.enable) {
-      initMermaid();
-    }
-  });
+  if (
+    theme.plugins?.mermaid?.enable &&
+    document.querySelector(".mermaid")
+  ) {
+    lazyRun(
+      "mermaid",
+      pageSignal,
+      () => import("./plugins/mermaid.js"),
+      ({ default: initMermaid }) => {
+        initMermaid();
+      },
+    );
+  }
 
-  safeRun("masonry", () => {
-    initMasonry({ signal: pageSignal });
-  });
+  if (document.querySelector("#masonry-container")) {
+    lazyRun(
+      "masonry",
+      pageSignal,
+      () => import("./plugins/masonry.js"),
+      ({ default: initMasonry }) => {
+        initMasonry({ signal: pageSignal });
+      },
+    );
+  }
 
-  safeRun("typed", () => {
-    const subtitleConfig = theme.home_banner?.subtitle || {};
-    const subtitleText = subtitleConfig.text;
-    const subtitleEntries = Array.isArray(subtitleText)
-      ? subtitleText
-      : subtitleText
-        ? [subtitleText]
-        : [];
-    const shouldInitTyped =
-      subtitleEntries.length !== 0 ||
-      (subtitleConfig.hitokoto && subtitleConfig.hitokoto.enable);
+  const subtitleConfig = theme.home_banner?.subtitle || {};
+  const subtitleText = subtitleConfig.text;
+  const subtitleEntries = Array.isArray(subtitleText)
+    ? subtitleText
+    : subtitleText
+      ? [subtitleText]
+      : [];
+  const shouldInitTyped =
+    subtitleEntries.length !== 0 ||
+    (subtitleConfig.hitokoto && subtitleConfig.hitokoto.enable);
 
-    if (shouldInitTyped && location.pathname === config.root) {
-      initTyped("subtitle");
-    }
-  });
+  if (shouldInitTyped && location.pathname === config.root) {
+    lazyRun(
+      "typed",
+      pageSignal,
+      () => import("./plugins/typed.js"),
+      ({ default: initTyped }) => {
+        initTyped("subtitle");
+      },
+    );
+  }
 
-  safeRun("localSearch", () => {
-    if (theme.navbar?.search?.enable === true) {
-      initLocalSearchPage();
-    }
-  });
+  if (theme.navbar?.search?.enable === true) {
+    lazyRun(
+      "localSearch",
+      pageSignal,
+      () => import("./tools/localSearch.js"),
+      ({ initLocalSearchPage }) => {
+        initLocalSearchPage();
+      },
+    );
+  }
 
   safeRun("copyCode", () => {
     if (theme.articles?.code_block?.copy === true) {
@@ -184,11 +248,20 @@ const initPage = () => {
     }
   });
 
-  safeRun("bookmarkNav", () => {
-    if (theme.bookmarks && theme.bookmarks.length !== 0) {
-      initBookmarkNav({ signal: appSignal });
-    }
-  });
+  if (
+    theme.bookmarks &&
+    theme.bookmarks.length !== 0 &&
+    document.querySelector(".bookmark-nav-item")
+  ) {
+    lazyRun(
+      "bookmarkNav",
+      pageSignal,
+      () => import("./layouts/bookmarkNav.js"),
+      ({ default: initBookmarkNav }) => {
+        initBookmarkNav({ signal: appSignal });
+      },
+    );
+  }
 
   safeRun("categoryList", () => {
     initCategoryList();

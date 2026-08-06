@@ -48,10 +48,21 @@ jobs:
           const fs = require("fs")
           const result = JSON.parse(fs.readFileSync("npm-pack.json", "utf8"))[0]
           const files = new Set(result.files.map((file) => file.path))
-          for (const file of ["source/css/build/tailwind.css", "source/js/build/main.js"]) {
+          for (const file of [
+            "source/css/build/tailwind.css",
+            "source/js/build/main.js",
+            "source/js/build/main.js.map",
+            "source/js/build/plugins/aplayer.js",
+            "source/js/build/plugins/hbe.js",
+          ]) {
             if (!files.has(file)) {
               throw new Error(`package is missing ${file}`)
             }
+          }
+          const chunkFiles = [...files].filter((file) => file.startsWith("source/js/build/chunks/") && file.endsWith(".js"))
+          const chunkMaps = [...files].filter((file) => file.startsWith("source/js/build/chunks/") && file.endsWith(".js.map"))
+          if (chunkFiles.length === 0 || chunkMaps.length === 0) {
+            throw new Error("package is missing generated lazy chunks or their source maps")
           }
           NODE
           rm npm-pack.json

@@ -1,144 +1,83 @@
-const { minify } = require("terser");
+const esbuild = require("esbuild");
 const fs = require("fs/promises");
 const path = require("path");
-const glob = require("glob-promise");
 
 const THEME_ROOT = path.join(__dirname, "../..");
 const SOURCE_DIR = path.join(THEME_ROOT, "source/js");
-const BUILD_DIR = path.join(THEME_ROOT, "source/js/build");
-const IGNORE_PATTERNS = [
-  path.join(SOURCE_DIR, "libs/**"),
-  path.join(BUILD_DIR, "**"),
-  path.join(SOURCE_DIR, "build.js"),
-];
+const BUILD_DIR = path.join(SOURCE_DIR, "build");
+const LIBS_DIR = path.join(SOURCE_DIR, "libs");
 
-const minifyOptions = {
-  compress: {
-    dead_code: true,
-    drop_console: false,
-    drop_debugger: true,
-    keep_classnames: true,
-    keep_fnames: true,
-  },
-  mangle: {
-    keep_classnames: true,
-    keep_fnames: true,
-  },
-  format: {
-    comments: false,
-  },
-  module: true,
-  sourceMap: {
-    filename: "source-map",
-    url: "source-map.map",
-  },
+const sharedOptions = {
+  bundle: true,
+  logLevel: "info",
+  minify: true,
+  platform: "browser",
+  sourcemap: true,
+  target: "es2020",
 };
 
-async function ensureDirectoryExists(dir) {
-  try {
-    await fs.mkdir(dir, { recursive: true });
-  } catch (err) {
-    if (err.code !== "EEXIST") {
-      throw new Error(`Failed to create directory ${dir}: ${err.message}`);
-    }
-  }
-}
+const copyJavaScriptFiles = async (sourceDir, targetDir) => {
+  const entries = await fs.readdir(sourceDir, { withFileTypes: true });
 
-async function copyFile(source, destination) {
-  try {
-    const destinationDir = path.dirname(destination);
-    await ensureDirectoryExists(destinationDir);
-    await fs.copyFile(source, destination);
-    console.log(`✓ Copied ${source} -> ${destination}`);
-  } catch (err) {
-    console.error(`× Error copying ${source}:`, err);
-    throw err;
-  }
-}
+  await Promise.all(
+    entries.map(async (entry) => {
+      const sourcePath = path.join(sourceDir, entry.name);
+      const targetPath = path.join(targetDir, entry.name);
 
-async function processFile(file) {
-  try {
-    const code = await fs.readFile(file, "utf8");
-    const relativePath = path.relative(SOURCE_DIR, file);
-    const buildPath = path.join(BUILD_DIR, relativePath);
-    const buildDirPath = path.dirname(buildPath);
+      if (entry.isDirectory()) {
+        await copyJavaScriptFiles(sourcePath, targetPath);
+        return;
+      }
 
-    // Update source map options for this specific file
-    const fileSpecificOptions = {
-      ...minifyOptions,
-      sourceMap: {
-        ...minifyOptions.sourceMap,
-        filename: path.basename(file),
-        url: `${path.basename(file)}.map`,
+      if (path.extname(entry.name) !== ".js") {
+        return;
+      }
+
+      await fs.mkdir(path.dirname(targetPath), { recursive: true });
+      await fs.copyFile(sourcePath, targetPath);
+    }),
+  );
+};
+
+const buildApplication = () =>
+  esbuild.build({
+    ...sharedOptions,
+    chunkNames: "chunks/[name]-[hash]",
+    entryPoints: [path.join(SOURCE_DIR, "main.js")],
+    entryNames: "[name]",
+    format: "esm",
+    outdir: BUILD_DIR,
+    splitting: true,
+  });
+
+const buildStandalone = (entry, format) =>
+  esbuild.build({
+    ...sharedOptions,
+    entryPoints: [
+      {
+        in: path.join(SOURCE_DIR, entry.source),
+        out: entry.output,
       },
-    };
+    ],
+    format,
+    outdir: BUILD_DIR,
+  });
 
-    const minified = await minify(code, fileSpecificOptions);
+const buildJavaScript = async () => {
+  await fs.rm(BUILD_DIR, { force: true, recursive: true });
+  await fs.mkdir(BUILD_DIR, { recursive: true });
 
-    await ensureDirectoryExists(buildDirPath);
+  await Promise.all([
+    copyJavaScriptFiles(LIBS_DIR, path.join(BUILD_DIR, "libs")),
+    buildApplication(),
+    buildStandalone({ source: "plugins/aplayer.js", output: "plugins/aplayer" }, "iife"),
+    buildStandalone({ source: "plugins/hbe.js", output: "plugins/hbe" }, "esm"),
+  ]);
 
-    // Write minified code
-    await fs.writeFile(buildPath, minified.code);
+  console.log("✓ JavaScript build complete");
+};
 
-    // Write source map if it exists
-    if (minified.map) {
-      await fs.writeFile(`${buildPath}.map`, minified.map);
-    }
-
-    console.log(`✓ Minified ${file} -> ${buildPath}`);
-  } catch (err) {
-    console.error(`× Error processing ${file}:`, err);
-    throw err; // Re-throw to handle in the main function
-  }
-}
-
-async function minifyJS() {
-  try {
-    await ensureDirectoryExists(BUILD_DIR);
-
-    // Get lib files to copy
-    const libFiles = await glob(`${SOURCE_DIR}/libs/**/*.js`);
-    
-    // Get JS files to minify (excluding libs and other ignored patterns)
-    const files = await glob(`${SOURCE_DIR}/**/*.js`, {
-      ignore: IGNORE_PATTERNS,
-    });
-
-    if (files.length === 0 && libFiles.length === 0) {
-      console.log("No JavaScript files found to process");
-      return;
-    }
-
-    console.log(`Found ${files.length} files to minify and ${libFiles.length} lib files to copy...`);
-
-    // Copy lib files
-    for (const file of libFiles) {
-      const relativePath = path.relative(SOURCE_DIR, file);
-      const buildPath = path.join(BUILD_DIR, relativePath);
-      await copyFile(file, buildPath);
-    }
-
-    // Process remaining files in parallel with a concurrency limit
-    const concurrencyLimit = 4; // Adjust based on your needs
-    const chunks = [];
-
-    for (let i = 0; i < files.length; i += concurrencyLimit) {
-      chunks.push(files.slice(i, i + concurrencyLimit));
-    }
-
-    for (const chunk of chunks) {
-      await Promise.all(chunk.map(processFile));
-    }
-
-    console.log("\n✓ All files processed successfully!");
-  } catch (err) {
-    console.error("× Build failed:", err);
-    process.exit(1);
-  }
-}
-
-// Run the build process
-minifyJS().catch((err) => {
-  console.error("× Unhandled error:", err);
-  process.exit(1);
+buildJavaScript().catch((error) => {
+  console.error("× JavaScript build failed:", error);
+  process.exitCode = 1;
 });
