@@ -48,8 +48,8 @@ const normalizeGap = (value) => {
   return DEFAULT_GAP;
 };
 
-const parseNamedGridArgs = (rawArgs) => {
-  const parsedArgs = parseTagArgs(rawArgs);
+const parseNamedGridArgs = (args) => {
+  const parsedArgs = parseTagArgs(args);
   const supportsNamed = ["cols", "columns", "gap", "class", "classes"]
     .some((key) => parsedArgs.named[key] != null);
 
@@ -141,7 +141,7 @@ const renderGrid = async (parsed, content, postContext) => {
 
 const postGrid = async function (args, content) {
   const rawArgs = args.join(" ").trim();
-  const parsed = parseNamedGridArgs(rawArgs) || parsePositionalGridArgs(args);
+  const parsed = parseNamedGridArgs(args) || parsePositionalGridArgs(args);
   return renderGrid(parsed, content, this);
 };
 

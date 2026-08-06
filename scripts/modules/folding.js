@@ -27,8 +27,8 @@ function normalizeOpenValue(value) {
   return false;
 }
 
-function parseNamedArgs(rawArgs) {
-  const parsedArgs = parseTagArgs(rawArgs);
+function parseNamedArgs(args) {
+  const parsedArgs = parseTagArgs(args);
   const supportsNamed = ['title', 'class', 'classes', 'style', 'open']
     .some((key) => parsedArgs.named[key] != null);
 
@@ -62,7 +62,7 @@ function parseLegacyArgs(rawArgs) {
 
 async function postFolding(args, content) {
   const rawArgs = args.join(' ').trim();
-  const parsed = parseNamedArgs(rawArgs) || parseLegacyArgs(rawArgs);
+  const parsed = parseNamedArgs(args) || parseLegacyArgs(rawArgs);
 
   const renderedContent = await renderMarkdownTagSafe({
     hexo,

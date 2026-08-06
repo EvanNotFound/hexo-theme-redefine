@@ -133,8 +133,8 @@ const parseLegacyDisplayOptions = (value) => {
   };
 };
 
-const parseNamedButtonArgs = (rawArgs) => {
-  const parsedArgs = parseTagArgs(rawArgs);
+const parseNamedButtonArgs = (args) => {
+  const parsedArgs = parseTagArgs(args);
   const supportsNamed = [
     "text",
     "label",
@@ -285,7 +285,7 @@ const renderButton = (parsed) => {
 
 const postButton = (args) => {
   const rawArgs = args.join(" ").trim();
-  const parsed = parseNamedButtonArgs(rawArgs) || parseLegacyButtonArgs(rawArgs, args);
+  const parsed = parseNamedButtonArgs(args) || parseLegacyButtonArgs(rawArgs, args);
   return renderButton(parsed);
 };
 

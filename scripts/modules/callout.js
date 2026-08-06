@@ -138,8 +138,8 @@ const parseDelimitedArgs = (rawArgs, defaultTitle) => {
   };
 };
 
-const parseNamedArgs = (rawArgs) => {
-  const parsedArgs = parseTagArgs(rawArgs);
+const parseNamedArgs = (args) => {
+  const parsedArgs = parseTagArgs(args);
   const supportsNamed = ["type", "title", "icon", "class", "classes", "variant"]
     .some((key) => parsedArgs.named[key] != null);
 
@@ -218,7 +218,7 @@ const renderCallout = (parsed, content) => {
 
 const postCallout = (args, content) => {
   const rawArgs = args.join(" ").trim();
-  const parsed = parseNamedArgs(rawArgs) || (rawArgs.includes("::")
+  const parsed = parseNamedArgs(args) || (rawArgs.includes("::")
     ? parseDelimitedArgs(rawArgs, DEFAULT_TITLE)
     : parseSimpleArgs(args));
 

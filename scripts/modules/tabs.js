@@ -42,7 +42,7 @@ function createAutoTabName(postContext) {
 
 function parseTabsArgs(args) {
   const rawArgs = args.join(' ').trim();
-  const parsedArgs = parseTagArgs(rawArgs);
+  const parsedArgs = parseTagArgs(args);
   const supportsNamed = ['name', 'id', 'active'].some((key) => parsedArgs.named[key] != null);
 
   if (hasNamedArgs(parsedArgs) && supportsNamed) {

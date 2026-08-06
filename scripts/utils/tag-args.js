@@ -55,7 +55,9 @@ function splitRawArgs(rawArgs) {
 
 function parseTagArgs(input) {
   const raw = Array.isArray(input) ? input.join(' ') : String(input ?? '');
-  const tokens = splitRawArgs(raw);
+  const tokens = Array.isArray(input)
+    ? input.map((token) => String(token ?? '').trim()).filter(Boolean)
+    : splitRawArgs(raw);
   const named = {};
   const positional = [];
 
