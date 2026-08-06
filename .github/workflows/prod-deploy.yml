@@ -34,7 +34,7 @@ jobs:
         run: pnpm run build
 
       - name: Configure Production Mode
-        run: node dev/configure-site-mode.mjs production
+        run: node dev/site-mode.mjs production
 
       - name: Clean Demo Site
         run: pnpm clean

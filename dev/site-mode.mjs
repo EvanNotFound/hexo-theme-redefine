@@ -16,7 +16,7 @@ const mode = process.argv[2];
 const settings = modes[mode];
 
 if (!settings) {
-  console.error("Usage: node dev/configure-site-mode.mjs <preview|production>");
+  console.error("Usage: node dev/site-mode.mjs <preview|production>");
   process.exit(1);
 }
 
