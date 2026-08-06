@@ -64,6 +64,23 @@ Do not edit generated files directly. Theme build output lives in
 in CI and are not committed. Edit the source files instead. Runtime assets under
 `source/assets/` remain checked in.
 
+## Preview Release Notes
+
+Version bumps and Git tag creation remain manual. Before pushing a matching
+version tag, generate and check the bilingual release-note preview:
+
+```bash
+RELEASE_LLM_URL=... RELEASE_LLM_KEY=... pnpm release:notes -- v2.10.0
+pnpm release:notes:check
+```
+
+The target tag may not exist yet. These commands only write the Git-ignored
+`release-notes.md` at the repository root; they do not publish npm or CDN
+assets and do not create a GitHub Release. Review the output before pushing the
+matching version tag. CI builds the theme before creating the GitHub Release.
+If OpenCode is unavailable or its output fails validation, CI uses GitHub
+automatic release notes.
+
 ## Project Layout
 
 - `source/css/tailwind.source.css`: Tailwind CSS entry file.

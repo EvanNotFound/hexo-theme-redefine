@@ -47,6 +47,22 @@ Documentation changes under `docs/content/docs/**` must update both `zh` and
 `en` unless the task explicitly allows a single locale. Treat `zh` as the
 canonical version and keep matching `meta.json` navigation files aligned.
 
+## Preview Release Notes
+
+Release version bumps and tag creation remain manual. Before pushing a matching
+version tag, generate and inspect the bilingual release-note preview locally:
+
+```sh
+RELEASE_LLM_URL=... RELEASE_LLM_KEY=... pnpm release:notes -- v2.10.0
+pnpm release:notes:check
+```
+
+The target tag can be hypothetical. These commands only write the ignored
+`release-notes.md`; they do not publish npm or CDN assets and do not create a
+GitHub Release. A pushed matching tag runs the release workflow, which builds
+the theme and creates the GitHub Release. OpenCode failures fall back to
+GitHub-generated notes.
+
 ## Guidelines
 
 We value your contributions and want to ensure they are appropriate for the project. Please follow these guidelines when contributing:

@@ -39,6 +39,8 @@ pnpm install --frozen-lockfile
 pnpm run build
 pnpm run build:css
 pnpm run build:js
+pnpm release:notes -- v2.10.0
+pnpm release:notes:check
 pnpm clean
 pnpm dev
 ```
@@ -47,6 +49,9 @@ pnpm dev
 - `pnpm run build:css` writes `source/css/build/tailwind.css`.
 - `pnpm run build:js` writes minified files and source maps under
   `source/js/build/`.
+- `pnpm release:notes -- v2.10.0` generates a local release-note preview for a
+  target tag through OpenCode; it does not publish or create a GitHub Release.
+- `pnpm release:notes:check` validates the generated `release-notes.md`.
 - `pnpm clean` removes the demo site's `db.json` and `public/` directory.
 - `pnpm dev` builds browser JavaScript once, resets the demo site, links the
   current theme, starts Hexo at `http://127.0.0.1:4000`, and starts the root CSS
@@ -115,6 +120,20 @@ node dev/link-theme.mjs
 pnpm --dir dev/site exec hexo generate
 ```
 
+To preview release notes locally, configure the same OpenAI-compatible provider
+variables used by release CI and run the command from the repository root:
+
+```sh
+RELEASE_LLM_URL=... RELEASE_LLM_KEY=... pnpm release:notes -- v2.10.0
+pnpm release:notes:check
+```
+
+The target tag may be hypothetical. Review `release-notes.md` before pushing a
+matching version tag. Version bumps and tag creation remain manual; a pushed
+matching tag runs release CI, which builds the source-only theme and creates the
+GitHub Release. A provider or notes-format failure falls back to GitHub's
+automatic release notes.
+
 ## Generated Files
 
 Do not edit generated files directly:
@@ -124,6 +143,7 @@ Do not edit generated files directly:
 - Docs Next.js output: `docs/.next/`, `docs/out/`, and `docs/next-env.d.ts`.
 - Demo-site state: `dev/site/db.json`, `dev/site/public/`, and
   `dev/site/themes/`.
+- Local release-note preview: `release-notes.md`.
 
 Run the source build when it is useful for verification, but do not include
 root theme build output in ordinary PR commits. PR CI rejects those files, and

@@ -6,6 +6,7 @@
 /out-tsc
 /source/css/build/
 /source/js/build/
+/release-notes.md
 
 # dependencies
 /node_modules

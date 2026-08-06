@@ -1,0 +1,178 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v[0-9]*.[0-9]*.[0-9]*"
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up pnpm and Node.js
+        uses: pnpm/setup@v2
+        with:
+          runtime: node@24
+          cache: true
+
+      - name: Verify release version
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          node - <<'NODE'
+          const { version } = require("./package.json")
+          const tag = process.env.RELEASE_TAG
+          if (tag !== `v${version}`) {
+            throw new Error(`package version ${version} does not match ${tag}`)
+          }
+          NODE
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build theme assets
+        run: pnpm run build
+
+      - name: Verify npm package contents
+        run: |
+          npm pack --dry-run --json > npm-pack.json
+          node - <<'NODE'
+          const fs = require("fs")
+          const result = JSON.parse(fs.readFileSync("npm-pack.json", "utf8"))[0]
+          const files = new Set(result.files.map((file) => file.path))
+          for (const file of ["source/css/build/tailwind.css", "source/js/build/main.js"]) {
+            if (!files.has(file)) {
+              throw new Error(`package is missing ${file}`)
+            }
+          }
+          NODE
+          rm npm-pack.json
+
+  notes:
+    needs: check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      available: ${{ steps.result.outputs.available }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up pnpm and Node.js for release notes
+        id: node
+        continue-on-error: true
+        timeout-minutes: 5
+        uses: pnpm/setup@v2
+        with:
+          runtime: node@24
+          cache: true
+
+      - name: Install OpenCode for release notes
+        id: opencode
+        if: steps.node.outcome == 'success'
+        continue-on-error: true
+        timeout-minutes: 5
+        run: npm install --global opencode-ai@1.18.6
+
+      - name: Generate release notes
+        id: generate
+        if: steps.node.outcome == 'success' && steps.opencode.outcome == 'success'
+        continue-on-error: true
+        timeout-minutes: 10
+        env:
+          RELEASE_LLM_URL: ${{ secrets.RELEASE_LLM_URL }}
+          RELEASE_LLM_KEY: ${{ secrets.RELEASE_LLM_KEY }}
+          GH_TOKEN: ${{ github.token }}
+          OPENCODE_CONFIG_CONTENT: >-
+            {"provider":{"openai":{"options":{"baseURL":"{env:RELEASE_LLM_URL}","apiKey":"{env:RELEASE_LLM_KEY}"},"models":{"gpt-5.6-sol":{"name":"gpt-5.6-sol","limit":{"context":353000,"output":128000},"variants":{"high":{"reasoningEffort":"high"}}}}}}}
+        run: |
+          test -n "${RELEASE_LLM_URL}"
+          test -n "${RELEASE_LLM_KEY}"
+          opencode run --pure --command changelog "${GITHUB_REF_NAME}"
+          pnpm run release:notes:check
+
+      - name: Upload OpenCode release notes
+        id: upload
+        if: steps.generate.outcome == 'success'
+        continue-on-error: true
+        uses: actions/upload-artifact@v6
+        with:
+          name: opencode-release-notes
+          path: release-notes.md
+          if-no-files-found: error
+          retention-days: 1
+
+      - name: Record release note availability
+        id: result
+        if: always()
+        env:
+          GENERATED: ${{ steps.generate.outcome }}
+          UPLOADED: ${{ steps.upload.outcome }}
+        run: |
+          if test "${GENERATED}" = "success" && test "${UPLOADED}" = "success"; then
+            echo "available=true" >> "${GITHUB_OUTPUT}"
+          else
+            echo "available=false" >> "${GITHUB_OUTPUT}"
+            echo "::notice::OpenCode release notes unavailable; GitHub automatic notes will be used"
+          fi
+
+  publish:
+    needs: [check, notes]
+    if: ${{ !cancelled() && needs.check.result == 'success' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Download OpenCode release notes
+        id: notes-download
+        if: needs.notes.outputs.available == 'true'
+        continue-on-error: true
+        uses: actions/download-artifact@v6
+        with:
+          name: opencode-release-notes
+          path: .
+
+      - name: Validate OpenCode release notes
+        id: notes
+        if: steps.notes-download.outcome == 'success'
+        continue-on-error: true
+        run: node scripts/release-notes.js
+
+      - name: Verify release tag is unchanged
+        run: test "$(git rev-parse "refs/tags/${GITHUB_REF_NAME}^{commit}")" = "${GITHUB_SHA}"
+
+      - name: Publish GitHub release with OpenCode notes
+        if: steps.notes.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: >-
+          gh release create "${GITHUB_REF_NAME}"
+          --verify-tag --notes-file release-notes.md --title "${GITHUB_REF_NAME}"
+
+      - name: Publish GitHub release with automatic notes
+        if: steps.notes.outcome != 'success'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "::notice::OpenCode release notes unavailable; using GitHub automatic notes"
+          gh release create "${GITHUB_REF_NAME}" \
+            --verify-tag --generate-notes --title "${GITHUB_REF_NAME}"

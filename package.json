@@ -17,6 +17,8 @@
     "build:css": "tailwindcss -i source/css/tailwind.source.css -o source/css/build/tailwind.css --minify",
     "build:js": "node source/js/build.js",
     "clean": "node dev/clean.mjs",
+    "release:notes": "npx --yes opencode-ai@1.18.6 run --pure --command changelog",
+    "release:notes:check": "node scripts/release-notes.js",
     "watch:css": "tailwindcss -i source/css/tailwind.source.css -o source/css/build/tailwind.css --watch --minify",
     "dev": "pnpm run build:js && node dev/dev.mjs",
     "dev:setup": "pnpm install --frozen-lockfile --prefer-offline"
