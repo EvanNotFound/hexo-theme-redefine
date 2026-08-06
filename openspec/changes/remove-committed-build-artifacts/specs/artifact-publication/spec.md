@@ -108,6 +108,9 @@ directory.
 - **THEN** pnpm setup reads `theme/package.json` and `theme/pnpm-lock.yaml`
 - **AND** dependency installation remains deferred until the theme is moved into
   the Hexo site
+- **AND** the standalone Hexo install approves `hexo-util` and `nodejieba` while
+  explicitly denying the optional `gifsicle`, `jpegtran-bin`, `mozjpeg`,
+  `optipng-bin`, and `pngquant-bin` build scripts
 
 #### Scenario: Prebuilt preview deployment setup
 

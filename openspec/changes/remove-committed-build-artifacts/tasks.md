@@ -27,3 +27,6 @@
 - [x] 5.2 Update the proposal, design, artifact-publication and docs-guidance
   specifications, repository guidance, localized developer documentation, and
   task record with the finalized pnpm/setup workflow contract.
+- [x] 5.3 Adapt the standalone Hexo deployment installs for pnpm 11's build
+  approval policy by approving only `hexo-util` and `nodejieba` and explicitly
+  denying the optional image optimizer builds.

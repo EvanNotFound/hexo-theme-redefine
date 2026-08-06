@@ -41,9 +41,15 @@ jobs:
         run: |
           cd hexo-site
           pnpm \
-            --config.only-built-dependencies=hexo-util \
-            --config.only-built-dependencies=nodejieba \
-            install --no-frozen-lockfile
+            install --no-frozen-lockfile --config.strict-dep-builds=false
+          pnpm approve-builds \
+            hexo-util \
+            nodejieba \
+            '!gifsicle' \
+            '!jpegtran-bin' \
+            '!mozjpeg' \
+            '!optipng-bin' \
+            '!pngquant-bin'
 
       - name: Build Hexo
         run: |
