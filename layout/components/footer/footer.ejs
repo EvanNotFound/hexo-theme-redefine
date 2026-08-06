@@ -67,23 +67,6 @@
                 <%= __('runtime') %> <span class="odometer" id="runtime_days" ></span> <%= __('days') %> <span class="odometer" id="runtime_hours"></span> <%= __('hours') %> <span class="odometer" id="runtime_minutes"></span> <%= __('minutes') %> <span class="odometer" id="runtime_seconds"></span> <%= __('seconds') %>
             </div>
         <% } %>
-        <% if (theme.footer.runtime === true) {%>
-            <script <%= theme.global.single_page === true && 'data-swup-reload-script' %>>
-                try {
-                    function odometer_init() {
-                    const elements = document.querySelectorAll('.odometer');
-                    elements.forEach(el => {
-                        new Odometer({
-                            el,
-                            format: '( ddd).dd',
-                            duration: 200
-                        });
-                    });
-                    }
-                    odometer_init();
-                } catch (error) {}
-            </script>
-        <% } %>
         <% if (theme.inject.enable === true) { %>
             <% for (let i in theme.inject.footer) { %>
                 <% if (theme.inject.footer[i] !== null ){ %>

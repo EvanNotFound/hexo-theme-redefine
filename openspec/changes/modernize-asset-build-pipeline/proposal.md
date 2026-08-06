@@ -16,6 +16,8 @@ Stylus authoring model or affecting immutable assets from older releases.
   optional features when they are not needed by a page.
 - Keep vendor libraries and independently rendered plugin scripts compatible
   with their existing conditional loading and CDN behavior.
+- Keep `scripts.ejs` as a small vendor bootstrap and move page behavior,
+  including Odometer initialization, into the browser lifecycle.
 - Compress the configuration-dependent Stylus stylesheet for production output
   while keeping developer-mode CSS readable.
 - Keep developer mode serving source JavaScript modules directly and continue

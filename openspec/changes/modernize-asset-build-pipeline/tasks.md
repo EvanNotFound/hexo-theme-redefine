@@ -54,3 +54,14 @@
 - [x] 5.3 Inspect the package dry-run and relevant CI checks to confirm the
   generated release asset set is complete and no generated files are added to
   source control.
+
+## 6. Vendor Bootstrap And Runtime
+
+- [x] 6.1 Move Odometer initialization from the footer inline script into the
+  browser runtime lifecycle, initialize each element once, and preserve its
+  periodic value updates across page views.
+- [x] 6.2 Simplify `scripts.ejs` vendor reload behavior by treating globally
+  emitted libraries as one-time bootstrap assets while retaining page-specific
+  MiniMasonry loading behavior.
+- [x] 6.3 Regenerate the demo site and verify footer runtime output, generated
+  script ordering, and production/source asset modes after the cleanup.

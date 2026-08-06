@@ -82,6 +82,23 @@ layout helper. Lazy chunks are emitted under the generated JavaScript build
 directory and use relative URLs, allowing local paths and versioned CDN paths
 to resolve to the same release directory.
 
+### Keep vendor bootstrap separate from page initialization
+
+`layout/components/scripts.ejs` remains responsible for emitting the application
+entry and the global vendor scripts whose browser globals are consumed by the
+application. The module entry is deferred by the browser, so the classic vendor
+scripts emitted after it are available before the application module executes.
+
+Page behavior SHALL remain in the application lifecycle rather than in inline
+template scripts. In particular, `source/js/tools/runtime.js` SHALL initialize
+Odometer after the DOM and vendor script are available, and the footer SHALL not
+attempt to construct Odometer before `scripts.ejs` has loaded its vendor file.
+
+The globally emitted Moment script does not need Swup re-evaluation; the
+application's page lifecycle handles essays after navigation. MiniMasonry keeps
+its reload marker because it can be page-specific and may not have been emitted
+on the initial page.
+
 ### Apply Stylus compression in the renderer filter
 
 `hexo-renderer-stylus` reads `hexo.config.stylus.compress`, which is the site

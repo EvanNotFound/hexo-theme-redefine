@@ -94,6 +94,34 @@ against the consuming Hexo site's configuration.
 - **THEN** the rendered Stylus output reflects that site's setting while still
   using the production compression mode
 
+### Requirement: Vendor bootstrap and page initialization are separated
+
+The theme SHALL use `scripts.ejs` to emit the application entry and required
+vendor globals, while page behavior SHALL be initialized by the browser
+application lifecycle after the DOM and vendor scripts are available. Inline
+template scripts SHALL NOT initialize a vendor before its vendor asset is
+loaded.
+
+#### Scenario: Footer runtime is enabled
+
+- **WHEN** a generated page enables the footer runtime
+- **THEN** the page loads the Odometer vendor and the application initializes
+  Odometer after the document is parsed, without relying on a footer inline
+  initializer that runs earlier in the body
+
+#### Scenario: Footer runtime updates across navigation
+
+- **WHEN** the application renders or refreshes a page with footer runtime
+  elements
+- **THEN** existing Odometer instances are not duplicated and their displayed
+  values continue to update through the application lifecycle
+
+#### Scenario: Globally emitted Moment is present
+
+- **WHEN** the essays feature is initialized after a Swup page transition
+- **THEN** the existing Moment global is available without re-evaluating its
+  vendor script solely because the page changed
+
 ### Requirement: One production command coordinates owned asset builds
 
 The normal production build SHALL coordinate the Tailwind and JavaScript build

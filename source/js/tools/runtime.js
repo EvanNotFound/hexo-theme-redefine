@@ -1,4 +1,24 @@
 let runtimeActive = false;
+const odometerElements = new WeakSet();
+
+const initializeOdometers = () => {
+  if (typeof Odometer === "undefined") {
+    return;
+  }
+
+  document.querySelectorAll(".odometer").forEach((element) => {
+    if (odometerElements.has(element)) {
+      return;
+    }
+
+    new Odometer({
+      el: element,
+      format: "( ddd).dd",
+      duration: 200,
+    });
+    odometerElements.add(element);
+  });
+};
 
 const footerRuntime = () => {
   if (!runtimeActive) {
@@ -37,6 +57,8 @@ const footerRuntime = () => {
 };
 
 export default function initFooterRuntime() {
+  initializeOdometers();
+
   if (runtimeActive) {
     return;
   }
