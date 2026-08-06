@@ -120,9 +120,9 @@ print("代码高亮")
 
 ## 🔔 提示块测试
 
-{% notel red 自定义标题 %}
+{% callout type="red" title="自定义标题" %}
 这是一个自定义标题的红色提示块，用于测试主题的提示块功能。
-{% endnotel %}
+{% endcallout %}
 
 ## 🔧 代码语法高亮测试
 

@@ -59,20 +59,12 @@ If `title` is provided, the callout is rendered as titled. You can also force it
 
 ## Legacy tags (deprecated)
 
-Legacy tags still render, but now emit deprecation warnings in Hexo logs.
+Legacy tags still render, but now emit deprecation warnings in Hexo logs. Migrate
+simple `note` blocks to `{% callout type="warning" %}` and titled `notel`
+blocks to `{% callout type="danger" title="Warning" icon="fa-solid fa-triangle-exclamation" %}`.
 
 - Simple: `note`, `notes`, `subnote`
 - Titled: `noteL`, `notel`, `notelarge`, `notel-large`, `notes-large`, `subwarning`
-
-```markdown
-{% note warning fa-solid fa-bolt %}
-Legacy note still works, but prefer `callout`.
-{% endnote %}
-
-{% notel danger fa-solid fa-triangle-exclamation Warning %}
-Legacy titled note still works, but prefer `callout`.
-{% endnotel %}
-```
 
 ## More
 

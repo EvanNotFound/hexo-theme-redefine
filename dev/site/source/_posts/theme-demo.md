@@ -66,93 +66,93 @@ print("代码高亮")
 
 ## Note Large大号提示块
 
-{% btn center large::Note Large大号提示块文档::https://redefine-docs.ohevan.com/modules/notes#%E5%A4%A7%E5%8F%B7%E6%8F%90%E7%A4%BA%E5%9D%97::fa-solid fa-book %}
+{% button text="Note Large大号提示块文档" url="https://redefine-docs.ohevan.com/modules/notes#%E5%A4%A7%E5%8F%B7%E6%8F%90%E7%A4%BA%E5%9D%97" icon="fa-solid fa-book" size="lg" align="center" %}
 
-{% notel default 信息 %}
+{% callout type="default" title="信息" %}
 换行测试
 换行测试
 换行测试
-{% endnotel %}
+{% endcallout %}
 
-{% notel blue 提示 %}
+{% callout type="blue" title="提示" %}
 换行测试
 换行测试
 换行测试
-{% endnotel %}
+{% endcallout %}
 
-{% notel green 自定义标题 %}
+{% callout type="green" title="自定义标题" %}
 换行测试
 换行测试
 换行测试
-{% endnotel %}
+{% endcallout %}
 
-{% notel yellow 自定义标题 %}
+{% callout type="yellow" title="自定义标题" %}
 换行测试
 换行测试
 换行测试
-{% endnotel %}
+{% endcallout %}
 
-{% notel orange 自定义标题 %}
+{% callout type="orange" title="自定义标题" %}
 换行测试
 换行测试
 换行测试
-{% endnotel %}
+{% endcallout %}
 
-{% notel red 自定义标题 %}
+{% callout type="red" title="自定义标题" %}
 换行测试
 换行测试
 换行测试
-{% endnotel %}
+{% endcallout %}
 
 ## Note 小号提示块
 
-{% btn center large::Note 小号提示块文档::https://redefine-docs.ohevan.com/modules/notes#%E5%B0%8F%E5%8F%B7%E6%8F%90%E7%A4%BA%E5%9D%97::fa-solid fa-book %}
+{% button text="Note 小号提示块文档" url="https://redefine-docs.ohevan.com/modules/notes#%E5%B0%8F%E5%8F%B7%E6%8F%90%E7%A4%BA%E5%9D%97" icon="fa-solid fa-book" size="lg" align="center" %}
 
-{% note  %}
+{% callout type="default" %}
 默认 提示块标签
-{% endnote %}
+{% endcallout %}
 
-{% note default  %}
+{% callout type="default" %}
 default 提示块标签
-{% endnote %}
+{% endcallout %}
 
-{% note primary  %}
+{% callout type="primary" %}
 primary 提示块标签
-{% endnote %}
+{% endcallout %}
 
-{% note success  %}
+{% callout type="success" %}
 success 提示块标签
-{% endnote %}
+{% endcallout %}
 
-{% note info  %}
+{% callout type="info" %}
 info 提示块标签
-{% endnote %}
+{% endcallout %}
 
-{% note warning  %}
+{% callout type="warning" %}
 warning 提示块标签
-{% endnote %}
+{% endcallout %}
 
-{% note danger  %}
+{% callout type="danger" %}
 danger 提示块标签
-{% endnote %}
+{% endcallout %}
 
-{% note red fa-bolt%}
+{% callout type="red" icon="fa-solid fa-bolt" %}
 自定义提示块标签
-{% endnote %}
+{% endcallout %}
 
 ## Folding 折叠模块
 
-{% btn center large::Folding 折叠模块文档::https://redefine-docs.ohevan.com/modules/folding::fa-solid fa-book %}
+{% button text="Folding 折叠模块文档" url="https://redefine-docs.ohevan.com/modules/folding" icon="fa-solid fa-book" size="lg" align="center" %}
 
 {% folding yellow::Folding 测试： 点击查看更多 %}
 
-{% note danger  %}
+{% callout type="danger" %}
 danger 提示块标签
-{% endnote %}
+{% endcallout %}
 
-{% note tip  %}
+{% callout type="tip" %}
 tip 提示块标签
-{% endnote %}
+{% endcallout %}
 
 {% endfolding %}
 
@@ -160,13 +160,13 @@ tip 提示块标签
 
 {% folding green::Folding 测试： 点击查看更多 %}
 
-{% note danger  %}
+{% callout type="danger" %}
 danger 提示块标签
-{% endnote %}
+{% endcallout %}
 
-{% note tip  %}
+{% callout type="tip" %}
 tip 提示块标签
-{% endnote %}
+{% endcallout %}
 
 {% endfolding %}
 
@@ -176,19 +176,19 @@ tip 提示块标签
 
 啊啊啊啊啊
 
-{% note danger  %}
+{% callout type="danger" %}
 danger 提示块标签
-{% endnote %}
+{% endcallout %}
 
-{% note tip  %}
+{% callout type="tip" %}
 tip 提示块标签
-{% endnote %}
+{% endcallout %}
 
 {% endfolding %}
 
 ## Tabs 分栏模块
 
-{% btn center large::Tabs 分栏模块文档::https://redefine-docs.ohevan.com/modules/tabs::fa-solid fa-book %}
+{% button text="Tabs 分栏模块文档" url="https://redefine-docs.ohevan.com/modules/tabs" icon="fa-solid fa-book" size="lg" align="center" %}
 
 {% tabs First unique name %}
 <!-- tab First Tab-->
@@ -214,14 +214,14 @@ This is Tab 3.
 
 ## Button 按钮模块
 
-不设置任何参数的 {% btn 按钮:: / %} 适合融入段落中。
+不设置任何参数的 {% button text="按钮" url="/" %} 适合融入段落中。
 
 regular 按钮适合独立于段落之外：
 
-{% btn regular::示例博客::https://www.ohevan.com::fa-solid fa-play-circle %}
+{% button text="示例博客" url="https://www.ohevan.com" icon="fa-solid fa-play-circle" %}
 
-{% btn regular::示例博客::https://www.ohevan.com::fa-solid fa-play-circle %}
+{% button text="示例博客" url="https://www.ohevan.com" icon="fa-solid fa-play-circle" %}
 
 large 按钮更具有强调作用，建议搭配 center 使用：
 
-{% btn center large::Button 按钮模块 开始使用::https://redefine-docs.ohevan.com/modules/buttons::fa-solid fa-book %}
+{% button text="Button 按钮模块 开始使用" url="https://redefine-docs.ohevan.com/modules/buttons" icon="fa-solid fa-book" size="lg" align="center" %}

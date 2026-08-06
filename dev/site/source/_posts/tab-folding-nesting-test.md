@@ -13,27 +13,27 @@ excerpt: false
 
 Text BEFORE tabs. If this disappears into a tab, your parsing is broken.
 
-{% notel blue Tabs Notel Title %}
+{% callout type="blue" title="Tabs Notel Title" %}
 Line 1
 Line 2
 Line 3  
 (This line above ends with two spaces -> should create a hard line break)
-{% endnotel %}
+{% endcallout %}
 
 {% tabs qa-tabs,1 %}
 
 <!-- tab Notel Inside Tabs -->
 
-This tab must render a `notel` block as a real note box (NOT as a code block).
+This tab must render a `callout` block as a real note box (NOT as a code block).
 
-{% notel blue Tabs Notel Title %}
+{% callout type="blue" title="Tabs Notel Title" %}
 Line 1
 Line 2
 Line 3  
 (This line above ends with two spaces -> should create a hard line break)
-{% endnotel %}
+{% endcallout %}
 
-{% callout info::Tabs Notel Title %}
+{% callout type="info" title="Tabs Notel Title" %}
 Line 1
 Line 2
 Line 3  
@@ -47,9 +47,9 @@ Nested list indentation must survive:
 
 Fenced code must stay literal (no tag execution inside):
 ```txt
-{% notel red SHOULD-NOT-RUN %}
+{% callout type="red" title="SHOULD-NOT-RUN" %}
 this must remain literal text
-{% endnotel %}
+{% endcallout %}
 ```
 
 <!-- endtab -->
@@ -61,16 +61,16 @@ Folding block inside a tab must render correctly:
 {% folding yellow::Folding Title (inside tab) %}
 Inside folding:
 
-{% note danger %}
-This is a `note` tag inside folding.
-{% endnote %}
+{% callout type="danger" %}
+This is a `callout` tag inside folding.
+{% endcallout %}
 
 And this fenced code must stay literal:
 ```txt
 {{ site.title }}
-{% note %}
+{% callout type="default" %}
 literal, do not execute
-{% endnote %}
+{% endcallout %}
 ```
 {% endfolding %}
 

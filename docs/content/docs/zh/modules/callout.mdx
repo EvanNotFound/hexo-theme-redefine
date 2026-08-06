@@ -58,20 +58,12 @@ description: 从 v2.9.0 开始，callout 取代旧 note 系列标签。
 
 ## 旧标签兼容（已废弃）
 
-旧标签仍会渲染，但现在会在 Hexo 日志中输出废弃警告。
+旧标签仍会渲染，但现在会在 Hexo 日志中输出废弃警告。简单型 `note`
+请迁移为 `{% callout type="warning" %}`，标题型 `notel` 请迁移为
+`{% callout type="danger" title="警告" icon="fa-solid fa-triangle-exclamation" %}`。
 
 - 简单型：`note`、`notes`、`subnote`
 - 标题型：`noteL`、`notel`、`notelarge`、`notel-large`、`notes-large`、`subwarning`
-
-```markdown
-{% note warning fa-solid fa-bolt %}
-旧的 note 语法仍然可用，但建议改用 `callout`。
-{% endnote %}
-
-{% notel danger fa-solid fa-triangle-exclamation 警告 %}
-旧的 notel 语法仍然可用，但建议改用 `callout`。
-{% endnotel %}
-```
 
 ## 更多
 

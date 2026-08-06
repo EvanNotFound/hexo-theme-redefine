@@ -85,91 +85,91 @@ this is a very long table
 {% endcallout %}
 
 ### 基础提示块
-{% note %}
+{% callout type="default" %}
 默认 提示块标签
-{% endnote %}
+{% endcallout %}
 
 ### 彩色提示块
-{% note default %}
+{% callout type="default" %}
 default 提示块标签
-{% endnote %}
+{% endcallout %}
 
-{% note primary %}
+{% callout type="primary" %}
 primary 提示块标签
-{% endnote %}
+{% endcallout %}
 
-{% note success %}
+{% callout type="success" %}
 success 提示块标签
-{% endnote %}
+{% endcallout %}
 
-{% note info %}
+{% callout type="info" %}
 info 提示块标签
-{% endnote %}
+{% endcallout %}
 
-{% note warning %}
+{% callout type="warning" %}
 warning 提示块标签
-{% endnote %}
+{% endcallout %}
 
-{% note danger %}
+{% callout type="danger" %}
 danger 提示块标签
-{% endnote %}
+{% endcallout %}
 
-{% note tip %}
+{% callout type="tip" %}
 tip 提示块标签
-{% endnote %}
+{% endcallout %}
 
-{% note question %}
+{% callout type="question" %}
 question 提示块标签
-{% endnote %}
+{% endcallout %}
 
 ### 自定义提示块
-{% note red fa-bolt %}
+{% callout type="red" icon="fa-solid fa-bolt" %}
 自定义提示块标签
-{% endnote %}
+{% endcallout %}
 
 ## 📋 增强提示块测试
 
 ### 图标提示块
-{% notel default fa-solid fa-bolt 信息 %}
+{% callout type="default" title="信息" icon="fa-solid fa-bolt" %}
 带有图标的提示块测试
-{% endnotel %}
+{% endcallout %}
 
-{% notel blue 提示 %}
+{% callout type="blue" title="提示" %}
 蓝色提示块测试
-{% endnotel %}
+{% endcallout %}
 
 ### 自定义标题提示块
-{% notel red 自定义标题 %}
+{% callout type="red" title="自定义标题" %}
 Certainly! Here's an example of a 2x2 matrix using MathJax. If you input this into a platform that supports MathJax, such as a Jupyter notebook or many online math forums, it should render the matrix properly.
-{% endnotel %}
+{% endcallout %}
 
 ## 📂 折叠内容测试
 
 ### 黄色折叠块
 {% folding yellow::Folding 测试： 点击查看更多 %}
-{% note danger %}
+{% callout type="danger" %}
 danger 提示块标签
-{% endnote %}
+{% endcallout %}
 
-{% note tip %}
+{% callout type="tip" %}
 tip 提示块标签
-{% endnote %}
+{% endcallout %}
 {% endfolding %}
 
 ### 绿色折叠块
 {% folding green::Folding 测试： 点击查看更多 %}
-{% note danger %}
+{% callout type="danger" %}
 danger 提示块标签
-{% endnote %}
+{% endcallout %}
 
-{% note tip %}
+{% callout type="tip" %}
 tip 提示块标签
-{% endnote %}
+{% endcallout %}
 {% endfolding %}
 
 ### 蓝色折叠块
 {% folding blue::Folding 测试： 点击查看更多 %}
-不设置任何参数的 {% btn 按钮:: / %} 适合融入段落中。
+不设置任何参数的 {% button text="按钮" url="/" %} 适合融入段落中。
 
 regular 按钮适合独立于段落之外：
 
@@ -190,22 +190,22 @@ regular 按钮适合独立于段落之外：
 
 内容1
 
-{% notel blue 提示 %}
+{% callout type="blue" title="提示" %}
 换行测试1
 换行测试2
 换行测试3
-{% endnotel %}
+{% endcallout %}
 
 <!-- endtab -->
 <!-- tab norm2 -->
 
 内容2
 
-{% notel blue 提示 %}
+{% callout type="blue" title="提示" %}
 换行测试4
 换行测试5
 换行测试6
-{% endnotel %}
+{% endcallout %}
 
 <!-- endtab -->
 
@@ -220,9 +220,9 @@ regular 按钮适合独立于段落之外：
 Lorem ipsum dolor sit amet, *consectetur* adipiscing elit.  
 Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
 
-{% note success %}
+{% callout type="success" %}
 成功提示：这是第一个标签页中的一个 note 组件演示。
-{% endnote %}
+{% endcallout %}
 
 - 清单项一
 - 清单项二 `inline code`
@@ -256,9 +256,9 @@ console.log('Hello from Tab 1');
 $ pnpm run build
 ```
 
-{% notel warning 注意 %}
+{% callout type="warning" title="注意" %}
 这里有一个 warning note 组件，带图标。
-{% endnotel %}
+{% endcallout %}
 
 <!-- tab Third Tab -->
 
@@ -268,9 +268,9 @@ $ pnpm run build
 2. 有序列表项二
 3. 有序列表项三
 
-{% note info %}
+{% callout type="info" %}
 Tab 3 可以包含更多内容，比如图片、链接等。
-{% endnote %}
+{% endcallout %}
 
 ![一张图片演示](https://picsum.photos/320/120)
 
@@ -286,15 +286,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendi
 ## 🔘 按钮样式测试
 
 ### 内联按钮
-不设置任何参数的 {% btn 按钮:: / %} 适合融入段落中。
+不设置任何参数的 {% button text="按钮" url="/" %} 适合融入段落中。
 
 ### 常规按钮
-{% btn regular::示例博客::https://www.ohevan.com::fa-solid fa-play-circle %}
+{% button text="示例博客" url="https://www.ohevan.com" icon="fa-solid fa-play-circle" %}
 
-{% btn regular::示例博客::https://www.ohevan.com::fa-solid fa-play-circle %}
+{% button text="示例博客" url="https://www.ohevan.com" icon="fa-solid fa-play-circle" %}
 
 ### 大按钮（居中）
-{% btn center large::开始使用::https://redefine-docs.ohevan.com.::fa-solid fa-download %}
+{% button text="开始使用" url="https://redefine-docs.ohevan.com." icon="fa-solid fa-download" size="lg" align="center" %}
 
 ## 📑 选项卡测试
 
