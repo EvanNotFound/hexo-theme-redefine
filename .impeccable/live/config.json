@@ -1,6 +1,0 @@
-{
-  "files": ["dev/site/public/**/*.html"],
-  "insertBefore": "</body>",
-  "commentSyntax": "html",
-  "cspChecked": true
-}

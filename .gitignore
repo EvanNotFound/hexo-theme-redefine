@@ -58,3 +58,5 @@ _DelSyncFiles/
 .vercel
 
 vercel-deployment-for-github-actions
+
+.impeccable/
