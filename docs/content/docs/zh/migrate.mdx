@@ -7,6 +7,8 @@ description: 介绍 Redefine 主要版本的样式系统变更，以及从 v1 �
 
 此主要版本将主题样式迁移到原生 CSS 和 Tailwind 构建产物，并移除了 Stylus、Stylus 渲染集成和 `hexo-renderer-stylus`。通过包管理器安装主题的站点会直接使用发布包中的 CSS；如果站点仅为 Redefine 安装了 `hexo-renderer-stylus`，可以将其移除。
 
+**注意：** 侧边工具栏中的增大和减小字号控件已移除，因为它们仅调整部分基于 `rem` 的尺寸，缩放效果不一致。请改用浏览器缩放（例如 `Ctrl`/`Cmd` + `+` 或 `-`）来缩放整个页面。
+
 ### 更新自定义 CSS 和 JavaScript 选择器
 
 此版本删除了未记录且仅供主题内部样式使用的 DOM class 名称，不提供兼容别名。任何以这些内部名称为目标的自定义 CSS 或 JavaScript 都必须根据当前生成的标记更新。
