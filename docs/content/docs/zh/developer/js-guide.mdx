@@ -12,10 +12,12 @@ Redefine 支持 Swup 单页模式，通过配置 `theme.global.single_page: true
 - 由于页面不刷新：`DOMContentLoaded` 事件仅在首次访问时触发一次
 - 后续每次页面切换，你的 JavaScript 都需要在 Swup 生命周期内重新执行
 
-Redefine 采用主入口统一调度机制：
+Redefine 在 `source/js/main.js` 中直接处理这些生命周期：
 
-- **全局初始化**：整个会话生命周期只执行一次
-- **页面初始化**：每次 Swup 页面切换后都会执行
+- 初次触发 `DOMContentLoaded` 时，初始化全局监听器和当前页面。
+- Swup 触发 `page:view` 时，初始化新页面。
+- Swup 替换内容前，取消旧页面作用域内的任务。
+- `visit:start` 时，更新主题界面的导航状态。
 
 ## JS 文件应该放在哪里？
 
@@ -90,7 +92,7 @@ Redefine 的 JavaScript 分为两类：
 - 键盘事件监听
 - 不依赖特定页面 DOM 的长期监听器
 
-要求：全局初始化必须能安全重复调用（或确保只调用一次）
+要求：全局初始化在整个浏览器会话中只执行一次
 
 ### 页面初始化（每次切换后执行）
 
@@ -100,7 +102,7 @@ Redefine 的 JavaScript 分为两类：
 - 对页面内容进行"扫描与增强"（如生成目录、高亮代码块、处理图片）
 - 给 `#swup` 容器内的元素添加事件监听
 
-要求：每次执行时都假设 DOM 是新加载的
+要求：每次执行时都假设 DOM 是新加载的，并使用新的页面作用域
 
 ## 尽量避免在 EJS 模板内写 `<script>`
 
@@ -146,7 +148,7 @@ Redefine 使用 SwupScriptsPlugin 的 opt-in 模式：
 ## Swup 关键生命周期钩子
 
 - `visit:start`：开始切换页面
-- `content:replace`：正在替换容器 DOM（旧 DOM 被移除）
+- `content:replace`：即将替换容器 DOM，先取消旧页面作用域内的任务
 - `page:view`：新页面已完全可见（适合执行页面初始化）
 
 ## Swup 官方文档参考

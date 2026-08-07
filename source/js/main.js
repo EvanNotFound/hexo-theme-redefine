@@ -13,13 +13,6 @@ import initScrollTopBottom from "./tools/scrollTopBottom.js";
 import { initTocToggle } from "./tools/tocToggle.js";
 import { initUtilsGlobals, initUtilsPage } from "./utils.js";
 import {
-  onBeforeContentReplace,
-  onPageView,
-  onReady,
-  onVisitStart,
-} from "./app/lifecycle.js";
-import { abortPageScope, createPageScope, getAppSignal } from "./app/pageScope.js";
-import {
   getStyleStatus,
   setStyleStatus,
   styleStatus,
@@ -59,6 +52,34 @@ const lazyRun = (label, signal, load, callback) => {
 const pageRefreshEvent = "redefine:page:refresh";
 let globalsInitialized = false;
 let didInitRefreshEvent = false;
+let appController = null;
+let pageController = null;
+
+const getAppSignal = () => {
+  if (!appController) {
+    appController = new AbortController();
+  }
+
+  return appController.signal;
+};
+
+const createPageScope = () => {
+  if (pageController) {
+    pageController.abort();
+  }
+
+  pageController = new AbortController();
+  return pageController.signal;
+};
+
+const abortPageScope = () => {
+  if (!pageController) {
+    return;
+  }
+
+  pageController.abort();
+  pageController = null;
+};
 
 const initGlobalsOnce = () => {
   if (globalsInitialized) {
@@ -268,10 +289,6 @@ const initPage = () => {
   });
 };
 
-const teardownPage = () => {
-  abortPageScope();
-};
-
 export const main = {
   themeInfo: {
     theme: `Redefine v${theme.version}`,
@@ -305,19 +322,24 @@ export function initMain() {
   main.printThemeInfo();
 }
 
-onReady(() => {
+const initApp = () => {
   initMain();
   initGlobalsOnce();
-});
-
-onPageView(() => {
   initPage();
-});
+};
 
-onBeforeContentReplace(() => {
-  teardownPage();
-});
+const swup = window.swup;
 
-onVisitStart(() => {
-  navbarShrink.setNavigating(true);
-});
+if (swup?.hooks) {
+  swup.hooks.on("page:view", initPage);
+  swup.hooks.before("content:replace", abortPageScope);
+  swup.hooks.on("visit:start", () => {
+    navbarShrink.setNavigating(true);
+  });
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initApp, { once: true });
+} else {
+  initApp();
+}

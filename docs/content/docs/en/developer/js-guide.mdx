@@ -12,10 +12,12 @@ Redefine supports Swup single-page mode via `theme.global.single_page: true`. Wh
 - Because there is no full reload, `DOMContentLoaded` runs only once.
 - After each navigation, your JS must run again in the Swup lifecycle.
 
-Redefine handles this with a single entry that coordinates:
+Redefine handles this directly in `source/js/main.js`:
 
-- Global init: run once for the entire session.
-- Page init: run after each Swup navigation.
+- On the initial `DOMContentLoaded`, it initializes global handlers and the current page.
+- On Swup `page:view`, it initializes the new page.
+- Before Swup replaces content, it cancels work scoped to the old page.
+- On `visit:start`, it updates navigation state for the theme UI.
 
 ## Where to Put JavaScript
 
@@ -91,7 +93,7 @@ Use this for:
 - keyboard handlers
 - Swup-independent listeners
 
-Rule: global init must be safe if called multiple times (or only run once).
+Rule: global init runs once for the browser session.
 
 ### Page init (run after each Swup view)
 
@@ -101,7 +103,7 @@ Use this for:
 - scanning and enhancing content (TOC, code blocks, images)
 - attaching listeners to elements inside `#swup`
 
-Rule: page init should assume the DOM was replaced.
+Rule: page init should assume the DOM was replaced and receives a fresh page scope.
 
 ## Avoid Inline `<script>` in EJS Templates
 
@@ -147,7 +149,7 @@ Best practice:
 ## Swup Hooks to Know
 
 - `visit:start`: navigation begins
-- `content:replace`: container DOM is being replaced
+- `content:replace`: container DOM is about to be replaced; page-scoped work is cancelled first
 - `page:view`: new content is visible (page init should run here)
 
 ## Swup Official Docs (for citation)

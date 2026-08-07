@@ -23,13 +23,4 @@
         ],
         containers: ["#swup"],
     });
-
-    window.dispatchEvent(
-        new CustomEvent("redefine:swup:ready", {
-            detail: {
-                swup: window.swup,
-            },
-        }),
-    );
 </script>
-
