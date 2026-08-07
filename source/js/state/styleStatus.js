@@ -3,7 +3,6 @@ const localStorageKey = "REDEFINE-THEME-STATUS";
 const defaultStyleStatus = {
   isExpandPageWidth: false,
   isDark: theme.colors.default_mode && theme.colors.default_mode === "dark",
-  fontSizeLevel: 0,
   isOpenPageAside: true,
 };
 

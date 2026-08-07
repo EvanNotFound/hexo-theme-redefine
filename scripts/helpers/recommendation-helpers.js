@@ -333,34 +333,25 @@ hexo.extend.helper.register("articleRecommendationGenerator", function (post) {
 
 function userInterface(recommendedArticles, cfg) {
   let html = "";
-  let htmlMobile = "";
-  for (const item of recommendedArticles) {
-    html += itemInterface(item);
-  }
-  for (const itemMobile of recommendedArticles.slice(0, cfg.mobile_limit)) {
-    htmlMobile += itemInterface(itemMobile);
+  for (let index = 0; index < recommendedArticles.length; index++) {
+    html += itemInterface(
+      recommendedArticles[index],
+      index >= cfg.mobile_limit,
+    );
   }
   return `
-  <div class="recommended-article px-2 sm:px-6 md:px-8">
-   <div class="recommended-desktop">
-    <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
-     <i aria-hidden="true"></i><span>${cfg.title}</span>
+  <section class="overflow-visible px-2 sm:px-6 md:px-8">
+    <div class="mt-10 text-xl font-bold md:text-3xl">
+      <i aria-hidden="true"></i><span>${cfg.title}</span>
     </div>
-    <div class="recommended-article-group">${html}</div>
-   </div>
-   <div class="recommended-mobile">
-   <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
-     <i aria-hidden="true"></i><span>${cfg.title}</span>
-   </div>
-   <div class="recommended-article-group">${htmlMobile}</div>
-   </div>
-  </div>`;
+    <div class="flex flex-wrap justify-between overflow-visible py-2.5">${html}</div>
+  </section>`;
 }
 
-function itemInterface(item) {
+function itemInterface(item, hideOnTablet) {
   const url = hexo.extend.helper.get('url_for').call(hexo, item.path);
-  return `<a class="recommended-article-item" href="${url}" title="${item.title}" rel="bookmark">
-  <img src="${item.headimg}" alt="${item.title}" class="!max-w-none">
-  <span class="title">${item.title}</span>
+  return `<a class="mt-[15px] flex max-h-[200px] w-[32%] flex-wrap content-center items-center justify-center overflow-hidden rounded-lg border border-rd-border bg-background-color !p-3 max-[768px]:w-[49%] ${hideOnTablet ? "max-[768px]:hidden" : ""}" href="${url}" title="${item.title}" rel="bookmark">
+  <img src="${item.headimg}" alt="${item.title}" class="!-mx-3 !-mt-3 !mb-0 flex h-[150px] !w-[calc(100%+24px)] !max-w-none rounded-t-md object-cover">
+  <span class="mt-2 block overflow-hidden [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:1]">${item.title}</span>
 </a>`;
 }

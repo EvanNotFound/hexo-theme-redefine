@@ -12,6 +12,11 @@ const { warnOnce } = require("../deprecations/warn");
 const DEFAULT_TYPE = "default";
 const DEFAULT_TITLE = "Note";
 const LEGACY_TITLED_DEFAULT_TITLE = "Warning";
+const CALLOUT_VARIANTS = new Set([
+  "default", "gray", "success", "warning", "yellow", "danger", "red",
+  "primary", "purple", "question", "orange", "info", "blue", "green",
+  "tip", "pink",
+]);
 
 const FONT_AWESOME_STYLE_TOKENS = new Set([
   "fa-solid",
@@ -175,19 +180,22 @@ const buildIconMarkup = (iconClass) => {
     return "";
   }
 
-  return `<i class="callout__icon ${iconClass} leading-none text-(--callout-primary-color) text-sm shrink-0"></i>`;
+  return `<i class="${iconClass} shrink-0 text-sm leading-none text-(--callout-primary-color)" aria-hidden="true"></i>`;
 };
+
+const normalizeCalloutVariant = (type) =>
+  CALLOUT_VARIANTS.has(type) ? type : DEFAULT_TYPE;
 
 const renderSimpleCallout = ({ type, iconClass, extraClasses }, content) => {
   const iconMarkup = buildIconMarkup(iconClass);
   const renderedContent = renderMarkdownBlock(content);
 
   return html`
-    <div class="${cn("callout callout--simple", type, extraClasses, "mb-4 rounded-small border border-rd-border bg-(--callout-bg-color) p-3 pl-1 relative flex flex-row gap-2 items-center")}">
-      <div role="none" class="rounded-full self-stretch w-0.5 bg-(--callout-primary-color) shrink-0 opacity-60"></div>
+    <aside class="${cn("callout", extraClasses, "relative mb-4 flex flex-row items-center gap-2 rounded-sm border border-rd-border bg-(--callout-bg-color) p-3 pl-1")}" data-kind="simple" data-variant="${normalizeCalloutVariant(type)}" role="note">
+      <div aria-hidden="true" class="w-0.5 shrink-0 self-stretch rounded-full bg-(--callout-primary-color) opacity-60"></div>
       ${iconMarkup}
-      <div class="${cn("callout__content markdown-body flex-1 min-w-0")}">${renderedContent}</div>
-    </div>
+      <div class="markdown-body min-w-0 flex-1">${renderedContent}</div>
+    </aside>
   `;
 };
 
@@ -198,13 +206,13 @@ const renderTitledCallout = ({ type, iconClass, title, extraClasses }, content) 
   const titleInner = iconMarkup ? `${iconMarkup} ${renderedTitle}` : renderedTitle;
 
   return html`
-    <div class="${cn("callout callout--titled", type, extraClasses, "mb-4 rounded-small border border-rd-border bg-(--callout-bg-color) p-3 pl-1 relative flex flex-row gap-2")}">
-      <div role="none" class="rounded-full self-stretch w-0.5 bg-(--callout-primary-color) shrink-0 opacity-60"></div>
-      <div class="flex flex-col gap-2 flex-1 min-w-0">
-        <div class="callout__title flex items-center gap-2 font-semibold tracking-tight">${titleInner}</div>
-        <div class="${cn("callout__content markdown-body flex-1 min-w-0")}">${renderedContent}</div>
+    <aside class="${cn("callout", extraClasses, "relative mb-4 flex flex-row gap-2 rounded-sm border border-rd-border bg-(--callout-bg-color) p-3 pl-1")}" data-kind="titled" data-variant="${normalizeCalloutVariant(type)}" role="note">
+      <div aria-hidden="true" class="w-0.5 shrink-0 self-stretch rounded-full bg-(--callout-primary-color) opacity-60"></div>
+      <div class="flex min-w-0 flex-1 flex-col gap-2">
+        <div class="flex items-center gap-2 font-semibold tracking-tight">${titleInner}</div>
+        <div class="markdown-body min-w-0 flex-1">${renderedContent}</div>
       </div>
-    </div>
+    </aside>
   `;
 };
 

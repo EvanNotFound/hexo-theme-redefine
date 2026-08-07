@@ -16,12 +16,12 @@ export const initPageHeightHandle = (ctx) => {
     return;
   }
 
-  const temp_h1 = getElementHeight(".main-content-header");
-  const temp_h2 = getElementHeight(".main-content-body");
-  const temp_h3 = getElementHeight(".main-content-footer");
+  const temp_h1 = getElementHeight("#page-header");
+  const temp_h2 = getElementHeight("#page-content");
+  const temp_h3 = getElementHeight("#site-footer");
   const allDomHeight = temp_h1 + temp_h2 + temp_h3;
   const innerHeight = window.innerHeight;
-  const pb_dom = document.querySelector(".main-content-footer");
+  const pb_dom = document.getElementById("site-footer");
   if (!pb_dom) {
     return;
   }
@@ -68,9 +68,7 @@ const getHowLongAgo = (timestamp) => {
 };
 
 export const relativeTimeInHome = () => {
-  const post = document.querySelectorAll(
-    ".home-article-meta-info .home-article-date",
-  );
+  const post = document.querySelectorAll("[data-home-article-date]");
   const df = theme.home.article_date_format;
   if (df === "relative") {
     post &&

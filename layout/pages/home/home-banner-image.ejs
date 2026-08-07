@@ -1,0 +1,4 @@
+<div id="home-banner-background" class="transition-fade top-0 left-0 h-screen w-screen scale-125 box-border bg-cover will-change-transform sm:scale-110 <%= fixed ? 'fixed' : 'absolute' %> <%= blurred ? 'blur-[15px]' : '' %>">
+    <img src="<%- url_for(theme.home_banner.image.light) %>" alt="" class="h-full w-full object-cover dark:hidden" aria-hidden="true">
+    <img src="<%- url_for(theme.home_banner.image.dark) %>" alt="" class="hidden h-full w-full object-cover dark:block" aria-hidden="true">
+</div>

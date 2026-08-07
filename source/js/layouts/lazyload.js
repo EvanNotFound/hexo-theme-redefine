@@ -21,12 +21,12 @@ const ensureObserver = () => {
       }
 
       const img = entry.target;
-      const dataSrc = img.getAttribute("data-src");
+      const dataSrc = img.dataset.lazySrc;
       if (dataSrc) {
         img.src = dataSrc;
       }
 
-      img.removeAttribute("lazyload");
+      img.dataset.lazyState = "loaded";
       delete img.dataset.redefineLazyloadObserved;
       observer.unobserve(img);
     });
@@ -35,12 +35,12 @@ const ensureObserver = () => {
 
 export default function initLazyLoad() {
   if (typeof IntersectionObserver === "undefined") {
-    document.querySelectorAll("img[lazyload]").forEach((img) => {
-      const dataSrc = img.getAttribute("data-src");
+    document.querySelectorAll('img[data-lazy-state="pending"]').forEach((img) => {
+      const dataSrc = img.dataset.lazySrc;
       if (dataSrc) {
         img.src = dataSrc;
       }
-      img.removeAttribute("lazyload");
+      img.dataset.lazyState = "loaded";
     });
     return;
   }
@@ -51,7 +51,7 @@ export default function initLazyLoad() {
     return;
   }
 
-  document.querySelectorAll("img[lazyload]").forEach((img) => {
+  document.querySelectorAll('img[data-lazy-state="pending"]').forEach((img) => {
     if (img.dataset.redefineLazyloadObserved) {
       return;
     }

@@ -1,79 +1,67 @@
-const setScrollToMain = () => {
-  window.scrollToMain = () => {
-    const target = document.querySelector(".main-content-container");
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+const setQrState = (item, isOpen) => {
+  const trigger = item.querySelector("[data-qr-trigger]");
+  const popup = trigger
+    ? document.getElementById(trigger.getAttribute("aria-controls"))
+    : null;
+
+  item.dataset.state = isOpen ? "open" : "closed";
+  trigger?.setAttribute("aria-expanded", String(isOpen));
+  popup?.setAttribute("aria-hidden", String(!isOpen));
 };
 
 export default function initHomeBanner({ signal } = {}) {
-  setScrollToMain();
+  const scrollButton = document.getElementById("scroll-to-main");
+  const scrollHandler = () => {
+    document.getElementById("page-shell")?.scrollIntoView({ behavior: "smooth" });
+  };
 
-  const qrToggleItems = document.querySelectorAll(".qr-toggle-item");
-  if (!qrToggleItems.length) {
+  if (scrollButton) {
+    signal
+      ? scrollButton.addEventListener("click", scrollHandler, { signal })
+      : scrollButton.addEventListener("click", scrollHandler);
+  }
+
+  const qrItems = document.querySelectorAll("[data-qr]");
+  if (!qrItems.length) {
     return;
   }
 
   let activeItem = null;
-
-  const closeOtherItems = (currentItem) => {
-    qrToggleItems.forEach((item) => {
-      if (item !== currentItem) {
-        item.classList.remove("qr-active");
-      }
-    });
+  const closeActiveItem = () => {
+    if (activeItem) {
+      setQrState(activeItem, false);
+      activeItem = null;
+    }
   };
 
-  qrToggleItems.forEach((item) => {
-    const trigger = item.querySelector(".qr-trigger");
+  qrItems.forEach((item) => {
+    const trigger = item.querySelector("[data-qr-trigger]");
     if (!trigger) {
       return;
     }
 
     const handleClick = (event) => {
       event.preventDefault();
-
-      closeOtherItems(item);
-
-      const isActive = item.classList.contains("qr-active");
-      if (isActive) {
-        item.classList.remove("qr-active");
-        activeItem = null;
-      } else {
-        item.classList.add("qr-active");
+      const shouldOpen = item.dataset.state !== "open";
+      closeActiveItem();
+      if (shouldOpen) {
+        setQrState(item, true);
         activeItem = item;
       }
     };
 
-    const handleBlur = () => {
-      setTimeout(() => {
-        if (activeItem !== item) {
-          item.classList.remove("qr-active");
-        }
-      }, 100);
-    };
-
-    if (signal) {
-      trigger.addEventListener("click", handleClick, { signal });
-      trigger.addEventListener("blur", handleBlur, { signal });
-    } else {
-      trigger.addEventListener("click", handleClick);
-      trigger.addEventListener("blur", handleBlur);
-    }
+    signal
+      ? trigger.addEventListener("click", handleClick, { signal })
+      : trigger.addEventListener("click", handleClick);
   });
 
-  const handleDocClick = (event) => {
-    const isQrElement = event.target.closest(".qr-toggle-item");
-    if (!isQrElement && activeItem) {
-      activeItem.classList.remove("qr-active");
-      activeItem = null;
+  const handleDocumentClick = (event) => {
+    if (!event.target.closest("[data-qr]")) {
+      closeActiveItem();
     }
   };
 
-  if (signal) {
-    document.addEventListener("click", handleDocClick, { signal });
-  } else {
-    document.addEventListener("click", handleDocClick);
-  }
+  signal
+    ? document.addEventListener("click", handleDocumentClick, { signal })
+    : document.addEventListener("click", handleDocumentClick);
 }

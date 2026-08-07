@@ -1,17 +1,16 @@
-<div class="post-tools-container">
-	<ul class="article-tools-list">
-		<!-- TOC aside toggle -->
-		<% if (theme.articles.toc.enable) { %>
-		<li class="right-bottom-tools page-aside-toggle">
-			<i class="fa-regular fa-outdent"></i>
-		</li>
-		<% } %>
+<%
+    const postToolClass = "mb-[5px] flex h-[42px] w-[42px] cursor-pointer items-center justify-center rounded-[10px] border border-rd-border bg-background-color text-[1.2rem] text-default-text-color shadow-rd last:mb-0 hover:bg-primary hover:text-background-color [&_i]:!text-inherit";
+%>
+<div>
+    <% if (theme.articles.toc.enable) { %>
+        <button id="toc-toggle" type="button" hidden aria-controls="article-toc" aria-expanded="false" aria-label="<%= __('toc') %>" title="<%= __('toc') %>" class="<%= postToolClass %> max-[768px]:!hidden">
+            <i class="fa-regular fa-outdent" aria-hidden="true"></i>
+        </button>
+    <% } %>
 
-		<!-- go comment -->
-		<% if (theme.comment.enable === true && theme.comment.hasOwnProperty('system') && page.comment !== false) { %>
-		<li class="go-comment">
-			<i class="fa-regular fa-comments"></i>
-		</li>
-		<% } %>
-	</ul>
+    <% if (theme.comment.enable === true && theme.comment.hasOwnProperty('system') && page.comment !== false) { %>
+        <button id="comment-jump" type="button" aria-controls="comments" aria-label="<%= __('comments') %>" title="<%= __('comments') %>" class="<%= postToolClass %>">
+            <i class="fa-regular fa-comments" aria-hidden="true"></i>
+        </button>
+    <% } %>
 </div>

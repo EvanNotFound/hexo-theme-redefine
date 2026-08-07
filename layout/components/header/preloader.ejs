@@ -1,148 +1,69 @@
-<style>
-    :root {
-        --preloader-background-color: #fff;
-        --preloader-text-color: #000;
-    }
-
-    @media (prefers-color-scheme: dark) {
-        :root {
-            --preloader-background-color: #202124;
-            --preloader-text-color: #fff;
-        }
-    }
-
-    @media (prefers-color-scheme: light) {
-        :root {
-            --preloader-background-color: #fff;
-            --preloader-text-color: #000;
-        }
-    }
-
-    @media (max-width: 600px) {
-        .ml13 {
-            font-size: 2.6rem !important; /* Adjust this value as needed */
-        }
-    }
-
-    .preloader {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
-        align-items: center;
-        justify-content: center;
-        position: fixed;
-        padding: 12px;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh; /* 'h-screen' is 100% of the viewport height */
-        background-color: var(--preloader-background-color);
-        z-index: 1100; /* 'z-[1100]' sets the z-index */
-        transition: opacity 0.2s ease-in-out;
-    }
-
-    .ml13 {
-        font-size: 3.2rem;
-        /* text-transform: uppercase; */
-        color: var(--preloader-text-color);
-        letter-spacing: -1px;
-        font-weight: 500;
-        font-family: 'Chillax-Variable', sans-serif;
-        text-align: center;
-    }
-
-    .ml13 .word {
-        display: inline-flex;
-        flex-wrap: wrap;
-        white-space: nowrap;
-    }
-
-    .ml13 .letter {
-        display: inline-block;
-        line-height: 1em;
-    }
-</style>
-
-<div class="preloader">
-    <h2 class="ml13">
-        <%=
-        theme.global.preloader.custom_message || theme.info.title
-         %>
-    </h2>
+<div id="preloader" data-state="visible" role="status" aria-live="polite" aria-busy="true" class="fixed inset-0 z-[1100] flex h-screen w-screen flex-col items-center justify-center gap-4 bg-[var(--preloader-background-color)] p-3 opacity-100 transition-opacity duration-200 ease-in-out data-[state=hiding]:opacity-0">
+    <h2 id="preloader-message" class="text-center font-['Chillax-Variable'] text-[3.2rem] leading-none font-medium tracking-normal text-[var(--preloader-text-color)] max-[600px]:text-[2.6rem]"><%= theme.global.preloader.custom_message || theme.info.title %></h2>
     <script>
-        var textWrapper = document.querySelector('.ml13');
-        // Split text into words
-        var words = textWrapper.textContent.trim().split(' ');
+        (() => {
+            const preloader = document.getElementById('preloader');
+            const message = document.getElementById('preloader-message');
+            if (!preloader || !message) return;
 
-        // Clear the existing content
-        textWrapper.innerHTML = '';
+            const words = message.textContent.trim().split(' ');
+            message.innerHTML = '';
+            words.forEach((word) => {
+                const wordSpan = document.createElement('span');
+                wordSpan.dataset.preloaderWord = '';
+                wordSpan.innerHTML = word.replace(/\S/g, '<span data-preloader-letter>$&</span>');
+                message.appendChild(wordSpan);
+                message.appendChild(document.createTextNode(' '));
+            });
 
-        // Wrap each word and its letters in spans
-        words.forEach(function(word) {
-            var wordSpan = document.createElement('span');
-            wordSpan.classList.add('word');
-            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
-            textWrapper.appendChild(wordSpan);
-            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
-        });
+            const storedTheme = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+            const isDark = typeof storedTheme === 'boolean'
+                ? storedTheme
+                : Boolean(window.matchMedia?.('(prefers-color-scheme: dark)').matches);
+            document.documentElement.style.setProperty('--preloader-background-color', isDark ? '#202124' : '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', isDark ? '#fff' : '#000');
 
-        var animation = anime.timeline({ loop: true })
-            .add({
-                targets: '.ml13 .letter',
-                translateY: [20, 0],
-                translateZ: 0,
-                opacity: [0, 1],
-                filter: ['blur(5px)', 'blur(0px)'],
-                easing: "easeOutExpo",
-                duration: 1200,
-                delay: (el, i) => 300 + 20 * i,
-            })
-            .add({
-                targets: '.ml13 .letter',
-                translateY: [0, -20],
-                opacity: [1, 0],
-                filter: ['blur(0px)', 'blur(5px)'],
-                easing: "easeInExpo",
-                duration: 1000,
-                delay: (el, i) => 15 * i,
-                complete: function() {
-                    hidePreloader();
-                }
-            }, '-=700');
+            let animation = null;
+            let hidden = false;
+            const hidePreloader = () => {
+                if (hidden) return;
+                hidden = true;
+                animation?.pause();
+                preloader.dataset.state = 'hiding';
+                preloader.setAttribute('aria-busy', 'false');
+                window.setTimeout(() => {
+                    preloader.hidden = true;
+                }, 200);
+            };
 
-
-        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
-
-        // If the theme status is not found in local storage, check the preferred color scheme
-        if (themeStatus === undefined || themeStatus === null) {
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                themeStatus = 'dark';
-            } else {
-                themeStatus = 'light';
+            if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
+                window.addEventListener('load', hidePreloader, {once: true});
+                return;
             }
-        }
 
-        // Now you can use the themeStatus variable in your code
-        if (themeStatus) {
-            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
-            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
-        } else {
-            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
-            document.documentElement.style.setProperty('--preloader-text-color', '#000');
-        }
+            animation = anime.timeline({loop: false})
+                .add({
+                    targets: '[data-preloader-letter]',
+                    translateY: [20, 0],
+                    translateZ: 0,
+                    opacity: [0, 1],
+                    filter: ['blur(5px)', 'blur(0px)'],
+                    easing: 'easeOutExpo',
+                    duration: 1200,
+                    delay: (element, index) => 300 + 20 * index,
+                })
+                .add({
+                    targets: '[data-preloader-letter]',
+                    translateY: [0, -20],
+                    opacity: [1, 0],
+                    filter: ['blur(0px)', 'blur(5px)'],
+                    easing: 'easeInExpo',
+                    duration: 1000,
+                    delay: (element, index) => 15 * index,
+                    complete: hidePreloader,
+                }, '-=700');
 
-        window.addEventListener('load', function () {
-            setTimeout(hidePreloader, 5000); // Call hidePreloader after 5000 milliseconds if not already called by animation
-        });
-
-        function hidePreloader() {
-            var preloader = document.querySelector('.preloader');
-            preloader.style.opacity = '0';
-            setTimeout(function () {
-                preloader.style.display = 'none';
-            }, 200);
-        }
+            window.addEventListener('load', () => window.setTimeout(hidePreloader, 5000), {once: true});
+        })();
     </script>
 </div>

@@ -1,6 +1,5 @@
 import { updateScrollStyle, updateHomeBannerBlur } from "./utils/scroll.js";
 import {
-  initFontSizeAdjust,
   initGoComment,
   initToolsListToggle,
   updateAutoHideTools,
@@ -57,16 +56,13 @@ export const initUtilsGlobals = ({ signal } = {}) => {
 
 export const initUtilsPage = ({ signal } = {}) => {
   const context = {
-    html_root_dom: document.querySelector("html"),
-    pageTop_dom: document.querySelector(".main-content-header"),
-    homeBanner_dom: document.querySelector(".home-banner-container"),
-    homeBannerBackground_dom: document.querySelector(".home-banner-background"),
-    scrollProgressBar_dom: document.querySelector(".scroll-progress-bar"),
-    backToTopButton_dom: document.querySelector(".tool-scroll-to-top"),
-    toolsList: document.querySelector(".hidden-tools-list"),
-    toggleButton: document.querySelector(".toggle-tools-list"),
-    fontAdjPlus_dom: document.querySelector(".tool-font-adjust-plus"),
-    fontAdMinus_dom: document.querySelector(".tool-font-adjust-minus"),
+    pageTop_dom: document.getElementById("page-header"),
+    homeBanner_dom: document.getElementById("home-banner"),
+    homeBannerBackground_dom: document.getElementById("home-banner-background"),
+    scrollProgressBar_dom: document.getElementById("reading-progress"),
+    backToTopButton_dom: document.getElementById("scroll-top"),
+    toolsList: document.getElementById("side-tools-menu"),
+    toggleButton: document.getElementById("side-tools-toggle"),
 
     innerHeight: window.innerHeight,
     prevScrollValue: 0,
@@ -85,7 +81,6 @@ export const initUtilsPage = ({ signal } = {}) => {
   updateAutoHideTools();
 
   initToolsListToggle(context, signal);
-  initFontSizeAdjust(context, signal);
   initGoComment(signal);
 
   initPageHeightHandle(context);

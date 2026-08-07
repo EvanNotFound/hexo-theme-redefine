@@ -5,6 +5,22 @@
 @import './base/global.css';
 @import './base/animations.css';
 @import './base/prose.css';
+@import './components/page.css';
+@import './components/navbar.css';
+@import './components/home.css';
+@import './components/paginator.css';
+@import './components/article.css';
+@import './components/archive.css';
+@import './components/categories.css';
+@import './components/tags.css';
+@import './components/search.css';
+@import './components/image-viewer.css';
+@import './components/progress.css';
+@import './components/preloader.css';
+@import './components/folding.css';
+@import './components/callouts.css';
+@import './components/buttons.css';
+@import './components/code.css';
 
 @custom-variant dark (&:is(.dark *));
 

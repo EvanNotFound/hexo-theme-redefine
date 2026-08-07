@@ -1,0 +1,42 @@
+@layer components {
+  .timeline-entry::before {
+    position: absolute;
+    top: 1em;
+    left: 2em;
+    display: block;
+    font-size: 0.785rem;
+    font-weight: bold;
+    color: var(--third-text-color);
+    content: attr(data-date);
+  }
+
+  .timeline-entry::after {
+    position: absolute;
+    top: 20px;
+    left: -7px;
+    display: block;
+    width: 12px;
+    height: 12px;
+    content: "";
+    background: var(--background-color);
+    border: 2px solid var(--third-text-color);
+    border-radius: 10px;
+    transition: background 0.2s ease-in-out;
+  }
+
+  .timeline-entry:last-child {
+    border-image: var(--archive-timeline-last-child-color);
+  }
+
+  .timeline-title::after {
+    position: absolute;
+    top: 0.5em;
+    left: -1.79rem;
+    width: 7px;
+    height: 7px;
+    content: "";
+    background: var(--fourth-text-color);
+    border: 1px solid var(--rd-border);
+    border-radius: 50px;
+  }
+}

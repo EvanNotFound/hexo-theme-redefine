@@ -1,50 +1,62 @@
 let didInit = false;
 
+const activateTab = (tab) => {
+  const tabs = tab.closest("[data-tabs]");
+  const tablist = tab.closest('[role="tablist"]');
+  const panelId = tab.getAttribute("aria-controls");
+  const panel = panelId ? document.getElementById(panelId) : null;
+  if (!tabs || !tablist || !panel || !tabs.contains(panel)) return;
+
+  tablist.querySelectorAll('[role="tab"]').forEach((item) => {
+    const selected = item === tab;
+    item.setAttribute("aria-selected", String(selected));
+    item.tabIndex = selected ? 0 : -1;
+  });
+  tabs.querySelectorAll('[role="tabpanel"]').forEach((item) => {
+    item.hidden = item !== panel;
+  });
+};
+
+const getTabs = (tab) =>
+  Array.from(tab.closest('[role="tablist"]')?.querySelectorAll('[role="tab"]') || []);
+
 const handleTabClick = (event) => {
-  const button = event.target.closest(".tabs [role='tablist'] button[role='tab'][data-tab]");
-  if (!button) return;
-
+  const tab = event.target.closest('[data-tabs] [role="tab"][aria-controls]');
+  if (!tab) return;
   event.stopPropagation();
+  activateTab(tab);
+};
 
-  const parentTab = button.closest(".tabs");
-  if (!parentTab) return;
-
-  const targetId = button.dataset.tab;
-  if (!targetId) return;
-
-  const tabPanes = Array.from(parentTab.querySelectorAll(".tab-content .tab-pane"));
-  const targetPane = tabPanes.find((pane) => pane.id === targetId);
-  if (!targetPane) return;
-
-  const tablist = button.closest("[role='tablist']");
-  if (tablist) {
-    tablist.querySelectorAll("button[role='tab']").forEach((tab) => {
-      tab.setAttribute("aria-selected", "false");
-      tab.setAttribute("data-state", "inactive");
-      tab.setAttribute("tabindex", "-1");
-    });
+const handleTabKeydown = (event) => {
+  const tab = event.target.closest('[data-tabs] [role="tab"][aria-controls]');
+  if (!tab || !["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) {
+    return;
   }
 
-  button.setAttribute("aria-selected", "true");
-  button.setAttribute("data-state", "active");
-  button.setAttribute("tabindex", "0");
+  const tabs = getTabs(tab);
+  const index = tabs.indexOf(tab);
+  if (index === -1) return;
 
-  tabPanes.forEach((pane) => {
-    pane.setAttribute("data-state", "inactive");
-    pane.hidden = true;
-  });
-
-  targetPane.setAttribute("data-state", "active");
-  targetPane.hidden = false;
+  event.preventDefault();
+  const nextIndex = event.key === "Home"
+    ? 0
+    : event.key === "End"
+      ? tabs.length - 1
+      : event.key === "ArrowRight"
+        ? (index + 1) % tabs.length
+        : (index - 1 + tabs.length) % tabs.length;
+  tabs[nextIndex].focus();
+  activateTab(tabs[nextIndex]);
 };
 
 export default function initTabs({ signal } = {}) {
   if (didInit) return;
   didInit = true;
-
   if (signal) {
     document.addEventListener("click", handleTabClick, { signal });
+    document.addEventListener("keydown", handleTabKeydown, { signal });
   } else {
     document.addEventListener("click", handleTabClick);
+    document.addEventListener("keydown", handleTabKeydown);
   }
 }

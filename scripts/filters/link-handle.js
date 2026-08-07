@@ -18,6 +18,7 @@ hexo.extend.filter.register(
       function (match, attrBegin, href, attrEnd, html) {
         // Exit if the href attribute doesn't exists.
         if (!href) return match;
+        if (`${attrBegin}${attrEnd}`.includes("data-writing-button")) return match;
 
         let link = "";
         try {
@@ -31,9 +32,9 @@ hexo.extend.filter.register(
         if (!link.protocol || link.hostname === siteHost) return match;
 
         if (theme.config.articles.style.link_icon == false) {
-          return `<a class="link" ${attrBegin} href="${href}" ${attrEnd}>${html}</a>`;
+          return `<a data-external-link ${attrBegin} href="${href}" ${attrEnd}>${html}</a>`;
         } else {
-          return `<a class="link" ${attrBegin} href="${href}" ${attrEnd}>${html}<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>`;
+          return `<a data-external-link ${attrBegin} href="${href}" ${attrEnd}>${html}<i data-external-icon class="fa-solid fa-arrow-up-right ml-[0.2em] align-text-top text-[0.7em] font-light" aria-hidden="true"></i></a>`;
         }
       },
     );

@@ -143,7 +143,7 @@ const initPage = () => {
     initModeToggle({ signal: pageSignal, appSignal });
   });
   const hasViewableImages = document.querySelector(
-    ".markdown-body img, .masonry-item img, #shuoshuo-content img",
+    '.markdown-body img:not([data-image-viewer="ignore"]), [data-masonry-item] img:not([data-image-viewer="ignore"]), .essay img:not([data-image-viewer="ignore"])',
   );
   if (hasViewableImages || document.querySelector("#masonry-container")) {
     lazyRun(
@@ -177,7 +177,7 @@ const initPage = () => {
     }
   });
 
-  if (document.querySelector(".essay-date") && typeof moment !== "undefined") {
+  if (document.querySelector("[data-essay-date]") && typeof moment !== "undefined") {
     lazyRun(
       "essays",
       pageSignal,
@@ -272,7 +272,7 @@ const initPage = () => {
   if (
     theme.bookmarks &&
     theme.bookmarks.length !== 0 &&
-    document.querySelector(".bookmark-nav-item")
+    document.querySelector("[data-bookmark-nav]")
   ) {
     lazyRun(
       "bookmarkNav",

@@ -168,13 +168,28 @@
             <% } }%>
     <% } }%>
 
-    <%- css('css/style') %>
     <%- themeStyles() %>
 
     <% if (theme.developer && theme.developer.enable) {%>
     <%- css('css/build/theme.css') %>
     <% } else {%>
     <%- renderCSS('css/build/theme.css') %>
+    <% } %>
+
+    <%
+      const lightCodeThemes = ['github', 'atom-one-light', 'default'];
+      const darkCodeThemes = ['github-dark', 'vs2015', 'atom-one-dark', 'a11y-dark', 'agate', 'monokai-sublime', 'night-owl', 'nord', 'tokyo-night-dark'];
+      const configuredLightCodeTheme = theme.articles.code_block.highlight_theme.light;
+      const configuredDarkCodeTheme = theme.articles.code_block.highlight_theme.dark;
+      const lightCodeTheme = lightCodeThemes.includes(configuredLightCodeTheme) ? configuredLightCodeTheme : 'github';
+      const darkCodeTheme = darkCodeThemes.includes(configuredDarkCodeTheme) ? configuredDarkCodeTheme : 'github-dark';
+    %>
+    <%- renderCSS(`css/build/plugins/code-themes/light/${lightCodeTheme}.css`) %>
+    <%- renderCSS(`css/build/plugins/code-themes/dark/${darkCodeTheme}.css`) %>
+
+    <% const styledCommentSystems = ['waline', 'gitalk', 'twikoo', 'utterances']; %>
+    <% if (theme.comment.enable && styledCommentSystems.includes(theme.comment.system)) { %>
+        <%- renderCSS(`css/build/plugins/comments/${theme.comment.system}.css`) %>
     <% } %>
 
     <%- renderCSS('fonts/GeistMono/geist-mono.css') %>

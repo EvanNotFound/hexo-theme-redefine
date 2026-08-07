@@ -1,7 +1,38 @@
 ---
-title: Migration from v1
-description: If you are using version v1.x.x of the Redefine theme, it is recommended to upgrade to version v2.x.x as soon as possible.
+title: Migration Guide
+description: Redefine major-release style-system changes and the steps for migrating from v1 to v2.
 ---
+
+## Native CSS Major-Release Migration
+
+This major release moves theme styling to published native CSS and Tailwind
+outputs and removes Stylus, its renderer integration, and
+`hexo-renderer-stylus`. Sites that install the theme through a package manager
+use the CSS included in the published package. If a site installed
+`hexo-renderer-stylus` only for Redefine, it can remove that dependency.
+
+### Update Custom CSS and JavaScript Selectors
+
+This release removes undocumented DOM class names used only by the theme's
+internal styling, without compatibility aliases. Any custom CSS or JavaScript
+targeting those internal names must be updated against the currently generated
+markup.
+
+- Use semantic selectors for elements such as `header`, `main`, `footer`, and
+  `dialog`, along with `role` and `aria-*` state.
+- Use focused `data-*` hooks for repeated behavior or state, such as
+  `data-state`, `data-search-trigger`, `data-tabs`, and `data-toc-state`.
+- When JavaScript needs a unique page region, use current IDs such as `navbar`,
+  `page-shell`, `main-content`, `site-footer`, and `side-tools`. Do not use these
+  IDs as styling selectors in new theme CSS.
+
+Do not treat generated Tailwind utility classes as replacement interfaces for
+the removed internal classes. Documented content scopes such as `markdown-body`
+and classes required by third-party integrations such as Waline, Gitalk, and
+Twikoo remain available, so custom rules that target only those scopes or
+third-party classes do not need to be rewritten solely for this migration.
+
+## Migrating from v1 to v2
 
 If you are using version v1.x.x of the Redefine theme, it is recommended to upgrade to version v2.x.x as soon as possible.
 
@@ -11,7 +42,7 @@ Therefore, you need to follow the steps below to migrate the v1 version configur
 
 If you still need to read the documentation for the v1 version, you can visit the [v1 version documentation](https://redefine-docs-v1.ohevan.com/).
 
-## Migration Steps
+### Migration Steps
 
 
 <div className="fd-steps [&_h3]:fd-step">

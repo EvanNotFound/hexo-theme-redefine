@@ -15,7 +15,7 @@ hexo.extend.filter.register(
       function (match, html) {
         // 只有在配置为true时才添加mask类
         if (theme.config.articles.style.delete_mask === true) {
-          return `<del class="mask">${html}</del>`;
+          return `<del data-mask tabindex="0">${html}</del>`;
         }
         return match;
       }

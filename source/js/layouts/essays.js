@@ -1,5 +1,5 @@
 export default function initEssays() {
-  const dateElements = document.querySelectorAll(".essay-date");
+  const dateElements = document.querySelectorAll("[data-essay-date]");
 
   if (!dateElements.length) {
     return;

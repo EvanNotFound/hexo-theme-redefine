@@ -1,0 +1,20 @@
+.light {
+  --highlight-foreground: #444;
+  --highlight-background: #f3f3f3;
+  --highlight-keyword: #444;
+  --highlight-link: #ab5656;
+  --highlight-built-in: #397300;
+  --highlight-number: #800;
+  --highlight-string: #800;
+  --highlight-regexp: #ab5656;
+  --highlight-subst: #444;
+  --highlight-comment: #697070;
+  --highlight-doctag: #444;
+  --highlight-meta: #1f7199;
+  --highlight-variable: #ab5656;
+  --highlight-attr: #444;
+  --highlight-section: #800;
+  --highlight-bullet: #397300;
+  --highlight-addition: #397300;
+  --highlight-deletion: #800;
+}

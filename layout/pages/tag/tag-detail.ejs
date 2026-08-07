@@ -1,6 +1,2 @@
-<div class="tag-name">
-    <i class="fa-solid fa-tag"></i>&nbsp;<%= page.tag %>
-</div>
-<div class="tag-post-list">
-    <%- partial('utils/posts-list', {posts: page.posts}) %>
-</div>
+<div><i class="fa-solid fa-tag" aria-hidden="true"></i>&nbsp;<%= page.tag %></div>
+<%- partial('utils/posts-list', {posts: page.posts}) %>

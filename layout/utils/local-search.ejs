@@ -1,20 +1,19 @@
-<div class="search-pop-overlay">
-	<div class="popup search-popup">
-		<div class="search-header">
-			<span class="search-input-field-pre">
-				<i class="fa-solid fa-keyboard"></i>
-			</span>
-			<div class="search-input-container">
-				<input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="<%= __('search') %>" spellcheck="false" type="search" class="search-input">
-			</div>
-			<span class="popup-btn-close">
-				<i class="fa-solid fa-times"></i>
-			</span>
-		</div>
-		<div id="search-result">
-			<div id="no-result">
-				<i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
-			</div>
-		</div>
-	</div>
-</div>
+<dialog id="local-search" class="search m-auto h-[80%] w-[70%] max-w-none scale-95 overflow-hidden rounded-[5px] border-0 bg-background-color p-0 transition-transform duration-300 open:scale-100 max-[768px]:w-[80%] max-[640px]:w-[90%]" aria-labelledby="local-search-label">
+    <div class="flex rounded-t-sm bg-fourth-text-color p-2.5">
+        <button type="button" data-search-action="clear" class="flex items-center px-2.5 text-[1.2rem] text-third-text-color" aria-label="Clear search" title="Clear search">
+            <i class="fa-solid fa-keyboard" aria-hidden="true"></i>
+        </button>
+        <label id="local-search-label" for="local-search-input" class="sr-only"><%= __('search') %></label>
+        <div class="grow p-0.5">
+            <input id="local-search-input" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="<%= __('search') %>" spellcheck="false" type="search" class="w-full border-0 bg-transparent text-[1.2rem] text-default-text-color outline-0">
+        </div>
+        <button type="button" data-search-action="close" class="flex items-center px-2.5 text-[1.2rem] text-default-text-color hover:text-first-text-color" aria-label="<%= __('close') %>" title="<%= __('close') %>">
+            <i class="fa-solid fa-times" aria-hidden="true"></i>
+        </button>
+    </div>
+    <div id="local-search-results" class="flex h-[calc(100%_-_55px)] overflow-auto px-[25px] py-[5px]">
+        <div id="local-search-status" class="m-auto text-third-text-color" aria-live="polite">
+            <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw" aria-hidden="true"></i>
+        </div>
+    </div>
+</dialog>

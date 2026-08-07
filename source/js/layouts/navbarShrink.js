@@ -12,32 +12,26 @@ const handleScroll = () => {
 
   const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
   const shouldShrink = scrollTop > navbarState.navbarHeight;
-  document.body.classList.toggle("navbar-shrink", shouldShrink);
+  document.body.dataset.navbarSize = shouldShrink ? "compact" : "full";
 };
 
 const handleSubmenuToggle = (event) => {
-  const toggle = event.target.closest("[navbar-data-toggle]");
+  const toggle = event.target.closest("[data-navbar-submenu]");
   if (!toggle) {
     return false;
   }
 
-  const target = document.querySelector(
-    `[data-target="${toggle.getAttribute("navbar-data-toggle")}"]`,
-  );
+  const target = document.getElementById(toggle.getAttribute("aria-controls"));
   if (!target) {
     return true;
   }
 
   const submenuItems = target.children;
-  const icon = toggle.querySelector(".fa-chevron-right");
-  const isVisible = !target.classList.contains("hidden");
-
-  if (icon) {
-    icon.classList.toggle("icon-rotated", !isVisible);
-  }
+  const isVisible = !target.hidden;
+  toggle.setAttribute("aria-expanded", String(!isVisible));
 
   if (typeof anime === "undefined") {
-    target.classList.toggle("hidden", isVisible);
+    target.hidden = isVisible;
     return true;
   }
 
@@ -50,11 +44,11 @@ const handleSubmenuToggle = (event) => {
       easing: "easeInQuart",
       delay: anime.stagger(80, { start: 20, direction: "reverse" }),
       complete: function () {
-        target.classList.add("hidden");
+        target.hidden = true;
       },
     });
   } else {
-    target.classList.remove("hidden");
+    target.hidden = false;
     anime({
       targets: submenuItems,
       opacity: [0, 1],
@@ -68,27 +62,43 @@ const handleSubmenuToggle = (event) => {
   return true;
 };
 
-const handleDrawerClose = (event) => {
-  const logoTitleDom = event.target.closest(
-    ".navbar-container .navbar-content .logo-title",
-  );
-  if (!logoTitleDom) {
-    return false;
-  }
+const setDrawerState = (isOpen) => {
+  const toggle = document.getElementById("navbar-toggle");
+  const drawer = document.getElementById("navbar-drawer");
+  const mask = document.getElementById("navbar-mask");
 
-  document.body.classList.remove("navbar-drawer-show");
-  return true;
+  toggle?.setAttribute("aria-expanded", String(isOpen));
+  if (drawer) {
+    drawer.dataset.state = isOpen ? "open" : "closed";
+    drawer.setAttribute("aria-hidden", String(!isOpen));
+  }
+  if (mask) {
+    mask.dataset.state = isOpen ? "open" : "closed";
+    mask.setAttribute("aria-hidden", String(!isOpen));
+    mask.tabIndex = isOpen ? 0 : -1;
+  }
+  document.body.dataset.navbarDrawer = isOpen ? "open" : "closed";
 };
 
 const handleDrawerToggle = (event) => {
-  const toggleTarget = event.target.closest(
-    ".window-mask, .navbar-bar, .navbar-drawer .drawer-navbar-list .drawer-navbar-item, .navbar-drawer .tag-count-item",
-  );
+  const toggleTarget = event.target.closest("#navbar-toggle, #navbar-mask");
   if (!toggleTarget) {
     return false;
   }
 
-  document.body.classList.toggle("navbar-drawer-show");
+  const isOpen =
+    document.getElementById("navbar-toggle")?.getAttribute("aria-expanded") ===
+    "true";
+  setDrawerState(!isOpen);
+  return true;
+};
+
+const handleDrawerClose = (event) => {
+  if (!event.target.closest("[data-navbar-close]")) {
+    return false;
+  }
+
+  setDrawerState(false);
   return true;
 };
 
@@ -140,19 +150,21 @@ export const navbarShrink = {
   },
 
   refresh() {
-    this.navbarDom = document.querySelector(".navbar-container");
+    this.navbarDom = document.getElementById("navbar");
     if (!this.navbarDom) {
       return;
     }
 
     navbarState.navbarHeight = this.navbarDom.getBoundingClientRect().height;
+    setDrawerState(false);
     handleScroll();
   },
 
   setNavigating(isNavigating) {
     navbarState.isNavigating = isNavigating;
     if (isNavigating) {
-      document.body.classList.remove("navbar-shrink");
+      document.body.dataset.navbarSize = "full";
+      setDrawerState(false);
     }
   },
 };

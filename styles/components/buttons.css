@@ -1,0 +1,6 @@
+@layer components {
+  .markdown-body p > [data-writing-button] {
+    padding: 8px 12px;
+    margin-bottom: 0;
+  }
+}

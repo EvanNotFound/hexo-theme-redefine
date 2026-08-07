@@ -1,7 +1,23 @@
 ---
-title: 从 v1 迁移
-description: 如果你使用的是 v1.x.x 版本的 Redefine 主题，建议尽快升级到 v2.x.x 版本。
+title: 迁移指南
+description: 介绍 Redefine 主要版本的样式系统变更，以及从 v1 迁移到 v2 的步骤。
 ---
+
+## 原生 CSS 主要版本迁移
+
+此主要版本将主题样式迁移到原生 CSS 和 Tailwind 构建产物，并移除了 Stylus、Stylus 渲染集成和 `hexo-renderer-stylus`。通过包管理器安装主题的站点会直接使用发布包中的 CSS；如果站点仅为 Redefine 安装了 `hexo-renderer-stylus`，可以将其移除。
+
+### 更新自定义 CSS 和 JavaScript 选择器
+
+此版本删除了未记录且仅供主题内部样式使用的 DOM class 名称，不提供兼容别名。任何以这些内部名称为目标的自定义 CSS 或 JavaScript 都必须根据当前生成的标记更新。
+
+- 对 `header`、`main`、`footer`、`dialog` 等语义元素，以及 `role` 和 `aria-*` 状态使用语义选择器。
+- 对重复行为或状态使用明确的 `data-*` 钩子，例如 `data-state`、`data-search-trigger`、`data-tabs` 和 `data-toc-state`。
+- JavaScript 如需定位唯一页面区域，请使用当前 ID，例如 `navbar`、`page-shell`、`main-content`、`site-footer` 和 `side-tools`；不要将这些 ID 作为新主题 CSS 的样式选择器。
+
+不要将生成的 Tailwind 工具类当作旧内部 class 的替代接口。已记录的内容作用域（例如 `markdown-body`）以及 Waline、Gitalk、Twikoo 等第三方集成所需的 class 会继续保留，因此仅以这些作用域或第三方 class 为目标的自定义规则不需要因为本次迁移而重写。
+
+## 从 v1 迁移到 v2
 
 如果你使用的是 v1.x.x 版本的 Redefine 主题，建议尽快升级到 v2.x.x 版本。
 
@@ -11,7 +27,7 @@ v1 版本已经不再维护，而且 v2 版本对代码进行了重构，不再�
 
 如果还需要阅读 v1 版本的文档，可以访问 [v1 版本的文档](https://redefine-docs-v1.ohevan.com/)。
 
-## 迁移步骤
+### 迁移步骤
 
 
 <div className="fd-steps [&_h3]:fd-step">

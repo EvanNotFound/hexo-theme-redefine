@@ -1,0 +1,9 @@
+@layer components {
+  .search::backdrop {
+    background: rgb(0 0 0 / 35%);
+  }
+
+  .search input[type="search"]::-webkit-search-cancel-button {
+    display: none;
+  }
+}

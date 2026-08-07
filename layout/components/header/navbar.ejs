@@ -1,153 +1,124 @@
-<header class="navbar-container px-6 md:px-12">
-    <div class="navbar-content transition-navbar <%- (theme.home_banner.enable === true && is_home() && !page.prev) ? 'has-home-banner' : '' %>">
-        <div class="left">
+<% const navbarWidth = theme.home_banner.enable === true && is_home() && !page.prev ? 'home' : 'pages'; %>
+<header id="navbar" class="navbar flex h-full w-full box-border items-center justify-center px-6 pt-0.5 font-['Chillax-Variable'] backdrop-blur-[10px] [background:var(--nav-color-bg)] md:px-12">
+    <div data-navbar-content data-navbar-width="<%= navbarWidth %>" class="relative z-5 flex h-full w-full flex-row items-center justify-between transition-[max-width] duration-300 ease-out">
+        <div class="flex items-center">
             <% if (theme.defaults.hasOwnProperty('logo') && theme.defaults.logo) { %>
-                <a class="logo-image h-8 w-8 sm:w-10 sm:h-10 mr-3" href="<%= config.root %>">
+                <a data-navbar-close class="mr-3 h-8 w-8 sm:h-10 sm:w-10" href="<%= config.root %>">
                     <%- image_tag(theme.defaults.logo, {
-                        class: "w-full h-full rounded-xs"
+                        class: "h-full w-full rounded-xs"
                     }) %>
                 </a>
             <% } %>
-            <a class="logo-title" href="<%= config.root %>">
-                <%- is_home() ? '<h1>' : '' %>
-                <%= theme.info.title || config.title || 'Redefine Theme' %>
-                <%- is_home() ? '</h1>' : '' %>
+            <a data-navbar-close class="translate-y-px font-[family-name:var(--font-title)] text-[1.7rem] leading-none font-[520] text-first-text-color max-[768px]:text-[1.53rem] max-[640px]:text-[1.36rem]" href="<%= config.root %>">
+                <% if (is_home()) { %>
+                    <h1 class="m-0 text-inherit leading-inherit font-inherit"><%= theme.info.title || config.title || 'Redefine Theme' %></h1>
+                <% } else { %>
+                    <%= theme.info.title || config.title || 'Redefine Theme' %>
+                <% } %>
             </a>
         </div>
 
-        <div class="right">
-            <!-- PC -->
-            <div class="desktop">
-                <ul class="navbar-list">
-                    <% for (let i in theme.navbar.links) { %>
-                        <% if (theme.navbar.links[i].path === 'none') {
-                        } else { %>
-                            <%
-                                let link = theme.navbar.links[i];
-                                let hasSubmenus = link.submenus;
-                                let isActive = isHomePagePagination(page.path, link.path) || is_current(link.path);
-                                let linkHref = hasSubmenus ? '#' : url_for(link.path);
-                                let onClickAction = hasSubmenus ? 'onClick="return false;"' : '';
-                                let iconClass = link.icon ? `<i class="${link.icon} fa-fw"></i>` : '';
-                                let linkText = __(i.toLowerCase()).toUpperCase();
-                                let dropdownIcon = hasSubmenus ? '<i class="fa-solid fa-chevron-down fa-fw"></i>' : '';
-                            %>
-
-                            <li class="navbar-item">
-                                <!-- Menu -->
-                                <a class="<%= hasSubmenus ? 'has-dropdown' : (isActive ? 'active' : '') %>"
-                                   href="<%= linkHref %>"
-                                        <%= onClickAction %>>
-                                    <%- iconClass %>
+        <div class="flex items-center">
+            <ul class="flex items-center gap-6 max-[768px]:hidden">
+                <% for (let i in theme.navbar.links) { %>
+                    <% if (theme.navbar.links[i].path !== 'none') { %>
+                        <%
+                            const link = theme.navbar.links[i];
+                            const hasSubmenus = Boolean(link.submenus);
+                            const isActive = isHomePagePagination(page.path, link.path) || is_current(link.path);
+                            const linkText = __(i.toLowerCase()).toUpperCase();
+                        %>
+                        <li class="<%= hasSubmenus ? 'navbar-dropdown group' : '' %> relative cursor-pointer text-base font-medium text-default-text-color">
+                            <% if (hasSubmenus) { %>
+                                <button type="button" class="navbar-link relative block p-[5px] text-default-text-color [&_i]:!text-inherit">
+                                    <% if (link.icon) { %><i class="<%= link.icon %> fa-fw"></i><% } %>
                                     <%= linkText %>
-                                    <%- dropdownIcon %>
+                                    <i class="navbar-chevron fa-solid fa-chevron-down fa-fw transition-transform duration-300"></i>
+                                </button>
+                                <ul class="invisible absolute left-1/2 max-h-0 w-auto -translate-x-1/2 overflow-hidden rounded-lg bg-background-color px-2.5 text-center opacity-0 transition-all duration-200 ease-linear group-hover:visible group-hover:max-h-[500px] group-hover:border group-hover:border-rd-border group-hover:p-2.5 group-hover:opacity-100 group-focus-within:visible group-focus-within:max-h-[500px] group-focus-within:border group-focus-within:border-rd-border group-focus-within:p-2.5 group-focus-within:opacity-100">
+                                    <% for (let submenu in link.submenus) { %>
+                                        <li>
+                                            <a class="block whitespace-nowrap rounded-lg px-[15px] py-[3px] text-center text-base text-default-text-color transition-all duration-200 hover:bg-third-background-color hover:text-primary" href="<%- url_for(link.submenus[submenu]) %>">
+                                                <%= __(submenu.toLowerCase()).toUpperCase() %>
+                                            </a>
+                                        </li>
+                                    <% } %>
+                                </ul>
+                            <% } else { %>
+                                <a class="navbar-link relative block p-[5px] text-default-text-color [&_i]:!text-inherit" href="<%= url_for(link.path) %>" <%- isActive ? 'aria-current="page"' : '' %>>
+                                    <% if (link.icon) { %><i class="<%= link.icon %> fa-fw"></i><% } %>
+                                    <%= linkText %>
                                 </a>
-
-                                <!-- Submenu -->
-                                <% if (hasSubmenus) { %>
-                                    <ul class="sub-menu">
-                                        <% for (var submenu in link.submenus) { %>
-                                            <li>
-                                                <a href="<%- url_for(link.submenus[submenu]) %>">
-                                                    <%= __(submenu.toLowerCase()).toUpperCase() %>
-                                                </a>
-                                            </li>
-                                        <% } %>
-                                    </ul>
-                                <% } %>
-                            </li>
-                    <% } } %>
-                    <% if (theme.navbar.search.enable === true) { %>
-                        <li class="navbar-item search search-popup-trigger">
-                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <% } %>
                         </li>
                     <% } %>
-                </ul>
-            </div>
-            <!-- Mobile -->
-            <div class="mobile">
-                <% if (theme.navbar.search.enable === true) { %>
-                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
-                    </div>
                 <% } %>
-                <div class="icon-item navbar-bar">
-                    <div class="navbar-bar-middle"></div>
-                </div>
+                <% if (theme.navbar.search.enable === true) { %>
+                    <li class="ml-[26px]">
+                        <button type="button" data-search-trigger aria-label="<%= __('search') %>" title="<%= __('search') %>" class="flex h-8 w-8 items-center justify-center text-2xl text-default-text-color hover:text-primary [&_i]:!text-inherit">
+                            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                        </button>
+                    </li>
+                <% } %>
+            </ul>
+
+            <div class="hidden items-center justify-between max-[768px]:flex">
+                <% if (theme.navbar.search.enable === true) { %>
+                    <button type="button" data-search-trigger aria-label="<%= __('search') %>" title="<%= __('search') %>" class="relative ml-3 hidden h-5 w-5 items-center justify-center text-lg text-default-text-color first:ml-0 max-[768px]:flex [&_i]:!text-inherit">
+                        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    </button>
+                <% } %>
+                <button id="navbar-toggle" type="button" aria-controls="navbar-drawer" aria-expanded="false" aria-label="Navigation" title="Navigation" class="relative ml-3 hidden h-5 w-5 items-center justify-center text-default-text-color first:ml-0 max-[768px]:flex">
+                    <span class="navbar-toggle-line" aria-hidden="true"></span>
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- Mobile sheet -->
-    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
-        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+    <nav id="navbar-drawer" data-state="closed" aria-hidden="true" aria-label="Navigation" class="absolute top-0 left-0 z-2 flex h-dvh w-full origin-top translate-x-full flex-col justify-between overflow-y-auto bg-background-color pt-[var(--navbar-height)] pb-5 transition-transform duration-[380ms] ease-in-out data-[state=open]:translate-x-0">
+        <ul class="flex flex-col items-start justify-center px-4">
             <% for (let i in theme.navbar.links) { %>
                 <% if (theme.navbar.links[i].path !== 'none') { %>
                     <%
-                        // Function to check if link is active
-                        function isActiveLink(pagePath, linkPath) {
-                            return isHomePagePagination(pagePath, linkPath) || is_current(linkPath);
-                        }
-
-                        // Variables for cleaner code
-                        let linkData = theme.navbar.links[i];
-                        let hasSubmenus = linkData.submenus;
-                        let isActive = isActiveLink(page.path, linkData.path);
-                        let iconClass = linkData.icon;
-                        let linkText = __(i.toLowerCase()).toUpperCase();
-                        let linkPath = hasSubmenus ? '#' : url_for(linkData.path);
-                        let drawerNavbarItemClass = hasSubmenus ? 'drawer-navbar-item-sub' : 'drawer-navbar-item';
+                        const link = theme.navbar.links[i];
+                        const hasSubmenus = Boolean(link.submenus);
+                        const isActive = isHomePagePagination(page.path, link.path) || is_current(link.path);
+                        const linkText = __(i.toLowerCase()).toUpperCase();
+                        const submenuId = `navbar-submenu-${Object.keys(theme.navbar.links).indexOf(i)}`;
                     %>
-
-                    <li class="<%= drawerNavbarItemClass %> text-base my-1.5 flex flex-col w-full">
-                        <% if (hasSubmenus) {%>
-                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-rd-border hover:border-primary w-full <%= isActive ? 'active' : '' %>"
-                             navbar-data-toggle="submenu-<%= i %>"
-                        >
-                            <span>
-                                <%= linkText %>
-                            </span>
-                            <% if (iconClass) { %>
-                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
-                            <% } %>
-                        </div>
+                    <li class="my-1.5 flex w-full flex-col text-base">
+                        <% if (hasSubmenus) { %>
+                            <button type="button" data-navbar-submenu aria-controls="<%= submenuId %>" aria-expanded="false" class="group flex w-full flex-row items-center justify-between gap-1 border-b border-rd-border px-2 py-1.5 text-2xl font-semibold text-default-text-color hover:border-primary hover:!text-primary active:!text-primary [&_i]:!text-inherit">
+                                <span><%= linkText %></span>
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-transform group-aria-expanded:rotate-90" aria-hidden="true"></i>
+                            </button>
                         <% } else { %>
-                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-rd-border hover:border-primary w-full <%= isActive ? 'active' : '' %>"
-                           href="<%= linkPath %>"
-                        >
-                            <span>
-                                <%= linkText %>
-                            </span>
-                            <% if (iconClass) { %>
-                                <i class="<%= iconClass %> fa-sm fa-fw"></i>
-                            <% } %>
-                        </a>
+                            <a data-navbar-close class="flex w-full flex-row items-center justify-between gap-1 border-b border-rd-border px-2 py-1.5 text-2xl font-semibold text-default-text-color hover:border-primary hover:!text-primary active:!text-primary [&_i]:!text-inherit" href="<%= url_for(link.path) %>" <%- isActive ? 'aria-current="page"' : '' %>>
+                                <span><%= linkText %></span>
+                                <% if (link.icon) { %><i class="<%= link.icon %> fa-sm fa-fw" aria-hidden="true"></i><% } %>
+                            </a>
                         <% } %>
 
                         <% if (hasSubmenus) { %>
-                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-<%= i %>">
-                                <% for (var submenu in linkData.submenus) { %>
-                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
-                                        <a class=" text-third-text-color text-xl"
-                                           href="<%- url_for(linkData.submenus[submenu]) %>"><%= __(submenu.toLowerCase()).toUpperCase() %></a>
+                            <div id="<%= submenuId %>" class="flex-col items-start px-2 py-2" hidden>
+                                <% for (let submenu in link.submenus) { %>
+                                    <div class="flex flex-col items-start justify-center rounded-3xl text-base hover:underline hover:underline-offset-1 active:underline">
+                                        <a data-navbar-close class="text-xl text-third-text-color" href="<%- url_for(link.submenus[submenu]) %>"><%= __(submenu.toLowerCase()).toUpperCase() %></a>
                                     </div>
                                 <% } %>
                             </div>
                         <% } %>
                     </li>
-            <% } } %>
+                <% } %>
+            <% } %>
 
-            <%# Add sidebar links %>
-            <% if (theme.home.sidebar.links !== null && theme.home.sidebar.show_on_mobile !== false) {%>
+            <% if (theme.home.sidebar.links !== null && theme.home.sidebar.show_on_mobile !== false) { %>
                 <% for (let i in theme.home.sidebar.links) { %>
-                    <% if (theme.navbar.links && theme.navbar.links.hasOwnProperty(i)) {
-                        continue;
-                    } %>
-                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
-                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-rd-border hover:border-primary w-full active"
-                           href="<%= url_for(theme.home.sidebar.links[i].path) %>"
-                        >
+                    <% if (theme.navbar.links && theme.navbar.links.hasOwnProperty(i)) { continue; } %>
+                    <li class="my-1.5 flex w-full flex-col text-base">
+                        <a data-navbar-close class="flex w-full flex-row items-center justify-between gap-1 border-b border-rd-border px-2 py-1.5 text-2xl font-semibold text-default-text-color hover:border-primary hover:!text-primary active:!text-primary [&_i]:!text-inherit" href="<%= url_for(theme.home.sidebar.links[i].path) %>">
                             <span><%= __(i) %></span>
-                            <i class="<%= theme.home.sidebar.links[i].icon %> fa-sm fa-fw"></i>
+                            <i class="<%= theme.home.sidebar.links[i].icon %> fa-sm fa-fw" aria-hidden="true"></i>
                         </a>
                     </li>
                 <% } %>
@@ -155,8 +126,7 @@
         </ul>
 
         <%- partial("components/sidebar/statistics") %>
-    </div>
+    </nav>
 
-    <div class="window-mask"></div>
-
+    <button id="navbar-mask" type="button" data-state="closed" aria-hidden="true" aria-label="Close navigation" tabindex="-1" class="pointer-events-none invisible absolute top-0 z-1 h-dvh w-full bg-black/40 opacity-0 transition-opacity duration-[380ms] ease-in-out data-[state=open]:pointer-events-auto data-[state=open]:visible data-[state=open]:opacity-100"></button>
 </header>

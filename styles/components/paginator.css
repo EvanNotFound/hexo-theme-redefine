@@ -1,0 +1,50 @@
+@layer components {
+  .paginator a {
+    margin: 0 0.3rem;
+  }
+
+  .paginator .space {
+    padding: 8px 10px;
+  }
+
+  .paginator :is(a.page-number, span.page-number, a.prev, a.next) {
+    position: relative;
+    display: inline-block;
+    padding: 8px 16px;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    background: var(--background-color);
+    border: 1px solid var(--rd-border);
+    border-radius: 9px;
+  }
+
+  .paginator :is(a.page-number, span.page-number, a.prev, a.next):hover {
+    color: var(--background-color);
+    background: var(--primary-color);
+  }
+
+  .paginator a.page-number.active,
+  .paginator span.page-number.current {
+    color: var(--background-color);
+    background: var(--primary-color);
+  }
+
+  .paginator i.fa-regular {
+    color: var(--default-text-color);
+  }
+
+  .paginator .extend:hover i.fa-regular {
+    color: var(--background-color);
+  }
+
+  @media (max-width: 640px) {
+    .paginator :is(a.prev, a.next) {
+      display: none;
+    }
+
+    .paginator .space {
+      padding: 8px 2px;
+    }
+  }
+}

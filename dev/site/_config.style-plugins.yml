@@ -1,0 +1,15 @@
+theme_config:
+  articles:
+    code_block:
+      highlight_theme:
+        light: atom-one-light
+        dark: nord
+  comment:
+    enable: true
+    system: twikoo
+  footer:
+    runtime: false
+  plugins:
+    aplayer:
+      enable: true
+      type: fixed

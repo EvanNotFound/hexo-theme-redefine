@@ -56,17 +56,12 @@
     background-clip: content-box;
   }
 
-  html .navbar-shrink,
-  body .navbar-shrink {
-    --navbar-height: 50.4px;
-  }
-
   ::selection {
     color: #fff;
     background: var(--selection-color);
   }
 
-  img[lazyload] {
+  img[data-lazy-state="pending"] {
     padding: 10px;
     margin: 20px auto !important;
     cursor: not-allowed;

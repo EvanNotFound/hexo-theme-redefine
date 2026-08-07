@@ -1,0 +1,34 @@
+@layer components {
+  .folding {
+    --folding-background: rgb(166 166 166 / 19%);
+    margin-bottom: 1rem;
+  }
+
+  .folding > summary {
+    list-style: none;
+  }
+
+  .folding > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .folding > summary::marker {
+    display: none;
+  }
+
+  .folding > summary:hover,
+  .folding[open] > summary {
+    background: var(--folding-background);
+  }
+
+  .folding[data-variant="yellow"] { --folding-background: rgb(255 238 48 / 19%); }
+  .folding[data-variant="blue"] { --folding-background: rgb(0 166 255 / 19%); }
+  .folding[data-variant="green"] { --folding-background: rgb(0 255 166 / 13%); }
+  .folding[data-variant="red"] { --folding-background: rgb(255 0 0 / 13%); }
+  .folding[data-variant="orange"] { --folding-background: rgb(255 152 48 / 13%); }
+  .folding[data-variant="pink"] { --folding-background: rgb(255 0 255 / 13%); }
+  .folding[data-variant="cyan"] { --folding-background: rgb(0 255 255 / 13%); }
+  .folding[data-variant="white"] { --folding-background: rgb(255 255 255 / 13%); }
+  .folding[data-variant="black"] { --folding-background: rgb(0 0 0 / 13%); }
+  .folding[data-variant="purple"] { --folding-background: rgb(167 99 255 / 13%); }
+}

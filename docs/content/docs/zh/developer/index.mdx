@@ -34,7 +34,7 @@ developer:
 pnpm dev
 ```
 
-该命令会直接使用浏览器端 JavaScript 源模块，清理演示站生成的状态，将当前主题源代码链接到 `dev/site/themes/redefine`，在 `http://127.0.0.1:4000` 启动 Hexo，并实时编译 Tailwind CSS。它不要求生成或持续监听生产环境的 JavaScript 构建输出。
+该命令会直接使用浏览器端 JavaScript 源模块，清理演示站生成的状态，将当前主题源代码链接到 `dev/site/themes/redefine`，在 `http://127.0.0.1:4000` 启动 Hexo，并从 `styles/theme.css` 实时编译原生 CSS 和 Tailwind CSS。它不要求生成或持续监听生产环境的 JavaScript 构建输出。
 
 </div>
 
@@ -52,18 +52,23 @@ pnpm dev
 pnpm clean
 pnpm run build
 pnpm run build:css
+pnpm run check:css
 pnpm run build:js
 pnpm run watch:css
 ```
 
 - `pnpm clean` 删除演示站生成的 `db.json` 和 `public/` 目录。
-- `pnpm run build` 统一执行 Tailwind CSS 和浏览器端 JavaScript 构建。
-- `pnpm run build:css` 生成 `source/css/build/tailwind.css`。
+- `pnpm run build` 统一执行主题 CSS 和浏览器端 JavaScript 构建。
+- `pnpm run build:css` 将 `styles/theme.css` 编译为 `source/css/build/theme.css`，并将 `styles/plugins/` 中的插件样式复制到 `source/css/build/plugins/`。
+- `pnpm run check:css` 构建所有主题样式，并使用默认配置和具有代表性的功能、插件配置生成规范演示站，用于检查 CSS 语法、导入、输出和依赖配置的渲染结果。
 - `pnpm run build:js` 在 `source/js/build/` 下生成应用 bundle、按需加载的功能 chunk、独立插件脚本、复制的 vendor JavaScript 和 source map。
-- `pnpm run watch:css` 只监听并重新构建 Tailwind CSS，不会启动 Hexo。
+- `pnpm run watch:css` 监听 `styles/theme.css` 及其导入的样式和 Tailwind 内容来源，同时将 `styles/plugins/` 的变化同步到生成目录；该命令不会启动 Hexo。
 
-请勿直接修改构建输出。主题构建输出位于 `source/css/build/` 和 `source/js/build/`，由本地开发或 CI 生成且不会提交到 Git，应当修改对应的源文件。`source/assets/` 下的运行时资源仍然会提交到仓库。
-当开发模式关闭时，Hexo 还会压缩依赖站点配置的 Stylus 样式；开发模式会保留可读的 Stylus 输出。
+请勿直接修改构建输出。核心和插件 CSS 位于 `source/css/build/`，JavaScript 位于 `source/js/build/`；这些目录由本地开发或 CI 生成且不会提交到 Git，应当修改对应的源文件。`source/assets/` 下的运行时资源仍然会提交到仓库。
+
+代码高亮主题只加载配置选中的浅色和深色资源；评论样式只加载已启用且受支持的评论系统资源；APlayer 和 Odometer 样式分别在启用 APlayer 和页脚运行时间时加载。因此，这些可选样式保留在 `source/css/build/plugins/` 中，不会全部合并到核心 CSS。
+
+主题样式管线不再包含 Stylus，演示站也已移除 `hexo-renderer-stylus`。发布包包含运行时所需的原生 CSS 和 Tailwind 构建结果，使用主题的 Hexo 站点无需安装样式表渲染器。
 
 ## 预览发布说明
 
@@ -78,8 +83,11 @@ pnpm release:notes:check
 
 ## 项目结构
 
-- `source/css/tailwind.source.css`：Tailwind CSS 入口文件。
-- `source/css/`：Stylus 和其他主题样式。
+- `styles/theme.css`：核心原生 CSS 和 Tailwind 入口，按明确顺序导入主题样式。
+- `styles/base/`：CSS 变量、全局规则、动画和渲染内容的基础样式。
+- `styles/components/`：需要复杂选择器或无法仅在模板中表达的主题组件样式。
+- `styles/plugins/`：代码高亮主题、评论系统、APlayer 和 Odometer 等独立可选样式。
+- `source/css/build/`：构建生成的核心 CSS 和插件 CSS；请勿直接修改。
 - `source/assets/`：提交到仓库的运行时资源。
 - `source/js/`：浏览器端 JavaScript 源代码。
 - `scripts/`：Hexo 生成阶段使用的 Node 脚本。
@@ -88,6 +96,6 @@ pnpm release:notes:check
 
 ## 自定义主题
 
-如果要使用 Tailwind CSS 修改样式，请编辑 `source/css/tailwind.source.css`。如果要编写非 Tailwind 样式，请修改 `source/css/` 下对应的文件，并在 `layout/` 中使用生成的 class。
+主题控制的 EJS 或脚本生成标记应使用 Tailwind 工具类处理普通布局和外观；重复界面应提取到模板或辅助函数。全局规则、渲染内容、复杂选择器和第三方标记由 `styles/base/`、`styles/components/` 或 `styles/plugins/` 中的原生 CSS 负责。新增原生 CSS 文件后，还需要从 `styles/theme.css` 或相应入口显式导入。
 
 详细的 Tailwind CSS 文档请参考 [Tailwind CSS 官方文档](https://tailwindcss.com/docs)。

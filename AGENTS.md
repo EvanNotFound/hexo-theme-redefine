@@ -39,7 +39,7 @@ package-specific command says otherwise.
   lint script; use `pnpm run build:css` or `pnpm run build:js` only for a
   narrower affected area.
 - Theme CSS verification: `pnpm run check:css` builds CSS and generates the
-  canonical demo site, including configuration-dependent theme styles.
+  canonical demo site with default, feature, and plugin configuration matrices.
 - Interactive theme preview: `pnpm dev` serves Hexo at
   `http://127.0.0.1:4000`, resets and links the demo site, and watches CSS.
   It serves source browser modules and does not watch production JavaScript
@@ -56,8 +56,12 @@ package-specific command says otherwise.
 - Browser JavaScript under `source/js/**` uses ES modules. Hexo integration
   under `scripts/**` uses CommonJS, starts with `"use strict";`, and registers
   through `hexo.extend.*` APIs.
-- Tailwind input is `source/css/tailwind.source.css`. Stylus code uses the
-  existing `redefine-tablet()` and `redefine-mobile()` mixins.
+- Core CSS and Tailwind input is `styles/theme.css`. Keep global and rendered
+  content rules in `styles/base/`, focused theme rules in `styles/components/`,
+  and optional third-party assets in `styles/plugins/`. Import core files
+  explicitly; plugin files are copied as named assets and loaded conditionally.
+- The theme no longer uses Stylus or a consumer stylesheet renderer. Do not add
+  `.styl` inputs or configuration-time CSS compilation.
 - Add theme defaults to `_config.yml`. If browser code needs a value, also
   export it through `scripts/config-export.js` and consume it with a default.
 - Add user-facing theme strings to the relevant files under `languages/`.
@@ -66,7 +70,8 @@ package-specific command says otherwise.
 
 Do not edit generated output directly:
 
-- Theme builds: `source/css/build/`, `source/js/build/`.
+- Theme builds: `source/css/build/theme.css`,
+  `source/css/build/plugins/`, and `source/js/build/`.
 - Demo state: `dev/site/db.json`, `dev/site/public/`, `dev/site/themes/`.
 - Docs output: `docs/.source/`, `docs/.next/`, `docs/out/`,
   `docs/next-env.d.ts`.

@@ -20,10 +20,10 @@ export default function initExpirationDate() {
   const now = new Date();
   const daysAgo = Math.floor((now - updatedDate) / (1000 * 60 * 60 * 24));
 
-  container.classList.add("hidden");
+  container.hidden = true;
 
   if (expiredDate < now) {
-    container.classList.remove("hidden");
+    container.hidden = false;
     value.innerHTML = value.innerHTML.replace("some", daysAgo);
   }
 }

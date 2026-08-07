@@ -1,27 +1,18 @@
-<div class="comments-container mt-10 w-full ">
-    <div id="comment-anchor" class="w-full h-2.5"></div>
-    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
-        <%- __('comments') %>
-    </div>
+<section id="comments" class="comments mt-10 w-full" aria-labelledby="comments-title">
+    <h2 id="comments-title" class="my-1.5 w-full text-xl font-bold md:my-2.5 md:text-3xl"><%- __('comments') %></h2>
     <% if (theme.comment.enable === true && theme.comment.hasOwnProperty('system')) { %>
-
-        <% if  (theme.comment.system === 'waline') { %>
+        <% if (theme.comment.system === 'waline') { %>
             <%- partial('components/comments/waline') %>
-
         <% } else if (theme.comment.system === 'gitalk') { %>
             <%- partial('components/comments/gitalk') %>
-
         <% } else if (theme.comment.system === 'twikoo') { %>
             <%- partial('components/comments/twikoo') %>
-        
         <% } else if (theme.comment.system === 'giscus') { %>
             <%- partial('components/comments/giscus') %>
         <% } else if (theme.comment.system === 'artalk') { %>
             <%- partial('components/comments/artalk') %>
-        
         <% } else if (theme.comment.system === 'utterances') { %>
             <%- partial('components/comments/utterances') %>
-        
         <% } %>
     <% } %>
-</div>
+</section>

@@ -1,7 +1,7 @@
-<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
-    <div class="info-container py-3 text-center">
+<footer id="site-footer" class="footer relative mt-5 h-auto w-full border-t-2 border-t-rd-border py-5 text-base text-third-text-color">
+    <div class="py-3 text-center">
         <% if (theme.footer.hasOwnProperty('customize') && theme.footer.customize) { %>
-            <div class="customize-info my-1"><%- theme.footer.customize %></div>
+            <div class="my-1"><%- theme.footer.customize %></div>
         <% } %>
         <div class="text-center">
             &copy;
@@ -20,7 +20,7 @@
                         siteWordCount = null;
                     }
                 %>
-                <p class="post-count space-x-0.5">
+                <p class="space-x-0.5">
                     <span>
                         <%- __("site_posts", sitePostsCount) %>
                     </span>
@@ -54,7 +54,7 @@
             <%# 保留主题信息是对作者的尊重，感谢！ %><span class="text-sm lg:block"><%- __('theme') %>&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v<%- getThemeVersion() %></a></span><%# 保留主题信息是对作者的尊重，感谢！ %>
         </div>
         <% if (theme.footer.icp.enable && theme.footer.icp.hasOwnProperty('number')) { %>
-            <div class="icp-info my-1"><a target="_blank" rel="nofollow" href="
+            <div class="my-1"><a target="_blank" rel="nofollow" href="
                 <% if (theme.footer.icp.hasOwnProperty('url') && theme.footer.icp.url) { %>
                     <%= theme.footer.icp.url %>
                 <% } else { %>

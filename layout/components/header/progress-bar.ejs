@@ -1,6 +1,5 @@
-<div class="progress-bar-container">
-	<% if (theme.global.scroll_progress.bar === true) { %>
-	<span class="scroll-progress-bar"></span>
-	<% } %>
-
-</div>
+<% if (theme.global.scroll_progress.bar === true) { %>
+    <div class="fixed top-0 left-0 z-9 w-full">
+        <span id="reading-progress" data-reading-progress role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" class="invisible absolute top-0 left-0 z-7 h-0.5 w-0 bg-primary transition-[width,opacity] duration-100 ease-in-out"></span>
+    </div>
+<% } %>

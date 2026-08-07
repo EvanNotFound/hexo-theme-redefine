@@ -5,9 +5,7 @@ let didInitScroll = false;
 const throttle = (func, limit) => {
   let inThrottle = false;
   return (...args) => {
-    if (inThrottle) {
-      return;
-    }
+    if (inThrottle) return;
     func(...args);
     inThrottle = true;
     setTimeout(() => {
@@ -17,50 +15,41 @@ const throttle = (func, limit) => {
 };
 
 const setActiveNavItem = () => {
-  if (!navItems.length || !sections.length) {
-    return;
-  }
+  if (!navItems.length || !sections.length) return;
 
   const fromTop = window.scrollY + 100;
-  let currentSection = null;
-
+  let currentSection = sections[0];
   sections.forEach((section) => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.offsetHeight;
-
-    if (fromTop >= sectionTop && fromTop < sectionTop + sectionHeight) {
+    if (
+      fromTop >= section.offsetTop &&
+      fromTop < section.offsetTop + section.offsetHeight
+    ) {
       currentSection = section;
     }
   });
 
   navItems.forEach((item) => {
-    item.classList.remove("bg-second-background-color");
-    if (
-      currentSection &&
-      item.getAttribute("data-category") === currentSection.getAttribute("id")
-    ) {
-      item.classList.add("bg-second-background-color");
+    if (item.getAttribute("aria-controls") === currentSection?.id) {
+      item.setAttribute("aria-current", "location");
+    } else {
+      item.removeAttribute("aria-current");
     }
   });
 };
 
 const registerScrollHandler = (signal) => {
-  if (didInitScroll || !signal) {
-    return;
-  }
-
+  if (didInitScroll || !signal) return;
   didInitScroll = true;
   window.addEventListener("scroll", throttle(setActiveNavItem, 100), { signal });
 };
 
 export default function initBookmarkNav({ signal } = {}) {
-  navItems = Array.from(document.querySelectorAll(".bookmark-nav-item"));
-  sections = Array.from(document.querySelectorAll("section[id]"));
+  navItems = Array.from(document.querySelectorAll("[data-bookmark-nav]"));
+  sections = navItems
+    .map((item) => document.getElementById(item.getAttribute("aria-controls")))
+    .filter(Boolean);
 
-  if (!navItems.length || !sections.length) {
-    return;
-  }
-
+  if (!navItems.length || !sections.length) return;
   registerScrollHandler(signal);
   setActiveNavItem();
 }

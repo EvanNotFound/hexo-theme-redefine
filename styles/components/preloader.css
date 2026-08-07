@@ -1,0 +1,26 @@
+@layer theme {
+  :root {
+    --preloader-background-color: #fff;
+    --preloader-text-color: #000;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --preloader-background-color: #202124;
+      --preloader-text-color: #fff;
+    }
+  }
+}
+
+@layer components {
+  [data-preloader-word] {
+    display: inline-flex;
+    flex-wrap: wrap;
+    white-space: nowrap;
+  }
+
+  [data-preloader-letter] {
+    display: inline-block;
+    line-height: 1em;
+  }
+}

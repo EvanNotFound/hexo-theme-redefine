@@ -36,9 +36,9 @@ pnpm dev
 
 This serves browser JavaScript source modules directly, resets the demo site's
 generated state, links the current theme source into
-`dev/site/themes/redefine`, starts Hexo at `http://127.0.0.1:4000`, and watches
-Tailwind CSS. It does not require or continuously watch production JavaScript
-output.
+`dev/site/themes/redefine`, starts Hexo at `http://127.0.0.1:4000`, and compiles
+native CSS and Tailwind CSS from `styles/theme.css` as files change. It does not
+require or continuously watch production JavaScript output.
 
 </div>
 
@@ -62,24 +62,41 @@ Run these commands from the repository root:
 pnpm clean
 pnpm run build
 pnpm run build:css
+pnpm run check:css
 pnpm run build:js
 pnpm run watch:css
 ```
 
 - `pnpm clean` removes the demo site's generated `db.json` and `public/` directory.
-- `pnpm run build` coordinates the Tailwind CSS and browser JavaScript builds.
-- `pnpm run build:css` builds `source/css/build/tailwind.css`.
+- `pnpm run build` coordinates the theme CSS and browser JavaScript builds.
+- `pnpm run build:css` compiles `styles/theme.css` to
+  `source/css/build/theme.css` and copies plugin styles from `styles/plugins/`
+  to `source/css/build/plugins/`.
+- `pnpm run check:css` builds all theme styles and generates the canonical demo
+  with the default and representative feature and plugin configurations. It
+  checks CSS syntax, imports, outputs, and configuration-dependent rendering.
 - `pnpm run build:js` bundles the application, writes lazy feature chunks and
   standalone plugin outputs, copies vendor JavaScript, and writes source maps
   under `source/js/build/`.
-- `pnpm run watch:css` watches and rebuilds Tailwind CSS without starting Hexo.
+- `pnpm run watch:css` watches `styles/theme.css`, its imported styles, and
+  Tailwind content sources while syncing changes under `styles/plugins/` to the
+  generated directory. It does not start Hexo.
 
-Do not edit generated files directly. Theme build output lives in
-`source/css/build/` and `source/js/build/`; these paths are generated locally or
-in CI and are not committed. Edit the source files instead. Runtime assets under
-`source/assets/` remain checked in. When developer mode is disabled, Hexo also
-compresses the configuration-dependent Stylus stylesheet; developer mode keeps
-that stylesheet readable.
+Do not edit generated files directly. Core and plugin CSS lives in
+`source/css/build/`, and JavaScript lives in `source/js/build/`; these paths are
+generated locally or in CI and are not committed. Edit the source files instead.
+Runtime assets under `source/assets/` remain checked in.
+
+The generated site loads only the configured light and dark code themes, only
+the enabled supported comment system's stylesheet, and the APlayer and Odometer
+styles only when APlayer and footer runtime are enabled, respectively. These
+optional assets therefore remain under `source/css/build/plugins/` instead of
+being bundled into the core CSS.
+
+The theme style pipeline no longer contains Stylus, and the demo site no longer
+depends on `hexo-renderer-stylus`. Published packages contain the native CSS and
+Tailwind outputs required at runtime, so consuming Hexo sites do not need a
+stylesheet renderer.
 
 ## Preview Release Notes
 
@@ -100,8 +117,15 @@ automatic release notes.
 
 ## Project Layout
 
-- `source/css/tailwind.source.css`: Tailwind CSS entry file.
-- `source/css/`: Stylus and other theme styles.
+- `styles/theme.css`: Core native CSS and Tailwind entry with explicit theme
+  style imports.
+- `styles/base/`: CSS variables, global rules, animations, and base rendered
+  content styles.
+- `styles/components/`: Theme component styles that require complex selectors
+  or cannot be expressed entirely in templates.
+- `styles/plugins/`: Separate optional styles for code themes, comment systems,
+  APlayer, and Odometer.
+- `source/css/build/`: Generated core and plugin CSS; do not edit it directly.
 - `source/assets/`: Checked-in runtime assets.
 - `source/js/`: Browser-side JavaScript source.
 - `scripts/`: Hexo generation-time Node scripts.
@@ -110,6 +134,11 @@ automatic release notes.
 
 ## Customizing the Theme
 
-Edit `source/css/tailwind.source.css` for Tailwind utilities and theme CSS. For non-Tailwind styles, update the relevant files under `source/css/` and use the resulting classes in templates under `layout/`.
+Use Tailwind utilities for ordinary layout and appearance in theme-owned EJS or
+script-generated markup, and extract repeated UI into templates or helpers.
+Native CSS under `styles/base/`, `styles/components/`, or `styles/plugins/` owns
+global rules, rendered content, complex selectors, and third-party markup. After
+adding a native CSS file, import it explicitly from `styles/theme.css` or the
+appropriate entry.
 
 For more information, see the [official Tailwind CSS documentation](https://tailwindcss.com/docs).

@@ -1,77 +1,57 @@
 let didInit = false;
 
-const toggleStyle = (element, style, firstValue, secondValue) => {
-  element.style[style] =
-    element.style[style] === firstValue ? secondValue : firstValue;
-};
-
-const getParentElements = () =>
-  Array.from(document.querySelectorAll(".all-category-list-item")).filter(
-    (item) => item.parentElement?.classList.contains("all-category-list"),
-  );
-
-const resetChildStyles = () => {
-  const parentElements = getParentElements();
-  parentElements.forEach((parentElement) => {
-    const childElements = parentElement.querySelectorAll(
-      ".all-category-list-child",
+const prepareCategories = () => {
+  const items = document.querySelectorAll(".categories .category-list-item");
+  items.forEach((item, index) => {
+    const childList = Array.from(item.children).find((child) =>
+      child.classList.contains("category-list-child"),
     );
-    childElements.forEach((childElement) => {
-      childElement.style.maxHeight = "0px";
-      childElement.style.marginTop = "0px";
-    });
+    if (!childList || item.querySelector(":scope > [data-category-toggle]")) {
+      return;
+    }
+
+    const link = item.querySelector(":scope > .category-list-link");
+    const childId = `category-children-${index}`;
+    const button = document.createElement("button");
+    button.type = "button";
+    button.dataset.categoryToggle = "";
+    button.setAttribute("aria-controls", childId);
+    button.setAttribute("aria-expanded", "false");
+    button.setAttribute("aria-label", `Toggle ${link?.textContent?.trim() || "category"}`);
+    button.className =
+      "ml-2 inline-flex h-7 w-7 items-center justify-center rounded-full text-third-text-color hover:text-primary aria-expanded:rotate-90";
+    button.innerHTML = '<i class="fa-solid fa-chevron-right" aria-hidden="true"></i>';
+
+    childList.id = childId;
+    childList.hidden = true;
+    item.insertBefore(button, childList);
   });
 };
 
 const handleCategoryClick = (event) => {
-  const parentElement = event.target.closest(".all-category-list-item");
-  if (!parentElement) {
+  const toggle = event.target.closest("[data-category-toggle]");
+  if (!toggle) {
     return;
   }
 
-  if (!parentElement.parentElement?.classList.contains("all-category-list")) {
+  const childList = document.getElementById(toggle.getAttribute("aria-controls"));
+  if (!childList) {
     return;
   }
 
-  const childElements = parentElement.querySelectorAll(
-    ".all-category-list-child",
-  );
-
-  childElements.forEach((childElement) => {
-    toggleStyle(childElement, "maxHeight", "0px", "1000px");
-    toggleStyle(childElement, "marginTop", "0px", "15px");
-  });
-
-  const parentElements = getParentElements();
-  const clickedElementTopOffset = parentElement.offsetTop;
-
-  parentElements.forEach((siblingElement) => {
-    if (
-      siblingElement.offsetTop === clickedElementTopOffset &&
-      siblingElement !== parentElement
-    ) {
-      const siblingChildElements = siblingElement.querySelectorAll(
-        ".all-category-list-child",
-      );
-      siblingChildElements.forEach((siblingChildElement) => {
-        toggleStyle(siblingChildElement, "maxHeight", "0px", "1000px");
-        toggleStyle(siblingChildElement, "marginTop", "0px", "15px");
-      });
-    }
-  });
+  const isOpen = toggle.getAttribute("aria-expanded") === "true";
+  toggle.setAttribute("aria-expanded", String(!isOpen));
+  childList.hidden = isOpen;
 };
 
 export default function initCategoryList({ signal } = {}) {
-  resetChildStyles();
-
+  prepareCategories();
   if (didInit) {
     return;
   }
 
   didInit = true;
-  if (signal) {
-    document.addEventListener("click", handleCategoryClick, { signal });
-  } else {
-    document.addEventListener("click", handleCategoryClick);
-  }
+  signal
+    ? document.addEventListener("click", handleCategoryClick, { signal })
+    : document.addEventListener("click", handleCategoryClick);
 }

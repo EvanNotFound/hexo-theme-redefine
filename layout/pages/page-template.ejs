@@ -1,23 +1,15 @@
-<div class="page-template-container">
-	<% const pageData = getPageData(page); %>
+<div class="box-border mb-[30px] rounded-lg border border-rd-border bg-background-color p-[30px] max-[768px]:mb-6 max-[768px]:p-[26px] max-[640px]:mb-[18px] max-[640px]:border-0 max-[640px]:px-[0.2rem] max-[640px]:py-[1.2rem]">
+    <% const pageData = getPageData(page); %>
+    <% if (pageData) { %><%- partial(pageData.partial) %><% } %>
 
-	<% if (pageData) { %>
-	<%- partial(pageData.partial) %>
-	<% } %>
+    <div class="markdown-body text-default-text-color">
+        <% if (!pageData) { %><h1><%- page.title %></h1><% } %>
+        <%- page.content %>
+    </div>
 
-	<div class="page-template-content markdown-body">
-		<% if (!pageData) { %>
-		<h1><%- page.title %></h1>
-		<% } %>
-
-		<%- page.content %>
-	</div>
-
-	<div class="page-template-comments">
-		<% if (page.hasOwnProperty('comment') && (page.comment === true || page.comments === true) ) { %>
-		<%- partial('components/comments/comment') %>
-		<% } %>
-	</div>
+    <% if (page.hasOwnProperty('comment') && (page.comment === true || page.comments === true)) { %>
+        <%- partial('components/comments/comment') %>
+    <% } %>
 </div>
 
 <%- partial('utils/paginator', {pageObject: page}) %>

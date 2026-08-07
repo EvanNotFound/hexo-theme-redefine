@@ -4,6 +4,7 @@ let cachedPath = null;
 let isXml = true;
 let didInit = false;
 let warnedMissing = false;
+let activeSearchTrigger = null;
 
 const resolveSearchPath = () => {
   const configPath = config.path;
@@ -63,7 +64,7 @@ const fetchData = () => {
         : JSON.parse(res);
 
       cachedData = normalizeData(cachedData);
-      const noResultDom = document.querySelector("#no-result");
+      const noResultDom = document.getElementById("local-search-status");
       if (noResultDom) {
         noResultDom.innerHTML =
           '<i class="fa-solid fa-magnifying-glass fa-5x"></i>';
@@ -75,30 +76,37 @@ const fetchData = () => {
 };
 
 const getSearchDom = () => ({
-  searchInputDom: document.querySelector(".search-input"),
-  resultContent: document.getElementById("search-result"),
-  overlay: document.querySelector(".search-pop-overlay"),
+  searchInputDom: document.getElementById("local-search-input"),
+  resultContent: document.getElementById("local-search-results"),
+  dialog: document.getElementById("local-search"),
 });
 
 const closePopup = () => {
-  const { overlay } = getSearchDom();
-  if (!overlay) {
+  const { dialog } = getSearchDom();
+  if (!dialog) {
     return;
   }
 
   document.body.style.overflow = "";
-  overlay.classList.remove("active");
+  if (dialog.open) {
+    dialog.close();
+  }
+  activeSearchTrigger?.focus();
+  activeSearchTrigger = null;
 };
 
-const openPopup = () => {
-  const { overlay, searchInputDom } = getSearchDom();
-  if (!overlay || !searchInputDom) {
+const openPopup = (trigger) => {
+  const { dialog, searchInputDom } = getSearchDom();
+  if (!dialog || !searchInputDom) {
     return;
   }
 
+  activeSearchTrigger = trigger;
   document.body.style.overflow = "hidden";
-  overlay.classList.add("active");
-  setTimeout(() => searchInputDom.focus(), 500);
+  if (!dialog.open) {
+    dialog.showModal();
+  }
+  setTimeout(() => searchInputDom.focus(), 300);
   if (!isFetched) {
     fetchData();
   }
@@ -164,7 +172,7 @@ const highlightKeyword = (text, slice) => {
   slice.hits.forEach((hit) => {
     result += text.substring(prevEnd, hit.position);
     const end = hit.position + hit.length;
-    result += `<b class="search-keyword">${text.substring(
+    result += `<b class="border-b border-dashed border-primary font-bold text-primary">${text.substring(
       hit.position,
       end,
     )}</b>`;
@@ -268,16 +276,16 @@ const renderSearchResult = (searchInputDom) => {
         let resultItem = "";
 
         if (slicesOfTitle.length !== 0) {
-          resultItem += `<li><a href="${url}" class="search-result-title">${highlightKeyword(
+          resultItem += `<li class="my-2.5 box-border border-b border-dashed border-rd-border py-2.5 last:border-b-0"><a href="${url}" class="mb-2.5 flex items-center font-bold"><span class="mr-[11px] h-[5px] w-[5px] shrink-0 rounded-full bg-default-text-color" aria-hidden="true"></span>${highlightKeyword(
             title,
             slicesOfTitle[0],
           )}</a>`;
         } else {
-          resultItem += `<li><a href="${url}" class="search-result-title">${title}</a>`;
+          resultItem += `<li class="my-2.5 box-border border-b border-dashed border-rd-border py-2.5 last:border-b-0"><a href="${url}" class="mb-2.5 flex items-center font-bold"><span class="mr-[11px] h-[5px] w-[5px] shrink-0 rounded-full bg-default-text-color" aria-hidden="true"></span>${title}</a>`;
         }
 
         slicesOfContent.forEach((slice) => {
-          resultItem += `<a href="${url}"><p class="search-result">${highlightKeyword(
+          resultItem += `<a href="${url}" class="hover:text-default-text-color"><p class="m-0 pl-4 leading-8 [overflow-wrap:break-word]">${highlightKeyword(
             content,
             slice,
           )}...</p></a>`;
@@ -296,10 +304,10 @@ const renderSearchResult = (searchInputDom) => {
 
   if (keywords.length === 1 && keywords[0] === "") {
     resultContent.innerHTML =
-      '<div id="no-result"><i class="fa-solid fa-magnifying-glass fa-5x"></i></div>';
+      '<div id="local-search-status" class="m-auto text-third-text-color" aria-live="polite"><i class="fa-solid fa-magnifying-glass fa-5x" aria-hidden="true"></i></div>';
   } else if (resultItems.length === 0) {
     resultContent.innerHTML =
-      '<div id="no-result"><i class="fa-solid fa-box-open fa-5x"></i></div>';
+      '<div id="local-search-status" class="m-auto text-third-text-color" aria-live="polite"><i class="fa-solid fa-box-open fa-5x" aria-hidden="true"></i></div>';
   } else {
     resultItems.sort((resultLeft, resultRight) => {
       if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
@@ -309,7 +317,7 @@ const renderSearchResult = (searchInputDom) => {
       }
       return resultRight.id - resultLeft.id;
     });
-    let searchResultList = '<ul class="search-result-list">';
+    let searchResultList = '<ul class="h-full w-full text-base">';
     resultItems.forEach((result) => {
       searchResultList += result.item;
     });
@@ -320,7 +328,7 @@ const renderSearchResult = (searchInputDom) => {
 };
 
 const handleInput = (event) => {
-  if (!event.target.matches(".search-input")) {
+  if (!event.target.matches("#local-search-input")) {
     return;
   }
 
@@ -328,18 +336,19 @@ const handleInput = (event) => {
 };
 
 const handleClick = (event) => {
-  if (event.target.closest(".search-popup-trigger")) {
-    openPopup();
+  const trigger = event.target.closest("[data-search-trigger]");
+  if (trigger) {
+    openPopup(trigger);
     return;
   }
 
-  const overlay = event.target.closest(".search-pop-overlay");
-  if (overlay && event.target === overlay) {
+  const dialog = event.target.closest("#local-search");
+  if (dialog && event.target === dialog) {
     closePopup();
     return;
   }
 
-  if (event.target.closest(".search-input-field-pre")) {
+  if (event.target.closest('[data-search-action="clear"]')) {
     const { searchInputDom } = getSearchDom();
     if (searchInputDom) {
       searchInputDom.value = "";
@@ -349,7 +358,7 @@ const handleClick = (event) => {
     return;
   }
 
-  if (event.target.closest(".popup-btn-close")) {
+  if (event.target.closest('[data-search-action="close"]')) {
     closePopup();
   }
 };

@@ -16,13 +16,13 @@ const backToBottom = () => {
 };
 
 const handleClick = (event) => {
-  const topButton = event.target.closest(".tool-scroll-to-top");
+  const topButton = event.target.closest("#scroll-top");
   if (topButton) {
     backToTop();
     return;
   }
 
-  const bottomButton = event.target.closest(".tool-scroll-to-bottom");
+  const bottomButton = event.target.closest("#scroll-bottom");
   if (bottomButton) {
     backToBottom();
   }

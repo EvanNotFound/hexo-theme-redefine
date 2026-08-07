@@ -1,0 +1,5 @@
+@layer components {
+  .image-viewer::backdrop {
+    background: transparent;
+  }
+}

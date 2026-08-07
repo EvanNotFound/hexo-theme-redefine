@@ -375,83 +375,34 @@ if input("this is a ") == "codeblock"
 这是一个测试段落hello你好world中文English混合paragraph测试没有spaces之间的文字testing测试pangu.js的functionality以及它的效果how它会处理这种情况when中英文混合的时候。
 
 ## HTML Tab 测试
-<div class="tabs relative my-4 bg-third-background-color border border-rd-border rounded-md" id="tab-first-unique-name">
-  <div role="tablist" aria-orientation="horizontal" class="flex gap-3.5 overflow-x-auto px-4 not-markdown scrollbar-hide" tabindex="0">
-    <button type="button" role="tab" aria-selected="true" data-state="active" data-tab="first-unique-name-1" class="inline-flex items-center gap-2 whitespace-nowrap text-third-text-color border-b-2 border-transparent py-2 text-sm font-medium transition-colors hover:text-second-text-color data-[state=active]:border-primary data-[state=active]:text-primary" tabindex="0">
-      First Tab
-    </button>
-    <button type="button" role="tab" aria-selected="false" data-state="inactive" data-tab="first-unique-name-2" class="inline-flex items-center gap-2 whitespace-nowrap text-third-text-color border-b-2 border-transparent py-2 text-sm font-medium transition-colors hover:text-second-text-color data-[state=active]:border-primary data-[state=active]:text-primary" tabindex="-1">
-      Second Tab
-    </button>
-    <button type="button" role="tab" aria-selected="false" data-state="inactive" data-tab="first-unique-name-3" class="inline-flex items-center gap-2 whitespace-nowrap text-third-text-color border-b-2 border-transparent py-2 text-sm font-medium transition-colors hover:text-second-text-color data-[state=active]:border-primary data-[state=active]:text-primary" tabindex="-1">
-      Third Tab
-    </button>
-  </div>
-  <div class="tab-content p-4 bg-background-color/70 rounded-md shadow-[0_2px_8px_-4px_rgba(0,0,0,0.2)]">
-    <div class="tab-pane active" id="first-unique-name-1">
-      <p><strong>This is Tab 1.</strong></p>
-      <div class="code-container" data-rel="Plaintext">
-        <div class="highlight-container">
-          <figure class="iseeu highlight plaintext" data-code-block-ready="true">
-            <table>
-              <tbody>
-                <tr>
-                  <td class="gutter">
-                    <pre><span class="line">1</span><br></pre>
-                  </td>
-                  <td class="code">
-                    <pre><span class="line">wdasdwasdwasdwasdwa</span><br></pre>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </figure>
-          <div class="copy-button">
-            <i class="fa-regular fa-copy"></i>
-          </div>
-          <div class="fold-button">
-            <i class="fa-solid fa-chevron-down"></i>
-          </div>
-        </div>
-      </div>
-      <blockquote>
-        <p>换行测试</p>
-        <p>Edward</p>
-      </blockquote>
-      <p>aaa</p>
-    </div>
-    <div class="tab-pane" id="first-unique-name-2">
-      <p><strong>This is Tab 2.</strong></p>
-      <p>This is Tab 2.</p>
-    </div>
-    <div class="tab-pane" id="first-unique-name-3">
-      <table>
-        <thead>
-          <tr>
-            <th>Header 1</th>
-            <th>Header 2</th>
-            <th>Header 3</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Row 1, Col 1</td>
-            <td>Row 1, Col 2</td>
-            <td>Row 1, Col 3</td>
-          </tr>
-          <tr>
-            <td>Row 2, Col 1</td>
-            <td>Row 2, Col 2</td>
-            <td>Row 2, Col 3</td>
-          </tr>
-          <tr>
-            <td>Row 3, Col 1</td>
-            <td>Row 3, Col 2</td>
-            <td>Row 3, Col 3</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>this is some <code>code</code> and more <code>code</code> <code>code</code> this is some <code>code</code> and more <code>code</code> <code>code</code> this is some <code>code</code> and more <code>code</code> <code>code</code> this is some <code>code</code> and more <code>code</code> <code>code</code></p>
-    </div>
-  </div>
-</div>
+
+{% tabs "html-tab-test", 1 %}
+<!-- tab First Tab -->
+**This is Tab 1.**
+
+```plaintext
+wdasdwasdwasdwasdwa
+```
+
+> 换行测试
+>
+> Edward
+
+aaa
+<!-- endtab -->
+<!-- tab Second Tab -->
+**This is Tab 2.**
+
+This is Tab 2.
+<!-- endtab -->
+<!-- tab Third Tab -->
+
+| Header 1 | Header 2 | Header 3 |
+| --- | --- | --- |
+| Row 1, Col 1 | Row 1, Col 2 | Row 1, Col 3 |
+| Row 2, Col 1 | Row 2, Col 2 | Row 2, Col 3 |
+| Row 3, Col 1 | Row 3, Col 2 | Row 3, Col 3 |
+
+this is some `code` and more `code` `code` this is some `code` and more `code` `code` this is some `code` and more `code` `code` this is some `code` and more `code` `code`
+<!-- endtab -->
+{% endtabs %}

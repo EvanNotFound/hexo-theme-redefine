@@ -34,7 +34,7 @@
     transition: text-decoration-color 0.2s ease;
   }
 
-  .markdown-body a:not(.not-markdown).link {
+  .markdown-body a:not(.not-markdown)[data-external-link] {
     padding-right: 0.1em;
   }
 
@@ -47,7 +47,7 @@
     font-size: 0.88rem;
   }
 
-  .markdown-body a:not(.not-markdown) .link-icon {
+  .markdown-body a:not(.not-markdown) [data-external-icon] {
     transition: transform 0.2s ease;
   }
 
@@ -57,8 +57,8 @@
     text-decoration-color: var(--primary-color) !important;
   }
 
-  .markdown-body a:not(.not-markdown):hover .link-icon,
-  .markdown-body a:not(.not-markdown):focus .link-icon {
+  .markdown-body a:not(.not-markdown):hover [data-external-icon],
+  .markdown-body a:not(.not-markdown):focus [data-external-icon] {
     transform: translate(0.1em, -0.1em);
   }
 
@@ -343,18 +343,18 @@
     overflow-wrap: anywhere;
   }
 
-  .markdown-body .table-container {
+  .markdown-body .table-scroll {
     max-width: 100%;
     overflow-x: auto;
     margin: 1rem 0 1.2rem;
   }
 
-  .markdown-body .table-container > table:not(.not-markdown) {
+  .markdown-body .table-scroll > table:not(.not-markdown) {
     margin: 0;
   }
 
   .markdown-body > table:not(.not-markdown),
-  .markdown-body .table-container > table:not(.not-markdown) {
+  .markdown-body .table-scroll > table:not(.not-markdown) {
     border-spacing: 0;
     border-collapse: collapse;
     width: 100%;
@@ -365,53 +365,53 @@
   }
 
   .markdown-body > table:not(.not-markdown) thead th,
-  .markdown-body .table-container > table:not(.not-markdown) thead th {
+  .markdown-body .table-scroll > table:not(.not-markdown) thead th {
     border-bottom: 1px solid var(--rd-border);
     background-color: var(--third-background-color) !important;
   }
 
   .markdown-body > table:not(.not-markdown) thead th:first-child,
-  .markdown-body .table-container > table:not(.not-markdown) thead th:first-child {
+  .markdown-body .table-scroll > table:not(.not-markdown) thead th:first-child {
     border-top-left-radius: 14px;
   }
 
   .markdown-body > table:not(.not-markdown) thead th:last-child,
-  .markdown-body .table-container > table:not(.not-markdown) thead th:last-child {
+  .markdown-body .table-scroll > table:not(.not-markdown) thead th:last-child {
     border-top-right-radius: 14px;
   }
 
   .markdown-body > table:not(.not-markdown) tbody tr:last-child td:first-child,
-  .markdown-body .table-container > table:not(.not-markdown) tbody tr:last-child td:first-child {
+  .markdown-body .table-scroll > table:not(.not-markdown) tbody tr:last-child td:first-child {
     border-bottom-left-radius: 14px;
   }
 
   .markdown-body > table:not(.not-markdown) tbody tr:last-child td:last-child,
-  .markdown-body .table-container > table:not(.not-markdown) tbody tr:last-child td:last-child {
+  .markdown-body .table-scroll > table:not(.not-markdown) tbody tr:last-child td:last-child {
     border-bottom-right-radius: 14px;
   }
 
   .markdown-body > table:not(.not-markdown) td,
-  .markdown-body .table-container > table:not(.not-markdown) td,
+  .markdown-body .table-scroll > table:not(.not-markdown) td,
   .markdown-body > table:not(.not-markdown) th,
-  .markdown-body .table-container > table:not(.not-markdown) th {
+  .markdown-body .table-scroll > table:not(.not-markdown) th {
     padding: 8px 16px;
     border-left: 1px solid var(--rd-border);
   }
 
   .markdown-body > table:not(.not-markdown) td:first-child,
-  .markdown-body .table-container > table:not(.not-markdown) td:first-child,
+  .markdown-body .table-scroll > table:not(.not-markdown) td:first-child,
   .markdown-body > table:not(.not-markdown) th:first-child,
-  .markdown-body .table-container > table:not(.not-markdown) th:first-child {
+  .markdown-body .table-scroll > table:not(.not-markdown) th:first-child {
     border-left: none;
   }
 
   .markdown-body > table:not(.not-markdown) tr,
-  .markdown-body .table-container > table:not(.not-markdown) tr {
+  .markdown-body .table-scroll > table:not(.not-markdown) tr {
     background-color: var(--background-color);
   }
 
   .markdown-body > table:not(.not-markdown) tr:nth-child(2n),
-  .markdown-body .table-container > table:not(.not-markdown) tr:nth-child(2n) {
+  .markdown-body .table-scroll > table:not(.not-markdown) tr:nth-child(2n) {
     background-color: var(--second-background-color);
   }
 
@@ -486,28 +486,28 @@
     display: inline-block;
   }
 
-  .markdown-body del.mask:not(.not-markdown) {
+  .markdown-body del[data-mask]:not(.not-markdown) {
     text-decoration: none !important;
     transition:
       0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) color,
       0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) background;
   }
 
-  .markdown-body del.mask:not(.not-markdown) * {
+  .markdown-body del[data-mask]:not(.not-markdown) * {
     transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) opacity;
   }
 
-  .markdown-body del.mask:not(.not-markdown):not(:hover) {
+  .markdown-body del[data-mask]:not(.not-markdown):not(:hover):not(:focus):not(:focus-within) {
     color: transparent !important;
     background: #000 !important;
   }
 
-  .markdown-body del.mask:not(.not-markdown):not(:hover) * {
+  .markdown-body del[data-mask]:not(.not-markdown):not(:hover):not(:focus):not(:focus-within) * {
     opacity: 0 !important;
   }
 
-  .markdown-body del.mask:not(.not-markdown):not(:hover),
-  .markdown-body del.mask:not(.not-markdown):not(:hover) * {
+  .markdown-body del[data-mask]:not(.not-markdown):not(:hover):not(:focus):not(:focus-within),
+  .markdown-body del[data-mask]:not(.not-markdown):not(:hover):not(:focus):not(:focus-within) * {
     border: none !important;
   }
 }

@@ -30,16 +30,16 @@ const throttleFrame = (callback) => {
 };
 
 const ensureImageLoaded = (img) => {
-  if (!img || !img.hasAttribute("lazyload")) {
+  if (!img || img.dataset.lazyState !== "pending") {
     return;
   }
 
-  const dataSrc = img.getAttribute("data-src");
+  const dataSrc = img.dataset.lazySrc;
   if (dataSrc) {
     img.src = dataSrc;
   }
 
-  img.removeAttribute("lazyload");
+  img.dataset.lazyState = "loaded";
   delete img.dataset.redefineLazyloadObserved;
 };
 
@@ -131,17 +131,18 @@ export default function initMasonry({ signal } = {}) {
 
   const renderItem = (item) => {
     const masonryItem = document.createElement("div");
-    masonryItem.className = "masonry-item";
+    masonryItem.className = "group absolute box-border";
+    masonryItem.dataset.masonryItem = "";
 
     const imageContainer = document.createElement("div");
-    imageContainer.className = "image-container";
+    imageContainer.className = "relative";
 
     const width = Number.parseInt(item.width, 10);
     const height = Number.parseInt(item.height, 10);
     const hasStableSize =
       Number.isFinite(width) && Number.isFinite(height) && width > 0 && height > 0;
     if (hasStableSize) {
-      imageContainer.classList.add("has-ratio");
+      imageContainer.classList.add("[aspect-ratio:var(--masonry-aspect-ratio)]");
       imageContainer.style.setProperty(
         "--masonry-aspect-ratio",
         `${width} / ${height}`,
@@ -149,7 +150,9 @@ export default function initMasonry({ signal } = {}) {
     }
 
     const img = document.createElement("img");
-    img.className = "masonry-img is-loading";
+    img.className =
+      "!m-0 h-auto w-full cursor-zoom-in overflow-hidden rounded-md border border-rd-border !p-0 opacity-100 transition-[border-color,filter,opacity,transform] duration-300 data-[state=loading]:opacity-0 group-hover:border-rd-border";
+    img.dataset.state = "loading";
     img.alt = item.title || "";
     if (hasStableSize) {
       img.width = width;
@@ -157,17 +160,17 @@ export default function initMasonry({ signal } = {}) {
     }
     img.decoding = "async";
     img.loading = "lazy";
-    img.setAttribute("lazyload", "");
-    img.setAttribute("data-src", item.image);
+    img.dataset.lazySrc = item.image;
+    img.dataset.lazyState = "pending";
     img.src = getBlankPlaceholderSrc();
 
     img.dataset.exif = item?.exif ? "true" : "false";
 
     const handleImageLoaded = () => {
-      if (img.hasAttribute("lazyload")) {
+      if (img.dataset.lazyState === "pending") {
         return;
       }
-      img.classList.remove("is-loading");
+      img.dataset.state = "loaded";
       if (!hasStableSize) {
         scheduleLayout();
       }
@@ -191,14 +194,16 @@ export default function initMasonry({ signal } = {}) {
 
     if (item.title) {
       const titleDom = document.createElement("div");
-      titleDom.className = "image-title";
+      titleDom.className =
+        "absolute top-[5px] left-[5px] rounded-sm bg-background-color-transparent-40 px-2.5 py-[5px] text-sm text-default-text-color opacity-0 backdrop-blur-[10px] transition-opacity duration-200 group-hover:opacity-100";
       titleDom.textContent = item.title;
       imageContainer.appendChild(titleDom);
     }
 
     if (item.description) {
       const descriptionDom = document.createElement("div");
-      descriptionDom.className = "image-description";
+      descriptionDom.className =
+        "absolute right-[5px] bottom-[11px] max-w-[80%] rounded-sm bg-background-color-transparent-40 px-2.5 py-[5px] text-sm text-default-text-color opacity-0 backdrop-blur-[10px] transition-opacity duration-200 group-hover:opacity-100";
       descriptionDom.textContent = item.description;
       imageContainer.appendChild(descriptionDom);
     }
@@ -211,7 +216,8 @@ export default function initMasonry({ signal } = {}) {
     if (!loadmoreDom) {
       return;
     }
-    loadmoreDom.classList.toggle("is-hidden", !show);
+    loadmoreDom.hidden = !show;
+    masonryContainer.setAttribute("aria-busy", String(show));
   };
 
   const appendBatch = (count) => {
@@ -278,7 +284,7 @@ export default function initMasonry({ signal } = {}) {
   };
 
   const removeMinHScreen = () => {
-    masonryContainer.classList.remove("min-h-screen!");
+    masonryContainer.classList.remove("min-h-screen");
   };
 
   if (signal) {
@@ -292,6 +298,7 @@ export default function initMasonry({ signal } = {}) {
   }
 
   const init = async () => {
+    masonryContainer.setAttribute("aria-busy", "true");
     try {
       const response = await fetch(dataUrl, signal ? { signal } : undefined);
       if (!response.ok) {
@@ -303,6 +310,7 @@ export default function initMasonry({ signal } = {}) {
         return;
       }
       console.error("Failed to load masonry data:", error);
+      masonryContainer.setAttribute("aria-busy", "false");
       if (sentinelDom) {
         sentinelDom.remove();
       }
@@ -310,6 +318,7 @@ export default function initMasonry({ signal } = {}) {
     }
 
     if (!Array.isArray(items) || items.length === 0) {
+      masonryContainer.setAttribute("aria-busy", "false");
       if (sentinelDom) {
         sentinelDom.remove();
       }
@@ -322,6 +331,7 @@ export default function initMasonry({ signal } = {}) {
 
     appendBatch(initialBatch);
     removeMinHScreen();
+    masonryContainer.setAttribute("aria-busy", "false");
 
     if (cursor < items.length) {
       if (sentinelDom && sentinelObserver) {

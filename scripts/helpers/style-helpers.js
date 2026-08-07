@@ -189,6 +189,11 @@ hexo.extend.helper.register("themeStyles", function () {
     "--font-english": theme.global?.fonts?.english?.enable ? safeValue(theme.global.fonts.english.family, "Geist Variable") : "Geist Variable",
     "--font-chinese": theme.global?.fonts?.chinese?.enable ? safeValue(theme.global.fonts.chinese.family, "PingFang SC") : DEFAULT_CHINESE_FONT,
     "--font-title": theme.global?.fonts?.title?.enable ? safeValue(theme.global.fonts.title.family, "var(--font-default)") : "var(--font-default)",
+    "--font-article-title": "var(--font-english), var(--font-chinese), Noto Sans SC, sans-serif",
+    "--code-font": theme.articles?.code_block?.font?.enable && theme.articles.code_block.font.family
+      ? safeValue(theme.articles.code_block.font.family, "Geist Mono")
+      : "Geist Mono",
+    "--home-font": theme.home_banner?.custom_font?.enable ? `${safeValue(theme.home_banner.custom_font.family, "Chillax Variable")}, sans-serif` : "Chillax Variable, sans-serif",
     "--home-title-size": safeLength(theme.home_banner?.text_style?.title_size, "2.8rem"),
     "--home-subtitle-size": safeLength(theme.home_banner?.text_style?.subtitle_size, "1.5rem"),
     "--home-line-height": safeLength(theme.home_banner?.text_style?.line_height, "1.2", true),

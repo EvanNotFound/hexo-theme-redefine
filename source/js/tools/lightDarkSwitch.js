@@ -182,10 +182,8 @@ export const ModeToggle = {
   },
 
   init({ signal, appSignal } = {}) {
-    this.modeToggleButton_dom = document.querySelector(
-      ".tool-dark-light-toggle",
-    );
-    this.iconDom = document.querySelector(".tool-dark-light-toggle i");
+    this.modeToggleButton_dom = document.getElementById("theme-toggle");
+    this.iconDom = this.modeToggleButton_dom?.querySelector("i");
 
     const mermaidThemeConfig =
       theme.plugins?.mermaid?.theme || theme.mermaid?.style || {};

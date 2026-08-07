@@ -1,0 +1,10 @@
+@layer components {
+  html.is-animating [data-reading-progress] {
+    opacity: 0;
+  }
+
+  .swup-progress-bar {
+    height: 2px;
+    background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
+  }
+}

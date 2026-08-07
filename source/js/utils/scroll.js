@@ -21,18 +21,21 @@ const updateScrollProgressBar = (ctx, percent) => {
 
     ctx.scrollProgressBar_dom.style.visibility = visibility;
     ctx.scrollProgressBar_dom.style.width = `${progressPercent}%`;
+    ctx.scrollProgressBar_dom.setAttribute("aria-valuenow", percent.toFixed(0));
   }
 };
 
 const updateScrollPercent = (ctx, percent) => {
   if (ctx?.isHasScrollPercent && ctx.backToTopButton_dom) {
-    const percentDom = ctx.backToTopButton_dom.querySelector(".percent");
+    const percentDom = ctx.backToTopButton_dom.querySelector(
+      "[data-scroll-percent]",
+    );
     if (!percentDom) {
       return;
     }
     const showButton = percent !== 0 && percent !== undefined;
 
-    ctx.backToTopButton_dom.classList.toggle("show", showButton);
+    ctx.backToTopButton_dom.dataset.state = showButton ? "visible" : "hidden";
     percentDom.innerHTML = percent.toFixed(0);
   }
 };
@@ -47,9 +50,9 @@ const updatePageTopVisibility = (ctx, scrollTop, clientHeight) => {
     const hidePageTop =
       prevScrollValue > clientHeight && scrollTop > prevScrollValue;
 
-    ctx.pageTop_dom.classList.toggle("hide", hidePageTop);
+    ctx.pageTop_dom.dataset.state = hidePageTop ? "hidden" : "visible";
   } else {
-    ctx.pageTop_dom.classList.remove("hide");
+    ctx.pageTop_dom.dataset.state = "visible";
   }
 };
 

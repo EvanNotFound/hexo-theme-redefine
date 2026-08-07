@@ -1,24 +1,22 @@
-<% if (site.tags.length){ %>
-	<h1 class="page-title-header">
-		<%- getPageTitle(page) %>
-	</h1>
+<% if (site.tags.length) { %>
+    <%- partial('utils/page-title', {title: getPageTitle(page)}) %>
 
-	<% if (theme.page_templates.tags_style == 'cloud') { %>
-	<div class="tagcloud-content">
-		<%- tagcloud({ min_font: 1, max_font: 5, unit: 'rem', amount: 100 }) %>
-	</div>
-
-	<% } else {%>
-	<div class="tagcloud-content">
-		<ul class="tag-list" data-show-value="true">
-			<% site.tags.forEach(function(tag){ %>
-				<li>
-					<a data-weight="<%- tag.posts.length %>" href="<%- url_for("/" + tag.path) %>">
-						<i class="fa-solid fa-hashtag"></i><%- tag.name %>
-					</a>
-				</li>
-			<% }) %>
-		</ul>
-	</div>
-	<% } %>
+    <% if (theme.page_templates.tags_style === 'cloud') { %>
+        <div class="tags"><%- tagcloud({min_font: 1, max_font: 5, unit: 'rem', amount: 100}) %></div>
+    <% } else { %>
+        <ul class="group/tags flex list-none flex-wrap items-center justify-center p-0 leading-10">
+            <% site.tags.forEach((tag) => { %>
+                <%
+                    const count = tag.posts.length;
+                    const blurClass = count === 1 ? 'blur-[3px]' : count === 2 ? 'blur-[1.8px]' : count === 3 ? 'blur-[0.8px]' : count === 4 ? 'blur-[0.4px]' : 'blur-none';
+                %>
+                <li>
+                    <a class="relative m-2.5 block flex-1 rounded-lg border border-rd-border bg-background-color px-[1.4rem] py-[0.9rem] text-[1.4rem] text-default-text-color transition-[filter,color,background-color,transform] duration-300 group-hover/tags:blur-none hover:bg-primary hover:!text-invert-text-color active:translate-y-0.5 [&_i]:mr-[5px] [&_i]:opacity-30 [&_i]:!text-inherit <%= blurClass %>" href="<%- url_for('/' + tag.path) %>">
+                        <i class="fa-solid fa-hashtag" aria-hidden="true"></i><%- tag.name %>
+                        <span class="ml-2.5 inline-block min-w-[35px] rounded-sm bg-third-background-color px-2 py-1 text-center text-[1.5rem] text-third-text-color"><%= count %></span>
+                    </a>
+                </li>
+            <% }); %>
+        </ul>
+    <% } %>
 <% } %>

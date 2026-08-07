@@ -1,202 +1,89 @@
 <% if (theme.home_banner.style === "fixed") { %>
-    <style>
-        .home-banner-container {
-            background: none !important;
-        }
-        .home-article-item,
-        .sidebar-links,
-        .sidebar-content,
-        a.page-number,
-        a.extend,
-        .sidebar-links .links:hover,
-        .right-bottom-tools,
-        footer.footer {
-            background-color: var(--background-color-transparent-80) !important;
-        }
-        .right-bottom-tools:hover,
-        a.page-number:hover,
-        a.extend:hover {
-            background-color: var(--primary-color) !important;
-        }
-        .site-info,
-        .home-article-sticky-label {
-            background-color: var(--background-color-transparent-15) !important;
-        }
-        .home-article-sticky-label {
-            backdrop-filter: none !important;
-        }
-    </style>
-    <div class="home-banner-background transition-fade fixed top-0 left-0 w-screen h-screen scale-125 sm:scale-110 box-border will-change-transform bg-cover">
-        <img src="<%- url_for(theme.home_banner.image.light) %>" alt="home-banner-background" class="w-full h-full object-cover dark:hidden">
-        <img src="<%- url_for(theme.home_banner.image.dark) %>" alt="home-banner-background" class="w-full h-full object-cover hidden dark:block">
-    </div>
+    <%- partial('pages/home/home-banner-image', {fixed: true, blurred: false}) %>
 <% } %>
 
-<div class="home-banner-container flex justify-center items-center transition-fade relative">
-    <% if (theme.home_banner.style !== "fixed") {%>
-    <div class="home-banner-background transition-fade absolute top-0 left-0 w-screen h-screen scale-125 sm:scale-110 box-border will-change-transform bg-cover">
-        <img src="<%- url_for(theme.home_banner.image.light) %>" alt="home-banner-background" class="w-full h-full object-cover dark:hidden">
-        <img src="<%- url_for(theme.home_banner.image.dark) %>" alt="home-banner-background" class="w-full h-full object-cover hidden dark:block">
-    </div>
+<section id="home-banner" class="transition-fade relative flex min-h-screen w-full box-border items-center justify-center overflow-hidden font-[family-name:var(--home-font)] will-change-transform">
+    <% if (theme.home_banner.style !== "fixed") { %>
+        <%- partial('pages/home/home-banner-image', {fixed: false, blurred: false}) %>
     <% } %>
-    <div class="content mt-8 flex flex-col justify-center items-center transition-fade-down">
-        <div class="description flex flex-col justify-center items-center w-screen font-medium text-center"
-        <% if (theme.home_banner.custom_font.enable) { %>
-             style="font-family: '<%- theme.home_banner.custom_font.family %>', sans-serif; !important;"
-                <% } %>
-        >
+    <div class="transition-fade-down relative mt-8 flex min-h-[90vh] box-border flex-col items-center justify-center">
+        <div class="home-title flex w-screen flex-col items-center justify-center text-center text-[length:var(--home-title-size)] leading-[var(--home-line-height)] font-medium text-home-banner-text-color max-[768px]:text-[length:calc(var(--home-title-size)*0.9)]">
             <%- theme.home_banner.title || theme.style.first_screen.description || config.description %>
-            <%# theme.style.first_screen.description is deprecated %>
             <% const subtitleConfig = theme.home_banner.subtitle || {}; %>
             <% const subtitleText = subtitleConfig.text; %>
-            <% const subtitleEntries = Array.isArray(subtitleText)
-                ? subtitleText
-                : subtitleText
-                    ? [subtitleText]
-                    : []; %>
+            <% const subtitleEntries = Array.isArray(subtitleText) ? subtitleText : subtitleText ? [subtitleText] : []; %>
             <% if (subtitleEntries.length !== 0 || (subtitleConfig.hitokoto && subtitleConfig.hitokoto.enable)) { %>
                 <p><i id="subtitle"></i></p>
             <% } %>
         </div>
+
         <% if (theme.home_banner.social_links.enable) { %>
             <%
                 const flexDirection = theme.home_banner.social_links.style === "reverse" ? "flex-row-reverse" : "flex-row";
                 const justify = theme.home_banner.social_links.style === "center" ? "justify-center" : "justify-between";
-                const display = theme.home_banner.social_links.style === "center" ? "hidden" : "flex";
+                const scrollDisplay = theme.home_banner.social_links.style === "center" ? "hidden" : "flex";
                 const socialLinks = theme.home_banner.social_links || {};
                 const links = Array.isArray(socialLinks.links) ? socialLinks.links : [];
                 const qrs = Array.isArray(socialLinks.qrs) ? socialLinks.qrs : [];
                 const hasQrs = qrs.some((item) => item && item.qr);
                 const normalizeIcon = (iconValue, fallbackName) => {
                     const source = iconValue || fallbackName || "";
-                    if (!source) {
-                        return "";
-                    }
-                    if (source === "email") {
-                        return "fa-solid fa-at";
-                    }
-                    if (source.startsWith('/') || source.startsWith('http')) {
-                        return source;
-                    }
-                    if (source.includes('fa-')) {
-                        return source;
-                    }
+                    if (!source) return "";
+                    if (source === "email") return "fa-solid fa-at";
+                    if (source.startsWith('/') || source.startsWith('http')) return source;
+                    if (source.includes('fa-')) return source;
                     return `fa-brands fa-${source}`;
                 };
             %>
-            <div class="absolute bottom-0.5 flex <%- flexDirection %> <%- justify %> max-w-[1340px] items-center w-full px-8 sm:px-12">
-                <div class="<%- display %> p-3 bg-gray-300/50 dark:bg-gray-500/40 backdrop-blur-lg border border-white/20 dark:border-gray-500/30 group rounded-full cursor-pointer flex justify-center items-center aspect-square h-full" onclick="scrollToMain()" >
-                    <i class="fa-solid fa-arrow-down fa-fw fa-lg group-hover:translate-y-1 transition-transform"></i>
-                </div>
-                <div class="social-contacts px-6 py-3 bg-gray-300/50 dark:bg-gray-500/40 backdrop-blur-lg border border-white/20 dark:border-gray-500/30 rounded-full flex flex-row gap-3 items-center">
+            <div class="absolute bottom-0.5 flex w-full max-w-[1340px] items-center px-8 sm:px-12 <%- flexDirection %> <%- justify %>">
+                <button id="scroll-to-main" type="button" aria-label="Scroll to content" title="Scroll to content" class="<%- scrollDisplay %> aspect-square h-full cursor-pointer items-center justify-center rounded-full border border-white/20 bg-gray-300/50 p-3 backdrop-blur-lg dark:border-gray-500/30 dark:bg-gray-500/40">
+                    <i class="fa-solid fa-arrow-down fa-fw fa-lg transition-transform hover:translate-y-1" aria-hidden="true"></i>
+                </button>
+                <div class="flex flex-row items-center gap-3 rounded-full border border-white/20 bg-gray-300/50 px-6 py-3 backdrop-blur-lg dark:border-gray-500/30 dark:bg-gray-500/40">
                     <% for (const item of links) { %>
                         <% if (item && item.url) { %>
-                            <% const name = item.name || ""; %>
-                            <% const icon = normalizeIcon(item.icon, name); %>
-                            <% const url = item.url; %>
-                            <% const isEmail = name === "email" || (icon && icon.includes("fa-at")); %>
-                            <% const resolvedUrl = isEmail && !url.startsWith("mailto:") ? `mailto:${url}` : url; %>
-                            <% if (isEmail) { %>
-                                <% const emailIcon = icon && icon.includes("fa-") ? icon : "fa-solid fa-at"; %>
-                                <span class="social-contact-item <%= name %>">
-                                    <a href="<%- resolvedUrl %>">
-                                        <i class="<%= emailIcon %> fa-fw fa-lg"></i>
-                                    </a>
-                                </span>
-                            <% } else if (icon && icon.includes("fa-")) { %>
-                                <span class="social-contact-item">
-                                    <a target="_blank" href="<%- resolvedUrl %>">
-                                        <i class="<%= icon %> fa-fw fa-lg"></i>
-                                    </a>
-                                </span>
-                            <% } else if (icon && (icon.startsWith('/') || icon.startsWith('http'))) { %>
-                                <span class="social-contact-item">
-                                    <a target="_blank" href="<%- resolvedUrl %>">
-                                        <img src="<%- url_for(icon) %>" alt="social-icon" class="w-5 h-5 object-contain">
-                                    </a>
-                                </span>
-                            <% } else if (name) { %>
-                                <span class="social-contact-item <%= name %>">
-                                    <a target="_blank" href="<%- resolvedUrl %>">
-                                        <i class="fa-brands fa-fw fa-lg fa-<%= name %>"></i>
-                                    </a>
-                                </span>
-                            <% } %>
+                            <%
+                                const name = item.name || "";
+                                const icon = normalizeIcon(item.icon, name);
+                                const isEmail = name === "email" || (icon && icon.includes("fa-at"));
+                                const resolvedUrl = isEmail && !item.url.startsWith("mailto:") ? `mailto:${item.url}` : item.url;
+                            %>
+                            <a href="<%- resolvedUrl %>" <%- isEmail ? '' : 'target="_blank" rel="noopener noreferrer"' %> aria-label="<%= name || 'Social link' %>">
+                                <% if (icon && icon.includes("fa-")) { %>
+                                    <i class="<%= icon %> fa-fw fa-lg" aria-hidden="true"></i>
+                                <% } else if (icon && (icon.startsWith('/') || icon.startsWith('http'))) { %>
+                                    <img src="<%- url_for(icon) %>" alt="" class="h-5 w-5 object-contain" aria-hidden="true">
+                                <% } %>
+                            </a>
                         <% } %>
                     <% } %>
+
                     <% if (hasQrs) { %>
-
-                        <div class="social-links-divider vertical-separator w-[1px] h-4 bg-third-text-color mx-0.5"></div>
-
-                        <% for (const item of qrs) { %>
+                        <div class="mx-0.5 h-4 w-px bg-third-text-color" aria-hidden="true"></div>
+                        <% qrs.forEach((item, index) => { %>
                             <% if (item && item.qr) { %>
-                                <% const name = item.name || ""; %>
-                                <% const icon = normalizeIcon(item.icon, name); %>
-                                <% const qr = item.qr; %>
-                                <% if (icon && icon.includes("fa-")) { %>
-                                    <span class="social-contact-item-qr cursor-pointer group qr-toggle-item">
-                                        <a target="_blank">
-                                            <i class="<%= icon %> fa-fw fa-lg qr-trigger"></i>
-                                            <div class="social-qr-container absolute h-auto bg-background-color-transparent-40 border border-white/20 dark:border-gray-500/30 overflow-hidden rounded-2xl bottom-0 mb-14 right-0 invisible group-hover:visible group-active:visible opacity-0 group-hover:opacity-100 group-active:opacity-100 translate-y-0.5 group-hover:translate-y-0 group-active:translate-y-0 transition-all qr-popup">
-                                                <img class="social-contacts-qr w-64"
-                                                     src="<%- url_for(qr) %>"/>
-                                            </div>
-                                        </a>
-                                    </span>
-                                <% } else if (icon && (icon.startsWith('/') || icon.startsWith('http'))) { %>
-                                    <span class="social-contact-item-qr cursor-pointer group qr-toggle-item">
-                                        <a target="_blank">
-                                            <img src="<%- url_for(icon) %>" alt="social-icon" class="w-5 h-5 object-contain qr-trigger">
-                                            <div class="social-qr-container absolute h-auto bg-background-color-transparent-40 border border-white/20 dark:border-gray-500/30 overflow-hidden rounded-2xl bottom-0 mb-14 right-0 invisible group-hover:visible group-active:visible opacity-0 group-hover:opacity-100 group-active:opacity-100 translate-y-0.5 group-hover:translate-y-0 group-active:translate-y-0 transition-all qr-popup">
-                                                <img class="social-contacts-qr w-64"
-                                                     src="<%- url_for(qr) %>"/>
-                                            </div>
-                                        </a>
-                                    </span>
-                                <% } else if (name) { %>
-                                    <span class="social-contact-item-qr <%= name %> cursor-pointer group qr-toggle-item">
-                                        <a target="_blank">
-                                            <i class="fa-brands fa-fw fa-lg fa-<%= name %> qr-trigger"></i>
-                                            <div class="social-qr-container absolute h-auto bg-background-color-transparent-40 border border-white/20 dark:border-gray-500/30 overflow-hidden rounded-2xl bottom-0 mb-14 right-0 invisible group-hover:visible group-active:visible opacity-0 group-hover:opacity-100 group-active:opacity-100 translate-y-0.5 group-hover:translate-y-0 group-active:translate-y-0 transition-all qr-popup">
-                                                <img class="social-contacts-qr w-64"
-                                                     src="<%- url_for(qr) %>"/>
-                                            </div>
-                                        </a>
-                                    </span>
-                                <% } %>
+                                <%
+                                    const name = item.name || "QR code";
+                                    const icon = normalizeIcon(item.icon, item.name || "");
+                                    const qrId = `home-qr-${index}`;
+                                %>
+                                <span class="qr group relative cursor-pointer" data-qr data-state="closed">
+                                    <button type="button" data-qr-trigger aria-controls="<%= qrId %>" aria-expanded="false" aria-label="<%= name %>" class="flex items-center justify-center">
+                                        <% if (icon && icon.includes("fa-")) { %>
+                                            <i class="<%= icon %> fa-fw fa-lg" aria-hidden="true"></i>
+                                        <% } else if (icon && (icon.startsWith('/') || icon.startsWith('http'))) { %>
+                                            <img src="<%- url_for(icon) %>" alt="" class="h-5 w-5 object-contain" aria-hidden="true">
+                                        <% } %>
+                                    </button>
+                                    <div id="<%= qrId %>" data-qr-popup aria-hidden="true" class="invisible absolute right-0 bottom-0 mb-14 h-auto translate-y-0.5 overflow-hidden rounded-2xl border border-white/20 bg-background-color-transparent-40 opacity-0 transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 dark:border-gray-500/30">
+                                        <img class="w-64" src="<%- url_for(item.qr) %>" alt="<%= name %>">
+                                    </div>
+                                </span>
                             <% } %>
-                        <% } %>
+                        <% }); %>
                     <% } %>
                 </div>
             </div>
         <% } %>
     </div>
-    <style>
-        /* Mobile-specific QR code styles */
-        .qr-toggle-item.qr-active .qr-popup {
-            visibility: visible !important;
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
-        
-        /* Prevent button from staying in focus/hover state on mobile */
-        @media (hover: none) and (pointer: coarse) {
-            .qr-toggle-item:focus,
-            .qr-toggle-item:hover {
-                background-color: transparent;
-            }
-            
-            .qr-toggle-item .qr-trigger:focus,
-            .qr-toggle-item .qr-trigger:hover {
-                background-color: transparent;
-                color: inherit;
-            }
-            
-            /* Only show active state when explicitly toggled */
-            .qr-popup {
-                visibility: hidden !important;
-                opacity: 0 !important;
-            }
-        }
-    </style>
-</div>
+</section>

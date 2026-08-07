@@ -24,13 +24,13 @@ export function initTOC({ signal } = {}) {
     registerScrollHandler(signal);
   }
 
-  const tocContainer = document.querySelector(".toc-content-container");
+  const tocContainer = document.getElementById("article-toc");
   if (!tocContainer) {
     tocState = null;
     return null;
   }
 
-  const navItems = tocContainer.querySelectorAll(".post-toc li");
+  const navItems = tocContainer.querySelectorAll(".nav-item");
   const tocToggle = initTocToggle();
 
   if (navItems.length === 0) {
@@ -43,7 +43,7 @@ export function initTOC({ signal } = {}) {
     return null;
   }
 
-  const navLinks = tocContainer.querySelectorAll(".post-toc li a.nav-link");
+  const navLinks = tocContainer.querySelectorAll("a.nav-link");
 
   const utils = {
     navItems,
@@ -73,11 +73,20 @@ export function initTOC({ signal } = {}) {
 
     activateTOCLink(index) {
       const target = utils.navLinks[index];
-      if (!target || target.classList.contains("active-current")) return;
-      tocContainer.querySelectorAll(".active").forEach((elem) => {
-        elem.classList.remove("active", "active-current");
+      if (!target || target.getAttribute("aria-current") === "location") return;
+      utils.navLinks.forEach((link) => {
+        link.removeAttribute("aria-current");
       });
-      target.classList.add("active", "active-current");
+      utils.navItems.forEach((item) => {
+        delete item.dataset.active;
+      });
+      target.setAttribute("aria-current", "location");
+
+      let activeItem = target.closest(".nav-item");
+      while (activeItem && tocContainer.contains(activeItem)) {
+        activeItem.dataset.active = "true";
+        activeItem = activeItem.parentElement?.closest(".nav-item");
+      }
 
       const tocTop = tocContainer.getBoundingClientRect().top;
       const scrollTopOffset =

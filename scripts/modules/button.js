@@ -13,16 +13,16 @@ const DEFAULT_SIZE = "md";
 const DEFAULT_ALIGN = "inline";
 
 const BUTTON_SIZE_CLASS = {
-  sm: "small",
-  md: "",
-  lg: "large",
+  sm: "px-3 py-2 text-[0.9rem]",
+  md: "px-4 py-3",
+  lg: "px-6 py-5 text-[1.2rem]",
 };
 
 const BUTTON_ALIGN_CLASS = {
   inline: "",
-  left: "left",
-  center: "center",
-  right: "right",
+  left: "my-4 mr-auto flex w-fit",
+  center: "my-4 mx-auto flex w-full justify-center",
+  right: "my-4 ml-auto flex w-fit",
 };
 
 const cn = (...groups) =>
@@ -254,7 +254,7 @@ const buildVisualMarkup = ({ iconClass, imageSrc, text }) => {
   }
 
   if (imageSrc) {
-    return `<img src="${imageSrc}" alt="${text}" loading="lazy">`;
+    return `<img src="${imageSrc}" alt="${text}" class="not-markdown inline-block h-5 w-5 object-contain align-middle" data-image-viewer="ignore" loading="lazy">`;
   }
 
   return "";
@@ -264,8 +264,15 @@ const renderButton = (parsed) => {
   const text = parsed.text || "Button";
   const sizeClass = BUTTON_SIZE_CLASS[normalizeSize(parsed.size)] || "";
   const alignClass = BUTTON_ALIGN_CLASS[normalizeAlign(parsed.align)] || "";
-  const className = cn("button not-markdown", sizeClass, alignClass);
+  const className = cn(
+    "not-markdown box-border inline-flex cursor-pointer select-none items-center justify-center gap-2 rounded-md border border-rd-border bg-second-background-color text-center no-underline hover:bg-background-color focus:bg-background-color active:bg-third-background-color",
+    sizeClass,
+    alignClass,
+    parsed.url ? "" : "cursor-not-allowed opacity-60",
+  );
+  const tagName = parsed.url ? "a" : "span";
   const hrefAttr = parsed.url ? ` href="${parsed.url}"` : "";
+  const disabledAttr = parsed.url ? "" : ' role="button" aria-disabled="true"';
   const titleAttr = ` title="${parsed.title || text}"`;
   const targetAttr = parsed.target ? ` target="${parsed.target}"` : "";
   const relAttr = parsed.rel ? ` rel="${parsed.rel}"` : "";
@@ -277,9 +284,9 @@ const renderButton = (parsed) => {
   const contentMarkup = visualMarkup ? `${visualMarkup} ${text}` : text;
 
   return html`
-    <a class="${className}"${hrefAttr}${titleAttr}${targetAttr}${relAttr}>
+    <${tagName} data-writing-button class="${className}"${hrefAttr}${titleAttr}${targetAttr}${relAttr}${disabledAttr}>
       ${contentMarkup}
-    </a>
+    </${tagName}>
   `;
 };
 

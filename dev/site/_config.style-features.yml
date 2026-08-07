@@ -1,0 +1,20 @@
+theme_config:
+  global:
+    scroll_progress:
+      bar: true
+      percentage: true
+    preloader:
+      enable: true
+      custom_message: Style feature check
+  navbar:
+    search:
+      enable: true
+      preload: true
+  articles:
+    style:
+      delete_mask: true
+      image_caption: true
+  plugins:
+    aplayer:
+      enable: true
+      type: mini

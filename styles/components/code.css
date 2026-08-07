@@ -1,0 +1,293 @@
+@layer components {
+  :root,
+  .light {
+    --inline-code-foreground: #24292e;
+    --inline-code-background: #f1f1f1;
+    --highlight-gutter-color: #6a737d;
+  }
+
+  .dark {
+    --inline-code-foreground: #c9d1d9;
+    --inline-code-background: #313131;
+    --highlight-gutter-color: #8b949e;
+  }
+
+  pre,
+  code {
+    line-height: 1.5 !important;
+    font-family: var(--code-font), 'Geist Mono', Courier, monospace !important;
+  }
+
+  pre.mermaid {
+    background-color: var(--background-color);
+  }
+
+  pre.mermaid svg {
+    display: block;
+    margin: auto;
+  }
+
+  code {
+    padding: 3px 4px;
+    overflow-wrap: break-word;
+    border-radius: var(--radius-xs);
+    color: var(--inline-code-foreground);
+    background: var(--inline-code-background);
+  }
+
+  main code {
+    font-size: 0.9em;
+  }
+
+  pre,
+  .highlight {
+    -webkit-text-size-adjust: none;
+    overflow: auto;
+    margin: 20px 0;
+    padding: 0;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: var(--highlight-foreground);
+    background: var(--highlight-background);
+  }
+
+  pre {
+    padding-top: 14px !important;
+    font-size: 0.9rem !important;
+    tab-size: 4;
+  }
+
+  pre code {
+    padding: 0;
+    color: var(--highlight-foreground);
+    background: none;
+    text-shadow: none;
+  }
+
+  .highlight {
+    margin: 0 !important;
+    padding-bottom: 5px;
+    overflow: auto;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  }
+
+  [data-code-style='mac'] .highlight {
+    border-top: 1px solid var(--rd-border);
+  }
+
+  .highlight:hover::-webkit-scrollbar-thumb {
+    border: 3px solid rgb(183 183 183 / 30%);
+  }
+
+  .highlight::-webkit-scrollbar {
+    display: block;
+    width: 6px;
+    height: 6px;
+    transition: all 0.2s ease;
+  }
+
+  .highlight::-webkit-scrollbar-track {
+    background: transparent;
+    border: none;
+  }
+
+  .highlight::-webkit-scrollbar-thumb {
+    border: 3px solid rgb(183 183 183 / 0%);
+    border-radius: 20px;
+    transition: all 0.2s ease;
+  }
+
+  .highlight pre {
+    margin: 0;
+    padding: 10px 0;
+    border: none;
+  }
+
+  .highlight table {
+    width: auto;
+    margin: 0;
+    border: none;
+    border-spacing: unset;
+  }
+
+  .highlight td {
+    padding: 0;
+    border: none;
+  }
+
+  .highlight figcaption {
+    margin-bottom: 1rem;
+    color: var(--highlight-foreground);
+    font-size: 1rem;
+    line-height: 1rem;
+  }
+
+  .highlight figcaption a {
+    float: right;
+    color: var(--highlight-foreground);
+  }
+
+  .highlight figcaption a:hover {
+    border-bottom-color: var(--highlight-foreground);
+  }
+
+  .highlight .gutter pre {
+    padding-right: 10px;
+    padding-left: 10px;
+    color: var(--highlight-gutter-color);
+    text-align: center;
+    background-color: var(--highlight-background);
+  }
+
+  .highlight .code pre {
+    width: 100%;
+    padding-right: 10px;
+    padding-left: 10px;
+    background-color: var(--highlight-background);
+  }
+
+  .gutter {
+    user-select: none;
+  }
+
+  .gist table {
+    width: auto;
+  }
+
+  .gist table td {
+    border: none;
+  }
+
+  pre :is(.keyword, .literal, .symbol, .name) { color: var(--highlight-keyword); }
+  pre .link { color: var(--highlight-link); text-decoration: underline; }
+  pre :is(.built_in, .type) { color: var(--highlight-built-in); }
+  pre :is(.number, .class) { color: var(--highlight-number); }
+  pre :is(.string, .meta .string) { color: var(--highlight-string); }
+  pre :is(.regexp, .template-tag) { color: var(--highlight-regexp); }
+  pre :is(.subst, .function, .title, .params, .formula) { color: var(--highlight-subst); }
+  pre :is(.comment, .quote) { color: var(--highlight-comment); font-style: italic; }
+  pre .doctag { color: var(--highlight-doctag); }
+  pre :is(.meta, .meta .keyword, .tag) { color: var(--highlight-meta); }
+  pre :is(.variable, .template-variable) { color: var(--highlight-variable); }
+  pre :is(.attr, .attribute) { color: var(--highlight-attr); }
+  pre .section { color: var(--highlight-section); }
+  pre .emphasis { font-style: italic; }
+  pre .strong { font-weight: bold; }
+  pre :is(.bullet, .selector-tag, .selector-id, .selector-class, .selector-attr, .selector-pseudo) { color: var(--highlight-bullet); }
+  pre .addition { display: inline-block; width: 100%; color: var(--highlight-addition); }
+  pre .deletion { display: inline-block; width: 100%; color: var(--highlight-deletion); }
+
+  .code-container {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 1.2rem;
+    padding-top: 40px;
+    background: var(--highlight-background);
+    border: 1px solid var(--rd-border);
+    border-radius: var(--radius-lg);
+  }
+
+  [data-code-style='mac'] .code-container {
+    background: var(--third-background-color);
+  }
+
+  [data-code-style='default'] .code-container {
+    padding-left: 5px;
+  }
+
+  .code-container:hover :is(.copy-button, .fold-button),
+  .code-container :is(.copy-button, .fold-button):focus {
+    opacity: 1;
+  }
+
+  .code-container :is(.copy-button, .fold-button) {
+    position: absolute;
+    top: 0;
+    display: inline-block;
+    padding: 6px 15px;
+    color: var(--default-text-color);
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1.8;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background: var(--second-background-color);
+    border: 0;
+    outline: 0;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  .fold-button {
+    right: 40px;
+    border-radius: 0;
+  }
+
+  .copy-button {
+    right: 0;
+    border-radius: 0 var(--radius-lg) 0 0;
+  }
+
+  .code-container figcaption {
+    position: absolute;
+    left: 50%;
+    font-size: 16px;
+    font-weight: bold;
+    transform: translateX(-50%);
+  }
+
+  [data-code-style='mac'] .code-container figcaption { top: 12px; }
+  [data-code-style='default'] .code-container figcaption { top: 16px; }
+  .code-container figcaption a { margin-left: 10px; }
+
+  .code-container .folded {
+    height: 0 !important;
+  }
+
+  .code-container .folded figure {
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .code-container::before {
+    position: absolute;
+    top: 0;
+    left: 12px;
+    width: auto;
+    height: 12px;
+    color: var(--default-text-color);
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 38px;
+    content: attr(data-rel);
+    border-radius: 9999px;
+    box-shadow: none;
+  }
+
+  [data-code-style='mac'] .code-container::before { margin-left: 80px; }
+
+  [data-code-style='default'] .code-container::before {
+    top: 2px;
+    left: 4px;
+    margin-left: 10px;
+    line-height: 42px;
+    border-radius: var(--radius-lg);
+  }
+
+  [data-code-style='mac'] .code-container::after {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    z-index: 3;
+    width: 12px;
+    height: 12px;
+    margin-top: 13px;
+    content: '';
+    background: #fc625d;
+    border-radius: 9999px;
+    box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+  }
+}

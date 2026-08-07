@@ -1,0 +1,20 @@
+.dark {
+  --highlight-foreground: #d8dee9;
+  --highlight-background: #2e3440;
+  --highlight-keyword: #81a1c1;
+  --highlight-link: #81a1c1;
+  --highlight-built-in: #8fbcbb;
+  --highlight-number: #b48ead;
+  --highlight-string: #a3be8c;
+  --highlight-regexp: #ebcb8b;
+  --highlight-subst: #d8dee9;
+  --highlight-comment: #4c566a;
+  --highlight-doctag: #8fbcbb;
+  --highlight-meta: #5e81ac;
+  --highlight-variable: #d8dee9;
+  --highlight-attr: #8fbcbb;
+  --highlight-section: #88c0d0;
+  --highlight-bullet: #81a1c1;
+  --highlight-addition: rgb(163 190 140 / 50%);
+  --highlight-deletion: rgb(191 97 106 / 50%);
+}

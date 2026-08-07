@@ -15,7 +15,7 @@ const viewerState = {
 };
 
 const imageSelector =
-  ".markdown-body img, .masonry-item img, #shuoshuo-content img";
+  '.markdown-body img:not([data-image-viewer="ignore"]), [data-masonry-item] img:not([data-image-viewer="ignore"]), .essay img:not([data-image-viewer="ignore"])';
 
 const viewerControls = {
   prevButton: null,
@@ -74,7 +74,7 @@ const getFrameRect = () => {
     return null;
   }
 
-  const frame = viewerState.maskDom.querySelector(".image-viewer-frame");
+  const frame = viewerState.maskDom.querySelector("[data-viewer-frame]");
   if (frame) {
     return frame.getBoundingClientRect();
   }
@@ -127,8 +127,12 @@ const showHandle = (isShow) => {
     return;
   }
 
-  document.body.style.overflow = isShow ? "hidden" : "auto";
-  viewerState.maskDom.classList.toggle("active", isShow);
+  document.body.style.overflow = isShow ? "hidden" : "";
+  if (isShow && !viewerState.maskDom.open) {
+    viewerState.maskDom.showModal();
+  } else if (!isShow && viewerState.maskDom.open) {
+    viewerState.maskDom.close();
+  }
 };
 
 const closeViewer = () => {
@@ -156,8 +160,8 @@ const updateNavButtons = () => {
     return;
   }
 
-  viewerControls.prevButton.classList.toggle("is-disabled", !canGoPrev());
-  viewerControls.nextButton.classList.toggle("is-disabled", !canGoNext());
+  viewerControls.prevButton.disabled = !canGoPrev();
+  viewerControls.nextButton.disabled = !canGoNext();
 };
 
 const hasExifFlag = (img) => img?.dataset?.exif === "true";
@@ -167,7 +171,7 @@ const resolveExifImageUrl = (img) => {
     return null;
   }
 
-  const dataSrc = img.getAttribute("data-src");
+  const dataSrc = img.dataset.lazySrc;
   const src = dataSrc || img.currentSrc || img.src;
   if (!src) {
     return null;
@@ -399,7 +403,7 @@ const setExifPanelOpen = (isOpen) => {
     return;
   }
 
-  exifControls.panel.classList.toggle("hidden", !isOpen);
+  exifControls.panel.hidden = !isOpen;
   exifControls.panel.setAttribute("aria-hidden", isOpen ? "false" : "true");
   exifControls.toggleButton.setAttribute(
     "aria-expanded",
@@ -416,14 +420,14 @@ const clearExifCards = () => {
 
 const createExifItem = (label, value) => {
   const row = document.createElement("div");
-  row.className = "image-viewer-exif-item flex items-start justify-between gap-2";
+  row.className = "flex items-start justify-between gap-2";
   const labelDom = document.createElement("div");
   labelDom.className =
-    "image-viewer-exif-item-label text-[0.65rem] uppercase tracking-wide shrink-0 text-third-text-color";
+    "shrink-0 text-[0.65rem] tracking-wide text-third-text-color uppercase";
   labelDom.textContent = label;
   const valueDom = document.createElement("div");
   valueDom.className =
-    "image-viewer-exif-item-value text-[0.65rem] text-first-text-color text-right";
+    "text-right text-[0.65rem] text-first-text-color";
   valueDom.textContent = value;
   row.appendChild(labelDom);
   row.appendChild(valueDom);
@@ -439,27 +443,31 @@ const createExifCard = (group) => {
     card.className =
       "rounded-lg border border-rd-border bg-background-color-transparent-80 px-3 py-2 shadow-rd";
     const header = document.createElement("div");
-    header.className = "image-viewer-exif-card-header flex items-center gap-2 mb-1";
+    header.className = "mb-1 flex items-center gap-2";
     const iconDom = document.createElement("i");
     iconDom.className =
-      "image-viewer-exif-card-icon fa-solid fa-circle-info text-xs text-third-text-color";
+      "fa-solid fa-circle-info text-xs text-third-text-color";
+    iconDom.dataset.exifSlot = "icon";
     const titleDom = document.createElement("div");
     titleDom.className =
-      "image-viewer-exif-card-title text-xs font-semibold text-first-text-color";
+      "text-xs font-semibold text-first-text-color";
+    titleDom.dataset.exifSlot = "title";
     header.appendChild(iconDom);
     header.appendChild(titleDom);
     const itemsDom = document.createElement("div");
-    itemsDom.className = "image-viewer-exif-card-items flex flex-col gap-1";
+    itemsDom.className = "flex flex-col gap-1";
+    itemsDom.dataset.exifSlot = "items";
     card.appendChild(header);
     card.appendChild(itemsDom);
   }
 
-  const titleDom = card.querySelector(".image-viewer-exif-card-title");
-  const iconDom = card.querySelector(".image-viewer-exif-card-icon");
-  let itemsDom = card.querySelector(".image-viewer-exif-card-items");
+  const titleDom = card.querySelector('[data-exif-slot="title"]');
+  const iconDom = card.querySelector('[data-exif-slot="icon"]');
+  let itemsDom = card.querySelector('[data-exif-slot="items"]');
   if (!itemsDom) {
     itemsDom = document.createElement("div");
-    itemsDom.className = "image-viewer-exif-card-items flex flex-col gap-1";
+    itemsDom.className = "flex flex-col gap-1";
+    itemsDom.dataset.exifSlot = "items";
     card.appendChild(itemsDom);
   }
 
@@ -469,7 +477,7 @@ const createExifCard = (group) => {
   if (iconDom) {
     const iconClass = group.icon || "fa-solid fa-circle-info";
     iconDom.className =
-      `image-viewer-exif-card-icon ${iconClass} text-xs text-third-text-color`;
+      `${iconClass} text-xs text-third-text-color`;
   }
 
   itemsDom.innerHTML = "";
@@ -610,7 +618,7 @@ const updateExifUI = (img) => {
   bumpExifRequestId();
 
   if (exifControls.toggleButton) {
-    exifControls.toggleButton.classList.toggle("hidden", !hasExif);
+    exifControls.toggleButton.hidden = !hasExif;
     exifControls.toggleButton.disabled = !hasExif;
   }
 
@@ -621,7 +629,7 @@ const updateExifUI = (img) => {
 const resetExifUI = () => {
   bumpExifRequestId();
   if (exifControls.toggleButton) {
-    exifControls.toggleButton.classList.add("hidden");
+    exifControls.toggleButton.hidden = true;
     exifControls.toggleButton.setAttribute("aria-expanded", "false");
   }
   setExifPanelOpen(false);
@@ -637,12 +645,12 @@ const updateViewerImage = (index) => {
   viewerState.currentImgIndex = index;
 
   let newSrc = currentImg.src;
-  if (currentImg.hasAttribute("lazyload")) {
-    newSrc = currentImg.getAttribute("data-src") || newSrc;
+  if (currentImg.dataset.lazyState === "pending") {
+    newSrc = currentImg.dataset.lazySrc || newSrc;
     if (newSrc) {
       currentImg.src = newSrc;
     }
-    currentImg.removeAttribute("lazyload");
+    currentImg.dataset.lazyState = "loaded";
   }
 
   if (newSrc) {
@@ -720,7 +728,7 @@ const registerGlobalHandlers = (signal) => {
 };
 
 export default function initImageViewer({ signal, appSignal } = {}) {
-  const maskDom = document.querySelector(".image-viewer-container");
+  const maskDom = document.getElementById("image-viewer");
   if (!maskDom) {
     console.warn(
       "Image viewer container not found. Exiting imageViewer function.",
@@ -728,7 +736,7 @@ export default function initImageViewer({ signal, appSignal } = {}) {
     return;
   }
 
-  const targetImg = maskDom.querySelector("img");
+  const targetImg = document.getElementById("image-viewer-image");
   if (!targetImg) {
     console.warn(
       "Target image not found in image viewer container. Exiting imageViewer function.",
@@ -740,21 +748,15 @@ export default function initImageViewer({ signal, appSignal } = {}) {
   viewerState.targetImg = targetImg;
   viewerState.dragged = false;
 
-  viewerControls.prevButton = maskDom.querySelector(".image-viewer-prev");
-  viewerControls.nextButton = maskDom.querySelector(".image-viewer-next");
-  viewerControls.closeButton = maskDom.querySelector(".image-viewer-close");
+  viewerControls.prevButton = maskDom.querySelector('[data-viewer-action="previous"]');
+  viewerControls.nextButton = maskDom.querySelector('[data-viewer-action="next"]');
+  viewerControls.closeButton = maskDom.querySelector('[data-viewer-action="close"]');
 
-  exifControls.toggleButton = maskDom.querySelector(".image-viewer-exif-toggle");
-  exifControls.panel = maskDom.querySelector(".image-viewer-exif-panel");
-  exifControls.cardsContainer = maskDom.querySelector(
-    ".image-viewer-exif-cards",
-  );
-  exifControls.closeButton = maskDom.querySelector(
-    ".image-viewer-exif-close",
-  );
-  exifControls.cardTemplate = maskDom.querySelector(
-    ".image-viewer-exif-card-template",
-  );
+  exifControls.toggleButton = document.getElementById("image-viewer-exif-toggle");
+  exifControls.panel = document.getElementById("image-viewer-exif");
+  exifControls.cardsContainer = document.getElementById("image-viewer-exif-cards");
+  exifControls.closeButton = maskDom.querySelector('[data-viewer-action="close-exif"]');
+  exifControls.cardTemplate = document.getElementById("image-viewer-exif-template");
 
   updateImageNodes();
   registerGlobalHandlers(appSignal);
@@ -867,7 +869,7 @@ export default function initImageViewer({ signal, appSignal } = {}) {
 
   const handleImageClick = (event) => {
     const img = event.target.closest(imageSelector);
-    if (!img || img.closest(".image-viewer-container")) {
+    if (!img || img.closest("#image-viewer")) {
       return;
     }
 
@@ -888,17 +890,17 @@ export default function initImageViewer({ signal, appSignal } = {}) {
     const target = event.target;
     if (
       target.closest(
-        ".image-viewer-prev, .image-viewer-next, .image-viewer-close, .image-viewer-exif-panel, .image-viewer-exif-toggle",
+        "[data-viewer-action], #image-viewer-exif",
       )
     ) {
       return;
     }
 
-    if (target.closest(".image-viewer-frame img")) {
+    if (target.closest("[data-viewer-frame] img")) {
       return;
     }
 
-    const frame = maskDom.querySelector(".image-viewer-frame");
+    const frame = maskDom.querySelector("[data-viewer-frame]");
     if (target === maskDom || (frame && target === frame)) {
       closeViewer();
     }
@@ -924,7 +926,7 @@ export default function initImageViewer({ signal, appSignal } = {}) {
     if (!exifControls.panel) {
       return;
     }
-    const isOpen = !exifControls.panel.classList.contains("hidden");
+    const isOpen = !exifControls.panel.hidden;
     if (isOpen) {
       setExifPanelOpen(false);
       return;

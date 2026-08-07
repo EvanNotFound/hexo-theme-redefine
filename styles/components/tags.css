@@ -1,0 +1,12 @@
+@layer components {
+  .tags {
+    text-align: justify;
+  }
+
+  .tags a {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0.7rem 0.5rem;
+    line-height: 0.7;
+  }
+}

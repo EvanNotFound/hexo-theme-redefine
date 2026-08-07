@@ -12,9 +12,9 @@ hexo.extend.filter.register(
         if (!src) return match;
 
         return `<img ${attrBegin}
-                     lazyload
                      src="/images/loading.svg"
-                     data-src="${src}"
+                     data-lazy-src="${src}"
+                     data-lazy-state="pending"
                      ${attrEnd}
                 >`
       }
