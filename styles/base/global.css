@@ -1,0 +1,130 @@
+@layer base {
+  * {
+    transition-property: color, background, border-color;
+    transition-delay: 0s, 0s, 0s;
+    transition-duration: 0.2s, 0.2s, 0.2s;
+    transition-timing-function: ease, ease, ease;
+  }
+
+  html,
+  body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    color: var(--default-text-color);
+    background: var(--background-color);
+    font-family: "Geist Variable", "Noto Sans SC", -apple-system, system-ui,
+      "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif,
+      BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB",
+      "Microsoft YaHei", Arial;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    scrollbar-gutter: stable;
+    --navbar-height: 70px;
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: block;
+    width: 14px;
+    height: 8px;
+    transition: all 0.2s ease;
+  }
+
+  html::-webkit-scrollbar-thumb,
+  body::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-color);
+    border: 3px solid transparent;
+    border-radius: 18px;
+    background-clip: content-box;
+  }
+
+  html::-webkit-scrollbar-track,
+  body::-webkit-scrollbar-track {
+    background-color: var(--scroll-bar-bg-color);
+    border: 1px solid var(--rd-border);
+  }
+
+  html::-webkit-scrollbar-thumb:hover,
+  body::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-color-hover);
+    border: 3px solid transparent;
+    border-radius: 18px;
+    background-clip: content-box;
+  }
+
+  html .navbar-shrink,
+  body .navbar-shrink {
+    --navbar-height: 50.4px;
+  }
+
+  ::selection {
+    color: #fff;
+    background: var(--selection-color);
+  }
+
+  img[lazyload] {
+    padding: 10px;
+    margin: 20px auto !important;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  @media (max-width: 768px) {
+    html,
+    body {
+      font-size: 15.36px;
+      line-height: 1.44;
+    }
+  }
+
+  @media (max-width: 640px) {
+    html,
+    body {
+      font-size: 14.4px;
+      line-height: 1.35;
+    }
+  }
+}
+
+@layer components {
+  .btn {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 12px 16px !important;
+    margin-bottom: 1rem;
+    text-align: center;
+    white-space: nowrap;
+    text-decoration: none !important;
+    cursor: pointer;
+    user-select: none;
+    background-color: var(--second-background-color) !important;
+    border: 1px solid var(--rd-border);
+    border-radius: 14px !important;
+  }
+
+  .btn:hover,
+  .btn:focus {
+    color: var(--primary-color);
+    background-color: var(--background-color) !important;
+  }
+
+  .btn:active {
+    background-color: var(--third-background-color) !important;
+  }
+
+  .clear {
+    clear: both;
+  }
+
+  .ellipsis {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

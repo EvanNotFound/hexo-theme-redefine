@@ -169,11 +169,12 @@
     <% } }%>
 
     <%- css('css/style') %>
+    <%- themeStyles() %>
 
     <% if (theme.developer && theme.developer.enable) {%>
-        <%- css('css/build/tailwind.css') %>
+    <%- css('css/build/theme.css') %>
     <% } else {%>
-        <%- renderCSS('css/build/tailwind.css') %>
+    <%- renderCSS('css/build/theme.css') %>
     <% } %>
 
     <%- renderCSS('fonts/GeistMono/geist-mono.css') %>

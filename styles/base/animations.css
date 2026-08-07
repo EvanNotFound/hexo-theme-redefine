@@ -1,0 +1,100 @@
+@layer components {
+  @keyframes fade-in-down {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes icon-animate {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+
+    10%,
+    30% {
+      transform: scale(0.88);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+      transform: scale(1.08);
+    }
+
+    50%,
+    70% {
+      transform: scale(1.08);
+    }
+  }
+
+  .title-hover-animation {
+    position: relative;
+    display: inline-block;
+    color: var(--second-text-color);
+    line-height: 1.3;
+    vertical-align: top;
+    border-bottom: none;
+  }
+
+  .title-hover-animation::before {
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    content: "";
+    visibility: hidden;
+    background-color: var(--second-text-color);
+    transform: scaleX(0);
+    transition-property: color, background, border-color, visibility, transform;
+    transition-delay: 0s, 0s, 0s, 0s, 0s;
+    transition-duration: 0.2s, 0.2s, 0.2s, 0.2s, 0.2s;
+    transition-timing-function: ease, ease, ease, ease-in-out, ease-in-out;
+  }
+
+  .transition-fade {
+    opacity: 1;
+    transition: 0.4s;
+  }
+
+  .transition-fade-up,
+  .transition-fade-down {
+    opacity: 1;
+    transform: translateY(0);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+  }
+
+  html.is-changing .transition-fade {
+    opacity: 1;
+    transition: opacity 0.4s ease;
+  }
+
+  html.is-changing .transition-fade-up,
+  html.is-changing .transition-fade-down {
+    opacity: 1;
+    transform: translateY(0);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+  }
+
+  html.is-animating .transition-fade {
+    opacity: 0;
+  }
+
+  html.is-animating .transition-fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  html.is-animating .transition-fade-down {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}

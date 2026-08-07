@@ -5,13 +5,13 @@
 
 ## 2. Add The Native CSS Build
 
-- [ ] 2.1 Create the `styles/theme.css` entry and direct `base`, `components`, and `plugins` source structure, preserving Tailwind scans of EJS templates and generated script markup.
-- [ ] 2.2 Update CSS build, watch, package, and layout loading paths to emit and serve the generated core stylesheet beside the temporary Stylus compatibility stylesheet.
+- [x] 2.1 Create the `styles/theme.css` entry and direct `base`, `components`, and `plugins` source structure, preserving Tailwind scans of EJS templates and generated script markup.
+- [x] 2.2 Update CSS build, watch, package, and layout loading paths to emit and serve the generated core stylesheet beside the temporary Stylus compatibility stylesheet.
 
 ## 3. Move Theme Configuration And Base Styles
 
-- [ ] 3.1 Add a focused Hexo style helper that normalizes supported theme settings into mode-aware CSS custom properties, template conditions, and state attributes without changing `_config.yml` names or defaults.
-- [ ] 3.2 Migrate variables, global rules, animation, and Markdown prose into native CSS, remove their matching Stylus ownership, and cover representative light, dark, typography, spacing, width, radius, and alignment settings in demo generation.
+- [x] 3.1 Add a focused Hexo style helper that normalizes supported theme settings into mode-aware CSS custom properties, template conditions, and state attributes without changing `_config.yml` names or defaults.
+- [x] 3.2 Migrate variables, global rules, animation, and Markdown prose into native CSS, remove their matching Stylus ownership, and cover representative light, dark, typography, spacing, width, radius, and alignment settings in demo generation.
 
 ## 4. Migrate Theme-Owned Components
 

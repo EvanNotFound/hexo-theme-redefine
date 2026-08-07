@@ -9,17 +9,19 @@
     "languages",
     "layout",
     "scripts",
-    "source"
+    "source",
+    "styles"
   ],
   "scripts": {
     "npm:publish": "npm run build && npm publish",
     "build": "node dev/build.mjs",
-    "build:css": "tailwindcss -i source/css/tailwind.source.css -o source/css/build/tailwind.css --minify",
+    "build:css": "tailwindcss -i styles/theme.css -o source/css/build/theme.css --minify",
     "build:js": "node source/js/build.js",
+    "check:css": "node dev/check-css.mjs",
     "clean": "node dev/clean.mjs",
     "release:notes": "npx --yes opencode-ai@1.18.6 run --pure --command changelog",
     "release:notes:check": "node scripts/release-notes.js",
-    "watch:css": "tailwindcss -i source/css/tailwind.source.css -o source/css/build/tailwind.css --watch --minify",
+    "watch:css": "tailwindcss -i styles/theme.css -o source/css/build/theme.css --watch --minify",
     "dev": "node dev/dev.mjs",
     "dev:setup": "pnpm install --frozen-lockfile --prefer-offline"
   },
