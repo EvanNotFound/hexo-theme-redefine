@@ -1,7 +1,7 @@
 ## 1. Stabilize Current CSS
 
-- [ ] 1.1 Add a documented CSS verification command that builds owned styles and generates the canonical demo site so stylesheet syntax, imports, outputs, and Hexo configuration rendering fail in one place.
-- [ ] 1.2 Replace wildcard Stylus imports with the current explicit order, consolidate the duplicated responsive mixin definitions, and confirm the compatibility stylesheet output remains equivalent.
+- [x] 1.1 Add a documented CSS verification command that builds owned styles and generates the canonical demo site so stylesheet syntax, imports, outputs, and Hexo configuration rendering fail in one place.
+- [x] 1.2 Replace wildcard Stylus imports with the current explicit order, consolidate the duplicated responsive mixin definitions, and confirm the compatibility stylesheet output remains equivalent.
 
 ## 2. Add The Native CSS Build
 
