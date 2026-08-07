@@ -9,9 +9,11 @@ package-specific command says otherwise.
 - Root theme: `_config.yml`, `languages/`, `layout/`, `scripts/`, and `source/`.
 - Demo fixtures and site configuration: `dev/site/`. Never edit the generated
   link at `dev/site/themes/redefine/`.
-- When `_config.yml` or another theme configuration default changes, update the
-  corresponding values in `dev/site/_config.redefine.yml` in the same change.
-  Keep any intentional demo-only overrides explicit.
+- When `_config.yml` or another theme configuration default changes, review all
+  three configuration layers. Update corresponding demo values in
+  `dev/site/_config.redefine.yml`, and update
+  `dev/site/_config.redefine.dev.yml` if its local override is affected. Keep
+  demo-only and development-only overrides explicit.
 - Documentation content: `docs/content/docs/{zh,en}/`; documentation app code:
   `docs/src/`. Follow `docs/AGENTS.md` for all `docs/**` work.
 - Keep changes in the owning package. For cross-package behavior, run each
@@ -42,8 +44,9 @@ package-specific command says otherwise.
   canonical demo site, including configuration-dependent theme styles.
 - Interactive theme preview: `pnpm dev` serves Hexo at
   `http://127.0.0.1:4000`, resets and links the demo site, and watches CSS.
-  It serves source browser modules and does not watch production JavaScript
-  output.
+  It applies `dev/site/_config.redefine.dev.yml` over the deployed demo
+  configuration, serves source browser modules, and does not watch production
+  JavaScript output.
 - One-off demo generation: run `pnpm run build`, `pnpm clean`,
   `node dev/link-theme.mjs`, then `pnpm --dir dev/site exec hexo generate`.
 - Demo-only change: use the one-off generation above or `pnpm dev`.
@@ -67,7 +70,8 @@ package-specific command says otherwise.
 Do not edit generated output directly:
 
 - Theme builds: `source/css/build/`, `source/js/build/`.
-- Demo state: `dev/site/db.json`, `dev/site/public/`, `dev/site/themes/`.
+- Demo state: `dev/site/db.json`, `dev/site/public/`, `dev/site/themes/`, and
+  `dev/site/_multiconfig.yml`.
 - Docs output: `docs/.source/`, `docs/.next/`, `docs/out/`,
   `docs/next-env.d.ts`.
 - Release-note preview: `release-notes.md`.

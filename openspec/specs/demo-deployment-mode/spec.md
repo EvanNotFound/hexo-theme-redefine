@@ -1,4 +1,4 @@
-# Demo Deployment Mode Specification
+# Demo Deployment Configuration Specification
 
 ## Purpose
 
@@ -8,7 +8,7 @@ Define how CI generates preview and production demo output from the canonical wo
 
 ### Requirement: Deployed builds disable developer mode
 
-Every PR preview, branch preview, and production demo build MUST set `developer.enable` to `false` in the effective demo configuration before Hexo generation. The tracked local-development configuration MUST remain enabled.
+Every PR preview, branch preview, and production demo build MUST use the tracked full demo configuration with `developer.enable` set to `false`. Deployment workflows MUST NOT rewrite tracked configuration files before Hexo generation.
 
 #### Scenario: Preview output is generated
 
@@ -20,11 +20,12 @@ Every PR preview, branch preview, and production demo build MUST set `developer.
 
 - **WHEN** the production demo is built
 - **THEN** Hexo generates the site with developer mode disabled
-- **AND** the checked-in local-development configuration is not permanently rewritten
+- **AND** the local-development override is not applied
+- **AND** neither tracked configuration file is rewritten
 
-### Requirement: Deployment CDN behavior is target-specific
+### Requirement: Deployed demos use checked-out assets
 
-Preview builds MUST use checked-out local theme assets with CDN disabled. Production demo builds MUST preserve the existing versioned published CDN behavior.
+PR previews, branch previews, and production demo builds MUST use checked-out theme assets with CDN disabled so each deployment represents the theme revision that triggered it.
 
 #### Scenario: Preview assets are local
 
@@ -32,11 +33,11 @@ Preview builds MUST use checked-out local theme assets with CDN disabled. Produc
 - **THEN** the effective configuration has CDN disabled
 - **AND** generated asset references resolve against the checked-out theme build
 
-#### Scenario: Production assets use the published CDN
+#### Scenario: Production assets are local
 
 - **WHEN** the production demo is generated
-- **THEN** the effective configuration retains production CDN usage
-- **AND** generated theme asset references use the configured versioned provider
+- **THEN** the effective configuration has CDN disabled
+- **AND** generated asset references resolve against the checked-out theme build
 
 ### Requirement: CI builds the local theme and site once
 

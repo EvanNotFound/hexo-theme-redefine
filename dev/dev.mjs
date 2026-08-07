@@ -8,6 +8,7 @@ const SCRIPT_PATH = fileURLToPath(import.meta.url);
 const THEME_ROOT = path.resolve(path.dirname(SCRIPT_PATH), "..");
 const SITE_ROOT = path.join(THEME_ROOT, "dev", "site");
 const HEXO_PATH = path.join(SITE_ROOT, "node_modules", ".bin", "hexo");
+const DEV_CONFIG = "_config.yml,_config.redefine.dev.yml";
 
 const children = [];
 let shuttingDown = false;
@@ -34,7 +35,11 @@ const start = (command, args, cwd) => {
 const main = () => {
   cleanSite();
   linkTheme();
-  const hexo = start(HEXO_PATH, ["server", ...process.argv.slice(2)], SITE_ROOT);
+  const hexo = start(
+    HEXO_PATH,
+    ["server", "--config", DEV_CONFIG, ...process.argv.slice(2)],
+    SITE_ROOT,
+  );
   const css = start("pnpm", ["run", "watch:css"], THEME_ROOT);
 
   hexo.on("exit", (code) => {

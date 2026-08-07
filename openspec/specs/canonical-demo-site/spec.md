@@ -45,10 +45,17 @@ The canonical demo MUST combine the external demo's maintained public content wi
 
 ### Requirement: Local development enables developer mode
 
-The tracked demo configuration MUST enable theme developer mode and local asset loading so `pnpm dev` serves source modules and supports live theme development.
+The canonical demo MUST keep a full deployed configuration in `dev/site/_config.redefine.yml` and a local-development override in `dev/site/_config.redefine.dev.yml`. The `pnpm dev` command MUST apply the local override without rewriting either tracked file so the demo serves source modules and supports live theme development.
 
 #### Scenario: Local mode starts
 
 - **WHEN** `pnpm dev` starts Hexo
-- **THEN** the demo configuration has `developer.enable` set to `true`
+- **THEN** Hexo merges the local-development override over the full demo configuration
+- **AND** the effective configuration has `developer.enable` set to `true`
 - **AND** the local demo does not depend on versioned CDN theme assets
+
+#### Scenario: Demo configuration is maintained
+
+- **WHEN** theme configuration defaults or demo-specific values change
+- **THEN** the full deployed demo configuration is kept current with the theme defaults
+- **AND** the local-development file remains limited to explicit development overrides

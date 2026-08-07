@@ -21,7 +21,7 @@ pnpm install --frozen-lockfile
 
 ### 启用主题开发模式
 
-如果要在 Hexo 站点中使用主题源代码，请在站点的 `_config.redefine.yml` 中将 `developer.enable` 设置为 `true`。本地演示站已经在 `dev/site/_config.redefine.yml` 中启用了此选项。
+如果要在 Hexo 站点中使用主题源代码，请在站点的 `_config.redefine.yml` 中将 `developer.enable` 设置为 `true`。本地演示站会将 `dev/site/_config.redefine.dev.yml` 中的该设置叠加到完整的演示站配置上。
 
 ```yaml
 developer:
@@ -38,11 +38,11 @@ pnpm dev
 
 </div>
 
-## 演示站与部署模式
+## 演示站配置
 
 `dev/site/` 是 Redefine 的规范演示站来源，用于本地开发、PR 预览、分支预览和生产演示站。演示文章、页面和站点配置都应放在这里；`dev/site/themes/redefine/` 下的生成链接以及 `dev/site/public/` 输出仅属于本地或 CI 状态。
 
-本地执行 `pnpm dev` 时会启用主题开发模式，并使用当前检出的主题资源。CI 在生成所有部署站点前都会关闭开发模式。PR 和分支预览使用当前检出的资源并关闭 CDN；生产演示站则保留配置中的版本化 CDN 行为。
+`dev/site/_config.redefine.yml` 是 PR 预览、分支预览和生产演示站共同使用的完整配置。该配置会关闭开发模式和 CDN，使每次部署都使用当前检出版本构建的主题资源。本地执行 `pnpm dev` 时会额外叠加精简的 `_config.redefine.dev.yml`，以启用开发模式，而不会改写这两个已跟踪的配置文件。Hexo 合并配置后生成的 `_multiconfig.yml` 属于已忽略的生成状态。
 
 ## 构建与清理
 

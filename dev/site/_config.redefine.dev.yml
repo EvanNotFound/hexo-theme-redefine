@@ -1,0 +1,4 @@
+# Local theme development overrides applied by `pnpm dev`.
+theme_config:
+  developer:
+    enable: true

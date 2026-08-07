@@ -21,7 +21,7 @@ This installs dependencies for the theme, the local Hexo demo site in `dev/site`
 
 ### Enable theme development mode
 
-For a Hexo site using the theme source, set `developer.enable` to `true` in its `_config.redefine.yml` file. The local demo site already enables this option in `dev/site/_config.redefine.yml`.
+For a Hexo site using the theme source, set `developer.enable` to `true` in its `_config.redefine.yml` file. The local demo applies this setting from `dev/site/_config.redefine.dev.yml` over the full demo configuration.
 
 ```yaml
 developer:
@@ -42,17 +42,19 @@ output.
 
 </div>
 
-## Demo Site And Deployment Modes
+## Demo Site Configurations
 
 `dev/site/` is the canonical Redefine demo site for local development, PR
 previews, branch previews, and the production demo. Keep demo posts, pages, and
 site configuration there; the generated `dev/site/themes/redefine/` link and
 `dev/site/public/` output are local or CI state.
 
-Local `pnpm dev` keeps theme developer mode enabled and uses checked-out theme
-assets. CI disables developer mode before generating every deployed site. PR
-and branch previews use checked-out assets with CDN disabled, while the
-production demo preserves the configured versioned CDN behavior.
+`dev/site/_config.redefine.yml` is the full configuration used by PR previews,
+branch previews, and the production demo. It disables developer mode and CDN
+loading so every deployment uses the theme assets built from its checkout.
+Local `pnpm dev` adds the small `_config.redefine.dev.yml` override to enable
+developer mode without rewriting either tracked configuration. Hexo writes the
+resulting `_multiconfig.yml` as ignored generated state.
 
 ## Build and Reset
 

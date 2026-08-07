@@ -34,9 +34,6 @@ jobs:
       - name: Build theme assets
         run: pnpm run build
 
-      - name: Configure Preview Mode
-        run: node dev/site-mode.mjs preview
-
       - name: Clean Demo Site
         run: pnpm clean
 

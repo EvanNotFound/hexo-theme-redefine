@@ -33,6 +33,7 @@ yarn.lock
 /dev/site/db.json
 /dev/site/public
 /dev/site/themes
+/dev/site/_multiconfig.yml
 /dev/site/.source
 /dev/site/node_modules
 /connect.lock

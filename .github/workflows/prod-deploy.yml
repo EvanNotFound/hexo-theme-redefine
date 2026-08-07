@@ -33,9 +33,6 @@ jobs:
       - name: Build theme assets
         run: pnpm run build
 
-      - name: Configure Production Mode
-        run: node dev/site-mode.mjs production
-
       - name: Clean Demo Site
         run: pnpm clean
 

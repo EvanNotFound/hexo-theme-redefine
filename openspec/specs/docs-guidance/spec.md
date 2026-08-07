@@ -48,8 +48,9 @@ frozen-lockfile installation, the `pnpm dev` local demo flow, `pnpm clean`, the
 available build commands, the `dev/site` demo location, and the distinction
 between editable source files and ignored generated build output. It MUST
 identify `dev/site` as the canonical source for local development and deployed
-demos, explain that local development serves source modules with developer mode
-enabled, and document the deployed preview and production CDN behavior.
+demos, explain that local development applies a dedicated override to serve
+source modules with developer mode enabled, and document that every deployed
+demo uses checked-out assets with developer mode and CDN disabled.
 
 #### Scenario: Contributor starts local development
 
@@ -80,9 +81,9 @@ enabled, and document the deployed preview and production CDN behavior.
 - **WHEN** a contributor reads the demo deployment guidance
 - **THEN** it identifies `dev/site` as the source used by PR previews, branch
   previews, and the production demo
-- **AND** it explains that deployed builds disable developer mode
-- **AND** it documents local preview assets and the production versioned CDN
-  policy
+- **AND** it explains the full deployed configuration and local-development
+  override without tracked configuration rewrites
+- **AND** it documents that deployed builds disable developer mode and CDN use
 
 ### Requirement: Localized documentation remains aligned
 
