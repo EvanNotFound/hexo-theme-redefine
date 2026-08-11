@@ -98,6 +98,25 @@ Redefine-owned surfaces that require a structural boundary SHALL use a one-pixel
 - **WHEN** a bordered surface is hovered
 - **THEN** its structural border remains stable unless that component explicitly uses another numbered level for an interaction state
 
+### Requirement: Route-level content shells share one treatment
+
+Article, standard page, archive, and equivalent framed route-level content shells SHALL use the same one-pixel `--rd-gray-alpha-400` structural border, Tailwind `rounded-2xl` radius, background, and static `--rd-shadow` elevation on layouts where they appear as inset surfaces. Repeated cards, sidebar panels, and nested article modules MUST NOT receive the route-shell shadow solely because they have a border.
+
+#### Scenario: Framed route content renders
+
+- **WHEN** an article, standard page, archive, or equivalent framed route is displayed above the mobile edge-to-edge layout
+- **THEN** its primary content shell has the `--rd-gray-alpha-400` structural border, `rounded-2xl` radius, and `shadow-rd` elevation
+
+#### Scenario: Repeated content renders inside a route
+
+- **WHEN** a home card, sidebar panel, article module, or other repeated nested surface renders
+- **THEN** it uses its component-owned border and background treatment without inheriting the route-shell shadow
+
+#### Scenario: Route content becomes edge-to-edge
+
+- **WHEN** a supported mobile layout flattens a route-level content shell against the viewport
+- **THEN** its border, radius, and shadow are removed together
+
 ### Requirement: The retired visual API is removed consistently
 
 The theme SHALL remove `--rd-border`, ordinal background and text variables, numbered transparent-background variables, unused link/copyright/inverse-text aliases, retired home-banner icon color aliases, and the earlier redefined shadow and generic hover names from Redefine-owned source, generated markup, demo configuration, and documentation. No compatibility alias SHALL reintroduce a retired value.
