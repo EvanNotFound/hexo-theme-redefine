@@ -76,10 +76,14 @@ test("themeStyles emits configured values without fixed CSS tokens", () => {
 
   [
     "--background-color:",
+    "--first-text-color:",
     "--rd-border:",
     "--rd-shadow:",
     "--navbar-height:",
+    "--navbar-shrink-height:",
     "--font-default:",
+    "--font-article-title:",
+    "--home-banner-icons-container-border-color:",
     "--nav-color-bg:",
   ].forEach((token) => assert.doesNotMatch(output, new RegExp(token)));
 });

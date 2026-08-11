@@ -19,4 +19,4 @@
 ## 4. Centralize Variables And Verification
 
 - [x] 4.1 Move fixed mode, layout, and typography variables to their CSS owners, reduce `themeStyles()` to normalized configuration-derived declarations, and cover the ownership boundary with focused helper tests.
-- [ ] 4.2 Replace the monolithic `check:css` source scanner with Node test-runner unit and generated-site tests, wire `pnpm test` into contributor guidance and CI, and remove brittle migration-only string assertions.
+- [x] 4.2 Replace the monolithic `check:css` source scanner with Node test-runner unit and generated-site tests, wire `pnpm test` into contributor guidance and CI, and remove brittle migration-only string assertions.

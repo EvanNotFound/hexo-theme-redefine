@@ -1,29 +1,29 @@
 @layer base {
   body {
-    --current-navbar-height: var(--navbar-height, 70px);
+    --current-navbar-height: var(--navbar-height);
   }
 
   body[data-navbar-size="compact"] {
-    --current-navbar-height: var(--navbar-shrink-height, 50.4px);
+    --current-navbar-height: var(--navbar-shrink-height);
   }
 
   @media (max-width: 768px) {
     body {
-      --current-navbar-height: calc(var(--navbar-height, 70px) * 0.9);
+      --current-navbar-height: calc(var(--navbar-height) * 0.9);
     }
 
     body[data-navbar-size="compact"] {
-      --current-navbar-height: calc(var(--navbar-shrink-height, 50.4px) * 0.9);
+      --current-navbar-height: calc(var(--navbar-shrink-height) * 0.9);
     }
   }
 
   @media (max-width: 640px) {
     body {
-      --current-navbar-height: calc(var(--navbar-height, 70px) * 0.8);
+      --current-navbar-height: calc(var(--navbar-height) * 0.8);
     }
 
     body[data-navbar-size="compact"] {
-      --current-navbar-height: calc(var(--navbar-shrink-height, 50.4px) * 0.8);
+      --current-navbar-height: calc(var(--navbar-shrink-height) * 0.8);
     }
   }
 }
