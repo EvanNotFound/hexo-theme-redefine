@@ -2,34 +2,38 @@
 <div>
     <% postList.forEach((postYear) => { %>
         <section class="mb-10 last:mb-0">
-            <div class="mb-2 flex flex-row items-center">
-                <span class="mr-2 text-3xl font-semibold"><%= postYear.year %></span>
-                <span class="rounded-sm border border-rd-gray-alpha-400 bg-rd-gray-100 px-2.5 py-0.5 text-xs font-bold md:text-sm"><%= postYear.postList.length %></span>
-            </div>
+            <h2 class="mb-3 flex items-center gap-4">
+                <span class="text-2xl sm:text-3xl font-semibold"><%= postYear.year %></span>
+                <span class="text-2xl sm:text-3xl font-light text-rd-gray-800 tracking-tight"><%= postYear.postList.length %> <%= postYear.postList.length === 1 ? __('post') : __('posts') %></span>
+            </h2>
             <%
                 const groups = [];
-                const sortedPosts = [...postYear.postList].sort((a, b) => a.date > b.date ? -1 : a.date < b.date ? 1 : a.title.localeCompare(b.title));
-                sortedPosts.forEach((post) => {
-                    const postDate = date(post.date, 'MM-DD');
+                postYear.postList.forEach((post) => {
+                    const postDate = date(post.date, 'YYYY-MM-DD');
                     let group = groups[groups.length - 1];
-                    if (!group || group.date !== postDate) {
-                        group = {date: postDate, posts: []};
+                    if (!group || group.key !== postDate) {
+                        group = {key: postDate, date: post.date, posts: []};
                         groups.push(group);
                     }
                     group.posts.push(post);
                 });
             %>
-            <ul class="timeline pl-0 text-lg leading-[1.5] md:pl-8">
+            <ol class="timeline pl-2 md:pl-8">
                 <% groups.forEach((group) => { %>
-                    <li class="timeline-entry relative space-y-2 border-l-2 border-rd-gray-alpha-400 px-6 pt-10 pb-2 text-xl" data-date="<%= group.date %>">
-                        <% group.posts.forEach((post) => { %>
-                            <a href="<%- url_for(post.path) %>" class="block w-fit">
-                                <span class="timeline-title relative my-0.5 block text-2xl"><%= post.title %></span>
-                            </a>
-                        <% }); %>
+                    <li class="timeline-entry relative border-l border-rd-gray-alpha-400 pb-6 pl-6 last:pb-2">
+                        <div class="mb-2 text-sm font-semibold text-rd-gray-900"><%- time_tag(group.date, 'MMM D') %></div>
+                        <ul class="space-y-1.5">
+                            <% group.posts.forEach((post) => { %>
+                                <li class="timeline-post relative">
+                                    <a href="<%- url_for(post.path) %>" class="block w-fit max-w-full">
+                                        <span class="block text-lg leading-snug text-rd-gray-1000 [overflow-wrap:anywhere] md:text-xl"><%= post.title %></span>
+                                    </a>
+                                </li>
+                            <% }); %>
+                        </ul>
                     </li>
                 <% }); %>
-            </ul>
+            </ol>
         </section>
     <% }); %>
 </div>

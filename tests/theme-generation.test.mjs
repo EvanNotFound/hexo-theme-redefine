@@ -25,6 +25,7 @@ test("theme build and generation matrices", async (t) => {
       ".max-w-content{max-width:var(--content-max-width)}",
       "max-width:var(--content-with-toc-max-width)!important",
     ]);
+    assert.ok(!css.includes("--archive-timeline-last-child-color"));
   });
 
   generateSite();
@@ -52,6 +53,17 @@ test("theme build and generation matrices", async (t) => {
     assert.ok(!post.includes("data-home-banner"));
     assert.ok(!home.includes("--rd-shadow:"), "fixed shadow leaked into generated styles");
     assert.ok(outputExists("css/build/theme.css"));
+  });
+
+  await t.test("archive renders an unframed semantic timeline", () => {
+    const archive = readOutput("archives/index.html");
+    includes(archive, [
+      '<h1 class="text-4xl',
+      '<ol class="timeline',
+      'class="timeline-post relative"',
+      "<time datetime=",
+    ]);
+    assert.ok(!archive.includes("data-date="));
   });
 
   await t.test("documented custom templates render their route content", () => {

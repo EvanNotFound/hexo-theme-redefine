@@ -38,7 +38,7 @@
   --z-index-8: 1008;
   --z-index-9: 1009;
 
-  --font-display: "Chillax-Variable", sans-serif;
+  --font-display: "Chillax-Variable", var(--font-chinese), sans-serif;
   --font-title: var(--font-display);
   --font-home: var(--font-display);
 
@@ -61,6 +61,7 @@
   --color-rd-gray-200: var(--rd-gray-200);
   --color-rd-gray-300: var(--rd-gray-300);
   --color-rd-gray-alpha-400: var(--rd-gray-alpha-400);
+  --color-rd-gray-800: var(--rd-gray-800);
   --color-rd-gray-900: var(--rd-gray-900);
   --color-rd-gray-1000: var(--rd-gray-1000);
   --color-selection-color: var(--selection-color);
@@ -68,9 +69,6 @@
   --color-scrollbar-color-hover: var(--scrollbar-color-hover);
   --color-scroll-bar-bg-color: var(--scroll-bar-bg-color);
   --color-avatar-background-color: var(--avatar-background-color);
-  --color-archive-timeline-last-child-color: var(
-    --archive-timeline-last-child-color
-  );
   --color-note-blue-title-bg: var(--note-blue-title-bg);
   --color-note-red-title-bg: var(--note-red-title-bg);
   --color-note-cyan-title-bg: var(--note-cyan-title-bg);

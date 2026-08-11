@@ -11,6 +11,9 @@ const loadHelpers = (...relativePaths) => {
   const helpers = new Map();
   globalThis.hexo = {
     extend: {
+      filter: {
+        register() {},
+      },
       helper: {
         register(name, helper) {
           helpers.set(name, helper);
@@ -131,6 +134,37 @@ test("themeStyles rejects unsafe configured values", () => {
   assert.match(output, /--rd-primary-text:#fff/);
   assert.match(output, /--content-max-width:1000px/);
   assert.doesNotMatch(output, /display:none|--rd-shadow:none/);
+});
+
+test("createNewArchivePosts orders years, dates, and equal-date titles", () => {
+  const createNewArchivePosts = loadHelpers("scripts/helpers/theme-helpers.js").get(
+    "createNewArchivePosts",
+  );
+  const post = (title, year, timestamp) => ({
+    title,
+    date: {
+      unix: () => timestamp,
+      year: () => year,
+    },
+  });
+
+  const result = createNewArchivePosts([
+    post("Older", 2025, 100),
+    post("Zulu", 2026, 200),
+    post("Newest", 2026, 300),
+    post("Alpha", 2026, 200),
+  ]);
+
+  assert.deepEqual(
+    result.map(({ year, postList }) => [
+      year,
+      postList.map(({ title }) => title),
+    ]),
+    [
+      [2026, ["Newest", "Alpha", "Zulu"]],
+      [2025, ["Older"]],
+    ],
+  );
 });
 
 test("resolvePageKind uses built-in routes and explicit templates", () => {

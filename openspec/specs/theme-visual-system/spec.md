@@ -108,7 +108,7 @@ Redefine-owned route-level content shells and components whose role requires vis
 
 #### Scenario: A framed route-level surface renders
 
-- **WHEN** a primary article, standard page, archive, or equivalent route shell is displayed as an inset surface
+- **WHEN** a primary article, standard page, or equivalent route shell is displayed as an inset surface
 - **THEN** it uses the static `--rd-shadow` treatment together with its structural border
 
 #### Scenario: A floating Redefine surface renders
@@ -128,12 +128,18 @@ Redefine-owned route-level content shells and components whose role requires vis
 
 ### Requirement: Route-level content shells share one treatment
 
-Article, standard page, archive, and equivalent framed route-level content shells SHALL use the same one-pixel `--rd-gray-alpha-400` structural border, Tailwind `rounded-2xl` radius, background, and static `--rd-shadow` elevation on layouts where they appear as inset surfaces. Repeated cards, sidebar panels, and nested article modules MUST NOT receive the route-shell shadow solely because they have a border.
+Article, standard page, and equivalent framed route-level content shells SHALL use the same one-pixel `--rd-gray-alpha-400` structural border, Tailwind `rounded-2xl` radius, background, and static `--rd-shadow` elevation on layouts where they appear as inset surfaces. Archive routes SHALL render their chronological index without a framed route shell. Repeated cards, sidebar panels, and nested article modules MUST NOT receive the route-shell shadow solely because they have a border.
 
 #### Scenario: Framed route content renders
 
-- **WHEN** an article, standard page, archive, or equivalent framed route is displayed above the mobile edge-to-edge layout
+- **WHEN** an article, standard page, or equivalent framed route is displayed above the mobile edge-to-edge layout
 - **THEN** its primary content shell has the `--rd-gray-alpha-400` structural border, `rounded-2xl` radius, and `shadow-rd` elevation
+
+#### Scenario: Archive timeline renders
+
+- **WHEN** an archive route displays its chronological index
+- **THEN** the index remains unframed within the shared main-content width
+- **AND** it does not receive a route-shell border, radius, background, or shadow
 
 #### Scenario: Repeated content renders inside a route
 

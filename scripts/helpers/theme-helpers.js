@@ -65,9 +65,12 @@ hexo.extend.helper.register("createNewArchivePosts", function (posts) {
       (post) => item.year === post.date.year() && item.postList.push(post),
     );
   });
-  postList.forEach((item) =>
-    item.postList.sort((a, b) => b.date.unix() - a.date.unix()),
-  );
+  postList.forEach((item) => {
+    item.postList.sort((a, b) => {
+      const dateDifference = b.date.unix() - a.date.unix();
+      return dateDifference || a.title.localeCompare(b.title);
+    });
+  });
   return postList;
 });
 

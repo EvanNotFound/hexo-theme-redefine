@@ -1,3 +1,6 @@
-<div class="box-border mb-8 rounded-2xl border border-rd-gray-alpha-400 bg-rd-background-100 p-8 shadow-rd max-md:mb-6 max-md:p-6 max-sm:mb-4 max-sm:rounded-none max-sm:border-0 max-sm:p-6 max-sm:shadow-none">
+<div class="mb-4 pt-5 sm:mb-6 sm:pt-0 md:mb-8">
+	<h1 class="text-4xl mt-4 mb-8 font-medium font-display tracking-tight border-b border-rd-gray-alpha-400 pb-2">
+	<%= page.title || __('archives') %>
+	</h1>
 	<%- partial('components/posts-list', {posts: page.posts}) %>
 </div>
