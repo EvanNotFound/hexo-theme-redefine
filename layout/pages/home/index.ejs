@@ -1,9 +1,10 @@
 <div class="<%= theme.home.sidebar.enable === true && theme.home.sidebar.position === 'right' ? 'ml-10 max-[768px]:ml-0' : '' %> <%= theme.home.sidebar.enable === true && theme.home.sidebar.position === 'left' ? 'mr-10 max-[768px]:mr-0' : '' %>">
     <ul>
         <% page.posts.forEach(post => { %>
-            <li data-home-card class="relative box-border mb-10 overflow-hidden rounded-2xl border border-rd-border bg-background-color p-0 max-[768px]:mb-8 max-[640px]:mb-6">
+            <!-- using ring to avoid border wrapping around post thumbnail -->
+            <li data-home-card class="relative flex box-border flex-col mb-10 overflow-hidden rounded-2xl ring-inset ring ring-rd-border bg-background-color max-[768px]:mb-8 max-[640px]:mb-6">
                 <% if (post.sticky) { %>
-                    <div data-sticky-label class="absolute top-3 right-3 z-3 cursor-default rounded-md border border-rd-border bg-background-color-transparent-15 px-2.5 py-0.5 text-[0.7rem] text-third-text-color backdrop-blur-sm hover:text-first-text-color">
+                    <div data-sticky-label class="absolute top-3 right-3 z-10 cursor-default rounded-full border border-rd-border bg-background-color-transparent-15 px-2.5 py-0.5 text-xs text-third-text-color hover:text-first-text-color">
                         <i class="fa-regular fa-thumbtack mr-[3px] text-[0.65rem]" aria-hidden="true"></i><%- __('sticky') %>
                     </div>
                 <% } %>
@@ -24,13 +25,13 @@
                 %>
 
                 <% if (post.thumbnail !== false && (post.thumbnail || post.cover || post.banner)) { %>
-                    <div class="relative -mx-px -mt-px h-[150px] w-[calc(100%+2px)] overflow-hidden">
+                    <div class="relative h-[150px] w-full overflow-hidden group -mb-1">
                         <a href="<%- url_for(post.path) %>">
-                            <img src="<%- url_for(articleThumbnail) %>" alt="<%= post.title %>" class="absolute top-1/2 h-full w-full -translate-y-1/2 object-cover transition-all dark:brightness-75" />
+                            <img src="<%- url_for(articleThumbnail) %>" alt="<%= post.title %>" class="absolute top-1/2 h-full w-full -translate-y-1/2 object-cover transition-all dark:brightness-75 group-hover:scale-102 duration-500" />
                         </a>
                     </div>
                 <% } %>
-                <div class="flex flex-col gap-5 px-7 pb-7 <%= post.thumbnail !== false && (post.thumbnail || post.cover || post.banner) ? 'pt-5' : 'pt-7' %>">
+                <div class="flex flex-col gap-4 p-6">
                     <h3 class="relative m-0 font-[family-name:var(--font-article-title)] text-[1.4rem] leading-normal font-semibold text-second-text-color max-[768px]:text-[1.3rem] max-[640px]:text-[1.2rem]">
                         <a href="<%- url_for(post.path) %>"><%= post.title %></a>
                     </h3>
