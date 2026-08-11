@@ -13,8 +13,8 @@
     height: 100%;
     margin: 0;
     padding: 0;
-    color: var(--default-text-color);
-    background: var(--background-color);
+    color: var(--rd-gray-1000);
+    background: var(--rd-background-100);
     font-family: var(--font-default);
     font-weight: 400;
     font-size: 16px;
@@ -41,7 +41,7 @@
   html::-webkit-scrollbar-track,
   body::-webkit-scrollbar-track {
     background-color: var(--scroll-bar-bg-color);
-    border: 1px solid var(--rd-border);
+    border: 1px solid var(--rd-gray-alpha-400);
   }
 
   html::-webkit-scrollbar-thumb:hover,
@@ -53,7 +53,7 @@
   }
 
   ::selection {
-    color: #fff;
+    color: var(--rd-primary-text);
     background: var(--selection-color);
   }
 
@@ -93,19 +93,19 @@
     text-decoration: none !important;
     cursor: pointer;
     user-select: none;
-    background-color: var(--second-background-color) !important;
-    border: 1px solid var(--rd-border);
+    background-color: var(--rd-gray-100) !important;
+    border: 1px solid var(--rd-gray-alpha-400);
     border-radius: 8px !important;
   }
 
   .btn:hover,
   .btn:focus {
     color: var(--primary-color);
-    background-color: var(--background-color) !important;
+    background-color: var(--rd-gray-200) !important;
   }
 
   .btn:active {
-    background-color: var(--third-background-color) !important;
+    background-color: var(--rd-gray-300) !important;
   }
 
   .clear {

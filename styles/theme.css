@@ -48,40 +48,26 @@
   --text-default: 16px;
 
   --leading-default: 1.5;
+}
 
+@theme inline {
   --color-primary: var(--primary-color);
+  --color-rd-primary-text: var(--rd-primary-text);
   --color-nav-color-1: var(--nav-color-1);
   --color-nav-color-2: var(--nav-color-2);
   --color-nav-color-bg: var(--nav-color-bg);
-  --color-background-color: var(--background-color);
-  --color-background-color-transparent: var(--background-color-transparent);
-  --color-background-color-transparent-15: var(
-    --background-color-transparent-15
-  );
-  --color-background-color-transparent-40: var(
-    --background-color-transparent-40
-  );
-  --color-background-color-transparent-80: var(
-    --background-color-transparent-80
-  );
-  --color-second-background-color: var(--second-background-color);
-  --color-third-background-color: var(--third-background-color);
-  --color-third-background-color-transparent: var(
-    --third-background-color-transparent
-  );
-  --color-first-text-color: var(--first-text-color);
-  --color-second-text-color: var(--second-text-color);
-  --color-third-text-color: var(--third-text-color);
-  --color-fourth-text-color: var(--fourth-text-color);
-  --color-default-text-color: var(--default-text-color);
-  --color-invert-text-color: var(--invert-text-color);
-  --color-rd-border: var(--rd-border);
+  --color-rd-background-100: var(--rd-background-100);
+  --color-rd-background-200: var(--rd-background-200);
+  --color-rd-gray-100: var(--rd-gray-100);
+  --color-rd-gray-200: var(--rd-gray-200);
+  --color-rd-gray-300: var(--rd-gray-300);
+  --color-rd-gray-alpha-400: var(--rd-gray-alpha-400);
+  --color-rd-gray-900: var(--rd-gray-900);
+  --color-rd-gray-1000: var(--rd-gray-1000);
   --color-selection-color: var(--selection-color);
   --color-scrollbar-color: var(--scrollbar-color);
   --color-scrollbar-color-hover: var(--scrollbar-color-hover);
   --color-scroll-bar-bg-color: var(--scroll-bar-bg-color);
-  --color-link-color: var(--link-color);
-  --color-copyright-info-color: var(--copyright-info-color);
   --color-avatar-background-color: var(--avatar-background-color);
   --color-archive-timeline-last-child-color: var(
     --archive-timeline-last-child-color
@@ -97,12 +83,6 @@
   --color-note-purple-title-bg: var(--note-purple-title-bg);
   --color-home-banner-img: var(--home-banner-img);
   --color-home-banner-text-color: var(--home-banner-text-color);
-  --color-home-banner-icons-container-border-color: var(
-    --home-banner-icons-container-border-color
-  );
-  --color-home-banner-icons-container-background-color: var(
-    --home-banner-icons-container-background-color
-  );
   --shadow-rd: var(--rd-shadow);
 }
 
@@ -115,12 +95,12 @@
 
   a {
     text-decoration: none;
-    color: var(--default-text-color);
+    color: var(--rd-gray-1000);
   }
 
   a i,
   a span {
-    color: var(--default-text-color);
+    color: var(--rd-gray-1000);
   }
 
   a:hover,

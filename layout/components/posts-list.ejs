@@ -4,7 +4,7 @@
         <section class="mb-10 last:mb-0">
             <div class="mb-2 flex flex-row items-center">
                 <span class="mr-2 text-3xl font-semibold"><%= postYear.year %></span>
-                <span class="rounded-sm border border-rd-border bg-third-background-color px-2.5 py-0.5 text-xs font-bold md:text-sm"><%= postYear.postList.length %></span>
+                <span class="rounded-sm border border-rd-gray-alpha-400 bg-rd-gray-100 px-2.5 py-0.5 text-xs font-bold md:text-sm"><%= postYear.postList.length %></span>
             </div>
             <%
                 const groups = [];
@@ -21,7 +21,7 @@
             %>
             <ul class="timeline pl-0 text-lg leading-[1.5] md:pl-8">
                 <% groups.forEach((group) => { %>
-                    <li class="timeline-entry relative space-y-2 border-l-2 border-rd-border px-6 pt-10 pb-2 text-xl" data-date="<%= group.date %>">
+                    <li class="timeline-entry relative space-y-2 border-l-2 border-rd-gray-alpha-400 px-6 pt-10 pb-2 text-xl" data-date="<%= group.date %>">
                         <% group.posts.forEach((post) => { %>
                             <a href="<%- url_for(post.path) %>" class="block w-fit">
                                 <span class="timeline-title relative my-0.5 block text-2xl"><%= post.title %></span>

@@ -8,7 +8,13 @@ title: Color Configuration (colors)
 
 Please write the Hex value, such as `#1890ff`.
 
-The primary color will affect the color of buttons, progress bars, links, and selected components.
+The primary color will affect the color of buttons, progress bars, links, and
+selected components.
+
+Text and icons on primary-colored backgrounds use the generated
+`--rd-primary-text`. The theme normalizes `colors.primary` to Hex, compares the
+WCAG contrast of the `#fff` and `#202124` candidates, and automatically selects
+the candidate with stronger contrast against the primary color.
 
 ## Secondary Color
 
@@ -16,4 +22,5 @@ The primary color will affect the color of buttons, progress bars, links, and se
 
 Please write the Hex value, such as `#1890ff`.
 
-The current version has not used it yet, but it is expected to be used in the future.
+The current version has not used it yet, but it is expected to be used in the
+future.

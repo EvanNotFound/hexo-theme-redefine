@@ -1,25 +1,25 @@
 :root {
   --waline-font-size: 1rem;
   --waline-white: #fff;
-  --waline-light-grey: #999;
-  --waline-dark-grey: #666;
+  --waline-light-grey: var(--rd-gray-900);
+  --waline-dark-grey: var(--rd-gray-900);
   --waline-theme-color: var(--primary-color);
   --waline-active-color: color-mix(in srgb, var(--primary-color) 90%, white);
-  --waline-color: #444;
-  --waline-bgcolor: var(--background-color);
-  --waline-bgcolor-light: var(--second-background-color);
-  --waline-bgcolor-hover: var(--second-background-color);
-  --waline-border-color: #ddd;
-  --waline-disable-bgcolor: #f8f8f8;
-  --waline-disable-color: #000;
+  --waline-color: var(--rd-gray-1000);
+  --waline-bgcolor: var(--rd-background-100);
+  --waline-bgcolor-light: var(--rd-gray-100);
+  --waline-bgcolor-hover: var(--rd-gray-200);
+  --waline-border-color: var(--rd-gray-alpha-400);
+  --waline-disable-bgcolor: var(--rd-gray-100);
+  --waline-disable-color: var(--rd-gray-900);
   --waline-code-bgcolor: #282c34;
-  --waline-bq-color: var(--background-color);
+  --waline-bq-color: var(--rd-gray-alpha-400);
   --waline-avatar-size: 3.25rem;
   --waline-m-avatar-size: calc((var(--waline-avatar-size) * 9 / 13));
   --waline-badge-color: #3498db;
   --waline-badge-font-size: 0.75em;
-  --waline-info-bgcolor: #f8f8f8;
-  --waline-info-color: #999;
+  --waline-info-bgcolor: var(--rd-gray-100);
+  --waline-info-color: var(--rd-gray-900);
   --waline-info-font-size: 0.625em;
   --waline-border: none;
   --waline-avatar-radius: 28%;
@@ -57,14 +57,14 @@
 [data-waline] hr {
   margin: 0.825em 0;
   border-style: dashed;
-  border-color: var(--second-background-color);
+  border-color: var(--rd-gray-alpha-400);
 }
 [data-waline] code,
 [data-waline] pre {
   margin: 0;
   padding: 0.2em 0.4em;
   border-radius: 3px;
-  background: var(--second-background-color);
+  background: var(--rd-gray-100);
   font-size: 85%;
 }
 [data-waline] pre {
@@ -148,13 +148,13 @@
 .wl-btn.primary {
   border-color: var(--waline-theme-color);
   background: var(--waline-theme-color);
-  color: var(--waline-white);
+  color: var(--rd-primary-text);
 }
 .wl-btn.primary:hover,
 .wl-btn.primary:active {
   border-color: var(--waline-active-color);
   background: var(--waline-active-color);
-  color: var(--waline-white);
+  color: var(--rd-primary-text);
 }
 .wl-btn.primary:disabled {
   border-color: var(--waline-border-color);
@@ -230,8 +230,8 @@
   margin: 0.5em;
   border: var(--waline-border);
   border-radius: 0.75em;
-  background: var(--background-color);
-  border: 1px solid var(--rd-border);
+  background: var(--rd-background-100);
+  border: 1px solid var(--rd-gray-alpha-400);
 }
 .wl-header {
   display: flex;
@@ -310,7 +310,7 @@
 }
 .wl-editor:focus,
 .wl-input:focus {
-  background: var(--second-background-color);
+  background: var(--rd-gray-200);
 }
 .wl-preview {
   padding: 0 0.5em 0.5em;
@@ -401,8 +401,8 @@
   max-width: 526px;
   border: var(--waline-border);
   border-radius: 6px;
-  background: var(--background-color);
-  border: 1px solid var(--rd-border);
+  background: var(--rd-background-100);
+  border: 1px solid var(--rd-gray-alpha-400);
   opacity: 0;
   visibility: hidden;
   transition: transform 0.2s ease-out, opacity 0.2s ease-out;
@@ -498,7 +498,7 @@
   border-top-width: 0;
   border-bottom-right-radius: 6px;
   border-bottom-left-radius: 6px;
-  background: var(--background-color);
+  background: var(--rd-background-100);
 }
 .wl-gif-popup {
   position: absolute;
@@ -509,8 +509,8 @@
   padding: 0.75em 0.75em 0.25em;
   border: var(--waline-border);
   border-radius: 6px;
-  background: var(--background-color);
-  border: 1px solid var(--rd-border);
+  background: var(--rd-background-100);
+  border: 1px solid var(--rd-gray-alpha-400);
   opacity: 0;
   visibility: hidden;
   transition: transform 0.2s ease-out, opacity 0.2s ease-out;
@@ -569,15 +569,15 @@
   width: var(--avatar-size);
   height: var(--avatar-size);
   border-radius: var(--waline-avatar-radius);
-  border: 1px solid var(--rd-border);
+  border: 1px solid var(--rd-gray-alpha-400);
 }
 .wl-cards .wl-user .verified-icon {
   position: absolute;
   top: calc((var(--avatar-size) * 3 / 4));
   inset-inline-start: calc((var(--avatar-size) * 3 / 4));
   border-radius: 50%;
-  background: var(--background-color);
-  border: 1px solid var(--rd-border);
+  background: var(--rd-background-100);
+  border: 1px solid var(--rd-gray-alpha-400);
 }
 .wl-card-item {
   position: relative;
@@ -647,7 +647,7 @@
   margin-inline-end: 0.25em;
   padding: 2px 4px;
   border-radius: 0.2em;
-  background: var(--second-background-color);
+  background: var(--rd-gray-100);
   color: var(--waline-info-color);
   font-size: var(--waline-info-font-size);
   line-height: 1.5;
@@ -907,7 +907,7 @@
   padding: 2px;
   border: 1px solid var(--waline-theme-color);
   border-radius: 1em;
-  background: var(--background-color);
+  background: var(--rd-background-100);
   color: var(--waline-theme-color);
   font-weight: 700;
   font-size: 0.75em;
@@ -915,7 +915,7 @@
 }
 .wl-reaction-item.active .wl-reaction-votes {
   background: var(--waline-theme-color);
-  color: var(--background-color);
+  color: var(--rd-primary-text);
 }
 .wl-reaction-text {
   font-size: 0.875em;

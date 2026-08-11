@@ -423,11 +423,11 @@ const createExifItem = (label, value) => {
   row.className = "flex items-start justify-between gap-2";
   const labelDom = document.createElement("div");
   labelDom.className =
-    "shrink-0 text-[0.65rem] tracking-wide text-third-text-color uppercase";
+    "shrink-0 text-[0.65rem] tracking-wide text-rd-gray-900 uppercase";
   labelDom.textContent = label;
   const valueDom = document.createElement("div");
   valueDom.className =
-    "text-right text-[0.65rem] text-first-text-color";
+    "text-right text-[0.65rem] text-rd-gray-1000";
   valueDom.textContent = value;
   row.appendChild(labelDom);
   row.appendChild(valueDom);
@@ -441,16 +441,16 @@ const createExifCard = (group) => {
   if (!card) {
     card = document.createElement("div");
     card.className =
-      "rounded-2xl border border-rd-border bg-background-color-transparent-80 px-3 py-2 shadow-rd";
+      "rounded-2xl border border-rd-gray-alpha-400 bg-rd-background-100/80 px-3 py-2 shadow-rd";
     const header = document.createElement("div");
     header.className = "mb-1 flex items-center gap-2";
     const iconDom = document.createElement("i");
     iconDom.className =
-      "fa-solid fa-circle-info text-xs text-third-text-color";
+      "fa-solid fa-circle-info text-xs text-rd-gray-900";
     iconDom.dataset.exifSlot = "icon";
     const titleDom = document.createElement("div");
     titleDom.className =
-      "text-xs font-semibold text-first-text-color";
+      "text-xs font-semibold text-rd-gray-1000";
     titleDom.dataset.exifSlot = "title";
     header.appendChild(iconDom);
     header.appendChild(titleDom);
@@ -477,7 +477,7 @@ const createExifCard = (group) => {
   if (iconDom) {
     const iconClass = group.icon || "fa-solid fa-circle-info";
     iconDom.className =
-      `${iconClass} text-xs text-third-text-color`;
+      `${iconClass} text-xs text-rd-gray-900`;
   }
 
   itemsDom.innerHTML = "";

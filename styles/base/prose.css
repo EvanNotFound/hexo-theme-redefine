@@ -2,7 +2,7 @@
   .markdown-body {
     font-family: inherit;
     font-size: var(--article-font-size);
-    color: var(--default-text-color);
+    color: var(--rd-gray-1000);
     overflow-wrap: break-word;
   }
 
@@ -16,7 +16,7 @@
 
   .markdown-body p:not(.not-markdown) {
     line-height: var(--article-line-height);
-    color: var(--default-text-color);
+    color: var(--rd-gray-1000);
     font-weight: 400;
     margin: 0 0 1rem;
   }
@@ -30,7 +30,7 @@
     box-sizing: border-box;
     padding-bottom: 2px;
     text-underline-offset: 2px;
-    text-decoration-color: var(--fourth-text-color);
+    text-decoration-color: var(--rd-gray-alpha-400);
     transition: text-decoration-color 0.2s ease;
   }
 
@@ -43,7 +43,7 @@
   .markdown-body a:not(.not-markdown) .fab {
     margin: 0 2px 0 6px;
     position: relative;
-    color: var(--third-text-color);
+    color: var(--rd-gray-900);
     font-size: 0.88rem;
   }
 
@@ -64,18 +64,18 @@
 
   .markdown-body strong:not(.not-markdown),
   .markdown-body em:not(.not-markdown) {
-    color: var(--default-text-color);
+    color: var(--rd-gray-1000);
   }
 
   .markdown-body blockquote:not(.not-markdown) {
     box-sizing: border-box;
     margin: 1.25rem 0;
     padding: 0.75rem 1rem 0.75rem 0.5rem;
-    color: var(--default-text-color);
-    background: var(--third-background-color);
+    color: var(--rd-gray-1000);
+    background: var(--rd-gray-100);
     border-radius: 0 12px 12px 0;
     position: relative;
-    border-left: 5px solid var(--default-text-color);
+    border-left: 5px solid var(--rd-gray-1000);
   }
 
   .markdown-body blockquote:not(.not-markdown) > :first-child {
@@ -102,13 +102,13 @@
   }
 
   .markdown-body ul:not(.not-markdown) > li:not(.not-markdown) {
-    color: var(--default-text-color);
+    color: var(--rd-gray-1000);
     line-height: 2rem;
     list-style: disc;
   }
 
   .markdown-body ol:not(.not-markdown) > li:not(.not-markdown) {
-    color: var(--default-text-color);
+    color: var(--rd-gray-1000);
     line-height: 2rem;
     list-style: decimal;
   }
@@ -138,7 +138,7 @@
   }
 
   .markdown-body li:not(.not-markdown) {
-    color: var(--default-text-color);
+    color: var(--rd-gray-1000);
   }
 
   .markdown-body li:not(.not-markdown) > p:not(.not-markdown) {
@@ -162,7 +162,7 @@
   .markdown-body .h5:not(.not-markdown),
   .markdown-body .h6:not(.not-markdown) {
     font-family: inherit;
-    color: var(--second-text-color);
+    color: var(--rd-gray-1000);
     line-height: var(--article-line-height);
     font-weight: 600;
   }
@@ -171,7 +171,7 @@
   .markdown-body .h1:not(.not-markdown) {
     font-size: 2.25rem;
     font-weight: 650;
-    border-bottom: solid 2px var(--fourth-text-color);
+    border-bottom: solid 2px var(--rd-gray-alpha-400);
     margin-top: var(--heading-h1-margin);
     margin-bottom: 1rem;
     letter-spacing: -0.025em;
@@ -183,7 +183,7 @@
     font-size: 2rem;
     font-weight: 650;
     padding: 3px 0;
-    border-bottom: solid 2px var(--fourth-text-color);
+    border-bottom: solid 2px var(--rd-gray-alpha-400);
     margin-top: var(--heading-h2-margin);
     margin-bottom: 1rem;
     letter-spacing: -0.025em;
@@ -317,7 +317,7 @@
 
   .markdown-body figure:not(.not-markdown) figcaption {
     margin-top: 0.35rem;
-    color: var(--third-text-color);
+    color: var(--rd-gray-900);
     font-size: 0.9rem;
     line-height: var(--article-line-height);
     text-align: center;
@@ -326,7 +326,7 @@
   .markdown-body hr:not(.not-markdown) {
     margin: 2rem 0;
     border: 0;
-    border-top: 2px solid var(--rd-border);
+    border-top: 2px solid var(--rd-gray-alpha-400);
   }
 
   .markdown-body > pre:not(.not-markdown) {
@@ -361,13 +361,13 @@
     width: 100%;
     max-width: 100%;
     margin: 1rem 0 1.2rem;
-    border: 1px solid var(--rd-border);
+    border: 1px solid var(--rd-gray-alpha-400);
   }
 
   .markdown-body > table:not(.not-markdown) thead th,
   .markdown-body .table-scroll > table:not(.not-markdown) thead th {
-    border-bottom: 1px solid var(--rd-border);
-    background-color: var(--third-background-color) !important;
+    border-bottom: 1px solid var(--rd-gray-alpha-400);
+    background-color: var(--rd-gray-200) !important;
   }
 
   .markdown-body > table:not(.not-markdown) td,
@@ -375,7 +375,7 @@
   .markdown-body > table:not(.not-markdown) th,
   .markdown-body .table-scroll > table:not(.not-markdown) th {
     padding: 8px 16px;
-    border-left: 1px solid var(--rd-border);
+    border-left: 1px solid var(--rd-gray-alpha-400);
   }
 
   .markdown-body > table:not(.not-markdown) td:first-child,
@@ -387,12 +387,12 @@
 
   .markdown-body > table:not(.not-markdown) tr,
   .markdown-body .table-scroll > table:not(.not-markdown) tr {
-    background-color: var(--background-color);
+    background-color: var(--rd-background-100);
   }
 
   .markdown-body > table:not(.not-markdown) tr:nth-child(2n),
   .markdown-body .table-scroll > table:not(.not-markdown) tr:nth-child(2n) {
-    background-color: var(--second-background-color);
+    background-color: var(--rd-gray-100);
   }
 
   .markdown-body mjx-container:not(.not-markdown) {

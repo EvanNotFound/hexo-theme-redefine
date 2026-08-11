@@ -68,6 +68,7 @@ test("themeStyles emits configured values without fixed CSS tokens", () => {
   const output = themeStyles.call({ theme: baseTheme });
 
   assert.match(output, /:root\{[^}]*--primary-color:#336699/);
+  assert.match(output, /--rd-primary-text:#fff/);
   assert.match(output, /--content-max-width:1080px/);
   assert.match(output, /--article-font-size:18px/);
   assert.match(output, /--image-radius:10px/);
@@ -75,17 +76,27 @@ test("themeStyles emits configured values without fixed CSS tokens", () => {
   assert.match(output, /\.dark\{--home-banner-text-color:#ddeeff\}/);
 
   [
-    "--background-color:",
-    "--first-text-color:",
-    "--rd-border:",
+    "--rd-background-100:",
+    "--rd-gray-1000:",
+    "--rd-gray-alpha-400:",
     "--rd-shadow:",
     "--navbar-height:",
     "--navbar-shrink-height:",
     "--font-default:",
     "--font-article-title:",
-    "--home-banner-icons-container-border-color:",
     "--nav-color-bg:",
   ].forEach((token) => assert.doesNotMatch(output, new RegExp(token)));
+});
+
+test("themeStyles chooses readable text for light primary colors", () => {
+  const themeStyles = loadHelpers("scripts/helpers/style-helpers.js").get("themeStyles");
+  const theme = structuredClone(baseTheme);
+  theme.colors.primary = "#fff";
+
+  const output = themeStyles.call({ theme });
+
+  assert.match(output, /--primary-color:#ffffff/);
+  assert.match(output, /--rd-primary-text:#202124/);
 });
 
 test("themeStyles emits enabled custom fonts", () => {
@@ -117,6 +128,7 @@ test("themeStyles rejects unsafe configured values", () => {
   const output = themeStyles.call({ theme });
 
   assert.match(output, /--primary-color:#a31f34/);
+  assert.match(output, /--rd-primary-text:#fff/);
   assert.match(output, /--content-max-width:1000px/);
   assert.doesNotMatch(output, /display:none|--rd-shadow:none/);
 });

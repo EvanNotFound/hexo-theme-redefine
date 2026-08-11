@@ -91,7 +91,7 @@ async function postFolding(args, content) {
   const openAttr = parsed.open ? ' open' : '';
 
   return html`
-    <details class="folding group relative my-4 rounded-xl border border-rd-border bg-second-background-color ${customClassAttr}" data-variant="${variant}"${openAttr} data-header-exclude>
+    <details class="folding group relative my-4 rounded-xl border border-rd-gray-alpha-400 bg-rd-gray-100 ${customClassAttr}" data-variant="${variant}"${openAttr} data-header-exclude>
       <summary class="not-markdown flex cursor-pointer items-center rounded-[calc(0.75rem-1px)] px-4 py-3 group-open:rounded-b-none"><span>${parsed.title}</span><i class="fa-solid fa-chevron-right ml-auto pt-[3px] transition-transform duration-200 group-open:rotate-90" aria-hidden="true"></i></summary>
       <div class="markdown-body min-w-0 p-4">
         ${processedContent}

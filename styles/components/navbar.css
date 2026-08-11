@@ -46,7 +46,7 @@
     left: 0;
     width: 18px;
     height: 2.5px;
-    background: var(--default-text-color);
+    background: var(--rd-gray-1000);
   }
 
   .navbar-toggle-line {

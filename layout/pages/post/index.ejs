@@ -1,5 +1,5 @@
 <div id="article-layout" class="article-layout relative flex h-full w-full box-border justify-between max-[640px]:overflow-x-hidden" data-toc-state="closed">
-    <article class="article box-border mb-8 rounded-2xl border border-rd-border bg-background-color p-0 shadow-rd transition-[width] duration-200 ease-in-out max-[768px]:mb-6 max-[640px]:mb-4 max-[640px]:max-w-[100vw] max-[640px]:rounded-none max-[640px]:border-0 max-[640px]:px-[0.2rem] max-[640px]:py-[1.2rem] max-[640px]:shadow-none">
+    <article class="article box-border mb-8 rounded-2xl border border-rd-gray-alpha-400 bg-rd-background-100 p-0 shadow-rd transition-[width] duration-200 ease-in-out max-[768px]:mb-6 max-[640px]:mb-4 max-[640px]:max-w-[100vw] max-[640px]:rounded-none max-[640px]:border-0 max-[640px]:px-[0.2rem] max-[640px]:py-[1.2rem] max-[640px]:shadow-none">
         <header class="relative w-full overflow-hidden rounded-t-[calc(1rem-1px)] max-[640px]:rounded-none">
             <% if (page.cover || page.banner || (page.thumbnail && page.thumbnail !== false)) { %>
                 <%
@@ -18,27 +18,27 @@
                     <img src="<%= url_for(articleCover) %>" alt="<%= page.title %>" class="h-60 w-full object-cover dark:brightness-75 sm:h-72 md:h-80" />
                 <% } %>
                 <div class="absolute bottom-0 flex w-full items-center <%= theme.articles.style.title_alignment === 'center' ? 'justify-center' : 'justify-start' %>">
-                    <h1 class="mx-6 my-6 rounded-2xl border border-rd-border bg-background-color-transparent px-4 py-3 text-center text-3xl font-semibold text-second-text-color backdrop-blur-lg md:text-4xl"><%= page.title %></h1>
+                    <h1 class="mx-6 my-6 rounded-2xl border border-rd-gray-alpha-400 bg-rd-background-100/60 dark:bg-rd-background-100/40 px-4 py-3 text-center text-3xl font-semibold text-rd-gray-1000 backdrop-blur-lg md:text-4xl"><%= page.title %></h1>
                 </div>
             <% } else { %>
                 <div class="flex w-full items-center pt-6 <%= theme.articles.style.title_alignment === 'center' ? 'justify-center' : 'justify-start' %>">
-                    <h1 class="px-2 py-3 text-3xl font-semibold tracking-tight text-second-text-color sm:px-6 md:px-8 md:text-4xl"><%= page.title %></h1>
+                    <h1 class="px-2 py-3 text-3xl font-semibold tracking-tight text-rd-gray-1000 sm:px-6 md:px-8 md:text-4xl"><%= page.title %></h1>
                 </div>
             <% } %>
         </header>
 
         <% if (theme.info.author || config.author) { %>
             <div class="mt-4 flex origin-top-left scale-100 flex-row items-center gap-2 px-2 max-[768px]:scale-90 sm:px-6 md:px-8">
-                <div class="h-[46px] w-[46px] shrink-0 rounded-xl border border-rd-border p-px">
+                <div class="h-[46px] w-[46px] shrink-0 rounded-xl border border-rd-gray-alpha-400 p-px">
                     <%- image_tag((typeof page.avatar === "string" && page.avatar) || page.author?.avatar || theme.defaults.avatar, {
                         class: "h-full w-full rounded-[calc(0.75rem-1px)]"
                     }) %>
                 </div>
                 <div class="flex flex-col justify-between">
                     <div class="flex items-center">
-                        <span class="text-lg font-semibold text-default-text-color"><%= (typeof page.author === "string" && page.author) || page.author?.name || theme.info.author || config.author %></span>
+                        <span class="text-lg font-semibold text-rd-gray-1000"><%= (typeof page.author === "string" && page.author) || page.author?.name || theme.info.author || config.author %></span>
                         <% if (theme.hasOwnProperty('articles') && theme.articles.author_label.enable === true) { %>
-                            <span class="ml-1.5 rounded-sm border border-rd-border px-2 py-0.5 text-xs text-third-text-color"><%- getAuthorLabel(site.posts.length, theme.articles.author_label.auto, theme.articles.author_label.list) %></span>
+                            <span class="ml-1.5 rounded-sm border border-rd-gray-alpha-400 px-2 py-0.5 text-xs text-rd-gray-900"><%- getAuthorLabel(site.posts.length, theme.articles.author_label.auto, theme.articles.author_label.list) %></span>
                         <% } %>
                     </div>
                     <%- partial('pages/post/meta', {articleObject: page}) %>
@@ -51,7 +51,7 @@
         <% } %>
 
         <% if (page?.expires && page?.expires !== "") { %>
-            <aside class="article-expire callout relative mx-2 mt-4 mb-4 flex flex-row items-center gap-2 rounded-xl border border-rd-border bg-(--callout-bg-color) p-3 pl-1 sm:mx-6 md:mx-8" id="expiration-container" data-kind="simple" data-variant="red" data-expires="<%= page.expires %>" data-updated="<%= page.updated %>" role="note" hidden>
+            <aside class="article-expire callout relative mx-2 mt-4 mb-4 flex flex-row items-center gap-2 rounded-xl border border-rd-gray-alpha-400 bg-(--callout-bg-color) p-3 pl-1 sm:mx-6 md:mx-8" id="expiration-container" data-kind="simple" data-variant="red" data-expires="<%= page.expires %>" data-updated="<%= page.updated %>" role="note" hidden>
                 <div aria-hidden="true" class="w-0.5 shrink-0 self-stretch rounded-full bg-(--callout-primary-color) opacity-60"></div>
                 <i class="expire-icon fa-solid fa-timer shrink-0 text-base text-(--callout-primary-color)" aria-hidden="true"></i>
                 <div class="markdown-body min-w-0 flex-1">
@@ -60,7 +60,7 @@
             </aside>
         <% } %>
 
-        <div class="markdown-body mt-10 border-b border-rd-border px-2 pb-2.5 text-default-text-color [overflow-wrap:break-word] sm:px-6 md:px-8">
+        <div class="markdown-body mt-10 border-b border-rd-gray-alpha-400 px-2 pb-2.5 text-rd-gray-1000 [overflow-wrap:break-word] sm:px-6 md:px-8">
             <%- page.content %>
         </div>
 
@@ -81,7 +81,7 @@
         <% if (page?.prev || page?.next) { %>
             <nav class="my-8 flex items-center justify-between px-2 sm:px-6 md:px-8" aria-label="Post navigation">
                 <% if (page?.prev) { %>
-                    <div class="rounded-md border border-rd-border px-4 py-2">
+                    <div class="rounded-xl border border-rd-gray-alpha-400 px-4 py-2">
                         <a class="relative block h-full w-full box-border pl-4" rel="prev" href="<%= url_for(page.prev.path) %>">
                             <span class="absolute top-0 left-0 flex h-full w-4 items-center justify-center"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></span>
                             <span class="flex h-full w-full items-center justify-center">
@@ -92,7 +92,7 @@
                     </div>
                 <% } %>
                 <% if (page?.next) { %>
-                    <div class="rounded-md border border-rd-border px-4 py-2">
+                    <div class="rounded-xl border border-rd-gray-alpha-400 px-4 py-2">
                         <a class="relative block h-full w-full box-border pr-4" rel="next" href="<%= url_for(page.next.path) %>">
                             <span class="flex h-full w-full items-center justify-center">
                                 <span class="max-w-48 truncate max-[768px]:hidden"><%= page.next.title %></span>

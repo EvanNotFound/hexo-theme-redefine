@@ -74,7 +74,7 @@
   }
 
   .toc ol ol {
-    border-left: 2px dotted var(--rd-border);
+    border-left: 2px dotted var(--rd-gray-alpha-400);
   }
 
   .toc .nav-link {
@@ -101,7 +101,7 @@
 
   .toc :is(.nav-number, .nav-text) {
     padding-left: 0;
-    color: var(--third-text-color);
+    color: var(--rd-gray-900);
     transition: all 0.3s ease;
   }
 

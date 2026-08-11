@@ -8,7 +8,7 @@
 <%- partial('components/preloader') %>
 <% } %>
 <% const hasFixedHomeBanner = theme.home_banner.enable === true && currentPageKind === 'home' && theme.home_banner.style === "fixed"; %>
-<main class="relative box-border h-auto w-full bg-background-color max-[768px]:!pr-0" id="swup" data-home-banner="<%= hasFixedHomeBanner ? 'fixed' : 'none' %>">
+<main class="relative box-border h-auto w-full bg-rd-background-100 max-[768px]:!pr-0" id="swup" data-home-banner="<%= hasFixedHomeBanner ? 'fixed' : 'none' %>">
 
 	<% if (theme.home_banner.enable === true && currentPageKind === 'home' && !page.prev) { %>
 	<%- partial('pages/home/home-banner') %>

@@ -74,7 +74,7 @@
 }
 .aplayer.aplayer-fixed .aplayer-list {
   margin-bottom: 75px;
-  border: 1px solid var(--rd-border);
+  border: 1px solid var(--rd-gray-alpha-400);
 }
 .aplayer.aplayer-fixed .aplayer-body {
   position: fixed;
@@ -107,10 +107,10 @@
   transform: scaleX(1);
   transform-origin: 0 0;
   transition: all 0.3s ease;
-  border: 1px solid var(--rd-border);
+  border: 1px solid var(--rd-gray-alpha-400);
   white-space: nowrap;
   border-radius: 14px;
-  background: var(--background-color-transparent);
+  background: color-mix(in srgb, var(--rd-background-100) 60%, transparent);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
@@ -217,7 +217,7 @@
   background-position: center;
   transition: all 0.3s ease;
   cursor: pointer;
-  border: 1px solid var(--rd-border);
+  border: 1px solid var(--rd-gray-alpha-400);
   border-radius: 14px;
 }
 .aplayer .aplayer-pichover .aplayer-button {
@@ -490,9 +490,13 @@
   padding: 5px;
   overflow-y: auto;
   border-radius: 14px;
-  background: var(--background-color-transparent);
+  background: color-mix(in srgb, var(--rd-background-100) 60%, transparent);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+}
+.dark .aplayer.aplayer-fixed .aplayer-info,
+.dark .aplayer .aplayer-list {
+  background: color-mix(in srgb, var(--rd-background-100) 40%, transparent);
 }
 .aplayer .aplayer-list-webkit-scrollbar {
   width: 5px;
@@ -523,7 +527,7 @@
   background: #efefef;
 }
 .aplayer .aplayer-list li.aplayer-list-light {
-  background: var(--third-background-color-transparent);
+  background: color-mix(in srgb, var(--rd-gray-100) 60%, transparent);
 }
 .aplayer .aplayer-list li.aplayer-list-light .aplayer-list-cur {
   display: inline-block;
@@ -574,8 +578,8 @@
   right: 0;
   bottom: 0px;
   height: calc(100% - 2px);
-  background: var(--third-background-color-transparent);
-  border: 1px solid var(--rd-border);
+  background: color-mix(in srgb, var(--rd-gray-100) 60%, transparent);
+  border: 1px solid var(--rd-gray-alpha-400);
   width: 18px;
   border-radius: 14px;
   backdrop-filter: blur(10px);

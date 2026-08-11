@@ -40,6 +40,34 @@ standalone components use `rounded-2xl`; nested article modules use
 from `14px` to `12px`. Existing explicit configuration continues to override
 that default.
 
+### Migrate Custom Color Variables
+
+The color foundation now uses the canonical numbered variables directly, and
+no compatibility aliases remain. Custom CSS that references retired variables
+must migrate according to the variable's visual role:
+
+| Retired variable | Custom CSS migration |
+| --- | --- |
+| `--background-color` | `--rd-background-100` |
+| `--second-background-color` | Use `--rd-background-200` for alternate page regions; use `--rd-gray-100`, `--rd-gray-200`, or `--rd-gray-300` according to component state |
+| `--third-background-color` | Select `--rd-gray-100`, `--rd-gray-200`, or `--rd-gray-300` for default, hover, or active state, respectively |
+| `--background-color-transparent*` | Use `color-mix(in srgb, var(--rd-background-100) 40%, transparent)` and replace `40%` with the needed opacity |
+| `--third-background-color-transparent` | Use a local `color-mix()`, such as `color-mix(in srgb, var(--rd-gray-100) 40%, transparent)`; select the RD gray level and opacity for the component's role |
+| `--first-text-color`, `--second-text-color`, `--default-text-color` | `--rd-gray-1000` |
+| `--third-text-color` | `--rd-gray-900` |
+| `--fourth-text-color` | Use `--rd-gray-alpha-400` for boundaries or the applicable RD gray level for fills |
+| `--invert-text-color` | Use `--rd-primary-text` only on primary-colored backgrounds |
+| `--rd-border` | `--rd-gray-alpha-400` |
+
+`--rd-background-100` and `--rd-background-200` are the primary and alternate
+page backgrounds. `--rd-gray-100` through `--rd-gray-300` are the default,
+hover, and active component backgrounds. `--rd-gray-alpha-400` is for
+structural borders and dividers. `--rd-gray-900` and `--rd-gray-1000` are for
+secondary and primary text and icons, respectively.
+
+The removed, unused `--link-color`, `--copyright-info-color`, and home-banner
+icon-container aliases have no replacements.
+
 ### Update Custom CSS and JavaScript Selectors
 
 This release removes undocumented DOM class names used only by the theme's

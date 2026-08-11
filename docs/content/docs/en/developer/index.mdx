@@ -148,4 +148,23 @@ global rules, rendered content, complex selectors, and third-party markup. After
 adding a native CSS file, import it explicitly from `styles/theme.css` or the
 appropriate entry.
 
+### Use the Canonical Numbered Color Foundation
+
+- `--rd-background-100` and `--rd-background-200` are for primary and alternate
+  page backgrounds.
+- `--rd-gray-100`, `--rd-gray-200`, and `--rd-gray-300` are for default, hover,
+  and active component backgrounds, respectively.
+- `--rd-gray-alpha-400` is for structural borders and dividers.
+- `--rd-gray-900` is for secondary text and icons; `--rd-gray-1000` is for
+  primary text and icons.
+- `--rd-primary-text` is for text and icons on primary-colored fills.
+- `--rd-shadow` remains the complete mode-aware shadow treatment.
+
+`--rd-gray-500` through `--rd-gray-800` are intentionally undefined and must
+not be invented without a demonstrated component role. Do not add component
+aliases such as `card` or `foreground`; components should select the numbered
+variable that matches their role directly. Tailwind mappings backed by
+color-mode or configuration-generated runtime variables belong in
+`@theme inline`.
+
 For more information, see the [official Tailwind CSS documentation](https://tailwindcss.com/docs).

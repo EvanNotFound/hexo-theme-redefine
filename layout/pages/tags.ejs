@@ -11,9 +11,9 @@
                     const blurClass = count === 1 ? 'blur-[3px]' : count === 2 ? 'blur-[1.8px]' : count === 3 ? 'blur-[0.8px]' : count === 4 ? 'blur-[0.4px]' : 'blur-none';
                 %>
                 <li>
-                    <a class="relative m-2.5 block flex-1 rounded-2xl border border-rd-border bg-background-color px-[1.4rem] py-[0.9rem] text-[1.4rem] text-default-text-color transition-[filter,color,background-color,transform] duration-300 group-hover/tags:blur-none hover:bg-primary hover:!text-invert-text-color active:translate-y-0.5 [&_i]:mr-[5px] [&_i]:opacity-30 [&_i]:!text-inherit <%= blurClass %>" href="<%- url_for('/' + tag.path) %>">
+                    <a class="relative m-2.5 block flex-1 rounded-2xl border border-rd-gray-alpha-400 bg-rd-background-100 px-[1.4rem] py-[0.9rem] text-[1.4rem] text-rd-gray-1000 transition-[filter,color,background-color,transform] duration-300 group-hover/tags:blur-none hover:bg-primary hover:!text-rd-primary-text active:translate-y-0.5 [&_i]:mr-[5px] [&_i]:opacity-30 [&_i]:!text-inherit <%= blurClass %>" href="<%- url_for('/' + tag.path) %>">
                         <i class="fa-solid fa-hashtag" aria-hidden="true"></i><%- tag.name %>
-                        <span class="ml-2.5 inline-block min-w-[35px] rounded-sm bg-third-background-color px-2 py-1 text-center text-[1.5rem] text-third-text-color"><%= count %></span>
+                        <span class="ml-2.5 inline-block min-w-[35px] rounded-sm bg-rd-gray-100 px-2 py-1 text-center text-[1.5rem] text-rd-gray-900"><%= count %></span>
                     </a>
                 </li>
             <% }); %>

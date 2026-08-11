@@ -19,6 +19,33 @@ const safeColor = (value, fallback) => {
   return pattern.test(text) ? text : fallback;
 };
 
+const normalizeHex = (value, fallback) => {
+  const text = String(value ?? "").trim().toLowerCase();
+  if (/^#[\da-f]{6}$/.test(text)) return text;
+  if (/^#[\da-f]{3}$/.test(text)) {
+    return `#${[...text.slice(1)].map((channel) => channel.repeat(2)).join("")}`;
+  }
+  return fallback;
+};
+
+const relativeLuminance = (color) => {
+  const channels = [1, 3, 5].map((index) => parseInt(color.slice(index, index + 2), 16) / 255)
+    .map((channel) => channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4);
+  return channels[0] * 0.2126 + channels[1] * 0.7152 + channels[2] * 0.0722;
+};
+
+const contrastRatio = (first, second) => {
+  const values = [relativeLuminance(first), relativeLuminance(second)].sort((a, b) => b - a);
+  return (values[0] + 0.05) / (values[1] + 0.05);
+};
+
+const primaryText = (primary) => {
+  const light = "#fff";
+  const dark = "#202124";
+  const normalizedLight = normalizeHex(light, "#ffffff");
+  return contrastRatio(primary, normalizedLight) >= contrastRatio(primary, dark) ? light : dark;
+};
+
 const scaleLength = (value, factor, fallback) => {
   const match = String(value).match(/^(-?(?:\d+\.?\d*|\.\d+))(px|rem|em|%|vh|vw|ch)$/i);
   return match ? `${Number(match[1]) * factor}${match[2]}` : fallback;
@@ -94,7 +121,7 @@ const declarations = (values) => Object.entries(values)
 hexo.extend.helper.register("themeStyles", function () {
   const theme = this.theme || {};
   const articleStyle = theme.articles?.style || {};
-  const primary = safeColor(theme.colors?.primary, "#a31f34");
+  const primary = normalizeHex(theme.colors?.primary, "#a31f34");
   const selection = lightenHex(primary, 0.1);
   const contentWidth = safeLength(theme.global?.content_max_width, "1000px");
   const light = {
@@ -107,6 +134,7 @@ hexo.extend.helper.register("themeStyles", function () {
   const navRight = safeColor(theme.navbar?.color?.right, "#367df7");
   const layout = {
     "--primary-color": primary,
+    "--rd-primary-text": primaryText(primary),
     "--selection-color": selection,
     "--content-max-width": contentWidth,
     "--content-with-toc-max-width": scaleLength(contentWidth, 1.2, "1200px"),

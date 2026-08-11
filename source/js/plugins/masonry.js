@@ -151,7 +151,7 @@ export default function initMasonry({ signal } = {}) {
 
     const img = document.createElement("img");
     img.className =
-      "!m-0 h-auto w-full cursor-zoom-in overflow-hidden rounded-2xl border border-rd-border !p-0 opacity-100 transition-[border-color,filter,opacity,transform] duration-300 data-[state=loading]:opacity-0 group-hover:border-rd-border";
+      "!m-0 h-auto w-full cursor-zoom-in overflow-hidden rounded-2xl border border-rd-gray-alpha-400 !p-0 opacity-100 transition-[border-color,filter,opacity,transform] duration-300 data-[state=loading]:opacity-0 group-hover:border-rd-gray-alpha-400";
     img.dataset.state = "loading";
     img.alt = item.title || "";
     if (hasStableSize) {
@@ -195,7 +195,7 @@ export default function initMasonry({ signal } = {}) {
     if (item.title) {
       const titleDom = document.createElement("div");
       titleDom.className =
-        "absolute top-[5px] left-[5px] rounded-sm bg-background-color-transparent-40 px-2.5 py-[5px] text-sm text-default-text-color opacity-0 backdrop-blur-[10px] transition-opacity duration-200 group-hover:opacity-100";
+        "absolute top-[5px] left-[5px] rounded-sm bg-rd-background-100/40 px-2.5 py-[5px] text-sm text-rd-gray-1000 opacity-0 backdrop-blur-[10px] transition-opacity duration-200 group-hover:opacity-100";
       titleDom.textContent = item.title;
       imageContainer.appendChild(titleDom);
     }
@@ -203,7 +203,7 @@ export default function initMasonry({ signal } = {}) {
     if (item.description) {
       const descriptionDom = document.createElement("div");
       descriptionDom.className =
-        "absolute right-[5px] bottom-[11px] max-w-[80%] rounded-sm bg-background-color-transparent-40 px-2.5 py-[5px] text-sm text-default-text-color opacity-0 backdrop-blur-[10px] transition-opacity duration-200 group-hover:opacity-100";
+        "absolute right-[5px] bottom-[11px] max-w-[80%] rounded-sm bg-rd-background-100/40 px-2.5 py-[5px] text-sm text-rd-gray-1000 opacity-0 backdrop-blur-[10px] transition-opacity duration-200 group-hover:opacity-100";
       descriptionDom.textContent = item.description;
       imageContainer.appendChild(descriptionDom);
     }

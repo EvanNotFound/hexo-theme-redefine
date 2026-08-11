@@ -265,7 +265,7 @@ const renderButton = (parsed) => {
   const sizeClass = BUTTON_SIZE_CLASS[normalizeSize(parsed.size)] || "";
   const alignClass = BUTTON_ALIGN_CLASS[normalizeAlign(parsed.align)] || "";
   const className = cn(
-    "not-markdown box-border inline-flex cursor-pointer select-none items-center justify-center gap-2 rounded-xl border border-rd-border bg-second-background-color text-center no-underline hover:bg-background-color focus:bg-background-color active:bg-third-background-color",
+    "not-markdown box-border inline-flex cursor-pointer select-none items-center justify-center gap-2 rounded-xl border border-rd-gray-alpha-400 bg-rd-gray-100 text-center no-underline hover:bg-rd-gray-200 focus:bg-rd-gray-200 active:bg-rd-gray-300",
     sizeClass,
     alignClass,
     parsed.url ? "" : "cursor-not-allowed opacity-60",

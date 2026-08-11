@@ -19,7 +19,7 @@
   }
 
   pre.mermaid {
-    background-color: var(--background-color);
+    background-color: var(--rd-background-100);
   }
 
   pre.mermaid svg {
@@ -72,7 +72,7 @@
   }
 
   [data-code-style='mac'] .highlight {
-    border-top: 1px solid var(--rd-border);
+    border-top: 1px solid var(--rd-gray-alpha-400);
   }
 
   .highlight:hover::-webkit-scrollbar-thumb {
@@ -184,12 +184,12 @@
     margin-bottom: 1.2rem;
     padding-top: 40px;
     background: var(--highlight-background);
-    border: 1px solid var(--rd-border);
+    border: 1px solid var(--rd-gray-alpha-400);
     border-radius: 12px;
   }
 
   [data-code-style='mac'] .code-container {
-    background: var(--third-background-color);
+    background: var(--rd-gray-100);
   }
 
   [data-code-style='default'] .code-container {
@@ -206,7 +206,7 @@
     top: 0;
     display: inline-block;
     padding: 6px 15px;
-    color: var(--default-text-color);
+    color: var(--rd-gray-1000);
     font-size: 1rem;
     font-weight: bold;
     line-height: 1.8;
@@ -259,7 +259,7 @@
     left: 12px;
     width: auto;
     height: 12px;
-    color: var(--default-text-color);
+    color: var(--rd-gray-1000);
     font-size: 16px;
     font-weight: bold;
     line-height: 38px;

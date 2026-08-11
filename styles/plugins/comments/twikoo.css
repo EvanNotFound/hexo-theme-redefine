@@ -1,34 +1,34 @@
 .twikoo-container #twikoo .tk-meta-input .el-input .el-input-group__prepend {
-  color: var(--default-text-color);
+  color: var(--rd-gray-1000);
 }
 .twikoo-container #twikoo .tk-meta-input .el-input input {
-  color: var(--default-text-color);
+  color: var(--rd-gray-1000);
 }
 .twikoo-container #twikoo .tk-input textarea {
-  color: var(--default-text-color);
+  color: var(--rd-gray-1000);
 }
 .twikoo-container #twikoo .actions .tk-row-actions-start .tk-action-icon svg {
-  fill: var(--default-text-color);
+  fill: var(--rd-gray-1000);
 }
 .twikoo-container #twikoo .actions .tk-row-actions-start .tk-action-icon.OwO .OwO-body {
-  color: var(--default-text-color);
-  background-color: var(--background-color);
+  color: var(--rd-gray-1000);
+  background-color: var(--rd-background-100);
 }
 .twikoo-container #twikoo .actions .tk-preview span {
-  background: var(--third-background-color);
-  color: var(--default-text-color);
+  background: var(--rd-gray-100);
+  color: var(--rd-gray-1000);
 }
 .twikoo-container #twikoo .tk-preview-container {
-  color: var(--default-text-color);
+  color: var(--rd-gray-1000);
 }
 .twikoo-container #twikoo .tk-comments-container .tk-comments-count span {
-  color: var(--default-text-color);
+  color: var(--rd-gray-1000);
 }
 .twikoo-container #twikoo .tk-main {
   margin-bottom: 20px;
 }
 .twikoo-container #twikoo .tk-main .tk-meta .tk-nick {
-  color: var(--default-text-color);
+  color: var(--rd-gray-1000);
 }
 .twikoo-container #twikoo .tk-main .tk-meta .tk-tag.tk-tag-green {
   background: -webkit-linear-gradient(45deg, #e3565e, #ee854b, #f6c258, #90c68a, #5fb3b3, #69c, #c594c5);
@@ -38,11 +38,11 @@
   border-radius: 5px;
 }
 .twikoo-container #twikoo .tk-main .tk-meta .tk-time time {
-  color: var(--default-text-color);
+  color: var(--rd-gray-1000);
 }
 .twikoo-container #twikoo .tk-main .tk-content {
-  color: var(--default-text-color);
+  color: var(--rd-gray-1000);
 }
 .twikoo-container #twikoo .tk-main .tk-expand {
-  color: var(--third-text-color);
+  color: var(--rd-gray-900);
 }

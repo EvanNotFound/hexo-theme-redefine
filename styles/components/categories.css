@@ -15,28 +15,28 @@
     font-size: 1.5rem;
     font-weight: 600;
     cursor: pointer;
-    background: var(--second-background-color);
-    border: 1px solid var(--rd-border);
+    background: var(--rd-gray-100);
+    border: 1px solid var(--rd-gray-alpha-400);
     border-radius: 16px;
     transition: all 0.2s ease;
   }
 
   .categories > .category-list > .category-list-item:hover {
     color: var(--primary-color);
-    background: var(--background-color);
+    background: var(--rd-gray-200);
   }
 
   .categories .category-list-count {
     padding: 1px 10px;
     margin-left: 8px;
-    color: var(--third-text-color);
-    background: var(--third-background-color);
-    border: 1px solid var(--rd-border);
+    color: var(--rd-gray-900);
+    background: var(--rd-gray-100);
+    border: 1px solid var(--rd-gray-alpha-400);
     border-radius: 6px;
   }
 
   .categories > .category-list > .category-list-item > .category-list-link {
-    border-bottom: 2px solid var(--rd-border);
+    border-bottom: 2px solid var(--rd-gray-alpha-400);
   }
 
   .categories .category-list-child {
@@ -45,7 +45,7 @@
     margin-left: 20px;
     font-size: 1.2rem;
     font-weight: 400;
-    border-left: 2px solid var(--rd-border);
+    border-left: 2px solid var(--rd-gray-alpha-400);
   }
 
   .categories > .category-list > .category-list-item > .category-list-child {

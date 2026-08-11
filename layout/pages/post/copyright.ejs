@@ -1,4 +1,4 @@
-<div class="relative box-border w-full rounded-xl border border-rd-border bg-third-background-color px-1.5 py-2.5 font-[family-name:var(--font-article-title)] text-base [&_ul]:ml-2.5 [&_li]:mb-[5px] [&_li]:overflow-hidden [&_li]:text-ellipsis [&_li]:whitespace-nowrap [&_li]:text-default-text-color [&_li:last-child]:mb-0">
+<div class="relative box-border w-full rounded-xl border border-rd-gray-alpha-400 bg-rd-gray-100 px-1.5 py-2.5 font-[family-name:var(--font-article-title)] text-base [&_ul]:ml-2.5 [&_li]:mb-[5px] [&_li]:overflow-hidden [&_li]:text-ellipsis [&_li]:whitespace-nowrap [&_li]:text-rd-gray-1000 [&_li:last-child]:mb-0">
     <ul>
         <li><strong><%- __('copyright.title') %>:</strong> <%= page.title %></li>
         <li><strong><%- __('copyright.author') %>:</strong> <%=(typeof page.author === "string" && page.author) || page.author?.name || theme.info.author || config.author %></li>

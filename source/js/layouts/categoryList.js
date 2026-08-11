@@ -19,7 +19,7 @@ const prepareCategories = () => {
     button.setAttribute("aria-expanded", "false");
     button.setAttribute("aria-label", `Toggle ${link?.textContent?.trim() || "category"}`);
     button.className =
-      "ml-2 inline-flex h-7 w-7 items-center justify-center rounded-full text-third-text-color hover:text-primary aria-expanded:rotate-90";
+      "ml-2 inline-flex h-7 w-7 items-center justify-center rounded-full text-rd-gray-900 hover:text-primary aria-expanded:rotate-90";
     button.innerHTML = '<i class="fa-solid fa-chevron-right" aria-hidden="true"></i>';
 
     childList.id = childId;

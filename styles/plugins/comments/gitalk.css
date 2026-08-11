@@ -154,11 +154,11 @@
   margin-right: 0;
 }
 .comments .gt-container .gt-btn-preview {
-  background-color: var(--background-color);
+  background-color: var(--rd-background-100);
   color: #6190e8;
 }
 .comments .gt-container .gt-btn-preview:hover {
-  background-color: var(--third-background-color);
+  background-color: var(--rd-gray-200);
 }
 .comments .gt-container .gt-btn-public:hover {
   background-color: #81a6ed;
@@ -207,7 +207,7 @@
 }
 .comments .gt-counts {
   margin: 0 0.625em 0 0;
-  color: var(--default-text-color);
+  color: var(--rd-gray-1000);
 }
 .comments .gt-user {
   float: right;
@@ -225,13 +225,13 @@
   cursor: pointer;
 }
 .comments .gt-user-inner .gt-user-name {
-  color: var(--default-text-color);
+  color: var(--rd-gray-1000);
 }
 .comments .gt-user .gt-ico {
   margin: 0 0 0 0.3125em;
 }
 .comments .gt-user .gt-ico svg {
-  fill: var(--default-text-color);
+  fill: var(--rd-gray-1000);
 }
 .comments .gt-user .is--poping .gt-ico svg {
   fill: #6190e8;
@@ -242,16 +242,16 @@
 }
 .comments .gt-copyright {
   margin: 0 0.9375em 0.5em;
-  border-top: 1px solid var(--rd-border);
+  border-top: 1px solid var(--rd-gray-alpha-400);
   padding-top: 0.5em;
 }
 .comments .gt-popup {
   position: absolute;
   right: 0;
   top: 2.375em;
-  background: var(--background-color);
+  background: var(--rd-background-100);
   display: inline-block;
-  border: 1px solid var(--rd-border);
+  border: 1px solid var(--rd-gray-alpha-400);
   padding: 0.625em 0;
   font-size: 0.875em;
   letter-spacing: 0.5px;
@@ -294,23 +294,23 @@
   min-height: 5.125em;
   max-height: 15em;
   border-radius: 5px;
-  border: 1px solid var(--rd-border);
+  border: 1px solid var(--rd-gray-alpha-400);
   font-size: 0.875em;
   word-wrap: break-word;
   resize: vertical;
-  color: var(--default-text-color);
-  background-color: var(--fourth-text-color);
+  color: var(--rd-gray-1000);
+  background-color: var(--rd-gray-100);
   outline: none;
   transition: all 0.25s ease;
 }
 .comments .gt-header-textarea:hover {
-  background-color: var(--background-color);
+  background-color: var(--rd-gray-200);
 }
 .comments .gt-header-preview {
   padding: 0.75em;
   border-radius: 5px;
-  border: 1px solid var(--rd-border);
-  background-color: var(--background-color);
+  border: 1px solid var(--rd-gray-alpha-400);
+  background-color: var(--rd-background-100);
 }
 .comments .gt-header-controls {
   position: relative;
@@ -397,7 +397,7 @@
   flex: 1;
   margin-left: 1.25em;
   padding: 0.75em 1em;
-  background-color: var(--third-background-color);
+  background-color: var(--rd-gray-100);
   overflow: auto;
   transition: all ease 0.25s;
 }
@@ -459,7 +459,7 @@
   right: 0;
 }
 .comments .gt-comment-body {
-  color: var(--second-text-color) !important;
+  color: var(--rd-gray-1000) !important;
 }
 .comments .gt-comment-body .email-hidden-toggle a {
   display: inline-block;
@@ -491,7 +491,7 @@
   display: block;
 }
 .comments .gt-comment-admin .gt-comment-content {
-  background-color: var(--fourth-text-color);
+  background-color: var(--rd-gray-300);
 }
 @-moz-keyframes gt-kf-rotate {
   0% {

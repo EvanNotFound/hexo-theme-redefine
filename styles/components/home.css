@@ -29,7 +29,7 @@
       .paginator a.extend,
       .footer
     ) {
-    background-color: var(--background-color-transparent-80) !important;
+    background-color: color-mix(in srgb, var(--rd-background-100) 80%, transparent) !important;
   }
 
   [data-home-banner="fixed"] :is(
@@ -41,14 +41,14 @@
   }
 
   [data-home-banner="fixed"] [data-sidebar-link]:hover {
-    background-color: var(--background-color-transparent-80) !important;
+    background-color: color-mix(in srgb, var(--rd-background-100) 80%, transparent) !important;
   }
 
   [data-home-banner="fixed"] :is(
       [data-sidebar-header],
       [data-sticky-label]
     ) {
-    background-color: var(--background-color-transparent-15) !important;
+    background-color: color-mix(in srgb, var(--rd-background-100) 15%, transparent) !important;
   }
 
   [data-home-banner="fixed"] [data-sticky-label] {

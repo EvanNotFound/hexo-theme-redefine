@@ -30,6 +30,27 @@ template: links
 `rounded-xl`。`articles.style.image_border_radius` 的默认值从 `14px` 调整为 `12px`；
 已有的显式配置仍会覆盖该默认值。
 
+### 迁移自定义颜色变量
+
+颜色基础现在直接使用规范的编号变量，不再保留任何兼容别名。引用已退役变量的自定义 CSS 必须按实际视觉职责迁移：
+
+| 已退役变量 | 自定义 CSS 迁移 |
+| --- | --- |
+| `--background-color` | `--rd-background-100` |
+| `--second-background-color` | 交替页面区域使用 `--rd-background-200`；组件状态按职责使用 `--rd-gray-100`、`--rd-gray-200` 或 `--rd-gray-300` |
+| `--third-background-color` | 按默认、悬停、激活状态分别选择 `--rd-gray-100`、`--rd-gray-200`、`--rd-gray-300` |
+| `--background-color-transparent*` | 使用 `color-mix(in srgb, var(--rd-background-100) 40%, transparent)`；将 `40%` 改为所需不透明度 |
+| `--third-background-color-transparent` | 使用局部 `color-mix()`，例如 `color-mix(in srgb, var(--rd-gray-100) 40%, transparent)`；按组件职责选择 RD gray 等级和不透明度 |
+| `--first-text-color`、`--second-text-color`、`--default-text-color` | `--rd-gray-1000` |
+| `--third-text-color` | `--rd-gray-900` |
+| `--fourth-text-color` | 边界使用 `--rd-gray-alpha-400`；填充使用适用的 RD gray 等级 |
+| `--invert-text-color` | 仅在主题色背景上使用 `--rd-primary-text` |
+| `--rd-border` | `--rd-gray-alpha-400` |
+
+`--rd-background-100` 和 `--rd-background-200` 分别用于主要和交替页面背景；`--rd-gray-100` 至 `--rd-gray-300` 用于组件的默认、悬停和激活背景；`--rd-gray-alpha-400` 用于结构边框和分隔线；`--rd-gray-900` 和 `--rd-gray-1000` 分别用于次要与主要文字和图标。
+
+已移除但未使用的 `--link-color`、`--copyright-info-color` 和首页横幅图标容器别名没有替代项。
+
 ### 更新自定义 CSS 和 JavaScript 选择器
 
 此版本删除了未记录且仅供主题内部样式使用的 DOM class 名称，不提供兼容别名。任何以这些内部名称为目标的自定义 CSS 或 JavaScript 都必须根据当前生成的标记更新。

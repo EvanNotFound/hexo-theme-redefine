@@ -14,28 +14,28 @@
     text-align: center;
     white-space: nowrap;
     cursor: pointer;
-    background: var(--background-color);
-    border: 1px solid var(--rd-border);
+    background: var(--rd-background-100);
+    border: 1px solid var(--rd-gray-alpha-400);
     border-radius: 8px;
   }
 
   .paginator :is(a.page-number, span.page-number, a.prev, a.next):hover {
-    color: var(--background-color);
+    color: var(--rd-primary-text);
     background: var(--primary-color);
   }
 
   .paginator a.page-number.active,
   .paginator span.page-number.current {
-    color: var(--background-color);
+    color: var(--rd-primary-text);
     background: var(--primary-color);
   }
 
   .paginator i.fa-regular {
-    color: var(--default-text-color);
+    color: var(--rd-gray-1000);
   }
 
   .paginator .extend:hover i.fa-regular {
-    color: var(--background-color);
+    color: var(--rd-primary-text);
   }
 
   @media (max-width: 640px) {

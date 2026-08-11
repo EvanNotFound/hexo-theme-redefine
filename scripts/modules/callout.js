@@ -191,7 +191,7 @@ const renderSimpleCallout = ({ type, iconClass, extraClasses }, content) => {
   const renderedContent = renderMarkdownBlock(content);
 
   return html`
-    <aside class="${cn("callout", extraClasses, "relative mb-4 flex flex-row items-center gap-2 rounded-xl border border-rd-border bg-(--callout-bg-color) p-3 pl-1")}" data-kind="simple" data-variant="${normalizeCalloutVariant(type)}" role="note">
+    <aside class="${cn("callout", extraClasses, "relative mb-4 flex flex-row items-center gap-2 rounded-xl border border-rd-gray-alpha-400 bg-(--callout-bg-color) p-3 pl-1")}" data-kind="simple" data-variant="${normalizeCalloutVariant(type)}" role="note">
       <div aria-hidden="true" class="w-0.5 shrink-0 self-stretch rounded-full bg-(--callout-primary-color) opacity-60"></div>
       ${iconMarkup}
       <div class="markdown-body min-w-0 flex-1">${renderedContent}</div>
@@ -206,7 +206,7 @@ const renderTitledCallout = ({ type, iconClass, title, extraClasses }, content) 
   const titleInner = iconMarkup ? `${iconMarkup} ${renderedTitle}` : renderedTitle;
 
   return html`
-    <aside class="${cn("callout", extraClasses, "relative mb-4 flex flex-row gap-2 rounded-xl border border-rd-border bg-(--callout-bg-color) p-3 pl-1")}" data-kind="titled" data-variant="${normalizeCalloutVariant(type)}" role="note">
+    <aside class="${cn("callout", extraClasses, "relative mb-4 flex flex-row gap-2 rounded-xl border border-rd-gray-alpha-400 bg-(--callout-bg-color) p-3 pl-1")}" data-kind="titled" data-variant="${normalizeCalloutVariant(type)}" role="note">
       <div aria-hidden="true" class="w-0.5 shrink-0 self-stretch rounded-full bg-(--callout-primary-color) opacity-60"></div>
       <div class="flex min-w-0 flex-1 flex-col gap-2">
         <div class="flex items-center gap-2 font-semibold tracking-tight">${titleInner}</div>

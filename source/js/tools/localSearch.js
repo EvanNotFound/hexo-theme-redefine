@@ -276,16 +276,16 @@ const renderSearchResult = (searchInputDom) => {
         let resultItem = "";
 
         if (slicesOfTitle.length !== 0) {
-          resultItem += `<li class="my-2.5 box-border border-b border-dashed border-rd-border py-2.5 last:border-b-0"><a href="${url}" class="mb-2.5 flex items-center font-bold"><span class="mr-[11px] h-[5px] w-[5px] shrink-0 rounded-full bg-default-text-color" aria-hidden="true"></span>${highlightKeyword(
+          resultItem += `<li class="my-2.5 box-border border-b border-dashed border-rd-gray-alpha-400 py-2.5 last:border-b-0"><a href="${url}" class="mb-2.5 flex items-center font-bold"><span class="mr-[11px] h-[5px] w-[5px] shrink-0 rounded-full bg-rd-gray-1000" aria-hidden="true"></span>${highlightKeyword(
             title,
             slicesOfTitle[0],
           )}</a>`;
         } else {
-          resultItem += `<li class="my-2.5 box-border border-b border-dashed border-rd-border py-2.5 last:border-b-0"><a href="${url}" class="mb-2.5 flex items-center font-bold"><span class="mr-[11px] h-[5px] w-[5px] shrink-0 rounded-full bg-default-text-color" aria-hidden="true"></span>${title}</a>`;
+          resultItem += `<li class="my-2.5 box-border border-b border-dashed border-rd-gray-alpha-400 py-2.5 last:border-b-0"><a href="${url}" class="mb-2.5 flex items-center font-bold"><span class="mr-[11px] h-[5px] w-[5px] shrink-0 rounded-full bg-rd-gray-1000" aria-hidden="true"></span>${title}</a>`;
         }
 
         slicesOfContent.forEach((slice) => {
-          resultItem += `<a href="${url}" class="hover:text-default-text-color"><p class="m-0 pl-4 leading-8 [overflow-wrap:break-word]">${highlightKeyword(
+          resultItem += `<a href="${url}" class="hover:text-rd-gray-1000"><p class="m-0 pl-4 leading-8 [overflow-wrap:break-word]">${highlightKeyword(
             content,
             slice,
           )}...</p></a>`;
@@ -304,10 +304,10 @@ const renderSearchResult = (searchInputDom) => {
 
   if (keywords.length === 1 && keywords[0] === "") {
     resultContent.innerHTML =
-      '<div id="local-search-status" class="m-auto text-third-text-color" aria-live="polite"><i class="fa-solid fa-magnifying-glass fa-5x" aria-hidden="true"></i></div>';
+      '<div id="local-search-status" class="m-auto text-rd-gray-900" aria-live="polite"><i class="fa-solid fa-magnifying-glass fa-5x" aria-hidden="true"></i></div>';
   } else if (resultItems.length === 0) {
     resultContent.innerHTML =
-      '<div id="local-search-status" class="m-auto text-third-text-color" aria-live="polite"><i class="fa-solid fa-box-open fa-5x" aria-hidden="true"></i></div>';
+      '<div id="local-search-status" class="m-auto text-rd-gray-900" aria-live="polite"><i class="fa-solid fa-box-open fa-5x" aria-hidden="true"></i></div>';
   } else {
     resultItems.sort((resultLeft, resultRight) => {
       if (resultLeft.searchTextCount !== resultRight.searchTextCount) {

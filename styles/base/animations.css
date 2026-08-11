@@ -38,7 +38,7 @@
   .title-hover-animation {
     position: relative;
     display: inline-block;
-    color: var(--second-text-color);
+    color: var(--rd-gray-1000);
     line-height: 1.3;
     vertical-align: top;
     border-bottom: none;
@@ -52,7 +52,7 @@
     height: 2px;
     content: "";
     visibility: hidden;
-    background-color: var(--second-text-color);
+    background-color: var(--rd-gray-1000);
     transform: scaleX(0);
     transition-property: color, background, border-color, visibility, transform;
     transition-delay: 0s, 0s, 0s, 0s, 0s;

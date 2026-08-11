@@ -151,13 +151,13 @@ This is the list of all the people who have donated to me: [Donation List](https
 ## 🌟 Star History
 
 <p align="center">
-<a href="https://star-history.com/#EvanNotFound/hexo-theme-redefine&Date">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=EvanNotFound/hexo-theme-redefine&type=Date&theme=dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=EvanNotFound/hexo-theme-redefine&type=Date" />
-    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=EvanNotFound/hexo-theme-redefine&type=Date" />
-  </picture>
-</a>
+    <a href="https://www.star-history.com/?repos=evannotfound%2Fhexo-theme-redefine&type=date&legend=top-left">
+     <picture>
+       <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=evannotfound/hexo-theme-redefine&type=date&theme=dark&legend=top-left&sealed_token=eEKOLEouS-qxJw5mUTJtOWShD2Y3f8j8T01NGFefzz-HOYAo7z35s1tgeGoYT5SSeg2X0V5D_9sS_c2BOFKnQAz9RuYJQgimwt3091TrsU51l0aRI3k9b_myBt9SUBq9carjrvi-zrQ9jvRz-4p6jvVq_ymSZoIFb1fXx_wpnYgrNJuDV6rQHecXOD1m" />
+       <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=evannotfound/hexo-theme-redefine&type=date&legend=top-left&sealed_token=eEKOLEouS-qxJw5mUTJtOWShD2Y3f8j8T01NGFefzz-HOYAo7z35s1tgeGoYT5SSeg2X0V5D_9sS_c2BOFKnQAz9RuYJQgimwt3091TrsU51l0aRI3k9b_myBt9SUBq9carjrvi-zrQ9jvRz-4p6jvVq_ymSZoIFb1fXx_wpnYgrNJuDV6rQHecXOD1m" />
+       <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=evannotfound/hexo-theme-redefine&type=date&legend=top-left&sealed_token=eEKOLEouS-qxJw5mUTJtOWShD2Y3f8j8T01NGFefzz-HOYAo7z35s1tgeGoYT5SSeg2X0V5D_9sS_c2BOFKnQAz9RuYJQgimwt3091TrsU51l0aRI3k9b_myBt9SUBq9carjrvi-zrQ9jvRz-4p6jvVq_ymSZoIFb1fXx_wpnYgrNJuDV6rQHecXOD1m" />
+     </picture>
+    </a>
 </p>
 
 ## 💻 Development

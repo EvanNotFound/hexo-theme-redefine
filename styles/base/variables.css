@@ -21,26 +21,17 @@
 
   :root,
   .light {
-    --background-color: #fff;
-    --background-color-transparent: rgb(255 255 255 / 60%);
-    --background-color-transparent-15: rgb(255 255 255 / 15%);
-    --background-color-transparent-40: rgb(255 255 255 / 40%);
-    --background-color-transparent-80: rgb(255 255 255 / 80%);
-    --second-background-color: #fafafa;
-    --third-background-color: #f7f7f7;
-    --third-background-color-transparent: rgb(241 241 241 / 60%);
-    --first-text-color: #323739;
-    --second-text-color: #343a3c;
-    --third-text-color: #5c6669;
-    --fourth-text-color: #eaeced;
-    --default-text-color: #373d3f;
-    --invert-text-color: #bebec6;
-    --rd-border: rgb(0 0 0 / 8%);
+    --rd-background-100: #fff;
+    --rd-background-200: #fafafa;
+    --rd-gray-100: #f7f7f8;
+    --rd-gray-200: #f2f3f4;
+    --rd-gray-300: #eef0f2;
+    --rd-gray-alpha-400: rgb(0 0 0 / 8%);
+    --rd-gray-900: #5c6669;
+    --rd-gray-1000: #343a3c;
     --scrollbar-color: #c1c1c1;
     --scrollbar-color-hover: #a1a1a1;
     --scroll-bar-bg-color: #fafafa;
-    --link-color: #323739;
-    --copyright-info-color: #c03;
     --avatar-background-color: #06c;
     --archive-timeline-last-child-color: linear-gradient(to bottom, #e8e8e8 60%, transparent 100%) 1 100%;
     --note-blue-title-bg: #d6f7fb;
@@ -52,32 +43,21 @@
     --note-type-title-bg: #fdf3e9;
     --note-black-title-bg: #e9e9e9;
     --note-purple-title-bg: #f9e9fd;
-    --home-banner-icons-container-border-color: rgb(255 255 255 / 35%);
-    --home-banner-icons-container-background-color: rgb(255 255 255 / 30%);
     --rd-shadow: 0 6px 24px rgb(0 0 0 / 6%);
   }
 
   .dark {
-    --background-color: #202124;
-    --background-color-transparent: rgb(32 33 36 / 40%);
-    --background-color-transparent-15: rgb(32 33 36 / 15%);
-    --background-color-transparent-40: rgb(32 33 36 / 40%);
-    --background-color-transparent-80: rgb(32 33 36 / 80%);
-    --second-background-color: #242529;
-    --third-background-color: #292b2f;
-    --third-background-color-transparent: rgb(32 33 36 / 60%);
-    --first-text-color: #d2d2d7;
-    --second-text-color: #cbcbd1;
-    --third-text-color: #9595a2;
-    --fourth-text-color: #36363e;
-    --default-text-color: #bebec6;
-    --invert-text-color: #373d3f;
-    --rd-border: rgb(255 255 255 / 8%);
+    --rd-background-100: #202124;
+    --rd-background-200: #242529;
+    --rd-gray-100: #27282c;
+    --rd-gray-200: #2a2c30;
+    --rd-gray-300: #2d2f34;
+    --rd-gray-alpha-400: rgb(255 255 255 / 8%);
+    --rd-gray-900: #9595a2;
+    --rd-gray-1000: #cbcbd1;
     --scrollbar-color: #898989;
     --scrollbar-color-hover: #a1a1a1;
     --scroll-bar-bg-color: #2a2c30;
-    --link-color: #c5c5cc;
-    --copyright-info-color: #a30029;
     --avatar-background-color: #005cb8;
     --archive-timeline-last-child-color: linear-gradient(to bottom, #323232 60%, transparent 100%) 1 100%;
     --note-blue-title-bg: #1e3e46;
@@ -89,8 +69,6 @@
     --note-type-title-bg: #4e3a1e;
     --note-black-title-bg: #1e1e1e;
     --note-purple-title-bg: #4e1e4e;
-    --home-banner-icons-container-border-color: rgb(197 197 197 / 35%);
-    --home-banner-icons-container-background-color: rgb(197 197 197 / 30%);
     --rd-shadow: 0 6px 24px rgb(0 0 0 / 25%);
   }
 }

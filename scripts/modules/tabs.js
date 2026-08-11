@@ -252,7 +252,7 @@ async function buildTabNavAndContent(tabBlocks, groupId, activeTabIndex, postCon
     const active = tabBlock.index === resolvedActiveIndex;
     const hiddenAttr = active ? '' : ' hidden';
 
-    tabNav.push(`<button id="${tabId}" type="button" role="tab" aria-controls="${panelId}" aria-selected="${active}" class="inline-flex items-center gap-2 whitespace-nowrap border-b-2 border-transparent py-2 text-sm font-medium text-third-text-color transition-colors hover:text-second-text-color aria-selected:border-primary aria-selected:text-primary" tabindex="${active ? '0' : '-1'}">${icon + caption}</button>`);
+    tabNav.push(`<button id="${tabId}" type="button" role="tab" aria-controls="${panelId}" aria-selected="${active}" class="inline-flex items-center gap-2 whitespace-nowrap border-b-2 border-transparent py-2 text-sm font-medium text-rd-gray-900 transition-colors hover:text-rd-gray-1000 aria-selected:border-primary aria-selected:text-primary" tabindex="${active ? '0' : '-1'}">${icon + caption}</button>`);
     tabContent.push(`<div id="${panelId}" role="tabpanel" aria-labelledby="${tabId}" class="markdown-body min-w-0"${hiddenAttr}>${finalContent}</div>`);
   }
 
@@ -271,8 +271,8 @@ async function postTabs(args, content) {
   const { tabNav, tabContent } = await buildTabNavAndContent(tabBlocks, groupId, activeTabIndex, this);
 
   const finalTabNav = `<div role="tablist" aria-orientation="horizontal" class="not-markdown scrollbar-hide flex gap-3.5 overflow-x-auto px-4">${tabNav}</div>`;
-  const finalTabContent = `<div class="rounded-b-[calc(0.75rem-1px)] bg-background-color/70 p-4">${tabContent}</div>`;
-  return `<div id="${groupId}" data-tabs class="tabs relative my-4 rounded-xl border border-rd-border bg-second-background-color">${finalTabNav + finalTabContent}</div>`;
+  const finalTabContent = `<div class="rounded-lg bg-rd-background-100/70 shadow-sm p-4">${tabContent}</div>`;
+  return `<div id="${groupId}" data-tabs class="tabs relative my-4 rounded-xl border border-rd-gray-alpha-400 bg-rd-gray-100 overflow-hidden">${finalTabNav + finalTabContent}</div>`;
 }
 
 hexo.extend.tag.register('tabs', postTabs, { ends: true, async: true });
