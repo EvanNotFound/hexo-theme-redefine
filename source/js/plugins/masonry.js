@@ -151,7 +151,7 @@ export default function initMasonry({ signal } = {}) {
 
     const img = document.createElement("img");
     img.className =
-      "!m-0 h-auto w-full cursor-zoom-in overflow-hidden rounded-md border border-rd-border !p-0 opacity-100 transition-[border-color,filter,opacity,transform] duration-300 data-[state=loading]:opacity-0 group-hover:border-rd-border";
+      "!m-0 h-auto w-full cursor-zoom-in overflow-hidden rounded-2xl border border-rd-border !p-0 opacity-100 transition-[border-color,filter,opacity,transform] duration-300 data-[state=loading]:opacity-0 group-hover:border-rd-border";
     img.dataset.state = "loading";
     img.alt = item.title || "";
     if (hasStableSize) {

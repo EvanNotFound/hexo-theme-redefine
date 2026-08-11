@@ -1,52 +1,57 @@
-<%- partial('components/header/progress-bar') %>
-<% if (theme.global.preloader === true || theme.global.preloader.enable === true) { %>
-<%- partial('components/header/preloader') %>
+<% const currentPageKind = typeof pageKind === 'string' ? pageKind : resolvePageKind(page); %>
+<% if (theme.global.scroll_progress.bar === true) { %>
+<div class="fixed top-0 left-0 z-9 w-full">
+	<span id="reading-progress" data-reading-progress role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" class="invisible absolute top-0 left-0 z-7 h-0.5 w-0 bg-primary transition-[width,opacity] duration-100 ease-in-out"></span>
+</div>
 <% } %>
-<% const hasFixedHomeBanner = theme.home_banner.enable === true && is_home() && theme.home_banner.style === "fixed"; %>
+<% if (theme.global.preloader === true || theme.global.preloader.enable === true) { %>
+<%- partial('components/preloader') %>
+<% } %>
+<% const hasFixedHomeBanner = theme.home_banner.enable === true && currentPageKind === 'home' && theme.home_banner.style === "fixed"; %>
 <main class="relative box-border h-auto w-full bg-background-color max-[768px]:!pr-0" id="swup" data-home-banner="<%= hasFixedHomeBanner ? 'fixed' : 'none' %>">
 
-	<% if (theme.home_banner.enable === true && is_home() && !page.prev) { %>
+	<% if (theme.home_banner.enable === true && currentPageKind === 'home' && !page.prev) { %>
 	<%- partial('pages/home/home-banner') %>
-	<% } else if (theme.home_banner.enable === true && is_home() && page.prev && theme.home_banner.style === "fixed") { %>
-	<%- partial('pages/home/home-background') %>
+	<% } else if (theme.home_banner.enable === true && currentPageKind === 'home' && page.prev && theme.home_banner.style === "fixed") { %>
+	<%- partial('pages/home/home-banner-image', {fixed: true, blurred: true}) %>
 	<% } %>
 
 	<div id="page-shell" class="relative flex min-h-dvh flex-col justify-between pt-[var(--current-navbar-height)] transition-[padding] duration-200 ease-linear">
 		<div id="page-header" data-state="visible" class="fixed top-0 right-0 z-5 box-border h-[var(--current-navbar-height)] w-full transition-[transform,padding-left,height] duration-200 ease-out data-[state=hidden]:-translate-y-[105%] max-[768px]:!pl-0">
-			<%- partial('components/header/navbar') %>
+			<%- partial('components/navbar') %>
 		</div>
 
-		<div id="page-content" class="transition-fade-up box-border flex w-full justify-center py-[var(--spacing-unit)] max-[768px]:py-[calc(var(--spacing-unit)*0.8)] max-[640px]:pt-0 max-[640px]:!border-0">
-			<% if (is_home() && theme.home.sidebar.enable === true && theme.home.sidebar.position === "left") { %>
-			<%- partial('pages/home/home-sidebar') %>
+		<div id="page-content" class="transition-fade-up box-border flex w-full justify-center py-10 max-[768px]:py-8 max-[640px]:pt-0 max-[640px]:!border-0">
+			<% if (currentPageKind === 'home' && theme.home.sidebar.enable === true && theme.home.sidebar.position === "left") { %>
+			<%- partial('pages/home/sidebar') %>
 			<% } %>
 
 			<div id="main-content" data-toc-state="closed" class="relative box-border h-full w-[80%] max-w-[var(--content-max-width)] transition-[max-width,width] duration-200 ease-in-out data-[toc-state=open]:!max-w-[var(--content-with-toc-max-width)] max-[768px]:w-[86%] max-[640px]:w-[90%]">
-				<%- partial(getPagePartialPath(page)) %>
+				<%- partial('pages/router', {pageKind: currentPageKind}) %>
 			</div>
 
-			<% if (is_home() && theme.home.sidebar.enable === true && theme.home.sidebar.position === "right") { %>
-			<%- partial('pages/home/home-sidebar') %>
+			<% if (currentPageKind === 'home' && theme.home.sidebar.enable === true && theme.home.sidebar.position === "right") { %>
+			<%- partial('pages/home/sidebar') %>
 			<% } %>
 		</div>
 
-		<%- partial('components/footer/footer') %>
+		<%- partial('components/footer') %>
 	</div>
 
-	<% if (is_post()) { %>
-	<aside class="fixed top-[calc(var(--current-navbar-height)+var(--spacing-unit))] right-[var(--spacing-unit)] transition-[top] duration-200 ease-in-out max-[768px]:right-[10px] max-[768px]:origin-top-right max-[768px]:scale-[0.82] max-[640px]:hidden">
-		<%- partial('pages/post/post-tools') %>
+	<% if (currentPageKind === 'post') { %>
+	<aside class="fixed top-[calc(var(--current-navbar-height)+2.5rem)] right-10 transition-[top] duration-200 ease-in-out max-[768px]:right-2.5 max-[768px]:origin-top-right max-[768px]:scale-[0.82] max-[640px]:hidden">
+		<%- partial('pages/post/tools') %>
 	</aside>
 	<% } %>
 
-	<aside id="side-tools" data-state="visible" class="fixed right-[var(--spacing-unit)] bottom-[5%] opacity-100 transition-opacity duration-200 data-[state=hidden]:pointer-events-none data-[state=hidden]:opacity-0 max-[640px]:right-3">
-		<%- partial('utils/side-tools') %>
+	<aside id="side-tools" data-state="visible" class="fixed right-10 bottom-[5%] opacity-100 transition-opacity duration-200 data-[state=hidden]:pointer-events-none data-[state=hidden]:opacity-0 max-[640px]:right-3">
+		<%- partial('components/side-tools') %>
 	</aside>
 
-	<%- partial('utils/image-viewer') %>
+	<%- partial('components/image-viewer') %>
 
 	<% if (theme.navbar.search.enable) { %>
-	<%- partial('utils/local-search') %>
+	<%- partial('components/local-search') %>
 	<% } %>
 
 </main>

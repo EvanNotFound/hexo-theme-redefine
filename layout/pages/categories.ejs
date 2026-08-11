@@ -1,0 +1,4 @@
+<%- partial('components/page-title', {title: page.title}) %>
+<div class="categories">
+    <%- list_categories(site.categories, {class: 'category', depth: 5, style: 'list'}) %>
+</div>

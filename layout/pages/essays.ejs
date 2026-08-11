@@ -1,0 +1,20 @@
+<div class="mb-4">
+    <%- partial('components/page-title', {title: page.title}) %>
+    <ul class="mb-4 flex flex-col gap-6">
+        <%
+            const timezone = config.timezone || 'Asia/Shanghai';
+            const sortedEssays = [...theme.essays].sort((a, b) => moment(b.date).diff(a.date));
+        %>
+        <% for (const essay of sortedEssays) { %>
+            <% const rawDate = moment(essay.date).utc().format('YYYY-MM-DD HH:mm:ss'); %>
+            <li class="relative flex w-full flex-row">
+                <div class="mr-4 h-10 w-10 shrink-0 overflow-hidden rounded-2xl border border-rd-border p-px"><%- image_tag(theme.defaults.avatar, {class: "h-full w-full rounded-[calc(1rem-1px)]"}) %></div>
+                <div class="w-full overflow-hidden rounded-2xl rounded-tl-none border border-rd-border">
+                    <time data-essay-date datetime="<%= moment(rawDate).tz(timezone).format() %>" class="block border-b border-rd-border bg-zinc-50 px-4 py-1.5 text-sm text-third-text-color dark:bg-zinc-800">Loading Date...</time>
+                    <div class="essay markdown-body px-4 py-2"><%- markdown(essay.content) %></div>
+                </div>
+                <div class="absolute top-3 left-[50.5px] h-2 w-2 -rotate-45 transform border-t border-l border-solid border-rd-border bg-zinc-50 dark:bg-zinc-800"></div>
+            </li>
+        <% } %>
+    </ul>
+</div>

@@ -20,7 +20,7 @@
     content: "";
     background: var(--background-color);
     border: 2px solid var(--third-text-color);
-    border-radius: 10px;
+    border-radius: 9999px;
     transition: background 0.2s ease-in-out;
   }
 
@@ -37,6 +37,6 @@
     content: "";
     background: var(--fourth-text-color);
     border: 1px solid var(--rd-border);
-    border-radius: 50px;
+    border-radius: 9999px;
   }
 }

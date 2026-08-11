@@ -16,6 +16,30 @@ because they adjusted only selected `rem`-based sizes, resulting in inconsistent
 scaling. Use browser zoom instead (for example, `Ctrl`/`Cmd` + `+` or `-`) to
 scale the complete page.
 
+### Update Custom Page Templates
+
+Custom page layouts are now selected only by the `template` front-matter field.
+Title matching and legacy `type` values no longer select special layouts. Update
+existing custom pages to use the documented value: `categories`, `tags`,
+`links`, `masonry`, `bookmarks`, or `essays`. Unknown or missing values render as
+ordinary pages.
+
+```yaml
+---
+title: Friends
+template: links
+---
+```
+
+### Review Custom Geometry
+
+Theme-owned spacing and border radii now use Tailwind's default scales instead
+of Redefine-specific spacing and radius variables. Framed route content and
+standalone components use `rounded-2xl`; nested article modules use
+`rounded-xl`. The default `articles.style.image_border_radius` value changes
+from `14px` to `12px`. Existing explicit configuration continues to override
+that default.
+
 ### Update Custom CSS and JavaScript Selectors
 
 This release removes undocumented DOM class names used only by the theme's

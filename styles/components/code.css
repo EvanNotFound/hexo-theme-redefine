@@ -30,7 +30,7 @@
   code {
     padding: 3px 4px;
     overflow-wrap: break-word;
-    border-radius: var(--radius-xs);
+    border-radius: 4px;
     color: var(--inline-code-foreground);
     background: var(--inline-code-background);
   }
@@ -68,7 +68,7 @@
     margin: 0 !important;
     padding-bottom: 5px;
     overflow: auto;
-    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    border-radius: 0;
   }
 
   [data-code-style='mac'] .highlight {
@@ -179,12 +179,13 @@
 
   .code-container {
     position: relative;
+    overflow: hidden;
     margin-top: 10px;
     margin-bottom: 1.2rem;
     padding-top: 40px;
     background: var(--highlight-background);
     border: 1px solid var(--rd-border);
-    border-radius: var(--radius-lg);
+    border-radius: 12px;
   }
 
   [data-code-style='mac'] .code-container {
@@ -213,7 +214,7 @@
     vertical-align: middle;
     cursor: pointer;
     user-select: none;
-    background: var(--second-background-color);
+    background: transparent;
     border: 0;
     outline: 0;
     opacity: 0;
@@ -227,7 +228,7 @@
 
   .copy-button {
     right: 0;
-    border-radius: 0 var(--radius-lg) 0 0;
+    border-radius: 0;
   }
 
   .code-container figcaption {
@@ -274,7 +275,7 @@
     left: 4px;
     margin-left: 10px;
     line-height: 42px;
-    border-radius: var(--radius-lg);
+    border-radius: 8px;
   }
 
   [data-code-style='mac'] .code-container::after {

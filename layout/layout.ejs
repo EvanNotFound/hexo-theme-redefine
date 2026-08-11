@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="<%= config.language %>" <%- themeStyleAttrs() %>>
-<%- partial('components/header/head') %>
+<%- partial('components/head') %>
 
 <body>
 	<%- body %>
 	<%- partial('components/scripts') %>
 	<% if (theme.plugins.aplayer.enable) { %>
-	<%- partial('components/plugins/aplayer') %>
+	<%- partial('components/aplayer') %>
 	<% } %>
 </body>
 

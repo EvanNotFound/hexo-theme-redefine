@@ -1,0 +1,43 @@
+<div class="py-8 sm:py-0">
+    <%- partial('components/page-title', {title: page.title}) %>
+    <div class="flex w-full flex-col gap-6 md:flex-row md:gap-12">
+        <div class="h-fit w-full shrink-0 sm:py-6 md:sticky md:top-[var(--current-navbar-height)] md:w-48">
+            <nav class="scrollbar-hide flex gap-2 overflow-x-auto pb-4 md:block md:pb-0" aria-label="Bookmarks">
+                <% theme.bookmarks.forEach((category, index) => { %>
+                    <% const sectionId = `bookmark-section-${index}`; %>
+                    <a data-bookmark-nav aria-controls="<%= sectionId %>" href="#<%= sectionId %>" class="block shrink-0 whitespace-nowrap rounded-lg border border-transparent px-3 py-2 font-medium transition-all duration-200 hover:scale-[1.02] hover:border-second-background-color hover:bg-second-background-color hover:text-primary aria-[current=location]:scale-[1.02] aria-[current=location]:border-second-background-color aria-[current=location]:bg-second-background-color aria-[current=location]:text-primary md:whitespace-normal">
+                        <i class="fa-regular <%= category.icon %> mr-2 h-6 w-6" aria-hidden="true"></i><%= category.category %>
+                    </a>
+                <% }); %>
+            </nav>
+        </div>
+
+        <div class="max-w-full flex-1">
+            <% theme.bookmarks.forEach((category, index) => { %>
+                <section id="bookmark-section-<%= index %>" data-bookmark-section class="mb-12">
+                    <h2 class="mb-4 border-b border-rd-border pb-2 text-2xl font-semibold text-second-text-color"><%= category.category %></h2>
+                    <div class="grid gap-6 lg:grid-cols-2">
+                        <% for (const item of category.items) { %>
+                            <a href="<%= item.link %>" target="_blank" rel="noopener noreferrer" class="group block">
+                                <div class="rounded-2xl border border-rd-border p-5">
+                                    <div class="flex items-center gap-5">
+                                        <div class="h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-second-background-color transition-transform duration-300 group-hover:scale-105">
+                                            <img src="<%= item.image %>" alt="<%= item.name %>" class="h-full w-full object-cover" onerror="this.src='<%= url_for('/images/bookmark-placeholder.svg') %>'">
+                                        </div>
+                                        <div class="flex min-w-0 flex-1 flex-col gap-1">
+                                            <div class="flex items-center justify-between">
+                                                <h3 class="font-medium text-second-text-color transition-colors group-hover:text-primary"><%= item.name %></h3>
+                                                <i class="fa-regular fa-arrow-right -translate-x-1 text-third-text-color opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100" aria-hidden="true"></i>
+                                            </div>
+                                            <p class="line-clamp-2 text-sm text-third-text-color"><%= item.description %></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        <% } %>
+                    </div>
+                </section>
+            <% }); %>
+        </div>
+    </div>
+</div>

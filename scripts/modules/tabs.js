@@ -271,8 +271,8 @@ async function postTabs(args, content) {
   const { tabNav, tabContent } = await buildTabNavAndContent(tabBlocks, groupId, activeTabIndex, this);
 
   const finalTabNav = `<div role="tablist" aria-orientation="horizontal" class="not-markdown scrollbar-hide flex gap-3.5 overflow-x-auto px-4">${tabNav}</div>`;
-  const finalTabContent = `<div class="rounded-md bg-background-color/70 p-4 shadow-[0_2px_8px_-4px_rgba(0,0,0,0.2)]">${tabContent}</div>`;
-  return `<div id="${groupId}" data-tabs class="tabs relative my-4 rounded-md border border-rd-border bg-second-background-color">${finalTabNav + finalTabContent}</div>`;
+  const finalTabContent = `<div class="rounded-b-[calc(0.75rem-1px)] bg-background-color/70 p-4">${tabContent}</div>`;
+  return `<div id="${groupId}" data-tabs class="tabs relative my-4 rounded-xl border border-rd-border bg-second-background-color">${finalTabNav + finalTabContent}</div>`;
 }
 
 hexo.extend.tag.register('tabs', postTabs, { ends: true, async: true });

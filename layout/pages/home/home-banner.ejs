@@ -2,7 +2,7 @@
     <%- partial('pages/home/home-banner-image', {fixed: true, blurred: false}) %>
 <% } %>
 
-<section id="home-banner" class="transition-fade relative flex min-h-screen w-full box-border items-center justify-center overflow-hidden font-[family-name:var(--home-font)] will-change-transform">
+<section id="home-banner" class="transition-fade relative flex min-h-screen w-full box-border items-center justify-center overflow-hidden font-home will-change-transform">
     <% if (theme.home_banner.style !== "fixed") { %>
         <%- partial('pages/home/home-banner-image', {fixed: false, blurred: false}) %>
     <% } %>
@@ -75,7 +75,7 @@
                                             <img src="<%- url_for(icon) %>" alt="" class="h-5 w-5 object-contain" aria-hidden="true">
                                         <% } %>
                                     </button>
-                                    <div id="<%= qrId %>" data-qr-popup aria-hidden="true" class="invisible absolute right-0 bottom-0 mb-14 h-auto translate-y-0.5 overflow-hidden rounded-2xl border border-white/20 bg-background-color-transparent-40 opacity-0 transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 dark:border-gray-500/30">
+                                    <div id="<%= qrId %>" data-qr-popup aria-hidden="true" class="invisible absolute right-0 bottom-0 mb-14 h-auto translate-y-0.5 overflow-hidden rounded-3xl border border-white/20 bg-background-color-transparent-40 opacity-0 transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 dark:border-gray-500/30">
                                         <img class="w-64" src="<%- url_for(item.qr) %>" alt="<%= name %>">
                                     </div>
                                 </span>

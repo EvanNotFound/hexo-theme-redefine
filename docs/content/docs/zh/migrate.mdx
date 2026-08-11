@@ -9,6 +9,27 @@ description: 介绍 Redefine 主要版本的样式系统变更，以及从 v1 �
 
 **注意：** 侧边工具栏中的增大和减小字号控件已移除，因为它们仅调整部分基于 `rem` 的尺寸，缩放效果不一致。请改用浏览器缩放（例如 `Ctrl`/`Cmd` + `+` 或 `-`）来缩放整个页面。
 
+### 更新自定义页面模版
+
+自定义页面布局现在仅通过 Front Matter 中的 `template` 字段选择。页面标题匹配和旧的
+`type` 值不再选择特殊布局。请将现有自定义页面改为已记录的值：`categories`、
+`tags`、`links`、`masonry`、`bookmarks` 或 `essays`。缺少 `template` 或使用未知值时，
+页面会按普通页面渲染。
+
+```yaml
+---
+title: 友情链接
+template: links
+---
+```
+
+### 检查自定义几何样式
+
+主题控制的间距和圆角现在直接使用 Tailwind 默认比例，不再维护 Redefine 专用的间距和
+圆角变量。带边框的路由级内容和独立组件使用 `rounded-2xl`，文章内嵌模块使用
+`rounded-xl`。`articles.style.image_border_radius` 的默认值从 `14px` 调整为 `12px`；
+已有的显式配置仍会覆盖该默认值。
+
 ### 更新自定义 CSS 和 JavaScript 选择器
 
 此版本删除了未记录且仅供主题内部样式使用的 DOM class 名称，不提供兼容别名。任何以这些内部名称为目标的自定义 CSS 或 JavaScript 都必须根据当前生成的标记更新。

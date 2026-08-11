@@ -38,7 +38,7 @@
   body::-webkit-scrollbar-thumb {
     background: var(--scrollbar-color);
     border: 3px solid transparent;
-    border-radius: 18px;
+    border-radius: 9999px;
     background-clip: content-box;
   }
 
@@ -52,7 +52,7 @@
   body::-webkit-scrollbar-thumb:hover {
     background: var(--scrollbar-color-hover);
     border: 3px solid transparent;
-    border-radius: 18px;
+    border-radius: 9999px;
     background-clip: content-box;
   }
 
@@ -99,7 +99,7 @@
     user-select: none;
     background-color: var(--second-background-color) !important;
     border: 1px solid var(--rd-border);
-    border-radius: 14px !important;
+    border-radius: 8px !important;
   }
 
   .btn:hover,

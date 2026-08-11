@@ -294,7 +294,7 @@ articles:
   style:
     font_size: 16px # Font size
     line_height: 1.5 # Line height
-    image_border_radius: 14px # image border radius
+    image_border_radius: 12px # image border radius
     image_alignment: center # image alignment. left, center
     image_caption: false # Whether to display image caption
     link_icon: true # Whether to display link icon

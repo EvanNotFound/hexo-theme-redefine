@@ -1,0 +1,68 @@
+<%
+    const articleDateFormat = is_post() ? `${config.date_format} ${config.time_format}` : config.date_format;
+    const formatArticleDate = (value) => date(value, articleDateFormat).replace(" 00:00:00", "").replace(":00", "");
+    const metaItemClass = "mr-2.5 last:mr-0";
+%>
+<div class="text-[0.8rem] text-third-text-color [&_a]:text-third-text-color [&_a:hover]:text-primary">
+    <span class="group relative <%= metaItemClass %>">
+        <i class="fa-regular fa-pen-fancy" aria-hidden="true"></i>&nbsp;
+        <time datetime="<%= date_xml(articleObject.date) %>"><%= formatArticleDate(articleObject.date) %></time>
+        <span class="pointer-events-none absolute top-6 left-1/2 z-1 w-max -translate-x-1/2 rounded-sm border border-rd-border bg-second-background-color px-[5px] opacity-0 transition-opacity duration-300 group-hover:opacity-100"><%= __('create_time') %></span>
+    </span>
+    <% if (articleObject?.updated && articleObject.updated !== articleObject.date) { %>
+        <span class="group relative <%= metaItemClass %>">
+            <i class="fa-regular fa-wrench" aria-hidden="true"></i>&nbsp;
+            <time datetime="<%= date_xml(articleObject.updated) %>"><%= formatArticleDate(articleObject.updated) %></time>
+            <span class="pointer-events-none absolute top-6 left-1/2 z-1 w-max -translate-x-1/2 rounded-sm border border-rd-border bg-second-background-color px-[5px] opacity-0 transition-opacity duration-300 group-hover:opacity-100"><%= __('update_time') %></span>
+        </span>
+    <% } %>
+
+    <% if (articleObject?.categories?.length) { %>
+        <span class="inline <%= metaItemClass %>">
+            <i class="fa-regular fa-folders" aria-hidden="true"></i>&nbsp;
+            <ul class="inline">
+                <% let previousParentId = null; %>
+                <% articleObject.categories.forEach((category) => { %>
+                    <% if (previousParentId !== category.parent) { %>
+                        <% if (previousParentId !== null) { %><li class="inline">></li><% } %>
+                        <li class="inline"><a href="<%- url_for(category.path) %>"><%= category.name %></a>&nbsp;</li>
+                    <% } else { %>
+                        <li class="inline">| <a href="<%- url_for(category.path) %>"><%= category.name %></a>&nbsp;</li>
+                    <% } %>
+                    <% previousParentId = category.parent; %>
+                <% }); %>
+            </ul>
+        </span>
+    <% } %>
+    <% if (articleObject?.tags?.length) { %>
+        <span class="inline max-[768px]:hidden <%= metaItemClass %>">
+            <i class="fa-regular fa-tags" aria-hidden="true"></i>&nbsp;
+            <ul class="inline">
+                <% articleObject.tags.forEach((tag, i) => { %>
+                    <li class="inline"><%= i === 0 ? '' : '| ' %><a href="<%- url_for(tag.path) %>"><%= tag.name %></a>&nbsp;</li>
+                <% }); %>
+            </ul>
+        </span>
+    <% } %>
+
+    <%
+        let temp_wordcount;
+        let temp_min2read;
+        try {
+            temp_wordcount = wordcount(articleObject.content);
+            temp_min2read = min2read(articleObject.content);
+        } catch (e) {
+            temp_wordcount = 0;
+            temp_min2read = 0;
+        }
+    %>
+    <% if (is_post() && theme.hasOwnProperty('articles') && theme.articles.word_count.enable && theme.articles.word_count.count && temp_wordcount) { %>
+        <span class="<%= metaItemClass %>"><i class="fa-regular fa-typewriter" aria-hidden="true"></i>&nbsp;<%= temp_wordcount %> <%- __('wordcount') %></span>
+    <% } %>
+    <% if (is_post() && theme.hasOwnProperty('articles') && theme.articles.word_count.enable && theme.articles.word_count.min2read && temp_min2read) { %>
+        <span class="<%= metaItemClass %>"><i class="fa-regular fa-clock" aria-hidden="true"></i>&nbsp;<%= temp_min2read %> <%- __('min2read') %></span>
+    <% } %>
+    <% if (is_post() && theme.global.website_counter.enable && theme.global.website_counter.post_pv) { %>
+        <span class="<%= metaItemClass %>"><i class="fa-regular fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"></span></span>
+    <% } %>
+</div>

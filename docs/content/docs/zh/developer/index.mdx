@@ -91,11 +91,13 @@ pnpm release:notes:check
 - `source/assets/`：提交到仓库的运行时资源。
 - `source/js/`：浏览器端 JavaScript 源代码。
 - `scripts/`：Hexo 生成阶段使用的 Node 脚本。
-- `layout/`：Hexo 模板。
+- `layout/`：Hexo 模板。Hexo 必需的入口文件保留在根目录，可复用的渲染片段位于
+  `layout/components/`，路由专属标记位于 `layout/pages/`；仅评论、首页和文章等包含
+  多个紧密相关文件的模块使用子目录。
 - `dev/site/`：本地演示站的配置、文章、页面和测试内容。
 
 ## 自定义主题
 
-主题控制的 EJS 或脚本生成标记应使用 Tailwind 工具类处理普通布局和外观；重复界面应提取到模板或辅助函数。全局规则、渲染内容、复杂选择器和第三方标记由 `styles/base/`、`styles/components/` 或 `styles/plugins/` 中的原生 CSS 负责。新增原生 CSS 文件后，还需要从 `styles/theme.css` 或相应入口显式导入。
+主题控制的 EJS 或脚本生成标记应使用 Tailwind 工具类处理普通布局和外观；重复界面应提取到模板或辅助函数。间距和圆角直接使用 Tailwind 默认比例，不要定义主题专用替代比例。页面分发集中并显式写在 `layout/pages/router.ejs` 中，自定义页面通过已记录的 `template` Front Matter 选择。全局规则、渲染内容、复杂选择器和第三方标记由 `styles/base/`、`styles/components/` 或 `styles/plugins/` 中的原生 CSS 负责。新增原生 CSS 文件后，还需要从 `styles/theme.css` 或相应入口显式导入。
 
 详细的 Tailwind CSS 文档请参考 [Tailwind CSS 官方文档](https://tailwindcss.com/docs)。

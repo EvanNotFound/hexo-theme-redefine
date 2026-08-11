@@ -56,12 +56,20 @@ package-specific command says otherwise.
 - Browser JavaScript under `source/js/**` uses ES modules. Hexo integration
   under `scripts/**` uses CommonJS, starts with `"use strict";`, and registers
   through `hexo.extend.*` APIs.
+- Keep required Hexo entries at the `layout/` root, reusable rendered partials
+  in `layout/components/`, and route-owned markup in `layout/pages/`. Retain
+  subdirectories only for cohesive multi-file families such as comments, home,
+  and post. Custom page layouts are selected only by documented `template`
+  front matter and dispatched explicitly in `layout/pages/router.ejs`.
 - Core CSS and Tailwind input is `styles/theme.css`. Keep global and rendered
   content rules in `styles/base/`, focused theme rules in `styles/components/`,
   and optional third-party assets in `styles/plugins/`. Import core files
   explicitly; plugin files are copied as named assets and loaded conditionally.
 - The theme no longer uses Stylus or a consumer stylesheet renderer. Do not add
   `.styl` inputs or configuration-time CSS compilation.
+- Use Tailwind's default spacing and border-radius scales for theme-owned
+  layout. Do not introduce parallel fixed scales or override the `--radius-*`
+  namespace.
 - Add theme defaults to `_config.yml`. If browser code needs a value, also
   export it through `scripts/config-export.js` and consume it with a default.
 - Add user-facing theme strings to the relevant files under `languages/`.

@@ -17,7 +17,7 @@
     cursor: pointer;
     background: var(--second-background-color);
     border: 1px solid var(--rd-border);
-    border-radius: 14px;
+    border-radius: 16px;
     transition: all 0.2s ease;
   }
 
@@ -32,7 +32,7 @@
     color: var(--third-text-color);
     background: var(--third-background-color);
     border: 1px solid var(--rd-border);
-    border-radius: 9px;
+    border-radius: 6px;
   }
 
   .categories > .category-list > .category-list-item > .category-list-link {

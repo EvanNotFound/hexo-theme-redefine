@@ -5,6 +5,9 @@ description: 本主题对友链，标签，分类，归档页面进行了特别�
 
 import { Users, Tag, FolderTree, Grid, Bookmark } from "lucide-react";
 
+自定义页面布局仅通过 Front Matter 中已记录的 `template` 字段选择。页面标题或旧的
+`type` 值不会选择页面模版；自定义标题时仍需保留对应的 `template` 值。
+
 <Cards>
   <Card title="友情链接" href="/page_templates/friends" icon={<Users />} />
   <Card title="标签" href="/page_templates/tags" icon={<Tag />} />

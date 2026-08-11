@@ -54,7 +54,7 @@
   .toc::-webkit-scrollbar-thumb {
     background-clip: content-box;
     border: 3px solid transparent;
-    border-radius: 20px;
+    border-radius: 9999px;
   }
 
   .toc ol {

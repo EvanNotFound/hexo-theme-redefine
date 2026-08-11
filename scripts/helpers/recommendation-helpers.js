@@ -350,8 +350,8 @@ function userInterface(recommendedArticles, cfg) {
 
 function itemInterface(item, hideOnTablet) {
   const url = hexo.extend.helper.get('url_for').call(hexo, item.path);
-  return `<a class="mt-[15px] flex max-h-[200px] w-[32%] flex-wrap content-center items-center justify-center overflow-hidden rounded-lg border border-rd-border bg-background-color !p-3 max-[768px]:w-[49%] ${hideOnTablet ? "max-[768px]:hidden" : ""}" href="${url}" title="${item.title}" rel="bookmark">
-  <img src="${item.headimg}" alt="${item.title}" class="!-mx-3 !-mt-3 !mb-0 flex h-[150px] !w-[calc(100%+24px)] !max-w-none rounded-t-md object-cover">
+  return `<a class="mt-[15px] flex max-h-[200px] w-[32%] flex-wrap content-center items-center justify-center overflow-hidden rounded-2xl border border-rd-border bg-background-color !p-3 max-[768px]:w-[49%] ${hideOnTablet ? "max-[768px]:hidden" : ""}" href="${url}" title="${item.title}" rel="bookmark">
+  <img src="${item.headimg}" alt="${item.title}" class="!-mx-3 !-mt-3 !mb-0 flex h-[150px] !w-[calc(100%+24px)] !max-w-none object-cover">
   <span class="mt-2 block overflow-hidden [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:1]">${item.title}</span>
 </a>`;
 }

@@ -1,6 +1,6 @@
 ---
 title: Redefine 主题用户墙
-type: links
+template: links
 comment: true
 date: 2023-02-16 19:56:33
 ---

@@ -37,7 +37,7 @@
     --home-banner-text-color: #fff;
     --home-banner-icons-container-border-color: rgb(255 255 255 / 35%);
     --home-banner-icons-container-background-color: rgb(255 255 255 / 30%);
-    --rd-shadow: 0 6px 24px rgb(0 0 0 / 8%);
+    --rd-shadow: 0 6px 24px rgb(0 0 0 / 6%);
   }
 
   .dark {

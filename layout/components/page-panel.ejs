@@ -1,0 +1,14 @@
+<div class="box-border mb-8 rounded-2xl border border-rd-border bg-background-color p-8 shadow-rd max-[768px]:mb-6 max-[768px]:p-6 max-[640px]:mb-4 max-[640px]:rounded-none max-[640px]:border-0 max-[640px]:px-[0.2rem] max-[640px]:py-[1.2rem] max-[640px]:shadow-none">
+    <% if (pageBody) { %><%- pageBody %><% } %>
+
+    <div class="markdown-body text-default-text-color">
+        <% if (!pageBody) { %><h1><%- page.title %></h1><% } %>
+        <%- page.content %>
+    </div>
+
+    <% if (page.comment === true || page.comments === true) { %>
+        <%- partial('components/comments/index') %>
+    <% } %>
+</div>
+
+<%- partial('components/paginator') %>

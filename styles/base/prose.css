@@ -73,7 +73,7 @@
     padding: 0.75rem 1rem 0.75rem 0.5rem;
     color: var(--default-text-color);
     background: var(--third-background-color);
-    border-radius: 0 14px 14px 0;
+    border-radius: 0 12px 12px 0;
     position: relative;
     border-left: 5px solid var(--default-text-color);
   }
@@ -347,6 +347,7 @@
     max-width: 100%;
     overflow-x: auto;
     margin: 1rem 0 1.2rem;
+    border-radius: 12px;
   }
 
   .markdown-body .table-scroll > table:not(.not-markdown) {
@@ -361,33 +362,12 @@
     max-width: 100%;
     margin: 1rem 0 1.2rem;
     border: 1px solid var(--rd-border);
-    border-radius: 14px;
   }
 
   .markdown-body > table:not(.not-markdown) thead th,
   .markdown-body .table-scroll > table:not(.not-markdown) thead th {
     border-bottom: 1px solid var(--rd-border);
     background-color: var(--third-background-color) !important;
-  }
-
-  .markdown-body > table:not(.not-markdown) thead th:first-child,
-  .markdown-body .table-scroll > table:not(.not-markdown) thead th:first-child {
-    border-top-left-radius: 14px;
-  }
-
-  .markdown-body > table:not(.not-markdown) thead th:last-child,
-  .markdown-body .table-scroll > table:not(.not-markdown) thead th:last-child {
-    border-top-right-radius: 14px;
-  }
-
-  .markdown-body > table:not(.not-markdown) tbody tr:last-child td:first-child,
-  .markdown-body .table-scroll > table:not(.not-markdown) tbody tr:last-child td:first-child {
-    border-bottom-left-radius: 14px;
-  }
-
-  .markdown-body > table:not(.not-markdown) tbody tr:last-child td:last-child,
-  .markdown-body .table-scroll > table:not(.not-markdown) tbody tr:last-child td:last-child {
-    border-bottom-right-radius: 14px;
   }
 
   .markdown-body > table:not(.not-markdown) td,

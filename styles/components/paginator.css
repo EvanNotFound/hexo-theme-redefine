@@ -16,7 +16,7 @@
     cursor: pointer;
     background: var(--background-color);
     border: 1px solid var(--rd-border);
-    border-radius: 9px;
+    border-radius: 8px;
   }
 
   .paginator :is(a.page-number, span.page-number, a.prev, a.next):hover {

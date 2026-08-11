@@ -26,8 +26,7 @@
     <% } %>
 <% } %>
 
-<% const pageData = getPageData(page); %>
-<% const isMasonryPage = pageData && pageData.partial === "pages/masonry/masonry"; %>
+<% const isMasonryPage = page.template === "masonry"; %>
 <% if (theme.masonry || theme.photos || theme.gallery || isMasonryPage) { %>
     <%- renderJS('libs/minimasonry.min.js', { swupReload: true }) %>
 <% } %>

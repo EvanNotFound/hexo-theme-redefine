@@ -129,13 +129,20 @@ automatic release notes.
 - `source/assets/`: Checked-in runtime assets.
 - `source/js/`: Browser-side JavaScript source.
 - `scripts/`: Hexo generation-time Node scripts.
-- `layout/`: Hexo templates.
+- `layout/`: Hexo templates. Required Hexo entry files stay at the root,
+  reusable rendered fragments live in `layout/components/`, and route-owned
+  markup lives in `layout/pages/`. Only cohesive multi-file families such as
+  comments, home, and post use subdirectories.
 - `dev/site/`: Local demo-site configuration, posts, pages, and fixtures.
 
 ## Customizing the Theme
 
 Use Tailwind utilities for ordinary layout and appearance in theme-owned EJS or
 script-generated markup, and extract repeated UI into templates or helpers.
+Use Tailwind's default spacing and border-radius scales rather than defining
+theme-specific replacements. Keep route dispatch explicit in
+`layout/pages/router.ejs`; custom pages are selected by documented `template`
+front matter.
 Native CSS under `styles/base/`, `styles/components/`, or `styles/plugins/` owns
 global rules, rendered content, complex selectors, and third-party markup. After
 adding a native CSS file, import it explicitly from `styles/theme.css` or the

@@ -1,0 +1,27 @@
+<% if (pageKind === 'home') { %>
+    <%- partial('pages/home/index') %>
+<% } else if (pageKind === 'post') { %>
+    <%- partial('pages/post/index') %>
+<% } else if (pageKind === 'archive') { %>
+    <%- partial('pages/archive') %>
+<% } else if (pageKind === 'category') { %>
+    <%- partial('components/page-panel', {pageBody: partial('pages/category')}) %>
+<% } else if (pageKind === 'tag') { %>
+    <%- partial('components/page-panel', {pageBody: partial('pages/tag')}) %>
+<% } else if (pageKind === 'categories') { %>
+    <%- partial('components/page-panel', {pageBody: partial('pages/categories')}) %>
+<% } else if (pageKind === 'tags') { %>
+    <%- partial('components/page-panel', {pageBody: partial('pages/tags')}) %>
+<% } else if (pageKind === 'friends') { %>
+    <%- partial('components/page-panel', {pageBody: partial('pages/friends')}) %>
+<% } else if (pageKind === 'essays') { %>
+    <%- partial('components/page-panel', {pageBody: partial('pages/essays')}) %>
+<% } else if (pageKind === 'masonry') { %>
+    <%- partial('pages/masonry') %>
+<% } else if (pageKind === 'bookmarks') { %>
+    <%- partial('pages/bookmarks') %>
+<% } else if (pageKind === 'not-found') { %>
+    <%- partial('pages/not-found') %>
+<% } else { %>
+    <%- partial('components/page-panel', {pageBody: ''}) %>
+<% } %>

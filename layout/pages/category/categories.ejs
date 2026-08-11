@@ -1,5 +1,0 @@
-<%- partial('utils/page-title', {title: getPageTitle(page)}) %>
-<div class="categories">
-    <%- list_categories(site.categories, {class: 'category', depth: 5, style: 'list'}) %>
-</div>
-<% if (page.comment) { %><%- partial('components/comments/comment') %><% } %>

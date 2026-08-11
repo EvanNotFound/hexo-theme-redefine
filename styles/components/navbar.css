@@ -15,7 +15,7 @@
     height: 2px;
     content: "";
     background: var(--primary-color);
-    border-radius: 18px;
+    border-radius: 9999px;
     opacity: 0;
     transform: translate3d(-50%, -5px, 0);
     transition: transform 0.2s ease, bottom 0.2s ease, opacity 0.2s ease;

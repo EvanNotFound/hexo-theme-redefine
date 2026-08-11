@@ -149,7 +149,7 @@ const modeColors = ({ dark, primary, selection, bannerText }) => dark ? {
   "--home-banner-text-color": bannerText,
   "--home-banner-icons-container-border-color": "rgb(255 255 255 / 35%)",
   "--home-banner-icons-container-background-color": "rgb(255 255 255 / 30%)",
-  "--rd-shadow": "0 6px 24px rgb(0 0 0 / 8%)",
+  "--rd-shadow": "0 6px 24px rgb(0 0 0 / 6%)",
 };
 
 hexo.extend.helper.register("themeStyles", function () {
@@ -175,7 +175,6 @@ hexo.extend.helper.register("themeStyles", function () {
   const layout = {
     "--navbar-height": "70px",
     "--navbar-shrink-height": "50.4px",
-    "--spacing-unit": "38px",
     "--content-max-width": contentWidth,
     "--content-with-toc-max-width": scaleLength(contentWidth, 1.2, "1200px"),
     "--navbar-width-home": safeLength(theme.navbar?.width?.home, "1200px"),
@@ -183,17 +182,17 @@ hexo.extend.helper.register("themeStyles", function () {
     "--toc-width": safeLength(theme.global?.sidebar_width, "210px"),
     "--article-font-size": safeLength(articleStyle.font_size, "16px"),
     "--article-line-height": safeLength(articleStyle.line_height, "1.5", true),
-    "--image-radius": safeLength(articleStyle.image_border_radius, "14px"),
+    "--image-radius": safeLength(articleStyle.image_border_radius, "12px"),
     "--image-alignment": ["left", "center"].includes(articleStyle.image_alignment) ? articleStyle.image_alignment : "center",
     "--font-default": DEFAULT_FONT,
     "--font-english": theme.global?.fonts?.english?.enable ? safeValue(theme.global.fonts.english.family, "Geist Variable") : "Geist Variable",
     "--font-chinese": theme.global?.fonts?.chinese?.enable ? safeValue(theme.global.fonts.chinese.family, "PingFang SC") : DEFAULT_CHINESE_FONT,
-    "--font-title": theme.global?.fonts?.title?.enable ? safeValue(theme.global.fonts.title.family, "var(--font-default)") : "var(--font-default)",
+    "--font-title": theme.global?.fonts?.title?.enable ? safeValue(theme.global.fonts.title.family, "var(--font-display)") : "var(--font-display)",
     "--font-article-title": "var(--font-english), var(--font-chinese), Noto Sans SC, sans-serif",
     "--code-font": theme.articles?.code_block?.font?.enable && theme.articles.code_block.font.family
       ? safeValue(theme.articles.code_block.font.family, "Geist Mono")
       : "Geist Mono",
-    "--home-font": theme.home_banner?.custom_font?.enable ? `${safeValue(theme.home_banner.custom_font.family, "Chillax Variable")}, sans-serif` : "Chillax Variable, sans-serif",
+    "--font-home": theme.home_banner?.custom_font?.enable ? `${safeValue(theme.home_banner.custom_font.family, "var(--font-display)")}, sans-serif` : "var(--font-display)",
     "--home-title-size": safeLength(theme.home_banner?.text_style?.title_size, "2.8rem"),
     "--home-subtitle-size": safeLength(theme.home_banner?.text_style?.subtitle_size, "1.5rem"),
     "--home-line-height": safeLength(theme.home_banner?.text_style?.line_height, "1.2", true),

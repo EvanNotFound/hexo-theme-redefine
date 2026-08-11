@@ -441,7 +441,7 @@ const createExifCard = (group) => {
   if (!card) {
     card = document.createElement("div");
     card.className =
-      "rounded-lg border border-rd-border bg-background-color-transparent-80 px-3 py-2 shadow-rd";
+      "rounded-2xl border border-rd-border bg-background-color-transparent-80 px-3 py-2 shadow-rd";
     const header = document.createElement("div");
     header.className = "mb-1 flex items-center gap-2";
     const iconDom = document.createElement("i");

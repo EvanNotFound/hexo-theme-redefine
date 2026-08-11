@@ -5,6 +5,10 @@ description: The theme includes specially optimized pages for friends links, tag
 
 import { Users, Tag, FolderTree, Grid, Bookmark } from "lucide-react";
 
+Custom page layouts are selected only by the documented `template` front-matter
+field. A page title or legacy `type` value does not select a template. Keep the
+required `template` value when customizing the page title.
+
 <Cards>
   <Card title="Friends Links" href="/page_templates/friends" icon={<Users />} />
   <Card title="Tags" href="/page_templates/tags" icon={<Tag />} />

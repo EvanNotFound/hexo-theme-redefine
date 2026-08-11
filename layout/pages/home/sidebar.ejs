@@ -1,0 +1,51 @@
+<%
+    const hasSidebarLinks = theme.home.sidebar.links !== null;
+    const hasSidebarAnnouncement = theme.home.sidebar.announcement !== null;
+    const hasSidebarExtra = hasSidebarLinks || hasSidebarAnnouncement;
+    const sidebarItems = theme.home.sidebar.first_item === "info"
+        ? ["profile", ...(hasSidebarExtra ? ["links"] : [])]
+        : [...(hasSidebarExtra ? ["links"] : []), "profile"];
+%>
+<aside class="mx-10 h-auto w-60 max-[768px]:mx-5 max-[640px]:hidden">
+    <div class="sticky top-[var(--current-navbar-height)]">
+        <% sidebarItems.forEach((item, index) => { %>
+            <% const separated = index > 0; %>
+            <% if (item === "profile") { %>
+                <div data-sidebar-panel class="box-border rounded-2xl border border-rd-border bg-background-color p-5 <%= separated ? 'mt-6' : '' %>">
+                    <div class="flex justify-center">
+                        <%- image_tag(theme.defaults.avatar, {class: "h-20 w-20 rounded-2xl border border-rd-border p-px"}) %>
+                    </div>
+                    <div class="mx-0 my-2.5 flex flex-col justify-center">
+                        <div class="text-center text-[1.2rem] font-semibold text-second-text-color"><%= theme.info.author || config.author %></div>
+                        <% if (theme.hasOwnProperty('articles') && theme.articles.author_label.enable === true) { %>
+                            <div class="text-center text-[0.8rem] text-third-text-color"><%- getAuthorLabel(site.posts.length, theme.articles.author_label.auto, theme.articles.author_label.list) %></div>
+                        <% } %>
+                    </div>
+                    <%- partial('components/statistics') %>
+                </div>
+            <% } else { %>
+                <div data-sidebar-panel class="box-border overflow-hidden rounded-2xl border border-rd-border bg-background-color p-[15px] <%= separated ? 'mt-6' : '' %>">
+                    <div data-sidebar-header class="-mx-[15px] -mt-[15px] mb-2.5 border-b border-rd-border bg-second-background-color p-[15px]">
+                        <div class="text-center font-title text-[1.2rem] font-medium text-second-text-color"><%= theme.info.title || config.title %></div>
+                        <% if (hasSidebarAnnouncement && hasSidebarLinks) { %>
+                            <div class="mt-2.5 mb-[5px] text-center text-[0.9rem] text-third-text-color"><%- theme.home.sidebar.announcement %></div>
+                        <% } %>
+                    </div>
+                    <% if (hasSidebarLinks) { %>
+                        <% for (const label in theme.home.sidebar.links) { %>
+                            <% const link = theme.home.sidebar.links[label]; %>
+                            <% if (link.path !== 'none') { %>
+                                <a data-sidebar-link class="flex cursor-pointer items-center justify-center rounded-lg px-0 py-[5px] text-left font-[family-name:var(--font-default)] text-second-text-color hover:bg-second-background-color hover:text-primary" href="<%= url_for(link.path) %>">
+                                    <% if (link.icon) { %><i class="<%- link.icon %> mr-[5px] text-[1.2rem]" aria-hidden="true"></i><% } %>
+                                    <span class="font-medium"><%= __(label) %></span>
+                                </a>
+                            <% } %>
+                        <% } %>
+                    <% } else { %>
+                        <div class="mt-2.5 mb-[5px] flex items-center justify-center px-0 py-[5px] text-center text-second-text-color"><%- theme.home.sidebar.announcement %></div>
+                    <% } %>
+                </div>
+            <% } %>
+        <% }); %>
+    </div>
+</aside>
