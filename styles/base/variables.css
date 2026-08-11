@@ -1,4 +1,24 @@
 @layer theme {
+  :root {
+    --navbar-height: 70px;
+    --navbar-shrink-height: 50.4px;
+    --font-default: Geist Variable, Noto Sans SC, -apple-system, system-ui,
+      Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif,
+      BlinkMacSystemFont, Helvetica Neue, PingFang SC, Hiragino Sans GB,
+      Microsoft YaHei, Arial;
+    --font-english: Geist Variable, sans-serif;
+    --font-chinese: -apple-system, BlinkMacSystemFont, PingFang SC,
+      Microsoft YaHei, Heiti SC, WenQuanYi Micro Hei, sans-serif;
+    --font-article-title: var(--font-english), var(--font-chinese),
+      Noto Sans SC, sans-serif;
+    --code-font: Geist Mono;
+    --nav-color-bg: linear-gradient(
+      120deg,
+      var(--nav-color-1),
+      var(--nav-color-2)
+    );
+  }
+
   :root,
   .light {
     --background-color: #fff;
@@ -9,7 +29,6 @@
     --second-background-color: #fafafa;
     --third-background-color: #f7f7f7;
     --third-background-color-transparent: rgb(241 241 241 / 60%);
-    --primary-color: #a31f34;
     --first-text-color: #323739;
     --second-text-color: #343a3c;
     --third-text-color: #5c6669;
@@ -17,7 +36,6 @@
     --default-text-color: #373d3f;
     --invert-text-color: #bebec6;
     --rd-border: rgb(0 0 0 / 8%);
-    --selection-color: #be243c;
     --scrollbar-color: #c1c1c1;
     --scrollbar-color-hover: #a1a1a1;
     --scroll-bar-bg-color: #fafafa;
@@ -34,7 +52,6 @@
     --note-type-title-bg: #fdf3e9;
     --note-black-title-bg: #e9e9e9;
     --note-purple-title-bg: #f9e9fd;
-    --home-banner-text-color: #fff;
     --home-banner-icons-container-border-color: rgb(255 255 255 / 35%);
     --home-banner-icons-container-background-color: rgb(255 255 255 / 30%);
     --rd-shadow: 0 6px 24px rgb(0 0 0 / 6%);
@@ -49,7 +66,6 @@
     --second-background-color: #242529;
     --third-background-color: #292b2f;
     --third-background-color-transparent: rgb(32 33 36 / 60%);
-    --primary-color: #a31f34;
     --first-text-color: #d2d2d7;
     --second-text-color: #cbcbd1;
     --third-text-color: #9595a2;
@@ -57,7 +73,6 @@
     --default-text-color: #bebec6;
     --invert-text-color: #373d3f;
     --rd-border: rgb(255 255 255 / 8%);
-    --selection-color: #be243c;
     --scrollbar-color: #898989;
     --scrollbar-color-hover: #a1a1a1;
     --scroll-bar-bg-color: #2a2c30;
@@ -74,7 +89,6 @@
     --note-type-title-bg: #4e3a1e;
     --note-black-title-bg: #1e1e1e;
     --note-purple-title-bg: #4e1e4e;
-    --home-banner-text-color: #d1d1b6;
     --home-banner-icons-container-border-color: rgb(197 197 197 / 35%);
     --home-banner-icons-container-background-color: rgb(197 197 197 / 30%);
     --rd-shadow: 0 6px 24px rgb(0 0 0 / 25%);

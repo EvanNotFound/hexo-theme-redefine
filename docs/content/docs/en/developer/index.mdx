@@ -62,7 +62,7 @@ Run these commands from the repository root:
 pnpm clean
 pnpm run build
 pnpm run build:css
-pnpm run check:css
+pnpm test
 pnpm run build:js
 pnpm run watch:css
 ```
@@ -72,9 +72,9 @@ pnpm run watch:css
 - `pnpm run build:css` compiles `styles/theme.css` to
   `source/css/build/theme.css` and copies plugin styles from `styles/plugins/`
   to `source/css/build/plugins/`.
-- `pnpm run check:css` builds all theme styles and generates the canonical demo
-  with the default and representative feature and plugin configurations. It
-  checks CSS syntax, imports, outputs, and configuration-dependent rendering.
+- `pnpm test` uses Node's built-in test runner, builds the theme CSS, runs
+  focused Hexo helper tests, and generates the canonical demo under the default,
+  feature, and plugin configuration matrices.
 - `pnpm run build:js` bundles the application, writes lazy feature chunks and
   standalone plugin outputs, copies vendor JavaScript, and writes source maps
   under `source/js/build/`.

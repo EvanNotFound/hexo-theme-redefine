@@ -6,9 +6,13 @@ on:
       - main
       - dev
     paths:
+      - '_config.yml'
+      - 'layout/**'
+      - 'styles/**'
       - 'source/js/**'
       - 'source/css/**'
       - 'scripts/**'
+      - 'tests/**'
       - 'package.json'
       - 'pnpm-lock.yaml'
       - 'pnpm-workspace.yaml'
@@ -39,5 +43,8 @@ jobs:
           runtime: node@24
           cache: true
 
-      - name: Build Project
-        run: pnpm run build
+      - name: Test Theme
+        run: pnpm test
+
+      - name: Build JavaScript
+        run: pnpm run build:js

@@ -35,11 +35,11 @@ package-specific command says otherwise.
 ## Commands and verification
 
 - Install: `pnpm install --frozen-lockfile`.
-- Theme source or configuration: `pnpm run build`. There is no root test or
-  lint script; use `pnpm run build:css` or `pnpm run build:js` only for a
-  narrower affected area.
-- Theme CSS verification: `pnpm run check:css` builds CSS and generates the
-  canonical demo site with default, feature, and plugin configuration matrices.
+- Theme source or configuration: `pnpm run build`. Use `pnpm run build:css` or
+  `pnpm run build:js` only for a narrower affected area.
+- Theme tests: `pnpm test` uses Node's built-in test runner, builds CSS, tests
+  Hexo helpers, and generates the canonical demo site with default, feature,
+  and plugin configuration matrices.
 - Interactive theme preview: `pnpm dev` serves Hexo at
   `http://127.0.0.1:4000`, resets and links the demo site, and watches CSS.
   It serves source browser modules and does not watch production JavaScript

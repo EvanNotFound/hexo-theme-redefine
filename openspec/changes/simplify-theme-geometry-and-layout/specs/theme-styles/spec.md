@@ -47,3 +47,19 @@ Redefine-owned surfaces SHALL use Tailwind's default border-radius scale without
 
 - **WHEN** a comment system, player, or other third-party integration owns its internal geometry
 - **THEN** this radius contract does not replace its internal semantic or vendor-owned corner values
+
+### Requirement: CSS variables have one owning layer
+
+Fixed visual and layout variables SHALL be defined in theme CSS. The generated theme style SHALL contain only values derived from site configuration and MUST NOT repeat fixed light or dark palettes, structural borders, shadows, or dimensions.
+
+#### Scenario: A fixed visual token changes
+
+- **WHEN** a contributor changes a fixed mode-aware token such as `--rd-shadow`
+- **THEN** the browser receives that value from the compiled theme stylesheet
+- **AND** no generated runtime declaration overrides it
+
+#### Scenario: A configured style changes
+
+- **WHEN** a site configures a supported color, width, font, or article style value
+- **THEN** the generated theme style contains the normalized configured value
+- **AND** fixed CSS variables remain absent from that generated style

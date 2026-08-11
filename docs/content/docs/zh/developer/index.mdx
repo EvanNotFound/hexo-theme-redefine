@@ -52,7 +52,7 @@ pnpm dev
 pnpm clean
 pnpm run build
 pnpm run build:css
-pnpm run check:css
+pnpm test
 pnpm run build:js
 pnpm run watch:css
 ```
@@ -60,7 +60,7 @@ pnpm run watch:css
 - `pnpm clean` 删除演示站生成的 `db.json` 和 `public/` 目录。
 - `pnpm run build` 统一执行主题 CSS 和浏览器端 JavaScript 构建。
 - `pnpm run build:css` 将 `styles/theme.css` 编译为 `source/css/build/theme.css`，并将 `styles/plugins/` 中的插件样式复制到 `source/css/build/plugins/`。
-- `pnpm run check:css` 构建所有主题样式，并使用默认配置和具有代表性的功能、插件配置生成规范演示站，用于检查 CSS 语法、导入、输出和依赖配置的渲染结果。
+- `pnpm test` 使用 Node.js 内置测试运行器，构建主题 CSS，运行聚焦的 Hexo 辅助函数测试，并在默认、功能和插件配置矩阵下生成规范演示站。
 - `pnpm run build:js` 在 `source/js/build/` 下生成应用 bundle、按需加载的功能 chunk、独立插件脚本、复制的 vendor JavaScript 和 source map。
 - `pnpm run watch:css` 监听 `styles/theme.css` 及其导入的样式和 Tailwind 内容来源，同时将 `styles/plugins/` 的变化同步到生成目录；该命令不会启动 Hexo。
 

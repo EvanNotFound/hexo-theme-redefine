@@ -15,3 +15,8 @@
 - [x] 3.1 Convert canonical demo custom pages to documented `template` front matter, add or adjust fixtures needed to exercise every supported custom page kind and route-shell geometry, and confirm title-only or `type`-only pages no longer select a custom template.
 - [x] 3.2 Update aligned English and Chinese page-template, configuration, migration, and developer guidance for template-only routing, Tailwind-owned spacing/radii, the `12px` image default, and the simplified EJS ownership model; update repository agent guidance only where contributor paths change.
 - [x] 3.3 Complete the focused theme build and canonical configuration matrix, documentation lint and type checks, OpenSpec validation, and diff hygiene after the implementation and regression assertions pass.
+
+## 4. Centralize Variables And Verification
+
+- [x] 4.1 Move fixed mode, layout, and typography variables to their CSS owners, reduce `themeStyles()` to normalized configuration-derived declarations, and cover the ownership boundary with focused helper tests.
+- [ ] 4.2 Replace the monolithic `check:css` source scanner with Node test-runner unit and generated-site tests, wire `pnpm test` into contributor guidance and CI, and remove brittle migration-only string assertions.

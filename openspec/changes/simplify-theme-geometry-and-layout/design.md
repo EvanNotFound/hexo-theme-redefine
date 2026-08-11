@@ -66,6 +66,12 @@ The unused shadcn-style color/radius variable block and Tailwind v3 global gray 
 
 The alternative of removing the article shadow was rejected in favor of the selected direction: consistent elevation across framed route-level content. Applying the shadow to every card was also rejected because it would erase the distinction between primary route depth and nested grouping.
 
+### Give fixed and configured CSS variables separate owners
+
+`styles/base/variables.css` owns fixed light/dark palettes, structural tokens, dimensions, and fixed variable compositions. `scripts/helpers/style-helpers.js` emits only normalized values derived from theme configuration. The early head script applies `.light` or `.dark` before stylesheets load, so the runtime helper does not need to duplicate the fixed palettes or synthesize a configured default palette on `:root`.
+
+Tailwind theme variables remain in `styles/theme.css` only when Tailwind needs them to generate a utility. Configurable overrides may replace those values at runtime, while disabled options use the CSS-owned default. This keeps `--rd-shadow` and other fixed tokens out of the unlayered generated style, which otherwise takes precedence over declarations in the theme cascade layer.
+
 ### Resolve custom pages from `template` only
 
 Required Hexo root entries remain the source of built-in route kinds. The index, post, archive, category, tag, and not-found entries pass or establish their explicit kind when delegating to the common page shell. Generic page rendering resolves a custom kind from an exact supported `page.template` value:
@@ -123,6 +129,7 @@ The archive partial uses `page.posts` so year, month, and paginated archive rout
 - **[Template-only selection is breaking]** Sites and demo fixtures using `type` or title inference will render ordinary pages. → Update every canonical fixture and bilingual guide, add a major-release migration note, and verify each documented template output.
 - **[Moving EJS files can break ambient contracts]** A stale partial path or missing local can fail generation or omit content. → Move cohesive groups, update all references in the same step, preserve ambient Hexo locals, and use explicit locals for the new router and page panel contracts.
 - **[DOM changes can break browser behavior]** Reorganization may accidentally rename IDs or data hooks. → Treat current behavior selectors as fixed contracts and assert representative generated markup after the move.
+- **[Generated styles can override fixed CSS tokens]** Unlayered runtime declarations outrank values in the theme cascade layer. → Keep fixed variables out of `themeStyles()` and test the helper output directly.
 
 ## Migration Plan
 

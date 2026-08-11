@@ -1,8 +1,5 @@
 "use strict";
 
-const DEFAULT_FONT = "Geist Variable, Noto Sans SC, -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial";
-const DEFAULT_CHINESE_FONT = "-apple-system, BlinkMacSystemFont, PingFang SC, Microsoft YaHei, Heiti SC, WenQuanYi Micro Hei, sans-serif";
-
 const safeValue = (value, fallback) => {
   const text = String(value ?? "").trim();
   return text && !/[;{}<>\u0000-\u001f]/.test(text) ? text : fallback;
@@ -94,87 +91,23 @@ const declarations = (values) => Object.entries(values)
   .map(([name, value]) => `${name}:${value}`)
   .join(";");
 
-const modeColors = ({ dark, primary, selection, bannerText }) => dark ? {
-  "--background-color": "#202124",
-  "--background-color-transparent": "rgb(32 33 36 / 40%)",
-  "--background-color-transparent-15": "rgb(32 33 36 / 15%)",
-  "--background-color-transparent-40": "rgb(32 33 36 / 40%)",
-  "--background-color-transparent-80": "rgb(32 33 36 / 80%)",
-  "--second-background-color": "#242529",
-  "--third-background-color": "#292b2f",
-  "--third-background-color-transparent": "rgb(32 33 36 / 60%)",
-  "--primary-color": primary,
-  "--first-text-color": "#d2d2d7",
-  "--second-text-color": "#cbcbd1",
-  "--third-text-color": "#9595a2",
-  "--fourth-text-color": "#36363e",
-  "--default-text-color": "#bebec6",
-  "--invert-text-color": "#373d3f",
-  "--rd-border": "rgb(255 255 255 / 8%)",
-  "--selection-color": selection,
-  "--scrollbar-color": "#898989",
-  "--scrollbar-color-hover": "#a1a1a1",
-  "--scroll-bar-bg-color": "#2a2c30",
-  "--link-color": "#c5c5cc",
-  "--copyright-info-color": "#a30029",
-  "--avatar-background-color": "#005cb8",
-  "--home-banner-text-color": bannerText,
-  "--home-banner-icons-container-border-color": "rgb(197 197 197 / 35%)",
-  "--home-banner-icons-container-background-color": "rgb(197 197 197 / 30%)",
-  "--rd-shadow": "0 6px 24px rgb(0 0 0 / 25%)",
-} : {
-  "--background-color": "#fff",
-  "--background-color-transparent": "rgb(255 255 255 / 60%)",
-  "--background-color-transparent-15": "rgb(255 255 255 / 15%)",
-  "--background-color-transparent-40": "rgb(255 255 255 / 40%)",
-  "--background-color-transparent-80": "rgb(255 255 255 / 80%)",
-  "--second-background-color": "#fafafa",
-  "--third-background-color": "#f7f7f7",
-  "--third-background-color-transparent": "rgb(241 241 241 / 60%)",
-  "--primary-color": primary,
-  "--first-text-color": "#323739",
-  "--second-text-color": "#343a3c",
-  "--third-text-color": "#5c6669",
-  "--fourth-text-color": "#eaeced",
-  "--default-text-color": "#373d3f",
-  "--invert-text-color": "#bebec6",
-  "--rd-border": "rgb(0 0 0 / 8%)",
-  "--selection-color": selection,
-  "--scrollbar-color": "#c1c1c1",
-  "--scrollbar-color-hover": "#a1a1a1",
-  "--scroll-bar-bg-color": "#fafafa",
-  "--link-color": "#323739",
-  "--copyright-info-color": "#c03",
-  "--avatar-background-color": "#06c",
-  "--home-banner-text-color": bannerText,
-  "--home-banner-icons-container-border-color": "rgb(255 255 255 / 35%)",
-  "--home-banner-icons-container-background-color": "rgb(255 255 255 / 30%)",
-  "--rd-shadow": "0 6px 24px rgb(0 0 0 / 6%)",
-};
-
 hexo.extend.helper.register("themeStyles", function () {
   const theme = this.theme || {};
   const articleStyle = theme.articles?.style || {};
   const primary = safeColor(theme.colors?.primary, "#a31f34");
   const selection = lightenHex(primary, 0.1);
   const contentWidth = safeLength(theme.global?.content_max_width, "1000px");
-  const light = modeColors({
-    dark: false,
-    primary,
-    selection,
-    bannerText: safeColor(theme.home_banner?.text_color?.light, "#fff"),
-  });
-  const dark = modeColors({
-    dark: true,
-    primary,
-    selection,
-    bannerText: safeColor(theme.home_banner?.text_color?.dark, "#d1d1b6"),
-  });
+  const light = {
+    "--home-banner-text-color": safeColor(theme.home_banner?.text_color?.light, "#fff"),
+  };
+  const dark = {
+    "--home-banner-text-color": safeColor(theme.home_banner?.text_color?.dark, "#d1d1b6"),
+  };
   const navLeft = safeColor(theme.navbar?.color?.left, "#f78736");
   const navRight = safeColor(theme.navbar?.color?.right, "#367df7");
   const layout = {
-    "--navbar-height": "70px",
-    "--navbar-shrink-height": "50.4px",
+    "--primary-color": primary,
+    "--selection-color": selection,
     "--content-max-width": contentWidth,
     "--content-with-toc-max-width": scaleLength(contentWidth, 1.2, "1200px"),
     "--navbar-width-home": safeLength(theme.navbar?.width?.home, "1200px"),
@@ -184,15 +117,21 @@ hexo.extend.helper.register("themeStyles", function () {
     "--article-line-height": safeLength(articleStyle.line_height, "1.5", true),
     "--image-radius": safeLength(articleStyle.image_border_radius, "12px"),
     "--image-alignment": ["left", "center"].includes(articleStyle.image_alignment) ? articleStyle.image_alignment : "center",
-    "--font-default": DEFAULT_FONT,
-    "--font-english": theme.global?.fonts?.english?.enable ? safeValue(theme.global.fonts.english.family, "Geist Variable") : "Geist Variable",
-    "--font-chinese": theme.global?.fonts?.chinese?.enable ? safeValue(theme.global.fonts.chinese.family, "PingFang SC") : DEFAULT_CHINESE_FONT,
-    "--font-title": theme.global?.fonts?.title?.enable ? safeValue(theme.global.fonts.title.family, "var(--font-display)") : "var(--font-display)",
-    "--font-article-title": "var(--font-english), var(--font-chinese), Noto Sans SC, sans-serif",
-    "--code-font": theme.articles?.code_block?.font?.enable && theme.articles.code_block.font.family
-      ? safeValue(theme.articles.code_block.font.family, "Geist Mono")
-      : "Geist Mono",
-    "--font-home": theme.home_banner?.custom_font?.enable ? `${safeValue(theme.home_banner.custom_font.family, "var(--font-display)")}, sans-serif` : "var(--font-display)",
+    ...(theme.global?.fonts?.english?.enable && {
+      "--font-english": safeValue(theme.global.fonts.english.family, "Geist Variable"),
+    }),
+    ...(theme.global?.fonts?.chinese?.enable && {
+      "--font-chinese": safeValue(theme.global.fonts.chinese.family, "PingFang SC"),
+    }),
+    ...(theme.global?.fonts?.title?.enable && {
+      "--font-title": safeValue(theme.global.fonts.title.family, "var(--font-display)"),
+    }),
+    ...(theme.articles?.code_block?.font?.enable && theme.articles.code_block.font.family && {
+      "--code-font": safeValue(theme.articles.code_block.font.family, "Geist Mono"),
+    }),
+    ...(theme.home_banner?.custom_font?.enable && {
+      "--font-home": `${safeValue(theme.home_banner.custom_font.family, "var(--font-display)")}, sans-serif`,
+    }),
     "--home-title-size": safeLength(theme.home_banner?.text_style?.title_size, "2.8rem"),
     "--home-subtitle-size": safeLength(theme.home_banner?.text_style?.subtitle_size, "1.5rem"),
     "--home-line-height": safeLength(theme.home_banner?.text_style?.line_height, "1.2", true),
@@ -200,10 +139,7 @@ hexo.extend.helper.register("themeStyles", function () {
     "--nav-color-2": withHexAlpha(navRight, theme.navbar?.color?.transparency, "rgb(54 125 247 / 20.8%)"),
     ...headings(articleStyle),
   };
-  layout["--nav-color-bg"] = "linear-gradient(120deg, var(--nav-color-1), var(--nav-color-2))";
-  const defaults = theme.colors?.default_mode === "dark" ? dark : light;
-
-  return `<style id="redefine-theme-vars">:root{${declarations({ ...defaults, ...layout })}}.light{${declarations(light)}}.dark{${declarations(dark)}}</style>`;
+  return `<style id="redefine-theme-vars">:root{${declarations(layout)}}.light{${declarations(light)}}.dark{${declarations(dark)}}</style>`;
 });
 
 const attr = (name, value) => `${name}="${String(value).replace(/[&"<>]/g, "")}"`;
