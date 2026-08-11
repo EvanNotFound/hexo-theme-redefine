@@ -7,7 +7,7 @@
         <%- partial('pages/home/home-banner-image', {fixed: false, blurred: false}) %>
     <% } %>
     <div class="transition-fade-down relative mt-8 flex min-h-[90vh] box-border flex-col items-center justify-center">
-        <div class="home-title flex w-screen flex-col items-center justify-center text-center text-[length:var(--home-title-size)] leading-[var(--home-line-height)] font-medium text-home-banner-text-color max-[768px]:text-[length:calc(var(--home-title-size)*0.9)]">
+        <div class="home-title flex w-screen flex-col items-center justify-center text-center text-[length:calc(var(--home-title-size)*0.9)] leading-[var(--home-line-height)] font-medium text-home-banner-text-color md:text-[length:var(--home-title-size)]">
             <%- theme.home_banner.title || theme.style.first_screen.description || config.description %>
             <% const subtitleConfig = theme.home_banner.subtitle || {}; %>
             <% const subtitleText = subtitleConfig.text; %>

@@ -1,54 +1,11 @@
-<div class="<%= theme.home.sidebar.enable === true && theme.home.sidebar.position === 'right' ? 'ml-10 max-[768px]:ml-0' : '' %> <%= theme.home.sidebar.enable === true && theme.home.sidebar.position === 'left' ? 'mr-10 max-[768px]:mr-0' : '' %>">
+<% if (theme.home.sidebar.enable === true && theme.home.sidebar.position === 'left') { %>
+    <%- partial('pages/home/sidebar') %>
+<% } %>
+
+<div id="main-content" class="relative box-border h-full w-9/10 max-w-content transition-[max-width,width] duration-200 ease-in-out sm:w-6/7 md:w-4/5 <%= theme.home.sidebar.enable === true && theme.home.sidebar.position === 'right' ? 'md:ml-10' : '' %> <%= theme.home.sidebar.enable === true && theme.home.sidebar.position === 'left' ? 'md:mr-10' : '' %>">
     <ul>
         <% page.posts.forEach(post => { %>
-            <!-- using ring to avoid border wrapping around post thumbnail -->
-            <li data-home-card class="relative flex box-border flex-col mb-10 overflow-hidden rounded-2xl ring-inset ring ring-rd-gray-alpha-400 bg-rd-background-100 max-[768px]:mb-8 max-[640px]:mb-6 group">
-                <% if (post.sticky) { %>
-                    <div data-sticky-label class="absolute top-3 right-3 z-10 cursor-default rounded-full border border-rd-gray-alpha-400 bg-rd-background-100/15 px-2.5 py-0.5 text-xs text-rd-gray-900 hover:text-rd-gray-1000">
-                        <i class="fa-regular fa-thumbtack mr-[3px] text-[0.65rem]" aria-hidden="true"></i><%- __('sticky') %>
-                    </div>
-                <% } %>
-
-                <%
-                    let articleThumbnail = "";
-                    if (post.cover || post.banner || (post.thumbnail && post.thumbnail !== false)) {
-                        if (post.thumbnail && post.thumbnail !== null) {
-                            articleThumbnail = post.thumbnail;
-                        } else if (post.cover && post.cover.includes("/")) {
-                            articleThumbnail = post.cover;
-                        } else if (post.banner && post.banner.includes("/")) {
-                            articleThumbnail = post.banner;
-                        } else if (config.marked.postAsset === true) {
-                            articleThumbnail = [post.path, post.cover || post.banner].join("/");
-                        }
-                    }
-                %>
-
-                <% if (post.thumbnail !== false && (post.thumbnail || post.cover || post.banner)) { %>
-                    <div class="relative h-[150px] w-full overflow-hidden -mb-1">
-                        <a href="<%- url_for(post.path) %>">
-                            <img src="<%- url_for(articleThumbnail) %>" alt="<%= post.title %>" class="absolute top-1/2 h-full w-full -translate-y-1/2 object-cover transition-all dark:brightness-75 group-hover:scale-102 duration-500" />
-                        </a>
-                    </div>
-                <% } %>
-                <div class="flex flex-col gap-4 p-6">
-                    <h3 class="relative m-0 font-[family-name:var(--font-article-title)] text-[1.4rem] leading-normal font-semibold text-rd-gray-1000 max-[768px]:text-[1.3rem] max-[640px]:text-[1.2rem]">
-                        <a href="<%- url_for(post.path) %>"><%= post.title %></a>
-                    </h3>
-
-                    <div class="markdown-body text-justify text-rd-gray-1000 [overflow-wrap:break-word]">
-                        <% if (post.excerpt && post.excerpt == "false") { %>
-                        <% } else if (post.excerpt && post.excerpt !== "false") { %>
-                            <%- render(post.excerpt, "markdown") %>
-                        <% } else { %>
-                            <% const excerptLength = theme.home.excerpt_length || 200; %>
-                            <%- truncate(strip_html(post.content), {length: excerptLength}) %>
-                        <% } %>
-                    </div>
-
-                    <%- partial('pages/home/post-card', {post}) %>
-                </div>
-            </li>
+            <%- partial('pages/home/post-card', {post}) %>
         <% }) %>
     </ul>
 
@@ -56,3 +13,7 @@
         <%- partial('components/paginator') %>
     </div>
 </div>
+
+<% if (theme.home.sidebar.enable === true && theme.home.sidebar.position === 'right') { %>
+    <%- partial('pages/home/sidebar') %>
+<% } %>

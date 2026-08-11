@@ -35,7 +35,7 @@
         </span>
     <% } %>
     <% if (articleObject?.tags?.length) { %>
-        <span class="inline max-[768px]:hidden <%= metaItemClass %>">
+        <span class="inline max-md:hidden <%= metaItemClass %>">
             <i class="fa-regular fa-tags" aria-hidden="true"></i>&nbsp;
             <ul class="inline">
                 <% articleObject.tags.forEach((tag, i) => { %>

@@ -1,0 +1,9 @@
+<% if (theme.home_banner.enable === true && !page.prev) { %>
+    <div data-home-banner="<%= theme.home_banner.style === 'fixed' ? 'fixed' : 'static' %>">
+        <%- partial('pages/home/home-banner') %>
+    </div>
+<% } else if (theme.home_banner.enable === true && page.prev && theme.home_banner.style === 'fixed') { %>
+    <div data-home-banner="fixed">
+        <%- partial('pages/home/home-banner-image', {fixed: true, blurred: true}) %>
+    </div>
+<% } %>

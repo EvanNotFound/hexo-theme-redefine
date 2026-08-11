@@ -1,44 +1,91 @@
-<div class="flex items-center justify-between text-[0.92rem] text-rd-gray-900">
-    <div class="tracking-[0.5px] [&_a]:text-rd-gray-900 [&_a:hover]:text-primary">
-        <span class="mr-2.5"><i class="fa-solid fa-calendars" aria-hidden="true"></i>&nbsp;
-            <time data-home-article-date data-date="<%= post.date %>" datetime="<%= date_xml(post.date) %>">
-                <% if (theme.home.article_date_format == 'auto' || theme.home.article_date_format == 'relative') { %>
-                    <%= date(post.date, config.date_format) %>
-                <% } else { %>
-                    <%= date(post.date, theme.home.article_date_format) %>
-                <% } %>
-            </time>
-        </span>
-        <% if (post.categories.length && theme.home.categories.enable === true) { %>
-            <span class="mr-2.5 max-[640px]:hidden">
-                <i class="fa-solid fa-folders" aria-hidden="true"></i>&nbsp;
-                <ul class="inline">
-                    <% let previousParentId = null; %>
-                    <% post.categories.forEach((category) => { %>
-                        <% if (previousParentId !== category.parent) { %>
-                            <% if (previousParentId !== null) { %><li class="inline">></li><% } %>
-                            <li class="inline"><a href="<%- url_for(category.path) %>"><%= category.name %></a>&nbsp;</li>
-                        <% } else { %>
-                            <li class="inline">| <a href="<%- url_for(category.path) %>"><%= category.name %></a>&nbsp;</li>
-                        <% } %>
-                        <% previousParentId = category.parent; %>
-                    <% }); %>
-                </ul>
-            </span>
-        <% } %>
-        <% if (post.tags.length && theme.home.tags.enable === true) { %>
-            <span class="mr-2.5 last:mr-0 max-[768px]:hidden">
-                <i class="fa-solid fa-tags" aria-hidden="true"></i>&nbsp;
-                <ul class="inline">
-                    <% post.tags.forEach((tag, i) => { %>
-                        <% if (theme.home.tags.limit === 0 || i + 1 <= theme.home.tags.limit) { %>
-                            <li class="inline"><%= i === 0 ? '' : '| ' %><a href="<%- url_for(tag.path) %>"><%= tag.name %></a>&nbsp;</li>
-                        <% } %>
-                    <% }); %>
-                </ul>
-            </span>
-        <% } %>
-    </div>
+<!-- using ring to avoid border wrapping around post thumbnail -->
+<li data-home-card class="relative flex box-border flex-col mb-6 overflow-hidden rounded-2xl ring-inset ring ring-rd-gray-alpha-400 bg-rd-background-100 sm:mb-8 md:mb-10 group">
+    <% if (post.sticky) { %>
+        <div data-sticky-label class="absolute top-3 right-3 z-10 cursor-default rounded-full border border-rd-gray-alpha-400 bg-rd-background-100/15 px-2.5 py-0.5 text-xs text-rd-gray-900 hover:text-rd-gray-1000">
+            <i class="fa-regular fa-thumbtack mr-[3px] text-[0.65rem]" aria-hidden="true"></i><%- __('sticky') %>
+        </div>
+    <% } %>
 
-    <a href="<%- url_for(post.path) %>"><%- __('read_more') %><span class="sr-only"><%= post.title %></span>&nbsp;<i class="fa-solid fa-angle-right" aria-hidden="true"></i></a>
-</div>
+    <%
+        let articleThumbnail = "";
+        if (post.cover || post.banner || (post.thumbnail && post.thumbnail !== false)) {
+            if (post.thumbnail && post.thumbnail !== null) {
+                articleThumbnail = post.thumbnail;
+            } else if (post.cover && post.cover.includes("/")) {
+                articleThumbnail = post.cover;
+            } else if (post.banner && post.banner.includes("/")) {
+                articleThumbnail = post.banner;
+            } else if (config.marked.postAsset === true) {
+                articleThumbnail = [post.path, post.cover || post.banner].join("/");
+            }
+        }
+    %>
+
+    <% if (post.thumbnail !== false && (post.thumbnail || post.cover || post.banner)) { %>
+        <div class="relative h-[150px] w-full overflow-hidden -mb-1">
+            <a href="<%- url_for(post.path) %>">
+                <img src="<%- url_for(articleThumbnail) %>" alt="<%= post.title %>" class="absolute top-1/2 h-full w-full -translate-y-1/2 object-cover transition-all dark:brightness-75 group-hover:scale-102 duration-500" />
+            </a>
+        </div>
+    <% } %>
+    <div class="flex flex-col gap-4 p-6">
+        <h3 class="relative m-0 font-[family-name:var(--font-article-title)] text-[1.2rem] leading-normal font-semibold text-rd-gray-1000 sm:text-[1.3rem] md:text-[1.4rem]">
+            <a href="<%- url_for(post.path) %>"><%= post.title %></a>
+        </h3>
+
+        <div class="markdown-body text-justify text-rd-gray-1000 [overflow-wrap:break-word]">
+            <% if (post.excerpt && post.excerpt == "false") { %>
+            <% } else if (post.excerpt && post.excerpt !== "false") { %>
+                <%- render(post.excerpt, "markdown") %>
+            <% } else { %>
+                <% const excerptLength = theme.home.excerpt_length || 200; %>
+                <%- truncate(strip_html(post.content), {length: excerptLength}) %>
+            <% } %>
+        </div>
+
+        <div class="flex items-center justify-between text-[0.92rem] text-rd-gray-900">
+            <div class="tracking-[0.5px] [&_a]:text-rd-gray-900 [&_a:hover]:text-primary">
+                <span class="mr-2.5"><i class="fa-solid fa-calendars" aria-hidden="true"></i>&nbsp;
+                    <time data-home-article-date data-date="<%= post.date %>" datetime="<%= date_xml(post.date) %>">
+                        <% if (theme.home.article_date_format == 'auto' || theme.home.article_date_format == 'relative') { %>
+                            <%= date(post.date, config.date_format) %>
+                        <% } else { %>
+                            <%= date(post.date, theme.home.article_date_format) %>
+                        <% } %>
+                    </time>
+                </span>
+                <% if (post.categories.length && theme.home.categories.enable === true) { %>
+                    <span class="mr-2.5 max-sm:hidden">
+                        <i class="fa-solid fa-folders" aria-hidden="true"></i>&nbsp;
+                        <ul class="inline">
+                            <% let previousParentId = null; %>
+                            <% post.categories.forEach((category) => { %>
+                                <% if (previousParentId !== category.parent) { %>
+                                    <% if (previousParentId !== null) { %><li class="inline">></li><% } %>
+                                    <li class="inline"><a href="<%- url_for(category.path) %>"><%= category.name %></a>&nbsp;</li>
+                                <% } else { %>
+                                    <li class="inline">| <a href="<%- url_for(category.path) %>"><%= category.name %></a>&nbsp;</li>
+                                <% } %>
+                                <% previousParentId = category.parent; %>
+                            <% }); %>
+                        </ul>
+                    </span>
+                <% } %>
+                <% if (post.tags.length && theme.home.tags.enable === true) { %>
+                    <span class="mr-2.5 last:mr-0 max-md:hidden">
+                        <i class="fa-solid fa-tags" aria-hidden="true"></i>&nbsp;
+                        <ul class="inline">
+                            <% post.tags.forEach((tag, i) => { %>
+                                <% if (theme.home.tags.limit === 0 || i + 1 <= theme.home.tags.limit) { %>
+                                    <li class="inline"><%= i === 0 ? '' : '| ' %><a href="<%- url_for(tag.path) %>"><%= tag.name %></a>&nbsp;</li>
+                                <% } %>
+                            <% }); %>
+                        </ul>
+                    </span>
+                <% } %>
+            </div>
+
+            <a href="<%- url_for(post.path) %>"><%- __('read_more') %><span class="sr-only"><%= post.title %></span>&nbsp;<i class="fa-solid fa-angle-right" aria-hidden="true"></i></a>
+        </div>
+    </div>
+</li>

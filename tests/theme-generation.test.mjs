@@ -20,20 +20,36 @@ test("theme build and generation matrices", async (t) => {
   await t.test("CSS build produces the theme stylesheet", () => {
     const cssPath = path.join(ROOT, "source", "css", "build", "theme.css");
     assert.ok(fs.statSync(cssPath).size > 0);
+    const css = fs.readFileSync(cssPath, "utf8");
+    includes(css, [
+      ".max-w-content{max-width:var(--content-max-width)}",
+      "max-width:var(--content-with-toc-max-width)!important",
+    ]);
   });
 
   generateSite();
 
   await t.test("default site renders core structure and configured styles", () => {
     const home = readOutput();
+    const post = readOutput("2022/10/02/theme-demo/index.html");
     includes(home, [
       'id="redefine-theme-vars"',
       "--content-max-width:1000px",
       "--image-radius:12px",
+      'data-home-banner="fixed"',
+      "data-sidebar-panel",
       'id="page-shell"',
       'id="main-content"',
       'id="site-footer"',
     ]);
+    includes(post, ['id="article-layout"', 'id="toc-toggle"']);
+    [home, post].forEach((output) => {
+      assert.equal(output.split('id="swup"').length, 2);
+      assert.equal(output.split('id="page-content"').length, 2);
+      assert.equal(output.split('id="main-content"').length, 2);
+    });
+    assert.ok(!home.includes('id="toc-toggle"'));
+    assert.ok(!post.includes("data-home-banner"));
     assert.ok(!home.includes("--rd-shadow:"), "fixed shadow leaked into generated styles");
     assert.ok(outputExists("css/build/theme.css"));
   });

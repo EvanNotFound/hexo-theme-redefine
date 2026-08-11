@@ -28,9 +28,6 @@
 @source "../scripts/**/*.js";
 
 @theme {
-  --container-content: 1000px;
-  --container-has-toc-content: 120%;
-
   --z-index-1: 1001;
   --z-index-2: 1002;
   --z-index-3: 1003;
@@ -51,6 +48,8 @@
 }
 
 @theme inline {
+  --container-content: var(--content-max-width);
+  --container-content-with-toc: var(--content-with-toc-max-width);
   --color-primary: var(--primary-color);
   --color-rd-primary-text: var(--rd-primary-text);
   --color-nav-color-1: var(--nav-color-1);

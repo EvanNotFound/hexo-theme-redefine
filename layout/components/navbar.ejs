@@ -9,7 +9,7 @@
                     }) %>
                 </a>
             <% } %>
-            <a data-navbar-close class="translate-y-px font-title text-[1.7rem] leading-none font-[520] text-rd-gray-1000 max-[768px]:text-[1.53rem] max-[640px]:text-[1.36rem]" href="<%= config.root %>">
+            <a data-navbar-close class="translate-y-px font-title text-[1.36rem] leading-none font-[520] text-rd-gray-1000 sm:text-[1.53rem] md:text-[1.7rem]" href="<%= config.root %>">
                 <% if (is_home()) { %>
                     <h1 class="m-0 text-inherit leading-inherit font-inherit"><%= theme.info.title || config.title || 'Redefine Theme' %></h1>
                 <% } else { %>
@@ -19,7 +19,7 @@
         </div>
 
         <div class="flex items-center">
-            <ul class="flex items-center gap-6 max-[768px]:hidden">
+            <ul class="flex items-center gap-6 max-md:hidden">
                 <% for (let i in theme.navbar.links) { %>
                     <% if (theme.navbar.links[i].path !== 'none') { %>
                         <%
@@ -62,13 +62,13 @@
                 <% } %>
             </ul>
 
-            <div class="hidden items-center justify-between max-[768px]:flex">
+            <div class="hidden items-center justify-between max-md:flex">
                 <% if (theme.navbar.search.enable === true) { %>
-                    <button type="button" data-search-trigger aria-label="<%= __('search') %>" title="<%= __('search') %>" class="relative ml-3 hidden h-5 w-5 items-center justify-center text-lg text-rd-gray-1000 first:ml-0 max-[768px]:flex [&_i]:!text-inherit">
+                    <button type="button" data-search-trigger aria-label="<%= __('search') %>" title="<%= __('search') %>" class="relative ml-3 hidden h-5 w-5 items-center justify-center text-lg text-rd-gray-1000 first:ml-0 max-md:flex [&_i]:!text-inherit">
                         <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
                     </button>
                 <% } %>
-                <button id="navbar-toggle" type="button" aria-controls="navbar-drawer" aria-expanded="false" aria-label="Navigation" title="Navigation" class="relative ml-3 hidden h-5 w-5 items-center justify-center text-rd-gray-1000 first:ml-0 max-[768px]:flex">
+                <button id="navbar-toggle" type="button" aria-controls="navbar-drawer" aria-expanded="false" aria-label="Navigation" title="Navigation" class="relative ml-3 hidden h-5 w-5 items-center justify-center text-rd-gray-1000 first:ml-0 max-md:flex">
                     <span class="navbar-toggle-line" aria-hidden="true"></span>
                 </button>
             </div>

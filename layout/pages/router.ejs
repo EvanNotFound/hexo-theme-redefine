@@ -1,27 +1,36 @@
-<% if (pageKind === 'home') { %>
+<% const currentRegion = typeof region === 'string' ? region : 'content'; %>
+<% if (currentRegion === 'before-shell') { %>
+    <% if (pageKind === 'home') { %><%- partial('pages/home/banner-region') %><% } %>
+<% } else if (currentRegion === 'after-shell') { %>
+    <% if (pageKind === 'post') { %><%- partial('pages/post/tools') %><% } %>
+<% } else if (pageKind === 'home') { %>
     <%- partial('pages/home/index') %>
 <% } else if (pageKind === 'post') { %>
     <%- partial('pages/post/index') %>
-<% } else if (pageKind === 'archive') { %>
-    <%- partial('pages/archive') %>
-<% } else if (pageKind === 'category') { %>
-    <%- partial('components/page-panel', {pageBody: partial('pages/category')}) %>
-<% } else if (pageKind === 'tag') { %>
-    <%- partial('components/page-panel', {pageBody: partial('pages/tag')}) %>
-<% } else if (pageKind === 'categories') { %>
-    <%- partial('components/page-panel', {pageBody: partial('pages/categories')}) %>
-<% } else if (pageKind === 'tags') { %>
-    <%- partial('components/page-panel', {pageBody: partial('pages/tags')}) %>
-<% } else if (pageKind === 'friends') { %>
-    <%- partial('components/page-panel', {pageBody: partial('pages/friends')}) %>
-<% } else if (pageKind === 'essays') { %>
-    <%- partial('components/page-panel', {pageBody: partial('pages/essays')}) %>
-<% } else if (pageKind === 'masonry') { %>
-    <%- partial('pages/masonry') %>
-<% } else if (pageKind === 'bookmarks') { %>
-    <%- partial('pages/bookmarks') %>
-<% } else if (pageKind === 'not-found') { %>
-    <%- partial('pages/not-found') %>
 <% } else { %>
-    <%- partial('components/page-panel', {pageBody: ''}) %>
+    <div id="main-content" class="relative box-border h-full w-9/10 max-w-content transition-[max-width,width] duration-200 ease-in-out sm:w-6/7 md:w-4/5">
+        <% if (pageKind === 'archive') { %>
+            <%- partial('pages/archive') %>
+        <% } else if (pageKind === 'category') { %>
+            <%- partial('components/page-panel', {pageBody: partial('pages/category')}) %>
+        <% } else if (pageKind === 'tag') { %>
+            <%- partial('components/page-panel', {pageBody: partial('pages/tag')}) %>
+        <% } else if (pageKind === 'categories') { %>
+            <%- partial('components/page-panel', {pageBody: partial('pages/categories')}) %>
+        <% } else if (pageKind === 'tags') { %>
+            <%- partial('components/page-panel', {pageBody: partial('pages/tags')}) %>
+        <% } else if (pageKind === 'friends') { %>
+            <%- partial('components/page-panel', {pageBody: partial('pages/friends')}) %>
+        <% } else if (pageKind === 'essays') { %>
+            <%- partial('components/page-panel', {pageBody: partial('pages/essays')}) %>
+        <% } else if (pageKind === 'masonry') { %>
+            <%- partial('pages/masonry') %>
+        <% } else if (pageKind === 'bookmarks') { %>
+            <%- partial('pages/bookmarks') %>
+        <% } else if (pageKind === 'not-found') { %>
+            <%- partial('pages/not-found') %>
+        <% } else { %>
+            <%- partial('components/page-panel', {pageBody: ''}) %>
+        <% } %>
+    </div>
 <% } %>

@@ -53,7 +53,7 @@ The common page shell SHALL render route content through one EJS router whose br
 
 ### Requirement: EJS ownership follows rendered responsibility
 
-Required Hexo layout entries SHALL remain at the layout root. Reusable rendered fragments SHALL live under `layout/components`, route-owned content SHALL live under `layout/pages`, and subdirectories SHALL be retained only for cohesive multi-file page families or integrations. Rendered UI MUST NOT be categorized as a utility solely because it is reused.
+Required Hexo layout entries SHALL remain at the layout root. Reusable rendered fragments SHALL live under `layout/components`, route-owned content and chrome SHALL live under `layout/pages`, and subdirectories SHALL be retained only for cohesive multi-file page families or integrations. The common page shell SHALL retain global navigation, footer, transition boundaries, and site-wide overlays without directly composing home banners or sidebars, post tools, or other route-specific regions. Rendered UI MUST NOT be categorized as a utility solely because it is reused.
 
 #### Scenario: Contributor locates reusable UI
 
@@ -64,6 +64,11 @@ Required Hexo layout entries SHALL remain at the layout root. Reusable rendered 
 
 - **WHEN** a contributor needs archive, taxonomy, friends, essays, masonry, bookmarks, home, or post markup
 - **THEN** the markup is located under `layout/pages` and grouped only when the page family has multiple cohesive parts
+
+#### Scenario: Contributor locates route-specific chrome
+
+- **WHEN** a contributor needs the home banner or sidebar composition, post tools, or another route-specific region
+- **THEN** the router selects markup from the owning page family without embedding that route condition in the common page shell
 
 #### Scenario: Hexo selects a layout entry
 
