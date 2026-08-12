@@ -9,6 +9,28 @@ const customPageKinds = new Map([
 	["essays", "essays"],
 ]);
 
+hexo.extend.helper.register("getSidebarLinks", function (links) {
+	if (!links || typeof links !== "object" || Array.isArray(links)) return [];
+
+	return Object.entries(links).flatMap(([label, link]) => {
+		if (
+			!link ||
+			typeof link !== "object" ||
+			typeof link.path !== "string" ||
+			!link.path.trim() ||
+			link.path === "none"
+		) {
+			return [];
+		}
+
+		return [{
+			label,
+			path: link.path,
+			icon: typeof link.icon === "string" && link.icon ? link.icon : null,
+		}];
+	});
+});
+
 hexo.extend.helper.register("getCategoryTree", function (categories) {
 	const items = [];
 	categories?.forEach((category) => items.push(category));

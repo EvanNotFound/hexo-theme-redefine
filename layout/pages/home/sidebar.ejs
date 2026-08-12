@@ -1,50 +1,49 @@
 <%
-    const hasSidebarLinks = theme.home.sidebar.links !== null;
-    const hasSidebarAnnouncement = theme.home.sidebar.announcement !== null;
-    const hasSidebarExtra = hasSidebarLinks || hasSidebarAnnouncement;
-    const sidebarItems = ["profile", ...(hasSidebarExtra ? ["extra"] : [])];
-
-    if (theme.home.sidebar.first_item !== "info") sidebarItems.reverse();
+    const sidebarLinks = getSidebarLinks(theme.home.sidebar.links);
+    const announcement = typeof theme.home.sidebar.announcement === 'string' && theme.home.sidebar.announcement.trim()
+        ? theme.home.sidebar.announcement
+        : null;
+    const hasMenu = sidebarLinks.length > 0 || announcement;
+    const infoFirst = theme.home.sidebar.first_item === 'info';
+    const sidebarPosition = theme.home.sidebar.position === 'right' ? 'order-last' : 'order-first';
 %>
-<aside class="mx-10 hidden h-auto w-60 md:block">
+<aside class="<%= sidebarPosition %> hidden w-60 shrink-0 md:block">
     <div class="sticky top-[calc(var(--current-navbar-height)_+_1rem)] flex flex-col gap-6">
-        <% for (const item of sidebarItems) { %>
-            <% if (item === "profile") { %>
-                <div data-sidebar-panel class="box-border rounded-2xl border border-rd-gray-alpha-400 bg-rd-background-100 p-4">
-                    <div class="flex justify-center">
-                        <%- image_tag(theme.defaults.avatar, {class: "h-20 w-20 rounded-2xl border border-rd-gray-alpha-400 p-px"}) %>
-                    </div>
-                    <div class="mx-0 my-2.5 flex flex-col justify-center">
-                        <div class="text-center text-xl font-semibold text-rd-gray-1000"><%= theme.info.author || config.author %></div>
-                        <% if (theme.hasOwnProperty('articles') && theme.articles.author_label.enable === true) { %>
-                            <div class="text-center text-xs text-rd-gray-900"><%- getAuthorLabel(site.posts.length, theme.articles.author_label.auto, theme.articles.author_label.list) %></div>
-                        <% } %>
-                    </div>
-                    <%- partial('components/statistics') %>
-                </div>
-            <% } else { %>
-                <div data-sidebar-panel class="box-border overflow-hidden rounded-2xl border border-rd-gray-alpha-400 bg-rd-background-100">
-                    <div data-sidebar-header class="border-b border-rd-gray-alpha-400 bg-rd-gray-100 p-4">
-                        <div class="text-center font-title text-xl font-medium text-rd-gray-1000"><%= theme.info.title || config.title %></div>
-                        <% if (hasSidebarAnnouncement && hasSidebarLinks) { %>
-                            <div class="mb-1 text-center text-sm text-rd-gray-900"><%- theme.home.sidebar.announcement %></div>
-                        <% } %>
-                    </div>
-                    <% if (hasSidebarLinks) { %>
-                        <% for (const label in theme.home.sidebar.links) { %>
-                            <% const link = theme.home.sidebar.links[label]; %>
-                            <% if (link.path !== 'none') { %>
-                                <a data-sidebar-link class="flex cursor-pointer items-center justify-center rounded-lg px-0 py-1 text-left font-[family-name:var(--font-default)] text-rd-gray-1000 hover:bg-rd-gray-200 hover:text-primary" href="<%= url_for(link.path) %>">
-                                    <% if (link.icon) { %><i class="<%- link.icon %> mr-1 text-xl" aria-hidden="true"></i><% } %>
-                                    <span class="font-medium"><%= __(label) %></span>
-                                </a>
-                            <% } %>
-                        <% } %>
-                    <% } else { %>
-                        <div class="mt-2.5 mb-1 flex items-center justify-center px-0 py-1 text-center text-rd-gray-1000"><%- theme.home.sidebar.announcement %></div>
+        <div data-sidebar-panel class="<%= infoFirst ? 'order-first' : 'order-last' %> rounded-2xl border border-rd-gray-alpha-400 bg-rd-background-100 p-4">
+            <div class="flex justify-center">
+                <%- image_tag(theme.defaults.avatar, {class: "h-20 w-20 rounded-2xl border border-rd-gray-alpha-400 p-px"}) %>
+            </div>
+            <div class="my-2.5 flex flex-col justify-center">
+                <div class="text-center text-xl font-semibold text-rd-gray-1000"><%= theme.info.author || config.author %></div>
+                <% if (theme.articles?.author_label?.enable === true) { %>
+                    <div class="text-center text-xs text-rd-gray-900"><%- getAuthorLabel(site.posts.length, theme.articles.author_label.auto, theme.articles.author_label.list) %></div>
+                <% } %>
+            </div>
+            <%- partial('components/statistics') %>
+        </div>
+
+        <% if (hasMenu) { %>
+            <nav data-sidebar-panel aria-label="<%= theme.info.title || config.title %>" class="<%= infoFirst ? 'order-last' : 'order-first' %> overflow-hidden rounded-2xl border border-rd-gray-alpha-400 bg-rd-background-100">
+                <div data-sidebar-header class="border-b border-rd-gray-alpha-400 bg-rd-gray-100 px-4 py-3">
+                    <div class="text-center font-title text-xl font-medium text-rd-gray-1000"><%= theme.info.title || config.title %></div>
+                    <% if (announcement) { %>
+                        <div class="mt-1 text-center text-sm text-rd-gray-900"><%- announcement %></div>
                     <% } %>
                 </div>
-            <% } %>
+
+                <% if (sidebarLinks.length) { %>
+                    <ul class="flex flex-col p-2">
+                        <% sidebarLinks.forEach((link) => { %>
+                            <li>
+                                <a data-sidebar-link class="flex w-full items-center gap-2 rounded-lg px-3 py-1.5 text-rd-gray-1000 hover:bg-rd-gray-200 hover:text-primary" href="<%= url_for(link.path) %>">
+                                    <% if (link.icon) { %><i class="<%= link.icon %> w-5 text-center text-base" aria-hidden="true"></i><% } %>
+                                    <span><%= __(link.label) %></span>
+                                </a>
+                            </li>
+                        <% }); %>
+                    </ul>
+                <% } %>
+            </nav>
         <% } %>
     </div>
 </aside>

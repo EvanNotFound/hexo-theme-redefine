@@ -1,0 +1,36 @@
+@layer components {
+  .footer {
+    isolation: isolate;
+    color: var(--rd-gray-1000);
+  }
+
+  .footer::before {
+    position: absolute;
+    inset: -6rem 0 0;
+    z-index: -1;
+    content: "";
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse 120% 100% at 50% 100%,
+      var(--rd-background-200) 0%,
+      color-mix(in srgb, var(--rd-background-200) 85%, transparent) 40%,
+      color-mix(in srgb, var(--rd-background-200) 45%, transparent) 72%,
+      transparent 100%
+    );
+  }
+
+  .footer a,
+  .footer a i,
+  .footer a span {
+    color: inherit;
+  }
+
+  .footer a:hover,
+  .footer a:active,
+  .footer a:hover i,
+  .footer a:active i,
+  .footer a:hover span,
+  .footer a:active span {
+    color: var(--primary-color);
+  }
+}

@@ -1,4 +1,7 @@
-<% const navbarWidth = theme.home_banner.enable === true && is_home() && !page.prev ? 'home' : 'pages'; %>
+<%
+    const navbarWidth = theme.home_banner.enable === true && is_home() && !page.prev ? 'home' : 'pages';
+    const sidebarLinks = getSidebarLinks(theme.home.sidebar.links);
+%>
 <header id="navbar" class="navbar flex h-full w-full box-border items-center justify-center px-6 pt-0.5 font-display backdrop-blur-md [background:var(--nav-color-bg)] shadow-rd border border-rd-gray-alpha-400/30 md:px-12">
     <div data-navbar-content data-navbar-width="<%= navbarWidth %>" class="relative z-30 flex h-full w-full flex-row items-center justify-between transition-[max-width] duration-300 ease-out">
         <div class="flex items-center">
@@ -112,16 +115,16 @@
                 <% } %>
             <% } %>
 
-            <% if (theme.home.sidebar.links !== null && theme.home.sidebar.show_on_mobile !== false) { %>
-                <% for (let i in theme.home.sidebar.links) { %>
-                    <% if (theme.navbar.links && theme.navbar.links.hasOwnProperty(i)) { continue; } %>
+            <% if (theme.home.sidebar.show_on_mobile !== false) { %>
+                <% sidebarLinks.forEach((link) => { %>
+                    <% if (Object.prototype.hasOwnProperty.call(theme.navbar.links || {}, link.label)) { return; } %>
                     <li class="my-1.5 flex w-full flex-col text-base">
-                        <a data-navbar-close class="flex w-full flex-row items-center justify-between gap-1 border-b border-rd-gray-alpha-400 px-2 py-1.5 text-2xl font-semibold text-rd-gray-1000 hover:border-primary hover:!text-primary active:!text-primary [&_i]:!text-inherit" href="<%= url_for(theme.home.sidebar.links[i].path) %>">
-                            <span><%= __(i) %></span>
-                            <i class="<%= theme.home.sidebar.links[i].icon %> fa-sm fa-fw" aria-hidden="true"></i>
+                        <a data-navbar-close class="flex w-full flex-row items-center justify-between gap-1 border-b border-rd-gray-alpha-400 px-2 py-1.5 text-2xl font-semibold text-rd-gray-1000 hover:border-primary hover:!text-primary active:!text-primary [&_i]:!text-inherit" href="<%= url_for(link.path) %>">
+                            <span><%= __(link.label) %></span>
+                            <% if (link.icon) { %><i class="<%= link.icon %> fa-sm fa-fw" aria-hidden="true"></i><% } %>
                         </a>
                     </li>
-                <% } %>
+                <% }); %>
             <% } %>
         </ul>
 

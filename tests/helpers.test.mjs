@@ -219,6 +219,33 @@ test("getCategoryTree builds a sorted nested category tree", () => {
   ]);
 });
 
+test("getSidebarLinks returns visible configured links", () => {
+  const getSidebarLinks = loadHelpers("scripts/helpers/page-helpers.js").get(
+    "getSidebarLinks",
+  );
+
+  assert.deepEqual(
+    getSidebarLinks({
+      Archives: { path: "/archives", icon: "fa-regular fa-archive" },
+      Hidden: { path: "none", icon: "fa-regular fa-eye-slash" },
+      Missing: { icon: "fa-regular fa-link" },
+      Empty: { path: "" },
+      Invalid: null,
+      Tags: { path: "/tags" },
+    }),
+    [
+      {
+        label: "Archives",
+        path: "/archives",
+        icon: "fa-regular fa-archive",
+      },
+      { label: "Tags", path: "/tags", icon: null },
+    ],
+  );
+  assert.deepEqual(getSidebarLinks(null), []);
+  assert.deepEqual(getSidebarLinks([]), []);
+});
+
 test("resolvePageKind uses built-in routes and explicit templates", () => {
   const resolvePageKind = loadHelpers("scripts/helpers/page-helpers.js").get("resolvePageKind");
   const route = (active) => ({

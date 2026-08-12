@@ -60,10 +60,14 @@ test("theme build and generation configurations", async (t) => {
       "--image-radius:12px",
       'data-home-banner="fixed"',
       "data-sidebar-panel",
+      'class="order-last rounded-2xl border',
+      'aria-label="Theme Redefine" class="order-first overflow-hidden',
+      'class="flex w-full items-center gap-2 rounded-lg',
       'id="page-shell"',
       'id="main-content"',
       'id="site-footer"',
     ]);
+    assert.equal(home.split('href="/essays"').length, 3);
     includes(post, ['id="article-layout"', 'id="toc-toggle"']);
     [home, post].forEach((output) => {
       assert.equal(output.split('id="swup"').length, 2);
@@ -141,13 +145,17 @@ test("theme build and generation configurations", async (t) => {
     const tag = readOutput("tags/test/index.html");
     includes(tag, [
       borderedPageTitle,
-      'class="fa-regular fa-hashtag text-rd-gray-900"',
+      'class="fa-regular fa-hashtag text-rd-gray-800"',
       'class="paginator',
     ]);
     assert.ok(!tag.includes('class="box-border mb-4 rounded-none border-0'));
 
     const category = readOutput("categories/Demo/index.html");
-    includes(category, [borderedPageTitle, 'class="fa-solid fa-folder"', 'class="paginator']);
+    includes(category, [
+      borderedPageTitle,
+      'class="fa-regular fa-folder text-rd-gray-800"',
+      'class="paginator',
+    ]);
     assert.ok(!category.includes('class="box-border mb-4 rounded-none border-0'));
   });
 

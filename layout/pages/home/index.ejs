@@ -1,19 +1,17 @@
-<% if (theme.home.sidebar.enable === true && theme.home.sidebar.position === 'left') { %>
-    <%- partial('pages/home/sidebar') %>
-<% } %>
+<div class="flex w-9/10 items-start justify-center gap-10 sm:w-6/7">
+    <% if (theme.home.sidebar.enable === true) { %>
+        <%- partial('pages/home/sidebar') %>
+    <% } %>
 
-<div id="main-content" class="relative box-border h-full w-9/10 max-w-content transition-[max-width,width] duration-200 ease-in-out sm:w-6/7 md:w-4/5 <%= theme.home.sidebar.enable === true && theme.home.sidebar.position === 'right' ? 'md:ml-10' : '' %> <%= theme.home.sidebar.enable === true && theme.home.sidebar.position === 'left' ? 'md:mr-10' : '' %>">
-    <ul>
-        <% page.posts.forEach(post => { %>
-            <%- partial('pages/home/post-card', {post}) %>
-        <% }) %>
-    </ul>
+    <div id="main-content" class="relative h-full min-w-0 flex-1 max-w-content transition-[max-width,width] duration-200 ease-in-out">
+        <ul>
+            <% page.posts.forEach(post => { %>
+                <%- partial('pages/home/post-card', {post}) %>
+            <% }) %>
+        </ul>
 
-    <div class="px-7 py-5">
-        <%- partial('components/paginator') %>
+        <div class="px-7 py-5">
+            <%- partial('components/paginator') %>
+        </div>
     </div>
 </div>
-
-<% if (theme.home.sidebar.enable === true && theme.home.sidebar.position === 'right') { %>
-    <%- partial('pages/home/sidebar') %>
-<% } %>

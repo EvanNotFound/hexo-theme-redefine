@@ -26,8 +26,7 @@
       [data-sidebar-panel],
       [data-side-tool],
       .paginator a.page-number,
-      .paginator a.extend,
-      .footer
+      .paginator a.extend
     ) {
     background-color: color-mix(in srgb, var(--rd-background-100) 80%, transparent) !important;
   }

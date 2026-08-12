@@ -1,9 +1,13 @@
-<footer id="site-footer" class="footer relative mt-5 h-auto w-full border-t-2 border-t-rd-gray-alpha-400 py-5 text-base text-rd-gray-900">
-    <div class="py-3 text-center">
+<footer id="site-footer" class="footer relative mt-5 h-auto w-full py-5">
+    <% if (theme.global.website_counter.enable === true) { %>
+        <script <%= theme.global.single_page === true && 'data-swup-reload-script' %> src="<%= theme.global.website_counter.url ? theme.global.website_counter.url : "https://vercount.one/js" %>"></script>
+    <% } %>
+    <div class="grid grid-cols-1 items-center gap-2 px-5 py-3 text-center lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)_minmax(0,1fr)] lg:items-end lg:gap-6">
+        <div class="order-1 min-w-0 lg:col-start-2 lg:row-start-1">
         <% if (theme.footer.hasOwnProperty('customize') && theme.footer.customize) { %>
             <div class="my-1"><%- theme.footer.customize %></div>
         <% } %>
-        <div class="text-center">
+        <div>
             &copy;
             <% if (theme.footer.hasOwnProperty('start') && theme.footer.start) { %>
               <span><%= date(new Date(theme.footer.start), 'YYYY') %></span>
@@ -32,27 +36,6 @@
                 </p>
             <% } %>
         </div>
-        <% if (theme.global.website_counter.enable === true) { %>
-            <script <%= theme.global.single_page === true && 'data-swup-reload-script' %> src="<%= theme.global.website_counter.url ? theme.global.website_counter.url : "https://vercount.one/js" %>"></script>
-            <div class="relative text-center lg:absolute lg:right-5 lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
-                <% if (theme.global.website_counter.site_uv) { %>
-                    <span id="busuanzi_container_site_uv" class="lg:!block">
-                        <span class="text-sm"><%- __('site_uv') %></span>
-                        <span id="busuanzi_value_site_uv"></span>
-                    </span>
-                <% } %>
-                <% if (theme.global.website_counter.site_pv) { %>
-                    <span id="busuanzi_container_site_pv" class="lg:!block">
-                        <span class="text-sm"><%- __('site_pv') %></span>
-                        <span id="busuanzi_value_site_pv"></span>
-                    </span>
-                <% } %>
-            </div>
-        <% } %>
-        <div class="relative text-center lg:absolute lg:left-5 lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
-            <span class="lg:block text-sm"><%- __('powered_by', '<?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-0.5 inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a>') %></span>
-            <%# 保留主题信息是对作者的尊重，感谢！ %><span class="text-sm lg:block"><%- __('theme') %>&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v<%- getThemeVersion() %></a></span><%# 保留主题信息是对作者的尊重，感谢！ %>
-        </div>
         <% if (theme.footer.icp.enable && theme.footer.icp.hasOwnProperty('number')) { %>
             <div class="my-1"><a target="_blank" rel="nofollow" href="
                 <% if (theme.footer.icp.hasOwnProperty('url') && theme.footer.icp.url) { %>
@@ -67,6 +50,34 @@
                 <%= __('runtime') %> <span class="odometer" id="runtime_days" ></span> <%= __('days') %> <span class="odometer" id="runtime_hours"></span> <%= __('hours') %> <span class="odometer" id="runtime_minutes"></span> <%= __('minutes') %> <span class="odometer" id="runtime_seconds"></span> <%= __('seconds') %>
             </div>
         <% } %>
+        </div>
+        <% if (theme.global.website_counter.enable === true) { %>
+            <div class="order-2 min-w-0 lg:col-start-3 lg:row-start-1 lg:text-right flex flex-col items-center sm:items-end">
+                <% if (theme.global.website_counter.site_uv) { %>
+                    <div id="busuanzi_container_site_uv" class="text-sm">
+                        <span ><%- __('site_uv') %></span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </div>
+                <% } %>
+                <% if (theme.global.website_counter.site_pv) { %>
+                    <div id="busuanzi_container_site_pv" class="text-sm">
+                        <span><%- __('site_pv') %></span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </div>
+                <% } %>
+            </div>
+        <% } %>
+        <div class="order-3 min-w-0 lg:col-start-1 lg:row-start-1 flex flex-col items-center sm:items-start">
+            <div class="text-sm font-light"><%- __('powered_by', '<a target="_blank" class="text-sm" href="https://hexo.io">Hexo</a>') %></div>
+            <%# 保留主题信息是对作者的尊重，感谢！ %>
+                <a class="text-sm flex items-center gap-1" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">
+                    <img src="<%= url_for('/images/redefine-logo.svg') %>" alt="" aria-hidden="true" class="size-4">
+                    <span><%- __('theme') %>&nbsp;Redefine v<%- getThemeVersion() %></span>
+                </a>
+            <%# 保留主题信息是对作者的尊重，感谢！ %>
+        </div>
+    </div>
+    <div class="text-center">
         <% if (theme.inject.enable === true) { %>
             <% for (let i in theme.inject.footer) { %>
                 <% if (theme.inject.footer[i] !== null ){ %>
@@ -77,6 +88,5 @@
                         <%- theme.inject.footer[i] %>
                 <% } } %>
         <% } }%>
-        
-    </div>  
+    </div>
 </footer>
