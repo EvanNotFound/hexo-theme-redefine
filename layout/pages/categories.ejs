@@ -1,4 +1,33 @@
-<%- partial('components/page-title', {title: page.title}) %>
-<div class="categories">
-    <%- list_categories(site.categories, {class: 'category', depth: 5, style: 'list'}) %>
+<% const categoryTree = getCategoryTree(site.categories); %>
+<div class="mb-4 pt-5 sm:mb-6 sm:pt-0 md:mb-8">
+    <%- partial('components/page-title', {title: page.title, showBorder: true}) %>
+
+    <ul class="columns-1 gap-10 md:columns-2">
+        <% categoryTree.forEach((category) => { %>
+            <li data-category-group class="mb-8 break-inside-avoid">
+                <div class="relative px-5 z-10 flex min-h-15 items-center justify-between overflow-hidden rounded-full border border-rd-gray-alpha-400 bg-rd-background-100 shadow-rd">
+                    <a class="flex min-w-0 items-center text-xl font-semibold text-rd-gray-1000 transition-colors hover:text-primary" href="<%- url_for(category.path) %>"><%= category.name %></a>
+                    <span class="flex items-center text-rd-gray-900 font-mono text-sm px-2 bg-rd-gray-100 rounded-full aspect-square"><%= category.count %></span>
+                </div>
+
+                <% if (category.children.length) { %>
+                    <div class="flex flex-col mx-6 border border-t-0 border-rd-gray-alpha-400 bg-rd-background-200 rounded-b-xl">
+                        <div class="flex items-center gap-1 text-sm text-rd-gray-800 border-b border-dotted border-rd-gray-alpha-400 px-4 py-1">
+                            <i class="fa-regular fa-diagram-subtask text-xs"></i>
+                            <span>Subcategories</span>
+                        </div>
+                        <ul class="relative flex flex-col py-2 px-4 pt-1">
+                            <% category.children.forEach((child) => { %>
+                                <%- partial('components/category-nested', {category: child}) %>
+                            <% }); %>
+                        </ul>
+                    </div>
+                <% } %>
+            </li>
+        <% }); %>
+    </ul>
+
+    <% if (page.content) { %>
+        <div class="markdown-body text-rd-gray-1000"><%- page.content %></div>
+    <% } %>
 </div>

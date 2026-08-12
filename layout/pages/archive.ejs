@@ -1,6 +1,4 @@
 <div class="mb-4 pt-5 sm:mb-6 sm:pt-0 md:mb-8">
-	<h1 class="text-4xl mt-4 mb-8 font-medium font-display tracking-tight border-b border-rd-gray-alpha-400 pb-2">
-	<%= page.title || __('archives') %>
-	</h1>
+	<%- partial('components/page-title', {title: page.title || __('archives'), showBorder: true}) %>
 	<%- partial('components/posts-list', {posts: page.posts}) %>
 </div>

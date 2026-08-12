@@ -1,0 +1,22 @@
+<li class="flex flex-col">
+    <div class="flex justify-between items-center">
+        <div class="flex-1 flex items-center justify-start gap-1">
+            <a class="min-w-0 text-rd-gray-1000 underline decoration-transparent underline-offset-4 transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary motion-reduce:transition-none <%= category.children.length ? 'font-semibold' : 'font-normal' %>" href="<%- url_for(category.path) %>"><%= category.name %></a>
+            <% if (category.children.length) { %>
+                <button type="button" data-category-toggle aria-controls="<%= category.controlId %>" aria-expanded="false" aria-label="<%= category.name %>" class="group size-6 text-sm cursor-pointer flex items-center justify-center rounded-full bg-transparent text-rd-gray-900 transition-colors hover:bg-rd-gray-200 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary motion-reduce:transition-none">
+                    <i class="fa-solid fa-chevron-right transition-transform duration-200 group-aria-expanded:rotate-90 motion-reduce:transition-none" aria-hidden="true"></i>
+                </button>
+            <% } %>
+        </div>
+        <span class="p-1 text-rd-gray-900 text-sm shrink-0 font-mono"><%= category.count %></span>
+
+    </div>
+
+    <% if (category.children.length) { %>
+        <ul id="<%= category.controlId %>" hidden class="mt-1 ml-3 basis-full list-none border-l border-rd-gray-alpha-400 pl-3">
+            <% category.children.forEach((child) => { %>
+                <%- partial('components/category-nested', {category: child}) %>
+            <% }); %>
+        </ul>
+    <% } %>
+</li>

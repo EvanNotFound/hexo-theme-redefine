@@ -16,7 +16,7 @@
         <% } else if (pageKind === 'tag') { %>
             <%- partial('components/page-panel', {pageBody: partial('pages/tag')}) %>
         <% } else if (pageKind === 'categories') { %>
-            <%- partial('components/page-panel', {pageBody: partial('pages/categories')}) %>
+            <%- partial('pages/categories') %>
         <% } else if (pageKind === 'tags') { %>
             <%- partial('components/page-panel', {pageBody: partial('pages/tags')}) %>
         <% } else if (pageKind === 'friends') { %>

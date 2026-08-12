@@ -14,6 +14,9 @@ const includes = (output, values) => {
   values.forEach((value) => assert.ok(output.includes(value), `missing ${value}`));
 };
 
+const borderedPageTitle =
+  '<h1 class="text-4xl mt-4 mb-8 font-medium font-display tracking-tight border-b border-rd-gray-alpha-400 pb-2">';
+
 test("theme build and generation matrices", async (t) => {
   buildStyles();
 
@@ -58,7 +61,7 @@ test("theme build and generation matrices", async (t) => {
   await t.test("archive renders an unframed semantic timeline", () => {
     const archive = readOutput("archives/index.html");
     includes(archive, [
-      '<h1 class="text-4xl',
+      borderedPageTitle,
       '<ol class="timeline',
       'class="timeline-post relative"',
       "<time datetime=",
@@ -71,13 +74,25 @@ test("theme build and generation matrices", async (t) => {
       "masonry/index.html": 'id="masonry-container"',
       "bookmarks/index.html": "data-bookmark-nav",
       "essays/index.html": "data-essay-date",
-      "categories/index.html": 'class="categories"',
       "tags/index.html": "group/tags",
     };
 
     Object.entries(routes).forEach(([route, marker]) => {
       assert.ok(readOutput(route).includes(marker), `${route} is missing ${marker}`);
     });
+
+    const categories = readOutput("categories/index.html");
+    includes(categories, [
+      'class="mb-4 pt-5 sm:mb-6 sm:pt-0 md:mb-8"',
+      "data-category-group",
+      "data-category-toggle",
+      'class="fa-solid fa-chevron-right',
+      borderedPageTitle,
+    ]);
+    assert.ok(categories.includes("hidden class=\"col-span-full"));
+    assert.ok(!categories.includes("category-list-item"));
+    assert.ok(!categories.includes('class="box-border mb-8 rounded-2xl border'));
+    assert.ok(!categories.includes('id="comments"'));
   });
 
   await t.test("legacy and unknown templates use ordinary page rendering", () => {

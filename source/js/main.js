@@ -284,9 +284,6 @@ const initPage = () => {
     );
   }
 
-  safeRun("categoryList", () => {
-    initCategoryList();
-  });
 };
 
 export const main = {

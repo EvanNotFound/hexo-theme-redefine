@@ -167,6 +167,58 @@ test("createNewArchivePosts orders years, dates, and equal-date titles", () => {
   );
 });
 
+test("getCategoryTree builds a sorted nested category tree", () => {
+  const getCategoryTree = loadHelpers("scripts/helpers/page-helpers.js").get(
+    "getCategoryTree",
+  );
+  const categories = [
+    { _id: "child-b", parent: "root", name: "Zulu", path: "zulu/", length: 2 },
+    { _id: "root", name: "Root", path: "root/", length: 4 },
+    { _id: "other", name: "Alpha", path: "alpha/", length: 1 },
+    { _id: "child-a", parent: "root", name: "Beta", path: "beta/", length: 3 },
+  ];
+
+  assert.deepEqual(getCategoryTree(categories), [
+    {
+      id: "other",
+      parentId: null,
+      name: "Alpha",
+      path: "alpha/",
+      count: 1,
+      controlId: "category-children-0",
+      children: [],
+    },
+    {
+      id: "root",
+      parentId: null,
+      name: "Root",
+      path: "root/",
+      count: 4,
+      controlId: "category-children-1",
+      children: [
+        {
+          id: "child-a",
+          parentId: "root",
+          name: "Beta",
+          path: "beta/",
+          count: 3,
+          controlId: "category-children-2",
+          children: [],
+        },
+        {
+          id: "child-b",
+          parentId: "root",
+          name: "Zulu",
+          path: "zulu/",
+          count: 2,
+          controlId: "category-children-3",
+          children: [],
+        },
+      ],
+    },
+  ]);
+});
+
 test("resolvePageKind uses built-in routes and explicit templates", () => {
   const resolvePageKind = loadHelpers("scripts/helpers/page-helpers.js").get("resolvePageKind");
   const route = (active) => ({
