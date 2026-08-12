@@ -80,6 +80,8 @@ test("theme build and generation matrices", async (t) => {
       assert.ok(readOutput(route).includes(marker), `${route} is missing ${marker}`);
     });
 
+    assert.ok(readOutput("masonry/index.html").includes(borderedPageTitle));
+
     const categories = readOutput("categories/index.html");
     includes(categories, [
       'class="mb-4 pt-5 sm:mb-6 sm:pt-0 md:mb-8"',

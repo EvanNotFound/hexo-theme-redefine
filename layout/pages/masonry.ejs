@@ -4,7 +4,7 @@
     const hasExif = Array.isArray(masonryEntries) && masonryEntries.some((entry) => entry && typeof entry === "object" && entry.exif === true);
 %>
 <div class="py-8 sm:py-0">
-    <%- partial('components/page-title', {title: page.title}) %>
+    <%- partial('components/page-title', {title: page.title, showBorder: true}) %>
     <div id="masonry-container" class="relative block min-h-screen opacity-100" data-masonry-data-url="<%- masonryDataUrl %>" aria-busy="false"></div>
     <div id="masonry-loadmore" class="my-5 mb-2.5 flex min-h-7 items-center justify-center gap-2.5 text-[0.95rem] text-rd-gray-1000" aria-live="polite" hidden>
         <span class="h-[18px] w-[18px] animate-spin rounded-full border-2 border-rd-gray-alpha-400 border-t-primary" aria-hidden="true"></span>
