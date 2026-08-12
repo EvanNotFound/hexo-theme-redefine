@@ -24,10 +24,10 @@
 
         <% if (hasMenu) { %>
             <nav data-sidebar-panel aria-label="<%= theme.info.title || config.title %>" class="<%= infoFirst ? 'order-last' : 'order-first' %> overflow-hidden rounded-2xl border border-rd-gray-alpha-400 bg-rd-background-100">
-                <div data-sidebar-header class="border-b border-rd-gray-alpha-400 bg-rd-gray-100 px-4 py-3">
-                    <div class="text-center font-title text-xl font-medium text-rd-gray-1000"><%= theme.info.title || config.title %></div>
+                <div data-sidebar-header class="border-b border-rd-gray-alpha-400 bg-rd-gray-100 px-6 py-4 flex flex-col">
+                    <div class="text-left font-title text-xl font-medium text-rd-gray-1000"><%= theme.info.title || config.title %></div>
                     <% if (announcement) { %>
-                        <div class="mt-1 text-center text-sm text-rd-gray-900"><%- announcement %></div>
+                        <div class="text-left text-sm text-rd-gray-900"><%- announcement %></div>
                     <% } %>
                 </div>
 
@@ -35,7 +35,7 @@
                     <ul class="flex flex-col p-2">
                         <% sidebarLinks.forEach((link) => { %>
                             <li>
-                                <a data-sidebar-link class="flex w-full items-center gap-2 rounded-lg px-3 py-1.5 text-rd-gray-1000 hover:bg-rd-gray-200 hover:text-primary" href="<%= url_for(link.path) %>">
+                                <a data-sidebar-link class="flex w-full items-center gap-1.5 rounded-lg px-3 py-1.5 text-rd-gray-1000 hover:bg-rd-gray-200/30 hover:text-primary tracking-tight text-sm font-medium" href="<%= url_for(link.path) %>">
                                     <% if (link.icon) { %><i class="<%= link.icon %> w-5 text-center text-base" aria-hidden="true"></i><% } %>
                                     <span><%= __(link.label) %></span>
                                 </a>
