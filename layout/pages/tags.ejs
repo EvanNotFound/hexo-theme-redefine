@@ -1,22 +1,28 @@
-<% if (site.tags.length) { %>
-    <%- partial('components/page-title', {title: page.title}) %>
+<div class="mb-4 pt-5 sm:mb-6 sm:pt-0 md:mb-8">
+    <%- partial('components/page-title', {title: page.title, showBorder: true}) %>
 
-    <% if (theme.page_templates.tags_style === 'cloud') { %>
-        <div class="tags"><%- tagcloud({min_font: 1, max_font: 5, unit: 'rem', amount: 100}) %></div>
-    <% } else { %>
-        <ul class="group/tags flex list-none flex-wrap items-center justify-center p-0 leading-10">
-            <% site.tags.forEach((tag) => { %>
-                <%
-                    const count = tag.posts.length;
-                    const blurClass = count === 1 ? 'blur-[3px]' : count === 2 ? 'blur-[1.8px]' : count === 3 ? 'blur-[0.8px]' : count === 4 ? 'blur-[0.4px]' : 'blur-none';
-                %>
-                <li>
-                    <a class="relative m-2.5 block flex-1 rounded-2xl border border-rd-gray-alpha-400 bg-rd-background-100 px-[1.4rem] py-[0.9rem] text-[1.4rem] text-rd-gray-1000 transition-[filter,color,background-color,transform] duration-300 group-hover/tags:blur-none hover:bg-primary hover:!text-rd-primary-text active:translate-y-0.5 [&_i]:mr-[5px] [&_i]:opacity-30 [&_i]:!text-inherit <%= blurClass %>" href="<%- url_for('/' + tag.path) %>">
-                        <i class="fa-solid fa-hashtag" aria-hidden="true"></i><%- tag.name %>
-                        <span class="ml-2.5 inline-block min-w-[35px] rounded-sm bg-rd-gray-100 px-2 py-1 text-center text-[1.5rem] text-rd-gray-900"><%= count %></span>
-                    </a>
-                </li>
-            <% }); %>
-        </ul>
+    <% if (site.tags.length) { %>
+        <% if (theme.page_templates.tags_style === 'cloud') { %>
+            <div class="tags"><%- tagcloud({min_font: 1, max_font: 5, unit: 'rem', amount: 100}) %></div>
+        <% } else { %>
+            <ul class="group/tags flex list-none flex-wrap items-center justify-center p-0 leading-10">
+                <% site.tags.forEach((tag) => { %>
+                    <%
+                        const count = tag.posts.length;
+                        const blurClass = count === 1 ? 'blur-[3px]' : count === 2 ? 'blur-[1.8px]' : count === 3 ? 'blur-[0.8px]' : count === 4 ? 'blur-[0.4px]' : 'blur-none';
+                    %>
+                    <li>
+                        <a class="relative m-2.5 block flex-1 rounded-2xl border border-rd-gray-alpha-400 bg-rd-background-100 px-[1.4rem] py-[0.9rem] text-[1.4rem] text-rd-gray-1000 transition-[filter,color,background-color,transform] duration-300 group-hover/tags:blur-none hover:bg-primary hover:!text-rd-primary-text active:translate-y-0.5 [&_i]:mr-[5px] [&_i]:opacity-30 [&_i]:!text-inherit <%= blurClass %>" href="<%- url_for('/' + tag.path) %>">
+                            <i class="fa-solid fa-hashtag" aria-hidden="true"></i><%- tag.name %>
+                            <span class="ml-2.5 inline-block min-w-[35px] rounded-sm bg-rd-gray-100 px-2 py-1 text-center text-[1.5rem] text-rd-gray-900"><%= count %></span>
+                        </a>
+                    </li>
+                <% }); %>
+            </ul>
+        <% } %>
     <% } %>
-<% } %>
+
+    <% if (page.content) { %>
+        <div class="markdown-body text-rd-gray-1000"><%- page.content %></div>
+    <% } %>
+</div>

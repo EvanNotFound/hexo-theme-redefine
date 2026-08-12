@@ -74,7 +74,6 @@ test("theme build and generation matrices", async (t) => {
       "masonry/index.html": 'id="masonry-container"',
       "bookmarks/index.html": "data-bookmark-nav",
       "essays/index.html": "data-essay-date",
-      "tags/index.html": "group/tags",
     };
 
     Object.entries(routes).forEach(([route, marker]) => {
@@ -89,10 +88,22 @@ test("theme build and generation matrices", async (t) => {
       'class="fa-solid fa-chevron-right',
       borderedPageTitle,
     ]);
-    assert.ok(categories.includes("hidden class=\"col-span-full"));
+    assert.match(
+      categories,
+      /aria-controls="([^"]+)"[^>]*>[\s\S]*?<ul id="\1" hidden/,
+    );
     assert.ok(!categories.includes("category-list-item"));
     assert.ok(!categories.includes('class="box-border mb-8 rounded-2xl border'));
     assert.ok(!categories.includes('id="comments"'));
+
+    const tags = readOutput("tags/index.html");
+    includes(tags, [
+      'class="mb-4 pt-5 sm:mb-6 sm:pt-0 md:mb-8"',
+      "group/tags",
+      borderedPageTitle,
+    ]);
+    assert.ok(!tags.includes('class="box-border mb-8 rounded-2xl border'));
+    assert.ok(!tags.includes('id="comments"'));
   });
 
   await t.test("legacy and unknown templates use ordinary page rendering", () => {

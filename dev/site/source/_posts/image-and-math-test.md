@@ -2,11 +2,11 @@
 title: Image and Math Test
 date: 2023-06-26 18:11:24
 tags: "test"
-cover: test.png
+cover: https://picsum.photos/1920/1080
 mathjax: true
 ---
 
-![](test.png)
+![](https://picsum.photos/1920/1080)
 
 Let's consider a quadratic equation: $ax^2 + bx + c = 0$, where $a$, $b$, and $c$ are constants.
 

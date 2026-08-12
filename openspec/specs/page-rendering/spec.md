@@ -42,13 +42,13 @@ The common page shell SHALL render route content through one EJS router whose br
 
 #### Scenario: Framed custom page renders
 
-- **WHEN** tags, links, essays, or ordinary page content uses the shared framed treatment
+- **WHEN** links, essays, or ordinary page content uses the shared framed treatment
 - **THEN** the router renders its literal page content through the reusable page-panel component
 - **AND** the panel owns shared page content, optional comments, and pagination behavior
 
 #### Scenario: Raw route renders
 
-- **WHEN** home, post, archive, categories, masonry, bookmarks, or not-found content requires route-specific composition
+- **WHEN** home, post, archive, categories, tags, masonry, bookmarks, or not-found content requires route-specific composition
 - **THEN** the router renders its literal route partial without an unnecessary page-panel wrapper
 
 ### Requirement: EJS ownership follows rendered responsibility
@@ -79,7 +79,7 @@ Required Hexo layout entries SHALL remain at the layout root. Reusable rendered 
 
 The explicit render flow SHALL preserve page content, page titles, optional comments, pagination, Swup boundaries, behavior IDs and data attributes, conditional assets, and route-scoped collections. Archive and taxonomy routes MUST render the collection supplied for the current route rather than silently replacing it with the complete site collection.
 
-The categories index MUST render without the shared page frame or a comments region.
+The categories and tags indexes MUST render without the shared page frame or a comments region.
 
 #### Scenario: Paginated or filtered archive renders
 

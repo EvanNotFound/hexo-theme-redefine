@@ -18,7 +18,7 @@
         <% } else if (pageKind === 'categories') { %>
             <%- partial('pages/categories') %>
         <% } else if (pageKind === 'tags') { %>
-            <%- partial('components/page-panel', {pageBody: partial('pages/tags')}) %>
+            <%- partial('pages/tags') %>
         <% } else if (pageKind === 'friends') { %>
             <%- partial('components/page-panel', {pageBody: partial('pages/friends')}) %>
         <% } else if (pageKind === 'essays') { %>
