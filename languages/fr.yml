@@ -15,6 +15,7 @@ theme: THEME
 rss_feed: Flux RSS
 category: Catégorie
 categories: Catégories
+subcategories: Sous-catégories
 tag: Tag
 tags: Tags
 post: Post

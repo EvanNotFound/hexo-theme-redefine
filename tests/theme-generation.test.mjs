@@ -86,6 +86,7 @@ test("theme build and generation matrices", async (t) => {
       "data-category-group",
       "data-category-toggle",
       'class="fa-solid fa-chevron-right',
+      "Subcategories",
       borderedPageTitle,
     ]);
     assert.match(

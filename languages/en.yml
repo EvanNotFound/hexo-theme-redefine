@@ -15,6 +15,7 @@ theme: THEME
 rss_feed: RSS Feed
 category: Category
 categories: Categories
+subcategories: Subcategories
 tag: Tag
 tags: Tags
 post: Post
