@@ -21,7 +21,7 @@ pnpm install --frozen-lockfile
 
 ### 启用主题开发模式
 
-如果要在 Hexo 站点中使用主题源代码，请在站点的 `_config.redefine.yml` 中将 `developer.enable` 设置为 `true`。本地演示站已经在 `dev/site/_config.redefine.yml` 中启用了此选项。
+如果要在 Hexo 站点中使用主题源代码，请在站点的 `_config.redefine.yml` 中将 `developer.enable` 设置为 `true`。本地演示站将此设置保存在 `dev/site/_config.dev.yml` 中，`pnpm dev` 会自动加载该文件。
 
 ```yaml
 developer:
@@ -42,6 +42,8 @@ pnpm dev
 
 `dev/site/` 是 Redefine 的规范演示站来源，用于本地开发、PR 预览、分支预览和生产演示站。演示文章、页面和站点配置都应放在这里；`dev/site/themes/redefine/` 下的生成链接以及 `dev/site/public/` 输出仅属于本地或 CI 状态。
 
+`dev/site/_config.yml` 保存 Hexo 站点设置，`dev/site/_config.redefine.yml` 只保存演示站有意覆盖的主题设置，`dev/site/_config.dev.yml` 只保存本地开发模式覆盖。测试专用配置位于 `tests/fixtures/`。
+
 本地执行 `pnpm dev` 时会启用主题开发模式，并使用当前检出的主题资源。CI 在生成所有部署站点前都会关闭开发模式。PR 和分支预览使用当前检出的资源并关闭 CDN；生产演示站则保留配置中的版本化 CDN 行为。
 
 ## 构建与清理
@@ -60,7 +62,7 @@ pnpm run watch:css
 - `pnpm clean` 删除演示站生成的 `db.json` 和 `public/` 目录。
 - `pnpm run build` 统一执行主题 CSS 和浏览器端 JavaScript 构建。
 - `pnpm run build:css` 将 `styles/theme.css` 编译为 `source/css/build/theme.css`，并将 `styles/plugins/` 中的插件样式复制到 `source/css/build/plugins/`。
-- `pnpm test` 使用 Node.js 内置测试运行器，构建主题 CSS，运行聚焦的 Hexo 辅助函数测试，并在默认、功能和插件配置矩阵下生成规范演示站。
+- `pnpm test` 使用 Node.js 内置测试运行器，构建主题 CSS，运行聚焦的 Hexo 辅助函数测试，并使用默认配置和可选功能配置生成规范演示站。
 - `pnpm run build:js` 在 `source/js/build/` 下生成应用 bundle、按需加载的功能 chunk、独立插件脚本、复制的 vendor JavaScript 和 source map。
 - `pnpm run watch:css` 监听 `styles/theme.css` 及其导入的样式和 Tailwind 内容来源，同时将 `styles/plugins/` 的变化同步到生成目录；该命令不会启动 Hexo。
 

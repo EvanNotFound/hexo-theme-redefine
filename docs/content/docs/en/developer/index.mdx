@@ -21,7 +21,7 @@ This installs dependencies for the theme, the local Hexo demo site in `dev/site`
 
 ### Enable theme development mode
 
-For a Hexo site using the theme source, set `developer.enable` to `true` in its `_config.redefine.yml` file. The local demo site already enables this option in `dev/site/_config.redefine.yml`.
+For a Hexo site using the theme source, set `developer.enable` to `true` in its `_config.redefine.yml` file. The local demo keeps this setting in `dev/site/_config.dev.yml`, which `pnpm dev` loads automatically.
 
 ```yaml
 developer:
@@ -49,6 +49,11 @@ previews, branch previews, and the production demo. Keep demo posts, pages, and
 site configuration there; the generated `dev/site/themes/redefine/` link and
 `dev/site/public/` output are local or CI state.
 
+`dev/site/_config.yml` contains Hexo site settings,
+`dev/site/_config.redefine.yml` contains intentional demo theme overrides, and
+`dev/site/_config.dev.yml` contains only the local development-mode override.
+Test-only configuration lives under `tests/fixtures/`.
+
 Local `pnpm dev` keeps theme developer mode enabled and uses checked-out theme
 assets. CI disables developer mode before generating every deployed site. PR
 and branch previews use checked-out assets with CDN disabled, while the
@@ -73,8 +78,8 @@ pnpm run watch:css
   `source/css/build/theme.css` and copies plugin styles from `styles/plugins/`
   to `source/css/build/plugins/`.
 - `pnpm test` uses Node's built-in test runner, builds the theme CSS, runs
-  focused Hexo helper tests, and generates the canonical demo under the default,
-  feature, and plugin configuration matrices.
+  focused Hexo helper tests, and generates the canonical demo with the default
+  and optional feature configurations.
 - `pnpm run build:js` bundles the application, writes lazy feature chunks and
   standalone plugin outputs, copies vendor JavaScript, and writes source maps
   under `source/js/build/`.

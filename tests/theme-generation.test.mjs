@@ -17,7 +17,7 @@ const includes = (output, values) => {
 const borderedPageTitle =
   '<h1 class="text-4xl mt-4 mb-8 font-medium font-display tracking-tight border-b border-rd-gray-alpha-400 pb-2">';
 
-test("theme build and generation matrices", async (t) => {
+test("theme build and generation configurations", async (t) => {
   buildStyles();
 
   await t.test("CSS build produces the theme stylesheet", () => {
@@ -133,9 +133,9 @@ test("theme build and generation matrices", async (t) => {
     assert.ok(!home.includes("/css/build/plugins/aplayer.css"));
   });
 
-  generateSite("_config.style-features.yml");
+  generateSite(path.join(ROOT, "tests", "fixtures", "optional-theme-config.yml"));
 
-  await t.test("feature configuration renders enabled controls and writing modules", () => {
+  await t.test("optional configuration renders enabled controls and writing modules", () => {
     const home = readOutput();
     const writing = readOutput("2022/10/02/theme-demo/index.html");
     const nested = readOutput("2026/08/06/tab-folding-nesting-test/index.html");
@@ -144,9 +144,7 @@ test("theme build and generation matrices", async (t) => {
     includes(nested, ["data-tabs", 'role="tabpanel"', 'class="folding']);
   });
 
-  generateSite("_config.style-plugins.yml");
-
-  await t.test("plugin configuration selects only configured style assets", () => {
+  await t.test("optional configuration selects only configured style assets", () => {
     const home = readOutput();
     includes(home, [
       "/css/build/plugins/code-themes/light/atom-one-light.css",

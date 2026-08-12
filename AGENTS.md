@@ -9,9 +9,9 @@ package-specific command says otherwise.
 - Root theme: `_config.yml`, `languages/`, `layout/`, `scripts/`, and `source/`.
 - Demo fixtures and site configuration: `dev/site/`. Never edit the generated
   link at `dev/site/themes/redefine/`.
-- When `_config.yml` or another theme configuration default changes, update the
-  corresponding values in `dev/site/_config.redefine.yml` in the same change.
-  Keep any intentional demo-only overrides explicit.
+- Theme defaults belong in the root `_config.yml`. Keep
+  `dev/site/_config.redefine.yml` limited to intentional demo-only overrides;
+  do not copy unchanged defaults into it.
 - Documentation content: `docs/content/docs/{zh,en}/`; documentation app code:
   `docs/src/`. Follow `docs/AGENTS.md` for all `docs/**` work.
 - Keep changes in the owning package. For cross-package behavior, run each
@@ -38,8 +38,8 @@ package-specific command says otherwise.
 - Theme source or configuration: `pnpm run build`. Use `pnpm run build:css` or
   `pnpm run build:js` only for a narrower affected area.
 - Theme tests: `pnpm test` uses Node's built-in test runner, builds CSS, tests
-  Hexo helpers, and generates the canonical demo site with default, feature,
-  and plugin configuration matrices.
+  Hexo helpers, and generates the canonical demo site with default and optional
+  feature configurations.
 - Interactive theme preview: `pnpm dev` serves Hexo at
   `http://127.0.0.1:4000`, resets and links the demo site, and watches CSS.
   It serves source browser modules and does not watch production JavaScript
@@ -80,7 +80,8 @@ Do not edit generated output directly:
 
 - Theme builds: `source/css/build/theme.css`,
   `source/css/build/plugins/`, and `source/js/build/`.
-- Demo state: `dev/site/db.json`, `dev/site/public/`, `dev/site/themes/`.
+- Demo state: `dev/site/_multiconfig.yml`, `dev/site/db.json`,
+  `dev/site/public/`, and `dev/site/themes/`.
 - Docs output: `docs/.source/`, `docs/.next/`, `docs/out/`,
   `docs/next-env.d.ts`.
 - Release-note preview: `release-notes.md`.

@@ -31,6 +31,7 @@ yarn.lock
 # misc
 /.sass-cache
 /dev/site/db.json
+/dev/site/_multiconfig.yml
 /dev/site/public
 /dev/site/themes
 /dev/site/.source

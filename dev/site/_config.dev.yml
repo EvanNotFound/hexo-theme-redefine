@@ -1,0 +1,6 @@
+# Local theme-development mode loaded by `pnpm dev`.
+theme_config:
+  developer:
+    enable: true
+  cdn:
+    enable: false

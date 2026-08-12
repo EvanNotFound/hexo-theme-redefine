@@ -34,7 +34,11 @@ const start = (command, args, cwd) => {
 const main = () => {
   cleanSite();
   linkTheme();
-  const hexo = start(HEXO_PATH, ["server", ...process.argv.slice(2)], SITE_ROOT);
+  const hexo = start(
+    HEXO_PATH,
+    ["server", "--config", "_config.yml,_config.dev.yml", ...process.argv.slice(2)],
+    SITE_ROOT,
+  );
   const css = start("pnpm", ["run", "watch:css"], THEME_ROOT);
 
   hexo.on("exit", (code) => {
