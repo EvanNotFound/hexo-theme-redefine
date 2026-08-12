@@ -1,6 +1,8 @@
+let toolsMenuOpen = theme.global.side_tools?.auto_expand === true;
+
 export const updateAutoHideTools = () => {
   const y = window.scrollY;
-  const height = document.body.scrollHeight;
+  const height = document.documentElement.scrollHeight;
   const windowHeight = window.innerHeight;
   const tools = document.getElementById("side-tools");
   const aplayer = document.getElementById("aplayer");
@@ -9,11 +11,20 @@ export const updateAutoHideTools = () => {
     return;
   }
 
+  const isScrollable = height > windowHeight;
   const shouldHide =
     (y <= 100 && location.pathname === config.root) ||
-    y + windowHeight >= height - 20;
-  tools.dataset.state = shouldHide ? "hidden" : "visible";
-  aplayer?.classList.toggle("hide", shouldHide);
+    (isScrollable && y + windowHeight >= height - 20);
+  const state = shouldHide ? "hidden" : "visible";
+
+  if (tools.dataset.state !== state) {
+    tools.dataset.state = state;
+    tools.setAttribute("aria-hidden", String(shouldHide));
+    tools.inert = shouldHide;
+  }
+  if (aplayer && aplayer.classList.contains("hide") !== shouldHide) {
+    aplayer.classList.toggle("hide", shouldHide);
+  }
 };
 
 export const initToolsListToggle = (ctx, signal) => {
@@ -21,15 +32,17 @@ export const initToolsListToggle = (ctx, signal) => {
     return;
   }
 
-  if (theme.global.side_tools && theme.global.side_tools.auto_expand) {
-    ctx.toolsList.dataset.state = "open";
-    ctx.toggleButton.setAttribute("aria-expanded", "true");
-  }
+  const applyState = () => {
+    ctx.toolsList.dataset.state = toolsMenuOpen ? "open" : "closed";
+    ctx.toolsList.setAttribute("aria-hidden", String(!toolsMenuOpen));
+    ctx.toggleButton.setAttribute("aria-expanded", String(toolsMenuOpen));
+  };
+
+  applyState();
 
   const handler = () => {
-    const isOpen = ctx.toolsList.dataset.state === "open";
-    ctx.toolsList.dataset.state = isOpen ? "closed" : "open";
-    ctx.toggleButton.setAttribute("aria-expanded", String(!isOpen));
+    toolsMenuOpen = !toolsMenuOpen;
+    applyState();
   };
 
   if (signal) {

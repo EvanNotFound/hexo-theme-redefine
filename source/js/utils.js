@@ -45,6 +45,7 @@ const registerScrollHandlers = (signal) => {
 
   didInitScroll = true;
   window.addEventListener("scroll", handleScroll, { signal });
+  window.addEventListener("resize", handleScroll, { signal });
   window.addEventListener("scroll", debounce(handleHomeBannerBlur, 20), {
     signal,
   });

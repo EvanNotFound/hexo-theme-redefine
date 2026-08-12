@@ -24,7 +24,7 @@
 
 	<%- partial('pages/router', {pageKind: currentPageKind, region: 'after-shell'}) %>
 
-	<aside id="side-tools" data-state="visible" class="fixed right-3 bottom-6 z-30 opacity-100 transition-opacity duration-200 data-[state=hidden]:pointer-events-none data-[state=hidden]:opacity-0 sm:right-10">
+	<aside id="side-tools" data-state="visible" class="fixed right-3 bottom-6 z-30 opacity-100 transition-opacity duration-200 data-[state=hidden]:pointer-events-none data-[state=hidden]:opacity-0 motion-reduce:transition-none sm:right-10">
 		<%- partial('components/side-tools') %>
 	</aside>
 

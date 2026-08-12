@@ -62,11 +62,18 @@ test("theme build and generation configurations", async (t) => {
       "data-sidebar-panel",
       'class="order-last rounded-2xl border',
       'aria-label="Theme Redefine" class="order-first overflow-hidden',
-      'class="flex w-full items-center gap-2 rounded-lg',
+      "data-sidebar-link",
       'id="page-shell"',
       'id="main-content"',
       'id="site-footer"',
+      'id="side-tools" data-state="visible" class="fixed',
+      'class="flex flex-col items-end gap-1"',
+      'id="side-tools-menu" data-state="closed" aria-hidden="true" class="invisible absolute right-0 bottom-full mb-1 flex flex-col gap-1 opacity-0 pointer-events-none transition-opacity',
     ]);
+    const sideToolsMenu = home.match(/<div id="side-tools-menu"[^>]+>/)?.[0] || "";
+    assert.ok(!sideToolsMenu.includes("translate-x"));
+    assert.ok(!sideToolsMenu.includes("transition-[transform,opacity]"));
+    assert.ok(!home.includes('data-side-tool class="hidden size-10'));
     assert.equal(home.split('href="/essays"').length, 3);
     includes(post, ['id="article-layout"', 'id="toc-toggle"']);
     [home, post].forEach((output) => {

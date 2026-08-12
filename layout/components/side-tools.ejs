@@ -1,43 +1,43 @@
 <%
-    const toolClass = "mb-1 flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-2xl border border-rd-gray-alpha-400 bg-rd-background-100 text-lg text-rd-gray-1000 shadow-rd last:mb-0 hover:!bg-primary hover:!text-rd-primary-text sm:size-11 sm:text-xl [&_i]:!text-inherit";
+    const toolClass = "flex size-10 shrink-0 items-center justify-center rounded-2xl border border-rd-gray-alpha-400 bg-rd-background-100 text-lg text-rd-gray-1000 shadow-rd hover:!bg-primary hover:!text-rd-primary-text sm:size-11 sm:text-xl [&_i]:!text-inherit";
 %>
-<div>
-    <div id="side-tools-menu" data-state="closed" class="translate-x-full opacity-0 transition-[transform,opacity] duration-200 ease-in-out data-[state=open]:translate-x-0 data-[state=open]:opacity-100">
-        <button id="theme-toggle" data-side-tool type="button" class="<%= toolClass %>" aria-label="<%= __('theme') %>" title="<%= __('theme') %>">
-            <i class="fa-regular fa-moon" aria-hidden="true"></i>
-        </button>
-
-        <% if (theme.plugins.feed.enable && config.feed) { %>
-            <a data-side-tool class="<%= toolClass %>" href="<%= url_for(config.feed.path) %>" target="_blank" rel="noopener noreferrer" aria-label="<%= __('rss_feed') %>" title="<%= __('rss_feed') %>">
-                <i class="fa-regular fa-rss" aria-hidden="true"></i>
-            </a>
-        <% } %>
-
-        <% if (theme.global.scroll_progress.percentage !== true) { %>
-            <button id="scroll-top" data-side-tool type="button" class="<%= toolClass %>" aria-label="<%= __('top') %>" title="<%= __('top') %>">
-                <i class="fa-regular fa-arrow-up" aria-hidden="true"></i>
+<div class="flex flex-col items-end gap-1">
+    <div class="relative">
+        <div id="side-tools-menu" data-state="closed" aria-hidden="true" class="invisible absolute right-0 bottom-full mb-1 flex flex-col gap-1 opacity-0 pointer-events-none transition-opacity duration-200 ease-in-out data-[state=open]:visible data-[state=open]:opacity-100 data-[state=open]:pointer-events-auto motion-reduce:transition-none">
+            <button id="theme-toggle" data-side-tool type="button" class="<%= toolClass %>" aria-label="<%= __('theme') %>" title="<%= __('theme') %>">
+                <i class="fa-regular fa-moon" aria-hidden="true"></i>
             </button>
-        <% } %>
 
-        <button id="scroll-bottom" data-side-tool type="button" class="<%= toolClass %>" aria-label="Bottom" title="Bottom">
-            <i class="fa-regular fa-arrow-down" aria-hidden="true"></i>
-        </button>
-    </div>
+            <% if (theme.plugins.feed.enable && config.feed) { %>
+                <a data-side-tool class="<%= toolClass %>" href="<%= url_for(config.feed.path) %>" target="_blank" rel="noopener noreferrer" aria-label="<%= __('rss_feed') %>" title="<%= __('rss_feed') %>">
+                    <i class="fa-regular fa-rss" aria-hidden="true"></i>
+                </a>
+            <% } %>
 
-    <div>
+            <% if (theme.global.scroll_progress.percentage !== true) { %>
+                <button id="scroll-top" data-side-tool type="button" class="<%= toolClass %>" aria-label="<%= __('top') %>" title="<%= __('top') %>">
+                    <i class="fa-regular fa-arrow-up" aria-hidden="true"></i>
+                </button>
+            <% } %>
+
+            <button id="scroll-bottom" data-side-tool type="button" class="<%= toolClass %>" aria-label="Bottom" title="Bottom">
+                <i class="fa-regular fa-arrow-down" aria-hidden="true"></i>
+            </button>
+        </div>
+
         <button id="side-tools-toggle" data-side-tool type="button" class="<%= toolClass %>" aria-controls="side-tools-menu" aria-expanded="false" aria-label="Tools" title="Tools">
             <i class="fa-regular fa-cog <% if (theme.global.side_tools && theme.global.side_tools.gear_rotation !== false) { %>fa-spin<% } %>" aria-hidden="true"></i>
         </button>
-        <% if (theme.global.scroll_progress.percentage === true) { %>
-            <button id="scroll-top" data-side-tool type="button" data-state="hidden" class="group <%= toolClass %> data-[state=hidden]:hidden" aria-label="<%= __('top') %>" title="<%= __('top') %>">
-                <i data-scroll-arrow class="fas fa-arrow-up !hidden group-hover:!flex" aria-hidden="true"></i>
-                <span data-scroll-percent class="flex text-base group-hover:!hidden"></span>
-            </button>
-        <% } %>
-        <% if (theme.plugins.aplayer.enable && theme.plugins.aplayer.type === "mini") { %>
-            <div class="hidden md:block">
-                <div data-side-tool class="<%= toolClass %>" aria-hidden="true"></div>
-            </div>
-        <% } %>
     </div>
+
+    <% if (theme.global.scroll_progress.percentage === true) { %>
+        <button id="scroll-top" data-side-tool type="button" data-state="hidden" class="group <%= toolClass %> data-[state=hidden]:hidden" aria-label="<%= __('top') %>" title="<%= __('top') %>">
+            <i data-scroll-arrow class="fas fa-arrow-up !hidden group-hover:!flex" aria-hidden="true"></i>
+            <span data-scroll-percent class="flex text-base group-hover:!hidden"></span>
+        </button>
+    <% } %>
+
+    <% if (theme.plugins.aplayer.enable && theme.plugins.aplayer.type === "mini") { %>
+        <div class="hidden size-10 sm:size-11 md:block" aria-hidden="true"></div>
+    <% } %>
 </div>
