@@ -7,8 +7,8 @@
         <%- partial('pages/home/home-banner-image', {fixed: false, blurred: false}) %>
     <% } %>
     <div class="transition-fade-down relative flex min-h-svh box-border flex-col items-center justify-center">
-        <div class="home-title flex w-screen flex-col items-center justify-center text-center text-[length:var(--home-title-size)] leading-[var(--home-line-height)] font-semibold text-home-banner-text-color">
-            <%- theme.home_banner.title || theme.style.first_screen.description || config.description %>
+        <div class="home-title flex w-screen flex-col items-center justify-center text-center text-[length:var(--home-title-size)] leading-[var(--home-line-height)] font-medium text-home-banner-text-color">
+            <div class="tracking-tight"><%- theme.home_banner.title || theme.style.first_screen.description || config.description %></div>
             <% const subtitleConfig = theme.home_banner.subtitle || {}; %>
             <% const subtitleText = subtitleConfig.text; %>
             <% const subtitleEntries = Array.isArray(subtitleText) ? subtitleText : subtitleText ? [subtitleText] : []; %>

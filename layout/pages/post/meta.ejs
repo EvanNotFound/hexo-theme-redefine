@@ -7,13 +7,13 @@
     <span class="group relative <%= metaItemClass %>">
         <i class="fa-regular fa-pen-fancy" aria-hidden="true"></i>&nbsp;
         <time datetime="<%= date_xml(articleObject.date) %>"><%= formatArticleDate(articleObject.date) %></time>
-        <span class="pointer-events-none absolute top-6 left-1/2 z-1 w-max -translate-x-1/2 rounded-sm border border-rd-gray-alpha-400 bg-rd-gray-100 px-1 opacity-0 transition-opacity duration-300 group-hover:opacity-100"><%= __('create_time') %></span>
+        <span class="pointer-events-none absolute top-6 left-1/2 z-10 w-max -translate-x-1/2 rounded-sm border border-rd-gray-alpha-400 bg-rd-gray-100 px-1 opacity-0 transition-opacity duration-300 group-hover:opacity-100"><%= __('create_time') %></span>
     </span>
     <% if (articleObject?.updated && articleObject.updated !== articleObject.date) { %>
         <span class="group relative <%= metaItemClass %>">
             <i class="fa-regular fa-wrench" aria-hidden="true"></i>&nbsp;
             <time datetime="<%= date_xml(articleObject.updated) %>"><%= formatArticleDate(articleObject.updated) %></time>
-            <span class="pointer-events-none absolute top-6 left-1/2 z-1 w-max -translate-x-1/2 rounded-sm border border-rd-gray-alpha-400 bg-rd-gray-100 px-1 opacity-0 transition-opacity duration-300 group-hover:opacity-100"><%= __('update_time') %></span>
+            <span class="pointer-events-none absolute top-6 left-1/2 z-10 w-max -translate-x-1/2 rounded-sm border border-rd-gray-alpha-400 bg-rd-gray-100 px-1 opacity-0 transition-opacity duration-300 group-hover:opacity-100"><%= __('update_time') %></span>
         </span>
     <% } %>
 

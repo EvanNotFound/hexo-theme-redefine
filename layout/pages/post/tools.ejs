@@ -1,7 +1,7 @@
 <%
     const postToolClass = "mb-1 size-10 cursor-pointer items-center justify-center rounded-2xl border border-rd-gray-alpha-400 bg-rd-background-100 text-lg text-rd-gray-1000 shadow-rd last:mb-0 hover:bg-primary hover:text-rd-primary-text sm:size-11 sm:text-xl [&_i]:!text-inherit";
 %>
-<aside class="fixed top-[calc(var(--current-navbar-height)+2.5rem)] right-10 hidden transition-[top] duration-200 ease-in-out sm:block">
+<aside class="fixed top-[calc(var(--current-navbar-height)+2.5rem)] right-10 z-30 hidden transition-[top] duration-200 ease-in-out sm:block">
 <div>
     <% if (theme.articles.toc.enable) { %>
         <button id="toc-toggle" type="button" hidden aria-controls="article-toc" aria-expanded="false" aria-label="<%= __('toc') %>" title="<%= __('toc') %>" class="hidden <%= postToolClass %> lg:!flex">

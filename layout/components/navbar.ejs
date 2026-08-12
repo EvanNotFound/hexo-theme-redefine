@@ -1,6 +1,6 @@
 <% const navbarWidth = theme.home_banner.enable === true && is_home() && !page.prev ? 'home' : 'pages'; %>
 <header id="navbar" class="navbar flex h-full w-full box-border items-center justify-center px-6 pt-0.5 font-display backdrop-blur-md [background:var(--nav-color-bg)] md:px-12">
-    <div data-navbar-content data-navbar-width="<%= navbarWidth %>" class="relative z-5 flex h-full w-full flex-row items-center justify-between transition-[max-width] duration-300 ease-out">
+    <div data-navbar-content data-navbar-width="<%= navbarWidth %>" class="relative z-30 flex h-full w-full flex-row items-center justify-between transition-[max-width] duration-300 ease-out">
         <div class="flex items-center">
             <% if (theme.defaults.hasOwnProperty('logo') && theme.defaults.logo) { %>
                 <a data-navbar-close class="mr-3 h-8 w-8 sm:h-10 sm:w-10" href="<%= config.root %>">
@@ -9,7 +9,7 @@
                     }) %>
                 </a>
             <% } %>
-            <a data-navbar-close class="translate-y-px font-title text-xl leading-none font-semibold text-rd-gray-1000 sm:text-2xl" href="<%= config.root %>">
+            <a data-navbar-close class="translate-y-px font-title text-xl leading-none font-medium text-rd-gray-1000 sm:text-2xl" href="<%= config.root %>">
                 <% if (is_home()) { %>
                     <h1 class="m-0 text-inherit leading-inherit font-inherit"><%= theme.info.title || config.title || 'Redefine Theme' %></h1>
                 <% } else { %>
@@ -75,7 +75,7 @@
         </div>
     </div>
 
-    <nav id="navbar-drawer" data-state="closed" aria-hidden="true" aria-label="Navigation" class="absolute top-0 left-0 z-2 flex h-dvh w-full origin-top translate-x-full flex-col justify-between overflow-y-auto bg-rd-background-100 pt-[var(--navbar-height)] pb-5 transition-transform duration-300 ease-in-out data-[state=open]:translate-x-0">
+    <nav id="navbar-drawer" data-state="closed" aria-hidden="true" aria-label="Navigation" class="absolute top-0 left-0 z-20 flex h-dvh w-full origin-top translate-x-full flex-col justify-between overflow-y-auto bg-rd-background-100 pt-[var(--navbar-height)] pb-5 transition-transform duration-300 ease-in-out data-[state=open]:translate-x-0">
         <ul class="flex flex-col items-start justify-center px-4">
             <% for (let i in theme.navbar.links) { %>
                 <% if (theme.navbar.links[i].path !== 'none') { %>
@@ -128,5 +128,5 @@
         <%- partial("components/statistics") %>
     </nav>
 
-    <button id="navbar-mask" type="button" data-state="closed" aria-hidden="true" aria-label="Close navigation" tabindex="-1" class="pointer-events-none invisible absolute top-0 z-1 h-dvh w-full bg-black/40 opacity-0 transition-opacity duration-300 ease-in-out data-[state=open]:pointer-events-auto data-[state=open]:visible data-[state=open]:opacity-100"></button>
+    <button id="navbar-mask" type="button" data-state="closed" aria-hidden="true" aria-label="Close navigation" tabindex="-1" class="pointer-events-none invisible absolute top-0 z-10 h-dvh w-full bg-black/40 opacity-0 transition-opacity duration-300 ease-in-out data-[state=open]:pointer-events-auto data-[state=open]:visible data-[state=open]:opacity-100"></button>
 </header>

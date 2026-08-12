@@ -1,7 +1,7 @@
 <%
     const viewerButtonClass = "absolute flex size-11 items-center justify-center rounded-full border border-rd-gray-alpha-400 bg-rd-background-100/60 dark:bg-rd-background-100/40 text-rd-gray-1000 backdrop-blur-md transition-[background-color,transform,opacity] duration-200 hover:bg-rd-background-100/80 disabled:pointer-events-none disabled:opacity-35 [&_i]:text-lg [&_i]:!text-inherit";
 %>
-<dialog id="image-viewer" class="image-viewer fixed inset-0 z-8 m-0 h-full max-h-none w-full max-w-none items-center justify-center border-0 bg-black/30 p-6 backdrop-blur-md open:flex sm:p-12" aria-label="<%= __('image_viewer') %>">
+<dialog id="image-viewer" class="image-viewer fixed inset-0 m-0 h-full max-h-none w-full max-w-none items-center justify-center border-0 bg-black/30 p-6 backdrop-blur-md open:flex sm:p-12" aria-label="<%= __('image_viewer') %>">
     <button data-viewer-action="close" class="<%= viewerButtonClass %> top-6 right-6 sm:top-12 sm:right-12" type="button" aria-label="<%= __('close') %>">
         <i class="fa-solid fa-xmark" aria-hidden="true"></i>
     </button>
