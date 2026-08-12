@@ -86,7 +86,14 @@
                 <% } %>
             </div>
 
-            <a href="<%- url_for(post.path) %>"><%- __('read_more') %><span class="sr-only"><%= post.title %></span>&nbsp;<i class="fa-solid fa-angle-right" aria-hidden="true"></i></a>
+            <a
+                class="group/read-more flex items-center gap-2"
+                href="<%- url_for(post.path) %>"
+            >
+                <%- __('read_more') %>
+                <span class="sr-only"><%= post.title %></span>
+                <i class="fa-regular fa-angle-right group-hover/read-more:translate-x-0.5 transition-transform" aria-hidden="true"></i>
+            </a>
         </div>
     </div>
 </li>
