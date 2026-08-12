@@ -4,7 +4,7 @@
   }
 
   .paginator .space {
-    padding: 8px 10px;
+    padding: 8px 2px;
   }
 
   .paginator :is(a.page-number, span.page-number, a.prev, a.next) {
@@ -17,6 +17,10 @@
     background: var(--rd-background-100);
     border: 1px solid var(--rd-gray-alpha-400);
     border-radius: 8px;
+  }
+
+  .paginator :is(a.prev, a.next) {
+    display: none;
   }
 
   .paginator :is(a.page-number, span.page-number, a.prev, a.next):hover {
@@ -38,13 +42,13 @@
     color: var(--rd-primary-text);
   }
 
-  @media (max-width: 640px) {
+  @variant sm {
     .paginator :is(a.prev, a.next) {
-      display: none;
+      display: inline-block;
     }
 
     .paginator .space {
-      padding: 8px 2px;
+      padding: 8px 10px;
     }
   }
 }

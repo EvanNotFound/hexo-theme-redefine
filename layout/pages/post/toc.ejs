@@ -1,6 +1,6 @@
 <div class="box-border w-full">
-    <div class="mb-[0.2rem] text-[0.8rem] font-medium text-rd-gray-1000"><%- __('toc') %></div>
-    <div class="mb-[0.6rem] text-[1.1rem] leading-normal font-bold whitespace-normal text-rd-gray-1000"><%= page.title %></div>
+    <div class="mb-1 text-xs font-medium text-rd-gray-1000"><%- __('toc') %></div>
+    <div class="mb-2.5 text-lg leading-normal font-bold whitespace-normal text-rd-gray-1000"><%= page.title %></div>
     <%- toc(page.content, {
         class: 'nav',
         list_number: theme.articles.toc.number,

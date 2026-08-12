@@ -1,29 +1,29 @@
 @layer base {
   body {
-    --current-navbar-height: var(--navbar-height);
+    --current-navbar-height: 3.5rem;
   }
 
   body[data-navbar-size="compact"] {
-    --current-navbar-height: var(--navbar-shrink-height);
+    --current-navbar-height: 2.5rem;
   }
 
-  @media (max-width: 768px) {
+  @variant sm {
     body {
-      --current-navbar-height: calc(var(--navbar-height) * 0.9);
+      --current-navbar-height: 4rem;
     }
 
     body[data-navbar-size="compact"] {
-      --current-navbar-height: calc(var(--navbar-shrink-height) * 0.9);
+      --current-navbar-height: 2.75rem;
     }
   }
 
-  @media (max-width: 640px) {
+  @variant md {
     body {
-      --current-navbar-height: calc(var(--navbar-height) * 0.8);
+      --current-navbar-height: var(--navbar-height);
     }
 
     body[data-navbar-size="compact"] {
-      --current-navbar-height: calc(var(--navbar-shrink-height) * 0.8);
+      --current-navbar-height: var(--navbar-shrink-height);
     }
   }
 }

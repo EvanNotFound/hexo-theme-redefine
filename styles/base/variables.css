@@ -1,7 +1,7 @@
 @layer theme {
   :root {
-    --navbar-height: 70px;
-    --navbar-shrink-height: 50.4px;
+    --navbar-height: 4.5rem;
+    --navbar-shrink-height: 3rem;
     --font-default: Geist Variable, Noto Sans SC, -apple-system, system-ui,
       Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif,
       BlinkMacSystemFont, Helvetica Neue, PingFang SC, Hiragino Sans GB,

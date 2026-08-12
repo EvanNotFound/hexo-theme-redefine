@@ -5,7 +5,7 @@
             <nav class="scrollbar-hide flex gap-2 overflow-x-auto pb-4 md:block md:pb-0" aria-label="Bookmarks">
                 <% theme.bookmarks.forEach((category, index) => { %>
                     <% const sectionId = `bookmark-section-${index}`; %>
-                    <a data-bookmark-nav aria-controls="<%= sectionId %>" href="#<%= sectionId %>" class="block shrink-0 whitespace-nowrap rounded-lg border border-transparent px-3 py-2 font-medium transition-all duration-200 hover:scale-[1.02] hover:border-rd-gray-200 hover:bg-rd-gray-200 hover:text-primary aria-[current=location]:scale-[1.02] aria-[current=location]:border-rd-gray-200 aria-[current=location]:bg-rd-gray-200 aria-[current=location]:text-primary md:whitespace-normal">
+                    <a data-bookmark-nav aria-controls="<%= sectionId %>" href="#<%= sectionId %>" class="block shrink-0 whitespace-nowrap rounded-lg border border-transparent px-3 py-2 font-medium transition-all duration-200 hover:border-rd-gray-200 hover:bg-rd-gray-200 hover:text-primary aria-[current=location]:border-rd-gray-200 aria-[current=location]:bg-rd-gray-200 aria-[current=location]:text-primary md:whitespace-normal">
                         <i class="fa-regular <%= category.icon %> mr-2 h-6 w-6" aria-hidden="true"></i><%= category.category %>
                     </a>
                 <% }); %>
@@ -21,7 +21,7 @@
                             <a href="<%= item.link %>" target="_blank" rel="noopener noreferrer" class="group block">
                                 <div class="rounded-2xl border border-rd-gray-alpha-400 p-5">
                                     <div class="flex items-center gap-5">
-                                        <div class="h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-rd-gray-100 transition-transform duration-300 group-hover:scale-105">
+                                        <div class="size-12 shrink-0 overflow-hidden rounded-lg bg-rd-gray-100 transition-transform duration-300 group-hover:scale-105">
                                             <img src="<%= item.image %>" alt="<%= item.name %>" class="h-full w-full object-cover" onerror="this.src='<%= url_for('/images/bookmark-placeholder.svg') %>'">
                                         </div>
                                         <div class="flex min-w-0 flex-1 flex-col gap-1">

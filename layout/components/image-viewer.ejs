@@ -1,25 +1,25 @@
 <%
-    const viewerButtonClass = "absolute flex h-11 w-11 items-center justify-center rounded-full border border-rd-gray-alpha-400 bg-rd-background-100/60 dark:bg-rd-background-100/40 text-rd-gray-1000 backdrop-blur-[10px] transition-[background-color,transform,opacity] duration-200 hover:bg-rd-background-100/80 disabled:pointer-events-none disabled:opacity-35 [&_i]:text-[1.1rem] [&_i]:!text-inherit";
+    const viewerButtonClass = "absolute flex size-11 items-center justify-center rounded-full border border-rd-gray-alpha-400 bg-rd-background-100/60 dark:bg-rd-background-100/40 text-rd-gray-1000 backdrop-blur-md transition-[background-color,transform,opacity] duration-200 hover:bg-rd-background-100/80 disabled:pointer-events-none disabled:opacity-35 [&_i]:text-lg [&_i]:!text-inherit";
 %>
-<dialog id="image-viewer" class="image-viewer fixed inset-0 z-8 m-0 h-full max-h-none w-full max-w-none items-center justify-center border-0 bg-black/30 p-[6%] backdrop-blur-[10px] open:flex" aria-label="<%= __('image_viewer') %>">
-    <button data-viewer-action="close" class="<%= viewerButtonClass %> top-[4%] right-[4%]" type="button" aria-label="<%= __('close') %>">
+<dialog id="image-viewer" class="image-viewer fixed inset-0 z-8 m-0 h-full max-h-none w-full max-w-none items-center justify-center border-0 bg-black/30 p-6 backdrop-blur-md open:flex sm:p-12" aria-label="<%= __('image_viewer') %>">
+    <button data-viewer-action="close" class="<%= viewerButtonClass %> top-6 right-6 sm:top-12 sm:right-12" type="button" aria-label="<%= __('close') %>">
         <i class="fa-solid fa-xmark" aria-hidden="true"></i>
     </button>
-    <button data-viewer-action="previous" class="<%= viewerButtonClass %> top-1/2 left-[4%] -translate-y-1/2 hover:-translate-y-1/2 hover:scale-105" type="button" aria-label="<%= __('prev') %>">
+    <button data-viewer-action="previous" class="<%= viewerButtonClass %> top-1/2 left-6 -translate-y-1/2 hover:-translate-y-1/2 hover:scale-105 sm:left-12" type="button" aria-label="<%= __('prev') %>">
         <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
     </button>
     <div data-viewer-frame class="flex h-full max-h-full w-full max-w-full items-center justify-center">
         <img id="image-viewer-image" src="" alt="" class="max-h-full max-w-full cursor-grab bg-rd-background-100 p-0.5 opacity-100 transition-opacity duration-200 will-change-transform">
     </div>
 
-    <section id="image-viewer-exif" class="absolute bottom-20 left-1/2 max-h-[60vh] w-[min(92vw,420px)] -translate-x-1/2 overflow-hidden rounded-3xl bg-rd-background-100/80 p-4 text-left shadow-rd backdrop-blur-md" aria-label="<%= __('exif.title') %>" aria-hidden="true" hidden>
+    <section id="image-viewer-exif" class="absolute bottom-20 left-1/2 max-h-96 w-11/12 max-w-md -translate-x-1/2 overflow-hidden rounded-3xl bg-rd-background-100/80 p-4 text-left shadow-rd backdrop-blur-md" aria-label="<%= __('exif.title') %>" aria-hidden="true" hidden>
         <div class="mb-3 flex items-center justify-between">
             <span class="text-sm font-semibold text-rd-gray-1000"><%= __('exif.title') %></span>
             <button data-viewer-action="close-exif" class="flex h-8 w-8 items-center justify-center rounded-full bg-rd-background-100/80 text-rd-gray-1000 transition hover:bg-rd-background-100/40" type="button" aria-label="<%= __('close') %>">
-                <i class="fa-solid fa-xmark text-[0.65rem]" aria-hidden="true"></i>
+                <i class="fa-solid fa-xmark text-xs" aria-hidden="true"></i>
             </button>
         </div>
-        <div id="image-viewer-exif-cards" class="scrollbar-hide grid max-h-[50vh] grid-cols-1 gap-3 overflow-y-auto pr-1 sm:grid-cols-2"></div>
+        <div id="image-viewer-exif-cards" class="scrollbar-hide grid max-h-80 grid-cols-1 gap-3 overflow-y-auto pr-1 sm:grid-cols-2"></div>
         <template id="image-viewer-exif-template">
             <div class="rounded-lg bg-rd-background-100/40 px-3 py-2">
                 <div class="mb-1 flex items-center gap-2">
@@ -35,7 +35,7 @@
         <i class="fa-solid fa-circle-info text-xs" aria-hidden="true"></i>
         <span class="text-xs font-semibold tracking-wider uppercase"><%= __('exif.title') %></span>
     </button>
-    <button data-viewer-action="next" class="<%= viewerButtonClass %> top-1/2 right-[4%] -translate-y-1/2 hover:-translate-y-1/2 hover:scale-105" type="button" aria-label="<%= __('next') %>">
+    <button data-viewer-action="next" class="<%= viewerButtonClass %> top-1/2 right-6 -translate-y-1/2 hover:-translate-y-1/2 hover:scale-105 sm:right-12" type="button" aria-label="<%= __('next') %>">
         <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
     </button>
 </dialog>

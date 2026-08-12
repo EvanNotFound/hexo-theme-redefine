@@ -1,16 +1,16 @@
 <%
-    const postToolClass = "mb-[5px] flex h-[42px] w-[42px] cursor-pointer items-center justify-center rounded-2xl border border-rd-gray-alpha-400 bg-rd-background-100 text-[1.2rem] text-rd-gray-1000 shadow-rd last:mb-0 hover:bg-primary hover:text-rd-primary-text [&_i]:!text-inherit";
+    const postToolClass = "mb-1 size-10 cursor-pointer items-center justify-center rounded-2xl border border-rd-gray-alpha-400 bg-rd-background-100 text-lg text-rd-gray-1000 shadow-rd last:mb-0 hover:bg-primary hover:text-rd-primary-text sm:size-11 sm:text-xl [&_i]:!text-inherit";
 %>
-<aside class="fixed top-[calc(var(--current-navbar-height)+2.5rem)] right-10 transition-[top] duration-200 ease-in-out max-md:right-2.5 max-md:origin-top-right max-md:scale-[0.82] max-sm:hidden">
+<aside class="fixed top-[calc(var(--current-navbar-height)+2.5rem)] right-10 hidden transition-[top] duration-200 ease-in-out sm:block">
 <div>
     <% if (theme.articles.toc.enable) { %>
-        <button id="toc-toggle" type="button" hidden aria-controls="article-toc" aria-expanded="false" aria-label="<%= __('toc') %>" title="<%= __('toc') %>" class="<%= postToolClass %> max-md:!hidden">
+        <button id="toc-toggle" type="button" hidden aria-controls="article-toc" aria-expanded="false" aria-label="<%= __('toc') %>" title="<%= __('toc') %>" class="hidden <%= postToolClass %> lg:!flex">
             <i class="fa-regular fa-outdent" aria-hidden="true"></i>
         </button>
     <% } %>
 
     <% if (theme.comment.enable === true && theme.comment.hasOwnProperty('system') && page.comment !== false) { %>
-        <button id="comment-jump" type="button" aria-controls="comments" aria-label="<%= __('comments') %>" title="<%= __('comments') %>" class="<%= postToolClass %>">
+        <button id="comment-jump" type="button" aria-controls="comments" aria-label="<%= __('comments') %>" title="<%= __('comments') %>" class="flex <%= postToolClass %>">
             <i class="fa-regular fa-comments" aria-hidden="true"></i>
         </button>
     <% } %>

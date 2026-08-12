@@ -17,6 +17,22 @@ const includes = (output, values) => {
 const borderedPageTitle =
   '<h1 class="text-4xl mt-4 mb-8 font-medium font-display tracking-tight border-b border-rd-gray-alpha-400 pb-2">';
 
+const readTemplates = (directory) => fs.readdirSync(directory, { withFileTypes: true })
+  .flatMap((entry) => {
+    const entryPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) return readTemplates(entryPath);
+    return entry.name.endsWith(".ejs") ? [[entryPath, fs.readFileSync(entryPath, "utf8")]] : [];
+  });
+
+test("theme templates use native Tailwind scales for fixed values", () => {
+  const fixedArbitrary = /(?:^|\s)(?:[\w-]+:)*-?[\w-]+-\[-?\d+(?:\.\d+)?(?:px|rem|%|vh|vw|ms)?\]/g;
+  const matches = readTemplates(path.join(ROOT, "layout"))
+    .flatMap(([file, source]) => [...source.matchAll(fixedArbitrary)]
+      .map((match) => `${path.relative(ROOT, file)}:${match[0].trim()}`));
+
+  assert.deepEqual(matches, []);
+});
+
 test("theme build and generation configurations", async (t) => {
   buildStyles();
 
@@ -29,6 +45,8 @@ test("theme build and generation configurations", async (t) => {
       "max-width:var(--content-with-toc-max-width)!important",
     ]);
     assert.ok(!css.includes("--archive-timeline-last-child-color"));
+    assert.ok(!css.includes("@media (width<40rem)"));
+    assert.ok(!css.includes("@media (width<48rem)"));
   });
 
   generateSite();

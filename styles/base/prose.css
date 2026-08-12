@@ -163,16 +163,16 @@
   .markdown-body .h6:not(.not-markdown) {
     font-family: inherit;
     color: var(--rd-gray-1000);
-    line-height: var(--article-line-height);
+    line-height: calc(var(--article-line-height) * 0.96);
     font-weight: 600;
   }
 
   .markdown-body h1:not(.not-markdown),
   .markdown-body .h1:not(.not-markdown) {
-    font-size: 2.25rem;
+    font-size: 1.75rem;
     font-weight: 650;
     border-bottom: solid 2px var(--rd-gray-alpha-400);
-    margin-top: var(--heading-h1-margin);
+    margin-top: calc(var(--heading-h1-margin) * 0.75);
     margin-bottom: 1rem;
     letter-spacing: -0.025em;
     line-height: 1.2;
@@ -180,11 +180,11 @@
 
   .markdown-body h2:not(.not-markdown),
   .markdown-body .h2:not(.not-markdown) {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 650;
     padding: 3px 0;
     border-bottom: solid 2px var(--rd-gray-alpha-400);
-    margin-top: var(--heading-h2-margin);
+    margin-top: calc(var(--heading-h2-margin) * 0.75);
     margin-bottom: 1rem;
     letter-spacing: -0.025em;
     line-height: 1.1;
@@ -192,42 +192,42 @@
 
   .markdown-body h3:not(.not-markdown),
   .markdown-body .h3:not(.not-markdown) {
-    font-size: 1.625rem;
+    font-size: 1.375rem;
     font-weight: 600;
-    margin-top: var(--heading-h3-margin);
+    margin-top: calc(var(--heading-h3-margin) * 0.75);
     margin-bottom: 0.75rem;
     letter-spacing: -0.025em;
-    line-height: 1.3;
+    line-height: 1.2;
   }
 
   .markdown-body h4:not(.not-markdown),
   .markdown-body .h4:not(.not-markdown) {
-    font-size: 1.375rem;
+    font-size: 1.25rem;
     font-weight: 600;
-    margin-top: var(--heading-h4-margin);
+    margin-top: calc(var(--heading-h4-margin) * 0.75);
     margin-bottom: 0.75rem;
-    line-height: 1.4;
+    line-height: 1.3;
   }
 
   .markdown-body h5:not(.not-markdown),
   .markdown-body .h5:not(.not-markdown) {
-    font-size: 1.1875rem;
-    font-weight: 600;
-    margin-top: var(--heading-h5-margin);
-    margin-bottom: 0.5rem;
-    line-height: 1.3;
-  }
-
-  .markdown-body h6:not(.not-markdown),
-  .markdown-body .h6:not(.not-markdown) {
     font-size: 1.0625rem;
     font-weight: 600;
-    margin-top: var(--heading-h6-margin);
+    margin-top: calc(var(--heading-h5-margin) * 0.75);
     margin-bottom: 0.5rem;
     line-height: 1.2;
   }
 
-  @media (max-width: 768px) {
+  .markdown-body h6:not(.not-markdown),
+  .markdown-body .h6:not(.not-markdown) {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: calc(var(--heading-h6-margin) * 0.75);
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+  }
+
+  @variant md {
     .markdown-body h1:not(.not-markdown),
     .markdown-body h2:not(.not-markdown),
     .markdown-body h3:not(.not-markdown),
@@ -240,49 +240,49 @@
     .markdown-body .h4:not(.not-markdown),
     .markdown-body .h5:not(.not-markdown),
     .markdown-body .h6:not(.not-markdown) {
-      line-height: calc(var(--article-line-height) * 0.96);
+      line-height: var(--article-line-height);
     }
 
     .markdown-body h1:not(.not-markdown),
     .markdown-body .h1:not(.not-markdown) {
-      font-size: 1.75rem;
-      margin-top: calc(var(--heading-h1-margin) * 0.75);
+      font-size: 2.25rem;
+      margin-top: var(--heading-h1-margin);
       line-height: 1.2;
     }
 
     .markdown-body h2:not(.not-markdown),
     .markdown-body .h2:not(.not-markdown) {
-      font-size: 1.5rem;
-      margin-top: calc(var(--heading-h2-margin) * 0.75);
+      font-size: 2rem;
+      margin-top: var(--heading-h2-margin);
       line-height: 1.1;
     }
 
     .markdown-body h3:not(.not-markdown),
     .markdown-body .h3:not(.not-markdown) {
-      font-size: 1.375rem;
-      margin-top: calc(var(--heading-h3-margin) * 0.75);
-      line-height: 1.2;
+      font-size: 1.625rem;
+      margin-top: var(--heading-h3-margin);
+      line-height: 1.3;
     }
 
     .markdown-body h4:not(.not-markdown),
     .markdown-body .h4:not(.not-markdown) {
-      font-size: 1.25rem;
-      margin-top: calc(var(--heading-h4-margin) * 0.75);
-      line-height: 1.3;
+      font-size: 1.375rem;
+      margin-top: var(--heading-h4-margin);
+      line-height: 1.4;
     }
 
     .markdown-body h5:not(.not-markdown),
     .markdown-body .h5:not(.not-markdown) {
-      font-size: 1.0625rem;
-      margin-top: calc(var(--heading-h5-margin) * 0.75);
-      line-height: 1.2;
+      font-size: 1.1875rem;
+      margin-top: var(--heading-h5-margin);
+      line-height: 1.3;
     }
 
     .markdown-body h6:not(.not-markdown),
     .markdown-body .h6:not(.not-markdown) {
-      font-size: 1rem;
-      margin-top: calc(var(--heading-h6-margin) * 0.75);
-      line-height: 1.1;
+      font-size: 1.0625rem;
+      margin-top: var(--heading-h6-margin);
+      line-height: 1.2;
     }
   }
 

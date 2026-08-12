@@ -1,7 +1,7 @@
 <div id="main-content" data-toc-state="closed" class="relative box-border h-full w-9/10 max-w-content transition-[max-width,width] duration-200 ease-in-out data-[toc-state=open]:!max-w-content-with-toc sm:w-6/7 md:w-4/5">
-<div id="article-layout" class="article-layout relative flex h-full w-full box-border justify-between max-sm:overflow-x-hidden" data-toc-state="closed">
-    <article class="article box-border mb-8 rounded-2xl border border-rd-gray-alpha-400 bg-rd-background-100 p-0 shadow-rd transition-[width] duration-200 ease-in-out max-md:mb-6 max-sm:mb-4 max-sm:max-w-[100vw] max-sm:rounded-none max-sm:border-0 max-sm:px-[0.2rem] max-sm:py-[1.2rem] max-sm:shadow-none">
-        <header class="relative w-full overflow-hidden rounded-t-[calc(1rem-1px)] max-sm:rounded-none">
+<div id="article-layout" class="article-layout relative flex h-full w-full box-border justify-between overflow-x-hidden sm:overflow-x-visible" data-toc-state="closed">
+    <article class="article box-border mb-4 max-w-screen rounded-none border-0 bg-rd-background-100 px-1 py-5 shadow-none transition-[width] duration-200 ease-in-out sm:mb-8 sm:max-w-none sm:rounded-2xl sm:border sm:border-rd-gray-alpha-400 sm:p-0 sm:shadow-rd">
+        <header class="relative w-full overflow-hidden rounded-none sm:rounded-t-[calc(1rem-1px)]">
             <% if (page.cover || page.banner || (page.thumbnail && page.thumbnail !== false)) { %>
                 <%
                     let articleCover = "";
@@ -29,8 +29,8 @@
         </header>
 
         <% if (theme.info.author || config.author) { %>
-            <div class="mt-4 flex origin-top-left scale-100 flex-row items-center gap-2 px-2 max-md:scale-90 sm:px-6 md:px-8">
-                <div class="h-[46px] w-[46px] shrink-0 rounded-xl border border-rd-gray-alpha-400 p-px">
+            <div class="mt-4 flex origin-top-left scale-90 flex-row items-center gap-2 px-2 sm:scale-100 sm:px-6 md:px-8">
+                <div class="size-12 shrink-0 rounded-xl border border-rd-gray-alpha-400 p-px">
                     <%- image_tag((typeof page.avatar === "string" && page.avatar) || page.author?.avatar || theme.defaults.avatar, {
                         class: "h-full w-full rounded-[calc(0.75rem-1px)]"
                     }) %>
@@ -46,7 +46,7 @@
                 </div>
             </div>
         <% } else { %>
-            <div class="mt-4 origin-top-left scale-100 px-2 max-md:scale-90 sm:px-6 md:px-8">
+            <div class="mt-4 origin-top-left scale-90 px-2 sm:scale-100 sm:px-6 md:px-8">
                 <%- partial('pages/post/meta', {articleObject: page}) %>
             </div>
         <% } %>
@@ -61,7 +61,7 @@
             </aside>
         <% } %>
 
-        <div class="markdown-body mt-10 border-b border-rd-gray-alpha-400 px-2 pb-2.5 text-rd-gray-1000 [overflow-wrap:break-word] sm:px-6 md:px-8">
+        <div class="markdown-body mt-10 border-b border-rd-gray-alpha-400 px-2 pb-8 text-rd-gray-1000 [overflow-wrap:break-word] sm:px-6 md:px-8">
             <%- page.content %>
         </div>
 
@@ -86,8 +86,8 @@
                         <a class="relative block h-full w-full box-border pl-4" rel="prev" href="<%= url_for(page.prev.path) %>">
                             <span class="absolute top-0 left-0 flex h-full w-4 items-center justify-center"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></span>
                             <span class="flex h-full w-full items-center justify-center">
-                                <span class="max-w-48 truncate max-md:hidden"><%= page.prev.title %></span>
-                                <span class="hidden max-md:inline-block"><%= __('prev_posts') %></span>
+                                <span class="hidden max-w-48 truncate md:inline"><%= page.prev.title %></span>
+                                <span class="inline-block md:hidden"><%= __('prev_posts') %></span>
                             </span>
                         </a>
                     </div>
@@ -96,8 +96,8 @@
                     <div class="rounded-xl border border-rd-gray-alpha-400 px-4 py-2">
                         <a class="relative block h-full w-full box-border pr-4" rel="next" href="<%= url_for(page.next.path) %>">
                             <span class="flex h-full w-full items-center justify-center">
-                                <span class="max-w-48 truncate max-md:hidden"><%= page.next.title %></span>
-                                <span class="hidden max-md:inline-block"><%= __('next_posts') %></span>
+                                <span class="hidden max-w-48 truncate md:inline"><%= page.next.title %></span>
+                                <span class="inline-block md:hidden"><%= __('next_posts') %></span>
                             </span>
                             <span class="absolute top-0 right-0 flex h-full w-4 items-center justify-center"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span>
                         </a>
@@ -112,7 +112,7 @@
     </article>
 
     <% if (is_post() && theme.articles.toc.enable === true) { %>
-        <aside id="article-toc" class="toc sticky top-[calc(var(--current-navbar-height)+2.5rem)] float-right h-auto max-h-[calc(100vh-210px)] overflow-x-hidden overflow-y-auto p-2.5 whitespace-nowrap [scrollbar-width:none] [-ms-overflow-style:none] max-md:!hidden" data-expand="<%= theme.articles.toc.expand ? 'true' : 'false' %>" aria-label="<%= __('toc') %>">
+        <aside id="article-toc" class="toc sticky top-[calc(var(--current-navbar-height)+2.5rem)] float-right h-auto max-h-[calc(100vh-210px)] overflow-x-hidden overflow-y-auto p-2.5 whitespace-nowrap [scrollbar-width:none] [-ms-overflow-style:none]" data-expand="<%= theme.articles.toc.expand ? 'true' : 'false' %>" aria-label="<%= __('toc') %>">
             <%- partial('pages/post/toc') %>
         </aside>
     <% } %>

@@ -11,11 +11,11 @@
 	<%- partial('pages/router', {pageKind: currentPageKind, region: 'before-shell'}) %>
 
 	<div id="page-shell" class="relative flex min-h-dvh flex-col justify-between pt-[var(--current-navbar-height)] transition-[padding] duration-200 ease-linear">
-		<div id="page-header" data-state="visible" class="fixed top-0 right-0 z-5 box-border h-[var(--current-navbar-height)] w-full transition-[transform,padding-left,height] duration-200 ease-out data-[state=hidden]:-translate-y-[105%] max-md:!pl-0">
+		<div id="page-header" data-state="visible" class="fixed top-0 right-0 z-5 box-border h-[var(--current-navbar-height)] w-full transition-[transform,padding-left,height] duration-200 ease-out data-[state=hidden]:-translate-y-full">
 			<%- partial('components/navbar') %>
 		</div>
 
-		<div id="page-content" class="transition-fade-up box-border flex w-full justify-center py-10 max-md:py-8 max-sm:pt-0">
+		<div id="page-content" class="transition-fade-up box-border flex w-full justify-center pt-0 pb-8 sm:py-10">
 			<%- partial('pages/router', {pageKind: currentPageKind, region: 'content'}) %>
 		</div>
 
@@ -24,7 +24,7 @@
 
 	<%- partial('pages/router', {pageKind: currentPageKind, region: 'after-shell'}) %>
 
-	<aside id="side-tools" data-state="visible" class="fixed right-10 bottom-[5%] opacity-100 transition-opacity duration-200 data-[state=hidden]:pointer-events-none data-[state=hidden]:opacity-0 max-sm:right-3">
+	<aside id="side-tools" data-state="visible" class="fixed right-3 bottom-6 opacity-100 transition-opacity duration-200 data-[state=hidden]:pointer-events-none data-[state=hidden]:opacity-0 sm:right-10">
 		<%- partial('components/side-tools') %>
 	</aside>
 

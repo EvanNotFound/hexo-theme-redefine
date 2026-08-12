@@ -2,7 +2,7 @@
 <li data-home-card class="relative flex box-border flex-col mb-6 overflow-hidden rounded-2xl ring-inset ring ring-rd-gray-alpha-400 bg-rd-background-100 sm:mb-8 md:mb-10 group">
     <% if (post.sticky) { %>
         <div data-sticky-label class="absolute top-3 right-3 z-10 cursor-default rounded-full border border-rd-gray-alpha-400 bg-rd-background-100/15 px-2.5 py-0.5 text-xs text-rd-gray-900 hover:text-rd-gray-1000">
-            <i class="fa-regular fa-thumbtack mr-[3px] text-[0.65rem]" aria-hidden="true"></i><%- __('sticky') %>
+            <i class="fa-regular fa-thumbtack mr-1 text-xs" aria-hidden="true"></i><%- __('sticky') %>
         </div>
     <% } %>
 
@@ -22,14 +22,15 @@
     %>
 
     <% if (post.thumbnail !== false && (post.thumbnail || post.cover || post.banner)) { %>
-        <div class="relative h-[150px] w-full overflow-hidden -mb-1">
+        <div class="relative -mb-1 h-40 w-full overflow-hidden">
             <a href="<%- url_for(post.path) %>">
                 <img src="<%- url_for(articleThumbnail) %>" alt="<%= post.title %>" class="absolute top-1/2 h-full w-full -translate-y-1/2 object-cover transition-all dark:brightness-75 group-hover:scale-102 duration-500" />
             </a>
         </div>
     <% } %>
     <div class="flex flex-col gap-4 p-6">
-        <h3 class="relative m-0 font-[family-name:var(--font-article-title)] text-[1.2rem] leading-normal font-semibold text-rd-gray-1000 sm:text-[1.3rem] md:text-[1.4rem]">
+        <!-- post title -->
+        <h3 class="relative m-0 font-[family-name:var(--font-article-title)] text-xl leading-normal font-semibold text-rd-gray-1000 sm:text-xl">
             <a href="<%- url_for(post.path) %>"><%= post.title %></a>
         </h3>
 
@@ -43,8 +44,8 @@
             <% } %>
         </div>
 
-        <div class="flex items-center justify-between text-[0.92rem] text-rd-gray-900">
-            <div class="tracking-[0.5px] [&_a]:text-rd-gray-900 [&_a:hover]:text-primary">
+        <div class="flex items-center justify-between text-sm text-rd-gray-900">
+            <div class="tracking-normal [&_a]:text-rd-gray-900 [&_a:hover]:text-primary">
                 <span class="mr-2.5"><i class="fa-solid fa-calendars" aria-hidden="true"></i>&nbsp;
                     <time data-home-article-date data-date="<%= post.date %>" datetime="<%= date_xml(post.date) %>">
                         <% if (theme.home.article_date_format == 'auto' || theme.home.article_date_format == 'relative') { %>
@@ -55,7 +56,7 @@
                     </time>
                 </span>
                 <% if (post.categories.length && theme.home.categories.enable === true) { %>
-                    <span class="mr-2.5 max-sm:hidden">
+                    <span class="mr-2.5 hidden sm:inline">
                         <i class="fa-solid fa-folders" aria-hidden="true"></i>&nbsp;
                         <ul class="inline">
                             <% let previousParentId = null; %>
@@ -72,7 +73,7 @@
                     </span>
                 <% } %>
                 <% if (post.tags.length && theme.home.tags.enable === true) { %>
-                    <span class="mr-2.5 last:mr-0 max-md:hidden">
+                    <span class="mr-2.5 hidden last:mr-0 md:inline">
                         <i class="fa-solid fa-tags" aria-hidden="true"></i>&nbsp;
                         <ul class="inline">
                             <% post.tags.forEach((tag, i) => { %>

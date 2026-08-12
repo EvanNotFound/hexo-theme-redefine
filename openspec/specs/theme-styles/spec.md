@@ -169,9 +169,9 @@ The color-system migration SHALL preserve the theme's responsive layout, interac
 - **WHEN** a callout, code theme, status, selection, home-banner text, or vendor-owned state requires a component-specific or configured color
 - **THEN** that color remains owned by the applicable component or configuration rather than being forced into the neutral RD scale
 
-### Requirement: Theme spacing uses the Tailwind scale
+### Requirement: Fixed theme geometry uses Tailwind scales
 
-Redefine-owned layout SHALL use Tailwind's default spacing scale for fixed padding, margins, and gaps. The theme MUST NOT define a second fixed spacing unit or derive responsive spacing by multiplying that unit by fractional values. Calculations MAY combine independent dimensions when the resulting position cannot be expressed by one spacing utility.
+Redefine-owned layout SHALL use Tailwind's default scales for fixed spacing, dimensions, typography, blur, duration, and transforms. Matching width and height values SHALL use `size-*` where appropriate. The theme MUST NOT preserve historical proportions through fractional fixed values or define a parallel fixed scale. Arbitrary values MAY remain for configured CSS variables, meaningful calculations, arbitrary CSS properties, and behavior-specific values that Tailwind's native scales cannot express accurately.
 
 #### Scenario: Responsive layout spacing is rendered
 
@@ -179,11 +179,38 @@ Redefine-owned layout SHALL use Tailwind's default spacing scale for fixed paddi
 - **THEN** each fixed spacing value uses a Tailwind spacing utility from the default scale
 - **AND** the rendered CSS does not depend on `--spacing-unit` or `--margin-spacing-unit`
 
+#### Scenario: A fixed component value is selected
+
+- **WHEN** a Redefine-owned control, overlay, heading, or effect needs a fixed size, type level, blur, duration, or transform
+- **THEN** it uses the nearest suitable Tailwind utility
+- **AND** equivalent controls share the same native geometry
+
+#### Scenario: Theme templates are checked for arbitrary values
+
+- **WHEN** Redefine-owned EJS templates are scanned after a layout change
+- **THEN** fixed numeric arbitrary utilities are absent except for documented behavior-specific values
+- **AND** configured variables, meaningful calculations, and arbitrary CSS properties remain available
+
 #### Scenario: A tool is offset from the navbar
 
 - **WHEN** a sticky or fixed component must begin below the current navbar
 - **THEN** its position may calculate the current navbar height plus one Tailwind-scale offset
 - **AND** responsive variants use the current navbar height rather than a separate fixed navbar value
+
+### Requirement: Responsive layout is mobile-first
+
+Redefine-owned templates and styles SHALL define narrow-screen behavior as the unprefixed base and SHALL use Tailwind's min-width responsive variants to enhance the layout as space becomes available. Cosmetic size and spacing changes SHOULD use `sm` when one enhancement is sufficient. `md`, `lg`, and larger variants SHALL be reserved for composition changes or content that requires additional horizontal space, such as desktop navigation, sidebars, dense metadata, or the article table of contents. Redefine-owned source MUST NOT use max-width variants for the standard Tailwind breakpoints.
+
+#### Scenario: A responsive surface renders
+
+- **WHEN** a page, panel, article, dialog, or tool changes only its sizing or spacing above mobile widths
+- **THEN** its mobile treatment is the base and its enhanced treatment uses `sm`
+- **AND** it does not add an intermediate breakpoint without a content-driven need
+
+#### Scenario: A wide composition renders
+
+- **WHEN** navigation, a sidebar, metadata, or the article table of contents requires a wider composition
+- **THEN** the owning component introduces the smallest min-width breakpoint that accommodates that content
 
 ### Requirement: Theme radii use Tailwind defaults
 

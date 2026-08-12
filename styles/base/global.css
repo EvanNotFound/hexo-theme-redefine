@@ -64,21 +64,6 @@
     pointer-events: none;
   }
 
-  @media (max-width: 768px) {
-    html,
-    body {
-      font-size: 15.36px;
-      line-height: 1.44;
-    }
-  }
-
-  @media (max-width: 640px) {
-    html,
-    body {
-      font-size: 14.4px;
-      line-height: 1.35;
-    }
-  }
 }
 
 @layer components {

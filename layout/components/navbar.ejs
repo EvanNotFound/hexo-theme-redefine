@@ -1,5 +1,5 @@
 <% const navbarWidth = theme.home_banner.enable === true && is_home() && !page.prev ? 'home' : 'pages'; %>
-<header id="navbar" class="navbar flex h-full w-full box-border items-center justify-center px-6 pt-0.5 font-display backdrop-blur-[10px] [background:var(--nav-color-bg)] md:px-12">
+<header id="navbar" class="navbar flex h-full w-full box-border items-center justify-center px-6 pt-0.5 font-display backdrop-blur-md [background:var(--nav-color-bg)] md:px-12">
     <div data-navbar-content data-navbar-width="<%= navbarWidth %>" class="relative z-5 flex h-full w-full flex-row items-center justify-between transition-[max-width] duration-300 ease-out">
         <div class="flex items-center">
             <% if (theme.defaults.hasOwnProperty('logo') && theme.defaults.logo) { %>
@@ -9,7 +9,7 @@
                     }) %>
                 </a>
             <% } %>
-            <a data-navbar-close class="translate-y-px font-title text-[1.36rem] leading-none font-[520] text-rd-gray-1000 sm:text-[1.53rem] md:text-[1.7rem]" href="<%= config.root %>">
+            <a data-navbar-close class="translate-y-px font-title text-xl leading-none font-semibold text-rd-gray-1000 sm:text-2xl" href="<%= config.root %>">
                 <% if (is_home()) { %>
                     <h1 class="m-0 text-inherit leading-inherit font-inherit"><%= theme.info.title || config.title || 'Redefine Theme' %></h1>
                 <% } else { %>
@@ -19,7 +19,7 @@
         </div>
 
         <div class="flex items-center">
-            <ul class="flex items-center gap-6 max-md:hidden">
+            <ul class="hidden items-center gap-6 md:flex">
                 <% for (let i in theme.navbar.links) { %>
                     <% if (theme.navbar.links[i].path !== 'none') { %>
                         <%
@@ -30,22 +30,22 @@
                         %>
                         <li class="<%= hasSubmenus ? 'navbar-dropdown group' : '' %> relative cursor-pointer text-base font-medium text-rd-gray-1000">
                             <% if (hasSubmenus) { %>
-                                <button type="button" class="navbar-link relative block p-[5px] text-rd-gray-1000 [&_i]:!text-inherit">
+                                <button type="button" class="navbar-link relative block p-1 text-rd-gray-1000 [&_i]:!text-inherit">
                                     <% if (link.icon) { %><i class="<%= link.icon %> fa-fw"></i><% } %>
                                     <%= linkText %>
                                     <i class="navbar-chevron fa-solid fa-chevron-down fa-fw transition-transform duration-300"></i>
                                 </button>
-                                <ul class="invisible absolute left-1/2 max-h-0 w-auto -translate-x-1/2 overflow-hidden rounded-2xl bg-rd-background-100 px-2.5 text-center opacity-0 transition-all duration-200 ease-linear group-hover:visible group-hover:max-h-[500px] group-hover:border group-hover:border-rd-gray-alpha-400 group-hover:p-2.5 group-hover:opacity-100 group-focus-within:visible group-focus-within:max-h-[500px] group-focus-within:border group-focus-within:border-rd-gray-alpha-400 group-focus-within:p-2.5 group-focus-within:opacity-100">
+                                <ul class="invisible absolute left-1/2 max-h-0 w-auto -translate-x-1/2 overflow-hidden rounded-2xl bg-rd-background-100 px-2.5 text-center opacity-0 transition-all duration-200 ease-linear group-hover:visible group-hover:max-h-96 group-hover:border group-hover:border-rd-gray-alpha-400 group-hover:p-2.5 group-hover:opacity-100 group-focus-within:visible group-focus-within:max-h-96 group-focus-within:border group-focus-within:border-rd-gray-alpha-400 group-focus-within:p-2.5 group-focus-within:opacity-100">
                                     <% for (let submenu in link.submenus) { %>
                                         <li>
-                                            <a class="block whitespace-nowrap rounded-lg px-[15px] py-[3px] text-center text-base text-rd-gray-1000 transition-all duration-200 hover:bg-rd-gray-100 hover:text-primary" href="<%- url_for(link.submenus[submenu]) %>">
+                                            <a class="block whitespace-nowrap rounded-lg px-4 py-1 text-center text-base text-rd-gray-1000 transition-all duration-200 hover:bg-rd-gray-100 hover:text-primary" href="<%- url_for(link.submenus[submenu]) %>">
                                                 <%= __(submenu.toLowerCase()).toUpperCase() %>
                                             </a>
                                         </li>
                                     <% } %>
                                 </ul>
                             <% } else { %>
-                                <a class="navbar-link relative block p-[5px] text-rd-gray-1000 [&_i]:!text-inherit" href="<%= url_for(link.path) %>" <%- isActive ? 'aria-current="page"' : '' %>>
+                                <a class="navbar-link relative block p-1 text-rd-gray-1000 [&_i]:!text-inherit" href="<%= url_for(link.path) %>" <%- isActive ? 'aria-current="page"' : '' %>>
                                     <% if (link.icon) { %><i class="<%= link.icon %> fa-fw"></i><% } %>
                                     <%= linkText %>
                                 </a>
@@ -54,7 +54,7 @@
                     <% } %>
                 <% } %>
                 <% if (theme.navbar.search.enable === true) { %>
-                    <li class="ml-[26px]">
+                    <li class="ml-6">
                         <button type="button" data-search-trigger aria-label="<%= __('search') %>" title="<%= __('search') %>" class="flex h-8 w-8 items-center justify-center text-2xl text-rd-gray-1000 hover:text-primary [&_i]:!text-inherit">
                             <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
                         </button>
@@ -62,20 +62,20 @@
                 <% } %>
             </ul>
 
-            <div class="hidden items-center justify-between max-md:flex">
+            <div class="flex items-center justify-between md:hidden">
                 <% if (theme.navbar.search.enable === true) { %>
-                    <button type="button" data-search-trigger aria-label="<%= __('search') %>" title="<%= __('search') %>" class="relative ml-3 hidden h-5 w-5 items-center justify-center text-lg text-rd-gray-1000 first:ml-0 max-md:flex [&_i]:!text-inherit">
+                    <button type="button" data-search-trigger aria-label="<%= __('search') %>" title="<%= __('search') %>" class="relative ml-3 flex h-5 w-5 items-center justify-center text-lg text-rd-gray-1000 first:ml-0 [&_i]:!text-inherit">
                         <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
                     </button>
                 <% } %>
-                <button id="navbar-toggle" type="button" aria-controls="navbar-drawer" aria-expanded="false" aria-label="Navigation" title="Navigation" class="relative ml-3 hidden h-5 w-5 items-center justify-center text-rd-gray-1000 first:ml-0 max-md:flex">
+                <button id="navbar-toggle" type="button" aria-controls="navbar-drawer" aria-expanded="false" aria-label="Navigation" title="Navigation" class="relative ml-3 flex h-5 w-5 items-center justify-center text-rd-gray-1000 first:ml-0">
                     <span class="navbar-toggle-line" aria-hidden="true"></span>
                 </button>
             </div>
         </div>
     </div>
 
-    <nav id="navbar-drawer" data-state="closed" aria-hidden="true" aria-label="Navigation" class="absolute top-0 left-0 z-2 flex h-dvh w-full origin-top translate-x-full flex-col justify-between overflow-y-auto bg-rd-background-100 pt-[var(--navbar-height)] pb-5 transition-transform duration-[380ms] ease-in-out data-[state=open]:translate-x-0">
+    <nav id="navbar-drawer" data-state="closed" aria-hidden="true" aria-label="Navigation" class="absolute top-0 left-0 z-2 flex h-dvh w-full origin-top translate-x-full flex-col justify-between overflow-y-auto bg-rd-background-100 pt-[var(--navbar-height)] pb-5 transition-transform duration-300 ease-in-out data-[state=open]:translate-x-0">
         <ul class="flex flex-col items-start justify-center px-4">
             <% for (let i in theme.navbar.links) { %>
                 <% if (theme.navbar.links[i].path !== 'none') { %>
@@ -128,5 +128,5 @@
         <%- partial("components/statistics") %>
     </nav>
 
-    <button id="navbar-mask" type="button" data-state="closed" aria-hidden="true" aria-label="Close navigation" tabindex="-1" class="pointer-events-none invisible absolute top-0 z-1 h-dvh w-full bg-black/40 opacity-0 transition-opacity duration-[380ms] ease-in-out data-[state=open]:pointer-events-auto data-[state=open]:visible data-[state=open]:opacity-100"></button>
+    <button id="navbar-mask" type="button" data-state="closed" aria-hidden="true" aria-label="Close navigation" tabindex="-1" class="pointer-events-none invisible absolute top-0 z-1 h-dvh w-full bg-black/40 opacity-0 transition-opacity duration-300 ease-in-out data-[state=open]:pointer-events-auto data-[state=open]:visible data-[state=open]:opacity-100"></button>
 </header>

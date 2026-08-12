@@ -1,8 +1,8 @@
 <%
-    const toolClass = "mb-[5px] flex h-[42px] w-[42px] shrink-0 cursor-pointer items-center justify-center rounded-2xl border border-rd-gray-alpha-400 bg-rd-background-100 text-[1.3rem] text-rd-gray-1000 shadow-rd hover:!bg-primary hover:!text-rd-primary-text [&_i]:!text-inherit max-md:mb-0.5 max-md:h-[37.8px] max-md:w-[37.8px] max-md:text-[1.17rem]";
+    const toolClass = "mb-1 flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-2xl border border-rd-gray-alpha-400 bg-rd-background-100 text-lg text-rd-gray-1000 shadow-rd last:mb-0 hover:!bg-primary hover:!text-rd-primary-text sm:size-11 sm:text-xl [&_i]:!text-inherit";
 %>
 <div>
-    <div id="side-tools-menu" data-state="closed" class="translate-x-[250%] opacity-0 transition-[transform,opacity] duration-200 ease-in-out data-[state=open]:translate-x-0 data-[state=open]:opacity-100">
+    <div id="side-tools-menu" data-state="closed" class="translate-x-full opacity-0 transition-[transform,opacity] duration-200 ease-in-out data-[state=open]:translate-x-0 data-[state=open]:opacity-100">
         <button id="theme-toggle" data-side-tool type="button" class="<%= toolClass %>" aria-label="<%= __('theme') %>" title="<%= __('theme') %>">
             <i class="fa-regular fa-moon" aria-hidden="true"></i>
         </button>
@@ -35,7 +35,9 @@
             </button>
         <% } %>
         <% if (theme.plugins.aplayer.enable && theme.plugins.aplayer.type === "mini") { %>
-            <div data-side-tool class="<%= toolClass %> max-md:hidden" aria-hidden="true"></div>
+            <div class="hidden md:block">
+                <div data-side-tool class="<%= toolClass %>" aria-hidden="true"></div>
+            </div>
         <% } %>
     </div>
 </div>
