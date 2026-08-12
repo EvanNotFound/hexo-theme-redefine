@@ -7,7 +7,7 @@
         : [...(hasSidebarExtra ? ["links"] : []), "profile"];
 %>
 <aside class="mx-10 hidden h-auto w-60 md:block">
-    <div class="sticky top-[var(--current-navbar-height)]">
+    <div class="sticky top-[calc(var(--current-navbar-height)_+_1rem)]">
         <% sidebarItems.forEach((item, index) => { %>
             <% const separated = index > 0; %>
             <% if (item === "profile") { %>

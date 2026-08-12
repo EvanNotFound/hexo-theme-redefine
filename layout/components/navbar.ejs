@@ -1,5 +1,5 @@
 <% const navbarWidth = theme.home_banner.enable === true && is_home() && !page.prev ? 'home' : 'pages'; %>
-<header id="navbar" class="navbar flex h-full w-full box-border items-center justify-center px-6 pt-0.5 font-display backdrop-blur-md [background:var(--nav-color-bg)] md:px-12">
+<header id="navbar" class="navbar flex h-full w-full box-border items-center justify-center px-6 pt-0.5 font-display backdrop-blur-md [background:var(--nav-color-bg)] shadow-rd border border-rd-gray-alpha-400/30 md:px-12">
     <div data-navbar-content data-navbar-width="<%= navbarWidth %>" class="relative z-30 flex h-full w-full flex-row items-center justify-between transition-[max-width] duration-300 ease-out">
         <div class="flex items-center">
             <% if (theme.defaults.hasOwnProperty('logo') && theme.defaults.logo) { %>
