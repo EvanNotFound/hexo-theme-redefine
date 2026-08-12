@@ -9,12 +9,12 @@
     <%- partial('pages/post/index') %>
 <% } else { %>
     <div id="main-content" class="relative box-border h-full w-9/10 max-w-content transition-[max-width,width] duration-200 ease-in-out sm:w-6/7 md:w-4/5">
-        <% if (pageKind === 'archive') { %>
-            <%- partial('pages/archive') %>
-        <% } else if (pageKind === 'category') { %>
-            <%- partial('components/page-panel', {pageBody: partial('pages/category')}) %>
-        <% } else if (pageKind === 'tag') { %>
-            <%- partial('components/page-panel', {pageBody: partial('pages/tag')}) %>
+		<% if (pageKind === 'archive') { %>
+			<%- partial('pages/archive') %>
+		<% } else if (pageKind === 'category') { %>
+			<%- partial('pages/category') %>
+		<% } else if (pageKind === 'tag') { %>
+			<%- partial('pages/tag') %>
         <% } else if (pageKind === 'categories') { %>
             <%- partial('pages/categories') %>
         <% } else if (pageKind === 'tags') { %>

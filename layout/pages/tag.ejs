@@ -1,4 +1,18 @@
-<h1 class="mb-10 border-b border-rd-gray-alpha-400 pb-5 text-4xl font-semibold text-rd-gray-1000 sm:text-5xl [&_i]:!text-inherit">
-    <i class="fa-solid fa-tag" aria-hidden="true"></i>&nbsp;<%= page.tag %>
-</h1>
-<%- partial('components/posts-list', {posts: page.posts}) %>
+<div class="mb-4 pt-5 sm:mb-6 sm:pt-0 md:mb-8">
+    <%- partial('components/page-title', {
+        title: escape_html(page.tag),
+        showBorder: true,
+        iconClass: 'fa-regular fa-hashtag text-rd-gray-800'
+    }) %>
+    <%- partial('components/posts-list', {posts: page.posts}) %>
+
+    <% if (page.content) { %>
+        <div class="markdown-body text-rd-gray-1000"><%- page.content %></div>
+    <% } %>
+
+    <% if (page.comment === true || page.comments === true) { %>
+        <%- partial('components/comments/index') %>
+    <% } %>
+</div>
+
+<%- partial('components/paginator') %>

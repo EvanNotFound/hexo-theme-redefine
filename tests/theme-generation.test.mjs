@@ -123,8 +123,32 @@ test("theme build and generation configurations", async (t) => {
       "group/tags",
       borderedPageTitle,
     ]);
+    const tagTiers = new Map();
+    const tagPattern = /class="[^"]* (blur-sm|blur-xs|opacity-70|blur-none)" href="\/tags\/[^"]+\/">[\s\S]*?<span[^>]*>(\d+)<\/span>/g;
+    for (const [, blurClass, count] of tags.matchAll(tagPattern)) {
+      const classes = tagTiers.get(Number(count)) || new Set();
+      classes.add(blurClass);
+      tagTiers.set(Number(count), classes);
+    }
+    const tagCounts = [...tagTiers.keys()].sort((a, b) => a - b);
+    assert.ok(tagCounts.length > 1);
+    tagTiers.forEach((classes) => assert.equal(classes.size, 1));
+    assert.deepEqual([...tagTiers.get(tagCounts[0])], ["blur-sm"]);
+    assert.deepEqual([...tagTiers.get(tagCounts.at(-1))], ["blur-none"]);
     assert.ok(!tags.includes('class="box-border mb-8 rounded-2xl border'));
     assert.ok(!tags.includes('id="comments"'));
+
+    const tag = readOutput("tags/test/index.html");
+    includes(tag, [
+      borderedPageTitle,
+      'class="fa-regular fa-hashtag text-rd-gray-900"',
+      'class="paginator',
+    ]);
+    assert.ok(!tag.includes('class="box-border mb-4 rounded-none border-0'));
+
+    const category = readOutput("categories/Demo/index.html");
+    includes(category, [borderedPageTitle, 'class="fa-solid fa-folder"', 'class="paginator']);
+    assert.ok(!category.includes('class="box-border mb-4 rounded-none border-0'));
   });
 
   await t.test("legacy and unknown templates use ordinary page rendering", () => {

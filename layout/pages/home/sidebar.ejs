@@ -2,16 +2,15 @@
     const hasSidebarLinks = theme.home.sidebar.links !== null;
     const hasSidebarAnnouncement = theme.home.sidebar.announcement !== null;
     const hasSidebarExtra = hasSidebarLinks || hasSidebarAnnouncement;
-    const sidebarItems = theme.home.sidebar.first_item === "info"
-        ? ["profile", ...(hasSidebarExtra ? ["links"] : [])]
-        : [...(hasSidebarExtra ? ["links"] : []), "profile"];
+    const sidebarItems = ["profile", ...(hasSidebarExtra ? ["extra"] : [])];
+
+    if (theme.home.sidebar.first_item !== "info") sidebarItems.reverse();
 %>
 <aside class="mx-10 hidden h-auto w-60 md:block">
-    <div class="sticky top-[calc(var(--current-navbar-height)_+_1rem)]">
-        <% sidebarItems.forEach((item, index) => { %>
-            <% const separated = index > 0; %>
+    <div class="sticky top-[calc(var(--current-navbar-height)_+_1rem)] flex flex-col gap-6">
+        <% for (const item of sidebarItems) { %>
             <% if (item === "profile") { %>
-                <div data-sidebar-panel class="box-border rounded-2xl border border-rd-gray-alpha-400 bg-rd-background-100 p-5 <%= separated ? 'mt-6' : '' %>">
+                <div data-sidebar-panel class="box-border rounded-2xl border border-rd-gray-alpha-400 bg-rd-background-100 p-4">
                     <div class="flex justify-center">
                         <%- image_tag(theme.defaults.avatar, {class: "h-20 w-20 rounded-2xl border border-rd-gray-alpha-400 p-px"}) %>
                     </div>
@@ -24,11 +23,11 @@
                     <%- partial('components/statistics') %>
                 </div>
             <% } else { %>
-                <div data-sidebar-panel class="box-border overflow-hidden rounded-2xl border border-rd-gray-alpha-400 bg-rd-background-100 p-4 <%= separated ? 'mt-6' : '' %>">
-                    <div data-sidebar-header class="-mx-4 -mt-4 mb-2.5 border-b border-rd-gray-alpha-400 bg-rd-gray-100 p-4">
+                <div data-sidebar-panel class="box-border overflow-hidden rounded-2xl border border-rd-gray-alpha-400 bg-rd-background-100">
+                    <div data-sidebar-header class="border-b border-rd-gray-alpha-400 bg-rd-gray-100 p-4">
                         <div class="text-center font-title text-xl font-medium text-rd-gray-1000"><%= theme.info.title || config.title %></div>
                         <% if (hasSidebarAnnouncement && hasSidebarLinks) { %>
-                            <div class="mt-2.5 mb-1 text-center text-sm text-rd-gray-900"><%- theme.home.sidebar.announcement %></div>
+                            <div class="mb-1 text-center text-sm text-rd-gray-900"><%- theme.home.sidebar.announcement %></div>
                         <% } %>
                     </div>
                     <% if (hasSidebarLinks) { %>
@@ -46,6 +45,6 @@
                     <% } %>
                 </div>
             <% } %>
-        <% }); %>
+        <% } %>
     </div>
 </aside>

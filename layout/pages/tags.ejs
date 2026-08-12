@@ -5,11 +5,21 @@
         <% if (theme.page_templates.tags_style === 'cloud') { %>
             <div class="tags"><%- tagcloud({min_font: 1, max_font: 5, unit: 'rem', amount: 100}) %></div>
         <% } else { %>
+            <%
+                const blurClasses = ['blur-sm', 'blur-xs', 'opacity-70', 'blur-none'];
+                const tagCounts = [...new Set(site.tags.map((tag) => tag.posts.length))].sort((a, b) => a - b);
+                const blurClassByCount = new Map(tagCounts.map((count, index) => {
+                    const tier = tagCounts.length === 1
+                        ? blurClasses.length - 1
+                        : Math.round(index * (blurClasses.length - 1) / (tagCounts.length - 1));
+                    return [count, blurClasses[tier]];
+                }));
+            %>
             <ul class="group/tags flex list-none flex-wrap items-center justify-center p-0 leading-10">
                 <% site.tags.forEach((tag) => { %>
                     <%
                         const count = tag.posts.length;
-                        const blurClass = count === 1 ? 'blur-sm' : count === 2 ? 'blur-xs' : count <= 4 ? 'opacity-70' : 'blur-none';
+                        const blurClass = blurClassByCount.get(count);
                     %>
                     <li>
                         <a class="relative m-2.5 block flex-1 rounded-2xl border border-rd-gray-alpha-400 bg-rd-background-100 px-6 py-3.5 text-2xl text-rd-gray-1000 transition-[filter,color,background-color,transform] duration-300 group-hover/tags:blur-none group-hover/tags:opacity-100 hover:bg-primary hover:!text-rd-primary-text active:translate-y-0.5 [&_i]:mr-1 [&_i]:opacity-30 [&_i]:!text-inherit <%= blurClass %>" href="<%- url_for('/' + tag.path) %>">
