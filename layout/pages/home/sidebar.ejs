@@ -7,7 +7,7 @@
     const infoFirst = theme.home.sidebar.first_item === 'info';
     const sidebarPosition = theme.home.sidebar.position === 'right' ? 'order-last' : 'order-first';
 %>
-<aside class="<%= sidebarPosition %> hidden w-60 shrink-0 md:block">
+<aside class="<%= sidebarPosition %> hidden w-60 shrink-0 self-stretch md:block">
     <div class="sticky top-[calc(var(--current-navbar-height)_+_1rem)] flex flex-col gap-6">
         <div data-sidebar-panel class="<%= infoFirst ? 'order-first' : 'order-last' %> rounded-2xl border border-rd-gray-alpha-400 bg-rd-background-100 p-4">
             <div class="flex justify-center">

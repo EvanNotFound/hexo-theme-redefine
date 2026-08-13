@@ -60,6 +60,7 @@ test("theme build and generation configurations", async (t) => {
       "--image-radius:12px",
       'data-home-banner="fixed"',
       "data-sidebar-panel",
+      "hidden w-60 shrink-0 self-stretch md:block",
       'class="order-last rounded-2xl border',
       'aria-label="Theme Redefine" class="order-first overflow-hidden',
       "data-sidebar-link",
