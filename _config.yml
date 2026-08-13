@@ -318,6 +318,7 @@ articles:
     number: false # Whether to add number to TOC automatically
     expand: true # Whether to expand TOC
     init_open: true # Open toc by default
+    title_max_length: 40 # Hide the article title in the TOC when it exceeds this length
   # Whether to enable copyright notice
   copyright:
     enable: true # Whether to enable

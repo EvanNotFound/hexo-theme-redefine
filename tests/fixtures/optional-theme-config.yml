@@ -14,6 +14,8 @@ theme_config:
     style:
       delete_mask: true
       image_caption: true
+    toc:
+      title_max_length: 0
     code_block:
       highlight_theme:
         light: atom-one-light

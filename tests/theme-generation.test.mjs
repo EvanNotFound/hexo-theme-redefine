@@ -17,6 +17,9 @@ const includes = (output, values) => {
 const borderedPageTitle =
   '<h1 class="text-4xl mt-4 mb-8 font-medium font-display tracking-tight border-b border-rd-gray-alpha-400 pb-2">';
 
+const getArticleToc = (output) =>
+  output.match(/<aside id="article-toc"[\s\S]*?<\/aside>/)?.[0] || "";
+
 const readTemplates = (directory) => fs.readdirSync(directory, { withFileTypes: true })
   .flatMap((entry) => {
     const entryPath = path.join(directory, entry.name);
@@ -86,6 +89,15 @@ test("theme build and generation configurations", async (t) => {
     assert.ok(!post.includes("data-home-banner"));
     assert.ok(!home.includes("--rd-shadow:"), "fixed shadow leaked into generated styles");
     assert.ok(outputExists("css/build/theme.css"));
+  });
+
+  await t.test("article TOC omits titles above the configured length", () => {
+    const shortTitleToc = getArticleToc(readOutput("2022/10/02/theme-demo/index.html"));
+    const longTitleToc = getArticleToc(readOutput("2024/01/17/super-long-title-test/index.html"));
+
+    assert.ok(shortTitleToc.includes("主题样式 Demo"));
+    assert.ok(!longTitleToc.includes("This is an extremely long title"));
+    assert.ok(longTitleToc.includes("Super Long Title Test"));
   });
 
   await t.test("archive renders an unframed semantic timeline", () => {
@@ -199,6 +211,7 @@ test("theme build and generation configurations", async (t) => {
     const nested = readOutput("2026/08/06/tab-folding-nesting-test/index.html");
     includes(home, ['id="local-search"', 'id="reading-progress"', 'id="preloader"', 'id="aplayer"']);
     includes(writing, ["data-writing-button", 'data-lazy-state="pending"']);
+    assert.ok(!getArticleToc(writing).includes("主题样式 Demo"));
     includes(nested, ["data-tabs", 'role="tabpanel"', 'class="folding']);
   });
 
