@@ -35,7 +35,7 @@
                     <ul class="flex flex-col p-2">
                         <% sidebarLinks.forEach((link) => { %>
                             <li>
-                                <a data-sidebar-link class="flex w-full items-center gap-1.5 rounded-lg px-3 py-1.5 text-rd-gray-1000 hover:bg-rd-gray-200/30 hover:text-primary tracking-tight text-sm font-medium" href="<%= url_for(link.path) %>">
+                                <a data-sidebar-link class="flex w-full items-center gap-1.5 rounded-lg px-3 py-1.5 text-rd-gray-1000 hover:bg-rd-gray-200/30 hover:text-primary font-display text-sm font-medium" href="<%= url_for(link.path) %>">
                                     <% if (link.icon) { %><i class="<%= link.icon %> w-5 text-center text-base" aria-hidden="true"></i><% } %>
                                     <span><%= __(link.label) %></span>
                                 </a>
