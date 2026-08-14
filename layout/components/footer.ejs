@@ -46,8 +46,8 @@
                 "><%= theme.footer.icp.number %></a></div>
         <% } %>
         <% if (theme.footer.runtime === true) {%>
-            <div>
-                <%= __('runtime') %> <span class="odometer" id="runtime_days" ></span> <%= __('days') %> <span class="odometer" id="runtime_hours"></span> <%= __('hours') %> <span class="odometer" id="runtime_minutes"></span> <%= __('minutes') %> <span class="odometer" id="runtime_seconds"></span> <%= __('seconds') %>
+            <div role="timer" aria-live="off">
+                <%= __('runtime') %> <number-flow id="runtime_days" data-number-unit="days"></number-flow> <%= __('days') %> <number-flow id="runtime_hours" data-number-unit="hours"></number-flow> <%= __('hours') %> <number-flow id="runtime_minutes" data-number-unit="minutes"></number-flow> <%= __('minutes') %> <number-flow id="runtime_seconds" data-number-unit="seconds"></number-flow> <%= __('seconds') %>
             </div>
         <% } %>
         </div>

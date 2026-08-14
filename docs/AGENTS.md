@@ -23,7 +23,8 @@ docs-package implementation details.
 - Production build: `pnpm build`
 - Start prod server: `pnpm start`
 - Lint: `pnpm lint` (eslint-config-next core-web-vitals)
-- Typecheck: `pnpm types:check` (fumadocs-mdx + next typegen + tsc)
+- Typecheck: `pnpm typecheck` (fumadocs-mdx + next typegen + tsc)
+- Validation: `pnpm check` (lint and typecheck)
 - Postinstall hook: `pnpm postinstall` (runs `fumadocs-mdx`)
 
 ## Tests
@@ -135,7 +136,7 @@ docs-package implementation details.
 
 ## Content generation
 
-- `fumadocs-mdx` runs on `postinstall` and in `types:check`.
+- `fumadocs-mdx` runs on `postinstall` and in `typecheck`.
 - Generated MDX output is used by the app; keep content valid.
 
 ## Agent rules
@@ -161,11 +162,10 @@ docs-package implementation details.
 
 ## Testing and verification checklist
 
-- Run `pnpm lint` and `pnpm types:check` for code changes.
+- Run `pnpm check` for code changes.
 - Run `pnpm dev` to verify page rendering and MDX output.
 - For MDX changes, verify both `zh` and `en` versions.
-- From the repository root, the equivalent commands are
-  `pnpm --dir docs lint`, `pnpm --dir docs types:check`, and
+- From the repository root, use `pnpm --dir docs check` and
   `pnpm --dir docs dev`.
 
 ## Change hygiene

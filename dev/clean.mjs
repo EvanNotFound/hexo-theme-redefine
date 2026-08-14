@@ -11,4 +11,14 @@ export const cleanSite = () => {
   fs.rmSync(path.join(SITE_ROOT, "public"), { recursive: true, force: true });
 };
 
-if (path.resolve(process.argv[1] || "") === SCRIPT_PATH) cleanSite();
+export const cleanWorkspace = () => {
+  cleanSite();
+  [
+    path.join(THEME_ROOT, "source", "css", "build"),
+    path.join(THEME_ROOT, "source", "js", "build"),
+    path.join(SITE_ROOT, "_multiconfig.yml"),
+    path.join(SITE_ROOT, "themes"),
+  ].forEach((target) => fs.rmSync(target, { recursive: true, force: true }));
+};
+
+if (path.resolve(process.argv[1] || "") === SCRIPT_PATH) cleanWorkspace();

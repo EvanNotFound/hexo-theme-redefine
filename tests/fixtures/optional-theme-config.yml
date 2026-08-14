@@ -2,7 +2,7 @@ theme_config:
   global:
     scroll_progress:
       bar: true
-      percentage: true
+      percentage: false
     preloader:
       enable: true
       custom_message: Optional feature check

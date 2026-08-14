@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "next build",
     "dev": "next dev",
+    "build": "next build",
     "start": "next start",
-    "types:check": "fumadocs-mdx && next typegen && tsc --noEmit",
-    "postinstall": "fumadocs-mdx",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "fumadocs-mdx && next typegen && tsc --noEmit",
+    "check": "pnpm lint && pnpm typecheck",
+    "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
     "@icons-pack/react-simple-icons": "^13.8.0",

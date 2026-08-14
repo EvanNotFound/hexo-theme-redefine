@@ -29,8 +29,11 @@ From the repository root, source files live in:
 
 - `source/js/**`
 
-`pnpm dev` builds browser JavaScript once and creates `dev/site/themes/redefine/`
-as local link state. Do not edit files through that generated directory.
+`pnpm dev` watches browser JavaScript with esbuild and creates
+`dev/site/themes/redefine/` as local link state. The browser loads the
+unminified development bundle from `source/js/build/dev/`; refresh the page
+manually after JavaScript changes. Do not edit files through the generated link
+or build directories.
 
 Do not edit:
 

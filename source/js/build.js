@@ -1,20 +1,14 @@
 const esbuild = require("esbuild");
 const fs = require("fs/promises");
 const path = require("path");
+const {
+  applicationOptions,
+  BUILD_DIR,
+  SOURCE_DIR,
+  sharedOptions,
+} = require("./esbuild-options.js");
 
-const THEME_ROOT = path.join(__dirname, "../..");
-const SOURCE_DIR = path.join(THEME_ROOT, "source/js");
-const BUILD_DIR = path.join(SOURCE_DIR, "build");
 const LIBS_DIR = path.join(SOURCE_DIR, "libs");
-
-const sharedOptions = {
-  bundle: true,
-  logLevel: "info",
-  minify: true,
-  platform: "browser",
-  sourcemap: true,
-  target: "es2020",
-};
 
 const copyJavaScriptFiles = async (sourceDir, targetDir) => {
   const entries = await fs.readdir(sourceDir, { withFileTypes: true });
@@ -40,15 +34,13 @@ const copyJavaScriptFiles = async (sourceDir, targetDir) => {
 };
 
 const buildApplication = () =>
-  esbuild.build({
-    ...sharedOptions,
-    chunkNames: "chunks/[name]-[hash]",
-    entryPoints: [path.join(SOURCE_DIR, "main.js")],
-    entryNames: "[name]",
-    format: "esm",
-    outdir: BUILD_DIR,
-    splitting: true,
-  });
+  esbuild.build(
+    applicationOptions({
+      chunkNames: "chunks/[name]-[hash]",
+      minify: true,
+      outdir: BUILD_DIR,
+    }),
+  );
 
 const buildStandalone = (entry, format) =>
   esbuild.build({
@@ -60,6 +52,7 @@ const buildStandalone = (entry, format) =>
       },
     ],
     format,
+    minify: true,
     outdir: BUILD_DIR,
   });
 

@@ -33,4 +33,10 @@
   .footer a:active span {
     color: var(--primary-color);
   }
+
+  .footer number-flow {
+    display: inline-block;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
 }

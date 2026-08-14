@@ -1,37 +1,13 @@
+import { setNumberValue } from "../utils/numberFlow.js";
+
 let runtimeActive = false;
-const odometerElements = new WeakSet();
 
-const initializeOdometers = () => {
-  if (typeof Odometer === "undefined") {
-    return;
-  }
-
-  document.querySelectorAll(".odometer").forEach((element) => {
-    if (odometerElements.has(element)) {
-      return;
-    }
-
-    new Odometer({
-      el: element,
-      format: "( ddd).dd",
-      duration: 200,
-    });
-    odometerElements.add(element);
-  });
-};
-
-const footerRuntime = () => {
-  if (!runtimeActive) {
-    return;
-  }
-
+const updateFooterRuntime = () => {
   const startTime = theme.footerStart;
   if (!startTime) {
     runtimeActive = false;
     return;
   }
-
-  window.setTimeout(footerRuntime, 1000);
 
   const startDate = new Date(startTime);
   const nowDate = new Date();
@@ -50,16 +26,26 @@ const footerRuntime = () => {
   const runtimeMinutes = document.getElementById("runtime_minutes");
   const runtimeSeconds = document.getElementById("runtime_seconds");
 
-  if (runtimeDays) runtimeDays.innerHTML = days;
-  if (runtimeHours) runtimeHours.innerHTML = hours;
-  if (runtimeMinutes) runtimeMinutes.innerHTML = minutes;
-  if (runtimeSeconds) runtimeSeconds.innerHTML = seconds;
+  setNumberValue(runtimeDays, days);
+  setNumberValue(runtimeHours, hours);
+  setNumberValue(runtimeMinutes, minutes);
+  setNumberValue(runtimeSeconds, seconds);
+};
+
+const footerRuntime = () => {
+  if (!runtimeActive) {
+    return;
+  }
+
+  updateFooterRuntime();
+  if (runtimeActive) {
+    window.setTimeout(footerRuntime, 1000);
+  }
 };
 
 export default function initFooterRuntime() {
-  initializeOdometers();
-
   if (runtimeActive) {
+    updateFooterRuntime();
     return;
   }
 

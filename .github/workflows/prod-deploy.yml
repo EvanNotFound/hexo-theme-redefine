@@ -31,13 +31,10 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build theme assets
-        run: pnpm run build
+        run: pnpm build
 
       - name: Configure Production Mode
         run: node dev/site-mode.mjs production
-
-      - name: Clean Demo Site
-        run: pnpm clean
 
       - name: Link Local Theme
         run: node dev/link-theme.mjs

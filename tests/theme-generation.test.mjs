@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
 import {
+  buildDevelopmentJavaScript,
   buildStyles,
   generateSite,
   outputExists,
@@ -70,6 +71,9 @@ test("theme build and generation configurations", async (t) => {
       'id="page-shell"',
       'id="main-content"',
       'id="site-footer"',
+      'role="timer" aria-live="off"',
+      '<number-flow id="runtime_days" data-number-unit="days"></number-flow>',
+      '<number-flow data-scroll-percent',
       'id="side-tools" data-state="visible" class="fixed',
       'class="flex flex-col items-end gap-1"',
       'id="side-tools-menu" data-state="closed" aria-hidden="true" class="invisible absolute right-0 bottom-full mb-1 flex flex-col gap-1 opacity-0 pointer-events-none transition-opacity',
@@ -88,7 +92,10 @@ test("theme build and generation configurations", async (t) => {
     assert.ok(!home.includes('id="toc-toggle"'));
     assert.ok(!post.includes("data-home-banner"));
     assert.ok(!home.includes("--rd-shadow:"), "fixed shadow leaked into generated styles");
+    assert.ok(!home.includes("odometer"));
+    assert.ok(!home.includes("esm.sh"));
     assert.ok(outputExists("css/build/theme.css"));
+    assert.ok(!outputExists("css/build/plugins/odometer.css"));
   });
 
   await t.test("article TOC omits titles above the configured length", () => {
@@ -198,7 +205,6 @@ test("theme build and generation configurations", async (t) => {
       "/css/build/plugins/code-themes/light/github.css",
       "/css/build/plugins/code-themes/dark/vs2015.css",
       "/css/build/plugins/comments/waline.css",
-      "/css/build/plugins/odometer.css",
     ]);
     assert.ok(!home.includes("/css/build/plugins/aplayer.css"));
   });
@@ -226,5 +232,26 @@ test("theme build and generation configurations", async (t) => {
     ]);
     assert.ok(!home.includes("/css/build/plugins/comments/waline.css"));
     assert.ok(!home.includes("/css/build/plugins/odometer.css"));
+    assert.ok(!home.includes("<number-flow"));
+    assert.ok(!home.includes("odometer.min.js"));
+    assert.ok(!home.includes("esm.sh"));
+  });
+
+  buildDevelopmentJavaScript();
+  generateSite(path.join(ROOT, "dev", "site", "_config.dev.yml"));
+
+  await t.test("canonical demo development uses the watched application bundle", () => {
+    const home = readOutput();
+    const devMain = path.join(ROOT, "source", "js", "build", "dev", "main.js");
+    const devChunks = path.join(ROOT, "source", "js", "build", "dev", "chunks");
+
+    assert.ok(home.includes('src="/js/build/dev/main.js"'));
+    assert.ok(!home.includes('type="importmap"'));
+    assert.ok(fs.statSync(devMain).size > 0);
+    assert.ok(
+      fs.readdirSync(devChunks).some((name) => name === "numberFlow.js"),
+    );
+    assert.ok(outputExists("js/build/dev/main.js"));
+    assert.ok(home.includes("https://events.ohevan.com/script.js"));
   });
 });

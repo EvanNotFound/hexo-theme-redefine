@@ -21,7 +21,7 @@ jobs:
           cache: true
 
       - name: Build Theme Assets
-        run: pnpm run build
+        run: pnpm build
 
       - name: Setup Aliyun OSS
         uses: manyuanrong/setup-ossutil@master

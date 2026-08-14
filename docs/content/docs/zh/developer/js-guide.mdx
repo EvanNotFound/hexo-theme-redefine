@@ -29,7 +29,7 @@ Redefine 的 JavaScript 分为两类：
 
 - `source/js/**`
 
-`pnpm dev` 会先构建一次浏览器端 JavaScript，并生成本地链接目录 `dev/site/themes/redefine/`，请勿通过该生成目录修改文件。
+`pnpm dev` 会使用 esbuild 监听浏览器端 JavaScript，并生成本地链接目录 `dev/site/themes/redefine/`。浏览器会加载 `source/js/build/dev/` 下未压缩的开发 bundle；修改 JavaScript 后需要手动刷新页面。请勿通过生成的链接目录或构建目录修改文件。
 
 请勿手动修改：
 

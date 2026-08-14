@@ -1,11 +1,6 @@
-<%- renderJS('main.js', {
+<%- renderJS(theme.developer?.enable === true ? 'build/dev/main.js' : 'main.js', {
     module: true
 }) %>
-
-<% if (theme.footer.runtime) { %>
-    <%- renderJS('libs/odometer.min.js') %>
-    <%- renderCSS('css/build/plugins/odometer.css') %>
-<% } %>
 
 <% const subtitleConfig = theme.home_banner.subtitle || {}; %>
 <% const subtitleText = subtitleConfig.text; %>

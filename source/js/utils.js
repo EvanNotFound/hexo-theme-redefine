@@ -79,6 +79,7 @@ export const initUtilsPage = ({ signal } = {}) => {
     updateHomeBannerBlur: () => updateHomeBannerBlur(context),
   };
 
+  updateScrollStyle(context);
   updateAutoHideTools();
 
   initToolsListToggle(context, signal);

@@ -33,7 +33,7 @@
     <% if (theme.global.scroll_progress.percentage === true) { %>
         <button id="scroll-top" data-side-tool type="button" data-state="hidden" class="group <%= toolClass %> data-[state=hidden]:hidden" aria-label="<%= __('top') %>" title="<%= __('top') %>">
             <i data-scroll-arrow class="fas fa-arrow-up !hidden group-hover:!flex" aria-hidden="true"></i>
-            <span data-scroll-percent class="flex text-base group-hover:!hidden"></span>
+            <number-flow data-scroll-percent class="block w-6 text-center text-base tabular-nums leading-none group-hover:!hidden"></number-flow>
         </button>
     <% } %>
 

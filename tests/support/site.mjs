@@ -8,7 +8,6 @@ import { linkTheme } from "../../dev/link-theme.mjs";
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 export const SITE_ROOT = path.join(ROOT, "dev", "site");
 
-const PNPM = process.platform === "win32" ? "pnpm.cmd" : "pnpm";
 const HEXO = path.join(
   SITE_ROOT,
   "node_modules",
@@ -25,7 +24,10 @@ const run = (command, args, cwd) => {
   }
 };
 
-export const buildStyles = () => run(PNPM, ["run", "build:css"], ROOT);
+export const buildStyles = () =>
+  run(process.execPath, [path.join(ROOT, "dev", "build-css.mjs")], ROOT);
+export const buildDevelopmentJavaScript = () =>
+  run(process.execPath, [path.join(ROOT, "dev", "build-js.mjs")], ROOT);
 
 export const generateSite = (config) => {
   cleanSite();

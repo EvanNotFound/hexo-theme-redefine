@@ -1,3 +1,5 @@
+import { setNumberValue } from "./numberFlow.js";
+
 const calculatePercentage = (scrollTop, scrollHeight, clientHeight) => {
   let percentageValue = Math.round(
     (scrollTop / (scrollHeight - clientHeight)) * 100,
@@ -36,7 +38,7 @@ const updateScrollPercent = (ctx, percent) => {
     const showButton = percent !== 0 && percent !== undefined;
 
     ctx.backToTopButton_dom.dataset.state = showButton ? "visible" : "hidden";
-    percentDom.innerHTML = percent.toFixed(0);
+    setNumberValue(percentDom, percent);
   }
 };
 

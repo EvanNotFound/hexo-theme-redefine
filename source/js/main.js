@@ -165,6 +165,20 @@ const initPage = () => {
     }
   });
 
+  if (
+    theme.footer?.runtime ||
+    theme.global?.scroll_progress?.percentage === true
+  ) {
+    lazyRun(
+      "numberFlow",
+      pageSignal,
+      () => import("./plugins/numberFlow.js"),
+      ({ default: initNumberFlow }) => {
+        initNumberFlow();
+      },
+    );
+  }
+
   safeRun("toc", () => {
     if (theme.articles?.toc?.enable) {
       initTOC({ signal: appSignal });

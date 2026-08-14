@@ -39,7 +39,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build theme assets
-        run: pnpm run build
+        run: pnpm build
 
       - name: Verify npm package contents
         run: |
@@ -49,7 +49,7 @@ jobs:
           const result = JSON.parse(fs.readFileSync("npm-pack.json", "utf8"))[0]
           const files = new Set(result.files.map((file) => file.path))
           for (const file of [
-            "source/css/build/tailwind.css",
+            "source/css/build/theme.css",
             "source/js/build/main.js",
             "source/js/build/main.js.map",
             "source/js/build/plugins/aplayer.js",
@@ -96,7 +96,7 @@ jobs:
         if: steps.node.outcome == 'success'
         continue-on-error: true
         timeout-minutes: 5
-        run: npm install --global opencode-ai@1.18.6
+        run: pnpm add --global opencode-ai@1.18.6
 
       - name: Generate release notes
         id: generate
@@ -113,7 +113,7 @@ jobs:
           test -n "${RELEASE_LLM_URL}"
           test -n "${RELEASE_LLM_KEY}"
           opencode run --pure --command changelog "${GITHUB_REF_NAME}"
-          pnpm run release:notes:check
+          pnpm release:notes:check
 
       - name: Upload OpenCode release notes
         id: upload

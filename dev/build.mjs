@@ -1,11 +1,10 @@
 import { spawn } from "child_process";
 
-const packageManager = process.platform === "win32" ? "pnpm.cmd" : "pnpm";
-const buildScripts = ["build:css", "build:js"];
+const buildScripts = ["dev/build-css.mjs", "source/js/build.js"];
 
 const runBuild = (script) =>
   new Promise((resolve) => {
-    const child = spawn(packageManager, ["run", script], {
+    const child = spawn(process.execPath, [script], {
       stdio: "inherit",
     });
 

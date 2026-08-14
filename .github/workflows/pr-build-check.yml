@@ -43,8 +43,5 @@ jobs:
           runtime: node@24
           cache: true
 
-      - name: Test Theme
-        run: pnpm test
-
-      - name: Build JavaScript
-        run: pnpm run build:js
+      - name: Check Theme
+        run: pnpm check

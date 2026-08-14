@@ -35,21 +35,22 @@ package-specific command says otherwise.
 ## Commands and verification
 
 - Install: `pnpm install --frozen-lockfile`.
-- Theme source or configuration: `pnpm run build`. Use `pnpm run build:css` or
-  `pnpm run build:js` only for a narrower affected area.
+- Theme source or configuration: `pnpm build` creates all production assets.
 - Theme tests: `pnpm test` uses Node's built-in test runner, builds CSS, tests
   Hexo helpers, and generates the canonical demo site with default and optional
   feature configurations.
+- Theme validation: `pnpm check` runs the tests and production build.
+- Generated theme and demo output: `pnpm clean` removes all generated theme
+  assets and demo state.
 - Interactive theme preview: `pnpm dev` serves Hexo at
-  `http://127.0.0.1:4000`, resets and links the demo site, and watches CSS.
-  It serves source browser modules and does not watch production JavaScript
-  output.
-- One-off demo generation: run `pnpm run build`, `pnpm clean`,
+  `http://127.0.0.1:4000`, resets and links the demo site, and watches CSS and
+  an unminified development JavaScript bundle. Refresh the browser manually
+  after JavaScript changes.
+- One-off demo generation: run `pnpm clean`, `pnpm build`,
   `node dev/link-theme.mjs`, then `pnpm --dir dev/site exec hexo generate`.
 - Demo-only change: use the one-off generation above or `pnpm dev`.
-- Docs code or MDX: run `pnpm --dir docs lint` and
-  `pnpm --dir docs types:check`. The docs package has no test runner or
-  single-test command.
+- Docs code or MDX: run `pnpm --dir docs check`. The docs package has no test
+  runner or single-test command.
 
 ## Theme implementation
 

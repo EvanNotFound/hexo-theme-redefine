@@ -34,11 +34,12 @@ developer:
 pnpm dev
 ```
 
-This serves browser JavaScript source modules directly, resets the demo site's
-generated state, links the current theme source into
-`dev/site/themes/redefine`, starts Hexo at `http://127.0.0.1:4000`, and compiles
-native CSS and Tailwind CSS from `styles/theme.css` as files change. It does not
-require or continuously watch production JavaScript output.
+This resets the demo site's generated state, links the current theme source into
+`dev/site/themes/redefine`, starts Hexo at `http://127.0.0.1:4000`, and watches
+both browser JavaScript and CSS. esbuild writes an unminified development bundle
+with source maps under `source/js/build/dev/`, while Tailwind recompiles
+`styles/theme.css`. Refresh the browser manually after JavaScript changes; the
+development command does not provide live reload.
 
 </div>
 
@@ -65,27 +66,19 @@ Run these commands from the repository root:
 
 ```bash
 pnpm clean
-pnpm run build
-pnpm run build:css
+pnpm build
 pnpm test
-pnpm run build:js
-pnpm run watch:css
+pnpm check
 ```
 
-- `pnpm clean` removes the demo site's generated `db.json` and `public/` directory.
-- `pnpm run build` coordinates the theme CSS and browser JavaScript builds.
-- `pnpm run build:css` compiles `styles/theme.css` to
-  `source/css/build/theme.css` and copies plugin styles from `styles/plugins/`
-  to `source/css/build/plugins/`.
-- `pnpm test` uses Node's built-in test runner, builds the theme CSS, runs
-  focused Hexo helper tests, and generates the canonical demo with the default
-  and optional feature configurations.
-- `pnpm run build:js` bundles the application, writes lazy feature chunks and
-  standalone plugin outputs, copies vendor JavaScript, and writes source maps
-  under `source/js/build/`.
-- `pnpm run watch:css` watches `styles/theme.css`, its imported styles, and
-  Tailwind content sources while syncing changes under `styles/plugins/` to the
-  generated directory. It does not start Hexo.
+- `pnpm clean` removes all root-owned generated theme assets and demo state.
+- `pnpm build` creates all production CSS and browser JavaScript.
+- `pnpm test` runs the Node.js test suite and its generated-site coverage.
+- `pnpm check` is the canonical pre-PR theme validation command and runs the
+  tests followed by the production build.
+
+`pnpm dev` owns both CSS and JavaScript watching, so standalone watch commands
+and build-helper commands are not documented here.
 
 Do not edit generated files directly. Core and plugin CSS lives in
 `source/css/build/`, and JavaScript lives in `source/js/build/`; these paths are
@@ -93,10 +86,11 @@ generated locally or in CI and are not committed. Edit the source files instead.
 Runtime assets under `source/assets/` remain checked in.
 
 The generated site loads only the configured light and dark code themes, only
-the enabled supported comment system's stylesheet, and the APlayer and Odometer
-styles only when APlayer and footer runtime are enabled, respectively. These
-optional assets therefore remain under `source/css/build/plugins/` instead of
-being bundled into the core CSS.
+the enabled supported comment system's stylesheet, and APlayer styles only when
+APlayer is enabled. These optional assets remain under
+`source/css/build/plugins/` instead of being bundled into the core CSS. Number
+Flow is an application dependency emitted in a lazy JavaScript chunk and loaded
+when footer runtime or toolbar reading percentage is enabled.
 
 The theme style pipeline no longer contains Stylus, and the demo site no longer
 depends on `hexo-renderer-stylus`. Published packages contain the native CSS and
@@ -129,7 +123,7 @@ automatic release notes.
 - `styles/components/`: Theme component styles that require complex selectors
   or cannot be expressed entirely in templates.
 - `styles/plugins/`: Separate optional styles for code themes, comment systems,
-  APlayer, and Odometer.
+  and APlayer.
 - `source/css/build/`: Generated core and plugin CSS; do not edit it directly.
 - `source/assets/`: Checked-in runtime assets.
 - `source/js/`: Browser-side JavaScript source.
