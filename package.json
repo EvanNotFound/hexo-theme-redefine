@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EvanNotFound/hexo-theme-redefine.git"
+    "url": "git+https://github.com/evannotfound/hexo-theme-redefine.git"
   },
   "keywords": [
     "hexo",
@@ -38,7 +38,7 @@
   "author": "EvanNotFound",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/EvanNotFound/hexo-theme-redefine/issues"
+    "url": "https://github.com/evannotfound/hexo-theme-redefine/issues"
   },
   "homepage": "https://redefine.ohevan.com",
   "devDependencies": {
