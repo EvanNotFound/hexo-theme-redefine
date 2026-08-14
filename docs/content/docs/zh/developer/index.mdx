@@ -104,11 +104,13 @@ pnpm release:notes:check
 
 - `--rd-background-100` 和 `--rd-background-200` 分别用于主要和交替页面背景。
 - `--rd-gray-100`、`--rd-gray-200`、`--rd-gray-300` 分别用于组件的默认、悬停和激活背景。
-- `--rd-gray-alpha-400` 用于结构边框和分隔线。
+- `--rd-gray-400`、`--rd-gray-500`、`--rd-gray-600` 分别用于组件的默认、悬停和激活边框。
+- `--rd-gray-700`、`--rd-gray-800` 分别用于高对比度组件的默认和悬停背景。
 - `--rd-gray-900` 用于次要文字和图标，`--rd-gray-1000` 用于主要文字和图标。
+- `--rd-gray-alpha-100` 至 `--rd-gray-alpha-1000` 在需要透明度时与同编号的纯色灰阶用途一致；`--rd-gray-alpha-400` 仍用于标准结构边框和分隔线。
 - `--rd-primary-text` 用于主题色填充上的文字和图标。
 - `--rd-shadow` 继续表示完整的明暗模式阴影效果。
 
-`--rd-gray-500` 至 `--rd-gray-800` 有意保持未定义；没有经过实际组件证明的职责时，不得自行补充。不要新增 `card`、`foreground` 等组件别名，组件应直接选择与职责匹配的编号变量。引用明暗模式变量或配置生成变量的 Tailwind 运行时映射必须放在 `@theme inline` 中。
+不要新增 `card`、`foreground` 等组件别名，组件应直接选择与职责匹配的编号变量。引用明暗模式变量或配置生成变量的 Tailwind 运行时映射必须放在 `@theme inline` 中。
 
 详细的 Tailwind CSS 文档请参考 [Tailwind CSS 官方文档](https://tailwindcss.com/docs)。

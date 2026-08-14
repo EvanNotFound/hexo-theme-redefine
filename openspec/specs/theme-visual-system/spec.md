@@ -8,7 +8,7 @@ Define the theme's structural borders, static depth, and interaction-effect cont
 
 ### Requirement: Numbered RD colors have fixed roles
 
-Redefine SHALL provide a compact mode-aware numbered color foundation consisting of `--rd-background-100`, `--rd-background-200`, `--rd-gray-100`, `--rd-gray-200`, `--rd-gray-300`, `--rd-gray-alpha-400`, `--rd-gray-900`, and `--rd-gray-1000`. The background levels SHALL represent primary and alternate page backgrounds, gray levels 100 through 300 SHALL represent increasingly visible neutral component backgrounds, gray-alpha 400 SHALL represent the standard structural border, and gray levels 900 and 1000 SHALL represent secondary and primary text and icons.
+Redefine SHALL provide a mode-aware numbered color foundation consisting of `--rd-background-100`, `--rd-background-200`, solid `--rd-gray-100` through `--rd-gray-1000`, and translucent `--rd-gray-alpha-100` through `--rd-gray-alpha-1000`. The background levels SHALL represent primary and alternate page backgrounds; gray levels 100 through 300 SHALL represent increasingly visible neutral component backgrounds; gray levels 400 through 600 SHALL represent increasingly visible component borders; gray levels 700 and 800 SHALL represent default and hover high-contrast component backgrounds; and gray levels 900 and 1000 SHALL represent secondary and primary text and icons. Each gray-alpha level SHALL mirror the corresponding solid gray role when transparency is required, with gray-alpha 400 representing the standard structural border.
 
 #### Scenario: Contributor chooses a page background
 
@@ -20,6 +20,21 @@ Redefine SHALL provide a compact mode-aware numbered color foundation consisting
 
 - **WHEN** a neutral control or nested component needs default, hover, or active differentiation
 - **THEN** it uses the applicable `--rd-gray-100`, `--rd-gray-200`, or `--rd-gray-300` level
+
+#### Scenario: Contributor chooses a component border
+
+- **WHEN** a neutral component border needs default, hover, or active differentiation
+- **THEN** it uses the applicable `--rd-gray-400`, `--rd-gray-500`, or `--rd-gray-600` level
+
+#### Scenario: Contributor chooses a high-contrast component background
+
+- **WHEN** a neutral high-contrast component needs default or hover differentiation
+- **THEN** it uses `--rd-gray-700` or `--rd-gray-800`, respectively
+
+#### Scenario: Contributor needs a translucent gray
+
+- **WHEN** a numbered gray role must allow the underlying surface to show through
+- **THEN** it uses the corresponding `--rd-gray-alpha-*` level
 
 #### Scenario: Contributor chooses text color
 

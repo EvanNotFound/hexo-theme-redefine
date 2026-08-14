@@ -10,6 +10,10 @@ theme_config:
     search:
       enable: true
       preload: true
+  home:
+    categories:
+      enable: true
+      limit: 1
   articles:
     style:
       delete_mask: true

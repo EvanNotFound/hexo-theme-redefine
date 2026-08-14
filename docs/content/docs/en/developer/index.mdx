@@ -153,17 +153,21 @@ appropriate entry.
   page backgrounds.
 - `--rd-gray-100`, `--rd-gray-200`, and `--rd-gray-300` are for default, hover,
   and active component backgrounds, respectively.
-- `--rd-gray-alpha-400` is for structural borders and dividers.
+- `--rd-gray-400`, `--rd-gray-500`, and `--rd-gray-600` are for default, hover,
+  and active component borders, respectively.
+- `--rd-gray-700` and `--rd-gray-800` are for default and hover high-contrast
+  component backgrounds.
 - `--rd-gray-900` is for secondary text and icons; `--rd-gray-1000` is for
   primary text and icons.
+- `--rd-gray-alpha-100` through `--rd-gray-alpha-1000` mirror the solid gray
+  roles when transparency is required; `--rd-gray-alpha-400` remains the
+  standard structural border and divider.
 - `--rd-primary-text` is for text and icons on primary-colored fills.
 - `--rd-shadow` remains the complete mode-aware shadow treatment.
 
-`--rd-gray-500` through `--rd-gray-800` are intentionally undefined and must
-not be invented without a demonstrated component role. Do not add component
-aliases such as `card` or `foreground`; components should select the numbered
-variable that matches their role directly. Tailwind mappings backed by
-color-mode or configuration-generated runtime variables belong in
-`@theme inline`.
+Do not add component aliases such as `card` or `foreground`; components should
+select the numbered variable that matches their role directly. Tailwind
+mappings backed by color-mode or configuration-generated runtime variables
+belong in `@theme inline`.
 
 For more information, see the [official Tailwind CSS documentation](https://tailwindcss.com/docs).

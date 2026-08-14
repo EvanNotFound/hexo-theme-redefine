@@ -1,5 +1,5 @@
 <!-- using ring to avoid border wrapping around post thumbnail -->
-<li data-home-card class="relative flex box-border flex-col mb-6 overflow-hidden rounded-2xl ring-inset ring ring-rd-gray-alpha-400 bg-rd-background-100 sm:mb-8 md:mb-10 group">
+<li data-home-card class="relative flex box-border flex-col mb-6 overflow-hidden rounded-2xl ring-inset ring ring-rd-gray-alpha-400 sm:mb-8 md:mb-10 group">
     <% if (post.sticky) { %>
         <div data-sticky-label class="absolute top-3 right-3 z-10 cursor-default rounded-full border border-rd-gray-alpha-400 bg-rd-background-100/15 px-2.5 py-0.5 text-xs text-rd-gray-900 hover:text-rd-gray-1000">
             <i class="fa-regular fa-thumbtack mr-1 text-xs" aria-hidden="true"></i><%- __('sticky') %>
@@ -44,9 +44,9 @@
             <% } %>
         </div>
 
-        <div class="flex items-center justify-between text-sm text-rd-gray-900">
-            <div class="tracking-normal [&_a]:text-rd-gray-900 [&_a:hover]:text-primary">
-                <span class="mr-2.5"><i class="fa-solid fa-calendars" aria-hidden="true"></i>&nbsp;
+        <div class="flex items-center justify-between gap-4 text-sm text-rd-gray-900">
+            <div class="flex min-w-0 flex-wrap items-center gap-x-2.5 gap-y-1 tracking-normal [&_a]:text-rd-gray-900 [&_a:hover]:text-primary">
+                <span class="flex items-center"><i class="fa-solid fa-calendars" aria-hidden="true"></i>&nbsp;
                     <time data-home-article-date data-date="<%= post.date %>" datetime="<%= date_xml(post.date) %>">
                         <% if (theme.home.article_date_format == 'auto' || theme.home.article_date_format == 'relative') { %>
                             <%= date(post.date, config.date_format) %>
@@ -56,29 +56,32 @@
                     </time>
                 </span>
                 <% if (post.categories.length && theme.home.categories.enable === true) { %>
-                    <span class="mr-2.5 hidden sm:inline">
-                        <i class="fa-solid fa-folders" aria-hidden="true"></i>&nbsp;
-                        <ul class="inline">
-                            <% let previousParentId = null; %>
-                            <% post.categories.forEach((category) => { %>
-                                <% if (previousParentId !== category.parent) { %>
-                                    <% if (previousParentId !== null) { %><li class="inline">></li><% } %>
-                                    <li class="inline"><a href="<%- url_for(category.path) %>"><%= category.name %></a>&nbsp;</li>
-                                <% } else { %>
-                                    <li class="inline">| <a href="<%- url_for(category.path) %>"><%= category.name %></a>&nbsp;</li>
-                                <% } %>
-                                <% previousParentId = category.parent; %>
+                    <%
+                        const categoryPaths = getCategoryPaths(post.categories);
+                        const categoryLimit = Number(theme.home.categories.limit);
+                        const visibleCategoryPaths = categoryLimit > 0 ? categoryPaths.slice(0, categoryLimit) : categoryPaths;
+                    %>
+                    <div class="hidden min-w-0 items-center gap-1.5 sm:flex">
+                        <i class="fa-regular fa-folders shrink-0" aria-hidden="true"></i>
+                        <ul class="flex min-w-0 flex-wrap gap-1.5" aria-label="<%= __('categories') %>">
+                            <% visibleCategoryPaths.forEach((categoryPath) => { %>
+                                <li data-home-category-path class="flex max-w-full items-center rounded-md border border-rd-gray-alpha-300 bg-rd-gray-100/30 px-2 py-0.5 text-xs">
+                                    <% categoryPath.forEach((category, index) => { %>
+                                        <% if (index > 0) { %><i class="fa-regular fa-angle-right mx-1 shrink-0 text-xs text-rd-gray-800" aria-hidden="true"></i><% } %>
+                                        <a class="min-w-0 truncate" href="<%- url_for(category.path) %>"><%= category.name %></a>
+                                    <% }); %>
+                                </li>
                             <% }); %>
                         </ul>
-                    </span>
+                    </div>
                 <% } %>
                 <% if (post.tags.length && theme.home.tags.enable === true) { %>
-                    <span class="mr-2.5 hidden last:mr-0 md:inline">
-                        <i class="fa-solid fa-tags" aria-hidden="true"></i>&nbsp;
-                        <ul class="inline">
+                    <span class="hidden items-center gap-1.5 md:flex">
+                        <i class="fa-solid fa-tags" aria-hidden="true"></i>
+                        <ul class="flex flex-wrap gap-1.5">
                             <% post.tags.forEach((tag, i) => { %>
                                 <% if (theme.home.tags.limit === 0 || i + 1 <= theme.home.tags.limit) { %>
-                                    <li class="inline"><%= i === 0 ? '' : '| ' %><a href="<%- url_for(tag.path) %>"><%= tag.name %></a>&nbsp;</li>
+                                    <li class="flex"><a class="rounded-full border border-rd-gray-alpha-300 bg-rd-gray-100/30 px-2 py-0.5 text-xs text-rd-gray-900 hover:bg-rd-gray-alpha-300 hover:text-primary" href="<%- url_for(tag.path) %>"><%= tag.name %></a></li>
                                 <% } %>
                             <% }); %>
                         </ul>
@@ -87,7 +90,7 @@
             </div>
 
             <a
-                class="group/read-more flex items-center gap-2"
+                class="group/read-more flex shrink-0 items-center gap-2 whitespace-nowrap"
                 href="<%- url_for(post.path) %>"
             >
                 <%- __('read_more') %>

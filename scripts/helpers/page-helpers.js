@@ -65,6 +65,34 @@ hexo.extend.helper.register("getCategoryTree", function (categories) {
 	return roots;
 });
 
+hexo.extend.helper.register("getCategoryPaths", function (categories) {
+	const items = [];
+	categories?.forEach((category) => items.push(category));
+
+	const nodes = items.map((category) => ({
+		id: String(category._id),
+		parentId: category.parent ? String(category.parent) : null,
+		name: category.name,
+		path: category.path,
+	}));
+	const nodesById = new Map(nodes.map((node) => [node.id, node]));
+	const parentIds = new Set(
+		nodes.map((node) => node.parentId).filter((id) => nodesById.has(id)),
+	);
+
+	return nodes.filter((node) => !parentIds.has(node.id)).map((leaf) => {
+		const categoryPath = [];
+		let current = leaf;
+
+		while (current) {
+			categoryPath.unshift({ name: current.name, path: current.path });
+			current = current.parentId ? nodesById.get(current.parentId) : null;
+		}
+
+		return categoryPath;
+	});
+});
+
 hexo.extend.helper.register("resolvePageKind", function (page) {
 	if (this.is_home()) return "home";
 	if (this.is_post()) return "post";

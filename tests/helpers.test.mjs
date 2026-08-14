@@ -219,6 +219,31 @@ test("getCategoryTree builds a sorted nested category tree", () => {
   ]);
 });
 
+test("getCategoryPaths preserves separate category hierarchies", () => {
+  const getCategoryPaths = loadHelpers("scripts/helpers/page-helpers.js").get(
+    "getCategoryPaths",
+  );
+  const categories = [
+    { _id: "standalone", name: "Standalone", path: "standalone/" },
+    { _id: "root", name: "Root", path: "root/" },
+    { _id: "child-a", parent: "root", name: "Alpha", path: "alpha/" },
+    { _id: "child-b", parent: "root", name: "Beta", path: "beta/" },
+  ];
+
+  assert.deepEqual(getCategoryPaths(categories), [
+    [{ name: "Standalone", path: "standalone/" }],
+    [
+      { name: "Root", path: "root/" },
+      { name: "Alpha", path: "alpha/" },
+    ],
+    [
+      { name: "Root", path: "root/" },
+      { name: "Beta", path: "beta/" },
+    ],
+  ]);
+  assert.deepEqual(getCategoryPaths(null), []);
+});
+
 test("getSidebarLinks returns visible configured links", () => {
   const getSidebarLinks = loadHelpers("scripts/helpers/page-helpers.js").get(
     "getSidebarLinks",

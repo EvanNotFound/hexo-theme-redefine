@@ -18,21 +18,20 @@
     <% } %>
 
     <% if (articleObject?.categories?.length) { %>
-        <span class="inline <%= metaItemClass %>">
-            <i class="fa-regular fa-folders" aria-hidden="true"></i>&nbsp;
-            <ul class="inline">
-                <% let previousParentId = null; %>
-                <% articleObject.categories.forEach((category) => { %>
-                    <% if (previousParentId !== category.parent) { %>
-                        <% if (previousParentId !== null) { %><li class="inline">></li><% } %>
-                        <li class="inline"><a href="<%- url_for(category.path) %>"><%= category.name %></a>&nbsp;</li>
-                    <% } else { %>
-                        <li class="inline">| <a href="<%- url_for(category.path) %>"><%= category.name %></a>&nbsp;</li>
-                    <% } %>
-                    <% previousParentId = category.parent; %>
+        <div class="inline-flex flex-wrap items-center gap-1 <%= metaItemClass %>">
+            <i class="fa-regular fa-folders shrink-0" aria-hidden="true"></i>
+            <ul class="inline-flex flex-wrap items-center gap-x-1.5 gap-y-1" aria-label="<%= __('categories') %>">
+                <% getCategoryPaths(articleObject.categories).forEach((categoryPath, pathIndex) => { %>
+                    <li data-post-category-path class="inline-flex items-center">
+                        <% if (pathIndex > 0) { %><span class="mr-1.5 text-rd-gray-800" aria-hidden="true">·</span><% } %>
+                        <% categoryPath.forEach((category, index) => { %>
+                            <% if (index > 0) { %><i class="fa-regular fa-angle-right mx-1 text-xs text-rd-gray-800" aria-hidden="true"></i><% } %>
+                            <a href="<%- url_for(category.path) %>"><%= category.name %></a>
+                        <% }); %>
+                    </li>
                 <% }); %>
             </ul>
-        </span>
+        </div>
     <% } %>
     <% if (articleObject?.tags?.length) { %>
         <span class="hidden md:inline <%= metaItemClass %>">

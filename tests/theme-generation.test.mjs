@@ -21,6 +21,16 @@ const borderedPageTitle =
 const getArticleToc = (output) =>
   output.match(/<aside id="article-toc"[\s\S]*?<\/aside>/)?.[0] || "";
 
+const getHomeCard = (output, title) =>
+  output
+    .split('<li data-home-card')
+    .find((card) => card.includes(`>${title}</a>`)) || "";
+
+const getCategoryPaths = (output, attribute) =>
+  [...output.matchAll(new RegExp(`<li ${attribute}[^>]*>([\\s\\S]*?)<\\/li>`, "g"))].map(
+    ([, categoryPath]) => categoryPath,
+  );
+
 const readTemplates = (directory) => fs.readdirSync(directory, { withFileTypes: true })
   .flatMap((entry) => {
     const entryPath = path.join(directory, entry.name);
@@ -80,12 +90,19 @@ test("theme build and generation configurations", async (t) => {
     ]);
     const sideToolsMenu = home.match(/<div id="side-tools-menu"[^>]+>/)?.[0] || "";
     const sideToolsToggle = home.match(/<button id="side-tools-toggle"[\s\S]*?<\/button>/)?.[0] || "";
+    const categorizedCard = getHomeCard(home, "主题样式 Demo - With Banner");
+    const homeCategoryPaths = getCategoryPaths(categorizedCard, "data-home-category-path");
     assert.ok(!sideToolsMenu.includes("translate-x"));
     assert.ok(!sideToolsMenu.includes("transition-[transform,opacity]"));
     assert.ok(sideToolsToggle.includes("group-hover:animate-spin"));
     assert.ok(sideToolsToggle.includes("group-hover:[animation-duration:2s]"));
     assert.ok(sideToolsToggle.includes("motion-reduce:group-hover:animate-none"));
     assert.ok(!sideToolsToggle.includes("fa-spin"));
+    assert.equal(homeCategoryPaths.length, 2);
+    assert.ok(homeCategoryPaths[0].includes(">demo123</a>"));
+    assert.ok(homeCategoryPaths[1].includes(">demo456</a>"));
+    assert.ok(homeCategoryPaths[1].includes(">demo789</a>"));
+    assert.ok(homeCategoryPaths[1].includes("fa-angle-right"));
     assert.ok(!home.includes('data-side-tool class="hidden size-10'));
     assert.equal(home.split('href="/essays"').length, 3);
     includes(post, ['id="article-layout"', 'id="toc-toggle"']);
@@ -189,6 +206,12 @@ test("theme build and generation configurations", async (t) => {
       'class="paginator',
     ]);
     assert.ok(!category.includes('class="box-border mb-4 rounded-none border-0'));
+
+    const categorizedPost = readOutput("2023/02/14/theme-demo-with-banner/index.html");
+    const postCategoryPaths = getCategoryPaths(categorizedPost, "data-post-category-path");
+    assert.equal(postCategoryPaths.length, 2);
+    assert.ok(postCategoryPaths[1].includes(">demo456</a>"));
+    assert.ok(postCategoryPaths[1].includes(">demo789</a>"));
   });
 
   await t.test("legacy and unknown templates use ordinary page rendering", () => {
@@ -224,6 +247,10 @@ test("theme build and generation configurations", async (t) => {
     includes(writing, ["data-writing-button", 'data-lazy-state="pending"']);
     assert.ok(!getArticleToc(writing).includes("主题样式 Demo"));
     includes(nested, ["data-tabs", 'role="tabpanel"', 'class="folding']);
+    const categorizedCard = getHomeCard(home, "主题样式 Demo - With Banner");
+    const categoryPaths = getCategoryPaths(categorizedCard, "data-home-category-path");
+    assert.equal(categoryPaths.length, 1);
+    assert.ok(categoryPaths[0].includes(">demo123</a>"));
   });
 
   await t.test("optional configuration selects only configured style assets", () => {
