@@ -11,6 +11,8 @@ theme_config:
       enable: true
       preload: true
   home:
+    word_count:
+      enable: true
     categories:
       enable: true
       limit: 1

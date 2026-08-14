@@ -263,6 +263,11 @@ home:
   article_date_format: auto # auto, relative, YYYY-MM-DD, YYYY-MM-DD HH:mm:ss etc.
   # Article excerpt length
   excerpt_length: 200 # Max length of article excerpt
+  # Word count. Requires hexo-wordcount (npm install hexo-wordcount). See https://github.com/willin/hexo-wordcount
+  word_count:
+    enable: false # Whether to enable word count metadata on article cards
+    count: true # Whether to display word count
+    min2read: true # Whether to display reading time
   # Article categories visibility
   categories:
     enable: true  # Whether to enable

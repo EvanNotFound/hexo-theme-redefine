@@ -103,6 +103,8 @@ test("theme build and generation configurations", async (t) => {
     assert.ok(homeCategoryPaths[1].includes(">demo456</a>"));
     assert.ok(homeCategoryPaths[1].includes(">demo789</a>"));
     assert.ok(homeCategoryPaths[1].includes("fa-angle-right"));
+    assert.ok(!home.includes("data-home-word-count"));
+    assert.ok(!home.includes("data-home-reading-time"));
     assert.ok(!home.includes('data-side-tool class="hidden size-10'));
     assert.equal(home.split('href="/essays"').length, 3);
     includes(post, ['id="article-layout"', 'id="toc-toggle"']);
@@ -251,6 +253,8 @@ test("theme build and generation configurations", async (t) => {
     const categoryPaths = getCategoryPaths(categorizedCard, "data-home-category-path");
     assert.equal(categoryPaths.length, 1);
     assert.ok(categoryPaths[0].includes(">demo123</a>"));
+    assert.match(home, /data-home-word-count[^>]*>[\s\S]*?\d+ Words<\/span>/);
+    assert.match(home, /data-home-reading-time[^>]*>[\s\S]*?\d+ Mins<\/span>/);
   });
 
   await t.test("optional configuration selects only configured style assets", () => {
