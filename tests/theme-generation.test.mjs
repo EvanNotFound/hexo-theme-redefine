@@ -79,8 +79,13 @@ test("theme build and generation configurations", async (t) => {
       'id="side-tools-menu" data-state="closed" aria-hidden="true" class="invisible absolute right-0 bottom-full mb-1 flex flex-col gap-1 opacity-0 pointer-events-none transition-opacity',
     ]);
     const sideToolsMenu = home.match(/<div id="side-tools-menu"[^>]+>/)?.[0] || "";
+    const sideToolsToggle = home.match(/<button id="side-tools-toggle"[\s\S]*?<\/button>/)?.[0] || "";
     assert.ok(!sideToolsMenu.includes("translate-x"));
     assert.ok(!sideToolsMenu.includes("transition-[transform,opacity]"));
+    assert.ok(sideToolsToggle.includes("group-hover:animate-spin"));
+    assert.ok(sideToolsToggle.includes("group-hover:[animation-duration:2s]"));
+    assert.ok(sideToolsToggle.includes("motion-reduce:group-hover:animate-none"));
+    assert.ok(!sideToolsToggle.includes("fa-spin"));
     assert.ok(!home.includes('data-side-tool class="hidden size-10'));
     assert.equal(home.split('href="/essays"').length, 3);
     includes(post, ['id="article-layout"', 'id="toc-toggle"']);

@@ -25,8 +25,8 @@
             </button>
         </div>
 
-        <button id="side-tools-toggle" data-side-tool type="button" class="<%= toolClass %>" aria-controls="side-tools-menu" aria-expanded="false" aria-label="Tools" title="Tools">
-            <i class="fa-regular fa-cog <% if (theme.global.side_tools && theme.global.side_tools.gear_rotation !== false) { %>fa-spin<% } %>" aria-hidden="true"></i>
+        <button id="side-tools-toggle" data-side-tool type="button" class="group <%= toolClass %>" aria-controls="side-tools-menu" aria-expanded="false" aria-label="Tools" title="Tools">
+            <i class="fa-regular fa-cog group-hover:animate-spin group-hover:[animation-duration:2s] motion-reduce:group-hover:animate-none" aria-hidden="true"></i>
         </button>
     </div>
 
