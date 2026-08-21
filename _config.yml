@@ -320,6 +320,8 @@ articles:
       enable: false # Whether to enable
       family: # Font family
       url: # Font URL to CSS file
+    # Whether to show the "toggle wrap" button on overflowing code blocks.
+    wrap_toggle: true
   # Table of contents settings
   toc:
     enable: true # Whether to enable TOC

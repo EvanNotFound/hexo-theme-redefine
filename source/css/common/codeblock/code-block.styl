@@ -7,7 +7,7 @@ disable-user-select()
 .code-container
   position relative
 
-.code-container:hover .copy-button, .code-container .copy-button:focus, .code-container:hover .fold-button, .code-container .fold-button:focus
+.code-container:hover .copy-button, .code-container .copy-button:focus, .code-container:hover .fold-button, .code-container .fold-button:focus, .code-container:hover .wrap-toggle-button, .code-container .wrap-toggle-button:focus
   opacity 1
 
 .fold-button
@@ -51,6 +51,28 @@ disable-user-select()
   border 0
   right 0
   top 0
+
+.wrap-toggle-button
+  cursor pointer
+  border-radius 0
+  display inline-block
+  font-weight bold
+  line-height 1.8
+  opacity 0
+  outline 0
+  padding 6px 15px
+  position absolute
+  vertical-align middle
+  white-space nowrap
+  font-size 1rem
+  color var(--default-text-color)
+  disable-user-select()
+  transition-t('opacity', '0', '0.2', 'ease-in-out')
+  background var(--scond-background-color)
+  border 0
+  right 80px
+  top 0
+  z-index 4
 
 if (hexo-config('articles.code_block.style') == 'mac')
   .code-container

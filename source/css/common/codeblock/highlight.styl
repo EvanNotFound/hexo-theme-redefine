@@ -187,3 +187,33 @@ pre
     color var(--highlight-deletion)
     display inline-block
     width 100%
+
+// Line-wrap toggle state (applied by codeBlock.js on .highlight-container)
+.highlight-container.code-wrap-enabled
+  .highlight
+    overflow-x hidden
+    td.gutter, td.code
+      vertical-align top
+    .code
+      pre
+        white-space pre-wrap !important
+        word-break break-all !important
+        overflow-wrap anywhere !important
+        br
+          display none
+        code
+          display block
+        .line
+          display block
+          min-height 1.5em
+          white-space pre-wrap !important
+          word-break break-all !important
+          overflow-wrap anywhere !important
+    .gutter
+      pre
+        white-space pre !important
+        br
+          display none
+        .line
+          display block
+          line-height 1
