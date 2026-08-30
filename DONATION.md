@@ -45,6 +45,7 @@ Thank you!
 
 | 赞助时间 / Date |                       赞助人 / Sponsor                        | 赞助金额 / Amount | 赞助方式 / Method |                        网站 / Website                        |
 |:-----------:|:----------------------------------------------------------:|:-------------:|:----------------:|:----------------------------------------------------------:|
+|   Aug 30, 2026    |                          AdenXie                           |     ¥0.99     |   微信 | [https://blog.adenxie.com.cn/](https://blog.adenxie.com.cn/) |
 |   Jul 03, 2026    |                        ゼロ風_PLFJY                         |     ¥2.99     |   微信 |       [https://blog.plfjy.top/](https://blog.plfjy.top/)       |
 |   Jan 12, 2025    |           [@1ronName](https://github.com/1ronName)           |     ¥8.88     | 微信赞赏码 |       [https://ironname.top](https://ironname.top)       |
 |   Nov 27, 2023    |                            :-)                             |    ¥16.66     |   微信 |                             -                              |
